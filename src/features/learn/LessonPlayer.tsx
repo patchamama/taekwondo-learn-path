@@ -65,7 +65,6 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
             ? CARD_BY_ID[id].ko
             : `${CARD_BY_ID[id].ko} · ${CARD_BY_ID[id].hangul}`,
       }))
-    if (ex.type === 'karate') return ex.options.map((o) => ({ key: o, label: o }))
     return []
   }, [ex, loc])
 
@@ -105,13 +104,11 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
   const correctText =
     ex.type === 'build'
       ? (cardOf?.parts ?? []).map((p) => MORPHEME_BY_ID[p].ko).join(' + ')
-      : ex.type === 'karate'
-        ? cardOf?.karate
-        : ex.type === 'theory'
-          ? loc(THEORY_BY_ID[ex.theoryId].correct)
-          : ex.type === 'meaning'
-            ? loc(cardOf!.meaning)
-            : `${cardOf!.ko} · ${cardOf!.hangul}`
+      : ex.type === 'theory'
+        ? loc(THEORY_BY_ID[ex.theoryId].correct)
+        : ex.type === 'meaning'
+          ? loc(cardOf!.meaning)
+          : `${cardOf!.ko} · ${cardOf!.hangul}`
 
   const prompt =
     ex.type === 'meaning'
@@ -122,9 +119,7 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
           ? t('qListen')
           : ex.type === 'build'
             ? t('qBuild')
-            : ex.type === 'karate'
-              ? t('qKarate')
-              : t('qTheory')
+            : t('qTheory')
 
   return (
     <div className="mx-auto flex min-h-[80vh] max-w-xl flex-col gap-4">
@@ -161,7 +156,7 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
             )}
           </>
         )}
-        {(ex.type === 'meaning' || ex.type === 'karate') && (
+        {ex.type === 'meaning' && (
           <div className="flex items-center gap-3">
             <div>
               <p className="text-2xl font-bold">{cardOf!.ko}</p>

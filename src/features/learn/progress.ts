@@ -33,7 +33,13 @@ export function starsFor(correct: number, total: number): 1 | 2 | 3 {
   return r >= 0.9 ? 3 : r >= 0.7 ? 2 : 1
 }
 
-export const isUnlocked = (lessonId: string, completed: Completed): boolean => {
+/** With strict order off (default) every lesson is open; with it on, lessons unlock one after another. */
+export const isUnlocked = (
+  lessonId: string,
+  completed: Completed,
+  strictOrder: boolean,
+): boolean => {
+  if (!strictOrder) return LESSONS.some((l) => l.id === lessonId)
   const i = LESSONS.findIndex((l) => l.id === lessonId)
   if (i <= 0) return i === 0
   return Boolean(completed[LESSONS[i - 1].id])

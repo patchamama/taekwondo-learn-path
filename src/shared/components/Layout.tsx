@@ -10,9 +10,11 @@ const LINKS: { to: string; key: StringKey }[] = [
   { to: '/', key: 'navPath' },
   { to: '/practice', key: 'navPractice' },
   { to: '/techniques', key: 'navTechniques' },
+  { to: '/videos', key: 'navVideos' },
   { to: '/terms', key: 'navTerms' },
   { to: '/forms', key: 'navForms' },
   { to: '/history', key: 'navHistory' },
+  { to: '/settings', key: 'navSettings' },
 ]
 
 export function Layout() {

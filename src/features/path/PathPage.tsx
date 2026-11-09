@@ -13,6 +13,7 @@ export function PathPage() {
   const { t, loc } = useT()
   const completed = useAppStore((s) => s.completed)
   const streak = useAppStore((s) => s.streak)
+  const strict = useAppStore((s) => s.strictOrder)
   const reset = useAppStore((s) => s.reset)
   const held = heldBeltIndex(completed)
   const [selected, setSelected] = useState(held)
@@ -75,7 +76,7 @@ export function PathPage() {
               </p>
               <ol className="grid gap-1.5">
                 {lessons.map((l) => {
-                  const open = isUnlocked(l.id, completed)
+                  const open = isUnlocked(l.id, completed, strict)
                   const stars = completed[l.id]
                   const cls = 'flex items-center gap-2 rounded-lg border px-3 py-2 text-sm'
                   const label = (

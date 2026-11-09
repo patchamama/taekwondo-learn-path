@@ -13,12 +13,16 @@ import {
 const done = (ids: string[]) => Object.fromEntries(ids.map((i) => [i, 3]))
 
 describe('lesson unlocking', () => {
-  it('only the first lesson is open at start', () => {
-    expect(isUnlocked(LESSONS[0].id, {})).toBe(true)
-    expect(isUnlocked(LESSONS[1].id, {})).toBe(false)
+  it('opens every lesson when strict order is off', () => {
+    expect(isUnlocked(LESSONS[LESSONS.length - 1].id, {}, false)).toBe(true)
+    expect(isUnlocked('does-not-exist', {}, false)).toBe(false)
   })
-  it('opens the next lesson after completing one', () => {
-    expect(isUnlocked(LESSONS[1].id, done([LESSONS[0].id]))).toBe(true)
+  it('only the first lesson is open at start in strict mode', () => {
+    expect(isUnlocked(LESSONS[0].id, {}, true)).toBe(true)
+    expect(isUnlocked(LESSONS[1].id, {}, true)).toBe(false)
+  })
+  it('opens the next lesson after completing one in strict mode', () => {
+    expect(isUnlocked(LESSONS[1].id, done([LESSONS[0].id]), true)).toBe(true)
   })
   it('nextLesson follows the order', () => {
     expect(nextLesson(done([LESSONS[0].id]))?.id).toBe(LESSONS[1].id)

@@ -47,7 +47,6 @@ describe('buildExercises', () => {
           const labels = e.options.map((o) => CARD_BY_ID[o].meaning.en)
           expect(new Set(labels).size).toBe(labels.length)
         }
-        if (e.type === 'karate') expect(e.options).toContain(CARD_BY_ID[e.cardId].karate)
       }
     }
   })
@@ -61,6 +60,12 @@ describe('buildExercises', () => {
     expect(build.chips).toHaveLength(parts.length + 1)
     expect(isCorrect(build, parts)).toBe(true)
     expect(isCorrect(build, [...parts].reverse())).toBe(parts.length === 1)
+  })
+
+  it('never asks for karate equivalents', () => {
+    for (const l of LESSONS) {
+      for (const e of buildExercises(l, makeRng(9), { max: 40 })) expect(e.type).not.toBe('karate')
+    }
   })
 
   it('theory answer is index 0 of the source list', () => {

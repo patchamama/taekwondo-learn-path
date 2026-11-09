@@ -34,8 +34,6 @@ export type Exercise =
   | { type: 'listen'; cardId: string; options: string[] }
   /** assemble the technique name from word blocks. answer = card.parts */
   | { type: 'build'; cardId: string; chips: string[] }
-  /** pick the karate equivalent. answer = card.karate */
-  | { type: 'karate'; cardId: string; options: string[] }
   /** theory multiple choice. option 0 of `order` is NOT special: answer index is 0 in the source list */
   | { type: 'theory'; theoryId: string; order: number[] }
 
@@ -53,8 +51,6 @@ export function isCorrect(ex: Exercise, answer: string | string[] | number): boo
         answer.every((x, i) => x === parts[i])
       )
     }
-    case 'karate':
-      return answer === CARD_BY_ID[ex.cardId].karate
     case 'theory':
       return answer === 0
   }
@@ -116,26 +112,7 @@ function candidates(card: Card, rng: Rng): Exercise[] {
     )[0]
     out.push({ type: 'build', cardId: card.id, chips: shuffle([...card.parts, extra.id], rng) })
   }
-  if (card.karate) out.push({ type: 'karate', cardId: card.id, options: [] })
   return out
-}
-
-function karateOptions(card: Card, rng: Rng): string[] {
-  const others = [
-    ...new Set(
-      CARDS.filter((c) => c.karate && c.karate !== card.karate && c.group === card.group).map(
-        (c) => c.karate!,
-      ),
-    ),
-  ]
-  const anyOthers = [
-    ...new Set(CARDS.filter((c) => c.karate && c.karate !== card.karate).map((c) => c.karate!)),
-  ]
-  const pool = shuffle(
-    others.length >= 3 ? others : [...others, ...anyOthers.filter((x) => !others.includes(x))],
-    rng,
-  )
-  return shuffle([card.karate!, ...pool.slice(0, 3)], rng)
 }
 
 export interface BuildOptions {
@@ -159,9 +136,7 @@ export function buildExercises(
       if (!list.includes(ex)) list.push(ex)
     }
   }
-  const filled = list.map((ex) =>
-    ex.type === 'karate' ? { ...ex, options: karateOptions(CARD_BY_ID[ex.cardId], rng) } : ex,
-  )
+  const filled = list
   const theory: Exercise[] = (lesson.theoryIds ?? []).map((theoryId) => ({
     type: 'theory',
     theoryId,

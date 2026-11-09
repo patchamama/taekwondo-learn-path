@@ -102,11 +102,6 @@ export const STRINGS = {
     de: 'Baue den koreanischen Namen',
     es: 'Construye el nombre coreano',
   },
-  qKarate: {
-    en: 'Which karate technique is closest?',
-    de: 'Welche Karate-Technik passt am ehesten?',
-    es: '¿Qué técnica de karate se parece más?',
-  },
   qTheory: { en: 'Theory', de: 'Theorie', es: 'Teoría' },
   tapWords: {
     en: 'Tap the word blocks in order',
@@ -181,6 +176,76 @@ export const STRINGS = {
     es: 'Contenidos de entrenamiento',
   },
   grpBody: { en: 'Body parts', de: 'Körperteile', es: 'Partes del cuerpo' },
+  navSettings: { en: 'Settings', de: 'Einstellungen', es: 'Ajustes' },
+  navVideos: { en: 'Videos', de: 'Videos', es: 'Vídeos' },
+  settingsTitle: { en: 'Settings', de: 'Einstellungen', es: 'Ajustes' },
+  strictOrder: {
+    en: 'Lock lessons until the previous one is completed',
+    de: 'Lektionen sperren, bis die vorherige abgeschlossen ist',
+    es: 'Bloquear lecciones hasta completar la anterior',
+  },
+  strictOrderHint: {
+    en: 'Off: you can open any lesson of any belt. Belts are still earned by finishing every lesson of a unit.',
+    de: 'Aus: Du kannst jede Lektion jedes Gürtels öffnen. Gürtel erhältst du weiterhin durch Abschluss aller Lektionen einer Einheit.',
+    es: 'Desactivado: puedes abrir cualquier lección de cualquier cinturón. Los cinturones se siguen ganando al terminar todas las lecciones de una unidad.',
+  },
+  videoLang: { en: 'Video language', de: 'Videosprache', es: 'Idioma de los vídeos' },
+  videoAuto: {
+    en: 'Automatic (follows the app language; English uses Spanish)',
+    de: 'Automatisch (folgt der App-Sprache; Englisch nutzt Spanisch)',
+    es: 'Automático (sigue el idioma de la app; inglés usa español)',
+  },
+  videoEs: { en: 'Spanish', de: 'Spanisch', es: 'Español' },
+  videoDe: { en: 'German', de: 'Deutsch', es: 'Alemán' },
+  videosTitle: { en: 'Technique clips', de: 'Technik-Clips', es: 'Clips de técnicas' },
+  videosHint: {
+    en: 'Short excerpts from the course video. They load only when you press play.',
+    de: 'Kurze Ausschnitte aus dem Kursvideo. Sie laden erst, wenn du auf Play drückst.',
+    es: 'Fragmentos cortos del vídeo del curso. Solo cargan al pulsar reproducir.',
+  },
+  videoCaveat: {
+    en: 'The course comes from a different school: names and details can differ from your club. Trust your instructor.',
+    de: 'Der Kurs stammt aus einer anderen Schule: Namen und Details können von eurem Verein abweichen. Vertraue deinem Trainer.',
+    es: 'El curso es de otra escuela: nombres y detalles pueden diferir de tu club. Confía en tu instructor.',
+  },
+  watch: { en: 'Watch', de: 'Ansehen', es: 'Ver' },
+  hide: { en: 'Hide', de: 'Ausblenden', es: 'Ocultar' },
+  replay: { en: 'Replay', de: 'Wiederholen', es: 'Repetir' },
+  openVideoQuiz: { en: 'Video quiz', de: 'Video-Quiz', es: 'Quiz con vídeo' },
+  vqTitle: { en: 'Video quiz', de: 'Video-Quiz', es: 'Quiz con vídeo' },
+  vqGuess: {
+    en: 'Silent clip: name the technique',
+    de: 'Stummer Clip: Technik benennen',
+    es: 'Clip sin sonido: nombra la técnica',
+  },
+  vqGuessHint: {
+    en: 'The sound is off so the narrator cannot give it away.',
+    de: 'Der Ton ist aus, damit der Sprecher nichts verrät.',
+    es: 'El sonido está apagado para que el narrador no te dé la respuesta.',
+  },
+  vqRecall: {
+    en: 'Name first: recall, then watch',
+    de: 'Erst der Name: erinnern, dann ansehen',
+    es: 'Primero el nombre: recuerda y luego mira',
+  },
+  vqRecallHint: {
+    en: 'You get a few seconds to picture the technique, then the clip plays.',
+    de: 'Du hast ein paar Sekunden, dir die Technik vorzustellen, dann läuft der Clip.',
+    es: 'Tienes unos segundos para imaginar la técnica y luego se reproduce el clip.',
+  },
+  vqThink: {
+    en: 'Picture the technique…',
+    de: 'Stell dir die Technik vor …',
+    es: 'Imagina la técnica…',
+  },
+  vqReveal: { en: 'Show me now', de: 'Jetzt zeigen', es: 'Mostrar ya' },
+  vqRound: { en: 'Round', de: 'Runde', es: 'Ronda' },
+  vqScore: { en: 'Score', de: 'Punkte', es: 'Puntos' },
+  vqKnewIt: { en: 'I knew it', de: 'Gewusst', es: 'Lo sabía' },
+  vqMissed: { en: 'Not yet', de: 'Noch nicht', es: 'Aún no' },
+  vqAgain: { en: 'Play again', de: 'Nochmal spielen', es: 'Jugar otra vez' },
+  vqEnd: { en: 'Round finished!', de: 'Runde beendet!', es: '¡Ronda terminada!' },
+  noClip: { en: 'No clip yet', de: 'Noch kein Clip', es: 'Aún sin clip' },
 } satisfies Dict
 
 export type StringKey = keyof typeof STRINGS

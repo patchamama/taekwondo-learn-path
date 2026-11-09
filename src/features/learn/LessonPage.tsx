@@ -17,8 +17,9 @@ export function LessonPage() {
   const { id } = useParams()
   const lesson = id ? LESSON_BY_ID[id] : undefined
   const completed = useAppStore((s) => s.completed)
+  const strict = useAppStore((s) => s.strictOrder)
   if (!lesson) return <Missing />
-  if (!isUnlocked(lesson.id, completed)) return <Missing locked />
+  if (!isUnlocked(lesson.id, completed, strict)) return <Missing locked />
   return <Run key={lesson.id} lessonId={lesson.id} />
 }
 

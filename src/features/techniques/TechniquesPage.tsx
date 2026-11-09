@@ -3,6 +3,8 @@ import { MORPHEMES, MORPHEME_BY_ID } from '../../data/morphemes'
 import { TECHNIQUES, type Category } from '../../data/techniques'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { CARD_BY_ID } from '../../data/cards'
+import { CLIP_BY_CARD } from '../../data/clips'
+import { ClipPlayer } from '../videos/ClipPlayer'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
 import type { StringKey } from '../../shared/i18n/strings'
@@ -18,6 +20,7 @@ const CATS: { id: Category | 'all'; key: StringKey }[] = [
 export function TechniquesPage() {
   const { t, loc } = useT()
   const [cat, setCat] = useState<Category | 'all'>('all')
+  const [watching, setWatching] = useState<string | null>(null)
   const learned = useAppStore((s) => s.learned)
   const toggle = useAppStore((s) => s.toggleLearned)
   const list = TECHNIQUES.filter((x) => cat === 'all' || x.category === cat)
@@ -53,7 +56,7 @@ export function TechniquesPage() {
         ))}
       </div>
 
-      <ul className="grid gap-3 md:grid-cols-2">
+      <ul className="grid items-start gap-3 md:grid-cols-2">
         {list.map((x) => {
           const isLearned = learned.includes(x.id)
           return (
@@ -84,6 +87,22 @@ export function TechniquesPage() {
                 <span className="font-semibold">{t('karate')}: </span>
                 {x.karate}
               </p>
+              {CLIP_BY_CARD[x.id] && (
+                <div className="mt-3">
+                  <button
+                    className="rounded-lg border px-3 py-1 text-sm"
+                    aria-expanded={watching === x.id}
+                    onClick={() => setWatching(watching === x.id ? null : x.id)}
+                  >
+                    {watching === x.id ? t('hide') : `▶ ${t('watch')}`}
+                  </button>
+                  {watching === x.id && (
+                    <div className="mt-2">
+                      <ClipPlayer cardId={x.id} />
+                    </div>
+                  )}
+                </div>
+              )}
             </li>
           )
         })}

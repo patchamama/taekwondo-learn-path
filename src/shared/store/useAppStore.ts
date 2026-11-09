@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { Lang } from '../i18n/types'
+
+export type VideoLang = 'auto' | 'es' | 'de'
 import { dayString, updateStreak, type Completed, type Streak } from '../../features/learn/progress'
 
 interface AppState {
@@ -10,7 +12,11 @@ interface AppState {
   xp: number
   streak: Streak
   mastery: Record<string, number> // cardId → correct answers
+  strictOrder: boolean // lock lessons until the previous one is done
+  videoLang: VideoLang
   setLang: (l: Lang) => void
+  setStrictOrder: (v: boolean) => void
+  setVideoLang: (v: VideoLang) => void
   toggleLearned: (id: string) => void
   recordAnswer: (cardId: string, correct: boolean) => void
   completeLesson: (lessonId: string, stars: number, xp: number, today?: string) => void
@@ -30,8 +36,12 @@ export const useAppStore = create<AppState>()(
   persist(
     (set) => ({
       lang: 'en',
+      strictOrder: false,
+      videoLang: 'auto',
       ...empty,
       setLang: (lang) => set({ lang }),
+      setStrictOrder: (strictOrder) => set({ strictOrder }),
+      setVideoLang: (videoLang) => set({ videoLang }),
       toggleLearned: (id) =>
         set((s) => ({
           learned: s.learned.includes(id) ? s.learned.filter((x) => x !== id) : [...s.learned, id],
