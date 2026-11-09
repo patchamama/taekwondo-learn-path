@@ -41,6 +41,9 @@ describe('belt progression', () => {
     expect(heldBeltIndex(done([...u1, ...u2]))).toBe(1)
     expect(heldBeltIndex(done([...u1, ...u2, ...u3]))).toBe(2)
   })
+  it('bonus lessons never move the apprentice', () => {
+    expect(heldBeltIndex(done(lessonsOfUnit('bonus').map((l) => l.id)))).toBe(0)
+  })
   it('does not earn a belt if an earlier unit is incomplete', () => {
     expect(heldBeltIndex(done(lessonsOfUnit('kup9').map((l) => l.id)))).toBe(0)
   })

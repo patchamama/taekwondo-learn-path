@@ -1,4 +1,9 @@
+import { useState } from 'react'
+import { FORMS } from '../../data/forms'
+import { CLIPS_BY_CARD } from '../../data/clips'
+import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useT } from '../../shared/i18n/useT'
+import { ClipViewer } from '../videos/ClipViewer'
 import type { Lang } from '../../shared/i18n/types'
 
 const POOMSE: Record<Lang, string[]> = {
@@ -55,7 +60,8 @@ function Card({ title, items }: { title: string; items: string[] }) {
 }
 
 export function FormsPage() {
-  const { t, lang } = useT()
+  const { t, lang, loc } = useT()
+  const [open, setOpen] = useState<string | null>(null)
   return (
     <section className="grid gap-4">
       <h1 className="text-2xl font-bold">{t('formsTitle')}</h1>
@@ -64,6 +70,48 @@ export function FormsPage() {
         <Card title="Hyong / Tul (형 / 틀)" items={HYONG[lang]} />
       </div>
       <p className="rounded-lg bg-amber-50 p-3 text-sm">{NOTE[lang]}</p>
+      <h2 className="mt-4 text-xl font-bold">{t('taegeukForms')}</h2>
+      <ul className="grid items-start gap-3 md:grid-cols-2">
+        {FORMS.map((f) => {
+          const isOpen = open === f.id
+          return (
+            <li key={f.id} className="rounded-xl border bg-white p-4 shadow-sm">
+              <div className="flex items-start gap-2">
+                <div className="min-w-0 flex-1">
+                  <p className="font-bold">
+                    {f.ko}{' '}
+                    <span lang="ko" className="font-normal text-slate-500">
+                      {f.hangul}
+                    </span>
+                  </p>
+                  <p className="text-xs text-slate-500">
+                    {t('kukkiwonName')}: {f.kukkiwon} · {f.moves} {t('moves')}
+                  </p>
+                </div>
+                <SpeakButton text={f.hangul} />
+              </div>
+              <p className="mt-1 font-medium">{loc(f.symbol)}</p>
+              <p className="text-sm text-slate-600">{loc(f.meaning)}</p>
+              {CLIPS_BY_CARD[f.id] && (
+                <div className="mt-2">
+                  <button
+                    className="rounded-lg border px-3 py-1 text-sm"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpen(isOpen ? null : f.id)}
+                  >
+                    {isOpen ? t('hide') : `▶ ${t('watch')}`}
+                  </button>
+                  {isOpen && (
+                    <div className="mt-2">
+                      <ClipViewer cardId={f.id} />
+                    </div>
+                  )}
+                </div>
+              )}
+            </li>
+          )
+        })}
+      </ul>
     </section>
   )
 }

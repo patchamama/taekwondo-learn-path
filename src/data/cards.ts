@@ -3,8 +3,9 @@ import { MORPHEMES } from './morphemes'
 import { TECHNIQUES } from './techniques'
 import { TECHNIQUE_HANGUL } from './hangul'
 import { TERMS } from './terms'
+import { FORMS } from './forms'
 
-export type CardKind = 'morpheme' | 'technique' | 'term'
+export type CardKind = 'morpheme' | 'technique' | 'term' | 'form'
 
 /** Anything that can be studied: one Korean item with its meaning. */
 export interface Card {
@@ -36,6 +37,14 @@ export const CARDS: Card[] = [
     meaning: x.names,
     karate: x.karate === '—' ? undefined : x.karate,
     parts: x.parts,
+  })),
+  ...FORMS.map<Card>((f) => ({
+    id: f.id,
+    kind: 'form',
+    group: 'form',
+    ko: f.ko,
+    hangul: f.hangul,
+    meaning: f.symbol,
   })),
   ...TERMS.map<Card>((x) => ({
     id: x.id,

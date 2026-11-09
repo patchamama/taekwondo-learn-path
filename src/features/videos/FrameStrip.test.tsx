@@ -1,29 +1,39 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { FRAMES_PER_CLIP } from '../../data/clips'
+import { FRAMES_PER_CLIP, type Clip } from '../../data/clips'
 import { FrameStrip, frameSrc } from './FrameStrip'
+
+const clip: Clip = { cardId: 'ap-chagi', source: 'course', start: 1, end: 2 }
 
 describe('FrameStrip', () => {
   it('renders the frames in order', () => {
-    render(<FrameStrip cardId="ap-chagi" />)
+    render(<FrameStrip clip={clip} />)
     const imgs = screen.getAllByRole('img')
     expect(imgs).toHaveLength(FRAMES_PER_CLIP)
-    expect(imgs[0]).toHaveAttribute('src', frameSrc('ap-chagi', 1))
-    expect(imgs[FRAMES_PER_CLIP - 1]).toHaveAttribute('src', frameSrc('ap-chagi', FRAMES_PER_CLIP))
+    expect(imgs[0]).toHaveAttribute('src', frameSrc(clip, 1))
+    expect(imgs[FRAMES_PER_CLIP - 1]).toHaveAttribute('src', frameSrc(clip, FRAMES_PER_CLIP))
   })
 
-  it('encodes ids with special characters', () => {
-    expect(frameSrc('düt-gubi', 2)).toContain('d%C3%BCt-gubi/2.jpg')
+  it('separates frames by source and encodes ids with special characters', () => {
+    expect(frameSrc({ ...clip, cardId: 'düt-gubi' }, 2)).toContain(
+      'frames/course/d%C3%BCt-gubi/2.jpg',
+    )
+    expect(frameSrc({ ...clip, source: 'selfdefense' }, 1)).toContain(
+      'frames/selfdefense/ap-chagi/1.jpg',
+    )
+    expect(frameSrc({ ...clip, source: 'external', videoId: 'xyz' }, 1)).toContain(
+      'frames/ext-xyz/ap-chagi/1.jpg',
+    )
   })
 
   it('shows a hint when a frame fails to load', () => {
-    render(<FrameStrip cardId="x" />)
+    render(<FrameStrip clip={clip} />)
     fireEvent.error(screen.getAllByRole('img')[0])
     expect(screen.getByText(/npm run frames/)).toBeInTheDocument()
   })
 
   it('stays silent in quiet mode', () => {
-    const { container } = render(<FrameStrip cardId="x" quiet />)
+    const { container } = render(<FrameStrip clip={clip} quiet />)
     fireEvent.error(screen.getAllByRole('img')[0])
     expect(container).toBeEmptyDOMElement()
   })

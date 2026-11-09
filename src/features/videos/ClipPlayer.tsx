@@ -1,23 +1,21 @@
 import { useState } from 'react'
-import { CLIP_BY_CARD, embedUrl, resolveVideoLanguage } from '../../data/clips'
 import { CARD_BY_ID } from '../../data/cards'
+import { embedUrl, resolveVideoLanguage, type Clip } from '../../data/clips'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
 
 interface Props {
-  cardId: string
+  clip: Clip
   muted?: boolean
   autoplay?: boolean
   controls?: boolean
 }
 
-/** Embedded excerpt of the course video for one technique (no download, YouTube plays it). */
-export function ClipPlayer({ cardId, muted = false, autoplay = true, controls = true }: Props) {
+/** Embedded excerpt of a video for one technique (no download, YouTube plays it). */
+export function ClipPlayer({ clip, muted = false, autoplay = true, controls = true }: Props) {
   const { t, lang } = useT()
   const videoLang = useAppStore((s) => s.videoLang)
   const [run, setRun] = useState(0)
-  const clip = CLIP_BY_CARD[cardId]
-  if (!clip) return <p className="text-sm text-slate-500">{t('noClip')}</p>
   const src = embedUrl(resolveVideoLanguage(videoLang, lang), clip, { muted, autoplay, controls })
   return (
     <div className="grid gap-2">
@@ -25,7 +23,9 @@ export function ClipPlayer({ cardId, muted = false, autoplay = true, controls = 
         <iframe
           key={run}
           src={src}
-          title={muted ? 'Silent technique clip' : `Clip: ${CARD_BY_ID[cardId].ko}`}
+          title={
+            muted ? 'Silent technique clip' : `Clip: ${CARD_BY_ID[clip.cardId]?.ko ?? clip.cardId}`
+          }
           className="h-full w-full"
           allow="autoplay; encrypted-media; picture-in-picture"
           referrerPolicy="strict-origin-when-cross-origin"

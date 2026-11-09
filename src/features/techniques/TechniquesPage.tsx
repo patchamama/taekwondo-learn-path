@@ -3,9 +3,8 @@ import { MORPHEMES, MORPHEME_BY_ID } from '../../data/morphemes'
 import { TECHNIQUES, type Category } from '../../data/techniques'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { CARD_BY_ID } from '../../data/cards'
-import { CLIP_BY_CARD } from '../../data/clips'
-import { ClipPlayer } from '../videos/ClipPlayer'
-import { FrameStrip } from '../videos/FrameStrip'
+import { CLIPS_BY_CARD } from '../../data/clips'
+import { ClipViewer } from '../videos/ClipViewer'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
 import type { StringKey } from '../../shared/i18n/strings'
@@ -88,7 +87,7 @@ export function TechniquesPage() {
                 <span className="font-semibold">{t('karate')}: </span>
                 {x.karate}
               </p>
-              {CLIP_BY_CARD[x.id] && (
+              {CLIPS_BY_CARD[x.id] && (
                 <div className="mt-3">
                   <button
                     className="rounded-lg border px-3 py-1 text-sm"
@@ -98,9 +97,8 @@ export function TechniquesPage() {
                     {watching === x.id ? t('hide') : `▶ ${t('watch')}`}
                   </button>
                   {watching === x.id && (
-                    <div className="mt-2 grid gap-2">
-                      <FrameStrip cardId={x.id} />
-                      <ClipPlayer cardId={x.id} />
+                    <div className="mt-2">
+                      <ClipViewer cardId={x.id} />
                     </div>
                   )}
                 </div>

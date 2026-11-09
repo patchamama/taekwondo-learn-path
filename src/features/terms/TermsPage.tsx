@@ -10,6 +10,7 @@ const GROUPS: { id: TermGroup; key: StringKey }[] = [
   { id: 'native', key: 'grpNative' },
   { id: 'training', key: 'grpTraining' },
   { id: 'body', key: 'grpBody' },
+  { id: 'kukkiwon', key: 'grpKukkiwon' },
 ]
 
 export function TermsPage() {

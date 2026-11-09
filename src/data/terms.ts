@@ -1,6 +1,6 @@
 import type { Loc } from '../shared/i18n/types'
 
-export type TermGroup = 'sino' | 'native' | 'command' | 'basic' | 'training' | 'body'
+export type TermGroup = 'sino' | 'native' | 'command' | 'basic' | 'training' | 'body' | 'kukkiwon'
 
 export interface Term {
   id: string
@@ -96,4 +96,73 @@ export const TERMS: Term[] = [
   t('body', 'palkup', '팔꿈치', 'elbow', 'Ellenbogen', 'codo'),
   t('body', 'son', '손', 'hand', 'Hand', 'mano'),
   t('body', 'jumok', '주먹', 'fist', 'Faust', 'puño'),
+
+  // Kukkiwon Revised Romanization: the names used by the self-defence course videos and by WT/Kukkiwon poomsae.
+  t(
+    'kukkiwon',
+    'jireugi',
+    '지르기',
+    'thrust / punch (club: chirugi)',
+    'Stoß (Verein: chirugi)',
+    'golpe directo (club: chirugi)',
+  ),
+  t(
+    'kukkiwon',
+    'chigi',
+    '치기',
+    'strike (club: chicki)',
+    'Schlag (Verein: chicki)',
+    'golpe (club: chicki)',
+  ),
+  t(
+    'kukkiwon',
+    'chagi',
+    '차기',
+    'kick (same as club)',
+    'Tritt (wie im Verein)',
+    'patada (igual que en el club)',
+  ),
+  t(
+    'kukkiwon',
+    'makgi',
+    '막기',
+    'block (club: macki)',
+    'Abwehr (Verein: macki)',
+    'bloqueo (club: macki)',
+  ),
+  t(
+    'kukkiwon',
+    'seogi',
+    '서기',
+    'stance (club: sogi)',
+    'Stellung (Verein: sogi)',
+    'posición (club: sogi)',
+  ),
+  t('kukkiwon', 'ppaegi', '빼기', 'release / escape', 'Befreiung', 'liberación / escape'),
+  t('kukkiwon', 'kkeokgi', '꺾기', 'joint lock / bending', 'Hebel / Beugen', 'luxación / torsión'),
+  t(
+    'kukkiwon',
+    'neomgigi',
+    '넘기기',
+    'throw / take-down',
+    'Wurf / Niederwerfen',
+    'proyección / derribo',
+  ),
+  t('kukkiwon', 'joleugi', '조르기', 'choke', 'Würgen', 'estrangulación'),
+  t(
+    'kukkiwon',
+    'poomsae',
+    '품새',
+    'form (Kukkiwon/WT)',
+    'Form (Kukkiwon/WT)',
+    'forma (Kukkiwon/WT)',
+  ),
+  t(
+    'kukkiwon',
+    'jang',
+    '장',
+    'chapter / number of a Taegeuk form',
+    'Kapitel / Nummer einer Taegeuk-Form',
+    'capítulo / número de una forma Taegeuk',
+  ),
 ]

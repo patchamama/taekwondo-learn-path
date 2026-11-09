@@ -4,11 +4,14 @@ import { makeRng } from '../learn/exercises'
 import { buildVideoRounds } from './videoQuiz'
 
 describe('buildVideoRounds', () => {
-  it('returns the requested number of rounds from clips only', () => {
+  it('returns the requested number of rounds from silent-safe clips only', () => {
     const rounds = buildVideoRounds(makeRng(1), 8)
     expect(rounds).toHaveLength(8)
-    const ids = new Set(CLIPS.map((c) => c.cardId))
-    for (const r of rounds) expect(ids.has(r.cardId)).toBe(true)
+    for (const r of rounds) {
+      expect(r.clip.silentSafe).toBe(true)
+      expect(CLIPS).toContain(r.clip)
+      expect(r.clip.cardId).toBe(r.cardId)
+    }
   })
 
   it('has 4 unique options containing the answer once', () => {

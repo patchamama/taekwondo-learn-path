@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CARD_BY_ID } from '../../data/cards'
-import { CLIPS } from '../../data/clips'
+import { CARDS_WITH_CLIPS, CLIPS_BY_CARD } from '../../data/clips'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useT } from '../../shared/i18n/useT'
-import { ClipPlayer } from './ClipPlayer'
-import { FrameStrip } from './FrameStrip'
+import { ClipViewer } from './ClipViewer'
 
 export function VideosPage() {
   const { t, loc } = useT()
@@ -24,11 +23,11 @@ export function VideosPage() {
       <p className="text-sm text-slate-600">{t('videosHint')}</p>
       <p className="rounded-lg bg-amber-50 p-3 text-sm">ℹ {t('videoCaveat')}</p>
       <ul className="grid items-start gap-3 md:grid-cols-2">
-        {CLIPS.map((c) => {
-          const card = CARD_BY_ID[c.cardId]
-          const isOpen = open === c.cardId
+        {CARDS_WITH_CLIPS.map((cardId) => {
+          const card = CARD_BY_ID[cardId]
+          const isOpen = open === cardId
           return (
-            <li key={c.cardId} className="rounded-xl border bg-white p-4 shadow-sm">
+            <li key={cardId} className="rounded-xl border bg-white p-4 shadow-sm">
               <div className="mb-2 flex items-center gap-2">
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-bold">
@@ -37,23 +36,21 @@ export function VideosPage() {
                       {card.hangul}
                     </span>
                   </p>
-                  <p className="truncate text-sm text-slate-600">{loc(card.meaning)}</p>
+                  <p className="truncate text-sm text-slate-600">
+                    {loc(card.meaning)} · {CLIPS_BY_CARD[cardId].length}{' '}
+                    {t('sourcesLabel').toLowerCase()}
+                  </p>
                 </div>
                 <SpeakButton text={card.hangul} />
                 <button
                   className="rounded-lg border px-3 py-1 text-sm"
-                  onClick={() => setOpen(isOpen ? null : c.cardId)}
+                  onClick={() => setOpen(isOpen ? null : cardId)}
                   aria-expanded={isOpen}
                 >
                   {isOpen ? t('hide') : `▶ ${t('watch')}`}
                 </button>
               </div>
-              {isOpen && (
-                <div className="grid gap-2">
-                  <FrameStrip cardId={c.cardId} />
-                  <ClipPlayer cardId={c.cardId} />
-                </div>
-              )}
+              {isOpen && <ClipViewer cardId={cardId} />}
             </li>
           )
         })}

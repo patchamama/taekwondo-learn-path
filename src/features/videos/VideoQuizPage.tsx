@@ -140,14 +140,14 @@ function Game({ mode, onBack }: { mode: Mode; onBack: () => void }) {
             // controls hidden + muted: nothing in the clip reveals the name until answered
             <ClipPlayer
               key={`g-${i}-${answered}`}
-              cardId={round.cardId}
+              clip={round.clip}
               muted={!answered}
               controls={answered}
             />
           ) : (
             <>
-              <FrameStrip key={`f-${i}`} cardId={round.cardId} />
-              {answered && <ClipPlayer key={`fc-${i}`} cardId={round.cardId} />}
+              <FrameStrip key={`f-${i}`} clip={round.clip} />
+              {answered && <ClipPlayer key={`fc-${i}`} clip={round.clip} />}
             </>
           )}
           <ul className="grid gap-2">
@@ -212,7 +212,7 @@ function Game({ mode, onBack }: { mode: Mode; onBack: () => void }) {
             </div>
           ) : (
             <>
-              <ClipPlayer key={`r-${i}`} cardId={round.cardId} />
+              <ClipPlayer key={`r-${i}`} clip={round.clip} />
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => advance(true)}

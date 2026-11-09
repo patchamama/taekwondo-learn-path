@@ -1,0 +1,90 @@
+[
+  {
+    "cardId": "twio-ap-chagi",
+    "videoId": "azqXl4ys3WY",
+    "start": 6,
+    "end": 38,
+    "label": "Lupo Taekwondo (Kukkiwon)",
+    "similarity": "exact"
+  },
+  {
+    "cardId": "an-naeryo-chagi",
+    "videoId": "a5rTS4TF9Mg",
+    "start": 0,
+    "end": 9,
+    "label": "Exceed TKD (Kukkiwon)",
+    "similarity": "exact"
+  },
+  {
+    "cardId": "packat-naeryo-chagi",
+    "videoId": "ekrf7IC3M7o",
+    "start": 0,
+    "end": 9,
+    "label": "Exceed TKD (Kukkiwon)",
+    "similarity": "exact"
+  },
+  {
+    "cardId": "hansonnal-arae-macki",
+    "videoId": "ZsYCYXvsE6A",
+    "start": 0,
+    "end": 60,
+    "label": "Taekwondo Preschool (Kukkiwon)",
+    "similarity": "exact"
+  },
+  {
+    "cardId": "hansonnal-arae-macki",
+    "videoId": "JofvBwiKnu0",
+    "start": 0,
+    "end": 85,
+    "label": "Shannon TKD Team (ITF)",
+    "similarity": "exact"
+  },
+  {
+    "cardId": "narani-sogi",
+    "videoId": "YG2SdJZKt7w",
+    "start": 0,
+    "end": 90,
+    "label": "TaekwondoMika (ITF)",
+    "similarity": "exact"
+  },
+  {
+    "cardId": "narani-sogi",
+    "videoId": "5wq3dWNff5s",
+    "start": 5,
+    "end": 100,
+    "label": "Global Fitness & Martial Arts Institute (ITF)",
+    "similarity": "exact"
+  },
+  {
+    "cardId": "saju-macki",
+    "videoId": "fd_JU5l3AVE",
+    "start": 2,
+    "end": 42,
+    "label": "Sonkal (ITF)",
+    "similarity": "exact"
+  },
+  {
+    "cardId": "saju-chirugi",
+    "videoId": "bEBOFNsIsSI",
+    "start": 2,
+    "end": 38,
+    "label": "Sonkal (ITF)",
+    "similarity": "exact"
+  },
+  {
+    "cardId": "training-nak-bop",
+    "videoId": "BtO89xZjCuI",
+    "start": 12,
+    "end": 38,
+    "label": "Thailand Hapkido Association (other)",
+    "similarity": "similar"
+  },
+  {
+    "cardId": "training-sambo-taeryon",
+    "videoId": "sg8DsZ9pDnQ",
+    "start": 0,
+    "end": 180,
+    "label": "irishtkdassociation (ITF)",
+    "similarity": "exact"
+  }
+]

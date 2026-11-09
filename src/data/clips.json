@@ -103,5 +103,53 @@
     "cardId": "twio-chagi",
     "start": 4698,
     "end": 4733
+  },
+  {
+    "cardId": "taeguk-1",
+    "start": 1713,
+    "end": 1748,
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-2",
+    "start": 1967,
+    "end": 2013,
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-3",
+    "start": 3086,
+    "end": 3132,
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-4",
+    "start": 3350,
+    "end": 3396,
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-5",
+    "start": 3648,
+    "end": 3694,
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-6",
+    "start": 3988,
+    "end": 4034,
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-7",
+    "start": 5124,
+    "end": 5170,
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-8",
+    "start": 5543,
+    "end": 5589,
+    "silentSafe": false
   }
 ]

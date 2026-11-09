@@ -266,6 +266,38 @@ export const STRINGS = {
     de: 'Sechs aufeinanderfolgende Standbilder, ohne Video und Ton.',
     es: 'Seis fotogramas consecutivos, sin vídeo ni sonido.',
   },
+  srcCourse: { en: 'Course video', de: 'Kursvideo', es: 'Vídeo del curso' },
+  srcSelfDefense: {
+    en: 'Self-defence course (Kukkiwon)',
+    de: 'Selbstverteidigungskurs (Kukkiwon)',
+    es: 'Curso de defensa personal (Kukkiwon)',
+  },
+  srcExternal: { en: 'YouTube example', de: 'YouTube-Beispiel', es: 'Ejemplo de YouTube' },
+  similarTech: {
+    en: 'Similar technique, not an exact match',
+    de: 'Ähnliche Technik, nicht identisch',
+    es: 'Técnica parecida, no idéntica',
+  },
+  sourcesLabel: { en: 'Sources', de: 'Quellen', es: 'Fuentes' },
+  grpKukkiwon: { en: 'Kukkiwon vocabulary', de: 'Kukkiwon-Vokabular', es: 'Vocabulario Kukkiwon' },
+  bonusTitle: {
+    en: 'Bonus: Kukkiwon, forms and self-defence',
+    de: 'Bonus: Kukkiwon, Formen und Selbstverteidigung',
+    es: 'Bonus: Kukkiwon, formas y defensa personal',
+  },
+  bonusHint: {
+    en: 'Optional extras. They do not give a belt.',
+    de: 'Optionale Extras. Sie bringen keinen Gürtel.',
+    es: 'Extras opcionales. No dan cinturón.',
+  },
+  taegeukForms: {
+    en: 'Taegeuk forms (Poomsae)',
+    de: 'Taegeuk-Formen (Poomsae)',
+    es: 'Formas Taegeuk (Poomsae)',
+  },
+  moves: { en: 'movements', de: 'Bewegungen', es: 'movimientos' },
+  clubName: { en: 'Club spelling', de: 'Schreibweise im Verein', es: 'Escritura del club' },
+  kukkiwonName: { en: 'Kukkiwon spelling', de: 'Kukkiwon-Schreibweise', es: 'Escritura Kukkiwon' },
 } satisfies Dict
 
 export type StringKey = keyof typeof STRINGS

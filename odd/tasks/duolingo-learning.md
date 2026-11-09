@@ -25,6 +25,9 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - E9 S9 inline – clips data (15 techniques), ClipPlayer, VideosPage, VideoQuizPage + tests — done
 - E10 S9 inline – verify clip boundaries (blackdetect + contact sheets), clips.json, frame extraction script, FrameStrip, frames quiz — v0.3.1 — done
 - E11 S9 inline – full visual review of the course (chapter map), 6 new clips, 4 missing club techniques added, local-video frames — v0.4.0 — done
+- E12 S9 inline – multi-source clips (course / selfdefense / external), ClipViewer tabs, frames per source — v0.5.0 — done
+- E13 inline – Taegeuk 1-8 forms (cards, clips, Forms page), Kukkiwon vocabulary, Bonus unit — done
+- E14 delegated – YouTube research for missing techniques (11 external clips integrated) — done
 
 ## Log
 - L1 2026-11-09 user: "has commit desde ya. Arregla que el primer eslabon debe de ser el 10 Kup que es el cinturón blanco. Continua con el resto de tareas ... fase 3 y no pares hasta lograr una version funcional ..."
@@ -36,3 +39,4 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - Finding: the course has French title cards between sections; boundaries now taken from black fades. Frames are git-ignored (third-party content).
 - L4 2026-11-10 user: "habría que revisar mejor el video pues casi todas las patadas y técnicas están ahí ... no salen en los subtitulos ... tengo una copia ... /Users/mandy/Movies/Hapkido-Taekwondo/Videos"
 - Finding: my TECHNIQUES list had omitted 4 PDF items (hansonnal-arae-macki, momtong-hansonnal-packat-macki, sonnal-momtong-kotoro-macki, goduro-packat-palmok-packat-macki). Added.
+- L5 2026-11-10 user: "busca en youtube si existen técnicas que no aparecen ... integra el tercer video ... Self Defense ... documenta ... romanización Kukkiwon ... formas taeguk ... subagente Hapkido-Learn ..."

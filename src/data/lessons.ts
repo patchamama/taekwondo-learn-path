@@ -11,12 +11,12 @@ export interface Lesson {
   checkpoint?: boolean
 }
 
-export type UnitId = 'kup10' | 'kup9' | 'kup8'
+export type UnitId = 'kup10' | 'kup9' | 'kup8' | 'bonus'
 
 export interface Unit {
   id: UnitId
-  /** belt earned when every lesson of the unit is complete */
-  earns: string
+  /** belt earned when every lesson of the unit is complete (bonus units earn nothing) */
+  earns?: string
   title: Loc
 }
 
@@ -48,6 +48,14 @@ export const UNITS: Unit[] = [
       'Unit 3 – Road to 8th Kup (yellow)',
       'Einheit 3 – Weg zum 8. Kup (gelb)',
       'Unidad 3 – Camino al 8.º Kup (amarillo)',
+    ),
+  },
+  {
+    id: 'bonus',
+    title: L(
+      'Bonus – Kukkiwon, forms & self-defence',
+      'Bonus – Kukkiwon, Formen & Selbstverteidigung',
+      'Bonus – Kukkiwon, formas y defensa personal',
     ),
   },
 ]
@@ -491,6 +499,55 @@ export const LESSONS: Lesson[] = [
       'body-jumok',
     ],
     theoryIds: ['th-belt8', 'th-hyong'],
+  },
+
+  // ───────── Bonus: does not earn a belt
+  {
+    id: 'b-kukkiwon',
+    unit: 'bonus',
+    title: L('Kukkiwon spelling', 'Kukkiwon-Schreibweise', 'Escritura Kukkiwon'),
+    tip: L(
+      'Videos from the Kukkiwon world spell the same words differently: ch→j, k→g, c→g. Your club says chirugi, they say jireugi. Same punch, different spelling!',
+      'Videos aus der Kukkiwon-Welt schreiben dieselben Wörter anders: ch→j, k→g. Euer Verein sagt chirugi, sie sagen jireugi. Derselbe Stoß, andere Schreibweise!',
+      'Los vídeos del mundo Kukkiwon escriben igual las mismas palabras de otro modo: ch→j, k→g. Tu club dice chirugi, ellos jireugi. ¡El mismo golpe, otra escritura!',
+    ),
+    cardIds: ids('kukkiwon', ['jireugi', 'chigi', 'chagi', 'makgi', 'seogi', 'poomsae', 'jang']),
+  },
+  {
+    id: 'b-selfdefense',
+    unit: 'bonus',
+    title: L('Self-defence words', 'Selbstverteidigungs-Wörter', 'Palabras de defensa personal'),
+    tip: L(
+      'The Kukkiwon self-defence course groups techniques by what they do: release (ppaegi), lock (kkeokgi), throw (neomgigi), choke (joleugi).',
+      'Der Kukkiwon-Selbstverteidigungskurs ordnet Techniken nach ihrer Wirkung: Befreiung (ppaegi), Hebel (kkeokgi), Wurf (neomgigi), Würgen (joleugi).',
+      'El curso de defensa personal Kukkiwon agrupa las técnicas por lo que hacen: liberación (ppaegi), luxación (kkeokgi), proyección (neomgigi), estrangulación (joleugi).',
+    ),
+    cardIds: [
+      ...ids('kukkiwon', ['ppaegi', 'kkeokgi', 'neomgigi', 'joleugi']),
+      'training-ho-sin-sul',
+    ],
+  },
+  {
+    id: 'b-taeguk-a',
+    unit: 'bonus',
+    title: L('Taegeuk 1–4', 'Taegeuk 1–4', 'Taegeuk 1–4'),
+    tip: L(
+      'Taegeuk forms are named after the I Ching: heaven, lake, fire, thunder… "Chang" in your club is "Jang" in Kukkiwon spelling.',
+      'Taegeuk-Formen sind nach dem I-Ging benannt: Himmel, See, Feuer, Donner … „Chang“ im Verein ist „Jang“ in Kukkiwon-Schreibweise.',
+      'Las formas Taegeuk llevan nombres del I Ching: cielo, lago, fuego, trueno… «Chang» en tu club es «Jang» en la escritura Kukkiwon.',
+    ),
+    cardIds: ['taeguk-1', 'taeguk-2', 'taeguk-3', 'taeguk-4'],
+  },
+  {
+    id: 'b-taeguk-b',
+    unit: 'bonus',
+    title: L('Taegeuk 5–8', 'Taegeuk 5–8', 'Taegeuk 5–8'),
+    tip: L(
+      'Wind, water, mountain, earth: the last four Taegeuk.',
+      'Wind, Wasser, Berg, Erde: die letzten vier Taegeuk.',
+      'Viento, agua, montaña, tierra: las cuatro últimas Taegeuk.',
+    ),
+    cardIds: ['taeguk-5', 'taeguk-6', 'taeguk-7', 'taeguk-8'],
   },
 ]
 

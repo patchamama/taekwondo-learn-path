@@ -1,18 +1,18 @@
 import { useState } from 'react'
-import { FRAMES_PER_CLIP } from '../../data/clips'
+import { FRAMES_PER_CLIP, clipKey, type Clip } from '../../data/clips'
 import { useT } from '../../shared/i18n/useT'
 
 interface Props {
-  cardId: string
+  clip: Clip
   /** hide the hint when frames are missing (used inside quizzes) */
   quiet?: boolean
 }
 
-export const frameSrc = (cardId: string, n: number) =>
-  `${import.meta.env.BASE_URL}frames/${encodeURIComponent(cardId)}/${n}.jpg`
+export const frameSrc = (clip: Clip, n: number) =>
+  `${import.meta.env.BASE_URL}frames/${clipKey(clip)}/${encodeURIComponent(clip.cardId)}/${n}.jpg`
 
-/** Consecutive stills of one technique (1 → 6). Frames are generated locally by `npm run frames`. */
-export function FrameStrip({ cardId, quiet = false }: Props) {
+/** Consecutive stills of one technique clip (1 → 6). Frames are generated locally by `npm run frames`. */
+export function FrameStrip({ clip, quiet = false }: Props) {
   const { t } = useT()
   const [missing, setMissing] = useState(false)
   if (missing) return quiet ? null : <p className="text-xs text-slate-500">{t('framesMissing')}</p>
@@ -21,7 +21,7 @@ export function FrameStrip({ cardId, quiet = false }: Props) {
       {Array.from({ length: FRAMES_PER_CLIP }, (_, i) => (
         <li key={i} className="relative">
           <img
-            src={frameSrc(cardId, i + 1)}
+            src={frameSrc(clip, i + 1)}
             alt={`${i + 1}/${FRAMES_PER_CLIP}`}
             loading="lazy"
             onError={() => setMissing(true)}

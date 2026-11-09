@@ -1,10 +1,17 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { BELTS } from '../../data/belts'
-import { LESSONS, UNITS, lessonsOfUnit } from '../../data/lessons'
+import { LESSONS, UNITS, lessonsOfUnit, type Lesson } from '../../data/lessons'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
-import { activeStreak, dayString, heldBeltIndex, isUnlocked, nextLesson } from '../learn/progress'
+import {
+  activeStreak,
+  dayString,
+  heldBeltIndex,
+  isUnlocked,
+  nextLesson,
+  type Completed,
+} from '../learn/progress'
 import { Bubble } from '../mascot/Bubble'
 import { GREETING } from '../mascot/lines'
 import { PathMap } from './PathMap'
@@ -19,6 +26,8 @@ export function PathPage() {
   const [selected, setSelected] = useState(held)
   const belt = BELTS[selected]
   const unit = UNITS.find((u) => u.earns === belt.id)
+  const bonusUnit = UNITS.find((u) => u.id === 'bonus')
+  const bonusLessons = lessonsOfUnit('bonus')
   const lessons = unit ? lessonsOfUnit(unit.id) : []
   const doneCount = lessons.filter((l) => completed[l.id]).length
   const next = nextLesson(completed)
@@ -74,38 +83,7 @@ export function PathPage() {
                   ({doneCount}/{lessons.length})
                 </span>
               </p>
-              <ol className="grid gap-1.5">
-                {lessons.map((l) => {
-                  const open = isUnlocked(l.id, completed, strict)
-                  const stars = completed[l.id]
-                  const cls = 'flex items-center gap-2 rounded-lg border px-3 py-2 text-sm'
-                  const label = (
-                    <>
-                      <span aria-hidden>{stars ? '✅' : open ? '▶️' : '🔒'}</span>
-                      <span className="flex-1">{loc(l.title)}</span>
-                      {stars ? (
-                        <span aria-label={`${stars} stars`}>{'⭐'.repeat(stars)}</span>
-                      ) : null}
-                    </>
-                  )
-                  return (
-                    <li key={l.id}>
-                      {open ? (
-                        <Link
-                          to={`/lesson/${l.id}`}
-                          className={`${cls} bg-white hover:bg-amber-50`}
-                        >
-                          {label}
-                        </Link>
-                      ) : (
-                        <div className={`${cls} bg-slate-50 text-slate-400`} aria-disabled="true">
-                          {label}
-                        </div>
-                      )}
-                    </li>
-                  )
-                })}
-              </ol>
+              <LessonList lessons={lessons} completed={completed} strict={strict} />
             </div>
           ) : (
             <p className="mt-4 rounded-lg bg-slate-50 p-3 text-sm text-slate-500">
@@ -125,7 +103,55 @@ export function PathPage() {
             {t('resetProgress')}
           </button>
         </div>
+        {bonusUnit && (
+          <div className="rounded-2xl border border-dashed border-amber-400 bg-amber-50/50 p-5">
+            <h2 className="font-bold">{loc(bonusUnit.title)}</h2>
+            <p className="mb-2 text-xs text-slate-600">{t('bonusHint')}</p>
+            <LessonList lessons={bonusLessons} completed={completed} strict={strict} />
+          </div>
+        )}
       </aside>
     </section>
+  )
+}
+
+function LessonList({
+  lessons,
+  completed,
+  strict,
+}: {
+  lessons: Lesson[]
+  completed: Completed
+  strict: boolean
+}) {
+  const { loc } = useT()
+  return (
+    <ol className="grid gap-1.5">
+      {lessons.map((l) => {
+        const open = isUnlocked(l.id, completed, strict)
+        const stars = completed[l.id]
+        const cls = 'flex items-center gap-2 rounded-lg border px-3 py-2 text-sm'
+        const label = (
+          <>
+            <span aria-hidden>{stars ? '✅' : open ? '▶️' : '🔒'}</span>
+            <span className="flex-1">{loc(l.title)}</span>
+            {stars ? <span aria-label={`${stars} stars`}>{'⭐'.repeat(stars)}</span> : null}
+          </>
+        )
+        return (
+          <li key={l.id}>
+            {open ? (
+              <Link to={`/lesson/${l.id}`} className={`${cls} bg-white hover:bg-amber-50`}>
+                {label}
+              </Link>
+            ) : (
+              <div className={`${cls} bg-slate-50 text-slate-400`} aria-disabled="true">
+                {label}
+              </div>
+            )}
+          </li>
+        )
+      })}
+    </ol>
   )
 }
