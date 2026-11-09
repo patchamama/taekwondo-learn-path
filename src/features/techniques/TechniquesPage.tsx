@@ -5,6 +5,7 @@ import { SpeakButton } from '../../shared/components/SpeakButton'
 import { CARD_BY_ID } from '../../data/cards'
 import { CLIP_BY_CARD } from '../../data/clips'
 import { ClipPlayer } from '../videos/ClipPlayer'
+import { FrameStrip } from '../videos/FrameStrip'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
 import type { StringKey } from '../../shared/i18n/strings'
@@ -97,7 +98,8 @@ export function TechniquesPage() {
                     {watching === x.id ? t('hide') : `▶ ${t('watch')}`}
                   </button>
                   {watching === x.id && (
-                    <div className="mt-2">
+                    <div className="mt-2 grid gap-2">
+                      <FrameStrip cardId={x.id} />
                       <ClipPlayer cardId={x.id} />
                     </div>
                   )}

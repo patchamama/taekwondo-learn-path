@@ -5,6 +5,7 @@ import { CLIPS } from '../../data/clips'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useT } from '../../shared/i18n/useT'
 import { ClipPlayer } from './ClipPlayer'
+import { FrameStrip } from './FrameStrip'
 
 export function VideosPage() {
   const { t, loc } = useT()
@@ -47,7 +48,12 @@ export function VideosPage() {
                   {isOpen ? t('hide') : `▶ ${t('watch')}`}
                 </button>
               </div>
-              {isOpen && <ClipPlayer cardId={c.cardId} />}
+              {isOpen && (
+                <div className="grid gap-2">
+                  <FrameStrip cardId={c.cardId} />
+                  <ClipPlayer cardId={c.cardId} />
+                </div>
+              )}
             </li>
           )
         })}

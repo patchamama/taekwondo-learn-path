@@ -246,6 +246,26 @@ export const STRINGS = {
   vqAgain: { en: 'Play again', de: 'Nochmal spielen', es: 'Jugar otra vez' },
   vqEnd: { en: 'Round finished!', de: 'Runde beendet!', es: '¡Ronda terminada!' },
   noClip: { en: 'No clip yet', de: 'Noch kein Clip', es: 'Aún sin clip' },
+  framesTitle: {
+    en: 'Step-by-step frames',
+    de: 'Einzelbilder Schritt für Schritt',
+    es: 'Fotogramas paso a paso',
+  },
+  framesMissing: {
+    en: 'No frames found. Run "npm run frames" once (needs yt-dlp and ffmpeg).',
+    de: 'Keine Einzelbilder gefunden. Führe einmal „npm run frames“ aus (benötigt yt-dlp und ffmpeg).',
+    es: 'No hay fotogramas. Ejecuta una vez «npm run frames» (requiere yt-dlp y ffmpeg).',
+  },
+  vqFrames: {
+    en: 'Frames: name the technique',
+    de: 'Einzelbilder: Technik benennen',
+    es: 'Fotogramas: nombra la técnica',
+  },
+  vqFramesHint: {
+    en: 'Six consecutive stills, no video and no sound.',
+    de: 'Sechs aufeinanderfolgende Standbilder, ohne Video und Ton.',
+    es: 'Seis fotogramas consecutivos, sin vídeo ni sonido.',
+  },
 } satisfies Dict
 
 export type StringKey = keyof typeof STRINGS

@@ -23,6 +23,7 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - E7 S7 inline – remove karate exercise type — v0.3.0 — done
 - E8 S8 inline – strictOrder + videoLang settings page — done
 - E9 S9 inline – clips data (15 techniques), ClipPlayer, VideosPage, VideoQuizPage + tests — done
+- E10 S9 inline – verify clip boundaries (blackdetect + contact sheets), clips.json, frame extraction script, FrameStrip, frames quiz — v0.3.1 — done
 
 ## Log
 - L1 2026-11-09 user: "has commit desde ya. Arregla que el primer eslabon debe de ser el 10 Kup que es el cinturón blanco. Continua con el resto de tareas ... fase 3 y no pares hasta lograr una version funcional ..."
@@ -30,3 +31,5 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - Open: videos (phase 4), karate equivalents need sensei review, TTS quality depends on device voices.
 - L2 2026-11-09 user: "los equivalentes al karate son como información pero no se debe de preguntar. ... no se bloqueen las lecciones ... check ... Los videos en español: vQb_6i28QK8 y en alemán: dnYQ1Y0acrE ... shorts ... quiz ... subtitulos"
 - Finding: both videos are one 100-min course (beginners→black belt), dubbed; auto captions only; clips verified visually for ap-chagi and hansonnal-mok-chicki; others unverified.
+- L3 2026-11-10 user: "extraigan fotogramas que puedan mostrar también en algunas partes la técnica con un consecutivo, aparte del video"
+- Finding: the course has French title cards between sections; boundaries now taken from black fades. Frames are git-ignored (third-party content).

@@ -7,9 +7,10 @@ import { useAppStore } from '../../shared/store/useAppStore'
 import { makeRng } from '../learn/exercises'
 import { Bubble } from '../mascot/Bubble'
 import { ClipPlayer } from './ClipPlayer'
+import { FrameStrip } from './FrameStrip'
 import { buildVideoRounds } from './videoQuiz'
 
-type Mode = 'guess' | 'recall'
+type Mode = 'guess' | 'recall' | 'frames'
 const THINK_SECONDS = 6
 
 export function VideoQuizPage() {
@@ -33,6 +34,13 @@ export function VideoQuizPage() {
         >
           <b>🧠 {t('vqRecall')}</b>
           <p className="text-sm text-slate-600">{t('vqRecallHint')}</p>
+        </button>
+        <button
+          onClick={() => setMode('frames')}
+          className="rounded-2xl border bg-white p-5 text-left shadow-sm hover:bg-amber-50"
+        >
+          <b>🖼️ {t('vqFrames')}</b>
+          <p className="text-sm text-slate-600">{t('vqFramesHint')}</p>
         </button>
         <Link to="/videos" className="text-sm underline">
           ← {t('videosTitle')}
@@ -125,16 +133,23 @@ function Game({ mode, onBack }: { mode: Mode; onBack: () => void }) {
         </span>
       </div>
 
-      {mode === 'guess' ? (
+      {mode !== 'recall' ? (
         <>
-          <h2 className="text-lg font-bold">{t('vqGuess')}</h2>
-          {/* controls hidden + muted: nothing in the clip reveals the name until answered */}
-          <ClipPlayer
-            key={`g-${i}-${answered}`}
-            cardId={round.cardId}
-            muted={!answered}
-            controls={answered}
-          />
+          <h2 className="text-lg font-bold">{t(mode === 'frames' ? 'vqFrames' : 'vqGuess')}</h2>
+          {mode === 'guess' ? (
+            // controls hidden + muted: nothing in the clip reveals the name until answered
+            <ClipPlayer
+              key={`g-${i}-${answered}`}
+              cardId={round.cardId}
+              muted={!answered}
+              controls={answered}
+            />
+          ) : (
+            <>
+              <FrameStrip key={`f-${i}`} cardId={round.cardId} />
+              {answered && <ClipPlayer key={`fc-${i}`} cardId={round.cardId} />}
+            </>
+          )}
           <ul className="grid gap-2">
             {round.options.map((id) => {
               const c = CARD_BY_ID[id]
