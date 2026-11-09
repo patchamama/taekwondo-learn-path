@@ -1,0 +1,89 @@
+import { useState } from 'react'
+import { MORPHEMES, MORPHEME_BY_ID } from '../../data/morphemes'
+import { TECHNIQUES, type Category } from '../../data/techniques'
+import { useT } from '../../shared/i18n/useT'
+import { useAppStore } from '../../shared/store/useAppStore'
+import type { StringKey } from '../../shared/i18n/strings'
+
+const CATS: { id: Category | 'all'; key: StringKey }[] = [
+  { id: 'all', key: 'all' },
+  { id: 'hand', key: 'catHand' },
+  { id: 'foot', key: 'catFoot' },
+  { id: 'stance', key: 'catStance' },
+  { id: 'combo', key: 'catCombo' },
+]
+
+export function TechniquesPage() {
+  const { t, loc } = useT()
+  const [cat, setCat] = useState<Category | 'all'>('all')
+  const learned = useAppStore((s) => s.learned)
+  const toggle = useAppStore((s) => s.toggleLearned)
+  const list = TECHNIQUES.filter((x) => cat === 'all' || x.category === cat)
+
+  return (
+    <section>
+      <details className="mb-6 rounded-xl border bg-white p-4" open>
+        <summary className="cursor-pointer font-semibold">{t('morphemes')}</summary>
+        <p className="my-2 text-sm text-slate-600">{t('morphemesHint')}</p>
+        <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {MORPHEMES.map((m) => (
+            <li key={m.id} className="rounded bg-slate-50 px-3 py-1.5 text-sm">
+              <b>{m.ko}</b>{' '}
+              <span lang="ko" className="text-slate-500">
+                {m.hangul}
+              </span>{' '}
+              = {loc(m.meaning)}
+            </li>
+          ))}
+        </ul>
+      </details>
+
+      <div className="mb-4 flex flex-wrap gap-2" role="group">
+        {CATS.map((c) => (
+          <button
+            key={c.id}
+            aria-pressed={cat === c.id}
+            onClick={() => setCat(c.id)}
+            className={`rounded-full border px-3 py-1 text-sm ${cat === c.id ? 'bg-slate-900 text-white' : 'bg-white'}`}
+          >
+            {t(c.key)}
+          </button>
+        ))}
+      </div>
+
+      <ul className="grid gap-3 md:grid-cols-2">
+        {list.map((x) => {
+          const isLearned = learned.includes(x.id)
+          return (
+            <li key={x.id} className="rounded-xl border bg-white p-4 shadow-sm">
+              <div className="flex items-start justify-between gap-2">
+                <div>
+                  <h3 className="text-lg font-bold">{x.ko}</h3>
+                  <p className="text-xs text-slate-500">{x.kup} Kup</p>
+                </div>
+                <label className="flex items-center gap-1 text-xs">
+                  <input
+                    type="checkbox"
+                    checked={isLearned}
+                    onChange={() => toggle(x.id)}
+                    aria-label={`${t('learnedToggle')}: ${x.ko}`}
+                  />
+                  {t('learnedToggle')}
+                </label>
+              </div>
+              <p className="mt-1 font-medium">{loc(x.names)}</p>
+              <p className="mt-2 text-sm text-slate-700">
+                <span className="font-semibold">{t('breakdown')}: </span>
+                {x.parts.map((p) => `${p} (${loc(MORPHEME_BY_ID[p].meaning)})`).join(' + ')}
+              </p>
+              <p className="text-sm text-slate-600">
+                <span className="font-semibold">{t('karate')}: </span>
+                {x.karate}
+              </p>
+            </li>
+          )
+        })}
+      </ul>
+    </section>
+  )
+}
