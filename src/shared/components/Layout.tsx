@@ -13,6 +13,7 @@ const LINKS: { to: string; key: StringKey }[] = [
   { to: '/videos', key: 'navVideos' },
   { to: '/terms', key: 'navTerms' },
   { to: '/forms', key: 'navForms' },
+  { to: '/kukkiwon', key: 'navKukkiwon' },
   { to: '/history', key: 'navHistory' },
   { to: '/settings', key: 'navSettings' },
 ]

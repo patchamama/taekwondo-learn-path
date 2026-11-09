@@ -34,6 +34,8 @@ const SOURCES = [
     ],
     youtube: 'https://www.youtube.com/watch?v=crp_bNCaPqE',
     ytFormat: 'bv*[height<=720]',
+    skipStart: 7, // every chapter opens with a title card
+    studioOnly: true, // keep only demo frames (grey studio), not title/explanation slides
   },
 ]
 
@@ -45,6 +47,7 @@ const W = 64
 const H = 36
 const CUT = 40 // mean abs diff (0-255) above which we assume a camera cut
 const DARK = 25 // mean brightness below which we assume a fade
+const BRIGHT = 180 // mean brightness above which we assume a white title/explanation slide (self-defence compilation)
 
 function probe(seg, startSec, lenSec) {
   const buf = execFileSync(
@@ -59,40 +62,65 @@ function probe(seg, startSec, lenSec) {
       '-i',
       seg,
       '-vf',
-      `fps=${PROBE_FPS},scale=${W}:${H},format=gray`,
+      `fps=${PROBE_FPS},scale=${W}:${H}`,
+      '-pix_fmt',
+      'rgb24',
       '-f',
       'rawvideo',
       '-',
     ],
     { maxBuffer: 512 * 1024 * 1024 },
   )
-  const size = W * H
+  const size = W * H * 3
   const frames = []
   for (let o = 0; o + size <= buf.length; o += size) frames.push(buf.subarray(o, o + size))
   return frames
 }
 
-function pickTimes(seg, startSec, lenSec, count) {
-  const frames = probe(seg, startSec, lenSec)
+// Luma plus the fraction of "grey studio" pixels (low saturation, mid brightness). The self-defence
+// compilation alternates demos in a grey studio with white, navy and gold title/explanation slides.
+function analyse(rgb) {
+  const luma = new Uint8Array(W * H)
+  let studio = 0
+  for (let p = 0; p < W * H; p++) {
+    const r = rgb[p * 3]
+    const g = rgb[p * 3 + 1]
+    const b = rgb[p * 3 + 2]
+    const l = (r * 299 + g * 587 + b * 114) / 1000
+    luma[p] = l
+    if (Math.abs(r - g) < 22 && Math.abs(g - b) < 28 && l > 55 && l < 175) studio++
+  }
+  return { luma, studio: studio / (W * H) }
+}
+
+function pickTimes(seg, startSec, lenSec, count, needStudio) {
+  const frames = probe(seg, startSec, lenSec).map(analyse)
   const info = frames.map((f, i) => {
     let sum = 0
-    for (const v of f) sum += v
+    for (const v of f.luma) sum += v
     let diff = 0
-    if (i > 0) for (let k = 0; k < f.length; k++) diff += Math.abs(f[k] - frames[i - 1][k])
-    return { t: i / PROBE_FPS, bright: sum / f.length, motion: i > 0 ? diff / f.length : 0 }
+    if (i > 0)
+      for (let k = 0; k < f.luma.length; k++) diff += Math.abs(f.luma[k] - frames[i - 1].luma[k])
+    return {
+      t: i / PROBE_FPS,
+      bright: sum / f.luma.length,
+      motion: i > 0 ? diff / f.luma.length : 0,
+      studio: f.studio,
+    }
   })
+  const ok = (x) =>
+    x.bright > DARK && x.bright < BRIGHT && x.motion < CUT && (!needStudio || x.studio > 0.5)
+  // Spread the picks over the usable frames only, so slides/fades never take a slot.
+  const usable = info.filter(ok)
+  const pool = usable.length >= count * 2 ? usable : info
   const picks = []
   for (let s = 0; s < count; s++) {
-    const lo = Math.floor((s * info.length) / count)
-    const hi = Math.floor(((s + 1) * info.length) / count)
+    const lo = Math.floor((s * pool.length) / count)
+    const hi = Math.floor(((s + 1) * pool.length) / count)
     // inner 70% of the slice keeps neighbouring picks apart
     const margin = Math.floor((hi - lo) * 0.15)
-    const inner = info.slice(lo + margin, Math.max(lo + margin + 1, hi - margin))
-    const slice = inner.filter((x) => x.bright > DARK && x.motion < CUT)
-    const best = (slice.length ? slice : inner).reduce(
-      (a, b) => (b.motion > a.motion ? b : a),
-      inner[0],
-    )
+    const inner = pool.slice(lo + margin, Math.max(lo + margin + 1, hi - margin))
+    const best = inner.reduce((a, b) => (b.motion > a.motion ? b : a), inner[0])
     picks.push(best.t)
   }
   return picks
@@ -139,7 +167,14 @@ function run(source) {
     const dir = join('public', 'frames', source.key, c.cardId)
     rmSync(dir, { recursive: true, force: true })
     mkdirSync(dir, { recursive: true })
-    const times = pickTimes(seg, c.start - from, c.end - c.start, FRAMES)
+    const skip = Math.min(source.skipStart ?? 0, (c.end - c.start) / 2)
+    const times = pickTimes(
+      seg,
+      c.start - from + skip,
+      c.end - c.start - skip,
+      FRAMES,
+      Boolean(source.studioOnly),
+    ).map((t) => t + skip)
     times.forEach((t, i) => {
       execFileSync(
         'ffmpeg',

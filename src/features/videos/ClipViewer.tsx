@@ -39,6 +39,9 @@ export function ClipViewer({ cardId }: { cardId: string }) {
           ))}
         </div>
       )}
+      {clip.note === 'applications' && (
+        <p className="text-xs text-amber-700">ℹ {t('applicationsNote')}</p>
+      )}
       {clip.similarity === 'similar' && (
         <p className="text-xs text-amber-700">ℹ {t('similarTech')}</p>
       )}

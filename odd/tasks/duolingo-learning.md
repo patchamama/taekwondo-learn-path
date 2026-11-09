@@ -28,6 +28,7 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - E12 S9 inline – multi-source clips (course / selfdefense / external), ClipViewer tabs, frames per source — v0.5.0 — done
 - E13 inline – Taegeuk 1-8 forms (cards, clips, Forms page), Kukkiwon vocabulary, Bonus unit — done
 - E14 delegated – YouTube research for missing techniques (11 external clips integrated) — done
+- E15 delegated+inline – Kukkiwon documentation, Kukkiwon names page, 22 self-defence clips with studio-only frames — v0.6.0 — done
 
 ## Log
 - L1 2026-11-09 user: "has commit desde ya. Arregla que el primer eslabon debe de ser el 10 Kup que es el cinturón blanco. Continua con el resto de tareas ... fase 3 y no pares hasta lograr una version funcional ..."
@@ -40,3 +41,4 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - L4 2026-11-10 user: "habría que revisar mejor el video pues casi todas las patadas y técnicas están ahí ... no salen en los subtitulos ... tengo una copia ... /Users/mandy/Movies/Hapkido-Taekwondo/Videos"
 - Finding: my TECHNIQUES list had omitted 4 PDF items (hansonnal-arae-macki, momtong-hansonnal-packat-macki, sonnal-momtong-kotoro-macki, goduro-packat-palmok-packat-macki). Added.
 - L5 2026-11-10 user: "busca en youtube si existen técnicas que no aparecen ... integra el tercer video ... Self Defense ... documenta ... romanización Kukkiwon ... formas taeguk ... subagente Hapkido-Learn ..."
+- Finding: narani-sogi is a false friend (club: toes in; Kukkiwon narani seogi: parallel). Self-defence compilation shows technique names on screen (never silent-safe); its Taegeuk chapters show self-defence applications, not the full forms.

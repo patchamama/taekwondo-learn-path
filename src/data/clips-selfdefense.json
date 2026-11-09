@@ -1,1 +1,142 @@
-[]
+[
+  {
+    "cardId": "ap-chagi",
+    "start": 90,
+    "end": 114,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "dollyo-chagi",
+    "start": 90,
+    "end": 114,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "momtong-hansonnal-packat-macki",
+    "start": 115,
+    "end": 147,
+    "similarity": "similar"
+  },
+  {
+    "cardId": "training-nak-bop",
+    "start": 526,
+    "end": 601,
+    "similarity": "similar"
+  },
+  {
+    "cardId": "momtong-chirugi",
+    "start": 602,
+    "end": 708,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "momtong-an-macki",
+    "start": 602,
+    "end": 708,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "arae-macki",
+    "start": 602,
+    "end": 708,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "taeguk-1",
+    "start": 602,
+    "end": 708,
+    "similarity": "exact",
+    "note": "applications"
+  },
+  {
+    "cardId": "taeguk-2",
+    "start": 709,
+    "end": 820,
+    "similarity": "exact",
+    "note": "applications"
+  },
+  {
+    "cardId": "olgul-macki",
+    "start": 709,
+    "end": 820,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "hansonnal-mok-chicki",
+    "start": 821,
+    "end": 925,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "taeguk-3",
+    "start": 821,
+    "end": 925,
+    "similarity": "exact",
+    "note": "applications"
+  },
+  {
+    "cardId": "taeguk-4",
+    "start": 926,
+    "end": 1037,
+    "similarity": "exact",
+    "note": "applications"
+  },
+  {
+    "cardId": "sonnal-momtong-kotoro-macki",
+    "start": 926,
+    "end": 1037,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "yop-chagi",
+    "start": 926,
+    "end": 1037,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "momtong-packat-macki",
+    "start": 926,
+    "end": 1037,
+    "similarity": "similar"
+  },
+  {
+    "cardId": "taeguk-5",
+    "start": 1038,
+    "end": 1162,
+    "similarity": "exact",
+    "note": "applications"
+  },
+  {
+    "cardId": "taeguk-6",
+    "start": 1163,
+    "end": 1283,
+    "similarity": "exact",
+    "note": "applications"
+  },
+  {
+    "cardId": "taeguk-7",
+    "start": 1284,
+    "end": 1413,
+    "similarity": "exact",
+    "note": "applications"
+  },
+  {
+    "cardId": "hansonnal-arae-macki",
+    "start": 1284,
+    "end": 1413,
+    "similarity": "similar"
+  },
+  {
+    "cardId": "taeguk-8",
+    "start": 1414,
+    "end": 1542,
+    "similarity": "exact",
+    "note": "applications"
+  },
+  {
+    "cardId": "goduro-packat-palmok-packat-macki",
+    "start": 1414,
+    "end": 1542,
+    "similarity": "exact"
+  }
+]

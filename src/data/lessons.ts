@@ -369,9 +369,9 @@ export const LESSONS: Lesson[] = [
     unit: 'kup8',
     title: L('Ready stances', 'Grundstellungen', 'Posiciones de inicio'),
     tip: L(
-      'narani and pyonhi look alike: toes slightly in (narani, hyong) or out (pyonhi, poomse).',
-      'narani und pyonhi ähneln sich: Zehen leicht innen (narani, Hyong) oder außen (pyonhi, Poomse).',
-      'narani y pyonhi se parecen: puntas ligeramente hacia dentro (narani, hyong) o fuera (pyonhi, poomse).',
+      'narani and pyonhi look alike: toes slightly in (narani, hyong) or out (pyonhi, poomse). Careful: in the Kukkiwon textbook "narani seogi" is a parallel stance with toes forward.',
+      'narani und pyonhi ähneln sich: Zehen leicht innen (narani, Hyong) oder außen (pyonhi, Poomse). Achtung: Im Kukkiwon-Lehrbuch ist „narani seogi“ die Parallelstellung mit Zehen nach vorn.',
+      'narani y pyonhi se parecen: puntas ligeramente hacia dentro (narani, hyong) o fuera (pyonhi, poomse). Ojo: en el libro Kukkiwon «narani seogi» es la posición paralela con las puntas hacia delante.',
     ),
     cardIds: ['gibon-junbi-sogi', 'narani-sogi', 'pyonhi-sogi'],
   },

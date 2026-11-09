@@ -23,6 +23,8 @@ export interface Clip {
   label?: string
   /** how close the shown technique is to the card */
   similarity?: 'exact' | 'similar'
+  /** 'applications': shows self-defence applications of the technique/form, not the plain performance */
+  note?: 'applications'
   /** true if nothing on screen or in the sound reveals the technique name (safe for the silent quizzes) */
   silentSafe?: boolean
 }

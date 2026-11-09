@@ -298,6 +298,30 @@ export const STRINGS = {
   moves: { en: 'movements', de: 'Bewegungen', es: 'movimientos' },
   clubName: { en: 'Club spelling', de: 'Schreibweise im Verein', es: 'Escritura del club' },
   kukkiwonName: { en: 'Kukkiwon spelling', de: 'Kukkiwon-Schreibweise', es: 'Escritura Kukkiwon' },
+  navKukkiwon: { en: 'Kukkiwon names', de: 'Kukkiwon-Namen', es: 'Nombres Kukkiwon' },
+  kkTitle: {
+    en: 'Club spelling vs. Kukkiwon',
+    de: 'Vereinsschreibweise vs. Kukkiwon',
+    es: 'Escritura del club vs. Kukkiwon',
+  },
+  kkConsonants: { en: 'Consonants', de: 'Konsonanten', es: 'Consonantes' },
+  kkVowels: { en: 'Vowels', de: 'Vokale', es: 'Vocales' },
+  kkTechniques: {
+    en: 'Every technique: club name vs. Kukkiwon name',
+    de: 'Jede Technik: Vereinsname vs. Kukkiwon-Name',
+    es: 'Cada técnica: nombre del club vs. Kukkiwon',
+  },
+  kkSource: {
+    en: 'Source: docs/kukkiwon-terminology.md (Kukkiwon Textbook, club PDFs, course notes). Notes are in English.',
+    de: 'Quelle: docs/kukkiwon-terminology.md (Kukkiwon-Lehrbuch, Vereins-PDFs, Kursnotizen). Notizen auf Englisch.',
+    es: 'Fuente: docs/kukkiwon-terminology.md (libro Kukkiwon, PDFs del club, notas del curso). Las notas están en inglés.',
+  },
+  kukkiwonShort: { en: 'Kukkiwon', de: 'Kukkiwon', es: 'Kukkiwon' },
+  applicationsNote: {
+    en: 'Shows self-defence applications of the techniques in this form, not the full form.',
+    de: 'Zeigt Selbstverteidigungs-Anwendungen der Techniken dieser Form, nicht die ganze Form.',
+    es: 'Muestra aplicaciones de defensa personal de las técnicas de esta forma, no la forma completa.',
+  },
 } satisfies Dict
 
 export type StringKey = keyof typeof STRINGS

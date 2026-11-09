@@ -4,6 +4,8 @@ import { TECHNIQUES, type Category } from '../../data/techniques'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { CARD_BY_ID } from '../../data/cards'
 import { CLIPS_BY_CARD } from '../../data/clips'
+import { KUKKIWON_BY_ID } from '../../data/kukkiwon'
+import { MATCH_LABEL, MATCH_STYLE } from '../kukkiwon/content'
 import { ClipViewer } from '../videos/ClipViewer'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
@@ -87,6 +89,18 @@ export function TechniquesPage() {
                 <span className="font-semibold">{t('karate')}: </span>
                 {x.karate}
               </p>
+              {KUKKIWON_BY_ID[x.id] && (
+                <p className="mt-1 text-sm text-slate-600">
+                  <span className="font-semibold">{t('kukkiwonShort')}: </span>
+                  {KUKKIWON_BY_ID[x.id].kukkiwon.split(' (')[0]}{' '}
+                  <span lang="ko">{KUKKIWON_BY_ID[x.id].kukkiwonHangul}</span>{' '}
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-xs ${MATCH_STYLE[KUKKIWON_BY_ID[x.id].match]}`}
+                  >
+                    {loc(MATCH_LABEL[KUKKIWON_BY_ID[x.id].match])}
+                  </span>
+                </p>
+              )}
               {CLIPS_BY_CARD[x.id] && (
                 <div className="mt-3">
                   <button

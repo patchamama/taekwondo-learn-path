@@ -1,0 +1,470 @@
+[
+  {
+    "cardId": "momtong-chirugi",
+    "club": "momtong-chirugi",
+    "kukkiwon": "momtong jireugi",
+    "kukkiwonHangul": "몸통 지르기",
+    "match": "same",
+    "textbookPage": 183,
+    "note": "Textbook p.183 names it momtong baro jireugi / momtong bandae jireugi (same-side / opposite-side punch). Club baro = paro, bandae = pandae. Only the romanization differs (chi- vs ji-, -u- vs -eu-)."
+  },
+  {
+    "cardId": "hansonnal-mok-chicki",
+    "club": "hansonnal-mok-chicki",
+    "kukkiwon": "sonnal mok chigi",
+    "kukkiwonHangul": "손날 목 치기",
+    "match": "same",
+    "textbookPage": 194,
+    "note": "Textbook p.194: 'if the target is the neck it is called sonnal mok-chigi' (an-chigi, outside to inside); the Taegeuk 3 table (p.269) literally writes 'hansonnal mok-chigi'. The prefix han- (one) is dropped for attacks because an attack always uses one hand."
+  },
+  {
+    "cardId": "arae-macki",
+    "club": "arae-macki",
+    "kukkiwon": "arae makgi",
+    "kukkiwonHangul": "아래 막기",
+    "match": "same",
+    "textbookPage": 164,
+    "note": "Textbook p.164 item (15): outer wrist + underneath + outer makki = arae-makki. First block of Taegeuk 1 Jang (p.243). Course note 10 calls it 'Naeryeomakgi' (down block), same movement. ITF equivalent: najunde makgi (Kildare p.16)."
+  },
+  {
+    "cardId": "olgul-macki",
+    "club": "olgul-macki",
+    "kukkiwon": "eolgul makgi",
+    "kukkiwonHangul": "얼굴 막기",
+    "match": "same",
+    "textbookPage": 162,
+    "note": "Textbook p.162 item (1): outer wrist + face + lift-up makki = olgul-makki. New in Taegeuk 2 Jang (p.255). Course note 11 'Face ollyeomakgi' = olgul makgi performed as a lift-up. ITF equivalent: chookyo makgi (rising block)."
+  },
+  {
+    "cardId": "momtong-an-macki",
+    "club": "momtong-an-macki",
+    "kukkiwon": "momtong an makgi",
+    "kukkiwonHangul": "몸통 안막기",
+    "match": "similar",
+    "textbookPage": 164,
+    "note": "Textbook p.164 item (11). Same direction (outside to inside) and same zone. CAUTION: the club PDF (7. Kup, 9. Kup) specifies the thumb side / inner forearm ('momtong-an-palmok-packat-macki'), the textbook uses the OUTER wrist (bakkat palmok). Same name pattern, slightly different contact surface; ITF 'an palmok makgi' (Kildare p.16) is the inner-forearm version."
+  },
+  {
+    "cardId": "momtong-packat-macki",
+    "club": "momtong-packat-macki",
+    "kukkiwon": "momtong bakkat makgi",
+    "kukkiwonHangul": "몸통 바깥막기",
+    "match": "same",
+    "textbookPage": 163,
+    "note": "Textbook p.163 item (8): outer wrist + trunk + outer makki = momtong bakkat-makki. Club packat = Kukkiwon bakkat (hangul 바깥); club full name 'momtong-packat-palmok-packat-macki' = bakkat palmok (outer forearm) + bakkat makgi."
+  },
+  {
+    "cardId": "hansonnal-arae-macki",
+    "club": "hansonnal-arae-macki",
+    "kukkiwon": "hansonnal arae makgi",
+    "kukkiwonHangul": "한손날 아래막기",
+    "match": "same",
+    "textbookPage": 170,
+    "note": "Textbook p.170 item (49): one hand-blade + underneath + outer makki = hansonnal arae-makki. In Taegeuk 7 Jang the two-hand version 'sonnal arae makgi' (p.168 item 36) is used; the club 'han-' variant is the single-hand one."
+  },
+  {
+    "cardId": "momtong-hansonnal-packat-macki",
+    "club": "momtong-hansonnal-packat-macki",
+    "kukkiwon": "hansonnal (momtong) bakkat makgi",
+    "kukkiwonHangul": "한손날 (몸통) 바깥막기",
+    "match": "similar",
+    "textbookPage": 169,
+    "note": "Textbook p.169 item (44): one hand-blade + trunk + outer makki = 'hansonnal bakkat-makki' (momtong implied; hangul reconstructed from the textbook romanization, not seen in Hangul). The Taegeuk 4 Jang knife-hand block is the two-hand 'sonnal momtong makgi' (p.167 item 29). Word order differs from the club name; treat as the same family."
+  },
+  {
+    "cardId": "sonnal-momtong-kotoro-macki",
+    "club": "sonnal-momtong-kotoro-macki",
+    "kukkiwon": "geodeureo sonnal momtong makgi",
+    "kukkiwonHangul": "거들어 손날 몸통막기",
+    "match": "similar",
+    "textbookPage": 159,
+    "note": "Club kotoro = 거들어 (geodeureo, 'assisted'); textbook p.159 spells it 'kodureo makki (assisted makki)', p.167 item (25) 'kodureo momtong-makki'. Sonnal momtong makki is p.167 item (29). Course note 13 (Taegeuk 4) names the movement 'Geodeureo Sonnalbakkatmakgi'. Word order and the omitted 'bakkat' vary; unverified whether the club's exact hand position is identical."
+  },
+  {
+    "cardId": "goduro-packat-palmok-packat-macki",
+    "club": "goduro-packat-palmok-packat-macki",
+    "kukkiwon": "geodeureo bakkat palmok (momtong) bakkat makgi",
+    "kukkiwonHangul": "거들어 바깥팔목 (몸통) 바깥막기",
+    "match": "similar",
+    "textbookPage": 350,
+    "note": "Textbook Taegeuk 8 Jang intro (p.350) lists 'bakkatpalmok momtong kodureo bakkat-makki' (assisted outer-forearm trunk outer block); p.163 item (8'). Course note 17 'Geodeureobakkatmakgi'. The club describes it as 'double fist'; the textbook describes the second arm as assisting. 'momtong' is omitted in the club name."
+  },
+  {
+    "cardId": "ap-chagi",
+    "club": "ap-chagi",
+    "kukkiwon": "ap chagi",
+    "kukkiwonHangul": "앞차기",
+    "match": "same",
+    "textbookPage": 202,
+    "note": "Textbook p.202 (a. Ap-chagi, front kick, fore sole). ITF: ap cha olligi / ap chaolligi (Kildare p.16). Identical in Taegeuk 1 Jang."
+  },
+  {
+    "cardId": "dollyo-chagi",
+    "club": "dollyo-chagi",
+    "kukkiwon": "dollyeo chagi",
+    "kukkiwonHangul": "돌려차기",
+    "match": "same",
+    "textbookPage": 205,
+    "note": "Textbook p.205 (c. Dollyo chagi, turning kick). Textbook spells dollyo, Revised Romanization is dollyeo. Same in ITF (Kildare p.56 'Dollyo chagi')."
+  },
+  {
+    "cardId": "yop-chagi",
+    "club": "yop-chagi",
+    "kukkiwon": "yeop chagi",
+    "kukkiwonHangul": "옆차기",
+    "match": "same",
+    "textbookPage": 203,
+    "note": "Textbook p.203-204 (b. Yop-chagi, side kick, back sole/foot blade). Textbook spells yop, Revised Romanization is yeop. The ITF manual (Kildare) uses the same word 'yop' for side attacks (e.g. yop jirugi, p.56)."
+  },
+  {
+    "cardId": "naeryo-chagi",
+    "club": "naeryo-chagi",
+    "kukkiwon": "naeryeo chagi",
+    "kukkiwonHangul": "내려차기",
+    "match": "same",
+    "textbookPage": 210,
+    "note": "Textbook p.210 (h. Naeryo-chagi, downward kick, heel/sole). Club 'axe kick' = this kick. Textbook adds the direction variants an naeryo-chagi and bakkat naeryo-chagi on the same page."
+  },
+  {
+    "cardId": "düt-chagi",
+    "club": "düt-chagi",
+    "kukkiwon": "dwi chagi",
+    "kukkiwonHangul": "뒤차기",
+    "match": "same",
+    "textbookPage": 207,
+    "note": "Textbook p.207 (c. Dwi-chagi, back kick, back sole). Club düt = dwit (뒷), which is the form used before a noun (dwitkubi); the kick itself is dwi chagi. The club calls it 'Pferdetritt' (horse kick) in brackets. Course note 57 'Dwichagi'."
+  },
+  {
+    "cardId": "moa-sogi",
+    "club": "moa-sogi",
+    "kukkiwon": "moa seogi (attention: dwichuk moa seogi)",
+    "kukkiwonHangul": "모아서기",
+    "match": "same",
+    "textbookPage": 149,
+    "note": "Textbook p.149: moa-seogi = feet closed; dwichuk-moaseogi (heels together, toes 22 degrees out) is what is called the 'attention stance'. Club commands it with 'charyo!' (ITF: charyot sogi, Kildare p.6)."
+  },
+  {
+    "cardId": "pyonhi-sogi",
+    "club": "pyonhi-sogi",
+    "kukkiwon": "pyeonhi seogi",
+    "kukkiwonHangul": "편히서기",
+    "match": "same",
+    "textbookPage": 141,
+    "note": "Textbook p.141 (4): at-ease stance, heels one foot apart, toes about 22 degrees out. Club: shoulder width, toes slightly out, inner foot edges parallel. The club programme (9. Kup) also calls it 'chumbi-sogi' (ready stance), an ITF-style label."
+  },
+  {
+    "cardId": "chuchum-sogi",
+    "club": "chuchum-sogi",
+    "kukkiwon": "juchum seogi",
+    "kukkiwonHangul": "주춤서기",
+    "match": "same",
+    "textbookPage": 142,
+    "note": "Textbook p.142 (6): riding stance, feet two foot-lengths apart, soles parallel. Club glossary writes 'chumchum-sogi' (typo) in one place. ITF equivalent: annun sogi (sitting stance, Kildare p.57)."
+  },
+  {
+    "cardId": "ap-sogi",
+    "club": "ap-sogi",
+    "kukkiwon": "ap seogi",
+    "kukkiwonHangul": "앞서기",
+    "match": "same",
+    "textbookPage": 144,
+    "note": "Textbook p.144 (11): one normal step long, both knees straight (the textbook's 'To Readers' table says old books called it 'walking stance'). Not the same as ITF 'gunnun sogi' (walking stance with bent front knee), which matches Kukkiwon ap-gubi in practice."
+  },
+  {
+    "cardId": "ap-gubi",
+    "club": "ap-gubi",
+    "kukkiwon": "ap gubi (textbook: apkubi)",
+    "kukkiwonHangul": "앞굽이",
+    "match": "same",
+    "textbookPage": 146,
+    "note": "Textbook p.146 (13): forward inflection stance, one and a half steps long, front knee bent. Textbook spells kubi, Revised Romanization is gubi. ITF counterpart: gunnun sogi (Kildare p.6)."
+  },
+  {
+    "cardId": "düt-gubi",
+    "club": "düt-gubi",
+    "kukkiwon": "dwit gubi (textbook: dwitkubi)",
+    "kukkiwonHangul": "뒷굽이",
+    "match": "same",
+    "textbookPage": 147,
+    "note": "Textbook p.147 (14): backward inflection stance, weight mostly on the back leg. Club calls it 'L-stance'; ITF equivalent is niunja sogi (L-stance, Kildare p.57); exact weight distribution may differ between the traditions (unverified)."
+  },
+  {
+    "cardId": "saju-macki",
+    "club": "saju-macki",
+    "kukkiwon": "(not in the Kukkiwon textbook)",
+    "kukkiwonHangul": "사주 막기",
+    "match": "none",
+    "textbookPage": null,
+    "note": "The textbook has no 'saju'/'sa-ju' drill (searched whole text). It is the ITF/Chang-Hon drill 'Sajo makgi' (four-direction block, Kildare p.19; low knife-hand block + middle inner-forearm block). Club PDF 4.2 says it is a preparatory exercise, not a form. Hangul 사주 is the club's own (club PDF writes 사주 마기); the standard spelling of the second word is 막기. Hanja meaning 'four directions' is general knowledge, unverified here."
+  },
+  {
+    "cardId": "twio-chagi",
+    "club": "twio-chagi",
+    "kukkiwon": "ttwieo chagi (textbook: twio-chagi)",
+    "kukkiwonHangul": "뛰어차기",
+    "match": "same",
+    "textbookPage": 215,
+    "note": "Textbook p.215-216 (5): twio-chagi (jump kick) is the general term; the specific kicks are named twio ap-chagi, twio yop-chagi, etc. Revised Romanization writes the double t: ttwieo. Course note 26 'Ttwieoyeopchagi'."
+  },
+  {
+    "cardId": "twio-ap-chagi",
+    "club": "twio-ap-chagi",
+    "kukkiwon": "ttwieo ap chagi (textbook: twio ap-chagi)",
+    "kukkiwonHangul": "뛰어 앞차기",
+    "match": "same",
+    "textbookPage": 216,
+    "note": "Textbook p.216 lists 'Twio ap-chagi' first among the jump-kick types."
+  },
+  {
+    "cardId": "an-naeryo-chagi",
+    "club": "an-naeryo-chagi",
+    "kukkiwon": "an naeryeo chagi",
+    "kukkiwonHangul": "안 내려차기",
+    "match": "same",
+    "textbookPage": 210,
+    "note": "Textbook p.210-211: 'an naeryo-chagi' (inner) is used when the leg is lifted from the outer side, i.e. the leg travels outside to inside (club: von aussen nach innen). Not to be confused with plain 'an chagi' (inward crescent kick, p.212). Modern practice usually teaches just 'naeryeo chagi' (unverified in the sources)."
+  },
+  {
+    "cardId": "packat-naeryo-chagi",
+    "club": "packat-naeryo-chagi",
+    "kukkiwon": "bakkat naeryeo chagi",
+    "kukkiwonHangul": "바깥 내려차기",
+    "match": "same",
+    "textbookPage": 210,
+    "note": "Textbook p.210: 'bakkat naeryo-chagi' (outer) when the opponent is near and the leg is lifted from the inner side, i.e. the leg travels inside to outside (club: von innen nach aussen). Club packat = bakkat."
+  },
+  {
+    "cardId": "gibon-junbi-sogi",
+    "club": "gibon-junbi-sogi",
+    "kukkiwon": "gibon junbi seogi (textbook: kibon jumbi-seogi)",
+    "kukkiwonHangul": "기본 준비서기",
+    "match": "same",
+    "textbookPage": 154,
+    "note": "Textbook p.154 (1): basic ready stance, parallel feet, fists held just below the navel. The textbook writes 'jumbi' (as pronounced), Revised Romanization writes 'junbi' (준비). Taegeuk 1 Jang starts with it (p.245). Club notes the arm swing differs between poomse and hyong systems."
+  },
+  {
+    "cardId": "narani-sogi",
+    "club": "narani-sogi",
+    "kukkiwon": "narani seogi (parallel) is NOT the same; closest is 'antzong-seogi' (inward stance)",
+    "kukkiwonHangul": "나란히서기",
+    "match": "different",
+    "textbookPage": 139,
+    "note": "FALSE FRIEND. Textbook p.139: narani seogi = feet one foot apart, inner edges parallel, toes forward. The club PDF (8. Kup) uses 'narani-sogi' for toes slightly IN (outer edges parallel), which the textbook calls 'antzong-seogi' (inward stance, p.141; its Hangul is not given in the sources, unverified). The club's 'pyonhi-sogi' (toes out) also has a parallel-feet twin in the textbook's narani."
+  },
+  {
+    "cardId": "saju-chirugi",
+    "club": "saju-chirugi",
+    "kukkiwon": "(not in the Kukkiwon textbook)",
+    "kukkiwonHangul": "사주 지르기",
+    "match": "none",
+    "textbookPage": null,
+    "note": "Not in the textbook. ITF/Chang-Hon drill 'Sajo jirugi' (four-direction punch, Kildare p.18, low block + middle punch). Club PDF writes the Hangul as 사주 치루기, which is a misspelling of 지르기."
+  },
+  {
+    "cardId": "macki",
+    "club": "macki",
+    "kukkiwon": "makgi",
+    "kukkiwonHangul": "막기",
+    "match": "same",
+    "textbookPage": 158,
+    "note": "Block/defence (Textbook chapter 'Makki (defense)', p.158). Textbook spells makki, Revised Romanization makgi."
+  },
+  {
+    "cardId": "chirugi",
+    "club": "chirugi",
+    "kukkiwon": "jireugi",
+    "kukkiwonHangul": "지르기",
+    "match": "same",
+    "textbookPage": 180,
+    "note": "Punch (Textbook p.180). The club glossary lists 'chirugi' as Stoss and 'jirugi' as Stich (thrust); the textbook separates jireugi (punch, fist, straight line) from tzireugi (thrust, 찌르기, fingertips, p.198)."
+  },
+  {
+    "cardId": "chicki",
+    "club": "chicki",
+    "kukkiwon": "chigi",
+    "kukkiwonHangul": "치기",
+    "match": "same",
+    "textbookPage": 190,
+    "note": "Strike (Textbook p.190). Circular arm attack, unlike the straight jireugi. ITF word: taerigi (Kildare p.57)."
+  },
+  {
+    "cardId": "chagi",
+    "club": "chagi",
+    "kukkiwon": "chagi",
+    "kukkiwonHangul": "차기",
+    "match": "same",
+    "textbookPage": 201,
+    "note": "Kick (Textbook p.201). Identical in all three traditions."
+  },
+  {
+    "cardId": "sogi",
+    "club": "sogi",
+    "kukkiwon": "seogi",
+    "kukkiwonHangul": "서기",
+    "match": "same",
+    "textbookPage": 139,
+    "note": "Stance (Textbook 'Seogi (stance)' p.139). Verb 서다 'to stand'."
+  },
+  {
+    "cardId": "gubi",
+    "club": "gubi",
+    "kukkiwon": "gubi (textbook: kubi)",
+    "kukkiwonHangul": "굽이",
+    "match": "same",
+    "textbookPage": 146,
+    "note": "Inflection / bend of the knee (Textbook apkubi p.146, dwitkubi p.147). The ITF replaced this word with gunnun (walking) in gunnun sogi."
+  },
+  {
+    "cardId": "olgul",
+    "club": "olgul",
+    "kukkiwon": "eolgul",
+    "kukkiwonHangul": "얼굴",
+    "match": "same",
+    "textbookPage": 182,
+    "note": "Face (target zone 'high'). Textbook p.182 'Olgul-jireugi (face jireugi)'. ITF equivalent for 'high' is nopunde (Kildare p.16)."
+  },
+  {
+    "cardId": "momtong",
+    "club": "momtong",
+    "kukkiwon": "momtong",
+    "kukkiwonHangul": "몸통",
+    "match": "same",
+    "textbookPage": 182,
+    "note": "Trunk (target zone 'middle'). Textbook p.182. ITF equivalent for 'middle' is kaunde (Kildare p.16)."
+  },
+  {
+    "cardId": "arae",
+    "club": "arae",
+    "kukkiwon": "arae",
+    "kukkiwonHangul": "아래",
+    "match": "same",
+    "textbookPage": 182,
+    "note": "Below / underneath (lower zone). Textbook p.182 'Arae-jireugi (underneath jireugi)'. ITF equivalent: najunde (Kildare p.16)."
+  },
+  {
+    "cardId": "mok",
+    "club": "mok",
+    "kukkiwon": "mok",
+    "kukkiwonHangul": "목",
+    "match": "same",
+    "textbookPage": 194,
+    "note": "Neck. Textbook p.194 'sonnal mok-chigi'. Not to be confused with sonmok (wrist, 손목) in the club glossary."
+  },
+  {
+    "cardId": "ap",
+    "club": "ap",
+    "kukkiwon": "ap",
+    "kukkiwonHangul": "앞",
+    "match": "same",
+    "textbookPage": 202,
+    "note": "Front / forward (ap-chagi p.202, ap-seogi p.144)."
+  },
+  {
+    "cardId": "yop",
+    "club": "yop",
+    "kukkiwon": "yeop",
+    "kukkiwonHangul": "옆",
+    "match": "same",
+    "textbookPage": 203,
+    "note": "Side (yop-chagi p.203, yop-jireugi p.183). Revised Romanization: yeop."
+  },
+  {
+    "cardId": "düt",
+    "club": "düt",
+    "kukkiwon": "dwit / dwi",
+    "kukkiwonHangul": "뒷",
+    "match": "same",
+    "textbookPage": 147,
+    "note": "Back, behind. The textbook writes dwi-chagi (뒤차기, p.207) and dwitkubi (뒷굽이, p.147): 뒤 stands alone, 뒷 is the linking form before a noun. The club's 'ü' is a German-style rendering of Korean 'wi'."
+  },
+  {
+    "cardId": "an",
+    "club": "an",
+    "kukkiwon": "an",
+    "kukkiwonHangul": "안",
+    "match": "same",
+    "textbookPage": 164,
+    "note": "Inner / inward (movement from outside to inside). Textbook 'an-makki' p.164, 'an-chigi' p.193. ITF: anuro (Kildare p.58)."
+  },
+  {
+    "cardId": "packat",
+    "club": "packat",
+    "kukkiwon": "bakkat",
+    "kukkiwonHangul": "바깥",
+    "match": "same",
+    "textbookPage": 163,
+    "note": "Outer / outward (movement from inside to outside). Textbook 'bakkat-makki' p.163. ITF: bakuro (Kildare p.59) / bakat palmok (p.16). The club's 'p' reflects the older romanization of the consonant."
+  },
+  {
+    "cardId": "naeryo",
+    "club": "naeryo",
+    "kukkiwon": "naeryeo",
+    "kukkiwonHangul": "내려",
+    "match": "same",
+    "textbookPage": 210,
+    "note": "Down, downward (verb stem 내리다 'to lower'). Textbook 'naeryo-chagi' p.210, 'naeryo-jireugi' p.183."
+  },
+  {
+    "cardId": "dollyo",
+    "club": "dollyo",
+    "kukkiwon": "dollyeo",
+    "kukkiwonHangul": "돌려",
+    "match": "same",
+    "textbookPage": 205,
+    "note": "Turning (verb stem 돌리다 'to turn something'). Textbook 'dollyo chagi' p.205, 'dollyo-jireugi' p.184."
+  },
+  {
+    "cardId": "twio",
+    "club": "twio",
+    "kukkiwon": "ttwieo",
+    "kukkiwonHangul": "뛰어",
+    "match": "same",
+    "textbookPage": 215,
+    "note": "Jumping (verb stem 뛰다 'to jump/run'). Textbook 'twio-chagi' p.215. Revised Romanization doubles the t (ttwieo)."
+  },
+  {
+    "cardId": "kotoro",
+    "club": "kotoro",
+    "kukkiwon": "geodeureo",
+    "kukkiwonHangul": "거들어",
+    "match": "similar",
+    "textbookPage": 159,
+    "note": "Assisted / reinforced: the second hand supports the working arm. Textbook p.159 writes 'kodureo'. Club 'kotoro' shows the older voiced/unvoiced swing (k/g, t/d) and drops the vowel marks of ㅓ and ㅡ. Same Hangul as 'goduro'."
+  },
+  {
+    "cardId": "goduro",
+    "club": "goduro",
+    "kukkiwon": "geodeureo",
+    "kukkiwonHangul": "거들어",
+    "match": "similar",
+    "textbookPage": 159,
+    "note": "Second club spelling of the same word as 'kotoro' (both are 거들어). Textbook p.159 'kodureo'. Course notes: 'Geodeureo...'."
+  },
+  {
+    "cardId": "sonnal",
+    "club": "sonnal",
+    "kukkiwon": "sonnal",
+    "kukkiwonHangul": "손날",
+    "match": "same",
+    "textbookPage": 120,
+    "note": "Hand blade / knife-hand edge (Textbook p.120). ITF: sonkal (Kildare p.57); same Korean word with a different second syllable."
+  },
+  {
+    "cardId": "palmok",
+    "club": "palmok",
+    "kukkiwon": "palmok",
+    "kukkiwonHangul": "팔목",
+    "match": "same",
+    "textbookPage": 130,
+    "note": "Forearm, especially the wrist part (Textbook p.130). Distinguish bakkat palmok (outer) and an palmok (inner)."
+  },
+  {
+    "cardId": "batangson",
+    "club": "batangson",
+    "kukkiwon": "batangson",
+    "kukkiwonHangul": "바탕손",
+    "match": "same",
+    "textbookPage": 126,
+    "note": "Palm heel (Textbook p.126). ITF word: sonbadak (palm), Kildare p.57."
+  }
+]
