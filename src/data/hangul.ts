@@ -25,4 +25,8 @@ export const TECHNIQUE_HANGUL: Record<string, string> = {
   'gibon-junbi-sogi': '기본 준비서기',
   'narani-sogi': '나란히서기',
   'saju-chirugi': '사주 지르기',
+  'hansonnal-arae-macki': '한손날 아래 막기',
+  'momtong-hansonnal-packat-macki': '몸통 한손날 바깥 막기',
+  'sonnal-momtong-kotoro-macki': '손날 몸통 거들어 막기',
+  'goduro-packat-palmok-packat-macki': '거들어 바깥 팔목 바깥 막기',
 }

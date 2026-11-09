@@ -24,6 +24,7 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - E8 S8 inline – strictOrder + videoLang settings page — done
 - E9 S9 inline – clips data (15 techniques), ClipPlayer, VideosPage, VideoQuizPage + tests — done
 - E10 S9 inline – verify clip boundaries (blackdetect + contact sheets), clips.json, frame extraction script, FrameStrip, frames quiz — v0.3.1 — done
+- E11 S9 inline – full visual review of the course (chapter map), 6 new clips, 4 missing club techniques added, local-video frames — v0.4.0 — done
 
 ## Log
 - L1 2026-11-09 user: "has commit desde ya. Arregla que el primer eslabon debe de ser el 10 Kup que es el cinturón blanco. Continua con el resto de tareas ... fase 3 y no pares hasta lograr una version funcional ..."
@@ -33,3 +34,5 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - Finding: both videos are one 100-min course (beginners→black belt), dubbed; auto captions only; clips verified visually for ap-chagi and hansonnal-mok-chicki; others unverified.
 - L3 2026-11-10 user: "extraigan fotogramas que puedan mostrar también en algunas partes la técnica con un consecutivo, aparte del video"
 - Finding: the course has French title cards between sections; boundaries now taken from black fades. Frames are git-ignored (third-party content).
+- L4 2026-11-10 user: "habría que revisar mejor el video pues casi todas las patadas y técnicas están ahí ... no salen en los subtitulos ... tengo una copia ... /Users/mandy/Movies/Hapkido-Taekwondo/Videos"
+- Finding: my TECHNIQUES list had omitted 4 PDF items (hansonnal-arae-macki, momtong-hansonnal-packat-macki, sonnal-momtong-kotoro-macki, goduro-packat-palmok-packat-macki). Added.

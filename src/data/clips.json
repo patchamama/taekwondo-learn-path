@@ -1,17 +1,107 @@
 [
-  { "cardId": "moa-sogi", "start": 827, "end": 834 },
-  { "cardId": "gibon-junbi-sogi", "start": 835, "end": 846 },
-  { "cardId": "chuchum-sogi", "start": 846, "end": 855 },
-  { "cardId": "ap-sogi", "start": 857, "end": 867 },
-  { "cardId": "düt-gubi", "start": 874, "end": 882 },
-  { "cardId": "ap-gubi", "start": 882, "end": 887 },
-  { "cardId": "arae-macki", "start": 905, "end": 940 },
-  { "cardId": "momtong-an-macki", "start": 942, "end": 968 },
-  { "cardId": "olgul-macki", "start": 970, "end": 991 },
-  { "cardId": "momtong-chirugi", "start": 1041, "end": 1054 },
-  { "cardId": "hansonnal-mok-chicki", "start": 1105, "end": 1115 },
-  { "cardId": "ap-chagi", "start": 1200, "end": 1235 },
-  { "cardId": "yop-chagi", "start": 1237, "end": 1258 },
-  { "cardId": "dollyo-chagi", "start": 1261, "end": 1292 },
-  { "cardId": "düt-chagi", "start": 1295, "end": 1328 }
+  {
+    "cardId": "moa-sogi",
+    "start": 827,
+    "end": 834
+  },
+  {
+    "cardId": "gibon-junbi-sogi",
+    "start": 835,
+    "end": 846
+  },
+  {
+    "cardId": "chuchum-sogi",
+    "start": 846,
+    "end": 855
+  },
+  {
+    "cardId": "ap-sogi",
+    "start": 857,
+    "end": 867
+  },
+  {
+    "cardId": "düt-gubi",
+    "start": 874,
+    "end": 882
+  },
+  {
+    "cardId": "ap-gubi",
+    "start": 882,
+    "end": 887
+  },
+  {
+    "cardId": "arae-macki",
+    "start": 905,
+    "end": 940
+  },
+  {
+    "cardId": "momtong-an-macki",
+    "start": 942,
+    "end": 968
+  },
+  {
+    "cardId": "olgul-macki",
+    "start": 970,
+    "end": 991
+  },
+  {
+    "cardId": "momtong-chirugi",
+    "start": 1041,
+    "end": 1054
+  },
+  {
+    "cardId": "hansonnal-mok-chicki",
+    "start": 1105,
+    "end": 1115
+  },
+  {
+    "cardId": "ap-chagi",
+    "start": 1200,
+    "end": 1235
+  },
+  {
+    "cardId": "yop-chagi",
+    "start": 1237,
+    "end": 1258
+  },
+  {
+    "cardId": "dollyo-chagi",
+    "start": 1261,
+    "end": 1292
+  },
+  {
+    "cardId": "düt-chagi",
+    "start": 1295,
+    "end": 1328
+  },
+  {
+    "cardId": "sonnal",
+    "start": 476,
+    "end": 508
+  },
+  {
+    "cardId": "momtong-hansonnal-packat-macki",
+    "start": 2279,
+    "end": 2295
+  },
+  {
+    "cardId": "sonnal-momtong-kotoro-macki",
+    "start": 2297,
+    "end": 2305
+  },
+  {
+    "cardId": "training-sambo-taeryon",
+    "start": 1380,
+    "end": 1438
+  },
+  {
+    "cardId": "naeryo-chagi",
+    "start": 2692,
+    "end": 2733
+  },
+  {
+    "cardId": "twio-chagi",
+    "start": 4698,
+    "end": 4733
+  }
 ]

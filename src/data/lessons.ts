@@ -249,7 +249,14 @@ export const LESSONS: Lesson[] = [
       'Baue den Namen: Höhe + (Richtung) + macki. olgul + macki = Aufwärtsblock. Rate, bevor du prüfst!',
       'Construye el nombre: altura + (dirección) + macki. olgul + macki = bloqueo alto. ¡Intenta adivinar antes de comprobar!',
     ),
-    cardIds: ['arae-macki', 'olgul-macki', 'momtong-an-macki', 'momtong-packat-macki'],
+    cardIds: [
+      'arae-macki',
+      'olgul-macki',
+      'momtong-an-macki',
+      'momtong-packat-macki',
+      'hansonnal-arae-macki',
+      'momtong-hansonnal-packat-macki',
+    ],
   },
   {
     id: 'u2-strikes',
@@ -359,6 +366,23 @@ export const LESSONS: Lesson[] = [
       'narani y pyonhi se parecen: puntas ligeramente hacia dentro (narani, hyong) o fuera (pyonhi, poomse).',
     ),
     cardIds: ['gibon-junbi-sogi', 'narani-sogi', 'pyonhi-sogi'],
+  },
+  {
+    id: 'u3-blocks',
+    unit: 'kup8',
+    title: L('Reinforced blocks', 'Verstärkte Blocks', 'Bloqueos reforzados'),
+    tip: L(
+      'kotoro / goduro means "reinforced": the second arm helps the first one. Look for it in the name!',
+      'kotoro / goduro heißt „verstärkt“: der zweite Arm unterstützt den ersten. Achte im Namen darauf!',
+      'kotoro / goduro significa «reforzado»: el segundo brazo ayuda al primero. ¡Búscalo en el nombre!',
+    ),
+    cardIds: [
+      'kotoro',
+      'goduro',
+      'sonnal-momtong-kotoro-macki',
+      'goduro-packat-palmok-packat-macki',
+      'momtong-hansonnal-packat-macki',
+    ],
   },
   {
     id: 'u3-saju',

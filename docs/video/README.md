@@ -16,3 +16,6 @@ The course uses another school's terminology: it can differ from the club PDFs.
 - `npm run frames` downloads the 360p video-only stream for the clip range (yt-dlp format 134) and extracts 6 evenly spaced stills per technique into `public/frames/<cardId>/1..6.jpg`.
 - `public/frames` is git-ignored: the stills come from a third-party video, so keep them for personal study and do not republish them. The app hides the strip (or shows a hint) when they are missing.
 - Needs `yt-dlp` and `ffmpeg` installed (`brew install yt-dlp ffmpeg`).
+
+## Local copies
+`npm run frames` uses a local copy when it finds one (German dub 684x428 preferred; set `TKD_VIDEO` to override), otherwise it downloads the 360p stream with yt-dlp. See `chapters.md` for the full chapter map.
