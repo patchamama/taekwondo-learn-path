@@ -2,7 +2,7 @@
 
 Fuente: `HoSinSul-TKD-PO-Pruefungsprogramm_2025-01.pdf` (págs. 1-7 del programa, 2.1.1 y 2.1.2) y glosario `HoSinSul-TKD-PO-Koreanische-Fachbegriffe.pdf` (§6).
 
-> **Aviso 1 — no hay 10. Kup.** El reglamento empieza en el 9. Kup (blanco con raya amarilla) y el 8. Kup es el cinturón amarillo (Narangsäk).
+> **Aviso 1 — 10. Kup.** El 10. Kup (blanco, Mu-Kup) es el grado de partida (Regularien §1.11) y el programa de examen no detalla contenidos para él. El 9. Kup es blanco con raya amarilla y el 8. Kup es amarillo (Narangsäk).
 > **Aviso 2 — equivalentes de karate.** No vienen en los PDFs. Son aproximados (mi conocimiento): la mecánica y el nombre varían entre estilos (Shotokan, Wado-ryu…). Revísalos con tu sensei.
 > **Aviso 3 — posible discrepancia del glosario.** El PDF define `paro` = "gegenseitig" (recíproco) y `pandae` = "gleichseitig" (mismo lado). En la mayoría de escuelas es al revés (`pandae` = brazo contrario / "reverse", `paro` = mismo lado). Pregunta a tu instructor cuál usa el club.
 

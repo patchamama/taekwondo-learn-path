@@ -14,6 +14,15 @@ export interface Belt {
 // Source: Koreanische Fachbegriffe §6.3 / Pruefungsprogramm TOC
 export const BELTS: Belt[] = [
   {
+    id: 'kup10',
+    rank: '10 Kup',
+    color: '#f5f5f0',
+    stage: 'cho-kup',
+    filled: true,
+    koName: 'Mu-Kup',
+    name: { en: 'White belt', de: 'Weißer Gürtel', es: 'Cinturón blanco' },
+  },
+  {
     id: 'kup9',
     rank: '9 Kup',
     color: '#f5f5f0',

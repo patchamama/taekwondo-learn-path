@@ -1,6 +1,7 @@
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import { FormsPage } from './features/forms/FormsPage'
 import { HistoryPage } from './features/history/HistoryPage'
+import { LessonPage, PracticePage } from './features/learn/LessonPage'
 import { PathPage } from './features/path/PathPage'
 import { TechniquesPage } from './features/techniques/TechniquesPage'
 import { TermsPage } from './features/terms/TermsPage'
@@ -12,6 +13,8 @@ export function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<PathPage />} />
+          <Route path="lesson/:id" element={<LessonPage />} />
+          <Route path="practice" element={<PracticePage />} />
           <Route path="techniques" element={<TechniquesPage />} />
           <Route path="terms" element={<TermsPage />} />
           <Route path="forms" element={<FormsPage />} />

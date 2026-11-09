@@ -3,10 +3,12 @@ import { LANGS } from '../i18n/types'
 import { useT } from '../i18n/useT'
 import { useAppStore } from '../store/useAppStore'
 import { Banner } from './Banner'
+import { activeStreak, dayString } from '../../features/learn/progress'
 import type { StringKey } from '../i18n/strings'
 
 const LINKS: { to: string; key: StringKey }[] = [
   { to: '/', key: 'navPath' },
+  { to: '/practice', key: 'navPractice' },
   { to: '/techniques', key: 'navTechniques' },
   { to: '/terms', key: 'navTerms' },
   { to: '/forms', key: 'navForms' },
@@ -16,6 +18,8 @@ const LINKS: { to: string; key: StringKey }[] = [
 export function Layout() {
   const { t, lang } = useT()
   const setLang = useAppStore((s) => s.setLang)
+  const xp = useAppStore((s) => s.xp)
+  const streak = useAppStore((s) => s.streak)
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900">
       <Banner />
@@ -34,11 +38,14 @@ export function Layout() {
               </NavLink>
             ))}
           </nav>
+          <span className="ml-auto text-sm font-semibold" aria-label="progress">
+            🔥 {activeStreak(streak, dayString())} {t('days')} · ⭐ {xp} {t('xp')}
+          </span>
           <select
             aria-label="Language"
             value={lang}
             onChange={(e) => setLang(e.target.value as typeof lang)}
-            className="ml-auto rounded border px-2 py-1 text-sm"
+            className="rounded border px-2 py-1 text-sm"
           >
             {LANGS.map((l) => (
               <option key={l} value={l}>

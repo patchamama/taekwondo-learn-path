@@ -1,49 +1,46 @@
+import { TERMS, type TermGroup } from '../../data/terms'
+import { SpeakButton } from '../../shared/components/SpeakButton'
+import type { StringKey } from '../../shared/i18n/strings'
 import { useT } from '../../shared/i18n/useT'
 
-const SINO = ['il', 'i', 'sam', 'sa', 'oh', 'yuk', 'chil', 'pal', 'ku', 'sib']
-const NATIVE = ['hana', 'dul', 'set', 'net', 'dasot', 'yosot', 'ilgob', 'yodul', 'ahop', 'yol']
-const COMMANDS: [string, string, string, string][] = [
-  ['Charyot', 'Attention', 'Achtung', 'Atención'],
-  ['Kyungje', 'Bow', 'Grüßen', 'Saludar'],
-  ['Chunbi', 'Ready position', 'Ausgangsstellung', 'Posición de preparación'],
-  ['Sijak', 'Begin', 'Anfangen', 'Empezar'],
-  ['Kallyo', 'Break / separate', 'Trennen', 'Separar'],
-  ['Guman', 'Stop', 'Ende', 'Fin'],
-  ['Tora', 'Turn around', 'Umdrehen', 'Girar'],
-  ['Cuy-oh', 'Rest', 'Pause', 'Descanso'],
+const GROUPS: { id: TermGroup; key: StringKey }[] = [
+  { id: 'basic', key: 'grpBasic' },
+  { id: 'command', key: 'grpCommand' },
+  { id: 'sino', key: 'grpSino' },
+  { id: 'native', key: 'grpNative' },
+  { id: 'training', key: 'grpTraining' },
+  { id: 'body', key: 'grpBody' },
 ]
 
-function NumberRow({ title, words }: { title: string; words: string[] }) {
-  return (
-    <div className="rounded-xl border bg-white p-4">
-      <h2 className="mb-2 font-semibold">{title}</h2>
-      <ol className="grid grid-cols-2 gap-1 text-sm sm:grid-cols-5">
-        {words.map((w, i) => (
-          <li key={w}>
-            <span className="text-slate-400">{i + 1}.</span> <b>{w}</b>
-          </li>
-        ))}
-      </ol>
-    </div>
-  )
-}
-
 export function TermsPage() {
-  const { t, lang } = useT()
-  const idx = { en: 1, de: 2, es: 3 }[lang]
+  const { t, loc } = useT()
   return (
-    <section className="grid gap-4">
-      <h1 className="text-2xl font-bold">{t('numbers')}</h1>
-      <NumberRow title={t('sinoKorean')} words={SINO} />
-      <NumberRow title={t('native')} words={NATIVE} />
-      <h2 className="text-xl font-bold">{t('commands')}</h2>
-      <ul className="grid gap-2 sm:grid-cols-2">
-        {COMMANDS.map((c) => (
-          <li key={c[0]} className="rounded bg-white px-3 py-2 text-sm shadow-sm">
-            <b>{c[0]}</b> – {c[idx]}
-          </li>
-        ))}
-      </ul>
+    <section className="grid gap-6">
+      <h1 className="text-2xl font-bold">{t('navTerms')}</h1>
+      {GROUPS.map((g) => (
+        <div key={g.id}>
+          <h2 className="mb-2 text-lg font-semibold">{t(g.key)}</h2>
+          <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {TERMS.filter((x) => x.group === g.id).map((x) => (
+              <li
+                key={x.id}
+                className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 shadow-sm"
+              >
+                <SpeakButton text={x.hangul} />
+                <div className="min-w-0">
+                  <p className="truncate font-bold">
+                    {x.ko}{' '}
+                    <span lang="ko" className="font-normal text-slate-500">
+                      {x.hangul}
+                    </span>
+                  </p>
+                  <p className="truncate text-sm text-slate-600">{loc(x.meaning)}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </section>
   )
 }

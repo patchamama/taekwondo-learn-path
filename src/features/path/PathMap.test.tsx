@@ -9,7 +9,7 @@ describe('PathMap', () => {
     render(<PathMap currentIndex={0} selectedIndex={0} onSelect={onSelect} youAreHere="here" />)
     expect(screen.getAllByRole('button')).toHaveLength(BELTS.length)
     fireEvent.click(screen.getByRole('button', { name: /8 Kup/ }))
-    expect(onSelect).toHaveBeenCalledWith(1)
+    expect(onSelect).toHaveBeenCalledWith(2)
   })
 
   it('shows progress road only after advancing', () => {

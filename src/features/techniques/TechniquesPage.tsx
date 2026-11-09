@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { MORPHEMES, MORPHEME_BY_ID } from '../../data/morphemes'
 import { TECHNIQUES, type Category } from '../../data/techniques'
+import { SpeakButton } from '../../shared/components/SpeakButton'
+import { CARD_BY_ID } from '../../data/cards'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
 import type { StringKey } from '../../shared/i18n/strings'
@@ -58,7 +60,9 @@ export function TechniquesPage() {
             <li key={x.id} className="rounded-xl border bg-white p-4 shadow-sm">
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <h3 className="text-lg font-bold">{x.ko}</h3>
+                  <h3 className="flex items-center gap-2 text-lg font-bold">
+                    {x.ko} <SpeakButton text={CARD_BY_ID[x.id].hangul} />
+                  </h3>
                   <p className="text-xs text-slate-500">{x.kup} Kup</p>
                 </div>
                 <label className="flex items-center gap-1 text-xs">
