@@ -9,6 +9,7 @@ import type { StringKey } from '../i18n/strings'
 
 const LINKS: { to: string; key: StringKey }[] = [
   { to: '/', key: 'navPath' },
+  { to: '/study', key: 'navStudy' },
   { to: '/practice', key: 'navPractice' },
   { to: '/techniques', key: 'navTechniques' },
   { to: '/videos', key: 'navVideos' },

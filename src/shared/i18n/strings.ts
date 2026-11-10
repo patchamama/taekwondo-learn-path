@@ -364,6 +364,23 @@ export const STRINGS = {
     de: 'Welche Technik zeigen diese Einzelbilder?',
     es: '¿Qué técnica muestran estos fotogramas?',
   },
+  navStudy: { en: 'Study', de: 'Lernen', es: 'Estudio' },
+  studyTitle: { en: 'Study by level', de: 'Lernen nach Stufe', es: 'Estudio por nivel' },
+  studyIntro: {
+    en: 'Everything to learn at each belt, to read in one go: words, techniques, terms, forms and theory, with frames and clips.',
+    de: 'Alles, was je Gürtel zu lernen ist, zum Durchlesen: Wörter, Techniken, Begriffe, Formen und Theorie, mit Einzelbildern und Clips.',
+    es: 'Todo lo que se aprende en cada cinturón, para leer de corrido: palabras, técnicas, términos, formas y teoría, con fotogramas y clips.',
+  },
+  studyWords: { en: 'Word blocks', de: 'Wortbausteine', es: 'Ladrillos de las palabras' },
+  studyTerms: { en: 'Korean terms', de: 'Koreanische Begriffe', es: 'Términos coreanos' },
+  studyTheory: { en: 'Theory', de: 'Theorie', es: 'Teoría' },
+  studyOther: { en: 'Other techniques', de: 'Weitere Techniken', es: 'Otras técnicas' },
+  studyPractice: { en: 'Practise this level', de: 'Diese Stufe üben', es: 'Practicar este nivel' },
+  studyEmpty: {
+    en: 'Nothing listed for this level yet.',
+    de: 'Für diese Stufe ist noch nichts hinterlegt.',
+    es: 'Aún no hay contenido para este nivel.',
+  },
   navDefense: { en: 'Self-defence', de: 'Selbstverteidigung', es: 'Defensa personal' },
   sdTitle: {
     en: 'Self-defence (bonus)',
