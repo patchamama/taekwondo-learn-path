@@ -17,6 +17,7 @@ const LINKS: { to: string; key: StringKey }[] = [
   { to: '/forms', key: 'navForms' },
   { to: '/kukkiwon', key: 'navKukkiwon' },
   { to: '/selfdefense', key: 'navDefense' },
+  { to: '/exam', key: 'navExam' },
   { to: '/history', key: 'navHistory' },
   { to: '/settings', key: 'navSettings' },
 ]

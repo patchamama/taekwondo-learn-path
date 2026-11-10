@@ -1,3 +1,5 @@
+import { KOREA_FACTS } from '../../data/koreaFacts'
+import { FactSections } from '../../shared/components/FactSections'
 import { useT } from '../../shared/i18n/useT'
 import { CHOI, TIMELINE } from './timeline'
 
@@ -28,6 +30,10 @@ export function HistoryPage() {
             <li key={c.en}>{loc(c)}</li>
           ))}
         </ul>
+      </div>
+      <div className="grid gap-3">
+        <h2 className="text-lg font-semibold">{t('koreaTitle')}</h2>
+        <FactSections sections={KOREA_FACTS} />
       </div>
     </section>
   )

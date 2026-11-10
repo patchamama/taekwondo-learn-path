@@ -381,6 +381,14 @@ export const STRINGS = {
     de: 'Für diese Stufe ist noch nichts hinterlegt.',
     es: 'Aún no hay contenido para este nivel.',
   },
+  navExam: { en: 'Exam rules', de: 'Prüfungsregeln', es: 'Reglas de examen' },
+  examTitle: { en: 'Exam rules', de: 'Prüfungsregularien', es: 'Reglas del examen' },
+  examSource: {
+    en: 'Source: club exam regulations (Prüfungsregularien, 1st edition 2024), condensed and translated. The German PDF is authoritative.',
+    de: 'Quelle: Prüfungsregularien des Vereins (1. Auflage 2024), gekürzt und übersetzt. Maßgeblich ist das deutsche PDF.',
+    es: 'Fuente: reglamento de examen del club (Prüfungsregularien, 1.ª edición 2024), resumido y traducido. Manda el PDF en alemán.',
+  },
+  koreaTitle: { en: 'Korea at a glance', de: 'Korea im Überblick', es: 'Corea de un vistazo' },
   navDefense: { en: 'Self-defence', de: 'Selbstverteidigung', es: 'Defensa personal' },
   sdTitle: {
     en: 'Self-defence (bonus)',
