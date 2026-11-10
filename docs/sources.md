@@ -67,8 +67,11 @@ Doubts: the form identity comes from the uploader's title (movements were not co
 ### Drawings (Wikimedia Commons)
 The eight Taegeuk floor-pattern diagrams (`public/diagrams/taeguk-N.png`, data in `src/data/diagrams.json`) are by Jim Northrup, licence CC BY-SA 4.0; each card shows author, licence and link. ShareAlike applies to derived images. Not used: CC0 stance SVGs (artwork not checked against the cards) and one AI-generated SVG (unclear basis).
 
+### Wikipedia (ko, en, de, es) and long-video subtitles
+52 paraphrased facts (`src/data/background.json`, page **Background**, each with its article links) and 85 Korean terms (`src/data/wikiTerms.json`, page Korean terms, group Kukkiwon) were collected. Wikipedia text is CC BY-SA 4.0: the entries are paraphrases that keep the source URLs. Where language editions disagree (KTA founding 1959 vs 1961, Palgwae/Taegeuk dates, poom age, head-kick score) the research report lists it: `docs/background-research.md`. Competition scoring (turning head kick 6 points since the 2026 WT update) was checked against the WT rules PDF as well. Long videos with usable captions (Kukkiwon history 8y-XCZ5O4eY and IvSY0JQedII, documentary -yskXIFDspE, poomsae rules FZcKtMuxVMI) are summarised in `docs/video/background-videos.json`; YouTube auto-captions garble Korean names, so they were used for dates and rough explanations only.
+
 ### Not integrated yet
-About 100 techniques and combos still have no clip. Wikipedia (ko/en/de/es) facts and long-video subtitles, and the book "Taekwondo perfect" (Kim and Gil), are being researched; they are added here when verified.
+About 100 techniques and combos still have no clip.
 
 ### Book: "Taekwondo perfekt" (Kim Chul-Hwan, Konstantin Gil)
 Searched, **not integrated**: no legitimate preview or table of contents exists online, so no explanation from the book is used in the app. Bibliographic data found (from retailer and library listings, partly from search snippets):

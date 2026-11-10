@@ -1,5 +1,5 @@
 import { CARD_BY_ID } from '../../data/cards'
-import { KUKKIWON } from '../../data/kukkiwon'
+import { KUKKIWON, noteFor } from '../../data/kukkiwon'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { useT } from '../../shared/i18n/useT'
@@ -38,7 +38,7 @@ function SpellingTable({ rows, title }: { rows: typeof CONSONANTS; title: string
 }
 
 export function KukkiwonPage() {
-  const { t, loc } = useT()
+  const { t, loc, lang } = useT()
   const { visibleCard } = useBeltFilter()
   const techniques = KUKKIWON.filter(
     (k) => CARD_BY_ID[k.cardId]?.kind === 'technique' && visibleCard(k.cardId),
@@ -82,7 +82,7 @@ export function KukkiwonPage() {
               {loc(MATCH_LABEL[k.match])}
             </p>
             <p className="mt-2 text-xs text-slate-600">
-              {k.note}
+              {noteFor(k, lang)}
               {k.textbookPage ? ` (Textbook p.${k.textbookPage})` : ''}
             </p>
           </li>

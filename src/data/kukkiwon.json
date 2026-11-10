@@ -6,7 +6,9 @@
     "kukkiwonHangul": "몸통 지르기",
     "match": "same",
     "textbookPage": 183,
-    "note": "Textbook p.183 names it momtong baro jireugi / momtong bandae jireugi (same-side / opposite-side punch). Club baro = paro, bandae = pandae. Only the romanization differs (chi- vs ji-, -u- vs -eu-)."
+    "note": "Textbook p.183 names it momtong baro jireugi / momtong bandae jireugi (same-side / opposite-side punch). Club baro = paro, bandae = pandae. Only the romanization differs (chi- vs ji-, -u- vs -eu-).",
+    "noteDe": "Lehrbuch S. 183 nennt es momtong baro jireugi / momtong bandae jireugi (Stoß auf der gleichen Seite / auf der Gegenseite). Club baro = paro, bandae = pandae. Nur die Romanisierung weicht ab (chi- vs. ji-, -u- vs. -eu-).",
+    "noteEs": "El libro de texto p.183 lo llama momtong baro jireugi / momtong bandae jireugi (puñetazo del mismo lado / del lado opuesto). Club baro = paro, bandae = pandae. Solo difiere la romanización (chi- frente a ji-, -u- frente a -eu-)."
   },
   {
     "cardId": "hansonnal-mok-chicki",
@@ -15,7 +17,9 @@
     "kukkiwonHangul": "손날 목 치기",
     "match": "same",
     "textbookPage": 194,
-    "note": "Textbook p.194: 'if the target is the neck it is called sonnal mok-chigi' (an-chigi, outside to inside); the Taegeuk 3 table (p.269) literally writes 'hansonnal mok-chigi'. The prefix han- (one) is dropped for attacks because an attack always uses one hand."
+    "note": "Textbook p.194: 'if the target is the neck it is called sonnal mok-chigi' (an-chigi, outside to inside); the Taegeuk 3 table (p.269) literally writes 'hansonnal mok-chigi'. The prefix han- (one) is dropped for attacks because an attack always uses one hand.",
+    "noteDe": "Lehrbuch S. 194: 'if the target is the neck it is called sonnal mok-chigi' (an-chigi, von außen nach innen); die Tabelle zu Taegeuk 3 (S. 269) schreibt wörtlich 'hansonnal mok-chigi'. Das Präfix han- (eins) entfällt bei Angriffen, weil ein Angriff immer mit einer Hand ausgeführt wird.",
+    "noteEs": "Libro de texto p.194: 'if the target is the neck it is called sonnal mok-chigi' (an-chigi, de fuera hacia dentro); la tabla de Taegeuk 3 (p.269) escribe literalmente 'hansonnal mok-chigi'. El prefijo han- (uno) se omite en los ataques porque un ataque siempre se realiza con una sola mano."
   },
   {
     "cardId": "arae-macki",
@@ -24,7 +28,9 @@
     "kukkiwonHangul": "아래 막기",
     "match": "same",
     "textbookPage": 164,
-    "note": "Textbook p.164 item (15): outer wrist + underneath + outer makki = arae-makki. First block of Taegeuk 1 Jang (p.243). Course note 10 calls it 'Naeryeomakgi' (down block), same movement. ITF equivalent: najunde makgi (Kildare p.16)."
+    "note": "Textbook p.164 item (15): outer wrist + underneath + outer makki = arae-makki. First block of Taegeuk 1 Jang (p.243). Course note 10 calls it 'Naeryeomakgi' (down block), same movement. ITF equivalent: najunde makgi (Kildare p.16).",
+    "noteDe": "Lehrbuch S. 164 Punkt (15): äußeres Handgelenk + unten + äußeres Makki = arae-makki. Erster Block von Taegeuk 1 Jang (S. 243). Kursnotiz 10 nennt es 'Naeryeomakgi' (Abwärtsblock), gleiche Bewegung. ITF-Entsprechung: najunde makgi (Kildare S. 16).",
+    "noteEs": "Libro de texto p.164 punto (15): muñeca exterior + abajo + makki exterior = arae-makki. Primer bloqueo de Taegeuk 1 Jang (p.243). La nota de curso 10 lo llama 'Naeryeomakgi' (bloqueo hacia abajo), el mismo movimiento. Equivalente ITF: najunde makgi (Kildare p.16)."
   },
   {
     "cardId": "olgul-macki",
@@ -33,7 +39,9 @@
     "kukkiwonHangul": "얼굴 막기",
     "match": "same",
     "textbookPage": 162,
-    "note": "Textbook p.162 item (1): outer wrist + face + lift-up makki = olgul-makki. New in Taegeuk 2 Jang (p.255). Course note 11 'Face ollyeomakgi' = olgul makgi performed as a lift-up. ITF equivalent: chookyo makgi (rising block)."
+    "note": "Textbook p.162 item (1): outer wrist + face + lift-up makki = olgul-makki. New in Taegeuk 2 Jang (p.255). Course note 11 'Face ollyeomakgi' = olgul makgi performed as a lift-up. ITF equivalent: chookyo makgi (rising block).",
+    "noteDe": "Lehrbuch S. 162 Punkt (1): äußeres Handgelenk + Gesicht + Aufwärts-Makki = olgul-makki. Neu in Taegeuk 2 Jang (S. 255). Kursnotiz 11 'Face ollyeomakgi' = olgul makgi als Aufwärtsbewegung ausgeführt. ITF-Entsprechung: chookyo makgi (Aufwärtsblock).",
+    "noteEs": "Libro de texto p.162 punto (1): muñeca exterior + rostro + makki ascendente = olgul-makki. Nuevo en Taegeuk 2 Jang (p.255). La nota de curso 11 'Face ollyeomakgi' = olgul makgi ejecutado como movimiento ascendente. Equivalente ITF: chookyo makgi (bloqueo ascendente)."
   },
   {
     "cardId": "momtong-an-macki",
@@ -42,7 +50,9 @@
     "kukkiwonHangul": "몸통 안막기",
     "match": "similar",
     "textbookPage": 164,
-    "note": "Textbook p.164 item (11). Same direction (outside to inside) and same zone. CAUTION: the club PDF (7. Kup, 9. Kup) specifies the thumb side / inner forearm ('momtong-an-palmok-packat-macki'), the textbook uses the OUTER wrist (bakkat palmok). Same name pattern, slightly different contact surface; ITF 'an palmok makgi' (Kildare p.16) is the inner-forearm version."
+    "note": "Textbook p.164 item (11). Same direction (outside to inside) and same zone. CAUTION: the club PDF (7. Kup, 9. Kup) specifies the thumb side / inner forearm ('momtong-an-palmok-packat-macki'), the textbook uses the OUTER wrist (bakkat palmok). Same name pattern, slightly different contact surface; ITF 'an palmok makgi' (Kildare p.16) is the inner-forearm version.",
+    "noteDe": "Lehrbuch S. 164 Punkt (11). Gleiche Richtung (von außen nach innen) und gleiche Zone. ACHTUNG: Das Club-PDF (7. Kup, 9. Kup) verlangt die Daumenseite / den inneren Unterarm ('momtong-an-palmok-packat-macki'), das Lehrbuch verwendet das ÄUSSERE Handgelenk (bakkat palmok). Gleiches Namensmuster, leicht andere Kontaktfläche; das ITF 'an palmok makgi' (Kildare S. 16) ist die Variante mit dem inneren Unterarm.",
+    "noteEs": "Libro de texto p.164 punto (11). Misma dirección (de fuera hacia dentro) y misma zona. PRECAUCIÓN: el PDF del club (7. Kup, 9. Kup) especifica el lado del pulgar / el antebrazo interior ('momtong-an-palmok-packat-macki'), mientras que el libro de texto usa la muñeca EXTERIOR (bakkat palmok). Mismo patrón de nombre, superficie de contacto ligeramente distinta; el 'an palmok makgi' de la ITF (Kildare p.16) es la versión con el antebrazo interior."
   },
   {
     "cardId": "momtong-packat-macki",
@@ -51,7 +61,9 @@
     "kukkiwonHangul": "몸통 바깥막기",
     "match": "same",
     "textbookPage": 163,
-    "note": "Textbook p.163 item (8): outer wrist + trunk + outer makki = momtong bakkat-makki. Club packat = Kukkiwon bakkat (hangul 바깥); club full name 'momtong-packat-palmok-packat-macki' = bakkat palmok (outer forearm) + bakkat makgi."
+    "note": "Textbook p.163 item (8): outer wrist + trunk + outer makki = momtong bakkat-makki. Club packat = Kukkiwon bakkat (hangul 바깥); club full name 'momtong-packat-palmok-packat-macki' = bakkat palmok (outer forearm) + bakkat makgi.",
+    "noteDe": "Lehrbuch S. 163 Punkt (8): äußeres Handgelenk + Rumpf + äußeres Makki = momtong bakkat-makki. Club packat = Kukkiwon bakkat (Hangul 바깥); der vollständige Club-Name 'momtong-packat-palmok-packat-macki' = bakkat palmok (äußerer Unterarm) + bakkat makgi.",
+    "noteEs": "Libro de texto p.163 punto (8): muñeca exterior + tronco + makki exterior = momtong bakkat-makki. Club packat = Kukkiwon bakkat (hangul 바깥); el nombre completo del club 'momtong-packat-palmok-packat-macki' = bakkat palmok (antebrazo exterior) + bakkat makgi."
   },
   {
     "cardId": "hansonnal-arae-macki",
@@ -60,7 +72,9 @@
     "kukkiwonHangul": "한손날 아래막기",
     "match": "same",
     "textbookPage": 170,
-    "note": "Textbook p.170 item (49): one hand-blade + underneath + outer makki = hansonnal arae-makki. In Taegeuk 7 Jang the two-hand version 'sonnal arae makgi' (p.168 item 36) is used; the club 'han-' variant is the single-hand one."
+    "note": "Textbook p.170 item (49): one hand-blade + underneath + outer makki = hansonnal arae-makki. In Taegeuk 7 Jang the two-hand version 'sonnal arae makgi' (p.168 item 36) is used; the club 'han-' variant is the single-hand one.",
+    "noteDe": "Lehrbuch S. 170 Punkt (49): eine Handkante + unten + äußeres Makki = hansonnal arae-makki. In Taegeuk 7 Jang wird die Zweihand-Version 'sonnal arae makgi' (S. 168 Punkt 36) verwendet; die Club-Variante mit 'han-' ist die Einhand-Version.",
+    "noteEs": "Libro de texto p.170 punto (49): un canto de mano + abajo + makki exterior = hansonnal arae-makki. En Taegeuk 7 Jang se usa la versión con dos manos 'sonnal arae makgi' (p.168 punto 36); la variante del club con 'han-' es la de una sola mano."
   },
   {
     "cardId": "momtong-hansonnal-packat-macki",
@@ -69,7 +83,9 @@
     "kukkiwonHangul": "한손날 (몸통) 바깥막기",
     "match": "similar",
     "textbookPage": 169,
-    "note": "Textbook p.169 item (44): one hand-blade + trunk + outer makki = 'hansonnal bakkat-makki' (momtong implied; hangul reconstructed from the textbook romanization, not seen in Hangul). The Taegeuk 4 Jang knife-hand block is the two-hand 'sonnal momtong makgi' (p.167 item 29). Word order differs from the club name; treat as the same family."
+    "note": "Textbook p.169 item (44): one hand-blade + trunk + outer makki = 'hansonnal bakkat-makki' (momtong implied; hangul reconstructed from the textbook romanization, not seen in Hangul). The Taegeuk 4 Jang knife-hand block is the two-hand 'sonnal momtong makgi' (p.167 item 29). Word order differs from the club name; treat as the same family.",
+    "noteDe": "Lehrbuch S. 169 Punkt (44): eine Handkante + Rumpf + äußeres Makki = 'hansonnal bakkat-makki' (momtong impliziert; Hangul aus der Lehrbuch-Romanisierung rekonstruiert, nicht in Hangul gesehen). Der Handkantenblock in Taegeuk 4 Jang ist das Zweihand-'sonnal momtong makgi' (S. 167 Punkt 29). Die Wortstellung weicht vom Club-Namen ab; als dieselbe Familie zu behandeln.",
+    "noteEs": "Libro de texto p.169 punto (44): un canto de mano + tronco + makki exterior = 'hansonnal bakkat-makki' (momtong sobreentendido; el hangul está reconstruido a partir de la romanización del libro de texto, no visto en hangul). El bloqueo de canto de mano de Taegeuk 4 Jang es el 'sonnal momtong makgi' con dos manos (p.167 punto 29). El orden de las palabras difiere del nombre del club; se trata como la misma familia."
   },
   {
     "cardId": "sonnal-momtong-kotoro-macki",
@@ -78,7 +94,9 @@
     "kukkiwonHangul": "거들어 손날 몸통막기",
     "match": "similar",
     "textbookPage": 159,
-    "note": "Club kotoro = 거들어 (geodeureo, 'assisted'); textbook p.159 spells it 'kodureo makki (assisted makki)', p.167 item (25) 'kodureo momtong-makki'. Sonnal momtong makki is p.167 item (29). Course note 13 (Taegeuk 4) names the movement 'Geodeureo Sonnalbakkatmakgi'. Word order and the omitted 'bakkat' vary; unverified whether the club's exact hand position is identical."
+    "note": "Club kotoro = 거들어 (geodeureo, 'assisted'); textbook p.159 spells it 'kodureo makki (assisted makki)', p.167 item (25) 'kodureo momtong-makki'. Sonnal momtong makki is p.167 item (29). Course note 13 (Taegeuk 4) names the movement 'Geodeureo Sonnalbakkatmakgi'. Word order and the omitted 'bakkat' vary; unverified whether the club's exact hand position is identical.",
+    "noteDe": "Club kotoro = 거들어 (geodeureo, 'unterstützt'); Lehrbuch S. 159 schreibt es 'kodureo makki (assisted makki)', S. 167 Punkt (25) 'kodureo momtong-makki'. Sonnal momtong makki steht auf S. 167 Punkt (29). Kursnotiz 13 (Taegeuk 4) nennt die Bewegung 'Geodeureo Sonnalbakkatmakgi'. Wortstellung und das ausgelassene 'bakkat' variieren; unklar, ob die genaue Handstellung des Clubs identisch ist.",
+    "noteEs": "Club kotoro = 거들어 (geodeureo, 'asistido'); el libro de texto p.159 lo escribe 'kodureo makki (assisted makki)', p.167 punto (25) 'kodureo momtong-makki'. Sonnal momtong makki está en p.167 punto (29). La nota de curso 13 (Taegeuk 4) llama al movimiento 'Geodeureo Sonnalbakkatmakgi'. El orden de las palabras y la omisión de 'bakkat' varían; no está comprobado si la posición exacta de las manos del club es idéntica."
   },
   {
     "cardId": "goduro-packat-palmok-packat-macki",
@@ -87,7 +105,9 @@
     "kukkiwonHangul": "거들어 바깥팔목 (몸통) 바깥막기",
     "match": "similar",
     "textbookPage": 350,
-    "note": "Textbook Taegeuk 8 Jang intro (p.350) lists 'bakkatpalmok momtong kodureo bakkat-makki' (assisted outer-forearm trunk outer block); p.163 item (8'). Course note 17 'Geodeureobakkatmakgi'. The club describes it as 'double fist'; the textbook describes the second arm as assisting. 'momtong' is omitted in the club name."
+    "note": "Textbook Taegeuk 8 Jang intro (p.350) lists 'bakkatpalmok momtong kodureo bakkat-makki' (assisted outer-forearm trunk outer block); p.163 item (8'). Course note 17 'Geodeureobakkatmakgi'. The club describes it as 'double fist'; the textbook describes the second arm as assisting. 'momtong' is omitted in the club name.",
+    "noteDe": "Lehrbuch Einleitung zu Taegeuk 8 Jang (S. 350) führt 'bakkatpalmok momtong kodureo bakkat-makki' auf (unterstützter Rumpfblock mit äußerem Unterarm, außen); S. 163 Punkt (8'). Kursnotiz 17 'Geodeureobakkatmakgi'. Der Club beschreibt ihn als 'double fist'; das Lehrbuch beschreibt den zweiten Arm als unterstützend. 'momtong' fehlt im Club-Namen.",
+    "noteEs": "La introducción de Taegeuk 8 Jang del libro de texto (p.350) lista 'bakkatpalmok momtong kodureo bakkat-makki' (bloqueo exterior de tronco asistido con antebrazo exterior); p.163 punto (8'). Nota de curso 17 'Geodeureobakkatmakgi'. El club lo describe como 'double fist'; el libro de texto describe el segundo brazo como de apoyo. 'momtong' se omite en el nombre del club."
   },
   {
     "cardId": "ap-chagi",
@@ -96,7 +116,9 @@
     "kukkiwonHangul": "앞차기",
     "match": "same",
     "textbookPage": 202,
-    "note": "Textbook p.202 (a. Ap-chagi, front kick, fore sole). ITF: ap cha olligi / ap chaolligi (Kildare p.16). Identical in Taegeuk 1 Jang."
+    "note": "Textbook p.202 (a. Ap-chagi, front kick, fore sole). ITF: ap cha olligi / ap chaolligi (Kildare p.16). Identical in Taegeuk 1 Jang.",
+    "noteDe": "Lehrbuch S. 202 (a. Ap-chagi, Frontaltritt, Fußballen). ITF: ap cha olligi / ap chaolligi (Kildare S. 16). Identisch in Taegeuk 1 Jang.",
+    "noteEs": "Libro de texto p.202 (a. Ap-chagi, patada frontal, planta del pie). ITF: ap cha olligi / ap chaolligi (Kildare p.16). Idéntica en Taegeuk 1 Jang."
   },
   {
     "cardId": "dollyo-chagi",
@@ -105,7 +127,9 @@
     "kukkiwonHangul": "돌려차기",
     "match": "same",
     "textbookPage": 205,
-    "note": "Textbook p.205 (c. Dollyo chagi, turning kick). Textbook spells dollyo, Revised Romanization is dollyeo. Same in ITF (Kildare p.56 'Dollyo chagi')."
+    "note": "Textbook p.205 (c. Dollyo chagi, turning kick). Textbook spells dollyo, Revised Romanization is dollyeo. Same in ITF (Kildare p.56 'Dollyo chagi').",
+    "noteDe": "Lehrbuch S. 205 (c. Dollyo chagi, Halbkreistritt). Das Lehrbuch schreibt dollyo, die Revidierte Romanisierung ist dollyeo. Gleich in der ITF (Kildare S. 56 'Dollyo chagi').",
+    "noteEs": "Libro de texto p.205 (c. Dollyo chagi, patada circular). El libro de texto escribe dollyo, la romanización revisada es dollyeo. Igual en la ITF (Kildare p.56 'Dollyo chagi')."
   },
   {
     "cardId": "yop-chagi",
@@ -114,7 +138,9 @@
     "kukkiwonHangul": "옆차기",
     "match": "same",
     "textbookPage": 203,
-    "note": "Textbook p.203-204 (b. Yop-chagi, side kick, back sole/foot blade). Textbook spells yop, Revised Romanization is yeop. The ITF manual (Kildare) uses the same word 'yop' for side attacks (e.g. yop jirugi, p.56)."
+    "note": "Textbook p.203-204 (b. Yop-chagi, side kick, back sole/foot blade). Textbook spells yop, Revised Romanization is yeop. The ITF manual (Kildare) uses the same word 'yop' for side attacks (e.g. yop jirugi, p.56).",
+    "noteDe": "Lehrbuch S. 203-204 (b. Yop-chagi, Seitwärtstritt, Fußsohle hinten / Fußkante). Das Lehrbuch schreibt yop, die Revidierte Romanisierung ist yeop. Das ITF-Handbuch (Kildare) verwendet dasselbe Wort 'yop' für seitliche Angriffe (z. B. yop jirugi, S. 56).",
+    "noteEs": "Libro de texto p.203-204 (b. Yop-chagi, patada lateral, planta trasera / canto del pie). El libro de texto escribe yop, la romanización revisada es yeop. El manual de la ITF (Kildare) usa la misma palabra 'yop' para ataques laterales (p. ej. yop jirugi, p.56)."
   },
   {
     "cardId": "naeryo-chagi",
@@ -123,7 +149,9 @@
     "kukkiwonHangul": "내려차기",
     "match": "same",
     "textbookPage": 210,
-    "note": "Textbook p.210 (h. Naeryo-chagi, downward kick, heel/sole). Club 'axe kick' = this kick. Textbook adds the direction variants an naeryo-chagi and bakkat naeryo-chagi on the same page."
+    "note": "Textbook p.210 (h. Naeryo-chagi, downward kick, heel/sole). Club 'axe kick' = this kick. Textbook adds the direction variants an naeryo-chagi and bakkat naeryo-chagi on the same page.",
+    "noteDe": "Lehrbuch S. 210 (h. Naeryo-chagi, Abwärtstritt, Ferse/Sohle). Club 'axe kick' = dieser Tritt. Das Lehrbuch ergänzt auf derselben Seite die Richtungsvarianten an naeryo-chagi und bakkat naeryo-chagi.",
+    "noteEs": "Libro de texto p.210 (h. Naeryo-chagi, patada descendente, talón/planta). El 'axe kick' del club = esta patada. El libro de texto añade en la misma página las variantes de dirección an naeryo-chagi y bakkat naeryo-chagi."
   },
   {
     "cardId": "düt-chagi",
@@ -132,7 +160,9 @@
     "kukkiwonHangul": "뒤차기",
     "match": "same",
     "textbookPage": 207,
-    "note": "Textbook p.207 (c. Dwi-chagi, back kick, back sole). Club düt = dwit (뒷), which is the form used before a noun (dwitkubi); the kick itself is dwi chagi. The club calls it 'Pferdetritt' (horse kick) in brackets. Course note 57 'Dwichagi'."
+    "note": "Textbook p.207 (c. Dwi-chagi, back kick, back sole). Club düt = dwit (뒷), which is the form used before a noun (dwitkubi); the kick itself is dwi chagi. The club calls it 'Pferdetritt' (horse kick) in brackets. Course note 57 'Dwichagi'.",
+    "noteDe": "Lehrbuch S. 207 (c. Dwi-chagi, Rückwärtstritt, hintere Sohle). Club düt = dwit (뒷), die Form vor einem Nomen (dwitkubi); der Tritt selbst heißt dwi chagi. Der Club nennt ihn in Klammern 'Pferdetritt' (Pferdetritt). Kursnotiz 57 'Dwichagi'.",
+    "noteEs": "Libro de texto p.207 (c. Dwi-chagi, patada hacia atrás, planta trasera). Club düt = dwit (뒷), que es la forma usada antes de un sustantivo (dwitkubi); la patada en sí es dwi chagi. El club la llama entre paréntesis 'Pferdetritt' (patada de caballo). Nota de curso 57 'Dwichagi'."
   },
   {
     "cardId": "moa-sogi",
@@ -141,7 +171,9 @@
     "kukkiwonHangul": "모아서기",
     "match": "same",
     "textbookPage": 149,
-    "note": "Textbook p.149: moa-seogi = feet closed; dwichuk-moaseogi (heels together, toes 22 degrees out) is what is called the 'attention stance'. Club commands it with 'charyo!' (ITF: charyot sogi, Kildare p.6)."
+    "note": "Textbook p.149: moa-seogi = feet closed; dwichuk-moaseogi (heels together, toes 22 degrees out) is what is called the 'attention stance'. Club commands it with 'charyo!' (ITF: charyot sogi, Kildare p.6).",
+    "noteDe": "Lehrbuch S. 149: moa-seogi = Füße geschlossen; dwichuk-moaseogi (Fersen zusammen, Zehen 22 Grad nach außen) wird als 'Grundstellung/Achtungsstellung' bezeichnet ('attention stance'). Der Club kommandiert sie mit 'charyo!' (ITF: charyot sogi, Kildare S. 6).",
+    "noteEs": "Libro de texto p.149: moa-seogi = pies juntos; dwichuk-moaseogi (talones juntos, puntas 22 grados hacia afuera) es lo que se llama la 'posición de firmes' ('attention stance'). El club la ordena con 'charyo!' (ITF: charyot sogi, Kildare p.6)."
   },
   {
     "cardId": "pyonhi-sogi",
@@ -150,7 +182,9 @@
     "kukkiwonHangul": "편히서기",
     "match": "same",
     "textbookPage": 141,
-    "note": "Textbook p.141 (4): at-ease stance, heels one foot apart, toes about 22 degrees out. Club: shoulder width, toes slightly out, inner foot edges parallel. The club programme (9. Kup) also calls it 'chumbi-sogi' (ready stance), an ITF-style label."
+    "note": "Textbook p.141 (4): at-ease stance, heels one foot apart, toes about 22 degrees out. Club: shoulder width, toes slightly out, inner foot edges parallel. The club programme (9. Kup) also calls it 'chumbi-sogi' (ready stance), an ITF-style label.",
+    "noteDe": "Lehrbuch S. 141 (4): Bequemstellung, Fersen einen Fuß breit auseinander, Zehen etwa 22 Grad nach außen. Club: schulterbreit, Zehen leicht nach außen, innere Fußkanten parallel. Das Club-Programm (9. Kup) nennt sie auch 'chumbi-sogi' (Bereitschaftsstellung), eine Bezeichnung im ITF-Stil.",
+    "noteEs": "Libro de texto p.141 (4): posición de descanso, talones separados un pie, puntas unos 22 grados hacia afuera. Club: ancho de hombros, puntas ligeramente hacia afuera, bordes internos de los pies paralelos. El programa del club (9. Kup) también la llama 'chumbi-sogi' (posición de listo), una denominación de estilo ITF."
   },
   {
     "cardId": "chuchum-sogi",
@@ -159,7 +193,9 @@
     "kukkiwonHangul": "주춤서기",
     "match": "same",
     "textbookPage": 142,
-    "note": "Textbook p.142 (6): riding stance, feet two foot-lengths apart, soles parallel. Club glossary writes 'chumchum-sogi' (typo) in one place. ITF equivalent: annun sogi (sitting stance, Kildare p.57)."
+    "note": "Textbook p.142 (6): riding stance, feet two foot-lengths apart, soles parallel. Club glossary writes 'chumchum-sogi' (typo) in one place. ITF equivalent: annun sogi (sitting stance, Kildare p.57).",
+    "noteDe": "Lehrbuch S. 142 (6): Reitersitz, Füße zwei Fußlängen auseinander, Sohlen parallel. Das Club-Glossar schreibt an einer Stelle 'chumchum-sogi' (Tippfehler). ITF-Entsprechung: annun sogi (Sitzstellung, Kildare S. 57).",
+    "noteEs": "Libro de texto p.142 (6): posición del jinete, pies separados dos longitudes de pie, plantas paralelas. El glosario del club escribe en un lugar 'chumchum-sogi' (errata). Equivalente ITF: annun sogi (posición sentada, Kildare p.57)."
   },
   {
     "cardId": "ap-sogi",
@@ -168,7 +204,9 @@
     "kukkiwonHangul": "앞서기",
     "match": "same",
     "textbookPage": 144,
-    "note": "Textbook p.144 (11): one normal step long, both knees straight (the textbook's 'To Readers' table says old books called it 'walking stance'). Not the same as ITF 'gunnun sogi' (walking stance with bent front knee), which matches Kukkiwon ap-gubi in practice."
+    "note": "Textbook p.144 (11): one normal step long, both knees straight (the textbook's 'To Readers' table says old books called it 'walking stance'). Not the same as ITF 'gunnun sogi' (walking stance with bent front knee), which matches Kukkiwon ap-gubi in practice.",
+    "noteDe": "Lehrbuch S. 144 (11): einen normalen Schritt lang, beide Knie gestreckt (die Tabelle 'To Readers' des Lehrbuchs sagt, ältere Bücher nannten sie 'walking stance'). Nicht dasselbe wie ITF 'gunnun sogi' (Gehstellung mit gebeugtem vorderem Knie), das in der Praxis dem Kukkiwon-ap-gubi entspricht.",
+    "noteEs": "Libro de texto p.144 (11): un paso normal de largo, ambas rodillas estiradas (la tabla 'To Readers' del libro de texto dice que los libros antiguos la llamaban 'walking stance'). No es lo mismo que el 'gunnun sogi' de la ITF (posición de marcha con la rodilla delantera flexionada), que en la práctica corresponde al ap-gubi de Kukkiwon."
   },
   {
     "cardId": "ap-gubi",
@@ -177,7 +215,9 @@
     "kukkiwonHangul": "앞굽이",
     "match": "same",
     "textbookPage": 146,
-    "note": "Textbook p.146 (13): forward inflection stance, one and a half steps long, front knee bent. Textbook spells kubi, Revised Romanization is gubi. ITF counterpart: gunnun sogi (Kildare p.6)."
+    "note": "Textbook p.146 (13): forward inflection stance, one and a half steps long, front knee bent. Textbook spells kubi, Revised Romanization is gubi. ITF counterpart: gunnun sogi (Kildare p.6).",
+    "noteDe": "Lehrbuch S. 146 (13): vordere Beugestellung, anderthalb Schritte lang, vorderes Knie gebeugt. Das Lehrbuch schreibt kubi, die Revidierte Romanisierung ist gubi. ITF-Gegenstück: gunnun sogi (Kildare S. 6).",
+    "noteEs": "Libro de texto p.146 (13): posición de flexión hacia delante, un paso y medio de largo, rodilla delantera flexionada. El libro de texto escribe kubi, la romanización revisada es gubi. Equivalente ITF: gunnun sogi (Kildare p.6)."
   },
   {
     "cardId": "düt-gubi",
@@ -186,7 +226,9 @@
     "kukkiwonHangul": "뒷굽이",
     "match": "same",
     "textbookPage": 147,
-    "note": "Textbook p.147 (14): backward inflection stance, weight mostly on the back leg. Club calls it 'L-stance'; ITF equivalent is niunja sogi (L-stance, Kildare p.57); exact weight distribution may differ between the traditions (unverified)."
+    "note": "Textbook p.147 (14): backward inflection stance, weight mostly on the back leg. Club calls it 'L-stance'; ITF equivalent is niunja sogi (L-stance, Kildare p.57); exact weight distribution may differ between the traditions (unverified).",
+    "noteDe": "Lehrbuch S. 147 (14): hintere Beugestellung, Gewicht überwiegend auf dem hinteren Bein. Der Club nennt sie 'L-stance'; ITF-Entsprechung ist niunja sogi (L-Stellung, Kildare S. 57); die genaue Gewichtsverteilung kann sich zwischen den Traditionen unterscheiden (unverified in the sources).",
+    "noteEs": "Libro de texto p.147 (14): posición de flexión hacia atrás, peso principalmente sobre la pierna trasera. El club la llama 'L-stance'; el equivalente ITF es niunja sogi (posición en L, Kildare p.57); la distribución exacta del peso puede diferir entre las tradiciones (unverified in the sources)."
   },
   {
     "cardId": "saju-macki",
@@ -195,7 +237,9 @@
     "kukkiwonHangul": "사주 막기",
     "match": "none",
     "textbookPage": null,
-    "note": "The textbook has no 'saju'/'sa-ju' drill (searched whole text). It is the ITF/Chang-Hon drill 'Sajo makgi' (four-direction block, Kildare p.19; low knife-hand block + middle inner-forearm block). Club PDF 4.2 says it is a preparatory exercise, not a form. Hangul 사주 is the club's own (club PDF writes 사주 마기); the standard spelling of the second word is 막기. Hanja meaning 'four directions' is general knowledge, unverified here."
+    "note": "The textbook has no 'saju'/'sa-ju' drill (searched whole text). It is the ITF/Chang-Hon drill 'Sajo makgi' (four-direction block, Kildare p.19; low knife-hand block + middle inner-forearm block). Club PDF 4.2 says it is a preparatory exercise, not a form. Hangul 사주 is the club's own (club PDF writes 사주 마기); the standard spelling of the second word is 막기. Hanja meaning 'four directions' is general knowledge, unverified here.",
+    "noteDe": "Das Lehrbuch enthält keine Übung 'saju'/'sa-ju' (gesamter Text durchsucht). Es ist die ITF/Chang-Hon-Übung 'Sajo makgi' (Vier-Richtungs-Block, Kildare S. 19; tiefer Handkantenblock + mittlerer Innenunterarmblock). Club-PDF 4.2 sagt, es sei eine Vorübung, keine Form. Das Hangul 사주 stammt vom Club selbst (das Club-PDF schreibt 사주 마기); die Standardschreibung des zweiten Wortes ist 막기. Die Hanja-Bedeutung 'vier Richtungen' ist Allgemeinwissen, hier nicht belegt.",
+    "noteEs": "El libro de texto no contiene ningún ejercicio 'saju'/'sa-ju' (se buscó en todo el texto). Es el ejercicio ITF/Chang-Hon 'Sajo makgi' (bloqueo en cuatro direcciones, Kildare p.19; bloqueo bajo de canto de mano + bloqueo medio con antebrazo interior). El PDF del club 4.2 dice que es un ejercicio preparatorio, no una forma. El hangul 사주 es propio del club (el PDF del club escribe 사주 마기); la grafía estándar de la segunda palabra es 막기. El significado en hanja 'cuatro direcciones' es conocimiento general, no comprobado aquí."
   },
   {
     "cardId": "twio-chagi",
@@ -204,7 +248,9 @@
     "kukkiwonHangul": "뛰어차기",
     "match": "same",
     "textbookPage": 215,
-    "note": "Textbook p.215-216 (5): twio-chagi (jump kick) is the general term; the specific kicks are named twio ap-chagi, twio yop-chagi, etc. Revised Romanization writes the double t: ttwieo. Course note 26 'Ttwieoyeopchagi'."
+    "note": "Textbook p.215-216 (5): twio-chagi (jump kick) is the general term; the specific kicks are named twio ap-chagi, twio yop-chagi, etc. Revised Romanization writes the double t: ttwieo. Course note 26 'Ttwieoyeopchagi'.",
+    "noteDe": "Lehrbuch S. 215-216 (5): twio-chagi (Sprungtritt) ist der allgemeine Begriff; die konkreten Tritte heißen twio ap-chagi, twio yop-chagi usw. Die Revidierte Romanisierung schreibt das doppelte t: ttwieo. Kursnotiz 26 'Ttwieoyeopchagi'.",
+    "noteEs": "Libro de texto p.215-216 (5): twio-chagi (patada con salto) es el término general; las patadas específicas se llaman twio ap-chagi, twio yop-chagi, etc. La romanización revisada escribe la t doble: ttwieo. Nota de curso 26 'Ttwieoyeopchagi'."
   },
   {
     "cardId": "twio-ap-chagi",
@@ -213,7 +259,9 @@
     "kukkiwonHangul": "뛰어 앞차기",
     "match": "same",
     "textbookPage": 216,
-    "note": "Textbook p.216 lists 'Twio ap-chagi' first among the jump-kick types."
+    "note": "Textbook p.216 lists 'Twio ap-chagi' first among the jump-kick types.",
+    "noteDe": "Lehrbuch S. 216 führt 'Twio ap-chagi' als erste unter den Sprungtritt-Arten auf.",
+    "noteEs": "El libro de texto p.216 lista 'Twio ap-chagi' en primer lugar entre los tipos de patadas con salto."
   },
   {
     "cardId": "an-naeryo-chagi",
@@ -222,7 +270,9 @@
     "kukkiwonHangul": "안 내려차기",
     "match": "same",
     "textbookPage": 210,
-    "note": "Textbook p.210-211: 'an naeryo-chagi' (inner) is used when the leg is lifted from the outer side, i.e. the leg travels outside to inside (club: von aussen nach innen). Not to be confused with plain 'an chagi' (inward crescent kick, p.212). Modern practice usually teaches just 'naeryeo chagi' (unverified in the sources)."
+    "note": "Textbook p.210-211: 'an naeryo-chagi' (inner) is used when the leg is lifted from the outer side, i.e. the leg travels outside to inside (club: von aussen nach innen). Not to be confused with plain 'an chagi' (inward crescent kick, p.212). Modern practice usually teaches just 'naeryeo chagi' (unverified in the sources).",
+    "noteDe": "Lehrbuch S. 210-211: 'an naeryo-chagi' (innen) wird verwendet, wenn das Bein von der Außenseite angehoben wird, d. h. das Bein verläuft von außen nach innen (Club: von aussen nach innen). Nicht zu verwechseln mit dem einfachen 'an chagi' (nach innen gerichteter Halbmondtritt, S. 212). In der modernen Praxis wird meist nur 'naeryeo chagi' gelehrt (unverified in the sources).",
+    "noteEs": "Libro de texto p.210-211: 'an naeryo-chagi' (interior) se usa cuando la pierna se levanta desde el lado exterior, es decir, la pierna se desplaza de fuera hacia dentro (club: de fuera hacia dentro). No confundir con el simple 'an chagi' (patada en media luna hacia dentro, p.212). La práctica moderna suele enseñar solo 'naeryeo chagi' (unverified in the sources)."
   },
   {
     "cardId": "packat-naeryo-chagi",
@@ -231,7 +281,9 @@
     "kukkiwonHangul": "바깥 내려차기",
     "match": "same",
     "textbookPage": 210,
-    "note": "Textbook p.210: 'bakkat naeryo-chagi' (outer) when the opponent is near and the leg is lifted from the inner side, i.e. the leg travels inside to outside (club: von innen nach aussen). Club packat = bakkat."
+    "note": "Textbook p.210: 'bakkat naeryo-chagi' (outer) when the opponent is near and the leg is lifted from the inner side, i.e. the leg travels inside to outside (club: von innen nach aussen). Club packat = bakkat.",
+    "noteDe": "Lehrbuch S. 210: 'bakkat naeryo-chagi' (außen), wenn der Gegner nah ist und das Bein von der Innenseite angehoben wird, d. h. das Bein verläuft von innen nach außen (Club: von innen nach aussen). Club packat = bakkat.",
+    "noteEs": "Libro de texto p.210: 'bakkat naeryo-chagi' (exterior) cuando el oponente está cerca y la pierna se levanta desde el lado interior, es decir, la pierna se desplaza de dentro hacia fuera (club: de dentro hacia fuera). Club packat = bakkat."
   },
   {
     "cardId": "gibon-junbi-sogi",
@@ -240,7 +292,9 @@
     "kukkiwonHangul": "기본 준비서기",
     "match": "same",
     "textbookPage": 154,
-    "note": "Textbook p.154 (1): basic ready stance, parallel feet, fists held just below the navel. The textbook writes 'jumbi' (as pronounced), Revised Romanization writes 'junbi' (준비). Taegeuk 1 Jang starts with it (p.245). Club notes the arm swing differs between poomse and hyong systems."
+    "note": "Textbook p.154 (1): basic ready stance, parallel feet, fists held just below the navel. The textbook writes 'jumbi' (as pronounced), Revised Romanization writes 'junbi' (준비). Taegeuk 1 Jang starts with it (p.245). Club notes the arm swing differs between poomse and hyong systems.",
+    "noteDe": "Lehrbuch S. 154 (1): Grund-Bereitschaftsstellung, Füße parallel, Fäuste knapp unterhalb des Nabels. Das Lehrbuch schreibt 'jumbi' (wie ausgesprochen), die Revidierte Romanisierung schreibt 'junbi' (준비). Taegeuk 1 Jang beginnt damit (S. 245). Der Club vermerkt, dass sich der Armschwung zwischen Poomse- und Hyong-Systemen unterscheidet.",
+    "noteEs": "Libro de texto p.154 (1): posición básica de listo, pies paralelos, puños justo debajo del ombligo. El libro de texto escribe 'jumbi' (tal como se pronuncia), la romanización revisada escribe 'junbi' (준비). Taegeuk 1 Jang comienza con ella (p.245). El club señala que el balanceo de los brazos difiere entre los sistemas poomse y hyong."
   },
   {
     "cardId": "narani-sogi",
@@ -249,7 +303,9 @@
     "kukkiwonHangul": "나란히서기",
     "match": "different",
     "textbookPage": 139,
-    "note": "FALSE FRIEND. Textbook p.139: narani seogi = feet one foot apart, inner edges parallel, toes forward. The club PDF (8. Kup) uses 'narani-sogi' for toes slightly IN (outer edges parallel), which the textbook calls 'antzong-seogi' (inward stance, p.141; its Hangul is not given in the sources, unverified). The club's 'pyonhi-sogi' (toes out) also has a parallel-feet twin in the textbook's narani."
+    "note": "FALSE FRIEND. Textbook p.139: narani seogi = feet one foot apart, inner edges parallel, toes forward. The club PDF (8. Kup) uses 'narani-sogi' for toes slightly IN (outer edges parallel), which the textbook calls 'antzong-seogi' (inward stance, p.141; its Hangul is not given in the sources, unverified). The club's 'pyonhi-sogi' (toes out) also has a parallel-feet twin in the textbook's narani.",
+    "noteDe": "FALSCHER FREUND. Lehrbuch S. 139: narani seogi = Füße einen Fuß breit auseinander, Innenkanten parallel, Zehen nach vorn. Das Club-PDF (8. Kup) verwendet 'narani-sogi' für Zehen leicht NACH INNEN (Außenkanten parallel), was das Lehrbuch 'antzong-seogi' (Innenstellung, S. 141; sein Hangul ist in den Quellen nicht angegeben, unverified) nennt. Das 'pyonhi-sogi' des Clubs (Zehen nach außen) hat ebenfalls einen Parallelfuß-Zwilling im narani des Lehrbuchs.",
+    "noteEs": "FALSO AMIGO. Libro de texto p.139: narani seogi = pies separados un pie, bordes internos paralelos, puntas hacia delante. El PDF del club (8. Kup) usa 'narani-sogi' para las puntas ligeramente HACIA ADENTRO (bordes exteriores paralelos), lo que el libro de texto llama 'antzong-seogi' (posición hacia adentro, p.141; su hangul no figura en las fuentes, unverified). El 'pyonhi-sogi' del club (puntas hacia afuera) también tiene un gemelo de pies paralelos en el narani del libro de texto."
   },
   {
     "cardId": "saju-chirugi",
@@ -258,7 +314,9 @@
     "kukkiwonHangul": "사주 지르기",
     "match": "none",
     "textbookPage": null,
-    "note": "Not in the textbook. ITF/Chang-Hon drill 'Sajo jirugi' (four-direction punch, Kildare p.18, low block + middle punch). Club PDF writes the Hangul as 사주 치루기, which is a misspelling of 지르기."
+    "note": "Not in the textbook. ITF/Chang-Hon drill 'Sajo jirugi' (four-direction punch, Kildare p.18, low block + middle punch). Club PDF writes the Hangul as 사주 치루기, which is a misspelling of 지르기.",
+    "noteDe": "Nicht im Lehrbuch. ITF/Chang-Hon-Übung 'Sajo jirugi' (Vier-Richtungs-Stoß, Kildare S. 18, tiefer Block + mittlerer Stoß). Das Club-PDF schreibt das Hangul als 사주 치루기, was eine Falschschreibung von 지르기 ist.",
+    "noteEs": "No figura en el libro de texto. Ejercicio ITF/Chang-Hon 'Sajo jirugi' (puñetazo en cuatro direcciones, Kildare p.18, bloqueo bajo + puñetazo medio). El PDF del club escribe el hangul como 사주 치루기, que es una grafía errónea de 지르기."
   },
   {
     "cardId": "macki",
@@ -267,7 +325,9 @@
     "kukkiwonHangul": "막기",
     "match": "same",
     "textbookPage": 158,
-    "note": "Block/defence (Textbook chapter 'Makki (defense)', p.158). Textbook spells makki, Revised Romanization makgi."
+    "note": "Block/defence (Textbook chapter 'Makki (defense)', p.158). Textbook spells makki, Revised Romanization makgi.",
+    "noteDe": "Block/Abwehr (Lehrbuch-Kapitel 'Makki (defense)', S. 158). Das Lehrbuch schreibt makki, die Revidierte Romanisierung ist makgi.",
+    "noteEs": "Bloqueo/defensa (capítulo del libro de texto 'Makki (defense)', p.158). El libro de texto escribe makki, la romanización revisada es makgi."
   },
   {
     "cardId": "chirugi",
@@ -276,7 +336,9 @@
     "kukkiwonHangul": "지르기",
     "match": "same",
     "textbookPage": 180,
-    "note": "Punch (Textbook p.180). The club glossary lists 'chirugi' as Stoss and 'jirugi' as Stich (thrust); the textbook separates jireugi (punch, fist, straight line) from tzireugi (thrust, 찌르기, fingertips, p.198)."
+    "note": "Punch (Textbook p.180). The club glossary lists 'chirugi' as Stoss and 'jirugi' as Stich (thrust); the textbook separates jireugi (punch, fist, straight line) from tzireugi (thrust, 찌르기, fingertips, p.198).",
+    "noteDe": "Stoß/Fauststoß (Lehrbuch S. 180). Das Club-Glossar führt 'chirugi' als Stoss und 'jirugi' als Stich (thrust); das Lehrbuch trennt jireugi (Fauststoß, Faust, gerade Linie) von tzireugi (Stich, 찌르기, Fingerspitzen, S. 198).",
+    "noteEs": "Puñetazo (libro de texto p.180). El glosario del club lista 'chirugi' como Stoss y 'jirugi' como Stich (thrust); el libro de texto separa jireugi (puñetazo, puño, línea recta) de tzireugi (estocada, 찌르기, puntas de los dedos, p.198)."
   },
   {
     "cardId": "chicki",
@@ -285,7 +347,9 @@
     "kukkiwonHangul": "치기",
     "match": "same",
     "textbookPage": 190,
-    "note": "Strike (Textbook p.190). Circular arm attack, unlike the straight jireugi. ITF word: taerigi (Kildare p.57)."
+    "note": "Strike (Textbook p.190). Circular arm attack, unlike the straight jireugi. ITF word: taerigi (Kildare p.57).",
+    "noteDe": "Schlag (Lehrbuch S. 190). Kreisförmiger Armangriff, im Gegensatz zum geraden jireugi. ITF-Wort: taerigi (Kildare S. 57).",
+    "noteEs": "Golpe (libro de texto p.190). Ataque circular con el brazo, a diferencia del jireugi recto. Palabra ITF: taerigi (Kildare p.57)."
   },
   {
     "cardId": "chagi",
@@ -294,7 +358,9 @@
     "kukkiwonHangul": "차기",
     "match": "same",
     "textbookPage": 201,
-    "note": "Kick (Textbook p.201). Identical in all three traditions."
+    "note": "Kick (Textbook p.201). Identical in all three traditions.",
+    "noteDe": "Tritt (Lehrbuch S. 201). In allen drei Traditionen identisch.",
+    "noteEs": "Patada (libro de texto p.201). Idéntica en las tres tradiciones."
   },
   {
     "cardId": "sogi",
@@ -303,7 +369,9 @@
     "kukkiwonHangul": "서기",
     "match": "same",
     "textbookPage": 139,
-    "note": "Stance (Textbook 'Seogi (stance)' p.139). Verb 서다 'to stand'."
+    "note": "Stance (Textbook 'Seogi (stance)' p.139). Verb 서다 'to stand'.",
+    "noteDe": "Stellung (Lehrbuch 'Seogi (stance)' S. 139). Verb 서다 'stehen'.",
+    "noteEs": "Posición (libro de texto 'Seogi (stance)' p.139). Verbo 서다 'estar de pie'."
   },
   {
     "cardId": "gubi",
@@ -312,7 +380,9 @@
     "kukkiwonHangul": "굽이",
     "match": "same",
     "textbookPage": 146,
-    "note": "Inflection / bend of the knee (Textbook apkubi p.146, dwitkubi p.147). The ITF replaced this word with gunnun (walking) in gunnun sogi."
+    "note": "Inflection / bend of the knee (Textbook apkubi p.146, dwitkubi p.147). The ITF replaced this word with gunnun (walking) in gunnun sogi.",
+    "noteDe": "Beugung / Knieflexion (Lehrbuch apkubi S. 146, dwitkubi S. 147). Die ITF hat dieses Wort in gunnun sogi durch gunnun (gehend) ersetzt.",
+    "noteEs": "Flexión / doblez de la rodilla (libro de texto apkubi p.146, dwitkubi p.147). La ITF sustituyó esta palabra por gunnun (caminando) en gunnun sogi."
   },
   {
     "cardId": "olgul",
@@ -321,7 +391,9 @@
     "kukkiwonHangul": "얼굴",
     "match": "same",
     "textbookPage": 182,
-    "note": "Face (target zone 'high'). Textbook p.182 'Olgul-jireugi (face jireugi)'. ITF equivalent for 'high' is nopunde (Kildare p.16)."
+    "note": "Face (target zone 'high'). Textbook p.182 'Olgul-jireugi (face jireugi)'. ITF equivalent for 'high' is nopunde (Kildare p.16).",
+    "noteDe": "Gesicht (Zielzone 'hoch'). Lehrbuch S. 182 'Olgul-jireugi (face jireugi)'. ITF-Entsprechung für 'hoch' ist nopunde (Kildare S. 16).",
+    "noteEs": "Rostro (zona objetivo 'alta'). Libro de texto p.182 'Olgul-jireugi (face jireugi)'. El equivalente ITF para 'alto' es nopunde (Kildare p.16)."
   },
   {
     "cardId": "momtong",
@@ -330,7 +402,9 @@
     "kukkiwonHangul": "몸통",
     "match": "same",
     "textbookPage": 182,
-    "note": "Trunk (target zone 'middle'). Textbook p.182. ITF equivalent for 'middle' is kaunde (Kildare p.16)."
+    "note": "Trunk (target zone 'middle'). Textbook p.182. ITF equivalent for 'middle' is kaunde (Kildare p.16).",
+    "noteDe": "Rumpf (Zielzone 'mittel'). Lehrbuch S. 182. ITF-Entsprechung für 'mittel' ist kaunde (Kildare S. 16).",
+    "noteEs": "Tronco (zona objetivo 'media'). Libro de texto p.182. El equivalente ITF para 'medio' es kaunde (Kildare p.16)."
   },
   {
     "cardId": "arae",
@@ -339,7 +413,9 @@
     "kukkiwonHangul": "아래",
     "match": "same",
     "textbookPage": 182,
-    "note": "Below / underneath (lower zone). Textbook p.182 'Arae-jireugi (underneath jireugi)'. ITF equivalent: najunde (Kildare p.16)."
+    "note": "Below / underneath (lower zone). Textbook p.182 'Arae-jireugi (underneath jireugi)'. ITF equivalent: najunde (Kildare p.16).",
+    "noteDe": "Unten / darunter (untere Zone). Lehrbuch S. 182 'Arae-jireugi (underneath jireugi)'. ITF-Entsprechung: najunde (Kildare S. 16).",
+    "noteEs": "Abajo / por debajo (zona inferior). Libro de texto p.182 'Arae-jireugi (underneath jireugi)'. Equivalente ITF: najunde (Kildare p.16)."
   },
   {
     "cardId": "mok",
@@ -348,7 +424,9 @@
     "kukkiwonHangul": "목",
     "match": "same",
     "textbookPage": 194,
-    "note": "Neck. Textbook p.194 'sonnal mok-chigi'. Not to be confused with sonmok (wrist, 손목) in the club glossary."
+    "note": "Neck. Textbook p.194 'sonnal mok-chigi'. Not to be confused with sonmok (wrist, 손목) in the club glossary.",
+    "noteDe": "Hals. Lehrbuch S. 194 'sonnal mok-chigi'. Nicht zu verwechseln mit sonmok (Handgelenk, 손목) im Club-Glossar.",
+    "noteEs": "Cuello. Libro de texto p.194 'sonnal mok-chigi'. No confundir con sonmok (muñeca, 손목) del glosario del club."
   },
   {
     "cardId": "ap",
@@ -357,7 +435,9 @@
     "kukkiwonHangul": "앞",
     "match": "same",
     "textbookPage": 202,
-    "note": "Front / forward (ap-chagi p.202, ap-seogi p.144)."
+    "note": "Front / forward (ap-chagi p.202, ap-seogi p.144).",
+    "noteDe": "Vorn / vorwärts (ap-chagi S. 202, ap-seogi S. 144).",
+    "noteEs": "Delante / hacia delante (ap-chagi p.202, ap-seogi p.144)."
   },
   {
     "cardId": "yop",
@@ -366,7 +446,9 @@
     "kukkiwonHangul": "옆",
     "match": "same",
     "textbookPage": 203,
-    "note": "Side (yop-chagi p.203, yop-jireugi p.183). Revised Romanization: yeop."
+    "note": "Side (yop-chagi p.203, yop-jireugi p.183). Revised Romanization: yeop.",
+    "noteDe": "Seite (yop-chagi S. 203, yop-jireugi S. 183). Revidierte Romanisierung: yeop.",
+    "noteEs": "Lado (yop-chagi p.203, yop-jireugi p.183). Romanización revisada: yeop."
   },
   {
     "cardId": "düt",
@@ -375,7 +457,9 @@
     "kukkiwonHangul": "뒷",
     "match": "same",
     "textbookPage": 147,
-    "note": "Back, behind. The textbook writes dwi-chagi (뒤차기, p.207) and dwitkubi (뒷굽이, p.147): 뒤 stands alone, 뒷 is the linking form before a noun. The club's 'ü' is a German-style rendering of Korean 'wi'."
+    "note": "Back, behind. The textbook writes dwi-chagi (뒤차기, p.207) and dwitkubi (뒷굽이, p.147): 뒤 stands alone, 뒷 is the linking form before a noun. The club's 'ü' is a German-style rendering of Korean 'wi'.",
+    "noteDe": "Hinten, hinter. Das Lehrbuch schreibt dwi-chagi (뒤차기, S. 207) und dwitkubi (뒷굽이, S. 147): 뒤 steht allein, 뒷 ist die Verbindungsform vor einem Nomen. Das 'ü' des Clubs ist eine deutsche Wiedergabe des koreanischen 'wi'.",
+    "noteEs": "Atrás, detrás. El libro de texto escribe dwi-chagi (뒤차기, p.207) y dwitkubi (뒷굽이, p.147): 뒤 aparece solo, 뒷 es la forma de enlace antes de un sustantivo. La 'ü' del club es una representación al estilo alemán del coreano 'wi'."
   },
   {
     "cardId": "an",
@@ -384,7 +468,9 @@
     "kukkiwonHangul": "안",
     "match": "same",
     "textbookPage": 164,
-    "note": "Inner / inward (movement from outside to inside). Textbook 'an-makki' p.164, 'an-chigi' p.193. ITF: anuro (Kildare p.58)."
+    "note": "Inner / inward (movement from outside to inside). Textbook 'an-makki' p.164, 'an-chigi' p.193. ITF: anuro (Kildare p.58).",
+    "noteDe": "Innen / nach innen (Bewegung von außen nach innen). Lehrbuch 'an-makki' S. 164, 'an-chigi' S. 193. ITF: anuro (Kildare S. 58).",
+    "noteEs": "Interior / hacia dentro (movimiento de fuera hacia dentro). Libro de texto 'an-makki' p.164, 'an-chigi' p.193. ITF: anuro (Kildare p.58)."
   },
   {
     "cardId": "packat",
@@ -393,7 +479,9 @@
     "kukkiwonHangul": "바깥",
     "match": "same",
     "textbookPage": 163,
-    "note": "Outer / outward (movement from inside to outside). Textbook 'bakkat-makki' p.163. ITF: bakuro (Kildare p.59) / bakat palmok (p.16). The club's 'p' reflects the older romanization of the consonant."
+    "note": "Outer / outward (movement from inside to outside). Textbook 'bakkat-makki' p.163. ITF: bakuro (Kildare p.59) / bakat palmok (p.16). The club's 'p' reflects the older romanization of the consonant.",
+    "noteDe": "Außen / nach außen (Bewegung von innen nach außen). Lehrbuch 'bakkat-makki' S. 163. ITF: bakuro (Kildare S. 59) / bakat palmok (S. 16). Das 'p' des Clubs spiegelt die ältere Romanisierung des Konsonanten wider.",
+    "noteEs": "Exterior / hacia fuera (movimiento de dentro hacia fuera). Libro de texto 'bakkat-makki' p.163. ITF: bakuro (Kildare p.59) / bakat palmok (p.16). La 'p' del club refleja la romanización más antigua de la consonante."
   },
   {
     "cardId": "naeryo",
@@ -402,7 +490,9 @@
     "kukkiwonHangul": "내려",
     "match": "same",
     "textbookPage": 210,
-    "note": "Down, downward (verb stem 내리다 'to lower'). Textbook 'naeryo-chagi' p.210, 'naeryo-jireugi' p.183."
+    "note": "Down, downward (verb stem 내리다 'to lower'). Textbook 'naeryo-chagi' p.210, 'naeryo-jireugi' p.183.",
+    "noteDe": "Ab, abwärts (Verbstamm 내리다 'senken'). Lehrbuch 'naeryo-chagi' S. 210, 'naeryo-jireugi' S. 183.",
+    "noteEs": "Abajo, hacia abajo (raíz verbal 내리다 'bajar'). Libro de texto 'naeryo-chagi' p.210, 'naeryo-jireugi' p.183."
   },
   {
     "cardId": "dollyo",
@@ -411,7 +501,9 @@
     "kukkiwonHangul": "돌려",
     "match": "same",
     "textbookPage": 205,
-    "note": "Turning (verb stem 돌리다 'to turn something'). Textbook 'dollyo chagi' p.205, 'dollyo-jireugi' p.184."
+    "note": "Turning (verb stem 돌리다 'to turn something'). Textbook 'dollyo chagi' p.205, 'dollyo-jireugi' p.184.",
+    "noteDe": "Drehend (Verbstamm 돌리다 'etwas drehen'). Lehrbuch 'dollyo chagi' S. 205, 'dollyo-jireugi' S. 184.",
+    "noteEs": "Giratorio (raíz verbal 돌리다 'hacer girar algo'). Libro de texto 'dollyo chagi' p.205, 'dollyo-jireugi' p.184."
   },
   {
     "cardId": "twio",
@@ -420,7 +512,9 @@
     "kukkiwonHangul": "뛰어",
     "match": "same",
     "textbookPage": 215,
-    "note": "Jumping (verb stem 뛰다 'to jump/run'). Textbook 'twio-chagi' p.215. Revised Romanization doubles the t (ttwieo)."
+    "note": "Jumping (verb stem 뛰다 'to jump/run'). Textbook 'twio-chagi' p.215. Revised Romanization doubles the t (ttwieo).",
+    "noteDe": "Springend (Verbstamm 뛰다 'springen/rennen'). Lehrbuch 'twio-chagi' S. 215. Die Revidierte Romanisierung verdoppelt das t (ttwieo).",
+    "noteEs": "Con salto (raíz verbal 뛰다 'saltar/correr'). Libro de texto 'twio-chagi' p.215. La romanización revisada duplica la t (ttwieo)."
   },
   {
     "cardId": "kotoro",
@@ -429,7 +523,9 @@
     "kukkiwonHangul": "거들어",
     "match": "similar",
     "textbookPage": 159,
-    "note": "Assisted / reinforced: the second hand supports the working arm. Textbook p.159 writes 'kodureo'. Club 'kotoro' shows the older voiced/unvoiced swing (k/g, t/d) and drops the vowel marks of ㅓ and ㅡ. Same Hangul as 'goduro'."
+    "note": "Assisted / reinforced: the second hand supports the working arm. Textbook p.159 writes 'kodureo'. Club 'kotoro' shows the older voiced/unvoiced swing (k/g, t/d) and drops the vowel marks of ㅓ and ㅡ. Same Hangul as 'goduro'.",
+    "noteDe": "Unterstützt / verstärkt: die zweite Hand stützt den arbeitenden Arm. Lehrbuch S. 159 schreibt 'kodureo'. Das 'kotoro' des Clubs zeigt das ältere Schwanken zwischen stimmhaft/stimmlos (k/g, t/d) und lässt die Vokalzeichen von ㅓ und ㅡ weg. Dasselbe Hangul wie 'goduro'.",
+    "noteEs": "Asistido / reforzado: la segunda mano apoya el brazo que trabaja. El libro de texto p.159 escribe 'kodureo'. El 'kotoro' del club muestra la antigua oscilación sonora/sorda (k/g, t/d) y omite las marcas vocálicas de ㅓ y ㅡ. Mismo hangul que 'goduro'."
   },
   {
     "cardId": "goduro",
@@ -438,7 +534,9 @@
     "kukkiwonHangul": "거들어",
     "match": "similar",
     "textbookPage": 159,
-    "note": "Second club spelling of the same word as 'kotoro' (both are 거들어). Textbook p.159 'kodureo'. Course notes: 'Geodeureo...'."
+    "note": "Second club spelling of the same word as 'kotoro' (both are 거들어). Textbook p.159 'kodureo'. Course notes: 'Geodeureo...'.",
+    "noteDe": "Zweite Club-Schreibweise desselben Wortes wie 'kotoro' (beide sind 거들어). Lehrbuch S. 159 'kodureo'. Kursnotizen: 'Geodeureo...'.",
+    "noteEs": "Segunda grafía del club de la misma palabra que 'kotoro' (ambas son 거들어). Libro de texto p.159 'kodureo'. Notas de curso: 'Geodeureo...'."
   },
   {
     "cardId": "sonnal",
@@ -447,7 +545,9 @@
     "kukkiwonHangul": "손날",
     "match": "same",
     "textbookPage": 120,
-    "note": "Hand blade / knife-hand edge (Textbook p.120). ITF: sonkal (Kildare p.57); same Korean word with a different second syllable."
+    "note": "Hand blade / knife-hand edge (Textbook p.120). ITF: sonkal (Kildare p.57); same Korean word with a different second syllable.",
+    "noteDe": "Handkante / Handschneide (Lehrbuch S. 120). ITF: sonkal (Kildare S. 57); dasselbe koreanische Wort mit anderer zweiter Silbe.",
+    "noteEs": "Canto de mano / filo de la mano (libro de texto p.120). ITF: sonkal (Kildare p.57); la misma palabra coreana con una segunda sílaba distinta."
   },
   {
     "cardId": "palmok",
@@ -456,7 +556,9 @@
     "kukkiwonHangul": "팔목",
     "match": "same",
     "textbookPage": 130,
-    "note": "Forearm, especially the wrist part (Textbook p.130). Distinguish bakkat palmok (outer) and an palmok (inner)."
+    "note": "Forearm, especially the wrist part (Textbook p.130). Distinguish bakkat palmok (outer) and an palmok (inner).",
+    "noteDe": "Unterarm, besonders der Handgelenksbereich (Lehrbuch S. 130). Zu unterscheiden sind bakkat palmok (außen) und an palmok (innen).",
+    "noteEs": "Antebrazo, especialmente la parte de la muñeca (libro de texto p.130). Se distingue entre bakkat palmok (exterior) y an palmok (interior)."
   },
   {
     "cardId": "batangson",
@@ -465,7 +567,9 @@
     "kukkiwonHangul": "바탕손",
     "match": "same",
     "textbookPage": 126,
-    "note": "Palm heel (Textbook p.126). ITF word: sonbadak (palm), Kildare p.57."
+    "note": "Palm heel (Textbook p.126). ITF word: sonbadak (palm), Kildare p.57.",
+    "noteDe": "Handballen (Lehrbuch S. 126). ITF-Wort: sonbadak (Handfläche), Kildare S. 57.",
+    "noteEs": "Talón de la mano (libro de texto p.126). Palabra ITF: sonbadak (palma), Kildare p.57."
   },
   {
     "cardId": "palkup-olgul-paro-ape-chicki",
@@ -474,7 +578,9 @@
     "kukkiwonHangul": "팔꿈치 얼굴 바로 앞에 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "olgul-du-jumok-sewo-jirugi",
@@ -483,7 +589,9 @@
     "kukkiwonHangul": "얼굴 두주먹 세워 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "du-jumok-jechyo-jirugi",
@@ -492,7 +600,9 @@
     "kukkiwonHangul": "두주먹 젖혀 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "kun-dolchogwi",
@@ -501,7 +611,9 @@
     "kukkiwonHangul": "큰돌쩌귀",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "sonnaldung-an-mok-chicki",
@@ -510,7 +622,9 @@
     "kukkiwonHangul": "손날등 안 목 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "palkup-kokki",
@@ -519,7 +633,9 @@
     "kukkiwonHangul": "팔꿈치 꺾기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "momtong-batangson-chukyo-macki",
@@ -528,7 +644,9 @@
     "kukkiwonHangul": "몸통 바탕손 추켜 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "batangson-an-macki",
@@ -537,7 +655,9 @@
     "kukkiwonHangul": "바탕손 안 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "momtong-sonnaldung-an-palmok-packat-macki",
@@ -546,7 +666,9 @@
     "kukkiwonHangul": "몸통 손날등 안팔목 바깥 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "digut-cha-macki",
@@ -555,7 +677,9 @@
     "kukkiwonHangul": "디귿자 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "arae-hechyo-macki",
@@ -564,7 +688,9 @@
     "kukkiwonHangul": "아래 헤쳐 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "taeguk-yuk-chang-arae-macki-ap-chagi",
@@ -573,7 +699,9 @@
     "kukkiwonHangul": "앞서기 아래 막기 몸통 앞 차기 + 몸통 바깥팔목 바깥 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "taeguk-yuk-chang-batangson-an-macki-chirugi",
@@ -582,7 +710,9 @@
     "kukkiwonHangul": "앞굽이 바탕손 몸통 안 막기 + 몸통 바로 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hyong-chung-gun-an-palmok-macki-dut-gubi",
@@ -591,7 +721,9 @@
     "kukkiwonHangul": "앞굽이 얼굴 거들어 안팔목 바깥 막기 → 뒷굽이 몸통 반대 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hyong-chung-gun-sonnaldung-macki-ap-chagi-dut-pal-sogi",
@@ -600,7 +732,9 @@
     "kukkiwonHangul": "뒷굽이 손날등 몸통 안팔목 바깥 막기, 앞 차기, 뒷발서기 바탕손 추켜 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hyong-chung-gun-sonnal-kotoro-macki-palkup-chicki",
@@ -609,7 +743,9 @@
     "kukkiwonHangul": "뒷굽이 손날 몸통 거들어 막기 → 앞굽이 팔꿈치 얼굴 바로 앞에 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hyong-chung-gun-dung-jumok-packat-chicki-chirugi",
@@ -618,7 +754,9 @@
     "kukkiwonHangul": "뒷굽이 등주먹 얼굴 바깥 치기 → 앞굽이 얼굴 바로 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "twio-dollyo-chagi",
@@ -627,7 +765,9 @@
     "kukkiwonHangul": "뛰어 돌려 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "bom-sogi",
@@ -636,7 +776,9 @@
     "kukkiwonHangul": "범 서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "pyonsonkut-jechyo-jirugi",
@@ -645,7 +787,9 @@
     "kukkiwonHangul": "편손끝 젖혀 찌르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "pyonsonkut-opo-jirugi",
@@ -654,7 +798,9 @@
     "kukkiwonHangul": "편손끝 올려 찌르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "santul-macki",
@@ -663,7 +809,9 @@
     "kukkiwonHangul": "산틀 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "an-palmok-gawi-macki",
@@ -672,7 +820,9 @@
     "kukkiwonHangul": "안팔목 가위 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "oe-santul-macki",
@@ -681,7 +831,9 @@
     "kukkiwonHangul": "외산틀 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "goduro-arae-an-palmok-packat-macki",
@@ -690,7 +842,9 @@
     "kukkiwonHangul": "거들어 아래 안팔목 바깥 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "sonnal-arae-packat-palmok-packat-macki",
@@ -699,7 +853,9 @@
     "kukkiwonHangul": "손날 아래 바깥팔목 바깥 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "momtong-an-palmok-packat-yop-macki",
@@ -708,7 +864,9 @@
     "kukkiwonHangul": "몸통 안팔목 바깥 옆 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "murup-chicki",
@@ -717,7 +875,9 @@
     "kukkiwonHangul": "무릎 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "pyojok-chagi",
@@ -726,7 +886,9 @@
     "kukkiwonHangul": "표적 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "miro-chagi",
@@ -735,7 +897,9 @@
     "kukkiwonHangul": "밀어 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "pandal-chagi",
@@ -744,7 +908,9 @@
     "kukkiwonHangul": "반달 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "pyojok-murup-chicki",
@@ -753,7 +919,9 @@
     "kukkiwonHangul": "표적 무릎 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "taeguk-sil-chang-bom-sogi-an-macki-ap-chagi",
@@ -762,7 +930,9 @@
     "kukkiwonHangul": "범서기 바로 바탕손 몸통 안 막기 + 앞 차기, 범서기 반대 몸통 안 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "taeguk-sil-chang-dubon-gawi-macki",
@@ -771,7 +941,9 @@
     "kukkiwonHangul": "앞굽이 두번 가위 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "taeguk-sil-chang-pyojok-chagi-palkup-chicki",
@@ -780,7 +952,9 @@
     "kukkiwonHangul": "앞서기 등주먹 얼굴 바깥 치기, 표적 차기, 큰 나란히서기 팔꿈치 얼굴 표적 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "taeguk-sil-chang-hechyo-macki-pyojok-murup-chicki",
@@ -789,7 +963,9 @@
     "kukkiwonHangul": "앞굽이 몸통 헤쳐 막기 + 표적 무릎 치기, 두주먹 젖혀 지르기, 엇걸어 아래 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hyong-toi-gye-pandal-chagi-santul-macki",
@@ -798,7 +974,9 @@
     "kukkiwonHangul": "반달 차기, 기마서기 산틀 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hyong-toi-gye-arae-macki-dung-jumok-dut-chicki",
@@ -807,7 +985,9 @@
     "kukkiwonHangul": "앞굽이 아래 막기 + 등주먹 얼굴 뒤 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hyong-toi-gye-packat-palmok-macki-pyonsonkut-jirugi",
@@ -816,7 +996,9 @@
     "kukkiwonHangul": "뒷굽이 몸통 바깥팔목 바깥 막기 → 앞굽이 편손끝 젖혀 찌르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hansonnal-naeryo-chicki",
@@ -825,7 +1007,9 @@
     "kukkiwonHangul": "한손날 내려 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ollyo-pandae-chirugi",
@@ -834,7 +1018,9 @@
     "kukkiwonHangul": "올려 반대 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "momtong-palkup-düt-jirugi",
@@ -843,7 +1029,9 @@
     "kukkiwonHangul": "뒷굽이 몸통 팔꿈치 뒤 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "taeguk-pal-chang-dubal-dangsang-ap-chagi",
@@ -852,7 +1040,9 @@
     "kukkiwonHangul": "뒷굽이 몸통 거들어 바깥 막기 → 앞굽이 몸통 바로 지르기, 두발 당상 앞 차기, 앞굽이 몸통 안 막기 + 두번 몸통 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "taeguk-pal-chang-oe-santul-macki-dangyo-tok-chirugi",
@@ -861,7 +1051,9 @@
     "kukkiwonHangul": "외산틀 막기 + 당겨 턱 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hyong-hwa-rang-kumgang-macki-ollyo-chirugi",
@@ -870,7 +1062,9 @@
     "kukkiwonHangul": "뒷굽이 금강 바깥팔목 바깥 막기 + 올려 바로 지르기, 고정서기 몸통 반대 지르기, 수직서기 한손날 반대 내려 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hyong-hwa-rang-arae-macki-dut-gubi-chirugi",
@@ -879,7 +1073,9 @@
     "kukkiwonHangul": "앞굽이 아래 막기 → 뒷굽이 몸통 바로 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hyong-hwa-rang-sonnal-kotoro-macki-mikurumbal",
@@ -888,7 +1084,9 @@
     "kukkiwonHangul": "뒷굽이 손날 몸통 거들어 막기 미끄럼발 앞굽이 몸통 바로 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "bituro-chagi",
@@ -897,7 +1095,9 @@
     "kukkiwonHangul": "비틀어 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "dubal-dangsang-ap-chagi",
@@ -906,7 +1106,9 @@
     "kukkiwonHangul": "두발 당상 앞 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hagdari-sogi",
@@ -915,7 +1117,9 @@
     "kukkiwonHangul": "학다리 서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "soojik-sogi",
@@ -924,7 +1128,9 @@
     "kukkiwonHangul": "수직 서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "sasun-sogi",
@@ -933,7 +1139,9 @@
     "kukkiwonHangul": "사선 서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "oguryo-sogi",
@@ -942,7 +1150,9 @@
     "kukkiwonHangul": "오그려 서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "dung-jumok-olgul-ape-chicki",
@@ -951,7 +1161,9 @@
     "kukkiwonHangul": "등주먹 얼굴 앞 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "bo-jumok",
@@ -960,7 +1172,9 @@
     "kukkiwonHangul": "보주먹",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "momtong-an-palmok-bituro-paro-packat-macki",
@@ -969,7 +1183,9 @@
     "kukkiwonHangul": "몸통 안팔목 비틀어 바로 바깥 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "jebibum-hansonnal-paro-packat-macki",
@@ -978,7 +1194,9 @@
     "kukkiwonHangul": "제비품 한손날 바로 바깥 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "jebibum-hansonnal-mok-chicki",
@@ -987,7 +1205,9 @@
     "kukkiwonHangul": "제비품 한손날 목 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-gubi-jebibum-hansonnal-mok-chicki-ap-chagi-ap-gubi-dung-jumok-olgul-ape-chicki",
@@ -996,7 +1216,9 @@
     "kukkiwonHangul": "앞굽이 제비품 한손날 목 치기 앞 차기 앞굽이 등주먹 얼굴 앞 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "düt-gubi-momtong-packat-palmok-packat-macki-ap-chagi-düt-gubi-paro-an-macki",
@@ -1005,7 +1227,9 @@
     "kukkiwonHangul": "뒷굽이 몸통 바깥 팔목 바깥 막기 앞 차기 뒷굽이 바로 안 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-gubi-arae-macki-ap-sogi-me-jumok-yop-naeryo-chicki",
@@ -1014,7 +1238,9 @@
     "kukkiwonHangul": "앞굽이 아래 막기 앞서기 메주먹 옆 내려 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "düt-gubi-kumgang-momtong-packat-palmok-packat-macki-hansonnal-paro-mok-chicki-gojung-sogi-momtong-pandae-chirugi",
@@ -1023,7 +1249,9 @@
     "kukkiwonHangul": "뒷굽이 금강 몸통 바깥 팔목 바깥 막기 한손날 바로 목 치기 고정서기 몸통 반대 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "guburyo-sogi-packat-palmok-macki-yop-chagi-düt-gubi-sonnal-momtong-kotoro-macki",
@@ -1032,7 +1260,9 @@
     "kukkiwonHangul": "구부려서기 바깥 팔목 막기 옆 차기 뒷굽이 손날 몸통 거들어 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "momdollyo-pandae-dollyo-chagi",
@@ -1041,7 +1271,9 @@
     "kukkiwonHangul": "몸돌려 반대 돌려 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "mikurumbal",
@@ -1050,7 +1282,9 @@
     "kukkiwonHangul": "미끄럼발",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "momdollyo-twio-an-naeryo-chagi",
@@ -1059,7 +1293,9 @@
     "kukkiwonHangul": "몸돌려 뛰어 안 내려 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "momdollyo-packat-naeryo-chagi",
@@ -1068,7 +1304,9 @@
     "kukkiwonHangul": "몸돌려 바깥 내려 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "dondollyo-chagi",
@@ -1077,7 +1315,9 @@
     "kukkiwonHangul": "돈돌려 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "gojung-sogi",
@@ -1086,7 +1326,9 @@
     "kukkiwonHangul": "고정서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "düt-pal-sogi",
@@ -1095,7 +1337,9 @@
     "kukkiwonHangul": "뒷발서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "olgul-palkup-an-chicki",
@@ -1104,7 +1348,9 @@
     "kukkiwonHangul": "얼굴 팔꿈치 안 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "pyojok-palkup-chicki",
@@ -1113,7 +1359,9 @@
     "kukkiwonHangul": "표적 팔꿈치 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "me-jumok-naeryo-chicki",
@@ -1122,7 +1370,9 @@
     "kukkiwonHangul": "메주먹 내려 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "dung-jumok-olgul-yop-chicki",
@@ -1131,7 +1381,9 @@
     "kukkiwonHangul": "등주먹 얼굴 옆 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "sonnal-kumgang-macki",
@@ -1140,7 +1392,9 @@
     "kukkiwonHangul": "손날 금강 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "kolchyo-macki",
@@ -1149,7 +1403,9 @@
     "kukkiwonHangul": "걸쳐 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-gubi-arae-macki-ap-sogi-me-jumok-naeryo-chicki",
@@ -1158,7 +1414,9 @@
     "kukkiwonHangul": "앞굽이 아래 막기 앞서기 메주먹 내려 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-chagi-ap-gubi-dung-jumok-olgul-ape-chicki-momtong-paro-an-macki",
@@ -1167,7 +1425,9 @@
     "kukkiwonHangul": "앞 차기 앞굽이 등주먹 얼굴 앞 치기 몸통 바로 안 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "düt-gubi-hansonnal-momtong-packat-macki-ap-gubi-palkup-olgul-an-chicki",
@@ -1176,7 +1436,9 @@
     "kukkiwonHangul": "뒷굽이 한손날 몸통 바깥 막기 앞굽이 팔꿈치 얼굴 안 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-gubi-olgul-macki-momtong-yop-chagi-ap-gubi-palkup-momtong-pyojok-chicki",
@@ -1185,7 +1447,9 @@
     "kukkiwonHangul": "앞굽이 얼굴 막기 몸통 옆 차기 앞굽이 팔꿈치 몸통 표적 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-chagi-ap-koa-sogi-dung-jumok-olgul-ape-chicki",
@@ -1194,7 +1458,9 @@
     "kukkiwonHangul": "앞 차기 앞꼬아서기 등주먹 얼굴 앞 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-gubi-dubon-kolchyo-macki-momtong-pandae-chirugi",
@@ -1203,7 +1469,9 @@
     "kukkiwonHangul": "앞굽이 두번 걸쳐 막기 몸통 반대 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "guburyo-sogi-goduro-packat-palmok-macki-yop-chagi-ap-gubi-olgul-pyojok-palkup-chicki",
@@ -1212,7 +1480,9 @@
     "kukkiwonHangul": "구부려서기 거들어 바깥 팔목 막기 옆 차기 앞굽이 얼굴 표적 팔꿈치 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-gubi-momtong-chirugi-twio-yop-koa-sogi-dung-jumok-olgul-yop-packat-chicki",
@@ -1221,7 +1491,9 @@
     "kukkiwonHangul": "앞굽이 몸통 지르기 뛰어 옆꼬아서기 등주먹 얼굴 옆 바깥 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "twio-yop-chagi",
@@ -1230,7 +1502,9 @@
     "kukkiwonHangul": "뛰어 옆 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "koa-sogi",
@@ -1239,7 +1513,9 @@
     "kukkiwonHangul": "꼬아서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "yop-koa-sogi",
@@ -1248,7 +1524,9 @@
     "kukkiwonHangul": "옆꼬아서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-koa-sogi",
@@ -1257,7 +1535,9 @@
     "kukkiwonHangul": "앞꼬아서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "batangson-tok-chicki",
@@ -1266,7 +1546,9 @@
     "kukkiwonHangul": "바탕손 턱 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hansonnal-yop-chicki",
@@ -1275,7 +1557,9 @@
     "kukkiwonHangul": "한손날 옆 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "otgoro-arae-macki",
@@ -1284,7 +1568,9 @@
     "kukkiwonHangul": "엇걸어 아래 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "pandae-dollyo-chagi",
@@ -1293,7 +1579,9 @@
     "kukkiwonHangul": "반대 돌려 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "gibon-pyonhi-sogi",
@@ -1302,7 +1590,9 @@
     "kukkiwonHangul": "기본 편히 서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "gibon-narani-sogi",
@@ -1311,7 +1601,9 @@
     "kukkiwonHangul": "기본 나란히 서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-gubi-arae-macki-momtong-paro-chirugi",
@@ -1320,7 +1612,9 @@
     "kukkiwonHangul": "앞굽이 아래 막기 몸통 바로 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-sogi-olgul-macki-ap-chagi-ap-sogi-momtong-pandae-chirugi",
@@ -1329,7 +1623,9 @@
     "kukkiwonHangul": "앞서기 얼굴 막기 앞 차기 앞서기 몸통 반대 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "düt-gubi-an-palmok-packat-macki-ap-gubi-momtong-chirugi",
@@ -1338,7 +1634,9 @@
     "kukkiwonHangul": "뒷굽이 안 팔목 바깥 막기 앞굽이 몸통 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hansonnal-packat-chicki",
@@ -1347,7 +1645,9 @@
     "kukkiwonHangul": "한손날 바깥 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "momtong-yop-chirugi",
@@ -1356,7 +1656,9 @@
     "kukkiwonHangul": "몸통 옆 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "kumgang-olgul-chirugi",
@@ -1365,7 +1667,9 @@
     "kukkiwonHangul": "금강 얼굴 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "sonnal-otgoro-olgul-macki",
@@ -1374,7 +1678,9 @@
     "kukkiwonHangul": "손날 엇걸어 얼굴 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "kumgang-packat-palmok-macki-packat-macki",
@@ -1383,7 +1689,9 @@
     "kukkiwonHangul": "금강 바깥 팔목 막기 바깥 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-sogi-arae-macki-ap-chagi-ap-gubi-olgul-pandae-chirugi",
@@ -1392,7 +1700,9 @@
     "kukkiwonHangul": "앞서기 아래 막기 앞 차기 앞굽이 얼굴 반대 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-sogi-kumgang-packat-palmok-macki-packat-macki",
@@ -1401,7 +1711,9 @@
     "kukkiwonHangul": "앞서기 금강 바깥 팔목 막기 바깥 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-gubi-arae-macki-olgul-pandae-macki",
@@ -1410,7 +1722,9 @@
     "kukkiwonHangul": "앞굽이 아래 막기 얼굴 반대 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "dung-jumok-packat-chicki",
@@ -1419,7 +1733,9 @@
     "kukkiwonHangul": "등 주먹 바깥 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "dubon-chirugi",
@@ -1428,7 +1744,9 @@
     "kukkiwonHangul": "두번 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "pyonsonkut-sewo-jirugi",
@@ -1437,7 +1755,9 @@
     "kukkiwonHangul": "편손끝 세워 찌르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hansonnal-yop-mok-chicki",
@@ -1446,7 +1766,9 @@
     "kukkiwonHangul": "한손날 옆 목 치기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "hechyo-macki",
@@ -1455,7 +1777,9 @@
     "kukkiwonHangul": "헤쳐 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "batangson-nullo-macki",
@@ -1464,7 +1788,9 @@
     "kukkiwonHangul": "바탕손 눌러 막기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "momdollyo-yop-chagi",
@@ -1473,7 +1799,9 @@
     "kukkiwonHangul": "몸돌려 옆 차기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "nachuo-sogi",
@@ -1482,7 +1810,9 @@
     "kukkiwonHangul": "낮추어 서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "kima-sogi",
@@ -1491,7 +1821,9 @@
     "kukkiwonHangul": "기마 서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "guburyo-sogi",
@@ -1500,7 +1832,9 @@
     "kukkiwonHangul": "구부려 서기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "düt-gubi-hansonnal-packat-macki-ap-gubi-momtong-paro-chirugi",
@@ -1509,7 +1843,9 @@
     "kukkiwonHangul": "뒷굽이 한손날 바깥 막기 앞굽이 몸통 바로 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-sogi-arae-macki-ap-chagi-ap-gubi-dubon-momtong-chirugi",
@@ -1518,7 +1854,9 @@
     "kukkiwonHangul": "앞서기 아래 막기 앞 차기 앞굽이 두번 몸통 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-gubi-olgul-packat-palmok-packat-macki-momtong-paro-chirugi",
@@ -1527,7 +1865,9 @@
     "kukkiwonHangul": "앞굽이 얼굴 바깥 팔목 바깥 막기 몸통 바로 지르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   },
   {
     "cardId": "ap-gubi-batangson-nullo-macki-momtong-pyonsonkut-sewo-jirugi",
@@ -1536,6 +1876,8 @@
     "kukkiwonHangul": "앞굽이 바탕손 눌러 막기 몸통 편손끝 세워 찌르기",
     "match": "unverified",
     "textbookPage": null,
-    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook."
+    "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+    "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+    "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon."
   }
 ]

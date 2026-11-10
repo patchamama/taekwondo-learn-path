@@ -41,6 +41,8 @@ for f in sorted(glob.glob("src/data/curriculum/kup*.json")):
             "cardId": t["id"], "club": t["id"], "kukkiwon": name, "kukkiwonHangul": h,
             "match": "unverified", "textbookPage": None,
             "note": "Mechanical Revised Romanization of the hangul stored for this technique; not checked against the Kukkiwon textbook.",
+            "noteDe": "Mechanische Revised Romanization des gespeicherten Hangul dieser Technik; nicht mit dem Kukkiwon-Lehrbuch abgeglichen.",
+            "noteEs": "Romanización revisada mecánica del hangul guardado para esta técnica; no comprobada con el libro de texto del Kukkiwon.",
         })
         added += 1
 json.dump(data, open(path, "w"), ensure_ascii=False, indent=2)

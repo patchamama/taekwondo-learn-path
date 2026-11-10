@@ -1,5 +1,6 @@
 import type { Loc } from '../shared/i18n/types'
 import { flat, mergeById } from './curriculum'
+import wikiTerms from './wikiTerms.json'
 
 export type TermGroup = 'sino' | 'native' | 'command' | 'basic' | 'training' | 'body' | 'kukkiwon'
 
@@ -173,9 +174,20 @@ const BASE: Term[] = [
   ),
 ]
 
+/** Terms found in Wikipedia (ko/en/de/es); see docs/sources.md. They are reading vocabulary, not tied to a lesson. */
+const WIKI: Term[] = (
+  wikiTerms as { ko: string; hangul: string; group: TermGroup; meaning: Loc }[]
+).map((x) => ({
+  id: `${x.group}-${x.ko}`,
+  ko: x.ko,
+  hangul: x.hangul,
+  group: x.group,
+  meaning: x.meaning,
+}))
+
 /** Base terms plus the ones introduced by the curriculum slices. */
 export const TERMS: Term[] = mergeById(
-  BASE,
+  [...BASE, ...WIKI],
   flat('terms').map((x): Term => ({
     id: `${x.group}-${x.ko}`,
     ko: x.ko,

@@ -1,0 +1,1567 @@
+[
+  {
+    "ko": "oebal-seogi",
+    "hangul": "외발서기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "one-leg stance (sole of the other foot at the knee)",
+      "de": "Einbeinstellung (Sohle am Knie)",
+      "es": "posición de una pierna (planta en la rodilla)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Technik",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Technik"
+      }
+    ]
+  },
+  {
+    "ko": "charyeot-seogi",
+    "hangul": "차렷서기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "attention stance (heels together, feet turned out)",
+      "de": "Achtungsstellung",
+      "es": "posición de firmes"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Technik",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Technik"
+      },
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "gyocha-seogi",
+    "hangul": "교차서기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "crossed stance (also kkoa seogi)",
+      "de": "Überkreuzstellung (auch kkoa seogi)",
+      "es": "posición cruzada (también kkoa seogi)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      },
+      {
+        "lang": "de",
+        "title": "Taekwondo-Technik",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Technik"
+      }
+    ]
+  },
+  {
+    "ko": "hugul-seogi",
+    "hangul": "후굴서기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "back stance, \"rear-bent stance\" (ITF name; Kukkiwon: dwitgubi)",
+      "de": "Rückwärtsstellung (ITF; Kukkiwon: dwitgubi)",
+      "es": "posición atrasada (ITF; Kukkiwon: dwitgubi)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      },
+      {
+        "lang": "de",
+        "title": "Taekwondo-Technik",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Technik"
+      }
+    ]
+  },
+  {
+    "ko": "jeongul-seogi",
+    "hangul": "전굴서기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "forward stance (ITF name chongul sogi; Kukkiwon: apgubi)",
+      "de": "Vorwärtsstellung (ITF chongul sogi; Kukkiwon: apgubi)",
+      "es": "posición adelantada (ITF chongul sogi; Kukkiwon: apgubi)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      },
+      {
+        "lang": "de",
+        "title": "Taekwondo-Technik",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Technik"
+      }
+    ]
+  },
+  {
+    "ko": "eolgul-makgi",
+    "hangul": "얼굴막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "high (face) block",
+      "de": "Block auf Gesichtshöhe (hoher Block)",
+      "es": "bloqueo alto (a la cara)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      },
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "sonnal-makgi",
+    "hangul": "손날막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "knife-hand block",
+      "de": "Handkantenblock",
+      "es": "bloqueo con mano de cuchillo"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      },
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "geumgang-makgi",
+    "hangul": "금강막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "diamond block (mountain-shaped double block)",
+      "de": "Diamantblock (Doppelblock)",
+      "es": "bloqueo diamante (doble bloqueo)"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "hechyeo-makgi",
+    "hangul": "헤쳐막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "wedging (spreading) block",
+      "de": "Keilblock (Auseinanderblock)",
+      "es": "bloqueo en cuña (separador)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      },
+      {
+        "lang": "ko",
+        "title": "고려 (태권도)",
+        "url": "https://ko.wikipedia.org/wiki/고려_(태권도)"
+      }
+    ]
+  },
+  {
+    "ko": "ssang-sudo-makgi",
+    "hangul": "쌍수도막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "double knife-hand block",
+      "de": "doppelter Handkantenblock",
+      "es": "doble bloqueo de mano de cuchillo"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "ssang-bakkat-palmok-makgi",
+    "hangul": "쌍바깥팔목막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "double outer-forearm block",
+      "de": "doppelter äußerer Unterarmblock",
+      "es": "doble bloqueo de antebrazo exterior"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "chukyeo-makgi",
+    "hangul": "추켜막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "rising (upward) block",
+      "de": "aufwärts-Block (Aufwärts, \"gehoben\")",
+      "es": "bloqueo ascendente"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "an-palmok-yeop-makgi",
+    "hangul": "안팔목옆막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "inner-forearm side block",
+      "de": "seitlicher Block mit Unterarm-Innenseite",
+      "es": "bloqueo lateral con el antebrazo interior"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "an-palmok-dollyeo-makgi",
+    "hangul": "안팔목돌려막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "inner-forearm circular block",
+      "de": "Kreisblock Unterarm-Innenseite",
+      "es": "bloqueo circular con antebrazo interior"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "daebi-makgi",
+    "hangul": "대비막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "guarding block (e.g. sudo daebi makgi, palmok daebi makgi)",
+      "de": "Schutzblock (z. B. Handkanten-/Unterarm-Schutzblock)",
+      "es": "bloqueo de guardia (p. ej. con mano de cuchillo o antebrazo)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "mureup-makgi",
+    "hangul": "무릎막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "knee block (inner/outer)",
+      "de": "Knieblock (innen/außen)",
+      "es": "bloqueo con la rodilla (interior/exterior)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "bakkat-palmok-hadan-makgi",
+    "hangul": "바깥팔목하단막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "outer-forearm low block",
+      "de": "Block nach unten mit Unterarm-Außenseite",
+      "es": "bloqueo bajo con antebrazo exterior"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "geodeo-makgi",
+    "hangul": "거들어막기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "parrying/assisted block (English list: guiding the attack away)",
+      "de": "Leit-/Parierblock (englische Liste: Angriff ableiten)",
+      "es": "bloqueo de desvío/asistido (lista inglesa: desviar el ataque)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "jeonggwon",
+    "hangul": "정권",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "forefist (front two knuckles)",
+      "de": "Vorderfaust (Zeige- und Mittelfingerknöchel)",
+      "es": "puño frontal (nudillos de índice y medio)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "jeonggwon-jireugi",
+    "hangul": "정권지르기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "forefist punch",
+      "de": "Frontfauststoß",
+      "es": "puñetazo con el puño frontal"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "ssanggwon-jireugi",
+    "hangul": "쌍권지르기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "double punch",
+      "de": "doppelter Fauststoß",
+      "es": "doble puñetazo"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "sewo-jireugi",
+    "hangul": "세워지르기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "upright (vertical) punch",
+      "de": "Fauststoß nach oben (senkrecht)",
+      "es": "puñetazo vertical"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "palgup-chigi",
+    "hangul": "팔굽치기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "elbow strike (palgup = elbow)",
+      "de": "Ellbogenschlag (palgup = Ellbogen)",
+      "es": "golpe de codo (palgup = codo)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      },
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "ap-palgup-taerigi",
+    "hangul": "앞팔굽때리기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "forward horizontal elbow strike",
+      "de": "Ellbogenschlag nach vorne (waagerecht)",
+      "es": "golpe de codo hacia delante (horizontal)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "sudo-yeop-taerigi",
+    "hangul": "수도옆때리기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "knife-hand side strike",
+      "de": "Handkanten-Seitwärts-Schlag",
+      "es": "golpe lateral con mano de cuchillo"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "sudo",
+    "hangul": "수도",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "knife hand (手刀, \"hand-sword\"); Korean word sonnal 손날 means the same",
+      "de": "Handkante (手刀, „Handschwert“); koreanisch auch sonnal 손날",
+      "es": "mano de cuchillo (手刀); en coreano también sonnal 손날"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "ssang",
+    "hangul": "쌍",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "double (prefix, e.g. ssang makgi, ssang jireugi)",
+      "de": "doppelt (Vorsilbe)",
+      "es": "doble (prefijo)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "huryeo-chagi",
+    "hangul": "후려차기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "hook kick",
+      "de": "Hakentritt (Hook-Kick)",
+      "es": "patada de gancho"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "bandae-dollyeo-chagi",
+    "hangul": "반대돌려차기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "reverse turning kick (spinning hook-type kick)",
+      "de": "umgekehrter Halbkreistritt",
+      "es": "patada giratoria inversa"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      },
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "bandae-yeop-chagi",
+    "hangul": "반대옆차기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "reverse side kick",
+      "de": "umgekehrter Seitwärtstritt",
+      "es": "patada lateral inversa"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "biteureo-chagi",
+    "hangul": "비틀어차기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "twist kick",
+      "de": "Drehtritt mit Hüftverwringung (Twist-Kick)",
+      "es": "patada de torsión"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      },
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "mureup-chagi",
+    "hangul": "무릎차기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "knee strike",
+      "de": "Kniestoß",
+      "es": "rodillazo"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "baldeung-chagi",
+    "hangul": "발등차기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "instep kick (baldeung = top of the foot)",
+      "de": "Spann-Tritt (baldeung = Fußrücken)",
+      "es": "patada con empeine (baldeung = empeine)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "an-chagi",
+    "hangul": "안차기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "inside crescent kick",
+      "de": "Innensichel-Tritt (nach innen)",
+      "es": "patada creciente interior"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "bakkat-chagi",
+    "hangul": "바깥차기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "outside crescent kick",
+      "de": "Außensichel-Tritt (nach außen)",
+      "es": "patada creciente exterior"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "ttwimyeo",
+    "hangul": "뛰며",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "while jumping (modifier)",
+      "de": "im Sprung (Zusatz)",
+      "es": "saltando (modificador)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "hadan",
+    "hangul": "하단",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "low level (下段)",
+      "de": "untere Stufe (下段)",
+      "es": "nivel bajo (下段)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "jungdan",
+    "hangul": "중단",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "middle level (中段)",
+      "de": "mittlere Stufe (中段)",
+      "es": "nivel medio (中段)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "sangdan",
+    "hangul": "상단",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "high level (上段)",
+      "de": "obere Stufe (上段)",
+      "es": "nivel alto (上段)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "bandae",
+    "hangul": "반대",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "opposite, reverse, counter",
+      "de": "umgekehrt, entgegengesetzt",
+      "es": "opuesto, inverso"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "chukyeo",
+    "hangul": "추켜",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "raised, upward (modifier)",
+      "de": "aufwärts, gehoben (Zusatz)",
+      "es": "hacia arriba (modificador)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "gwanjang",
+    "hangul": "관장",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "head of a kwan (school/gym)",
+      "de": "Leiter eines Kwan (Schule)",
+      "es": "director de una kwan (escuela)"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "kwan",
+    "hangul": "관",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "kwan: hall, building; a school or clan of one style",
+      "de": "Kwan: Halle, Gebäude; Schule/Richtung eines Stils",
+      "es": "kwan: sala, edificio; escuela o corriente de un estilo"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Kwan (martial arts)",
+        "url": "https://en.wikipedia.org/wiki/Kwan_(martial_arts)"
+      }
+    ]
+  },
+  {
+    "ko": "yudanja",
+    "hangul": "유단자",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "dan holder (有段者, \"person with dan\")",
+      "de": "Dan-Träger (有段者)",
+      "es": "poseedor de dan (有段者)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Pumsae",
+        "url": "https://de.wikipedia.org/wiki/Pumsae"
+      },
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      },
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "yupumja",
+    "hangul": "유품자",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "poom holder (junior black belt, under 15)",
+      "de": "Poom-Träger (Jugend-Schwarzgurt, unter 15)",
+      "es": "poseedor de poom (cinturón negro juvenil, menor de 15)"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "고려 (태권도)",
+        "url": "https://ko.wikipedia.org/wiki/고려_(태권도)"
+      },
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "musaegeup",
+    "hangul": "무급",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "no-grade, beginner level below 1st gup",
+      "de": "Anfänger ohne Grad (unter 1. Gup)",
+      "es": "sin grado, nivel de principiante"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "gyosa(nim)",
+    "hangul": "교사(님)",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "teacher, assistant instructor (1st-3rd dan, Kukkiwon)",
+      "de": "Lehrer, Assistent (1.-3. Dan, Kukkiwon)",
+      "es": "profesor, instructor asistente (1.º-3.er dan, Kukkiwon)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      },
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "seonbae(nim)",
+    "hangul": "선배(님)",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "senior student (先輩)",
+      "de": "fortgeschrittener/älterer Schüler (先輩)",
+      "es": "alumno veterano (先輩)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "boosabum",
+    "hangul": "부사범",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "assistant instructor (ITF, 1st-3rd dan)",
+      "de": "Assistenzlehrer (ITF, 1.-3. Dan)",
+      "es": "instructor asistente (ITF, 1.º-3.º dan)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "sahyun",
+    "hangul": "사현",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "master (ITF, 7th-8th dan)",
+      "de": "Meister (ITF, 7.-8. Dan)",
+      "es": "maestro (ITF, 7.º-8.º dan)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "saseong",
+    "hangul": "사성",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "grandmaster (ITF, 9th dan)",
+      "de": "Großmeister (ITF, 9. Dan)",
+      "es": "gran maestro (ITF, 9.º dan)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "gukgi",
+    "hangul": "국기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "national sport/skill (國技)",
+      "de": "Nationalsport/-kunst (國技)",
+      "es": "deporte/arte nacional (國技)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Kukkiwon",
+        "url": "https://en.wikipedia.org/wiki/Kukkiwon"
+      },
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "kukkiwon",
+    "hangul": "국기원",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "Kukkiwon, National Sport Institute (國技院)",
+      "de": "Kukkiwon, Nationales Sport-Institut (國技院)",
+      "es": "Kukkiwon, Instituto Nacional del Deporte (國技院)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Kukkiwon",
+        "url": "https://en.wikipedia.org/wiki/Kukkiwon"
+      },
+      {
+        "lang": "ko",
+        "title": "국기원",
+        "url": "https://ko.wikipedia.org/wiki/국기원"
+      }
+    ]
+  },
+  {
+    "ko": "hanmadang",
+    "hangul": "한마당",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "hanmadang: big gathering/festival (annual WT event at Kukkiwon)",
+      "de": "Hanmadang: großes Fest (jährliche Veranstaltung am Kukkiwon)",
+      "es": "hanmadang: gran fiesta (evento anual en el Kukkiwon)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Kukkiwon",
+        "url": "https://en.wikipedia.org/wiki/Kukkiwon"
+      },
+      {
+        "lang": "ko",
+        "title": "품새",
+        "url": "https://ko.wikipedia.org/wiki/품새"
+      }
+    ]
+  },
+  {
+    "ko": "gongin-poomsae",
+    "hangul": "공인품새",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "recognised (official) poomsae",
+      "de": "anerkannte (offizielle) Poomsae",
+      "es": "poomsae reconocidas (oficiales)"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "jayu-poomsae",
+    "hangul": "자유품새",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "freestyle poomsae (own choreography, often with music)",
+      "de": "Freestyle-Poomsae (eigene Choreografie)",
+      "es": "poomsae libre (coreografía propia)"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      },
+      {
+        "lang": "de",
+        "title": "Pumsae",
+        "url": "https://de.wikipedia.org/wiki/Pumsae"
+      }
+    ]
+  },
+  {
+    "ko": "yeonmuseon",
+    "hangul": "연무선",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "floor pattern of a poomsae (演武線)",
+      "de": "Laufmuster einer Poomsae (演武線)",
+      "es": "esquema de suelo de una poomsae (演武線)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taegeuk Il Jang",
+        "url": "https://en.wikipedia.org/wiki/Taegeuk_Il_Jang"
+      }
+    ]
+  },
+  {
+    "ko": "gwae",
+    "hangul": "괘",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "trigram (bagua, 卦)",
+      "de": "Trigramm (Bagua, 卦)",
+      "es": "trigrama (bagua, 卦)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taegeuk Il Jang",
+        "url": "https://en.wikipedia.org/wiki/Taegeuk_Il_Jang"
+      },
+      {
+        "lang": "de",
+        "title": "Pumsae",
+        "url": "https://de.wikipedia.org/wiki/Pumsae"
+      }
+    ]
+  },
+  {
+    "ko": "taegeukgi",
+    "hangul": "태극기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "Korean national flag (\"taegeuk flag\")",
+      "de": "koreanische Nationalflagge („Taegeuk-Flagge“)",
+      "es": "bandera nacional coreana («bandera del taegeuk»)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taegeuk Il Jang",
+        "url": "https://en.wikipedia.org/wiki/Taegeuk_Il_Jang"
+      }
+    ]
+  },
+  {
+    "ko": "saju",
+    "hangul": "사주",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "four-way (ITF beginner drills: saju jirugi, saju makgi)",
+      "de": "Vierwege (ITF-Anfängerübungen)",
+      "es": "cuatro direcciones (ejercicios ITF para principiantes)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Teul",
+        "url": "https://en.wikipedia.org/wiki/Teul"
+      }
+    ]
+  },
+  {
+    "ko": "teul",
+    "hangul": "틀",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "ITF/Chang-Hon pattern (frame, mould)",
+      "de": "ITF/Chang-Hon-Form (Rahmen, Muster)",
+      "es": "patrón ITF/Chang-Hon (marco, molde)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Teul",
+        "url": "https://en.wikipedia.org/wiki/Teul"
+      },
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "hyeong",
+    "hangul": "형",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "form (形/型); traditional taekwondo, Tang Soo Do",
+      "de": "Form (形/型); traditionelles Taekwondo, Tang Soo Do",
+      "es": "forma (形/型); taekwondo tradicional, Tang Soo Do"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      },
+      {
+        "lang": "ko",
+        "title": "품새",
+        "url": "https://ko.wikipedia.org/wiki/품새"
+      }
+    ]
+  },
+  {
+    "ko": "tongmilgi",
+    "hangul": "통밀기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "ready stance of Koryo (pushing through)",
+      "de": "Bereitschaftsstellung der Koryo (Durchschieben)",
+      "es": "postura de preparación de Koryo (empujar a través)"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "고려 (태권도)",
+        "url": "https://ko.wikipedia.org/wiki/고려_(태권도)"
+      }
+    ]
+  },
+  {
+    "ko": "seonbi",
+    "hangul": "선비",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "scholar-warrior ideal (name idea behind Koryo)",
+      "de": "Gelehrten-Ideal (Leitbild hinter Koryo)",
+      "es": "ideal del erudito (idea tras Koryo)"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "고려 (태권도)",
+        "url": "https://ko.wikipedia.org/wiki/고려_(태권도)"
+      }
+    ]
+  },
+  {
+    "ko": "gihap",
+    "hangul": "기합",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "kihap, spirit shout (氣合: gi = energy, hap = gathering)",
+      "de": "Kampfschrei (氣合: gi = Energie, hap = Sammlung)",
+      "es": "kihap, grito de espíritu (氣合: gi = energía, hap = unión)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Technik",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Technik"
+      }
+    ]
+  },
+  {
+    "ko": "pumbalki",
+    "hangul": "품밟기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "taekkyeon triangular footwork (step the 品 shape)",
+      "de": "dreieckige Fußarbeit des Taekkyeon (品-Form)",
+      "es": "juego de pies triangular del taekkyeon (forma 品)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekkyon",
+        "url": "https://en.wikipedia.org/wiki/Taekkyon"
+      },
+      {
+        "lang": "ko",
+        "title": "택견",
+        "url": "https://ko.wikipedia.org/wiki/택견"
+      }
+    ]
+  },
+  {
+    "ko": "hwarang",
+    "hangul": "화랑",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "Hwarang, \"flowering youths\" of Silla",
+      "de": "Hwarang, „blühende Jünglinge“ von Silla",
+      "es": "Hwarang, «jóvenes en flor» de Silla"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Hwarang",
+        "url": "https://en.wikipedia.org/wiki/Hwarang"
+      }
+    ]
+  },
+  {
+    "ko": "gyeokpa",
+    "hangul": "격파",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "breaking (擊破)",
+      "de": "Bruchtest (擊破)",
+      "es": "rompimiento (擊破)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      },
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "gireok-gyeokpa",
+    "hangul": "기록격파",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "record breaking (posture and success)",
+      "de": "Rekordbruch",
+      "es": "rompimiento de récord"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "gisul-gyeokpa",
+    "hangul": "기술격파",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "technical (difficult-technique) breaking",
+      "de": "technischer Bruchtest",
+      "es": "rompimiento técnico"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "wiryeok-gyeokpa",
+    "hangul": "위력격파",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "power breaking",
+      "de": "Kraftbruchtest",
+      "es": "rompimiento de potencia"
+    },
+    "sources": [
+      {
+        "lang": "ko",
+        "title": "태권도",
+        "url": "https://ko.wikipedia.org/wiki/태권도"
+      }
+    ]
+  },
+  {
+    "ko": "matseogi",
+    "hangul": "맞서기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "step sparring / standing-against drills (English Wikipedia term)",
+      "de": "Gegenüber-Übung / abgesprochener Kampf (englischer Begriff)",
+      "es": "combate pactado / ejercicio frente a frente"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Taekwondo",
+        "url": "https://en.wikipedia.org/wiki/Taekwondo"
+      }
+    ]
+  },
+  {
+    "ko": "jayu-daeryeon",
+    "hangul": "자유대련",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "free sparring",
+      "de": "Freikampf",
+      "es": "combate libre"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      }
+    ]
+  },
+  {
+    "ko": "hanbeon-gyeorugi",
+    "hangul": "한번겨루기",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "one-time sparring (one-step drill, German term list spelling hanbon gyeorugi)",
+      "de": "Einschritt-Übung (Hanbon Gyeorugi)",
+      "es": "combate de un paso (hanbon gyeorugi)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Technik",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Technik"
+      }
+    ]
+  },
+  {
+    "ko": "gallyeo",
+    "hangul": "갈려",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "break! (referee command)",
+      "de": "Trennen! (Kommando)",
+      "es": "¡separar! (orden del árbitro)"
+    },
+    "sources": [
+      {
+        "lang": "de",
+        "title": "Taekwondo-Begriffe",
+        "url": "https://de.wikipedia.org/wiki/Taekwondo-Begriffe"
+      },
+      {
+        "lang": "en",
+        "title": "USA Taekwondo: 2026 Rules & Interpretation (WT Kyorugi update, 30 Jan 2026)",
+        "url": "https://assets.contentstack.io/v3/assets/blteb7d012fc7ebef7f/bltaab7d17182797b93/6998d47e63bcae0008910785/2026.01.30_WT_Kyorugi_Updates.pdf"
+      }
+    ]
+  },
+  {
+    "ko": "seumul",
+    "hangul": "스물",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "twenty (native Korean; seumu before a counter)",
+      "de": "zwanzig (nativ; seumu vor Zählwort)",
+      "es": "veinte (nativo; seumu ante clasificador)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Korean numerals",
+        "url": "https://en.wikipedia.org/wiki/Korean_numerals"
+      }
+    ]
+  },
+  {
+    "ko": "seoreun",
+    "hangul": "서른",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "thirty (native)",
+      "de": "dreißig (nativ)",
+      "es": "treinta (nativo)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Korean numerals",
+        "url": "https://en.wikipedia.org/wiki/Korean_numerals"
+      }
+    ]
+  },
+  {
+    "ko": "maheun",
+    "hangul": "마흔",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "forty (native)",
+      "de": "vierzig (nativ)",
+      "es": "cuarenta (nativo)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Korean numerals",
+        "url": "https://en.wikipedia.org/wiki/Korean_numerals"
+      }
+    ]
+  },
+  {
+    "ko": "swin",
+    "hangul": "쉰",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "fifty (native)",
+      "de": "fünfzig (nativ)",
+      "es": "cincuenta (nativo)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Korean numerals",
+        "url": "https://en.wikipedia.org/wiki/Korean_numerals"
+      }
+    ]
+  },
+  {
+    "ko": "baek",
+    "hangul": "백",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "one hundred (Sino-Korean)",
+      "de": "hundert (sinokoreanisch)",
+      "es": "cien (sinocoreano)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Korean numerals",
+        "url": "https://en.wikipedia.org/wiki/Korean_numerals"
+      }
+    ]
+  },
+  {
+    "ko": "han-/-du-/-se-/-ne",
+    "hangul": "한 / 두 / 세 / 네",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "1 / 2 / 3 / 4 before a counter word",
+      "de": "1 / 2 / 3 / 4 vor Zählwörtern",
+      "es": "1 / 2 / 3 / 4 ante clasificador"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Korean numerals",
+        "url": "https://en.wikipedia.org/wiki/Korean_numerals"
+      }
+    ]
+  },
+  {
+    "ko": "beon",
+    "hangul": "번",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "counter for times/occasions (han beon \"once\"; sip beon \"number ten\")",
+      "de": "Zählwort für Male (han beon „einmal“; sip beon „Nummer zehn“)",
+      "es": "clasificador de veces (han beon «una vez»; sip beon «número diez»)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Korean numerals",
+        "url": "https://en.wikipedia.org/wiki/Korean_numerals"
+      }
+    ]
+  },
+  {
+    "ko": "sal-/-se",
+    "hangul": "살 / 세",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "counter for age: sal (with native numbers), se (歲, with Sino-Korean)",
+      "de": "Zählwort für Alter: sal (nativ), se (歲, sinokoreanisch)",
+      "es": "clasificador de edad: sal (nativos), se (歲, sinocoreanos)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Korean numerals",
+        "url": "https://en.wikipedia.org/wiki/Korean_numerals"
+      }
+    ]
+  },
+  {
+    "ko": "bun",
+    "hangul": "분",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "minutes (Sino-Korean numbers; e.g. 삼십오 분 = 35 minutes)",
+      "de": "Minuten (sinokoreanisch; 삼십오 분 = 35 Minuten)",
+      "es": "minutos (sinocoreano; 삼십오 분 = 35 minutos)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Korean numerals",
+        "url": "https://en.wikipedia.org/wiki/Korean_numerals"
+      }
+    ]
+  },
+  {
+    "ko": "si",
+    "hangul": "시",
+    "group": "kukkiwon",
+    "meaning": {
+      "en": "o'clock (native numbers: se si = 3 o'clock)",
+      "de": "Uhr (native Zahlen: se si = 3 Uhr)",
+      "es": "en punto (nativos: se si = las 3)"
+    },
+    "sources": [
+      {
+        "lang": "en",
+        "title": "Korean numerals",
+        "url": "https://en.wikipedia.org/wiki/Korean_numerals"
+      }
+    ]
+  }
+]

@@ -9,6 +9,7 @@ import { KukkiwonPage } from './features/kukkiwon/KukkiwonPage'
 import { SelfDefensePage } from './features/selfdefense/SelfDefensePage'
 import { StudyPage } from './features/study/StudyPage'
 import { ExamPage } from './features/exam/ExamPage'
+import { BackgroundPage } from './features/background/BackgroundPage'
 import { PathPage } from './features/path/PathPage'
 import { TechniquesPage } from './features/techniques/TechniquesPage'
 import { TermsPage } from './features/terms/TermsPage'
@@ -23,6 +24,7 @@ export function App() {
           <Route path="lesson/:id" element={<LessonPage />} />
           <Route path="study/:level?" element={<StudyPage />} />
           <Route path="exam" element={<ExamPage />} />
+          <Route path="background" element={<BackgroundPage />} />
           <Route path="practice" element={<PracticePage />} />
           <Route path="videos" element={<VideosPage />} />
           <Route path="video-quiz" element={<VideoQuizPage />} />

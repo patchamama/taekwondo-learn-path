@@ -83,3 +83,11 @@ describe('master forms (Yudanja)', () => {
     }
   })
 })
+
+describe('Kukkiwon notes are translated', () => {
+  it('every note has a German and a Spanish version', async () => {
+    const { KUKKIWON } = await import('../kukkiwon')
+    const missing = KUKKIWON.filter((k) => !k.noteDe || !k.noteEs).map((k) => k.cardId)
+    expect(missing).toEqual([])
+  })
+})

@@ -391,6 +391,31 @@ export const STRINGS = {
   },
   diagramAlt: { en: 'Floor pattern', de: 'Laufschema', es: 'Esquema en el suelo' },
   diagramCredit: { en: 'Diagram', de: 'Diagramm', es: 'Diagrama' },
+  navBackground: { en: 'Background', de: 'Hintergrund', es: 'Contexto' },
+  bgTitle: {
+    en: 'Background (Wikipedia)',
+    de: 'Hintergrund (Wikipedia)',
+    es: 'Contexto (Wikipedia)',
+  },
+  bgIntro: {
+    en: 'Facts from Wikipedia in Korean, English, German and Spanish, paraphrased and linked to their articles (text CC BY-SA 4.0). Where editions disagree the entry says so.',
+    de: 'Fakten aus Wikipedia auf Koreanisch, Englisch, Deutsch und Spanisch, umformuliert und mit Link zum Artikel (Text CC BY-SA 4.0). Wo sich die Ausgaben widersprechen, steht es im Eintrag.',
+    es: 'Datos de Wikipedia en coreano, inglés, alemán y español, parafraseados y con enlace al artículo (texto CC BY-SA 4.0). Cuando las ediciones no coinciden, la ficha lo indica.',
+  },
+  bgSources: { en: 'Sources', de: 'Quellen', es: 'Fuentes' },
+  bgUnsure: {
+    en: 'Less certain: not confirmed in two sources or editions differ.',
+    de: 'Weniger sicher: nicht in zwei Quellen bestätigt oder die Ausgaben weichen ab.',
+    es: 'Menos seguro: no confirmado en dos fuentes o las ediciones difieren.',
+  },
+  bgHistory: { en: 'History and naming', de: 'Geschichte und Namen', es: 'Historia y nombres' },
+  bgBelts: { en: 'Belts and ranks', de: 'Gürtel und Grade', es: 'Cinturones y grados' },
+  bgCompetition: {
+    en: 'Competition and breaking',
+    de: 'Wettkampf und Bruchtest',
+    es: 'Competición y rotura',
+  },
+  bgOther: { en: 'Other', de: 'Weiteres', es: 'Otros' },
   navStudy: { en: 'Study', de: 'Lernen', es: 'Estudio' },
   studyTitle: { en: 'Study by level', de: 'Lernen nach Stufe', es: 'Estudio por nivel' },
   studyIntro: {

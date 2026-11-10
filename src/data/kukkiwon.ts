@@ -10,7 +10,13 @@ export interface KukkiwonName {
   match: KukkiwonMatch
   textbookPage: number | null
   note: string
+  noteDe?: string
+  noteEs?: string
 }
+
+/** Note in the app language (English is the base text). */
+export const noteFor = (k: KukkiwonName, lang: 'en' | 'de' | 'es'): string =>
+  (lang === 'de' ? k.noteDe : lang === 'es' ? k.noteEs : undefined) ?? k.note
 
 // Source: docs/kukkiwon-terminology.md (Kukkiwon Textbook, club PDFs, self-defence course notes).
 export const KUKKIWON: KukkiwonName[] = raw as KukkiwonName[]
