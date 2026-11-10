@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CARD_BY_ID } from '../../data/cards'
 import { CARDS_WITH_CLIPS, CLIPS_BY_CARD } from '../../data/clips'
+import { BeltBadge } from '../../shared/components/BeltBadge'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { useT } from '../../shared/i18n/useT'
@@ -43,6 +44,7 @@ export function VideosPage() {
                     {t('sourcesLabel').toLowerCase()}
                   </p>
                 </div>
+                <BeltBadge cardId={cardId} />
                 <SpeakButton text={card.hangul} />
                 <button
                   className="rounded-lg border px-3 py-1 text-sm"

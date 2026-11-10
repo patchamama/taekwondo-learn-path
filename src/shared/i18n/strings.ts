@@ -327,6 +327,26 @@ export const STRINGS = {
     de: 'Inhalte von 10 Kup bis',
     es: 'Mostrar contenido desde 10 Kup hasta',
   },
+  beltAll: {
+    en: 'All up to the slider',
+    de: 'Alles bis zum Regler',
+    es: 'Todo hasta el control',
+  },
+  beltOnlyNew: {
+    en: 'Only new at this belt:',
+    de: 'Nur neu in diesem Gürtel:',
+    es: 'Solo lo nuevo de este cinturón:',
+  },
+  appearsAt: {
+    en: 'Appears at',
+    de: 'Erscheint ab',
+    es: 'Aparece en',
+  },
+  studyCumulative: {
+    en: 'Show everything up to this level',
+    de: 'Alles bis zu dieser Stufe zeigen',
+    es: 'Mostrar todo hasta este nivel',
+  },
   listening: {
     en: 'Include listening exercises',
     de: 'Hörübungen einbeziehen',

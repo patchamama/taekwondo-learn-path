@@ -14,11 +14,13 @@ interface AppState {
   mastery: Record<string, number> // cardId → correct answers
   strictOrder: boolean // lock lessons until the previous one is done
   maxBelt: number // content filter: show items up to this belt index (0 = 10 Kup … 10 = 1 Dan)
+  onlyBelt: number | null // when set, show only the items first needed at this belt
   listening: boolean // include listening exercises
   videoLang: VideoLang
   setLang: (l: Lang) => void
   setStrictOrder: (v: boolean) => void
   setMaxBelt: (v: number) => void
+  setOnlyBelt: (v: number | null) => void
   setListening: (v: boolean) => void
   setVideoLang: (v: VideoLang) => void
   toggleLearned: (id: string) => void
@@ -42,12 +44,14 @@ export const useAppStore = create<AppState>()(
       lang: 'en',
       strictOrder: false,
       maxBelt: 10,
+      onlyBelt: null,
       listening: true,
       videoLang: 'auto',
       ...empty,
       setLang: (lang) => set({ lang }),
       setStrictOrder: (strictOrder) => set({ strictOrder }),
       setMaxBelt: (v) => set({ maxBelt: Math.max(0, Math.min(10, Math.round(v))) }),
+      setOnlyBelt: (onlyBelt) => set({ onlyBelt }),
       setListening: (listening) => set({ listening }),
       setVideoLang: (videoLang) => set({ videoLang }),
       toggleLearned: (id) =>

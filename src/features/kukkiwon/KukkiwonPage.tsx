@@ -1,4 +1,5 @@
 import { CARD_BY_ID } from '../../data/cards'
+import { BeltBadge } from '../../shared/components/BeltBadge'
 import { KUKKIWON, noteFor } from '../../data/kukkiwon'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
@@ -74,6 +75,7 @@ export function KukkiwonPage() {
                   </span>
                 </p>
               </div>
+              <BeltBadge cardId={k.cardId} />
               {CARD_BY_ID[k.cardId] && <SpeakButton text={CARD_BY_ID[k.cardId].hangul} />}
             </div>
             <p

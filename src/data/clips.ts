@@ -40,7 +40,10 @@ export const CLIPS: Clip[] = [
     ...c,
     source: 'course' as const,
   })),
-  ...(selfDefenseJson as RawClip[]).map((c) => ({ ...c, source: 'selfdefense' as const })),
+  // The self-defence compilation shows applications: it only belongs to the self-defence chapters (sd-*)
+  ...(selfDefenseJson as RawClip[])
+    .filter((c) => c.cardId.startsWith('sd-'))
+    .map((c) => ({ ...c, source: 'selfdefense' as const })),
   ...(externalJson as RawClip[]).map((c) => ({ ...c, source: 'external' as const })),
 ]
 export const FRAMES_PER_CLIP = 6

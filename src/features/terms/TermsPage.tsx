@@ -1,4 +1,5 @@
 import { TERMS, type TermGroup } from '../../data/terms'
+import { BeltBadge } from '../../shared/components/BeltBadge'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import type { StringKey } from '../../shared/i18n/strings'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
@@ -39,6 +40,9 @@ export function TermsPage() {
                   </p>
                   <p className="truncate text-sm text-slate-600">{loc(x.meaning)}</p>
                 </div>
+                <span className="ml-auto shrink-0">
+                  <BeltBadge cardId={x.id} />
+                </span>
               </li>
             ))}
           </ul>

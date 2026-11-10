@@ -3,6 +3,7 @@ import { FORMS, HYONG as HYONG_FORMS, YUDANJA, formBeltIndex } from '../../data/
 import { BELTS } from '../../data/belts'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { CLIPS_BY_CARD } from '../../data/clips'
+import { BeltBadge } from '../../shared/components/BeltBadge'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { FormDiagram } from '../../shared/components/FormDiagram'
 import { useT } from '../../shared/i18n/useT'
@@ -96,6 +97,7 @@ export function FormsPage() {
                     {f.courseKeup ? ` · ${t('courseLevel')}: ${f.courseKeup} Keup` : ''}
                   </p>
                 </div>
+                <BeltBadge index={formBeltIndex(f)} />
                 <SpeakButton text={f.hangul} />
               </div>
               <p className="mt-1 font-medium">{loc(f.symbol)}</p>
@@ -142,6 +144,7 @@ export function FormsPage() {
                     {t('examLevel')}: {y.examDan} Dan
                   </p>
                 </div>
+                <BeltBadge index={formBeltIndex(y)} />
                 <SpeakButton text={y.hangul} />
               </div>
               <p className="mt-1 font-medium">{loc(y.symbol)}</p>
@@ -187,6 +190,7 @@ export function FormsPage() {
                   {h.examDan ? `${h.examDan} Dan` : h.examKup ? `${h.examKup} Kup` : '—'}
                 </p>
               </div>
+              <BeltBadge index={formBeltIndex(h)} />
               <SpeakButton text={h.hangul} />
             </div>
             <p className="mt-1 font-medium">{loc(h.symbol)}</p>

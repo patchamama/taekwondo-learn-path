@@ -44,3 +44,16 @@ export function levelContent(index: number): LevelContent {
     theory: theoryIds.map((id) => THEORY_BY_ID[id]).filter(Boolean),
   }
 }
+
+/** Everything from 10 Kup up to and including `index`, each card once, in belt order. */
+export function levelContentUpTo(index: number): LevelContent {
+  const parts = Array.from({ length: index + 1 }, (_, i) => levelContent(i))
+  return {
+    cardIds: parts.flatMap((p) => p.cardIds),
+    morphemes: parts.flatMap((p) => p.morphemes),
+    techniques: parts.flatMap((p) => p.techniques),
+    terms: parts.flatMap((p) => p.terms),
+    forms: parts.flatMap((p) => p.forms),
+    theory: parts.flatMap((p) => p.theory),
+  }
+}

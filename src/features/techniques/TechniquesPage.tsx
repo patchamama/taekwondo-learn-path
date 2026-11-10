@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { MORPHEME_BY_ID } from '../../data/morphemes'
 import { TECHNIQUES, type Category } from '../../data/techniques'
+import { BeltBadge } from '../../shared/components/BeltBadge'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { CARD_BY_ID } from '../../data/cards'
 import { CLIPS_BY_CARD } from '../../data/clips'
@@ -61,7 +62,7 @@ export function TechniquesPage() {
                   <h3 className="flex items-center gap-2 text-lg font-bold">
                     {x.ko} <SpeakButton text={CARD_BY_ID[x.id].hangul} />
                   </h3>
-                  <p className="text-xs text-slate-500">{x.kup} Kup</p>
+                  <BeltBadge cardId={x.id} />
                 </div>
                 <label className="flex items-center gap-1 text-xs">
                   <input

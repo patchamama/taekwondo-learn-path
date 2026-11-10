@@ -73,13 +73,11 @@ describe('self-defence section', () => {
 })
 
 describe('master forms (Yudanja)', () => {
-  it('has nine forms with a course clip and a Dan exam level', async () => {
+  it('has nine forms with a Dan exam level', async () => {
     const { YUDANJA } = await import('../forms')
-    const { CLIPS_BY_CARD } = await import('../clips')
     expect(YUDANJA).toHaveLength(9)
     for (const y of YUDANJA) {
       expect(y.examDan, y.id).toBeGreaterThanOrEqual(1)
-      expect(CLIPS_BY_CARD[y.id], y.id).toBeTruthy()
     }
   })
 })

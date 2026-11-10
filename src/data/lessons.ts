@@ -105,26 +105,11 @@ const BASE_LESSONS: Lesson[] = [
     ]),
   },
   {
-    id: 'u1-num-a',
-    unit: 'kup10',
-    title: L('Numbers 1–5', 'Zahlen 1–5', 'Números 1–5'),
-    tip: L(
-      'Sino-Korean numbers number the forms: Taeguk 1 is "Il-Chang". Learn il, i, sam, sa, oh.',
-      'Sino-koreanische Zahlen nummerieren die Formen: Taeguk 1 ist „Il-Chang“. Lerne il, i, sam, sa, oh.',
-      'Los números sino-coreanos numeran las formas: Taeguk 1 es «Il-Chang». Aprende il, i, sam, sa, oh.',
-    ),
-    cardIds: ids('sino', ['il', 'i', 'sam', 'sa', 'oh']),
-  },
-  {
     id: 'u1-num-b',
     unit: 'kup10',
-    title: L('Numbers 6–10', 'Zahlen 6–10', 'Números 6–10'),
-    tip: L(
-      'Halfway there! yuk, chil, pal, ku, sib.',
-      'Halbzeit! yuk, chil, pal, ku, sib.',
-      '¡Ya casi! yuk, chil, pal, ku, sib.',
-    ),
-    cardIds: ids('sino', ['yuk', 'chil', 'pal', 'ku', 'sib']),
+    title: L('Number 10', 'Zahl 10', 'Número 10'),
+    tip: L('sib = 10.', 'sib = 10.', 'sib = 10.'),
+    cardIds: ids('sino', ['sib']),
   },
   {
     id: 'u1-native',
@@ -205,8 +190,6 @@ const BASE_LESSONS: Lesson[] = [
       'basic-sabom',
       'command-charyot',
       'command-sijak',
-      'sino-sam',
-      'sino-pal',
       'macki',
       'chagi',
       'olgul',

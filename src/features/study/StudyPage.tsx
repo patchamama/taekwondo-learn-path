@@ -5,8 +5,9 @@ import { CARD_BY_ID } from '../../data/cards'
 import { CLIPS_BY_CARD } from '../../data/clips'
 import { KUKKIWON_BY_ID } from '../../data/kukkiwon'
 import { MORPHEME_BY_ID } from '../../data/morphemes'
-import { levelContent } from '../../data/levelContent'
+import { levelContent, levelContentUpTo } from '../../data/levelContent'
 import { UNITS, LESSONS } from '../../data/lessons'
+import { BeltBadge } from '../../shared/components/BeltBadge'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { ExportBar } from '../../shared/components/ExportBar'
@@ -33,6 +34,7 @@ function ReadingCard({ cardId }: { cardId: string }) {
         </span>
         <SpeakButton text={c.hangul} />
         <SpeakButton text={c.hangul} slow />
+        <BeltBadge cardId={cardId} />
       </h3>
       <p className="font-medium">{loc(c.meaning)}</p>
       {c.info && <p className="mt-2 text-sm">{loc(c.info)}</p>}
@@ -86,7 +88,8 @@ export function StudyPage() {
   const parsed = Number(level)
   const index = Number.isInteger(parsed) && parsed >= 0 && parsed < BELTS.length ? parsed : 0
   const belt = BELTS[index]
-  const c = levelContent(index)
+  const [upTo, setUpTo] = useState(false)
+  const c = upTo ? levelContentUpTo(index) : levelContent(index)
   const unit = UNITS.find((u) => u.earns === belt.id)
   const firstLesson = unit ? LESSONS.find((l) => l.unit === unit.id) : undefined
 
@@ -135,6 +138,11 @@ export function StudyPage() {
           </Link>
         ))}
       </nav>
+
+      <label className="flex w-fit items-center gap-2 rounded-full border bg-white px-3 py-1 text-sm">
+        <input type="checkbox" checked={upTo} onChange={(e) => setUpTo(e.target.checked)} />
+        {t('studyCumulative')}
+      </label>
 
       <header>
         <h2 className="text-xl font-bold">

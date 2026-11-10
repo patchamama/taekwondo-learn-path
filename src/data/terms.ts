@@ -28,18 +28,8 @@ const n = (group: TermGroup, ko: string, hangul: string, v: number): Term =>
 
 // Source: Koreanische Fachbegriffe §6.1–6.11 (hangul added for pronunciation)
 const BASE: Term[] = [
-  ...[
-    ['il', '일'],
-    ['i', '이'],
-    ['sam', '삼'],
-    ['sa', '사'],
-    ['oh', '오'],
-    ['yuk', '육'],
-    ['chil', '칠'],
-    ['pal', '팔'],
-    ['ku', '구'],
-    ['sib', '십'],
-  ].map(([ko, h], i) => n('sino', ko, h, i + 1)),
+  // Sino-Korean 1–9 removed from the learning content on request; only 10 stays
+  n('sino', 'sib', '십', 10),
   ...[
     ['hana', '하나'],
     ['dul', '둘'],
