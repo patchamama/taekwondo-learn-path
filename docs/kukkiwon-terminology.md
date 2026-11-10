@@ -535,3 +535,7 @@ Club PDF §6.5 and §6.10; hangul is the standard Korean spelling, recorded from
 3. Hangul of `tae-sogi`, `antzong-seogi`, `ogeum seogi` and the Korean words for the belt colours.
 4. Meaning of "once" in "Gyeorugi once 1-10" (course note) and of "Nalaechagi" (video 60).
 5. The `ty` / `tei` spelling and the Dan names "Eh-Dan" (이단): confirm spelling used on certificates.
+
+## 7 Kup → 1 Dan (generated names)
+
+`scripts/kukkiwon-translit.py` adds a Kukkiwon-style name for every technique of the slices `src/data/curriculum/kup*.json` (119 entries). The name is a mechanical Revised Romanization of the hangul stored for the technique (syllable by syllable, with liaison such as 굽이 → gubi). They are marked `unverified`: not checked against the Textbook, and the hangul itself was composed from the course material. Verify with the sensei before relying on them.
