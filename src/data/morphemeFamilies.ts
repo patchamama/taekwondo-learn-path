@@ -116,8 +116,13 @@ export const FAMILIES: FamilyInfo[] = [
 
 /** Techniques whose name contains the morpheme (lowest belt first), for the hover hint. */
 export function examplesFor(morphemeId: string, limit = 5) {
+  // simple techniques first (not combos), then the shortest names, so the hint stays readable
   return TECHNIQUES.filter((t) => t.parts.includes(morphemeId))
-    .sort((a, b) => (a.kup === 0 ? -1 : b.kup === 0 ? 1 : b.kup - a.kup))
+    .sort(
+      (a, b) =>
+        Number(a.category === 'combo') - Number(b.category === 'combo') ||
+        a.id.length - b.id.length,
+    )
     .slice(0, limit)
 }
 
