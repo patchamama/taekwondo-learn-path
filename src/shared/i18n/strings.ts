@@ -364,6 +364,8 @@ export const STRINGS = {
     de: 'Welche Technik zeigen diese Einzelbilder?',
     es: '¿Qué técnica muestran estos fotogramas?',
   },
+  maximize: { en: 'Maximize', de: 'Vergrößern', es: 'Maximizar' },
+  close: { en: 'Close', de: 'Schließen', es: 'Cerrar' },
   navStudy: { en: 'Study', de: 'Lernen', es: 'Estudio' },
   studyTitle: { en: 'Study by level', de: 'Lernen nach Stufe', es: 'Estudio por nivel' },
   studyIntro: {

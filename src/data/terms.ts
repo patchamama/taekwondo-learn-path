@@ -99,6 +99,9 @@ const BASE: Term[] = [
   t('body', 'palkup', '팔꿈치', 'elbow', 'Ellenbogen', 'codo'),
   t('body', 'son', '손', 'hand', 'Hand', 'mano'),
   t('body', 'jumok', '주먹', 'fist', 'Faust', 'puño'),
+  t('body', 'ipsul', '입술', 'lips', 'Lippen', 'labios'),
+  t('body', 'dunbu', '둔부', 'hip', 'Hüfte', 'cadera'),
+  t('body', 'eongdeongi', '엉덩이', 'buttocks', 'Gesäß', 'glúteos'),
 
   // Kukkiwon Revised Romanization: the names used by the self-defence course videos and by WT/Kukkiwon poomsae.
   t(

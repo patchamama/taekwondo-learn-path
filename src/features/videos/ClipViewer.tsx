@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CLIPS_BY_CARD, clipKey, type Clip } from '../../data/clips'
 import { useT } from '../../shared/i18n/useT'
+import { MaximizeButton, MaximizeOverlay } from '../../shared/components/Maximize'
 import { ClipPlayer } from './ClipPlayer'
 import { FrameStrip } from './FrameStrip'
 
@@ -20,10 +21,11 @@ export function ClipViewer({ cardId, autoplay = true }: { cardId: string; autopl
   const label = useSourceLabel()
   const clips = CLIPS_BY_CARD[cardId] ?? []
   const [i, setI] = useState(0)
+  const [big, setBig] = useState(false)
   if (clips.length === 0) return <p className="text-sm text-slate-500">{t('noClip')}</p>
   const clip = clips[Math.min(i, clips.length - 1)]
-  return (
-    <div className="grid gap-2">
+  const body = (
+    <>
       {clips.length > 1 && (
         <div role="tablist" aria-label={t('sourcesLabel')} className="flex flex-wrap gap-1.5">
           {clips.map((c, k) => (
@@ -45,8 +47,15 @@ export function ClipViewer({ cardId, autoplay = true }: { cardId: string; autopl
       {clip.similarity === 'similar' && (
         <p className="text-xs text-amber-700">ℹ {t('similarTech')}</p>
       )}
-      <FrameStrip key={`${clipKey(clip)}-f`} clip={clip} />
-      <ClipPlayer key={`${clipKey(clip)}-p`} clip={clip} autoplay={autoplay} />
+      <FrameStrip key={`${clipKey(clip)}-f`} clip={clip} maximizable={false} />
+      <ClipPlayer key={`${clipKey(clip)}-p`} clip={clip} autoplay={big || autoplay} />
+    </>
+  )
+  if (big) return <MaximizeOverlay onClose={() => setBig(false)}>{body}</MaximizeOverlay>
+  return (
+    <div className="grid gap-2">
+      <MaximizeButton onClick={() => setBig(true)} />
+      {body}
     </div>
   )
 }
