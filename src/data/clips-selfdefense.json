@@ -288,5 +288,59 @@
     "start": 4227,
     "end": 4343,
     "similarity": "exact"
+  },
+  {
+    "cardId": "koryo",
+    "start": 1543,
+    "end": 1675,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "keumgang",
+    "start": 1676,
+    "end": 1836,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "taebaek",
+    "start": 1837,
+    "end": 1982,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "pyongwon",
+    "start": 1983,
+    "end": 2132,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sipjin",
+    "start": 2133,
+    "end": 2303,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "jitae",
+    "start": 2304,
+    "end": 2459,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "chonkwon",
+    "start": 2460,
+    "end": 2611,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "hansu",
+    "start": 2612,
+    "end": 2745,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "ilyeo",
+    "start": 2746,
+    "end": 2891,
+    "similarity": "exact"
   }
 ]

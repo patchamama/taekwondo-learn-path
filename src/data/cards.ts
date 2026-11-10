@@ -3,7 +3,7 @@ import { MORPHEMES } from './morphemes'
 import { TECHNIQUES } from './techniques'
 import { TECHNIQUE_HANGUL } from './hangul'
 import { TERMS } from './terms'
-import { FORMS, HYONG } from './forms'
+import { FORMS, HYONG, YUDANJA } from './forms'
 import { SELF_DEFENSE } from './selfDefense'
 
 export type CardKind = 'morpheme' | 'technique' | 'term' | 'form'
@@ -46,6 +46,14 @@ export const CARDS: Card[] = [
     id: f.id,
     kind: 'form',
     group: 'form-hyong',
+    ko: f.ko,
+    hangul: f.hangul,
+    meaning: f.symbol,
+  })),
+  ...YUDANJA.map<Card>((f) => ({
+    id: f.id,
+    kind: 'form',
+    group: 'form-yudanja',
     ko: f.ko,
     hangul: f.hangul,
     meaning: f.symbol,

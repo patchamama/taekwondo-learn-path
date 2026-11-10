@@ -172,6 +172,7 @@ function run(source) {
 
   for (const c of clips) {
     const dir = join('public', 'frames', source.key, c.cardId)
+    if (!process.env.FORCE && existsSync(join(dir, `${FRAMES}.jpg`))) continue
     rmSync(dir, { recursive: true, force: true })
     mkdirSync(dir, { recursive: true })
     const skip = Math.min(source.skipStart ?? 0, (c.end - c.start) / 2)
@@ -211,8 +212,67 @@ function run(source) {
   if (work) rmSync(work, { recursive: true, force: true })
 }
 
-// optional filter: `npm run frames -- course` or `-- selfdefense`
+// External YouTube examples: one short download per clip (720p max), frames in public/frames/ext-<videoId>/<cardId>
+function runExternal() {
+  const clips = JSON.parse(readFileSync('src/data/clips-external.json', 'utf8'))
+  for (const c of clips) {
+    const dir = join('public', 'frames', `ext-${c.videoId}`, c.cardId)
+    if (!process.env.FORCE && existsSync(join(dir, `${FRAMES}.jpg`))) continue
+    const work = join(tmpdir(), `tkd-frames-ext-${c.videoId}-${c.cardId}`)
+    rmSync(work, { recursive: true, force: true })
+    mkdirSync(work, { recursive: true })
+    try {
+      execFileSync(
+        'yt-dlp',
+        [
+          '-q',
+          '--no-warnings',
+          '-f',
+          'bv*[height<=720]',
+          '--download-sections',
+          `*${c.start}-${c.end}`,
+          '--force-keyframes-at-cuts',
+          '-o',
+          join(work, 'seg.%(ext)s'),
+          `https://www.youtube.com/watch?v=${c.videoId}`,
+        ],
+        { stdio: 'inherit' },
+      )
+      const seg = readdirSync(work).map((n) => join(work, n))[0]
+      rmSync(dir, { recursive: true, force: true })
+      mkdirSync(dir, { recursive: true })
+      const times = pickTimes(seg, 0, c.end - c.start, FRAMES, false)
+      times.forEach((t, i) =>
+        execFileSync('ffmpeg', [
+          '-loglevel',
+          'error',
+          '-y',
+          '-ss',
+          t.toFixed(2),
+          '-i',
+          seg,
+          '-frames:v',
+          '1',
+          '-vf',
+          'scale=480:-1',
+          '-q:v',
+          '3',
+          join(dir, `${i + 1}.jpg`),
+        ]),
+      )
+      console.log(`✓ ext-${c.videoId}/${c.cardId}`)
+    } catch (e) {
+      console.log(`✗ ext-${c.videoId}/${c.cardId}: ${e.message.split('\n')[0]}`)
+    } finally {
+      rmSync(work, { recursive: true, force: true })
+    }
+  }
+}
+
+// optional filter: `npm run frames -- course`, `-- selfdefense` or `-- external`
+// Existing frames are kept; set FORCE=1 to regenerate everything.
 const only = process.argv[2]
 for (const s of SOURCES) if (!only || only === s.key) run(s)
+if (!only || only === 'external') runExternal()
 // remove the old flat layout (frames used to live directly in public/frames/<cardId>)
 console.log('Done: public/frames')

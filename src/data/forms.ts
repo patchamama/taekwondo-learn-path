@@ -152,6 +152,9 @@ export interface Hyong {
 /** Hyong (ITF/Chang-Hon) forms from the club's Formen PDF §4.3.3. Hangul copied from the PDF (unverified). */
 export const HYONG: Hyong[] = extra.hyong as Hyong[]
 
+/** Master forms (Yudanja, Koryo → Ilyeo): Dan exam forms of the Poomse system, Formen PDF §4.3.2. */
+export const YUDANJA: Hyong[] = (extra as { yudanja: Hyong[] }).yudanja
+
 export const FORM_RULES: Loc[] = extra.rules as Loc[]
 
 /** Belt index (0 = 10 Kup … 9 = 1 Kup, 10 = 1 Dan) at which a form is first required. */

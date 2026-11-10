@@ -344,6 +344,11 @@ export const STRINGS = {
   },
   examLevel: { en: 'Club exam', de: 'Vereinsprüfung', es: 'Examen del club' },
   courseLevel: { en: 'Course video', de: 'Kursvideo', es: 'Vídeo del curso' },
+  yudanjaForms: {
+    en: 'Master forms (Yudanja, Poomse system)',
+    de: 'Meisterformen (Yudanja, Poomse-System)',
+    es: 'Formas de maestro (Yudanja, sistema Poomse)',
+  },
   hyongForms: {
     en: 'Hyong forms (ITF/Chang-Hon)',
     de: 'Hyong-Formen (ITF/Chang-Hon)',

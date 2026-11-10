@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FORMS, HYONG as HYONG_FORMS, formBeltIndex } from '../../data/forms'
+import { FORMS, HYONG as HYONG_FORMS, YUDANJA, formBeltIndex } from '../../data/forms'
 import { BELTS } from '../../data/belts'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { CLIPS_BY_CARD } from '../../data/clips'
@@ -111,6 +111,51 @@ export function FormsPage() {
                   {isOpen && (
                     <div className="mt-2">
                       <ClipViewer cardId={f.id} />
+                    </div>
+                  )}
+                </div>
+              )}
+            </li>
+          )
+        })}
+      </ul>
+      <h2 className="mt-4 text-xl font-bold">{t('yudanjaForms')}</h2>
+      <ul className="grid items-start gap-3 md:grid-cols-2">
+        {YUDANJA.filter((y) => visibleIndex(formBeltIndex(y))).map((y) => {
+          const isOpen = open === y.id
+          return (
+            <li key={y.id} className="rounded-xl border bg-white p-4 shadow-sm">
+              <div className="flex items-start gap-2">
+                <div className="min-w-0 flex-1">
+                  <p className="font-bold">
+                    {y.ko}{' '}
+                    <span lang="ko" className="font-normal text-slate-500">
+                      {y.hangul}
+                    </span>
+                  </p>
+                  <p className="text-xs text-slate-500">
+                    {y.moves} {t('moves')}
+                  </p>
+                  <p className="mt-1 text-xs font-semibold text-amber-800">
+                    {t('examLevel')}: {y.examDan} Dan
+                  </p>
+                </div>
+                <SpeakButton text={y.hangul} />
+              </div>
+              <p className="mt-1 font-medium">{loc(y.symbol)}</p>
+              <p className="text-sm text-slate-600">{loc(y.meaning)}</p>
+              {CLIPS_BY_CARD[y.id] && (
+                <div className="mt-2">
+                  <button
+                    className="rounded-lg border px-3 py-1 text-sm"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpen(isOpen ? null : y.id)}
+                  >
+                    {isOpen ? t('hide') : `▶ ${t('watch')}`}
+                  </button>
+                  {isOpen && (
+                    <div className="mt-2">
+                      <ClipViewer cardId={y.id} />
                     </div>
                   )}
                 </div>

@@ -513,5 +513,169 @@
     "Ko-Dang/Eui-Am/Yon-Gae/Moon-Moo/So-San/Se-Yong/Tong-Il appear in Formen §4.3.3 but in no exam level of the 2025-01 program (examKup/examDan omitted).",
     "Poomse beyond Taegeuk (Koryo, Kumgang, Taebaek, Pyongwon, Sipjin, Jitae, Chonkwon, Hansu, Ilyo) are exam requirements (Dan 2-6) but not in this file.",
     "Page numbers are the printed page numbers of the Formen PDF (PDF page = printed + 4)."
+  ],
+  "yudanja": [
+    {
+      "id": "koryo",
+      "ko": "Koryo",
+      "hangul": "고려",
+      "moves": 30,
+      "examDan": 1,
+      "symbol": {
+        "en": "Wise person",
+        "de": "Weiser Mensch",
+        "es": "Persona sabia"
+      },
+      "meaning": {
+        "en": "Name of the Korean dynasty 918–1392 (the old name of Korea); symbolises a wise person.",
+        "de": "Name der koreanischen Dynastie 918–1392 (alter Name Koreas); symbolisiert einen weisen Menschen.",
+        "es": "Nombre de la dinastía coreana de 918–1392 (el antiguo nombre de Corea); simboliza a una persona sabia."
+      },
+      "source": "Formen PDF §4.3.2; hangul of Pyongwon/Sipjin corrected (the PDF repeats 태백 and writes 싶진)"
+    },
+    {
+      "id": "keumgang",
+      "ko": "Keumgang",
+      "hangul": "금강",
+      "moves": 27,
+      "examDan": 1,
+      "symbol": {
+        "en": "Hardness and firmness",
+        "de": "Härte und Unbeugsamkeit",
+        "es": "Dureza e inflexibilidad"
+      },
+      "meaning": {
+        "en": "Named after Mount Kumgang (Diamond Mountain) in the Taebaek range on the east coast.",
+        "de": "Benannt nach dem Kumgang-Berg (Diamantenberg) im Taebaek-Gebirge an der Ostküste.",
+        "es": "Lleva el nombre del monte Kumgang (Montaña de Diamante), en la cordillera Taebaek, en la costa este."
+      },
+      "source": "Formen PDF §4.3.2; hangul of Pyongwon/Sipjin corrected (the PDF repeats 태백 and writes 싶진)"
+    },
+    {
+      "id": "taebaek",
+      "ko": "Taebaek",
+      "hangul": "태백",
+      "moves": 26,
+      "examDan": 2,
+      "symbol": {
+        "en": "Spirituality",
+        "de": "Spiritualität",
+        "es": "Espiritualidad"
+      },
+      "meaning": {
+        "en": "Named after the sacred Taebaek mountains, a 500 km range along the east coast.",
+        "de": "Benannt nach dem heiligen Taebaek-Gebirge, einem etwa 500 km langen Gebirgszug an der Ostküste.",
+        "es": "Lleva el nombre de la sagrada cordillera Taebaek, de unos 500 km a lo largo de la costa este."
+      },
+      "source": "Formen PDF §4.3.2; hangul of Pyongwon/Sipjin corrected (the PDF repeats 태백 and writes 싶진)"
+    },
+    {
+      "id": "pyongwon",
+      "ko": "Pyongwon",
+      "hangul": "평원",
+      "moves": 21,
+      "examDan": 2,
+      "symbol": {
+        "en": "Peacefulness",
+        "de": "Friedfertigkeit",
+        "es": "Pacifismo"
+      },
+      "meaning": {
+        "en": "Named after the fertile plain in the south of North Korea (also a king, 559–590).",
+        "de": "Benannt nach der fruchtbaren Ebene im Süden Nordkoreas (auch ein König, 559–590).",
+        "es": "Lleva el nombre de la fértil llanura del sur de Corea del Norte (también un rey, 559–590)."
+      },
+      "source": "Formen PDF §4.3.2; hangul of Pyongwon/Sipjin corrected (the PDF repeats 태백 and writes 싶진)"
+    },
+    {
+      "id": "sipjin",
+      "ko": "Sipjin",
+      "hangul": "십진",
+      "moves": 28,
+      "examDan": 3,
+      "symbol": {
+        "en": "Health and long life",
+        "de": "Gesundheit und Langlebigkeit",
+        "es": "Salud y larga vida"
+      },
+      "meaning": {
+        "en": "The ten symbols of longevity: sun, moon, mountain, water, stone, pine, herb of eternal life, turtle, deer and crane.",
+        "de": "Die zehn Symbole der Langlebigkeit: Sonne, Mond, Berg, Wasser, Stein, Kiefer, Kraut des ewigen Lebens, Schildkröte, Reh und Kranich.",
+        "es": "Los diez símbolos de la longevidad: sol, luna, montaña, agua, piedra, pino, hierba de la vida eterna, tortuga, ciervo y grulla."
+      },
+      "source": "Formen PDF §4.3.2; hangul of Pyongwon/Sipjin corrected (the PDF repeats 태백 and writes 싶진)"
+    },
+    {
+      "id": "jitae",
+      "ko": "Jitae",
+      "hangul": "지태",
+      "moves": 28,
+      "examDan": 3,
+      "symbol": {
+        "en": "Beginning and end",
+        "de": "Anfang und Ende",
+        "es": "Principio y fin"
+      },
+      "meaning": {
+        "en": "The earth: all life comes from the earth and returns to it.",
+        "de": "Die Erde: Alles Leben entsteht aus der Erde und wird wieder zu Erde.",
+        "es": "La tierra: toda vida nace de la tierra y vuelve a ella."
+      },
+      "source": "Formen PDF §4.3.2; hangul of Pyongwon/Sipjin corrected (the PDF repeats 태백 and writes 싶진)"
+    },
+    {
+      "id": "chonkwon",
+      "ko": "Chonkwon",
+      "hangul": "천권",
+      "moves": 26,
+      "examDan": 4,
+      "symbol": {
+        "en": "Piety",
+        "de": "Frömmigkeit",
+        "es": "Devoción"
+      },
+      "meaning": {
+        "en": "The sky: in Korean mythology the origin of all life on earth, venerated since ancient times.",
+        "de": "Der Himmel: in der koreanischen Mythologie der Ursprung allen Lebens auf der Erde, seit jeher verehrt.",
+        "es": "El cielo: en la mitología coreana el origen de toda la vida en la tierra, venerado desde siempre."
+      },
+      "source": "Formen PDF §4.3.2; hangul of Pyongwon/Sipjin corrected (the PDF repeats 태백 and writes 싶진)"
+    },
+    {
+      "id": "hansu",
+      "ko": "Hansu",
+      "hangul": "한수",
+      "moves": 27,
+      "examDan": 4,
+      "symbol": {
+        "en": "Adaptability",
+        "de": "Anpassungsfähigkeit",
+        "es": "Adaptabilidad"
+      },
+      "meaning": {
+        "en": "Water as the origin of life: it flows or stands still, calm or wild.",
+        "de": "Wasser als Ursprung des Lebens: es fließt oder steht still, ruhig oder wild.",
+        "es": "El agua como origen de la vida: fluye o se detiene, tranquila o salvaje."
+      },
+      "source": "Formen PDF §4.3.2; hangul of Pyongwon/Sipjin corrected (the PDF repeats 태백 and writes 싶진)"
+    },
+    {
+      "id": "ilyeo",
+      "ko": "Ilyeo",
+      "hangul": "일여",
+      "moves": 23,
+      "examDan": 5,
+      "symbol": {
+        "en": "Unity of body and mind",
+        "de": "Einheit von Körper und Geist",
+        "es": "Unidad de cuerpo y mente"
+      },
+      "meaning": {
+        "en": "The final unity of body and mind, the true goal of Taekwondo (Buddhist concept).",
+        "de": "Die endgültige Einheit von Körper und Geist, das eigentliche Ziel des Taekwondo (buddhistisches Konzept).",
+        "es": "La unidad final de cuerpo y mente, el verdadero objetivo del Taekwondo (concepto budista)."
+      },
+      "source": "Formen PDF §4.3.2; hangul of Pyongwon/Sipjin corrected (the PDF repeats 태백 and writes 싶진)"
+    }
   ]
 }

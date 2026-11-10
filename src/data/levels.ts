@@ -1,6 +1,6 @@
 import { BELTS } from './belts'
 import { CARD_BY_ID } from './cards'
-import { FORMS, HYONG, formBeltIndex } from './forms'
+import { FORMS, HYONG, YUDANJA, formBeltIndex } from './forms'
 import { LESSONS, UNITS } from './lessons'
 import { TECHNIQUES } from './techniques'
 
@@ -28,6 +28,7 @@ function build(): Record<string, number> {
   }
   for (const t of TECHNIQUES) out[t.id] = kupToIndex(t.kup)
   for (const f of FORMS) out[f.id] = formBeltIndex(f)
+  for (const y of YUDANJA) out[y.id] = formBeltIndex(y)
   for (const h of HYONG) out[h.id] = formBeltIndex(h)
   return out
 }
