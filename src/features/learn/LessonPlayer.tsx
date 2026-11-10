@@ -7,6 +7,8 @@ import { useT } from '../../shared/i18n/useT'
 import { speakKorean } from '../../shared/lib/speech'
 import { Bubble } from '../mascot/Bubble'
 import { COMFORT, PRAISE, pick } from '../mascot/lines'
+import { CLIPS } from '../../data/clips'
+import { FrameStrip } from '../videos/FrameStrip'
 import { isCorrect, type Exercise } from './exercises'
 
 export interface PlayerResult {
@@ -33,11 +35,12 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
   const [chips, setChips] = useState<string[]>([])
   const [firstTry, setFirstTry] = useState<Record<number, boolean>>({})
   const [lastMsg, setLastMsg] = useState(0)
+  const [skipped, setSkipped] = useState(0)
   const log = useRef<PlayerResult['answers']>([])
   const retried = useRef(new Set<Exercise>())
 
   const ex = queue[pos]
-  const total = exercises.length
+  const total = Math.max(1, exercises.length - skipped)
   const correctCount = Object.values(firstTry).filter(Boolean).length
 
   // play audio automatically for listening exercises
@@ -57,6 +60,11 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
       }))
     if (ex.type === 'meaning')
       return ex.options.map((id) => ({ key: id, label: loc(CARD_BY_ID[id].meaning) }))
+    if (ex.type === 'frames')
+      return ex.options.map((id) => ({
+        key: id,
+        label: `${CARD_BY_ID[id].ko} · ${loc(CARD_BY_ID[id].meaning)}`,
+      }))
     if (ex.type === 'recall' || ex.type === 'listen')
       return ex.options.map((id) => ({
         key: id,
@@ -100,6 +108,26 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
     setChips([])
   }
 
+  // listening exercises can be skipped (no headphones): they count neither as right nor as wrong
+  const skip = () => {
+    setSkipped((n) => n + 1)
+    if (pos + 1 >= queue.length) {
+      onFinish({
+        correct: correctCount,
+        total: Math.max(1, exercises.length - skipped - 1),
+        answers: log.current,
+      })
+      return
+    }
+    setPos(pos + 1)
+    setPhase('answering')
+    setChoice(null)
+    setChips([])
+  }
+
+  const frameClip =
+    ex.type === 'frames' ? CLIPS.find((c) => c.cardId === ex.cardId && c.silentSafe) : undefined
+
   const progress = Math.min(100, Math.round((pos / queue.length) * 100))
   const correctText =
     ex.type === 'build'
@@ -117,9 +145,11 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
         ? t('qRecall')
         : ex.type === 'listen'
           ? t('qListen')
-          : ex.type === 'build'
-            ? t('qBuild')
-            : t('qTheory')
+          : ex.type === 'frames'
+            ? t('qFrames')
+            : ex.type === 'build'
+              ? t('qBuild')
+              : t('qTheory')
 
   return (
     <div className="mx-auto flex min-h-[80vh] max-w-xl flex-col gap-4">
@@ -168,11 +198,17 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
             <SpeakButton text={cardOf!.hangul} slow />
           </div>
         )}
+        {ex.type === 'frames' && frameClip && <FrameStrip clip={frameClip} />}
         {ex.type === 'recall' && <p className="text-2xl font-bold">{loc(cardOf!.meaning)}</p>}
         {ex.type === 'listen' && (
           <div className="flex items-center gap-3">
             <SpeakButton text={cardOf!.hangul} className="!h-14 !w-14 !text-2xl" />
             <SpeakButton text={cardOf!.hangul} slow />
+            {phase === 'answering' && (
+              <button type="button" onClick={skip} className="ml-auto text-sm underline">
+                {t('cannotListen')}
+              </button>
+            )}
           </div>
         )}
         {ex.type === 'build' && <p className="text-2xl font-bold">{loc(cardOf!.meaning)}</p>}

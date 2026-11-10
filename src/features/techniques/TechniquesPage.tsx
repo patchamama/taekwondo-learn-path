@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MORPHEMES, MORPHEME_BY_ID } from '../../data/morphemes'
+import { MORPHEME_BY_ID } from '../../data/morphemes'
 import { TECHNIQUES, type Category } from '../../data/techniques'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { CARD_BY_ID } from '../../data/cards'
@@ -7,6 +7,8 @@ import { CLIPS_BY_CARD } from '../../data/clips'
 import { KUKKIWON_BY_ID } from '../../data/kukkiwon'
 import { MATCH_LABEL, MATCH_STYLE } from '../kukkiwon/content'
 import { ClipViewer } from '../videos/ClipViewer'
+import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
+import { MorphemeGroups } from './MorphemeGroups'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
 import type { StringKey } from '../../shared/i18n/strings'
@@ -25,24 +27,15 @@ export function TechniquesPage() {
   const [watching, setWatching] = useState<string | null>(null)
   const learned = useAppStore((s) => s.learned)
   const toggle = useAppStore((s) => s.toggleLearned)
-  const list = TECHNIQUES.filter((x) => cat === 'all' || x.category === cat)
+  const { visibleCard } = useBeltFilter()
+  const list = TECHNIQUES.filter((x) => (cat === 'all' || x.category === cat) && visibleCard(x.id))
 
   return (
     <section>
       <details className="mb-6 rounded-xl border bg-white p-4" open>
         <summary className="cursor-pointer font-semibold">{t('morphemes')}</summary>
         <p className="my-2 text-sm text-slate-600">{t('morphemesHint')}</p>
-        <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {MORPHEMES.map((m) => (
-            <li key={m.id} className="rounded bg-slate-50 px-3 py-1.5 text-sm">
-              <b>{m.ko}</b>{' '}
-              <span lang="ko" className="text-slate-500">
-                {m.hangul}
-              </span>{' '}
-              = {loc(m.meaning)}
-            </li>
-          ))}
-        </ul>
+        <MorphemeGroups />
       </details>
 
       <div className="mb-4 flex flex-wrap gap-2" role="group">

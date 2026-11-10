@@ -13,9 +13,13 @@ interface AppState {
   streak: Streak
   mastery: Record<string, number> // cardId → correct answers
   strictOrder: boolean // lock lessons until the previous one is done
+  maxBelt: number // content filter: show items up to this belt index (0 = 10 Kup … 10 = 1 Dan)
+  listening: boolean // include listening exercises
   videoLang: VideoLang
   setLang: (l: Lang) => void
   setStrictOrder: (v: boolean) => void
+  setMaxBelt: (v: number) => void
+  setListening: (v: boolean) => void
   setVideoLang: (v: VideoLang) => void
   toggleLearned: (id: string) => void
   recordAnswer: (cardId: string, correct: boolean) => void
@@ -37,10 +41,14 @@ export const useAppStore = create<AppState>()(
     (set) => ({
       lang: 'en',
       strictOrder: false,
+      maxBelt: 10,
+      listening: true,
       videoLang: 'auto',
       ...empty,
       setLang: (lang) => set({ lang }),
       setStrictOrder: (strictOrder) => set({ strictOrder }),
+      setMaxBelt: (v) => set({ maxBelt: Math.max(0, Math.min(10, Math.round(v))) }),
+      setListening: (listening) => set({ listening }),
       setVideoLang: (videoLang) => set({ videoLang }),
       toggleLearned: (id) =>
         set((s) => ({

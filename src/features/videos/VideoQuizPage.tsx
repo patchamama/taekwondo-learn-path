@@ -8,6 +8,7 @@ import { makeRng } from '../learn/exercises'
 import { Bubble } from '../mascot/Bubble'
 import { ClipPlayer } from './ClipPlayer'
 import { FrameStrip } from './FrameStrip'
+import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { buildVideoRounds } from './videoQuiz'
 
 type Mode = 'guess' | 'recall' | 'frames'
@@ -54,8 +55,9 @@ export function VideoQuizPage() {
 function Game({ mode, onBack }: { mode: Mode; onBack: () => void }) {
   const { t, loc } = useT()
   const addXp = useAppStore((s) => s.addXp)
+  const { visibleCard } = useBeltFilter()
   const [seed, setSeed] = useState(() => Date.now())
-  const [rounds, setRounds] = useState(() => buildVideoRounds(makeRng(seed)))
+  const [rounds, setRounds] = useState(() => buildVideoRounds(makeRng(seed), 8, visibleCard))
   const [i, setI] = useState(0)
   const [score, setScore] = useState(0)
   const [choice, setChoice] = useState<string | null>(null)
@@ -91,7 +93,7 @@ function Game({ mode, onBack }: { mode: Mode; onBack: () => void }) {
   const restart = () => {
     const s = Date.now()
     setSeed(s)
-    setRounds(buildVideoRounds(makeRng(s)))
+    setRounds(buildVideoRounds(makeRng(s), 8, visibleCard))
     setI(0)
     setScore(0)
     setChoice(null)

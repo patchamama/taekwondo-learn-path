@@ -1,0 +1,517 @@
+{
+  "formLevels": [
+    {
+      "id": "taeguk-1",
+      "examKup": 7,
+      "courseKeup": 8
+    },
+    {
+      "id": "taeguk-2",
+      "examKup": 6,
+      "courseKeup": 7
+    },
+    {
+      "id": "taeguk-3",
+      "examKup": 5,
+      "courseKeup": 6
+    },
+    {
+      "id": "taeguk-4",
+      "examKup": 4,
+      "courseKeup": 5
+    },
+    {
+      "id": "taeguk-5",
+      "examKup": 3,
+      "courseKeup": 4
+    },
+    {
+      "id": "taeguk-6",
+      "examKup": 2,
+      "courseKeup": 3
+    },
+    {
+      "id": "taeguk-7",
+      "examKup": 1,
+      "courseKeup": 2
+    },
+    {
+      "id": "taeguk-8",
+      "examKup": 0,
+      "courseKeup": 1
+    }
+  ],
+  "hyong": [
+    {
+      "id": "hyong-chong-ji",
+      "ko": "Chong-Ji",
+      "hangul": "천지",
+      "moves": 19,
+      "examKup": 7,
+      "symbol": {
+        "en": "Heaven and Earth",
+        "de": "Himmel und Erde",
+        "es": "Cielo y Tierra"
+      },
+      "meaning": {
+        "en": "In the Orient it stands for the beginning of human history, which is why it is the first form a beginner learns.",
+        "de": "Im Orient als Symbol für den Beginn der Menschheitsgeschichte verstanden; deshalb ist es die erste Form, die der Anfänger lernt.",
+        "es": "En Oriente simboliza el comienzo de la historia de la humanidad; por eso es la primera forma que aprende el principiante."
+      },
+      "source": "Formen §4.3.3 p.12"
+    },
+    {
+      "id": "hyong-tang-gun",
+      "ko": "Tang-Gun",
+      "hangul": "단군",
+      "moves": 21,
+      "examKup": 6,
+      "symbol": {
+        "en": "Holy Tang-Gun (founder of Korea)",
+        "de": "Der heilige Tang-Gun",
+        "es": "El sagrado Tang-Gun"
+      },
+      "meaning": {
+        "en": "Named after the holy Tang-Gun, who according to legend founded Korea in 2333 BC.",
+        "de": "Benannt nach dem heiligen Tang-Gun, der der Legende zufolge Korea im Jahre 2333 v. Chr. gründete.",
+        "es": "Lleva el nombre del sagrado Tang-Gun, quien según la leyenda fundó Corea en el año 2333 a. C."
+      },
+      "source": "Formen §4.3.3 p.12"
+    },
+    {
+      "id": "hyong-to-san",
+      "ko": "To-San",
+      "hangul": "도산",
+      "moves": 24,
+      "examKup": 5,
+      "symbol": {
+        "en": "Patriot Ahn Ch'ang-Ho",
+        "de": "Der Patriot Ahn Ch'ang-Ho",
+        "es": "El patriota Ahn Ch'ang-Ho"
+      },
+      "meaning": {
+        "en": "Pseudonym of the patriot Ahn Ch'ang-Ho (1876-1938), who devoted his whole life to education in Korea and to its independence movement.",
+        "de": "Pseudonym des Patrioten Ahn Ch'ang-Ho (1876-1938), der sein ganzes Leben der Bildungsförderung in Korea und seiner Unabhängigkeitsbewegung widmete.",
+        "es": "Seudónimo del patriota Ahn Ch'ang-Ho (1876-1938), que dedicó su vida a la educación en Corea y a su movimiento de independencia."
+      },
+      "source": "Formen §4.3.3 p.12"
+    },
+    {
+      "id": "hyong-won-hyo",
+      "ko": "Won-Hyo",
+      "hangul": "원효",
+      "moves": 28,
+      "examKup": 4,
+      "symbol": {
+        "en": "Monk Won-Hyo",
+        "de": "Der Mönch Won-Hyo",
+        "es": "El monje Won-Hyo"
+      },
+      "meaning": {
+        "en": "Name of the well-known monk who brought Buddhism to Korea during the Silla dynasty (868 AD, as stated in the PDF).",
+        "de": "Name jenes bekannten Mönches, der in der Silla-Dynastie im Jahre 868 n. Chr. den Buddhismus brachte.",
+        "es": "Nombre del conocido monje que llevó el budismo a Corea durante la dinastía Silla (año 868 d. C., según el PDF)."
+      },
+      "source": "Formen §4.3.3 p.12"
+    },
+    {
+      "id": "hyong-yul-gok",
+      "ko": "Yul-Gok",
+      "hangul": "율곡",
+      "moves": 38,
+      "examKup": 3,
+      "symbol": {
+        "en": "Philosopher Yi I (Yul-Gok)",
+        "de": "Der Philosoph Yi I (Yul-Gok)",
+        "es": "El filósofo Yi I (Yul-Gok)"
+      },
+      "meaning": {
+        "en": "Pseudonym of the great philosopher and scholar Yi I (1536-1584), 'the Korean Confucius'. The 38 movements refer to the latitude of his birthplace; the floor pattern stands for 'scholar'.",
+        "de": "Pseudonym des großen Philosophen und Gelehrten Yi I (1536-1584), 'koreanischer Konfuzius'. Die 38 Bewegungen beziehen sich auf den Breitengrad seines Geburtsortes, das Bodendiagramm steht für 'Gelehrter'.",
+        "es": "Seudónimo del gran filósofo y erudito Yi I (1536-1584), 'el Confucio coreano'. Los 38 movimientos se refieren a la latitud de su lugar de nacimiento; el diagrama representa 'erudito'."
+      },
+      "source": "Formen §4.3.3 p.12"
+    },
+    {
+      "id": "hyong-chung-gun",
+      "ko": "Chung-Gun",
+      "hangul": "중근",
+      "moves": 32,
+      "examKup": 2,
+      "symbol": {
+        "en": "Ahn Joong-Gun",
+        "de": "Ahn Joong-Gun",
+        "es": "Ahn Joong-Gun"
+      },
+      "meaning": {
+        "en": "Named after Ahn Joong-Gun, who assassinated Hirobumi Ito, the first Japanese governor-general of Korea. The 32 movements symbolise his age at his execution in 1910 (Lui Shung prison).",
+        "de": "Nach Ahn Joong-Gun benannt, der Hiro-Bumi Ito, den ersten japanischen Generalgouverneur von Korea, erschoss. Die 32 Bewegungen symbolisieren Ahn Joong-Guns Alter bei seiner Hinrichtung 1910.",
+        "es": "Lleva el nombre de Ahn Joong-Gun, que mató a Hirobumi Ito, primer gobernador general japonés de Corea. Los 32 movimientos simbolizan su edad al ser ejecutado en 1910."
+      },
+      "source": "Formen §4.3.3 p.13"
+    },
+    {
+      "id": "hyong-toi-gye",
+      "ko": "Toi-Gye",
+      "hangul": "퇴계",
+      "moves": 37,
+      "examKup": 1,
+      "symbol": {
+        "en": "Scholar Yi Hwang (Toi-Gye)",
+        "de": "Der Gelehrte Yi Hwang (Toi-Gye)",
+        "es": "El erudito Yi Hwang (Toi-Gye)"
+      },
+      "meaning": {
+        "en": "Pen name of the scholar Yi Hwang (1501-1570), an authority on Confucianism. The 37 movements refer to the latitude of his birthplace; the floor pattern stands for 'scholar'.",
+        "de": "Schriftstellername des Gelehrten Yi Hwang (1501-1570), Autorität des Konfuzianismus. Die 37 Bewegungen beziehen sich auf den Breitengrad seines Geburtsortes, das Bodendiagramm steht für 'Gelehrter'.",
+        "es": "Nombre de escritor del erudito Yi Hwang (1501-1570), autoridad del confucianismo. Los 37 movimientos se refieren a la latitud de su lugar de nacimiento; el diagrama representa 'erudito'."
+      },
+      "source": "Formen §4.3.3 p.13"
+    },
+    {
+      "id": "hyong-hwa-rang",
+      "ko": "Hwa-Rang",
+      "hangul": "화랑",
+      "moves": 30,
+      "examDan": 1,
+      "symbol": {
+        "en": "The Hwarang youth group",
+        "de": "Die Hwarang-Jugendgruppe",
+        "es": "El grupo juvenil Hwarang"
+      },
+      "meaning": {
+        "en": "Named after the youth group founded about 1450 years ago in Silla, later the driving force behind the unification of the three Korean kingdoms.",
+        "de": "Benannt nach der Jugendgruppe, die vor etwa 1450 Jahren in Silla gegründet wurde und später treibende Kraft der Vereinigung der drei koreanischen Königreiche war.",
+        "es": "Lleva el nombre del grupo juvenil fundado hace unos 1450 años en Silla, que luego impulsó la unificación de los tres reinos coreanos."
+      },
+      "source": "Formen §4.3.3 p.13"
+    },
+    {
+      "id": "hyong-chung-mu",
+      "ko": "Chung-Mu",
+      "hangul": "충무",
+      "moves": 30,
+      "examDan": 2,
+      "symbol": {
+        "en": "Admiral Yi Sun-sin",
+        "de": "Admiral Yi Sun-sin",
+        "es": "El almirante Yi Sun-sin"
+      },
+      "meaning": {
+        "en": "Pseudonym of Admiral Yi Sun-sin (1545-1598), who built the first armoured warship in 1592. The form ends with a left-hand attack symbolising his sudden death.",
+        "de": "Pseudonym für Admiral Yi Sun-sin (1545-1598), der 1592 das erste gepanzerte Kriegsschiff erfand. Die Form endet mit einer Angriffsbewegung mit der linken Hand und symbolisiert seinen plötzlichen Tod.",
+        "es": "Seudónimo del almirante Yi Sun-sin (1545-1598), que inventó en 1592 el primer buque de guerra acorazado. La forma termina con un ataque de la mano izquierda que simboliza su muerte repentina."
+      },
+      "source": "Formen §4.3.3 p.13"
+    },
+    {
+      "id": "hyong-gwang-gae",
+      "ko": "Gwang-Gae",
+      "hangul": "광개",
+      "moves": 39,
+      "examDan": 2,
+      "symbol": {
+        "en": "King Gwang-Gae-To",
+        "de": "König Gwang-Gae-To",
+        "es": "El rey Gwang-Gae-To"
+      },
+      "meaning": {
+        "en": "Named after the 19th king of Goguryeo (374-413 AD), who expanded Korean settlements; the pattern stands for regaining lost territory in Manchuria. The 39 movements refer to the first two digits of 391, the year of his accession.",
+        "de": "Steht für den 19. König der Goguryeo-Dynastie (374-413 n. Chr.), der koreanische Siedlungen erweiterte; das Diagramm steht für die Rückeroberung verlorener Gebiete in der Mandschurei. Die 39 Bewegungen beziehen sich auf die ersten beiden Zahlen des Thronbesteigungsjahres 391.",
+        "es": "Representa al decimonoveno rey de Goguryeo (374-413 d. C.), que amplió los asentamientos coreanos; el diagrama simboliza la reconquista de territorios perdidos en Manchuria. Los 39 movimientos se refieren a las dos primeras cifras de 391, año de su ascenso al trono."
+      },
+      "source": "Formen §4.3.3 p.14"
+    },
+    {
+      "id": "hyong-po-eun",
+      "ko": "Po-Eun",
+      "hangul": "포은",
+      "moves": 36,
+      "examDan": 3,
+      "symbol": {
+        "en": "Poet Jeong Mong-ju",
+        "de": "Der Dichter Jeong Mong-ju",
+        "es": "El poeta Jeong Mong-ju"
+      },
+      "meaning": {
+        "en": "Pseudonym of the physicist and poet Jeong Mong-ju (1337-1392), famous for the poem 'I would serve no other, even if crucified a hundred times'.",
+        "de": "Pseudonym des Physikers und Dichters Jeong Mong-ju (1337-1392), bekannt durch das Gedicht 'Ich würde keinem anderen dienen, auch wenn ich 100 Male dafür gekreuzigt werden würde'.",
+        "es": "Seudónimo del físico y poeta Jeong Mong-ju (1337-1392), famoso por su poema 'No serviría a ningún otro, aunque me crucificaran cien veces'."
+      },
+      "source": "Formen §4.3.3 p.14"
+    },
+    {
+      "id": "hyong-ge-baek",
+      "ko": "Ge-Baek",
+      "hangul": "계백",
+      "moves": 44,
+      "examDan": 3,
+      "symbol": {
+        "en": "General Ge-Baek",
+        "de": "General Ge-Baek",
+        "es": "El general Ge-Baek"
+      },
+      "meaning": {
+        "en": "Named after the general Ge-Baek, who died on the battlefield of Hwangsanbeol in 660 AD (the PDF says 600).",
+        "de": "Nach dem gleichnamigen General benannt, der auf dem Schlachtfeld von Hwangsanbeol 600 n. Chr. gestorben ist (Angabe laut PDF).",
+        "es": "Lleva el nombre del general Ge-Baek, que murió en el campo de batalla de Hwangsanbeol (el PDF indica el año 600)."
+      },
+      "source": "Formen §4.3.3 p.14"
+    },
+    {
+      "id": "hyong-eui-am",
+      "ko": "Eui-Am",
+      "hangul": "의암",
+      "moves": 45,
+      "symbol": {
+        "en": "Son Byong-Hi (Sam-Il movement)",
+        "de": "Son Byong-Hi (Sam-Il-Bewegung)",
+        "es": "Son Byong-Hi (movimiento Sam-Il)"
+      },
+      "meaning": {
+        "en": "Pseudonym of Son Byong-Hi (1861-1922), who led the Korean independence movement of 1 March 1919.",
+        "de": "Pseudonym von Son Byong-Hi (1861-1922), der am 1. März 1919 die koreanische Unabhängigkeitsbewegung leitete.",
+        "es": "Seudónimo de Son Byong-Hi (1861-1922), que dirigió el movimiento de independencia coreano del 1 de marzo de 1919."
+      },
+      "source": "Formen §4.3.3 p.14"
+    },
+    {
+      "id": "hyong-chung-ang",
+      "ko": "Chung-Ang",
+      "hangul": "충장",
+      "moves": 52,
+      "examDan": 4,
+      "symbol": {
+        "en": "General Kim Duk-Ryang",
+        "de": "General Kim Duk-Ryang",
+        "es": "El general Kim Duk-Ryang"
+      },
+      "meaning": {
+        "en": "Pen name of the general and poet Kim Duk-Ryang (1567-1595), who died in prison aged 27.",
+        "de": "Pseudonym des Generals und Dichters Kim Duk-Ryang (1567-1595), der im Alter von 27 Jahren im Gefängnis starb.",
+        "es": "Seudónimo del general y poeta Kim Duk-Ryang (1567-1595), que murió en prisión a los 27 años."
+      },
+      "source": "Formen §4.3.3 p.15"
+    },
+    {
+      "id": "hyong-ko-dang",
+      "ko": "Ko-Dang",
+      "hangul": "고당",
+      "moves": 39,
+      "symbol": {
+        "en": "Patriot Cho Man-Sik",
+        "de": "Der Patriot Cho Man-Sik",
+        "es": "El patriota Cho Man-Sik"
+      },
+      "meaning": {
+        "en": "Pseudonym of the patriot and freedom fighter Cho Man-Sik (1883-1950), who devoted his life to Korean independence and education.",
+        "de": "Pseudonym des Patrioten und Freiheitskämpfers Cho Man-Sik (1883-1950), der sein Leben der koreanischen Unabhängigkeit und Bildung widmete.",
+        "es": "Seudónimo del patriota y luchador por la libertad Cho Man-Sik (1883-1950), que dedicó su vida a la independencia y la educación de Corea."
+      },
+      "source": "Formen §4.3.3 p.15"
+    },
+    {
+      "id": "hyong-sam-il",
+      "ko": "Sam-Il",
+      "hangul": "삼일",
+      "moves": 33,
+      "examDan": 5,
+      "symbol": {
+        "en": "First of March (1919)",
+        "de": "Der Erste März (1919)",
+        "es": "El Primero de Marzo (1919)"
+      },
+      "meaning": {
+        "en": "'Sam-Il' means 'first of March': on 1 March 1919 many Koreans demonstrated peacefully for independence from Japan. The 33 movements recall the 33 organisers.",
+        "de": "Sam-Il bedeutet 'Erster März': Am 1. März 1919 demonstrierten viele Koreaner gewaltfrei für die Unabhängigkeit von Japan. Die 33 Bewegungen erinnern an die 33 Organisatoren.",
+        "es": "Sam-Il significa 'primero de marzo': el 1 de marzo de 1919 muchos coreanos se manifestaron pacíficamente por la independencia de Japón. Los 33 movimientos recuerdan a los 33 organizadores."
+      },
+      "source": "Formen §4.3.3 p.15"
+    },
+    {
+      "id": "hyong-yoo-sin",
+      "ko": "Yoo-Sin",
+      "hangul": "유신",
+      "moves": 68,
+      "examDan": 4,
+      "symbol": {
+        "en": "General Kim Yu-Shin",
+        "de": "General Kim Yu-Shin",
+        "es": "El general Kim Yu-Shin"
+      },
+      "meaning": {
+        "en": "Named after General Kim Yu-Shin (595-673), key to the unification of Korea together with China and the Hwarang. The 68 movements stand for the year of unification (668).",
+        "de": "General Kim Yu-Shin (595-673) ist Namensgeber; er war maßgeblich an der Vereinigung Koreas beteiligt. Die 68 Bewegungen stehen für das Jahr der Vereinigung (668).",
+        "es": "Lleva el nombre del general Kim Yu-Shin (595-673), clave en la unificación de Corea junto con China y los Hwarang. Los 68 movimientos representan el año de la unificación (668)."
+      },
+      "source": "Formen §4.3.3 p.15"
+    },
+    {
+      "id": "hyong-choi-yong",
+      "ko": "Choi-Yong",
+      "hangul": "최영",
+      "moves": 45,
+      "examDan": 6,
+      "symbol": {
+        "en": "General Choe-Yeong",
+        "de": "General Choe-Yeong",
+        "es": "El general Choe-Yeong"
+      },
+      "meaning": {
+        "en": "Choe-Yeong (1316-1388) was a loyal general of the Korean army, executed by General Yi Song-Gae, later king.",
+        "de": "Choe-Yeong (1316-1388) war ein loyaler General der damaligen Armee Koreas; er wurde von General Yi Song-Gae, dem späteren König, hingerichtet.",
+        "es": "Choe-Yeong (1316-1388) fue un general leal del ejército coreano, ejecutado por el general Yi Song-Gae, más tarde rey."
+      },
+      "source": "Formen §4.3.3 p.16"
+    },
+    {
+      "id": "hyong-yon-gae",
+      "ko": "Yon-Gae",
+      "hangul": "연개",
+      "moves": 49,
+      "symbol": {
+        "en": "General Yeon-Gae Somun",
+        "de": "General Yeon-Gae Somun",
+        "es": "El general Yeon-Gae Somun"
+      },
+      "meaning": {
+        "en": "General Yeon-Gae Somun (594-666) became famous for expelling the Tang dynasty from Korea; the 49 movements refer to the year 649.",
+        "de": "General Yeon-Gae Somun (594-666) wurde berühmt durch seinen Widerstand und die Vertreibung der Tang-Dynastie; 49 Bewegungen in Anlehnung an das Jahr 649.",
+        "es": "El general Yeon-Gae Somun (594-666) se hizo famoso por expulsar a la dinastía Tang de Corea; los 49 movimientos aluden al año 649."
+      },
+      "source": "Formen §4.3.3 p.16"
+    },
+    {
+      "id": "hyong-ul-ji",
+      "ko": "Ul-Ji",
+      "hangul": "을지",
+      "moves": 42,
+      "examDan": 5,
+      "symbol": {
+        "en": "General Ul-Ji",
+        "de": "General Ul-Ji",
+        "es": "El general Ul-Ji"
+      },
+      "meaning": {
+        "en": "General Ul-Ji defended Korea around 612 against almost a million Chinese invaders using guerrilla tactics.",
+        "de": "General Ul-Ji gelang es um 612, Korea gegen nahezu eine Million chinesischer Invasoren durch Guerillataktik zu verteidigen.",
+        "es": "El general Ul-Ji defendió Corea hacia el 612 contra casi un millón de invasores chinos mediante tácticas de guerrilla."
+      },
+      "source": "Formen §4.3.3 p.16"
+    },
+    {
+      "id": "hyong-moon-moo",
+      "ko": "Moon-Moo",
+      "hangul": "문무",
+      "moves": 61,
+      "symbol": {
+        "en": "King Mun-Mu of Silla",
+        "de": "Der Silla-König Mun-Mu",
+        "es": "El rey Mun-Mu de Silla"
+      },
+      "meaning": {
+        "en": "In honour of the 13th king of Silla, Mun-Mu (626-681), who united the three kingdoms. The 61 movements stand for the last digits of 661, the year he took the throne.",
+        "de": "Zu Ehren des 13. Königs der Silla-Dynastie, Mun-Mu (626-681), der die drei Königreiche vereinte. Die 61 Bewegungen symbolisieren die letzten Ziffern des Jahres 661.",
+        "es": "En honor del decimotercer rey de Silla, Mun-Mu (626-681), que unió los tres reinos. Los 61 movimientos simbolizan las últimas cifras de 661, año de su entronización."
+      },
+      "source": "Formen §4.3.3 p.16"
+    },
+    {
+      "id": "hyong-so-san",
+      "ko": "So-San",
+      "hangul": "서산",
+      "moves": 72,
+      "symbol": {
+        "en": "Monk Seo-San",
+        "de": "Der Mönch Seo-San",
+        "es": "El monje Seo-San"
+      },
+      "meaning": {
+        "en": "Pseudonym of the Joseon-era monk Choi Hyon Ung, who organised warrior monks against the Wokou in 1592. The 72 movements refer to his age at that time.",
+        "de": "Pseudonym des Mönchs Choi Hyon Ung aus der Joseon-Dynastie, der Kriegermönche organisierte und die Wokou 1592 zurückschlug. Die 72 Bewegungen beziehen sich auf sein damaliges Alter.",
+        "es": "Seudónimo del monje Choi Hyon Ung de la dinastía Joseon, que organizó monjes guerreros contra los Wokou en 1592. Los 72 movimientos aluden a su edad entonces."
+      },
+      "source": "Formen §4.3.3 p.17"
+    },
+    {
+      "id": "hyong-se-yong",
+      "ko": "Se-Yong",
+      "hangul": "세종",
+      "moves": 24,
+      "symbol": {
+        "en": "King Sejong",
+        "de": "König Sejong",
+        "es": "El rey Sejong"
+      },
+      "meaning": {
+        "en": "Named after King Sejong (1391-1450), inventor of the Korean alphabet; the 24 movements match its 24 basic letters and the floor pattern is the Chinese character for 'king'.",
+        "de": "Nach König Sejong (1391-1450), dem Erfinder des koreanischen Alphabets, benannt; 24 Bewegungen entsprechend den 24 Grundbuchstaben, das Schrittdiagramm steht chinesisch für 'König'.",
+        "es": "Lleva el nombre del rey Sejong (1391-1450), inventor del alfabeto coreano; los 24 movimientos equivalen a sus 24 letras básicas y el diagrama es el carácter chino para 'rey'."
+      },
+      "source": "Formen §4.3.3 p.17"
+    },
+    {
+      "id": "hyong-tong-il",
+      "ko": "Tong-Il",
+      "hangul": "통일",
+      "moves": 56,
+      "symbol": {
+        "en": "Reunification",
+        "de": "Wiedervereinigung",
+        "es": "Reunificación"
+      },
+      "meaning": {
+        "en": "'Tong-Il' means reunification, a goal of all Koreans; the pattern symbolises the reunion of North and South, split after 1945.",
+        "de": "Tong-Il (Vereinigung) ist ein Ziel aller Koreaner; das Diagramm symbolisiert die Wiedervereinigung von Nord und Süd, die 1945 gespalten wurden.",
+        "es": "Tong-Il significa reunificación, meta de todos los coreanos; el diagrama simboliza la reunión de Norte y Sur, divididos desde 1945."
+      },
+      "source": "Formen §4.3.3 p.17"
+    }
+  ],
+  "drills": [
+    {
+      "id": "saju-macki",
+      "examKup": 9
+    },
+    {
+      "id": "saju-chirugi",
+      "examKup": 8
+    }
+  ],
+  "rules": [
+    {
+      "en": "At the club you choose a form system: Poomse (Taegeuk) or Hyong. The choice does not change the technique repertoire: everyone is taught the techniques of both.",
+      "de": "Im Verein besteht die Wahl des Formensystems: Poomse oder Hyong. Die Wahl beeinflusst nicht das Technik-Repertoire, da allen die Techniken beider Systeme gelehrt werden.",
+      "es": "En el club se elige el sistema de formas: Poomse o Hyong. La elección no cambia el repertorio de técnicas: a todos se les enseñan las de ambos."
+    },
+    {
+      "en": "One form per belt: the 9th and 8th Kup require the four-direction drills (saju-macki, saju-chirugi) instead of a form.",
+      "de": "Eine Form pro Gürtel: Für den 9. und 8. Kup werden statt einer Form die Vierseitenübungen (saju-macki, saju-chirugi) verlangt.",
+      "es": "Una forma por cinturón: para el 9.º y 8.º Kup se piden los ejercicios de cuatro direcciones (saju-macki, saju-chirugi) en lugar de una forma."
+    },
+    {
+      "en": "From the 2nd Kup on, the forms of the other system are also run in full (e.g. 2nd Kup: own system Form 6 plus the other system's Form 1).",
+      "de": "Ab dem 2. Kup werden die Formen des jeweils anderen Systems in Gänze gelaufen (z. B. 2. Kup: eigenes System 6. Form plus 1. Form des anderen Systems).",
+      "es": "Desde el 2.º Kup también se realizan completas las formas del otro sistema (p. ej. 2.º Kup: 6.ª forma del propio sistema más la 1.ª del otro)."
+    },
+    {
+      "en": "The club exam program shifts the Taegeuk numbers by one belt compared with the course video: Taegeuk 1 is examined for the 7th Kup (video: 8 Keup) ... Taegeuk 8 for the 1st Dan (video: 1 Keup).",
+      "de": "Die Prüfungsordnung des Vereins verschiebt die Taegeuk-Nummern um einen Gürtel gegenüber dem Kursvideo: Taegeuk 1 für den 7. Kup (Video: 8 Keup) ... Taegeuk 8 für den 1. Dan (Video: 1 Keup).",
+      "es": "El programa de exámenes del club desplaza los números de Taegeuk un cinturón respecto al vídeo del curso: Taegeuk 1 para el 7.º Kup (vídeo: 8 Keup) ... Taegeuk 8 para el 1.º Dan (vídeo: 1 Keup)."
+    },
+    {
+      "en": "From the 2nd Dan the other system's forms are listed as ranges (e.g. 2nd Dan: Taegeuk 4-6 or Won-Hyo to Chung-Gun) plus a form from another martial art.",
+      "de": "Ab dem 2. Dan stehen die Formen des anderen Systems als Bereiche (z. B. 2. Dan: Taeguk Sa- bis Yuk-Chang bzw. Won-Hyo bis Chung-Gun) plus eine Form aus einer anderen Kampfkunst.",
+      "es": "Desde el 2.º Dan las formas del otro sistema se indican como rangos (p. ej. 2.º Dan: Taeguk 4 a 6 o Won-Hyo a Chung-Gun) más una forma de otro arte marcial."
+    }
+  ],
+  "unverified": [
+    "Hangul for all Hyong is taken verbatim from Formen §4.3.3 (pp.12-17); not independently checked against a Korean source. Gwang-Gae is written 광개 (ITF usually 광개토 for Gwang-Gae-To).",
+    "Chung-Ang: the exam program spells it Chung-Ang (4. Dan own system) but Chung-Jang (6. Dan other system); Formen §4.3.3 headline says CHUNG-ANG with hangul 충장 (= Chung-Jang) and 52 moves. Used 'Chung-Ang' as ko, hangul as printed.",
+    "Chung-Gun/Chung-Mu are the club spellings (ITF: Joong-Gun, Choong-Moo); the task's 'Choong-Moo' = Formen 'Chung-Mu' (30 moves). Joong-Gun hangul printed 중근.",
+    "Ge-Baek: PDF says the general died in 600 AD at Hwangsanbeol (historically 660); Gwang-Gae/Won-Hyo dates copied as printed (Won-Hyo 868 AD is likely an error for 686/Silla). Spanish/English wording is my neutral translation.",
+    "Ko-Dang/Eui-Am/Yon-Gae/Moon-Moo/So-San/Se-Yong/Tong-Il appear in Formen §4.3.3 but in no exam level of the 2025-01 program (examKup/examDan omitted).",
+    "Poomse beyond Taegeuk (Koryo, Kumgang, Taebaek, Pyongwon, Sipjin, Jitae, Chonkwon, Hansu, Ilyo) are exam requirements (Dan 2-6) but not in this file.",
+    "Page numbers are the printed page numbers of the Formen PDF (PDF page = printed + 4)."
+  ]
+}

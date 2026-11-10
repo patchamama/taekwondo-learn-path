@@ -29,6 +29,8 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - E13 inline – Taegeuk 1-8 forms (cards, clips, Forms page), Kukkiwon vocabulary, Bonus unit — done
 - E14 delegated – YouTube research for missing techniques (11 external clips integrated) — done
 - E15 delegated+inline – Kukkiwon documentation, Kukkiwon names page, 22 self-defence clips with studio-only frames — v0.6.0 — done
+- E16 inline – morpheme families + hover hints, level filter slider (10 Kup → 1 Dan), form exam levels + Hyong, rich lesson intro, frames exercise, listening skip/setting — v0.7.0 — done
+- E17 delegated – curriculum 7 Kup → 1 Dan (kup7-5, kup4-3, kup2-dan1 slices, forms-extra) — integrated, content unverified items listed in docs/curriculum/*.md
 
 ## Log
 - L1 2026-11-09 user: "has commit desde ya. Arregla que el primer eslabon debe de ser el 10 Kup que es el cinturón blanco. Continua con el resto de tareas ... fase 3 y no pares hasta lograr una version funcional ..."
@@ -42,3 +44,4 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - Finding: my TECHNIQUES list had omitted 4 PDF items (hansonnal-arae-macki, momtong-hansonnal-packat-macki, sonnal-momtong-kotoro-macki, goduro-packat-palmok-packat-macki). Added.
 - L5 2026-11-10 user: "busca en youtube si existen técnicas que no aparecen ... integra el tercer video ... Self Defense ... documenta ... romanización Kukkiwon ... formas taeguk ... subagente Hapkido-Learn ..."
 - Finding: narani-sogi is a false friend (club: toes in; Kukkiwon narani seogi: parallel). Self-defence compilation shows technique names on screen (never silent-safe); its Taegeuk chapters show self-defence applications, not the full forms.
+- L6 2026-11-10 user: morphemes grouped + hover hints, form levels, lesson intro with media, frame-sequence questions, listening skip, rest of the path to 1 Dan, level range slider.

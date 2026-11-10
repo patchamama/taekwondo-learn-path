@@ -1,4 +1,5 @@
 import type { Loc } from '../shared/i18n/types'
+import { flat, mergeById } from './curriculum'
 
 export interface TheoryItem {
   id: string
@@ -7,12 +8,13 @@ export interface TheoryItem {
   wrong: Loc[]
   /** pdf = stated in the club PDFs; general = common knowledge, confirm with your club */
   source: 'pdf' | 'general'
+  kup?: number
 }
 
 const L = (en: string, de: string, es: string): Loc => ({ en, de, es })
 const same = (v: string): Loc => L(v, v, v)
 
-export const THEORY: TheoryItem[] = [
+const BASE: TheoryItem[] = [
   {
     id: 'th-origin',
     source: 'pdf',
@@ -241,6 +243,9 @@ export const THEORY: TheoryItem[] = [
     wrong: [same('Tokyo'), same('Beijing'), same('Berlin')],
   },
 ]
+
+/** Base theory plus the questions of the curriculum slices. */
+export const THEORY: TheoryItem[] = mergeById(BASE, flat('theory') as TheoryItem[], (x) => x.id)
 
 export const THEORY_BY_ID: Record<string, TheoryItem> = Object.fromEntries(
   THEORY.map((x) => [x.id, x]),

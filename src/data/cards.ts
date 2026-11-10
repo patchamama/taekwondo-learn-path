@@ -3,7 +3,7 @@ import { MORPHEMES } from './morphemes'
 import { TECHNIQUES } from './techniques'
 import { TECHNIQUE_HANGUL } from './hangul'
 import { TERMS } from './terms'
-import { FORMS } from './forms'
+import { FORMS, HYONG } from './forms'
 
 export type CardKind = 'morpheme' | 'technique' | 'term' | 'form'
 
@@ -17,6 +17,8 @@ export interface Card {
   meaning: Loc
   karate?: string
   parts?: string[]
+  /** what it is, how it is executed, what it is used for */
+  info?: Loc
 }
 
 export const CARDS: Card[] = [
@@ -33,10 +35,19 @@ export const CARDS: Card[] = [
     kind: 'technique',
     group: `technique-${x.category}`,
     ko: x.ko,
-    hangul: TECHNIQUE_HANGUL[x.id] ?? x.ko,
+    hangul: x.hangul ?? TECHNIQUE_HANGUL[x.id] ?? x.ko,
     meaning: x.names,
     karate: x.karate === '—' ? undefined : x.karate,
     parts: x.parts,
+    info: x.info,
+  })),
+  ...HYONG.map<Card>((f) => ({
+    id: f.id,
+    kind: 'form',
+    group: 'form-hyong',
+    ko: f.ko,
+    hangul: f.hangul,
+    meaning: f.symbol,
   })),
   ...FORMS.map<Card>((f) => ({
     id: f.id,

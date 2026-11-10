@@ -1,6 +1,7 @@
 import { CARD_BY_ID } from '../../data/cards'
 import { KUKKIWON } from '../../data/kukkiwon'
 import { SpeakButton } from '../../shared/components/SpeakButton'
+import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { useT } from '../../shared/i18n/useT'
 import { CHECKS, CONSONANTS, INTRO, MATCH_LABEL, MATCH_STYLE, READ_NAME, VOWELS } from './content'
 
@@ -38,7 +39,10 @@ function SpellingTable({ rows, title }: { rows: typeof CONSONANTS; title: string
 
 export function KukkiwonPage() {
   const { t, loc } = useT()
-  const techniques = KUKKIWON.filter((k) => CARD_BY_ID[k.cardId]?.kind === 'technique')
+  const { visibleCard } = useBeltFilter()
+  const techniques = KUKKIWON.filter(
+    (k) => CARD_BY_ID[k.cardId]?.kind === 'technique' && visibleCard(k.cardId),
+  )
   return (
     <section className="grid gap-5">
       <h1 className="text-2xl font-bold">{t('kkTitle')}</h1>

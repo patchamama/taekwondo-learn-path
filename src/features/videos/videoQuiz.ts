@@ -10,8 +10,12 @@ export interface VideoRound {
 }
 
 /** Pick `count` techniques and 3 distractor names for each. Only clips whose sound/screen do not reveal the name. */
-export function buildVideoRounds(rng: Rng, count = 8): VideoRound[] {
-  const safe = CLIPS.filter((c) => c.silentSafe)
+export function buildVideoRounds(
+  rng: Rng,
+  count = 8,
+  allowed: (cardId: string) => boolean = () => true,
+): VideoRound[] {
+  const safe = CLIPS.filter((c) => c.silentSafe && allowed(c.cardId))
   const pool = [...new Set(safe.map((c) => c.cardId))]
   return shuffle(pool, rng)
     .slice(0, count)

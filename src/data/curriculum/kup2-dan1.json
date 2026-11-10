@@ -1,0 +1,3851 @@
+{
+  "range": "2-1 Kup and 1 Dan",
+  "morphemes": [
+    {
+      "id": "jirugi",
+      "hangul": "찌르기",
+      "group": "action",
+      "family": "action",
+      "meaning": {
+        "en": "stab / thrust (fingertips, club spelling also for fist)",
+        "de": "Stich",
+        "es": "estocada / punzada"
+      }
+    },
+    {
+      "id": "kokki",
+      "hangul": "꺾기",
+      "group": "action",
+      "family": "action",
+      "meaning": {
+        "en": "bending / breaking (elbow break)",
+        "de": "Beugen / Bruch",
+        "es": "torsión / rotura"
+      }
+    },
+    {
+      "id": "palkup",
+      "hangul": "팔꿈치",
+      "group": "tool",
+      "family": "tool",
+      "meaning": {
+        "en": "elbow",
+        "de": "Ellenbogen",
+        "es": "codo"
+      }
+    },
+    {
+      "id": "jumok",
+      "hangul": "주먹",
+      "group": "tool",
+      "family": "tool",
+      "meaning": {
+        "en": "fist",
+        "de": "Faust",
+        "es": "puño"
+      }
+    },
+    {
+      "id": "dung-jumok",
+      "hangul": "등주먹",
+      "group": "tool",
+      "family": "tool",
+      "meaning": {
+        "en": "back of the fist",
+        "de": "Faustrücken",
+        "es": "dorso del puño"
+      }
+    },
+    {
+      "id": "du-jumok",
+      "hangul": "두주먹",
+      "group": "tool",
+      "family": "count",
+      "meaning": {
+        "en": "double fist (both fists)",
+        "de": "Doppelfaust",
+        "es": "doble puño (ambos puños)"
+      }
+    },
+    {
+      "id": "dubon",
+      "hangul": "두번",
+      "group": "direction",
+      "family": "count",
+      "meaning": {
+        "en": "double",
+        "de": "doppelt",
+        "es": "doble"
+      }
+    },
+    {
+      "id": "pyonsonkut",
+      "hangul": "편손끝",
+      "group": "tool",
+      "family": "tool",
+      "meaning": {
+        "en": "flat-hand fingertips",
+        "de": "Fingerspitzen der flachen Hand",
+        "es": "yemas de la mano abierta"
+      }
+    },
+    {
+      "id": "sonnaldung",
+      "hangul": "손날등",
+      "group": "tool",
+      "family": "tool",
+      "meaning": {
+        "en": "back of the knife-hand",
+        "de": "Rückseite der Handkante",
+        "es": "dorso del canto de la mano"
+      }
+    },
+    {
+      "id": "murup",
+      "hangul": "무릎",
+      "group": "tool",
+      "family": "tool",
+      "meaning": {
+        "en": "knee",
+        "de": "Knie",
+        "es": "rodilla"
+      }
+    },
+    {
+      "id": "tok",
+      "hangul": "턱",
+      "group": "zone",
+      "family": "target",
+      "meaning": {
+        "en": "chin",
+        "de": "Kinn",
+        "es": "mentón"
+      }
+    },
+    {
+      "id": "sewo",
+      "hangul": "세워",
+      "group": "direction",
+      "family": "direction-axis",
+      "meaning": {
+        "en": "vertical",
+        "de": "vertikal",
+        "es": "vertical"
+      }
+    },
+    {
+      "id": "jechyo",
+      "hangul": "젖혀",
+      "group": "direction",
+      "family": "direction-axis",
+      "meaning": {
+        "en": "upward from below",
+        "de": "von unten nach oben",
+        "es": "de abajo hacia arriba"
+      }
+    },
+    {
+      "id": "ollyo",
+      "hangul": "올려",
+      "group": "direction",
+      "family": "direction-axis",
+      "meaning": {
+        "en": "upward",
+        "de": "aufwärts",
+        "es": "hacia arriba"
+      }
+    },
+    {
+      "id": "opo",
+      "hangul": "올려",
+      "group": "direction",
+      "family": "direction-axis",
+      "meaning": {
+        "en": "upward (variant spelling of ollyo)",
+        "de": "aufwärts (Schreibvariante von ollyo)",
+        "es": "hacia arriba (variante de ollyo)"
+      }
+    },
+    {
+      "id": "chukyo",
+      "hangul": "추켜",
+      "group": "direction",
+      "family": "direction-axis",
+      "meaning": {
+        "en": "rising (upward block)",
+        "de": "aufwärts (Block)",
+        "es": "ascendente (bloqueo hacia arriba)"
+      }
+    },
+    {
+      "id": "ape",
+      "hangul": "앞에",
+      "group": "direction",
+      "family": "direction-axis",
+      "meaning": {
+        "en": "directed forward",
+        "de": "nach vorne gerichtet",
+        "es": "dirigido hacia delante"
+      }
+    },
+    {
+      "id": "paro",
+      "hangul": "바로",
+      "group": "direction",
+      "family": "other",
+      "meaning": {
+        "en": "opposite-side (club glossary: gegenseitig)",
+        "de": "gegenseitig",
+        "es": "del lado contrario"
+      }
+    },
+    {
+      "id": "pandae",
+      "hangul": "반대",
+      "group": "direction",
+      "family": "other",
+      "meaning": {
+        "en": "same-side (club glossary: gleichseitig)",
+        "de": "gleichseitig",
+        "es": "del mismo lado"
+      }
+    },
+    {
+      "id": "digut-cha",
+      "hangul": "디귿자",
+      "group": "direction",
+      "family": "other",
+      "meaning": {
+        "en": "U-shaped (U-block)",
+        "de": "U-förmig (U-Block)",
+        "es": "en forma de U"
+      }
+    },
+    {
+      "id": "hechyo",
+      "hangul": "헤쳐",
+      "group": "direction",
+      "family": "motion",
+      "meaning": {
+        "en": "wedge-shaped (spreading)",
+        "de": "keilförmig",
+        "es": "en cuña"
+      }
+    },
+    {
+      "id": "otgoro",
+      "hangul": "엇걸어",
+      "group": "direction",
+      "family": "other",
+      "meaning": {
+        "en": "crossed",
+        "de": "kreuzförmig",
+        "es": "cruzado"
+      }
+    },
+    {
+      "id": "gawi",
+      "hangul": "가위",
+      "group": "direction",
+      "family": "other",
+      "meaning": {
+        "en": "scissors",
+        "de": "Schere",
+        "es": "tijera"
+      }
+    },
+    {
+      "id": "santul",
+      "hangul": "산틀",
+      "group": "direction",
+      "family": "other",
+      "meaning": {
+        "en": "mountain-shaped",
+        "de": "Berg (Bergform)",
+        "es": "forma de montaña"
+      }
+    },
+    {
+      "id": "oe",
+      "hangul": "외",
+      "group": "direction",
+      "family": "count",
+      "meaning": {
+        "en": "single / one-sided",
+        "de": "einseitig / einfach",
+        "es": "simple / de un lado"
+      }
+    },
+    {
+      "id": "kumgang",
+      "hangul": "금강",
+      "group": "direction",
+      "family": "other",
+      "meaning": {
+        "en": "mountain / diamond (guarding form)",
+        "de": "Gebirgstechnik",
+        "es": "técnica de montaña"
+      }
+    },
+    {
+      "id": "dangyo",
+      "hangul": "당겨",
+      "group": "direction",
+      "family": "motion",
+      "meaning": {
+        "en": "pulling (towards oneself)",
+        "de": "ziehend (zu sich)",
+        "es": "tirando (hacia uno)"
+      }
+    },
+    {
+      "id": "pyojok",
+      "hangul": "표적",
+      "group": "direction",
+      "family": "target",
+      "meaning": {
+        "en": "target / holding",
+        "de": "Ziel / Festhalten",
+        "es": "objetivo / agarre"
+      }
+    },
+    {
+      "id": "miro",
+      "hangul": "밀어",
+      "group": "direction",
+      "family": "motion",
+      "meaning": {
+        "en": "pushing / sliding",
+        "de": "schiebend",
+        "es": "empujando / deslizando"
+      }
+    },
+    {
+      "id": "pandal",
+      "hangul": "반달",
+      "group": "direction",
+      "family": "motion",
+      "meaning": {
+        "en": "half-moon / crescent",
+        "de": "Halbmond (Fußschwert)",
+        "es": "media luna"
+      }
+    },
+    {
+      "id": "bituro",
+      "hangul": "비틀어",
+      "group": "direction",
+      "family": "motion",
+      "meaning": {
+        "en": "twisting / diagonal 45 degrees",
+        "de": "verdreht / diagonal 45°",
+        "es": "girando / diagonal 45°"
+      }
+    },
+    {
+      "id": "dubal-dangsang",
+      "hangul": "두발 당상",
+      "group": "direction",
+      "family": "count",
+      "meaning": {
+        "en": "double jump (two kicks in the air, club term)",
+        "de": "doppelt gesprungen (zwei Tritte in der Luft, Vereinsbegriff)",
+        "es": "doble salto (dos patadas en el aire, término del club)"
+      }
+    },
+    {
+      "id": "bom",
+      "hangul": "범",
+      "group": "action",
+      "family": "stance",
+      "meaning": {
+        "en": "tiger",
+        "de": "Tiger",
+        "es": "tigre"
+      }
+    },
+    {
+      "id": "hagdari",
+      "hangul": "학다리",
+      "group": "action",
+      "family": "stance",
+      "meaning": {
+        "en": "crane (leg)",
+        "de": "Kranich(bein)",
+        "es": "grulla (pierna)"
+      }
+    },
+    {
+      "id": "soojik",
+      "hangul": "수직",
+      "group": "action",
+      "family": "stance",
+      "meaning": {
+        "en": "vertical",
+        "de": "vertikal",
+        "es": "vertical"
+      }
+    },
+    {
+      "id": "sasun",
+      "hangul": "사선",
+      "group": "action",
+      "family": "stance",
+      "meaning": {
+        "en": "diagonal",
+        "de": "diagonal",
+        "es": "diagonal"
+      }
+    },
+    {
+      "id": "oguryo",
+      "hangul": "오그려",
+      "group": "action",
+      "family": "stance",
+      "meaning": {
+        "en": "curled / stool-like",
+        "de": "Hocker (eingerollt)",
+        "es": "taburete (encogido)"
+      }
+    },
+    {
+      "id": "kima",
+      "hangul": "기마",
+      "group": "action",
+      "family": "stance",
+      "meaning": {
+        "en": "horse (riding stance)",
+        "de": "Pferd (Reiterstellung)",
+        "es": "caballo (posición de jinete)"
+      }
+    },
+    {
+      "id": "mikurumbal",
+      "hangul": "미끄럼발",
+      "group": "action",
+      "family": "motion",
+      "meaning": {
+        "en": "sliding feet",
+        "de": "gleitende Füße",
+        "es": "pies deslizantes"
+      }
+    }
+  ],
+  "techniques": [
+    {
+      "id": "palkup-olgul-paro-ape-chicki",
+      "parts": ["palkup", "olgul", "paro", "ape", "chicki"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "Upward elbow strike to the head (rear foot behind)",
+        "de": "Ellenbogenschlag nach oben (Fuß hinten)",
+        "es": "Codazo ascendente a la cabeza (pie atrás)"
+      },
+      "hangul": "팔꿈치 얼굴 바로 앞에 치기",
+      "karate": "age-empi (approx.)",
+      "info": {
+        "en": "A rising elbow strike to head height; the foot stays behind. A short, powerful close-range strike. Also written palkup-ollyo-ape-chicki.",
+        "de": "Aufwärts geführter Ellenbogenschlag in Kopfhöhe, der Fuß bleibt hinten. Ein kurzer, kraftvoller Schlag im Nahbereich. Auch als palkup-ollyo-ape-chicki geschrieben.",
+        "es": "Codazo ascendente a la altura de la cabeza; el pie queda atrás. Golpe corto y potente a corta distancia. También se escribe palkup-ollyo-ape-chicki."
+      },
+      "source": "Pruefungsprogramm p.28"
+    },
+    {
+      "id": "olgul-du-jumok-sewo-jirugi",
+      "parts": ["olgul", "du-jumok", "sewo", "chirugi"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "Vertical double-fist thrust upward",
+        "de": "Doppelfauststoß nach oben (vertikal)",
+        "es": "Doble puñetazo ascendente en vertical"
+      },
+      "hangul": "얼굴 두주먹 세워 지르기",
+      "karate": "—",
+      "info": {
+        "en": "Both fists thrust upward at the same time in a vertical position (thumb sides up). Strong, simultaneous attack to the upper zone.",
+        "de": "Beide Fäuste stoßen gleichzeitig vertikal nach oben. Kräftiger, gleichzeitiger Angriff auf die obere Zone.",
+        "es": "Ambos puños golpean a la vez hacia arriba en vertical. Ataque simultáneo y potente a la zona alta."
+      },
+      "source": "Pruefungsprogramm p.28"
+    },
+    {
+      "id": "du-jumok-jechyo-jirugi",
+      "parts": ["du-jumok", "jechyo", "chirugi"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "Double-fist thrust from below upward (to the belly)",
+        "de": "Doppelfauststoß von unten nach oben (zum Bauch)",
+        "es": "Doble puñetazo de abajo hacia arriba (al abdomen)"
+      },
+      "hangul": "두주먹 젖혀 지르기",
+      "karate": "morote-zuki (approx.)",
+      "info": {
+        "en": "Both fists start palms down at the hips and punch upward at the same time, aiming at the belly or ribs.",
+        "de": "Beide Fäuste starten mit den Handflächen nach unten an der Hüfte und stoßen gleichzeitig nach oben, Ziel ist der Bauch bzw. die Rippen.",
+        "es": "Ambos puños parten con las palmas hacia abajo desde la cadera y golpean a la vez hacia arriba, al abdomen o las costillas."
+      },
+      "source": "Pruefungsprogramm p.28"
+    },
+    {
+      "id": "kun-dolchogwi",
+      "parts": ["olgul", "an", "chirugi"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "Large hinge punch (outside-in, close to the body, neck height)",
+        "de": "Fauststoß von außen nach innen, eng am Körper, auf Halshöhe",
+        "es": "Puñetazo de fuera a dentro, pegado al cuerpo, a la altura del cuello"
+      },
+      "hangul": "큰돌쩌귀",
+      "karate": "—",
+      "info": {
+        "en": "A circular fist thrust from outside to inside kept close to the body, at neck height. In the club list also written olgul-an-jirugi.",
+        "de": "Kreisförmiger Fauststoß von außen nach innen, eng am Körper, auf Halshöhe. In der Vereinsliste auch olgul-an-jirugi.",
+        "es": "Puñetazo circular de fuera a dentro, pegado al cuerpo, a la altura del cuello. En la lista del club también olgul-an-jirugi."
+      },
+      "source": "Pruefungsprogramm p.28"
+    },
+    {
+      "id": "sonnaldung-an-mok-chicki",
+      "parts": ["sonnaldung", "an", "mok", "chicki"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "Ridge-hand strike to the neck (inside edge)",
+        "de": "Handkantenschlag mit der Innenseite zum Hals",
+        "es": "Golpe con el dorso del canto de la mano al cuello"
+      },
+      "hangul": "손날등 안 목 치기",
+      "karate": "haito-uchi",
+      "info": {
+        "en": "The back of the knife-hand (thumb side) strikes the neck from outside to inside.",
+        "de": "Die Rückseite der Handkante (Daumenseite) trifft den Hals von außen nach innen.",
+        "es": "El dorso del canto de la mano (lado del pulgar) golpea el cuello de fuera a dentro."
+      },
+      "source": "Pruefungsprogramm p.28"
+    },
+    {
+      "id": "palkup-kokki",
+      "parts": ["palkup", "kokki"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "Elbow break (double forearm block / elbow-breaking technique)",
+        "de": "Ellenbogenbruchtechnik (Unterarmdoppelblock)",
+        "es": "Rotura de codo (doble bloqueo de antebrazo)"
+      },
+      "hangul": "팔꿈치 꺾기",
+      "karate": "—",
+      "info": {
+        "en": "Done in the low stance (nachuo-sogi): one palm-heel presses down (batangson-pandae-nullo-macki) while the other lifts (batangson-paro-chukyo-macki), levering against the opponent's elbow.",
+        "de": "Ausführung in der niedrigen Stellung (nachuo-sogi): ein Handballen drückt nach unten (batangson-pandae-nullo-macki), der andere hebt nach oben (batangson-paro-chukyo-macki) und hebelt gegen den Ellenbogen des Gegners.",
+        "es": "Se ejecuta en posición baja (nachuo-sogi): un talón de la mano presiona hacia abajo (batangson-pandae-nullo-macki) y el otro sube (batangson-paro-chukyo-macki), haciendo palanca contra el codo del rival."
+      },
+      "source": "Pruefungsprogramm p.28, 30"
+    },
+    {
+      "id": "momtong-batangson-chukyo-macki",
+      "parts": ["momtong", "batangson", "chukyo", "macki"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "Palm-heel block from below upward",
+        "de": "Handballenblock von unten nach oben",
+        "es": "Bloqueo con el talón de la mano de abajo hacia arriba"
+      },
+      "hangul": "몸통 바탕손 추켜 막기",
+      "karate": "teisho age-uke (approx.)",
+      "info": {
+        "en": "The palm heel rises from below to catch and lift an attack at middle height.",
+        "de": "Der Handballen steigt von unten nach oben und fängt einen Angriff auf Mittelhöhe ab.",
+        "es": "El talón de la mano sube de abajo hacia arriba y detiene un ataque a nivel medio."
+      },
+      "source": "Pruefungsprogramm p.28"
+    },
+    {
+      "id": "batangson-an-macki",
+      "parts": ["batangson", "an", "macki"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "Palm-heel block from outside to inside",
+        "de": "Handballenblock von außen nach innen",
+        "es": "Bloqueo con el talón de la mano de fuera a dentro"
+      },
+      "hangul": "바탕손 안 막기",
+      "karate": "teisho uchi-uke (approx.)",
+      "info": {
+        "en": "The palm heel sweeps an attack across the body from outside to inside.",
+        "de": "Der Handballen lenkt den Angriff von außen nach innen quer vor dem Körper ab.",
+        "es": "El talón de la mano desvía el ataque de fuera a dentro cruzando el cuerpo."
+      },
+      "source": "Pruefungsprogramm p.28"
+    },
+    {
+      "id": "momtong-sonnaldung-an-palmok-packat-macki",
+      "parts": ["momtong", "sonnaldung", "an", "palmok", "packat", "macki"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "Middle block with the inner edge of the knife-hand (inside to outside)",
+        "de": "Halbhohe Abwehr mit der Innenhandkante",
+        "es": "Bloqueo medio con el canto interno de la mano"
+      },
+      "hangul": "몸통 손날등 안팔목 바깥 막기",
+      "karate": "—",
+      "info": {
+        "en": "A middle-height block from inside to outside using the back of the knife-hand and the inner forearm.",
+        "de": "Halbhohe Abwehr von innen nach außen mit der Innenhandkante bzw. dem inneren Unterarm.",
+        "es": "Bloqueo medio de dentro a fuera con el dorso del canto de la mano y el antebrazo interno."
+      },
+      "source": "Pruefungsprogramm p.28"
+    },
+    {
+      "id": "digut-cha-macki",
+      "parts": ["digut-cha", "macki"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "U-block (bow-hand U-shape)",
+        "de": "U-Block mit den Bogenhänden",
+        "es": "Bloqueo en U con las manos en arco"
+      },
+      "hangul": "디귿자 막기",
+      "karate": "—",
+      "info": {
+        "en": "Both arms form a U shape to catch an attack from below and above at the same time.",
+        "de": "Beide Arme bilden ein U und fangen einen Angriff gleichzeitig von unten und oben ab.",
+        "es": "Ambos brazos forman una U y detienen un ataque desde abajo y desde arriba a la vez."
+      },
+      "source": "Pruefungsprogramm p.29"
+    },
+    {
+      "id": "arae-hechyo-macki",
+      "parts": ["arae", "hechyo", "macki"],
+      "kup": 2,
+      "category": "hand",
+      "names": {
+        "en": "Low double-arm wedge block",
+        "de": "Tiefer Doppelarmblock",
+        "es": "Bloqueo bajo doble en cuña"
+      },
+      "hangul": "아래 헤쳐 막기",
+      "karate": "—",
+      "info": {
+        "en": "Both arms drive downward and spread apart in a wedge to push away a low attack.",
+        "de": "Beide Arme führen nach unten und öffnen sich keilförmig, um einen tiefen Angriff wegzudrücken.",
+        "es": "Ambos brazos bajan y se abren en cuña para apartar un ataque bajo."
+      },
+      "source": "Pruefungsprogramm p.29"
+    },
+    {
+      "id": "taeguk-yuk-chang-arae-macki-ap-chagi",
+      "parts": ["ap", "sogi", "arae", "macki", "momtong", "ap", "chagi", "packat", "palmok"],
+      "kup": 2,
+      "category": "combo",
+      "names": {
+        "en": "Taeguk Yuk-Chang combo: low block, front kick, inside-out forearm block",
+        "de": "Taeguk Yuk-Chang: Abwärtsblock + Vorwärtsfußstoß + Mittelstufenblock von innen nach außen",
+        "es": "Combinación Taeguk Yuk-Chang: bloqueo bajo, patada frontal, bloqueo medio de dentro a fuera"
+      },
+      "hangul": "앞서기 아래 막기 몸통 앞 차기 + 몸통 바깥팔목 바깥 막기",
+      "karate": "—",
+      "info": {
+        "en": "Small forward stance with a low block, then a half-height front kick with the rear leg, set down behind into the long forward stance with an inside-out middle block (little-finger side).",
+        "de": "Kleine Vorwärtsstellung mit Abwärtsblock, halbhoher Vorwärtsfußstoß aus dem hinteren Bein, hinten abgesetzt in die große Vorwärtsstellung mit Mittelstufenblock von innen nach außen (Kleinfingerseite).",
+        "es": "Posición adelantada corta con bloqueo bajo; patada frontal media con la pierna trasera, apoyando atrás en arco largo con bloqueo medio de dentro a fuera (lado del meñique)."
+      },
+      "source": "Pruefungsprogramm p.29"
+    },
+    {
+      "id": "taeguk-yuk-chang-batangson-an-macki-chirugi",
+      "parts": ["ap", "gubi", "batangson", "momtong", "an", "macki", "paro", "chirugi"],
+      "kup": 2,
+      "category": "combo",
+      "names": {
+        "en": "Taeguk Yuk-Chang combo: palm-heel block + middle punch",
+        "de": "Taeguk Yuk-Chang: Handballenblock + Mittelstufenfauststoß",
+        "es": "Combinación Taeguk Yuk-Chang: bloqueo con talón de la mano + puñetazo medio"
+      },
+      "hangul": "앞굽이 바탕손 몸통 안 막기 + 몸통 바로 지르기",
+      "karate": "—",
+      "info": {
+        "en": "Long forward stance with a palm-heel block from outside to inside, followed by a middle punch (rear foot behind).",
+        "de": "Große Vorwärtsstellung mit Handballenblock von außen nach innen und Mittelstufenfauststoß, wo der Fuß hinten ist.",
+        "es": "Arco largo con bloqueo de talón de mano de fuera a dentro y puñetazo medio (pie atrás)."
+      },
+      "source": "Pruefungsprogramm p.29"
+    },
+    {
+      "id": "hyong-chung-gun-an-palmok-macki-dut-gubi",
+      "parts": [
+        "ap",
+        "gubi",
+        "olgul",
+        "goduro",
+        "an",
+        "palmok",
+        "packat",
+        "macki",
+        "düt",
+        "momtong",
+        "pandae",
+        "chirugi"
+      ],
+      "kup": 2,
+      "category": "combo",
+      "names": {
+        "en": "Hyong Chung-Gun combo: strong inner-forearm block, shift to L-stance + punch",
+        "de": "Hyong Chung-Gun: starker innerer Unterarmblock, L-Stellung + Mittelstufenfauststoß",
+        "es": "Combinación Hyong Chung-Gun: bloqueo fuerte con antebrazo interno, paso a L + puñetazo"
+      },
+      "hangul": "앞굽이 얼굴 거들어 안팔목 바깥 막기 → 뒷굽이 몸통 반대 지르기",
+      "karate": "—",
+      "info": {
+        "en": "Strong inner-forearm block (thumb side) at head height from inside to outside in the long forward stance; shift into the L-stance and punch at middle height with the front foot forward.",
+        "de": "Starker innerer Unterarmblock (Daumenseite) in Kopfhöhe von innen nach außen in der großen Vorwärtsstellung; Fuß in die L-Stellung umsetzen und Mittelstufenfauststoß, wo der Fuß vorne ist.",
+        "es": "Bloqueo fuerte con antebrazo interno (lado del pulgar) a la altura de la cabeza, de dentro a fuera en arco largo; paso a L y puñetazo medio con el pie adelantado."
+      },
+      "source": "Pruefungsprogramm p.29"
+    },
+    {
+      "id": "hyong-chung-gun-sonnaldung-macki-ap-chagi-dut-pal-sogi",
+      "parts": [
+        "düt",
+        "gubi",
+        "sonnaldung",
+        "momtong",
+        "an",
+        "palmok",
+        "packat",
+        "macki",
+        "ap",
+        "chagi",
+        "batangson",
+        "chukyo"
+      ],
+      "kup": 2,
+      "category": "combo",
+      "names": {
+        "en": "Hyong Chung-Gun combo: back-hand block, front kick, cat stance + palm-heel rising block",
+        "de": "Hyong Chung-Gun: Innenhandkantenblock, Vorwärtsfußstoß, Katzenstellung + Handballenaufwärtsblock",
+        "es": "Combinación Hyong Chung-Gun: bloqueo con dorso de mano, patada frontal, posición de gato + bloqueo ascendente"
+      },
+      "hangul": "뒷굽이 손날등 몸통 안팔목 바깥 막기, 앞 차기, 뒷발서기 바탕손 추켜 막기",
+      "karate": "—",
+      "info": {
+        "en": "L-stance with a middle block of the inner knife-hand edge (inside to outside), front kick with the front leg, then set down into the cat stance with a palm-heel rising block.",
+        "de": "L-Stellung mit Mittelstufenblock der Innenhandkante von innen nach außen, Vorwärtsfußstoß aus dem vorderen Bein, absetzen in der Katzenstellung mit Handballenaufwärtsblock.",
+        "es": "Posición en L con bloqueo medio del canto interno de la mano (de dentro a fuera), patada frontal con la pierna delantera y apoyo en posición de gato con bloqueo ascendente de talón de mano."
+      },
+      "source": "Pruefungsprogramm p.30"
+    },
+    {
+      "id": "hyong-chung-gun-sonnal-kotoro-macki-palkup-chicki",
+      "parts": [
+        "düt",
+        "gubi",
+        "sonnal",
+        "momtong",
+        "kotoro",
+        "macki",
+        "ap",
+        "palkup",
+        "olgul",
+        "paro",
+        "ape",
+        "chicki"
+      ],
+      "kup": 2,
+      "category": "combo",
+      "names": {
+        "en": "Hyong Chung-Gun combo: reinforced knife-hand block, shift + upward elbow strike",
+        "de": "Hyong Chung-Gun: Handkantenblock (beide Hände), Umsetzen + Ellenbogenaufwärtsschlag",
+        "es": "Combinación Hyong Chung-Gun: bloqueo con ambos cantos, paso + codazo ascendente"
+      },
+      "hangul": "뒷굽이 손날 몸통 거들어 막기 → 앞굽이 팔꿈치 얼굴 바로 앞에 치기",
+      "karate": "—",
+      "info": {
+        "en": "L-stance with a middle block of both knife-hands (inside to outside), then shift to the long forward stance with a rising elbow strike to the head (rear foot behind).",
+        "de": "L-Stellung mit Mittelstufenblock beider Handkanten von innen nach außen, umsetzen zur großen Vorwärtsstellung mit einem Ellenbogenaufwärtsschlag zum Kopf, wo der Fuß hinten ist.",
+        "es": "Posición en L con bloqueo medio de ambos cantos (de dentro a fuera), paso a arco largo con codazo ascendente a la cabeza (pie atrás)."
+      },
+      "source": "Pruefungsprogramm p.30"
+    },
+    {
+      "id": "hyong-chung-gun-dung-jumok-packat-chicki-chirugi",
+      "parts": ["düt", "gubi", "dung-jumok", "olgul", "packat", "chicki", "ap", "paro", "chirugi"],
+      "kup": 2,
+      "category": "combo",
+      "names": {
+        "en": "Hyong Chung-Gun combo: high side back-fist, shift + high punch",
+        "de": "Hyong Chung-Gun: hoher seitlicher Faustrückenschlag, Umsetzen + hoher Fauststoß",
+        "es": "Combinación Hyong Chung-Gun: golpe de dorso del puño alto, paso + puñetazo alto"
+      },
+      "hangul": "뒷굽이 등주먹 얼굴 바깥 치기 → 앞굽이 얼굴 바로 지르기",
+      "karate": "—",
+      "info": {
+        "en": "High sideways back-fist strike in the L-stance (turning the striking hand until the back of the fist faces the ground frees the arm), shifting into the long forward stance with a high punch, rear foot behind.",
+        "de": "Hoher seitwärts gerichteter Faustrückenschlag in der L-Stellung (Armbefreiung durch Drehen der schlagenden Hand bis der Faustrücken zum Boden zeigt), dabei Umsetzen in die große Vorwärtsstellung mit hohem Fauststoß, wo der Fuß hinten ist.",
+        "es": "Golpe alto lateral con el dorso del puño en posición L (girar la mano hasta que el dorso mire al suelo libera el brazo), pasando a arco largo con puñetazo alto, pie atrás."
+      },
+      "source": "Pruefungsprogramm p.30"
+    },
+    {
+      "id": "twio-dollyo-chagi",
+      "parts": ["twio", "dollyo", "chagi"],
+      "kup": 2,
+      "category": "foot",
+      "names": {
+        "en": "Jumping roundhouse kick",
+        "de": "Gesprungener Halbkreisfußstoß",
+        "es": "Patada circular con salto"
+      },
+      "hangul": "뛰어 돌려 차기",
+      "karate": "tobi-mawashi-geri",
+      "info": {
+        "en": "A roundhouse kick performed in a jump; the kick travels in a half circle in the air. Builds on dollyo-chagi and twio-chagi.",
+        "de": "Halbkreisfußstoß im Sprung; der Tritt verläuft in der Luft auf einer Halbkreisbahn. Baut auf dollyo-chagi und twio-chagi auf.",
+        "es": "Patada circular ejecutada en salto; la patada describe un semicírculo en el aire. Se apoya en dollyo-chagi y twio-chagi."
+      },
+      "source": "Pruefungsprogramm p.30"
+    },
+    {
+      "id": "bom-sogi",
+      "parts": ["bom", "sogi"],
+      "kup": 2,
+      "category": "stance",
+      "names": {
+        "en": "Tiger stance (front foot on the ball only)",
+        "de": "Tigerstellung",
+        "es": "Posición del tigre"
+      },
+      "hangul": "범 서기",
+      "karate": "neko-ashi-dachi (approx.)",
+      "info": {
+        "en": "Weight on the back leg; the front foot rests only on the ball with the heel raised. Quick to step or kick from.",
+        "de": "Das Gewicht liegt auf dem hinteren Bein, der vordere Fuß steht nur auf dem Ballen. Aus ihr lässt sich schnell treten oder schreiten.",
+        "es": "El peso está en la pierna trasera; el pie delantero solo apoya la planta con el talón levantado. Permite patear o avanzar rápido."
+      },
+      "source": "Pruefungsprogramm p.31"
+    },
+    {
+      "id": "pyonsonkut-jechyo-jirugi",
+      "parts": ["pyonsonkut", "jechyo", "jirugi"],
+      "kup": 1,
+      "category": "hand",
+      "names": {
+        "en": "Fingertip thrust to the lower abdomen (from below)",
+        "de": "Fingerstich mit der flachen Hand zum Unterleib",
+        "es": "Estocada con las yemas de los dedos al bajo vientre"
+      },
+      "hangul": "편손끝 젖혀 찌르기",
+      "karate": "nukite",
+      "info": {
+        "en": "The flat hand, fingers together, thrusts upward from below with the fingertips to the lower abdomen.",
+        "de": "Die flache Hand stößt mit den Fingerspitzen von unten nach oben zum Unterleib.",
+        "es": "La mano abierta, con los dedos juntos, se clava de abajo hacia arriba con las yemas al bajo vientre."
+      },
+      "source": "Pruefungsprogramm p.33"
+    },
+    {
+      "id": "pyonsonkut-opo-jirugi",
+      "parts": ["pyonsonkut", "opo", "jirugi"],
+      "kup": 1,
+      "category": "hand",
+      "names": {
+        "en": "Fingertip thrust upward to the philtrum",
+        "de": "Fingerstich mit der flachen Hand zum Philtrum",
+        "es": "Estocada con las yemas de los dedos al surco nasolabial"
+      },
+      "hangul": "편손끝 올려 찌르기",
+      "karate": "nukite",
+      "info": {
+        "en": "A fingertip thrust upward to the philtrum (area between nose and upper lip). Only with control in training.",
+        "de": "Fingerstich nach oben zum Philtrum (Bereich zwischen Nase und Oberlippe). Im Training nur kontrolliert.",
+        "es": "Estocada con las yemas hacia arriba al surco entre nariz y labio superior. En el entrenamiento solo con control."
+      },
+      "source": "Pruefungsprogramm p.33"
+    },
+    {
+      "id": "santul-macki",
+      "parts": ["santul", "macki"],
+      "kup": 1,
+      "category": "hand",
+      "names": {
+        "en": "Mountain block",
+        "de": "Bergblock",
+        "es": "Bloqueo de montaña"
+      },
+      "hangul": "산틀 막기",
+      "karate": "yama-uke",
+      "info": {
+        "en": "Two blocks at once: a high inside-out block (olgul-an-macki) and a rear forearm block (olgul-an-palmok-düt-packat-macki), the arms forming a mountain shape.",
+        "de": "Zwei Blöcke gleichzeitig: ein hoher Block von außen nach innen (olgul-an-macki) und ein rückwärtiger Unterarmblock (olgul-an-palmok-düt-packat-macki); die Arme bilden eine Berg-Form.",
+        "es": "Dos bloqueos a la vez: uno alto de fuera a dentro (olgul-an-macki) y otro hacia atrás con el antebrazo (olgul-an-palmok-düt-packat-macki); los brazos forman una montaña."
+      },
+      "source": "Pruefungsprogramm p.33"
+    },
+    {
+      "id": "an-palmok-gawi-macki",
+      "parts": ["an", "palmok", "gawi", "macki"],
+      "kup": 1,
+      "category": "hand",
+      "names": {
+        "en": "Scissor block",
+        "de": "Scherenabwehr",
+        "es": "Bloqueo en tijera"
+      },
+      "hangul": "안팔목 가위 막기",
+      "karate": "—",
+      "info": {
+        "en": "Simultaneous low block (arae-macki) and inner-forearm middle block (an-palmok-packat-macki); the crossing arms look like scissors.",
+        "de": "Gleichzeitig ein Abwärtsblock (arae-macki) und ein Mittelstufenblock mit dem inneren Unterarm (an-palmok-packat-macki); die gekreuzten Arme gleichen einer Schere.",
+        "es": "Bloqueo bajo (arae-macki) y bloqueo medio con el antebrazo interno (an-palmok-packat-macki) a la vez; los brazos cruzados parecen unas tijeras."
+      },
+      "source": "Pruefungsprogramm p.33"
+    },
+    {
+      "id": "oe-santul-macki",
+      "parts": ["oe", "santul", "macki"],
+      "kup": 1,
+      "category": "hand",
+      "names": {
+        "en": "Combined two-arm block (one-sided mountain block)",
+        "de": "Kombinierter Zweiarmblock",
+        "es": "Bloqueo combinado de dos brazos (montaña simple)"
+      },
+      "hangul": "외산틀 막기",
+      "karate": "—",
+      "info": {
+        "en": "A low block (arae-macki) with the front arm and a high rearward block with the other arm. The stance resembles chuchum-sogi, but the front leg is straight and the rear leg slightly bent by shifting weight back.",
+        "de": "Abwärtsblock (arae-macki) und gleichzeitig hoher rückwärtiger Block. Die Stellung ähnelt der chuchum-sogi, das vordere Bein ist aber gestreckt, das hintere durch Gewichtsverlagerung leicht gebeugt.",
+        "es": "Bloqueo bajo (arae-macki) y a la vez bloqueo alto hacia atrás. La posición recuerda a chuchum-sogi, pero la pierna delantera va estirada y la trasera algo flexionada por el cambio de peso."
+      },
+      "source": "Pruefungsprogramm p.33"
+    },
+    {
+      "id": "goduro-arae-an-palmok-packat-macki",
+      "parts": ["kotoro", "arae", "an", "palmok", "packat", "macki"],
+      "kup": 1,
+      "category": "hand",
+      "names": {
+        "en": "Strong low block, inside to outside (thumb side)",
+        "de": "Starker Abwärtsblock von innen nach außen (Daumenseite)",
+        "es": "Bloqueo bajo fuerte de dentro a fuera (lado del pulgar)"
+      },
+      "hangul": "거들어 아래 안팔목 바깥 막기",
+      "karate": "—",
+      "info": {
+        "en": "A reinforced low block with the inner forearm; the second hand supports the blocking arm for extra force.",
+        "de": "Verstärkter Abwärtsblock mit dem inneren Unterarm; die zweite Hand unterstützt den blockenden Arm.",
+        "es": "Bloqueo bajo reforzado con el antebrazo interno; la otra mano apoya al brazo que bloquea."
+      },
+      "source": "Pruefungsprogramm p.33"
+    },
+    {
+      "id": "sonnal-arae-packat-palmok-packat-macki",
+      "parts": ["sonnal", "arae", "packat", "palmok", "macki"],
+      "kup": 1,
+      "category": "hand",
+      "names": {
+        "en": "Low block with the knife-hands, inside to outside",
+        "de": "Tiefer Block mit den Handkanten von innen nach außen",
+        "es": "Bloqueo bajo con los cantos de la mano, de dentro a fuera"
+      },
+      "hangul": "손날 아래 바깥팔목 바깥 막기",
+      "karate": "—",
+      "info": {
+        "en": "A low block using the knife-hand edges and outer forearm, swept from inside to outside.",
+        "de": "Tiefer Block mit Handkanten und äußerem Unterarm von innen nach außen.",
+        "es": "Bloqueo bajo con los cantos de la mano y el antebrazo externo, de dentro a fuera."
+      },
+      "source": "Pruefungsprogramm p.34"
+    },
+    {
+      "id": "momtong-an-palmok-packat-yop-macki",
+      "parts": ["momtong", "yop", "an", "palmok", "packat", "macki"],
+      "kup": 1,
+      "category": "hand",
+      "names": {
+        "en": "Sideways middle block, inside to outside (thumb side)",
+        "de": "Seitwärts gerichteter Mittelstufenblock von innen nach außen (Daumenseite)",
+        "es": "Bloqueo medio lateral de dentro a fuera (lado del pulgar)"
+      },
+      "hangul": "몸통 안팔목 바깥 옆 막기",
+      "karate": "—",
+      "info": {
+        "en": "A middle block towards the side, using the inner forearm (thumb side) from inside to outside, in the long forward stance.",
+        "de": "Mittelstufenblock zur Seite mit dem inneren Unterarm (Daumenseite) von innen nach außen in der großen Vorwärtsstellung.",
+        "es": "Bloqueo medio hacia el lado con el antebrazo interno (lado del pulgar), de dentro a fuera, en arco largo."
+      },
+      "source": "Pruefungsprogramm p.35"
+    },
+    {
+      "id": "murup-chicki",
+      "parts": ["murup", "chicki"],
+      "kup": 1,
+      "category": "foot",
+      "names": {
+        "en": "Knee strike",
+        "de": "Kniestoß",
+        "es": "Rodillazo"
+      },
+      "hangul": "무릎 치기",
+      "karate": "hiza-geri",
+      "info": {
+        "en": "The knee drives into the target in close range, often after pulling the opponent in.",
+        "de": "Das Knie trifft im Nahbereich das Ziel, oft nachdem der Gegner herangezogen wurde.",
+        "es": "La rodilla golpea el objetivo a corta distancia, a menudo tras atraer al rival."
+      },
+      "source": "Pruefungsprogramm p.36"
+    },
+    {
+      "id": "pyojok-chagi",
+      "parts": ["pyojok", "chagi"],
+      "kup": 1,
+      "category": "foot",
+      "names": {
+        "en": "Kick with holding (target kick)",
+        "de": "Fußtritt mit Festhalten (Ziel-Tritt)",
+        "es": "Patada con agarre (patada al objetivo)"
+      },
+      "hangul": "표적 차기",
+      "karate": "—",
+      "info": {
+        "en": "A kick to the opponent while a hand holds or marks the target. The hold keeps the opponent in place.",
+        "de": "Fußtritt, während eine Hand das Ziel festhält bzw. markiert. Das Festhalten hält den Gegner an Ort und Stelle.",
+        "es": "Patada mientras una mano sujeta o marca el objetivo. El agarre mantiene al rival en su sitio."
+      },
+      "source": "Pruefungsprogramm p.36"
+    },
+    {
+      "id": "miro-chagi",
+      "parts": ["miro", "chagi"],
+      "kup": 1,
+      "category": "foot",
+      "names": {
+        "en": "Pushing kick",
+        "de": "Schiebefußtechnik",
+        "es": "Patada de empuje"
+      },
+      "hangul": "밀어 차기",
+      "karate": "fumikomi (approx.)",
+      "info": {
+        "en": "A sliding, pushing kick that moves the opponent away or back.",
+        "de": "Schiebender Tritt, der den Gegner wegdrückt.",
+        "es": "Patada deslizante de empuje que aparta o hace retroceder al rival."
+      },
+      "source": "Pruefungsprogramm p.36"
+    },
+    {
+      "id": "pandal-chagi",
+      "parts": ["pandal", "chagi"],
+      "kup": 1,
+      "category": "foot",
+      "names": {
+        "en": "Foot-sword / crescent kick (inside edge, mostly outside to inside)",
+        "de": "Fußschwert (meist von außen nach innen)",
+        "es": "Patada de media luna (canto interno del pie, de fuera a dentro)"
+      },
+      "hangul": "반달 차기",
+      "karate": "mikazuki-geri",
+      "info": {
+        "en": "An intercepting movement with the inner foot edge at middle height, mostly from outside to inside.",
+        "de": "Abfangbewegung mit der Fußinnenkante in mittlerer Höhe, meist von außen nach innen.",
+        "es": "Movimiento de intercepción con el canto interno del pie a media altura, normalmente de fuera a dentro."
+      },
+      "source": "Pruefungsprogramm p.36"
+    },
+    {
+      "id": "pyojok-murup-chicki",
+      "parts": ["pyojok", "murup", "chicki"],
+      "kup": 1,
+      "category": "foot",
+      "names": {
+        "en": "Knee strike with holding",
+        "de": "Kniestoß mit Festhalten",
+        "es": "Rodillazo con agarre"
+      },
+      "hangul": "표적 무릎 치기",
+      "karate": "hiza-geri (approx.)",
+      "info": {
+        "en": "Both hands hold the opponent (e.g. the shoulder) and pull him in while the knee strikes.",
+        "de": "Beide Hände halten den Gegner (z. B. an der Schulter) fest und ziehen ihn heran, während das Knie trifft.",
+        "es": "Ambas manos sujetan al rival (p. ej. el hombro) y lo atraen mientras la rodilla golpea."
+      },
+      "source": "Pruefungsprogramm p.34, 36"
+    },
+    {
+      "id": "taeguk-sil-chang-bom-sogi-an-macki-ap-chagi",
+      "parts": ["bom", "sogi", "batangson", "momtong", "an", "macki", "ap", "chagi", "pandae"],
+      "kup": 1,
+      "category": "combo",
+      "names": {
+        "en": "Taeguk Sil-Chang combo: tiger stance, palm-heel block, front kick, same-side block",
+        "de": "Taeguk Sil-Chang: Tigerstellung + Handballenblock, Vorwärtsfußtritt, gleichseitiger Mittelstufenblock",
+        "es": "Combinación Taeguk Sil-Chang: tigre, bloqueo de talón de mano, patada frontal, bloqueo del mismo lado"
+      },
+      "hangul": "범서기 바로 바탕손 몸통 안 막기 + 앞 차기, 범서기 반대 몸통 안 막기",
+      "karate": "—",
+      "info": {
+        "en": "Tiger stance with a palm-heel middle block (opposite side), front kick, back into the tiger stance with a same-side middle block (outside to inside).",
+        "de": "Tigerstellung mit gegenseitigem Handballen-Mittelstufenblock von außen nach innen, Vorwärtsfußtritt, zurück in Tigerstellung mit gleichseitigem Mittelstufenblock.",
+        "es": "Tigre con bloqueo medio de talón de mano del lado contrario, patada frontal y vuelta al tigre con bloqueo medio del mismo lado."
+      },
+      "source": "Pruefungsprogramm p.34"
+    },
+    {
+      "id": "taeguk-sil-chang-dubon-gawi-macki",
+      "parts": ["ap", "gubi", "dubon", "gawi", "macki"],
+      "kup": 1,
+      "category": "combo",
+      "names": {
+        "en": "Taeguk Sil-Chang combo: double scissor block",
+        "de": "Taeguk Sil-Chang: doppelte Scherenabwehr",
+        "es": "Combinación Taeguk Sil-Chang: doble bloqueo en tijera"
+      },
+      "hangul": "앞굽이 두번 가위 막기",
+      "karate": "—",
+      "info": {
+        "en": "Long forward stance with two scissor blocks in a row.",
+        "de": "Große Vorwärtsstellung mit einer doppelten Scherenabwehr.",
+        "es": "Arco largo con doble bloqueo en tijera."
+      },
+      "source": "Pruefungsprogramm p.34"
+    },
+    {
+      "id": "taeguk-sil-chang-pyojok-chagi-palkup-chicki",
+      "parts": [
+        "ap",
+        "sogi",
+        "dung-jumok",
+        "olgul",
+        "packat",
+        "chicki",
+        "pyojok",
+        "chagi",
+        "palkup"
+      ],
+      "kup": 1,
+      "category": "combo",
+      "names": {
+        "en": "Taeguk Sil-Chang combo: high back-fist, held head, sole kick, elbow strike",
+        "de": "Taeguk Sil-Chang: Faustrückenschlag, Festhalten, Fußtritt, Ellenbogenschlag",
+        "es": "Combinación Taeguk Sil-Chang: golpe de dorso del puño, agarre, patada y codazo"
+      },
+      "hangul": "앞서기 등주먹 얼굴 바깥 치기, 표적 차기, 큰 나란히서기 팔꿈치 얼굴 표적 치기",
+      "karate": "—",
+      "info": {
+        "en": "Small forward stance with a high inside-out back-fist; the striking hand opens and holds the head, a sole kick to the held head, set down in the wide parallel stance and elbow strike to the head while still holding.",
+        "de": "Kleine Vorwärtsstellung mit hohem Faustrückenschlag von innen nach außen, die Hand öffnet sich und hält den Kopf fest; Fußtritt mit der Fußsohle zum Kopf, Absetzen in der großen Parallelstellung und Ellenbogenschlag zum Kopf.",
+        "es": "Posición adelantada corta con golpe alto de dorso del puño de dentro a fuera; la mano se abre y sujeta la cabeza, patada con la planta a la cabeza sujeta, apoyo en paralela larga y codazo a la cabeza."
+      },
+      "source": "Pruefungsprogramm p.34"
+    },
+    {
+      "id": "taeguk-sil-chang-hechyo-macki-pyojok-murup-chicki",
+      "parts": [
+        "ap",
+        "gubi",
+        "momtong",
+        "packat",
+        "palmok",
+        "hechyo",
+        "macki",
+        "pyojok",
+        "murup",
+        "chicki",
+        "du-jumok",
+        "jechyo",
+        "chirugi",
+        "otgoro",
+        "arae"
+      ],
+      "kup": 1,
+      "category": "combo",
+      "names": {
+        "en": "Taeguk Sil-Chang combo: wedge block, knee strike, double punch, cross block down",
+        "de": "Taeguk Sil-Chang: Doppelarmblock, Kniestoß, Doppelfauststoß, Kreuzblock nach unten",
+        "es": "Combinación Taeguk Sil-Chang: bloqueo en cuña, rodillazo, doble puñetazo, bloqueo cruzado bajo"
+      },
+      "hangul": "앞굽이 몸통 헤쳐 막기 + 표적 무릎 치기, 두주먹 젖혀 지르기, 엇걸어 아래 막기",
+      "karate": "—",
+      "info": {
+        "en": "Double-arm middle block (little-finger side) with a knee strike; set down in the forward crossed stance with an upward double punch to the belly; rear foot steps back into the long forward stance with a low cross block.",
+        "de": "Doppelarmblock Mittelstufe (Kleinfingerseite) mit Kniestoß, in Überkreuzstellung absetzen, dabei Doppelfauststoß von unten nach oben zum Bauch, hinteren Fuß zurücksetzen in die große Vorwärtsstellung mit Kreuzblock nach unten.",
+        "es": "Bloqueo doble medio (lado del meñique) con rodillazo; apoyo en cruzada hacia delante con doble puñetazo ascendente al abdomen; el pie trasero retrocede a arco largo con bloqueo cruzado bajo."
+      },
+      "source": "Pruefungsprogramm p.34-35"
+    },
+    {
+      "id": "hyong-toi-gye-pandal-chagi-santul-macki",
+      "parts": ["pandal", "chagi", "santul", "macki", "kima", "sogi"],
+      "kup": 1,
+      "category": "combo",
+      "names": {
+        "en": "Hyong Toi-Gye combo: foot-sword and mountain block in horse stance",
+        "de": "Hyong Toi-Gye: Fußschwert + Bergblock in der Reiterstellung",
+        "es": "Combinación Hyong Toi-Gye: media luna y bloqueo de montaña en jinete"
+      },
+      "hangul": "반달 차기, 기마서기 산틀 막기",
+      "karate": "—",
+      "info": {
+        "en": "Foot-sword from outside to inside, set down in the horse stance (kima-sogi) with a mountain block.",
+        "de": "Fußschwert von außen nach innen, absetzen in der Reiterstellung mit einem Bergblock.",
+        "es": "Media luna de fuera a dentro y apoyo en posición de jinete (kima-sogi) con bloqueo de montaña."
+      },
+      "source": "Pruefungsprogramm p.35"
+    },
+    {
+      "id": "hyong-toi-gye-arae-macki-dung-jumok-dut-chicki",
+      "parts": ["ap", "gubi", "arae", "macki", "dung-jumok", "olgul", "düt", "chicki"],
+      "kup": 1,
+      "category": "combo",
+      "names": {
+        "en": "Hyong Toi-Gye combo: low block + backward back-fist to the head",
+        "de": "Hyong Toi-Gye: Abwärtsblock + rückwärtiger Faustrückenschlag zum Kopf",
+        "es": "Combinación Hyong Toi-Gye: bloqueo bajo + golpe hacia atrás de dorso del puño"
+      },
+      "hangul": "앞굽이 아래 막기 + 등주먹 얼굴 뒤 치기",
+      "karate": "—",
+      "info": {
+        "en": "Long forward stance with a low block and, at the same time, a backward back-fist strike to the head.",
+        "de": "Große Vorwärtsstellung mit Abwärtsblock und gleichzeitigem rückwärtsgerichtetem Faustrückenschlag zum Kopf.",
+        "es": "Arco largo con bloqueo bajo y, a la vez, golpe hacia atrás con el dorso del puño a la cabeza."
+      },
+      "source": "Pruefungsprogramm p.35"
+    },
+    {
+      "id": "hyong-toi-gye-packat-palmok-macki-pyonsonkut-jirugi",
+      "parts": [
+        "düt",
+        "gubi",
+        "momtong",
+        "packat",
+        "palmok",
+        "macki",
+        "ap",
+        "pyonsonkut",
+        "jechyo",
+        "jirugi"
+      ],
+      "kup": 1,
+      "category": "combo",
+      "names": {
+        "en": "Hyong Toi-Gye combo: L-stance block, pull-in, fingertip thrust",
+        "de": "Hyong Toi-Gye: L-Stellung mit Block, Heranziehen, Fingerstich",
+        "es": "Combinación Hyong Toi-Gye: bloqueo en L, atracción, estocada de dedos"
+      },
+      "hangul": "뒷굽이 몸통 바깥팔목 바깥 막기 → 앞굽이 편손끝 젖혀 찌르기",
+      "karate": "—",
+      "info": {
+        "en": "Middle block inside to outside (little-finger side) in the L-stance, shift to the long forward stance; the blocking hand is pulled to the opposite shoulder (drawing in an opponent who holds it) with a flat-hand fingertip thrust to the lower abdomen.",
+        "de": "Mittelstufenblock von innen nach außen (Kleinfingerseite) in der L-Stellung, Umsetzen in die große Vorwärtsstellung; die blockende Hand wird zur gegenüberliegenden Schulter gezogen (Heranziehen des Gegners) mit Fingerstich zum Unterleib.",
+        "es": "Bloqueo medio de dentro a fuera (lado del meñique) en L, paso a arco largo; la mano que bloquea se lleva al hombro contrario (atrayendo al rival que la sujeta) con estocada de dedos al bajo vientre."
+      },
+      "source": "Pruefungsprogramm p.35"
+    },
+    {
+      "id": "hansonnal-naeryo-chicki",
+      "parts": ["sonnal", "naeryo", "chicki"],
+      "kup": 0,
+      "category": "hand",
+      "names": {
+        "en": "Knife-hand strike from above downward",
+        "de": "Handkantenschlag von oben nach unten",
+        "es": "Corte de canto de arriba hacia abajo"
+      },
+      "hangul": "한손날 내려 치기",
+      "karate": "shutō-uchi (approx.)",
+      "info": {
+        "en": "The knife-hand comes down from above onto the target, like a hatchet.",
+        "de": "Die Handkante schlägt von oben nach unten auf das Ziel, ähnlich einem Beil.",
+        "es": "El canto de la mano baja desde arriba sobre el objetivo, como un hacha."
+      },
+      "source": "Pruefungsprogramm p.40"
+    },
+    {
+      "id": "ollyo-pandae-chirugi",
+      "parts": ["ollyo", "pandae", "chirugi"],
+      "kup": 0,
+      "category": "hand",
+      "names": {
+        "en": "Upward punch (from below)",
+        "de": "Fauststoß von unten nach oben",
+        "es": "Puñetazo ascendente"
+      },
+      "hangul": "올려 반대 지르기",
+      "karate": "age-zuki (approx.)",
+      "info": {
+        "en": "An uppercut-like punch rising from below.",
+        "de": "Ein aufwärts geführter Fauststoß von unten, ähnlich einem Aufwärtshaken.",
+        "es": "Puñetazo que sube desde abajo, similar a un uppercut."
+      },
+      "source": "Pruefungsprogramm p.40"
+    },
+    {
+      "id": "momtong-palkup-düt-jirugi",
+      "parts": ["momtong", "palkup", "düt", "jirugi"],
+      "kup": 0,
+      "category": "hand",
+      "names": {
+        "en": "Backward elbow thrust in the L-stance",
+        "de": "Rückwärts gerichteter Ellenbogenstoß in der L-Stellung",
+        "es": "Codazo hacia atrás en posición L"
+      },
+      "hangul": "뒷굽이 몸통 팔꿈치 뒤 지르기",
+      "karate": "—",
+      "info": {
+        "en": "In the L-stance the elbow drives backward at middle height, against an attacker behind.",
+        "de": "In der L-Stellung stößt der Ellenbogen nach hinten auf Mittelhöhe, gegen einen Angreifer von hinten.",
+        "es": "En posición L el codo se clava hacia atrás a media altura, contra un atacante por detrás."
+      },
+      "source": "Pruefungsprogramm p.41"
+    },
+    {
+      "id": "taeguk-pal-chang-dubal-dangsang-ap-chagi",
+      "parts": [
+        "düt",
+        "gubi",
+        "packat",
+        "palmok",
+        "macki",
+        "ap",
+        "momtong",
+        "paro",
+        "chirugi",
+        "dubal-dangsang",
+        "chagi",
+        "an",
+        "dubon"
+      ],
+      "kup": 0,
+      "category": "combo",
+      "names": {
+        "en": "Taeguk Pal-Chang combo: block, punch, jumping double front kick, block and double punch",
+        "de": "Taeguk Pal-Chang: Block, Fauststoß, gesprungener Vorwärtsfußstoß, Block + doppelter Fauststoß",
+        "es": "Combinación Taeguk Pal-Chang: bloqueo, puñetazo, patada frontal doble en salto, bloqueo y doble puñetazo"
+      },
+      "hangul": "뒷굽이 몸통 거들어 바깥 막기 → 앞굽이 몸통 바로 지르기, 두발 당상 앞 차기, 앞굽이 몸통 안 막기 + 두번 몸통 지르기",
+      "karate": "—",
+      "info": {
+        "en": "L-stance with an inside-out block, shift forward with an opposite-side middle punch and a jumping front kick that bridges the distance; land in the long forward stance with an outside-in block and a double middle punch.",
+        "de": "L-Stellung mit Mittelstufenblock von innen nach außen, umsetzen in die große Vorwärtsstellung mit gegenseitigem Mittelstufenfauststoß und gesprungenem Vorwärtsfußstoß (Entfernung überbrücken), absetzen mit Block von außen nach innen und doppeltem Mittelstufenfauststoß.",
+        "es": "Posición L con bloqueo de dentro a fuera; paso a arco largo con puñetazo medio contrario y patada frontal en salto que cubre la distancia; aterrizaje en arco largo con bloqueo de fuera a dentro y doble puñetazo medio."
+      },
+      "source": "Pruefungsprogramm p.40"
+    },
+    {
+      "id": "taeguk-pal-chang-oe-santul-macki-dangyo-tok-chirugi",
+      "parts": ["oe", "santul", "macki", "dangyo", "tok", "chirugi", "ap", "gubi"],
+      "kup": 0,
+      "category": "combo",
+      "names": {
+        "en": "Taeguk Pal-Chang combo: combined two-arm block + pulling uppercut",
+        "de": "Taeguk Pal-Chang: kombinierter Zweiarmblock + Aufwärtshaken",
+        "es": "Combinación Taeguk Pal-Chang: bloqueo combinado + uppercut con tirón"
+      },
+      "hangul": "외산틀 막기 + 당겨 턱 지르기",
+      "karate": "—",
+      "info": {
+        "en": "Combined two-arm block followed by an upward hook with the rear fist while the front fist is pulled to the opposite shoulder; step into a narrow long forward stance.",
+        "de": "Kombinierter Zweiarmblock, anschließend Aufwärtshaken der hinteren Faust, wobei die vordere Faust zur gegenüberliegenden Schulter gezogen wird; Umsetzen in eine enge große Vorwärtsstellung.",
+        "es": "Bloqueo combinado de dos brazos y después gancho ascendente con el puño trasero mientras el delantero se tira al hombro contrario; paso a arco largo estrecho."
+      },
+      "source": "Pruefungsprogramm p.40-41"
+    },
+    {
+      "id": "hyong-hwa-rang-kumgang-macki-ollyo-chirugi",
+      "parts": [
+        "düt",
+        "gubi",
+        "kumgang",
+        "packat",
+        "palmok",
+        "macki",
+        "ollyo",
+        "paro",
+        "chirugi",
+        "soojik",
+        "sogi",
+        "sonnal",
+        "naeryo",
+        "chicki",
+        "pandae",
+        "momtong"
+      ],
+      "kup": 0,
+      "category": "combo",
+      "names": {
+        "en": "Hyong Hwa-Rang combo: mountain block, upward punch, L-fixed stance punch, vertical stance knife-hand",
+        "de": "Hyong Hwa-Rang: Bergblock, Aufwärtsfauststoß, L-Fixstellung + Fauststoß, vertikale Stellung + Handkantenschlag",
+        "es": "Combinación Hyong Hwa-Rang: bloqueo de montaña, puñetazo ascendente, L fija con puñetazo, posición vertical con corte de canto"
+      },
+      "hangul": "뒷굽이 금강 바깥팔목 바깥 막기 + 올려 바로 지르기, 고정서기 몸통 반대 지르기, 수직서기 한손날 반대 내려 치기",
+      "karate": "—",
+      "info": {
+        "en": "L-stance with a mountain block; the held block hand is pulled to the opposite shoulder with an upward punch from the other hand; shift (via cat stance) to the L-fixed stance with a middle punch; the front foot is drawn back into the vertical stance with a downward knife-hand strike.",
+        "de": "L-Stellung mit Bergblock, die festgehaltene Hand des Blocks wird zur gegenüberliegenden Schulter gezogen mit Aufwärtsfauststoß der anderen Hand; Umsetzen (über die Katzenstellung) in die L-Fixstellung mit Mittelstufenfauststoß; vorderer Fuß zurück in die vertikale Stellung mit Handkantenschlag von oben nach unten.",
+        "es": "Posición L con bloqueo de montaña; la mano que bloquea se tira al hombro contrario con puñetazo ascendente de la otra; paso (por la posición de gato) a L fija con puñetazo medio; el pie delantero vuelve a posición vertical con corte de canto descendente."
+      },
+      "source": "Pruefungsprogramm p.41"
+    },
+    {
+      "id": "hyong-hwa-rang-arae-macki-dut-gubi-chirugi",
+      "parts": ["ap", "gubi", "arae", "macki", "düt", "momtong", "paro", "chirugi"],
+      "kup": 0,
+      "category": "combo",
+      "names": {
+        "en": "Hyong Hwa-Rang combo: low block, step back into L-stance, punch",
+        "de": "Hyong Hwa-Rang: Abwärtsblock, L-Stellung + Fauststoß",
+        "es": "Combinación Hyong Hwa-Rang: bloqueo bajo, paso atrás a L y puñetazo"
+      },
+      "hangul": "앞굽이 아래 막기 → 뒷굽이 몸통 바로 지르기",
+      "karate": "—",
+      "info": {
+        "en": "Long forward stance with a low block, then draw the front foot back into the L-stance with an opposite-side middle punch.",
+        "de": "Große Vorwärtsstellung mit Abwärtsblock, vorderen Fuß zurückziehen in die L-Stellung mit gegenseitigem Mittelstufenfauststoß.",
+        "es": "Arco largo con bloqueo bajo; el pie delantero retrocede a L con puñetazo medio contrario."
+      },
+      "source": "Pruefungsprogramm p.41"
+    },
+    {
+      "id": "hyong-hwa-rang-sonnal-kotoro-macki-mikurumbal",
+      "parts": [
+        "düt",
+        "gubi",
+        "sonnal",
+        "momtong",
+        "kotoro",
+        "macki",
+        "mikurumbal",
+        "ap",
+        "paro",
+        "chirugi"
+      ],
+      "kup": 0,
+      "category": "combo",
+      "names": {
+        "en": "Hyong Hwa-Rang combo: knife-hand block, gliding into long forward stance + punch",
+        "de": "Hyong Hwa-Rang: Handkantenblock, hineingleiten + Mittelstufenfauststoß",
+        "es": "Combinación Hyong Hwa-Rang: bloqueo con canto, deslizamiento y puñetazo"
+      },
+      "hangul": "뒷굽이 손날 몸통 거들어 막기 미끄럼발 앞굽이 몸통 바로 지르기",
+      "karate": "—",
+      "info": {
+        "en": "Middle knife-hand block (inside to outside) in the L-stance, then glide with both feet (mikurumbal) into the long forward stance with an opposite-side middle punch.",
+        "de": "Handkantenblock Mittelstufe von innen nach außen in der L-Stellung und Hineingleiten (mikurumbal) in die große Vorwärtsstellung mit gegenseitigem Mittelstufenfauststoß.",
+        "es": "Bloqueo medio con cantos de dentro a fuera en L y deslizamiento con ambos pies (mikurumbal) a arco largo con puñetazo medio contrario."
+      },
+      "source": "Pruefungsprogramm p.42"
+    },
+    {
+      "id": "bituro-chagi",
+      "parts": ["bituro", "chagi"],
+      "kup": 0,
+      "category": "foot",
+      "names": {
+        "en": "Snap kick diagonally to the side (45 degrees, \"subway kick\")",
+        "de": "Schnapptritt zur Seite 45° („U-Bahn-Tritt“)",
+        "es": "Patada rápida en diagonal a 45° (patada de metro)"
+      },
+      "hangul": "비틀어 차기",
+      "karate": "—",
+      "info": {
+        "en": "Like ap-chagi but angled 45 degrees to the side; a quick snapping kick.",
+        "de": "Wie ap-chagi, aber um 45° seitlich versetzt; ein schneller Schnapptritt.",
+        "es": "Como ap-chagi pero desviada 45° hacia el lado; una patada rápida con chasquido."
+      },
+      "source": "Pruefungsprogramm p.42"
+    },
+    {
+      "id": "dubal-dangsang-ap-chagi",
+      "parts": ["dubal-dangsang", "ap", "chagi"],
+      "kup": 0,
+      "category": "foot",
+      "names": {
+        "en": "Jumping double front kick (bridging distance)",
+        "de": "Gesprungener Vorwärtsfußstoß (Entfernung überbrücken)",
+        "es": "Patada frontal doble en salto (cubriendo distancia)"
+      },
+      "hangul": "두발 당상 앞 차기",
+      "karate": "nidan-geri (approx.)",
+      "info": {
+        "en": "A jumping front kick with both legs kicking in the air one after another, bridging the distance. Appears in the Pal-Chang combination.",
+        "de": "Gesprungener Vorwärtsfußstoß, bei dem beide Beine nacheinander in der Luft treten und die Distanz überbrückt wird. Kommt in der Pal-Chang-Kombination vor.",
+        "es": "Patada frontal en salto en la que ambas piernas patean una tras otra en el aire, cubriendo distancia. Aparece en la combinación de Pal-Chang."
+      },
+      "source": "Pruefungsprogramm p.40"
+    },
+    {
+      "id": "hagdari-sogi",
+      "parts": ["hagdari", "sogi"],
+      "kup": 0,
+      "category": "stance",
+      "names": {
+        "en": "Crane stance",
+        "de": "Kranichstellung",
+        "es": "Posición de la grulla"
+      },
+      "hangul": "학다리 서기",
+      "karate": "tsuru-ashi-dachi",
+      "info": {
+        "en": "Standing on one leg; the sole of the other foot rests at the knee of the standing leg.",
+        "de": "Stand auf einem Bein, die Fußsohle des anderen Beines liegt am Knie des Standbeins.",
+        "es": "De pie sobre una pierna; la planta del otro pie se apoya en la rodilla de la pierna de apoyo."
+      },
+      "source": "Pruefungsprogramm p.42"
+    },
+    {
+      "id": "soojik-sogi",
+      "parts": ["soojik", "sogi"],
+      "kup": 0,
+      "category": "stance",
+      "names": {
+        "en": "Vertical stance",
+        "de": "Vertikale Stellung",
+        "es": "Posición vertical"
+      },
+      "hangul": "수직 서기",
+      "karate": "—",
+      "info": {
+        "en": "Similar to the L-stance, but the distance between the feet is only about half a shoulder width.",
+        "de": "Ähnlich der L-Stellung, der Abstand entspricht aber nur etwa einer halben Schulterbreite.",
+        "es": "Parecida a la posición en L, pero la distancia entre los pies es solo de medio ancho de hombros."
+      },
+      "source": "Pruefungsprogramm p.42"
+    },
+    {
+      "id": "sasun-sogi",
+      "parts": ["sasun", "sogi"],
+      "kup": 0,
+      "category": "stance",
+      "names": {
+        "en": "Diagonal stance",
+        "de": "Diagonalstellung",
+        "es": "Posición diagonal"
+      },
+      "hangul": "사선 서기",
+      "karate": "—",
+      "info": {
+        "en": "Similar to chuchum-sogi, but the heel of the front foot is on the same line as the toes of the rear foot. The glossary spells it sansun-sogi.",
+        "de": "Ähnlich der chuchum-sogi, die Ferse des vorderen Fußes liegt aber auf einer Linie mit den Zehen des hinteren Fußes. Im Glossar als sansun-sogi geschrieben.",
+        "es": "Parecida a chuchum-sogi, pero el talón del pie delantero queda en línea con los dedos del pie trasero. El glosario la escribe sansun-sogi."
+      },
+      "source": "Pruefungsprogramm p.42"
+    },
+    {
+      "id": "oguryo-sogi",
+      "parts": ["oguryo", "sogi"],
+      "kup": 0,
+      "category": "stance",
+      "names": {
+        "en": "Stool stance",
+        "de": "Hockerstellung",
+        "es": "Posición de taburete"
+      },
+      "hangul": "오그려 서기",
+      "karate": "—",
+      "info": {
+        "en": "Similar to sasun-sogi, but the knees are bent slightly inward.",
+        "de": "Ähnlich der sasun-sogi, die Knie werden jedoch leicht einwärts gebeugt.",
+        "es": "Parecida a sasun-sogi, pero con las rodillas flexionadas ligeramente hacia dentro."
+      },
+      "source": "Pruefungsprogramm p.42"
+    }
+  ],
+  "terms": [
+    {
+      "group": "basic",
+      "ko": "cho-kup",
+      "hangul": "초급",
+      "meaning": {
+        "en": "lower grades (white to green)",
+        "de": "Unterstufe (Cho-Kup)",
+        "es": "grados inferiores (Cho-Kup)"
+      },
+      "kup": 2
+    },
+    {
+      "group": "basic",
+      "ko": "jung-kup",
+      "hangul": "중급",
+      "meaning": {
+        "en": "intermediate grades (blue)",
+        "de": "Mittelstufe (Jung-Kup)",
+        "es": "grados intermedios (Jung-Kup)"
+      },
+      "kup": 2
+    },
+    {
+      "group": "basic",
+      "ko": "ko-kup",
+      "hangul": "고급",
+      "meaning": {
+        "en": "upper grades (red)",
+        "de": "Oberstufe (Ko-Kup)",
+        "es": "grados superiores (Ko-Kup)"
+      },
+      "kup": 2
+    },
+    {
+      "group": "training",
+      "ko": "taeryon",
+      "hangul": "대련",
+      "meaning": {
+        "en": "partner exercise, sparring",
+        "de": "Partnerübung, Sparring, Kampf",
+        "es": "ejercicio con compañero, combate"
+      },
+      "kup": 2
+    },
+    {
+      "group": "training",
+      "ko": "tallyon",
+      "hangul": "단련",
+      "meaning": {
+        "en": "training, free practice",
+        "de": "Trainieren, freies Training, Übung",
+        "es": "entrenar, práctica libre"
+      },
+      "kup": 2
+    },
+    {
+      "group": "training",
+      "ko": "yaksok-taeryon",
+      "hangul": "약속대련",
+      "meaning": {
+        "en": "agreed (pre-arranged) sparring",
+        "de": "Kampftraining",
+        "es": "combate pactado"
+      },
+      "kup": 2
+    },
+    {
+      "group": "training",
+      "ko": "gibon-donjak",
+      "hangul": "기본동작",
+      "meaning": {
+        "en": "basic school (basic movements)",
+        "de": "Grundschule",
+        "es": "escuela básica (movimientos básicos)"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "chong",
+      "hangul": "청",
+      "meaning": {
+        "en": "fighter in the blue vest",
+        "de": "Kämpfer mit blauer Wettkampfweste",
+        "es": "luchador con peto azul"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "hong",
+      "hangul": "홍",
+      "meaning": {
+        "en": "fighter in the red vest",
+        "de": "Kämpfer mit roter Wettkampfweste",
+        "es": "luchador con peto rojo"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "chong-sung",
+      "hangul": "청승",
+      "meaning": {
+        "en": "victory for blue",
+        "de": "Sieg für Blau",
+        "es": "victoria para azul"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "hong-sung",
+      "hangul": "홍승",
+      "meaning": {
+        "en": "victory for red",
+        "de": "Sieger Rot",
+        "es": "victoria para rojo"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "kyesok",
+      "hangul": "계속",
+      "meaning": {
+        "en": "continue (fight on)",
+        "de": "Kämpft, Weiter",
+        "es": "continuar"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "geshi",
+      "hangul": "계시",
+      "meaning": {
+        "en": "time stop",
+        "de": "Zeitstopp",
+        "es": "parada de tiempo"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "kamchom",
+      "hangul": "감점",
+      "meaning": {
+        "en": "penalty point",
+        "de": "Minuspunkt / Punktabzug",
+        "es": "punto de penalización"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "kyong-go",
+      "hangul": "경고",
+      "meaning": {
+        "en": "admonition",
+        "de": "Ermahnung",
+        "es": "amonestación"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "chui",
+      "hangul": "주의",
+      "meaning": {
+        "en": "warning",
+        "de": "Verwarnung",
+        "es": "advertencia"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "bigim",
+      "hangul": "비김",
+      "meaning": {
+        "en": "draw",
+        "de": "Unentschieden",
+        "es": "empate"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "batguo",
+      "hangul": "바꿔",
+      "meaning": {
+        "en": "change (switch)",
+        "de": "Wechsel",
+        "es": "cambio"
+      },
+      "kup": 2
+    },
+    {
+      "group": "command",
+      "ko": "kikwon",
+      "hangul": "기권",
+      "meaning": {
+        "en": "give up (the fight)",
+        "de": "(den Kampf) aufgeben",
+        "es": "abandonar (el combate)"
+      },
+      "kup": 2
+    },
+    {
+      "group": "body",
+      "ko": "murup",
+      "hangul": "무릎",
+      "meaning": {
+        "en": "knee",
+        "de": "Knie",
+        "es": "rodilla"
+      },
+      "kup": 2
+    },
+    {
+      "group": "body",
+      "ko": "tok",
+      "hangul": "턱",
+      "meaning": {
+        "en": "chin",
+        "de": "Kinn",
+        "es": "mentón"
+      },
+      "kup": 2
+    },
+    {
+      "group": "body",
+      "ko": "myongchi",
+      "hangul": "명치",
+      "meaning": {
+        "en": "solar plexus",
+        "de": "Solar-Plexus",
+        "es": "plexo solar"
+      },
+      "kup": 2
+    },
+    {
+      "group": "body",
+      "ko": "hobokbu",
+      "hangul": "하복부",
+      "meaning": {
+        "en": "lower abdomen",
+        "de": "Unterleib",
+        "es": "bajo vientre"
+      },
+      "kup": 2
+    },
+    {
+      "group": "body",
+      "ko": "palmok",
+      "hangul": "팔목",
+      "meaning": {
+        "en": "forearm",
+        "de": "Unterarm",
+        "es": "antebrazo"
+      },
+      "kup": 2
+    },
+    {
+      "group": "body",
+      "ko": "sonnal",
+      "hangul": "손날",
+      "meaning": {
+        "en": "knife-hand",
+        "de": "Handkante",
+        "es": "canto de la mano"
+      },
+      "kup": 2
+    },
+    {
+      "group": "body",
+      "ko": "batangson",
+      "hangul": "바탕손",
+      "meaning": {
+        "en": "palm heel",
+        "de": "Handballen",
+        "es": "talón de la mano"
+      },
+      "kup": 2
+    },
+    {
+      "group": "body",
+      "ko": "dung-jumok",
+      "hangul": "등주먹",
+      "meaning": {
+        "en": "back of the fist",
+        "de": "Faustrücken",
+        "es": "dorso del puño"
+      },
+      "kup": 2
+    },
+    {
+      "group": "body",
+      "ko": "sonnaldung",
+      "hangul": "손날등",
+      "meaning": {
+        "en": "back of the knife-hand",
+        "de": "Rückseite der Handkante",
+        "es": "dorso del canto de la mano"
+      },
+      "kup": 2
+    },
+    {
+      "group": "body",
+      "ko": "pyonsonkut",
+      "hangul": "편손끝",
+      "meaning": {
+        "en": "flat-hand fingertips",
+        "de": "Fingerspitzen (flache Hand)",
+        "es": "yemas de la mano abierta"
+      },
+      "kup": 2
+    },
+    {
+      "group": "basic",
+      "ko": "sabom-nim",
+      "hangul": "사범님",
+      "meaning": {
+        "en": "master (3rd-4th Dan, club programme)",
+        "de": "Lehrmeister (3.–4. Dan, Prüfungsprogramm)",
+        "es": "maestro (3.º-4.º Dan, programa del club)"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "sabom-nim-ke",
+      "hangul": "사범님께",
+      "meaning": {
+        "en": "grand master (5th-9th Dan)",
+        "de": "Großmeister (5.–9. Dan)",
+        "es": "gran maestro (5.º-9.º Dan)"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "cho-dan-bo",
+      "hangul": "초단보",
+      "meaning": {
+        "en": "black-belt candidate",
+        "de": "Meisterschüler / Schwarzgurt-Anwärter",
+        "es": "aspirante a cinturón negro"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "cho-dan",
+      "hangul": "초단",
+      "meaning": {
+        "en": "1st Dan",
+        "de": "1. Dan",
+        "es": "1.º Dan"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "eh-dan",
+      "hangul": "이단",
+      "meaning": {
+        "en": "2nd Dan",
+        "de": "2. Dan",
+        "es": "2.º Dan"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "sam-dan",
+      "hangul": "삼단",
+      "meaning": {
+        "en": "3rd Dan",
+        "de": "3. Dan",
+        "es": "3.º Dan"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "sa-dan",
+      "hangul": "사단",
+      "meaning": {
+        "en": "4th Dan",
+        "de": "4. Dan",
+        "es": "4.º Dan"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "oh-dan",
+      "hangul": "오단",
+      "meaning": {
+        "en": "5th Dan",
+        "de": "5. Dan",
+        "es": "5.º Dan"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "yuk-dan",
+      "hangul": "육단",
+      "meaning": {
+        "en": "6th Dan",
+        "de": "6. Dan",
+        "es": "6.º Dan"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "chil-dan",
+      "hangul": "칠단",
+      "meaning": {
+        "en": "7th Dan",
+        "de": "7. Dan",
+        "es": "7.º Dan"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "pal-dan",
+      "hangul": "팔단",
+      "meaning": {
+        "en": "8th Dan",
+        "de": "8. Dan",
+        "es": "8.º Dan"
+      },
+      "kup": 0
+    },
+    {
+      "group": "basic",
+      "ko": "ku-dan",
+      "hangul": "구단",
+      "meaning": {
+        "en": "9th Dan",
+        "de": "9. Dan",
+        "es": "9.º Dan"
+      },
+      "kup": 0
+    }
+  ],
+  "theory": [
+    {
+      "id": "th-k2-prep",
+      "kup": 2,
+      "question": {
+        "en": "What is the minimum preparation time before the 2nd Kup exam?",
+        "de": "Wie lang ist die minimale Vorbereitungszeit auf die 2.-Kup-Prüfung?",
+        "es": "¿Cuál es el tiempo mínimo de preparación para el examen de 2.º Kup?"
+      },
+      "correct": {
+        "en": "6 months",
+        "de": "6 Monate",
+        "es": "6 meses"
+      },
+      "wrong": [
+        {
+          "en": "3 months",
+          "de": "3 Monate",
+          "es": "3 meses"
+        },
+        {
+          "en": "4 months",
+          "de": "4 Monate",
+          "es": "4 meses"
+        },
+        {
+          "en": "1 year",
+          "de": "1 Jahr",
+          "es": "1 año"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-stage",
+      "kup": 2,
+      "question": {
+        "en": "Which stage do the 2nd and 1st Kup belong to?",
+        "de": "Welcher Stufe gehören der 2. und 1. Kup an?",
+        "es": "¿A qué nivel pertenecen el 2.º y el 1.er Kup?"
+      },
+      "correct": {
+        "en": "Upper grades (Ko-Kup)",
+        "de": "Oberstufe (Ko-Kup)",
+        "es": "Grados superiores (Ko-Kup)"
+      },
+      "wrong": [
+        {
+          "en": "Lower grades (Cho-Kup)",
+          "de": "Unterstufe (Cho-Kup)",
+          "es": "Grados inferiores (Cho-Kup)"
+        },
+        {
+          "en": "Intermediate grades (Jung-Kup)",
+          "de": "Mittelstufe (Jung-Kup)",
+          "es": "Grados intermedios (Jung-Kup)"
+        },
+        {
+          "en": "Master grades (Dan)",
+          "de": "Meistergrade (Dan)",
+          "es": "Grados de maestro (Dan)"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-kyesok",
+      "kup": 2,
+      "question": {
+        "en": "What does the referee command \"kyesok\" mean?",
+        "de": "Was bedeutet das Kampfrichter-Kommando „kyesok“?",
+        "es": "¿Qué significa la orden del árbitro «kyesok»?"
+      },
+      "correct": {
+        "en": "Continue (fight on)",
+        "de": "Kämpft weiter",
+        "es": "Continuar"
+      },
+      "wrong": [
+        {
+          "en": "Stop / end",
+          "de": "Ende",
+          "es": "Fin"
+        },
+        {
+          "en": "Separate",
+          "de": "Trennen",
+          "es": "Separar"
+        },
+        {
+          "en": "Bow",
+          "de": "Grüßen",
+          "es": "Saludar"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-kalyeo",
+      "kup": 2,
+      "question": {
+        "en": "Which command means \"break / separate\" in a fight?",
+        "de": "Welches Kommando bedeutet im Kampf „Trennen / Unterbrechen“?",
+        "es": "¿Qué orden significa «separar / interrumpir» en un combate?"
+      },
+      "correct": {
+        "en": "Kalyeo",
+        "de": "Kalyeo",
+        "es": "Kalyeo"
+      },
+      "wrong": [
+        {
+          "en": "Kyesok",
+          "de": "Kyesok",
+          "es": "Kyesok"
+        },
+        {
+          "en": "Geshi",
+          "de": "Geshi",
+          "es": "Geshi"
+        },
+        {
+          "en": "Chunbi",
+          "de": "Chunbi",
+          "es": "Chunbi"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-geshi",
+      "kup": 2,
+      "question": {
+        "en": "What does \"geshi\" call for?",
+        "de": "Was ruft „geshi“ aus?",
+        "es": "¿Qué indica «geshi»?"
+      },
+      "correct": {
+        "en": "Time stop",
+        "de": "Zeitstopp",
+        "es": "Parada de tiempo"
+      },
+      "wrong": [
+        {
+          "en": "Draw",
+          "de": "Unentschieden",
+          "es": "Empate"
+        },
+        {
+          "en": "Warning",
+          "de": "Verwarnung",
+          "es": "Advertencia"
+        },
+        {
+          "en": "Change",
+          "de": "Wechsel",
+          "es": "Cambio"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-colors",
+      "kup": 2,
+      "question": {
+        "en": "Which colours do \"chong\" and \"hong\" stand for?",
+        "de": "Für welche Farben stehen „chong“ und „hong“?",
+        "es": "¿Qué colores representan «chong» y «hong»?"
+      },
+      "correct": {
+        "en": "Blue and red",
+        "de": "Blau und Rot",
+        "es": "Azul y rojo"
+      },
+      "wrong": [
+        {
+          "en": "Red and blue",
+          "de": "Rot und Blau",
+          "es": "Rojo y azul"
+        },
+        {
+          "en": "White and black",
+          "de": "Weiß und Schwarz",
+          "es": "Blanco y negro"
+        },
+        {
+          "en": "Green and yellow",
+          "de": "Grün und Gelb",
+          "es": "Verde y amarillo"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-fight",
+      "kup": 2,
+      "question": {
+        "en": "How long is the free sparring (adults) in the 2nd Kup exam?",
+        "de": "Wie lang ist der freie Kampf (Erwachsene) in der 2.-Kup-Prüfung?",
+        "es": "¿Cuánto dura el combate libre (adultos) en el examen de 2.º Kup?"
+      },
+      "correct": {
+        "en": "3 x 2 min",
+        "de": "3 x 2 Min.",
+        "es": "3 x 2 min"
+      },
+      "wrong": [
+        {
+          "en": "1 x 2 min",
+          "de": "1 x 2 min",
+          "es": "1 x 2 min"
+        },
+        {
+          "en": "2 x 2 min",
+          "de": "2 x 2 min",
+          "es": "2 x 2 min"
+        },
+        {
+          "en": "3 x 3 min",
+          "de": "3 x 3 min",
+          "es": "3 x 3 min"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-break",
+      "kup": 2,
+      "question": {
+        "en": "What is required in the breaking test at the 2nd Kup?",
+        "de": "Was wird beim Bruchtest zum 2. Kup verlangt?",
+        "es": "¿Qué se pide en la rotura del 2.º Kup?"
+      },
+      "correct": {
+        "en": "One hand and one foot technique of own choice",
+        "de": "Eine Hand- und eine Fußtechnik nach freier Wahl",
+        "es": "Una técnica de mano y una de pie a elección"
+      },
+      "wrong": [
+        {
+          "en": "One board, one technique",
+          "de": "Ein Brett, eine Technik",
+          "es": "Un tablero, una técnica"
+        },
+        {
+          "en": "Three boards incl. a jump kick",
+          "de": "Drei Bretter inkl. Sprungtritt",
+          "es": "Tres tableros con patada saltada"
+        },
+        {
+          "en": "No breaking test",
+          "de": "Kein Bruchtest",
+          "es": "Sin rotura"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-fall",
+      "kup": 2,
+      "question": {
+        "en": "Which breakfall is required at the 2nd Kup?",
+        "de": "Welche Fallschule wird zum 2. Kup verlangt?",
+        "es": "¿Qué caída se pide en el 2.º Kup?"
+      },
+      "correct": {
+        "en": "\"Hapkido roll\" (left and right)",
+        "de": "„Hapkido-Rolle“ (links und rechts)",
+        "es": "«Rodamiento de Hapkido» (izq. y der.)"
+      },
+      "wrong": [
+        {
+          "en": "Forward roll",
+          "de": "Rolle vorwärts",
+          "es": "Rodamiento adelante"
+        },
+        {
+          "en": "Jump roll",
+          "de": "Sprung-Rolle",
+          "es": "Rodamiento con salto"
+        },
+        {
+          "en": "Backward fall",
+          "de": "Rückwärtssturz",
+          "es": "Caída hacia atrás"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-form",
+      "kup": 2,
+      "question": {
+        "en": "Which form is the 6th form (own system, Poomse) at the 2nd Kup?",
+        "de": "Welche Form ist die 6. Form (eigenes System, Poomse) zum 2. Kup?",
+        "es": "¿Qué forma es la 6.ª (sistema propio, Poomse) en el 2.º Kup?"
+      },
+      "correct": {
+        "en": "Taeguk Yuk-Chang",
+        "de": "Taeguk Yuk-Chang",
+        "es": "Taeguk Yuk-Chang"
+      },
+      "wrong": [
+        {
+          "en": "Taeguk Oh-Chang",
+          "de": "Taeguk Oh-Chang",
+          "es": "Taeguk Oh-Chang"
+        },
+        {
+          "en": "Taeguk Sil-Chang",
+          "de": "Taeguk Sil-Chang",
+          "es": "Taeguk Sil-Chang"
+        },
+        {
+          "en": "Taeguk Il-Chang",
+          "de": "Taeguk Il-Chang",
+          "es": "Taeguk Il-Chang"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-otherform",
+      "kup": 2,
+      "question": {
+        "en": "From which grade on are the forms of the other system (Poomse or Hyong) also run in full?",
+        "de": "Ab welchem Grad werden die Formen des jeweils anderen Systems in Gänze gelaufen?",
+        "es": "¿Desde qué grado se hacen completas las formas del otro sistema (Poomse o Hyong)?"
+      },
+      "correct": {
+        "en": "From the 2nd Kup",
+        "de": "Ab dem 2. Kup",
+        "es": "Desde el 2.º Kup"
+      },
+      "wrong": [
+        {
+          "en": "From the 5th Kup",
+          "de": "Ab dem 5. Kup",
+          "es": "Desde el 5.º Kup"
+        },
+        {
+          "en": "From the 1st Dan",
+          "de": "Ab dem 1. Dan",
+          "es": "Desde el 1.er Dan"
+        },
+        {
+          "en": "From the 8th Kup",
+          "de": "Ab dem 8. Kup",
+          "es": "Desde el 8.º Kup"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k2-redbelt",
+      "kup": 2,
+      "question": {
+        "en": "Traditionally, what does the red belt stand for?",
+        "de": "Wofür steht der rote Gürtel traditionell?",
+        "es": "¿Qué simboliza tradicionalmente el cinturón rojo?"
+      },
+      "correct": {
+        "en": "Danger / warning: power needs control",
+        "de": "Gefahr / Warnung: Kraft braucht Kontrolle",
+        "es": "Peligro / advertencia: la fuerza necesita control"
+      },
+      "wrong": [
+        {
+          "en": "Purity of a beginner",
+          "de": "Reinheit eines Anfängers",
+          "es": "Pureza de un principiante"
+        },
+        {
+          "en": "Growth like a plant",
+          "de": "Wachstum wie eine Pflanze",
+          "es": "Crecimiento como una planta"
+        },
+        {
+          "en": "The sky the student reaches for",
+          "de": "Der Himmel, nach dem der Schüler strebt",
+          "es": "El cielo al que aspira el alumno"
+        }
+      ],
+      "source": "general"
+    },
+    {
+      "id": "th-k2-train",
+      "kup": 2,
+      "question": {
+        "en": "How is a training session usually structured?",
+        "de": "Wie ist eine Trainingseinheit üblicherweise aufgebaut?",
+        "es": "¿Cómo se estructura normalmente una sesión de entrenamiento?"
+      },
+      "correct": {
+        "en": "Warm-up, main part, cool-down",
+        "de": "Aufwärmen, Hauptteil, Abschluss/Cool-down",
+        "es": "Calentamiento, parte principal, vuelta a la calma"
+      },
+      "wrong": [
+        {
+          "en": "Main part, warm-up, cool-down",
+          "de": "Hauptteil, Aufwärmen, Cool-down",
+          "es": "Parte principal, calentamiento, vuelta a la calma"
+        },
+        {
+          "en": "Cool-down, main part, warm-up",
+          "de": "Cool-down, Hauptteil, Aufwärmen",
+          "es": "Vuelta a la calma, parte principal, calentamiento"
+        },
+        {
+          "en": "Only main part",
+          "de": "Nur Hauptteil",
+          "es": "Solo parte principal"
+        }
+      ],
+      "source": "general"
+    },
+    {
+      "id": "th-k2-yukchang",
+      "kup": 2,
+      "question": {
+        "en": "Which element does Taeguk Yuk-Chang (6) stand for?",
+        "de": "Für welches Element steht Taeguk Yuk-Chang (6)?",
+        "es": "¿Qué elemento representa Taeguk Yuk-Chang (6)?"
+      },
+      "correct": {
+        "en": "Water",
+        "de": "Wasser",
+        "es": "Agua"
+      },
+      "wrong": [
+        {
+          "en": "Mountain",
+          "de": "Berg",
+          "es": "Montaña"
+        },
+        {
+          "en": "Earth",
+          "de": "Erde",
+          "es": "Tierra"
+        },
+        {
+          "en": "Wind",
+          "de": "Wind",
+          "es": "Viento"
+        }
+      ],
+      "source": "general"
+    },
+    {
+      "id": "th-k2-chunggun",
+      "kup": 2,
+      "question": {
+        "en": "Whom is Hyong Chung-Gun named after?",
+        "de": "Nach wem ist Hyong Chung-Gun benannt?",
+        "es": "¿Por quién se llama Hyong Chung-Gun?"
+      },
+      "correct": {
+        "en": "Ahn Jung-geun, Korean patriot",
+        "de": "Ahn Jung-geun, koreanischer Patriot",
+        "es": "Ahn Jung-geun, patriota coreano"
+      },
+      "wrong": [
+        {
+          "en": "Yi Hwang (Toi-Gye)",
+          "de": "Yi Hwang (Toi-Gye)",
+          "es": "Yi Hwang (Toi-Gye)"
+        },
+        {
+          "en": "Kim Yu-sin",
+          "de": "Kim Yu-sin",
+          "es": "Kim Yu-sin"
+        },
+        {
+          "en": "Choi Hong Hi",
+          "de": "Choi Hong Hi",
+          "es": "Choi Hong Hi"
+        }
+      ],
+      "source": "general"
+    },
+    {
+      "id": "th-k1-prep",
+      "kup": 1,
+      "question": {
+        "en": "What is the minimum preparation time before the 1st Kup exam?",
+        "de": "Wie lang ist die minimale Vorbereitungszeit auf die 1.-Kup-Prüfung?",
+        "es": "¿Cuál es el tiempo mínimo de preparación para el examen de 1.er Kup?"
+      },
+      "correct": {
+        "en": "6 months",
+        "de": "6 Monate",
+        "es": "6 meses"
+      },
+      "wrong": [
+        {
+          "en": "3 months",
+          "de": "3 Monate",
+          "es": "3 meses"
+        },
+        {
+          "en": "4 months",
+          "de": "4 Monate",
+          "es": "4 meses"
+        },
+        {
+          "en": "1 year",
+          "de": "1 Jahr",
+          "es": "1 año"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k1-firstaid",
+      "kup": 1,
+      "question": {
+        "en": "Which proofs are required for the 1st Kup exam?",
+        "de": "Welche Nachweise werden für die 1.-Kup-Prüfung verlangt?",
+        "es": "¿Qué requisitos se piden para el examen de 1.er Kup?"
+      },
+      "correct": {
+        "en": "First-aid course (max. 2 years old) and leading at least one training session",
+        "de": "Erste-Hilfe-Kurs (nicht älter als zwei Jahre) und Leitung mindestens einer Trainingseinheit",
+        "es": "Curso de primeros auxilios (máx. 2 años) y dirigir al menos un entrenamiento"
+      },
+      "wrong": [
+        {
+          "en": "Only a medical certificate",
+          "de": "Nur ein ärztliches Attest",
+          "es": "Solo un certificado médico"
+        },
+        {
+          "en": "A written essay on Korea",
+          "de": "Ein schriftlicher Aufsatz über Korea",
+          "es": "Un ensayo sobre Corea"
+        },
+        {
+          "en": "A referee licence",
+          "de": "Eine Kampfrichterlizenz",
+          "es": "Una licencia de árbitro"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k1-form",
+      "kup": 1,
+      "question": {
+        "en": "Which form is the 7th form (own system, Poomse) at the 1st Kup?",
+        "de": "Welche Form ist die 7. Form (eigenes System, Poomse) zum 1. Kup?",
+        "es": "¿Qué forma es la 7.ª (sistema propio, Poomse) en el 1.er Kup?"
+      },
+      "correct": {
+        "en": "Taeguk Sil-Chang",
+        "de": "Taeguk Sil-Chang",
+        "es": "Taeguk Sil-Chang"
+      },
+      "wrong": [
+        {
+          "en": "Taeguk Yuk-Chang",
+          "de": "Taeguk Yuk-Chang",
+          "es": "Taeguk Yuk-Chang"
+        },
+        {
+          "en": "Taeguk Pal-Chang",
+          "de": "Taeguk Pal-Chang",
+          "es": "Taeguk Pal-Chang"
+        },
+        {
+          "en": "Taeguk Oh-Chang",
+          "de": "Taeguk Oh-Chang",
+          "es": "Taeguk Oh-Chang"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k1-fall",
+      "kup": 1,
+      "question": {
+        "en": "How is the breakfall tested at the 1st Kup?",
+        "de": "Wie wird die Fallschule zum 1. Kup geprüft?",
+        "es": "¿Cómo se examinan las caídas en el 1.er Kup?"
+      },
+      "correct": {
+        "en": "On command, also without mats",
+        "de": "Nach Ansage, auch ohne Matten",
+        "es": "A la orden, también sin tatami"
+      },
+      "wrong": [
+        {
+          "en": "Only on mats, with a run-up",
+          "de": "Nur auf Matten, mit Anlauf",
+          "es": "Solo sobre tatami, con carrerilla"
+        },
+        {
+          "en": "Not at all",
+          "de": "Gar nicht",
+          "es": "No se examina"
+        },
+        {
+          "en": "Only forward roll",
+          "de": "Nur Rolle vorwärts",
+          "es": "Solo rodamiento adelante"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k1-sd",
+      "kup": 1,
+      "question": {
+        "en": "Which topics are part of self-defence at the 1st Kup?",
+        "de": "Welche Themen gehören zur Selbstverteidigung im 1. Kup?",
+        "es": "¿Qué temas incluye la defensa personal del 1.er Kup?"
+      },
+      "correct": {
+        "en": "Limited space, surprise attacks, deepened knife defence",
+        "de": "Raumnot, Überraschungsangriffe, vertiefte Messerabwehr",
+        "es": "Poco espacio, ataques sorpresa, defensa de cuchillo avanzada"
+      },
+      "wrong": [
+        {
+          "en": "Only defence against pushing",
+          "de": "Nur Abwehr von Schubsen",
+          "es": "Solo defensa contra empujones"
+        },
+        {
+          "en": "Only group fights",
+          "de": "Nur Gruppenkämpfe",
+          "es": "Solo peleas en grupo"
+        },
+        {
+          "en": "Sword defence",
+          "de": "Schwertabwehr",
+          "es": "Defensa contra espada"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k1-repeat",
+      "kup": 1,
+      "question": {
+        "en": "When can a failed Kup exam be repeated?",
+        "de": "Wann kann eine nicht bestandene Kup-Prüfung wiederholt werden?",
+        "es": "¿Cuándo se puede repetir un examen de Kup suspendido?"
+      },
+      "correct": {
+        "en": "After 3 weeks at the earliest, within 12 weeks at the latest",
+        "de": "Frühestens nach 3 Wochen, spätestens innerhalb von 12 Wochen",
+        "es": "Como pronto a las 3 semanas, como tarde en 12 semanas"
+      },
+      "wrong": [
+        {
+          "en": "After 3 months, within 12 months",
+          "de": "Nach 3 Monaten, innerhalb von 12 Monaten",
+          "es": "A los 3 meses, en 12 meses"
+        },
+        {
+          "en": "Immediately the next day",
+          "de": "Sofort am nächsten Tag",
+          "es": "Inmediatamente al día siguiente"
+        },
+        {
+          "en": "Never",
+          "de": "Nie",
+          "es": "Nunca"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-k1-toigye",
+      "kup": 1,
+      "question": {
+        "en": "Whom is Hyong Toi-Gye named after?",
+        "de": "Nach wem ist Hyong Toi-Gye benannt?",
+        "es": "¿Por quién se llama Hyong Toi-Gye?"
+      },
+      "correct": {
+        "en": "Yi Hwang, 16th-century scholar",
+        "de": "Yi Hwang, Gelehrter des 16. Jh.",
+        "es": "Yi Hwang, erudito del siglo XVI"
+      },
+      "wrong": [
+        {
+          "en": "Ahn Jung-geun",
+          "de": "Ahn Jung-geun",
+          "es": "Ahn Jung-geun"
+        },
+        {
+          "en": "Jeong Mong-ju",
+          "de": "Jeong Mong-ju",
+          "es": "Jeong Mong-ju"
+        },
+        {
+          "en": "Kim Yu-sin",
+          "de": "Kim Yu-sin",
+          "es": "Kim Yu-sin"
+        }
+      ],
+      "source": "general"
+    },
+    {
+      "id": "th-k1-silchang",
+      "kup": 1,
+      "question": {
+        "en": "Which element does Taeguk Sil-Chang (7) stand for?",
+        "de": "Für welches Element steht Taeguk Sil-Chang (7)?",
+        "es": "¿Qué elemento representa Taeguk Sil-Chang (7)?"
+      },
+      "correct": {
+        "en": "Mountain",
+        "de": "Berg",
+        "es": "Montaña"
+      },
+      "wrong": [
+        {
+          "en": "Water",
+          "de": "Wasser",
+          "es": "Agua"
+        },
+        {
+          "en": "Earth",
+          "de": "Erde",
+          "es": "Tierra"
+        },
+        {
+          "en": "Fire",
+          "de": "Feuer",
+          "es": "Fuego"
+        }
+      ],
+      "source": "general"
+    },
+    {
+      "id": "th-d1-age",
+      "kup": 0,
+      "question": {
+        "en": "What is the minimum age for the 1st Dan (Cho-Dan)?",
+        "de": "Wie hoch ist das Mindestalter für den 1. Dan (Cho-Dan)?",
+        "es": "¿Cuál es la edad mínima para el 1.er Dan (Cho-Dan)?"
+      },
+      "correct": {
+        "en": "15 years",
+        "de": "15 Jahre",
+        "es": "15 años"
+      },
+      "wrong": [
+        {
+          "en": "14 years",
+          "de": "14 Jahre",
+          "es": "14 años"
+        },
+        {
+          "en": "16 years",
+          "de": "16 Jahre",
+          "es": "16 años"
+        },
+        {
+          "en": "18 years",
+          "de": "18 Jahre",
+          "es": "18 años"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-age2",
+      "kup": 0,
+      "question": {
+        "en": "What is the minimum age for the 2nd Dan (Eh-Dan)?",
+        "de": "Wie hoch ist das Mindestalter für den 2. Dan (Eh-Dan)?",
+        "es": "¿Cuál es la edad mínima para el 2.º Dan (Eh-Dan)?"
+      },
+      "correct": {
+        "en": "16 years",
+        "de": "16 Jahre",
+        "es": "16 años"
+      },
+      "wrong": [
+        {
+          "en": "15 years",
+          "de": "15 Jahre",
+          "es": "15 años"
+        },
+        {
+          "en": "18 years",
+          "de": "18 Jahre",
+          "es": "18 años"
+        },
+        {
+          "en": "21 years",
+          "de": "21 Jahre",
+          "es": "21 años"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-prep",
+      "kup": 0,
+      "question": {
+        "en": "What is the minimum preparation time for the 1st Dan?",
+        "de": "Wie lang ist die minimale Vorbereitungszeit auf den 1. Dan?",
+        "es": "¿Cuál es el tiempo mínimo de preparación para el 1.er Dan?"
+      },
+      "correct": {
+        "en": "1 year",
+        "de": "1 Jahr",
+        "es": "1 año"
+      },
+      "wrong": [
+        {
+          "en": "6 months",
+          "de": "6 Monate",
+          "es": "6 meses"
+        },
+        {
+          "en": "2 years",
+          "de": "2 Jahre",
+          "es": "2 años"
+        },
+        {
+          "en": "3 years",
+          "de": "3 Jahre",
+          "es": "3 años"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-prep2",
+      "kup": 0,
+      "question": {
+        "en": "What is the minimum preparation time for the 3rd Dan?",
+        "de": "Wie lang ist die minimale Vorbereitungszeit auf den 3. Dan?",
+        "es": "¿Cuál es el tiempo mínimo de preparación para el 3.er Dan?"
+      },
+      "correct": {
+        "en": "3 years",
+        "de": "3 Jahre",
+        "es": "3 años"
+      },
+      "wrong": [
+        {
+          "en": "1 year",
+          "de": "1 Jahr",
+          "es": "1 año"
+        },
+        {
+          "en": "2 years",
+          "de": "2 Jahre",
+          "es": "2 años"
+        },
+        {
+          "en": "5 years",
+          "de": "5 Jahre",
+          "es": "5 años"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-title",
+      "kup": 0,
+      "question": {
+        "en": "Which title applies to masters of the 3rd-4th Dan (club programme)?",
+        "de": "Welcher Titel gilt für Meister des 3.–4. Dan (Prüfungsprogramm)?",
+        "es": "¿Qué título corresponde a los maestros de 3.º-4.º Dan (programa del club)?"
+      },
+      "correct": {
+        "en": "Sabom-nim",
+        "de": "Sabom-nim",
+        "es": "Sabom-nim"
+      },
+      "wrong": [
+        {
+          "en": "Sabom",
+          "de": "Sabom",
+          "es": "Sabom"
+        },
+        {
+          "en": "Sabom-nim-ke",
+          "de": "Sabom-nim-ke",
+          "es": "Sabom-nim-ke"
+        },
+        {
+          "en": "Jeja",
+          "de": "Jeja",
+          "es": "Jeja"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-name",
+      "kup": 0,
+      "question": {
+        "en": "What is the Korean name of the 1st Dan?",
+        "de": "Wie heißt der 1. Dan auf Koreanisch?",
+        "es": "¿Cómo se llama el 1.er Dan en coreano?"
+      },
+      "correct": {
+        "en": "Cho-Dan",
+        "de": "Cho-Dan",
+        "es": "Cho-Dan"
+      },
+      "wrong": [
+        {
+          "en": "Eh-Dan",
+          "de": "Eh-Dan",
+          "es": "Eh-Dan"
+        },
+        {
+          "en": "Sam-Dan",
+          "de": "Sam-Dan",
+          "es": "Sam-Dan"
+        },
+        {
+          "en": "Sa-Dan",
+          "de": "Sa-Dan",
+          "es": "Sa-Dan"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-chodanbo",
+      "kup": 0,
+      "question": {
+        "en": "What does \"Cho-dan-bo\" mean?",
+        "de": "Was bedeutet „Cho-dan-bo“?",
+        "es": "¿Qué significa «Cho-dan-bo»?"
+      },
+      "correct": {
+        "en": "Black-belt candidate",
+        "de": "Schwarzgurt-Anwärter",
+        "es": "Aspirante a cinturón negro"
+      },
+      "wrong": [
+        {
+          "en": "Beginner",
+          "de": "Anfänger",
+          "es": "Principiante"
+        },
+        {
+          "en": "Grand master",
+          "de": "Großmeister",
+          "es": "Gran maestro"
+        },
+        {
+          "en": "Training hall",
+          "de": "Übungsraum",
+          "es": "Sala de entrenamiento"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-break",
+      "kup": 0,
+      "question": {
+        "en": "What is required in the breaking test at the 1st Dan?",
+        "de": "Was wird beim Bruchtest zum 1. Dan verlangt?",
+        "es": "¿Qué se pide en la rotura del 1.er Dan?"
+      },
+      "correct": {
+        "en": "Three boards, different techniques, incl. a jump kick and a two-technique combination",
+        "de": "Drei Bretter mit unterschiedlichen Techniken, davon eine gesprungene Fußtechnik und eine Zweier-Kombination",
+        "es": "Tres tableros con técnicas distintas, incl. una patada saltada y una combinación de dos"
+      },
+      "wrong": [
+        {
+          "en": "One hand and one foot technique",
+          "de": "Eine Hand- und eine Fußtechnik",
+          "es": "Una técnica de mano y una de pie"
+        },
+        {
+          "en": "Five boards incl. two jump techniques",
+          "de": "Fünf Bretter inkl. zwei Sprungtechniken",
+          "es": "Cinco tableros con dos saltos"
+        },
+        {
+          "en": "Four boards incl. one combination of three",
+          "de": "Vier Bretter inkl. Dreier-Kombination",
+          "es": "Cuatro tableros con combinación de tres"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-form",
+      "kup": 0,
+      "question": {
+        "en": "Which form is the 8th form (own system, Poomse) at the 1st Dan?",
+        "de": "Welche Form ist die 8. Form (eigenes System, Poomse) zum 1. Dan?",
+        "es": "¿Qué forma es la 8.ª (sistema propio, Poomse) en el 1.er Dan?"
+      },
+      "correct": {
+        "en": "Taeguk Pal-Chang",
+        "de": "Taeguk Pal-Chang",
+        "es": "Taeguk Pal-Chang"
+      },
+      "wrong": [
+        {
+          "en": "Taeguk Sil-Chang",
+          "de": "Taeguk Sil-Chang",
+          "es": "Taeguk Sil-Chang"
+        },
+        {
+          "en": "Poomse Koryo",
+          "de": "Poomse Koryo",
+          "es": "Poomse Koryo"
+        },
+        {
+          "en": "Taeguk Sam-Chang",
+          "de": "Taeguk Sam-Chang",
+          "es": "Taeguk Sam-Chang"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-fall",
+      "kup": 0,
+      "question": {
+        "en": "What is added to the breakfall at the 1st Dan?",
+        "de": "Was kommt bei der Fallschule zum 1. Dan hinzu?",
+        "es": "¿Qué se añade a las caídas en el 1.er Dan?"
+      },
+      "correct": {
+        "en": "Also jumped (on command, also without mats)",
+        "de": "Auch gesprungen (nach Ansage, auch ohne Matten)",
+        "es": "También saltadas (a la orden, también sin tatami)"
+      },
+      "wrong": [
+        {
+          "en": "Nothing new",
+          "de": "Nichts Neues",
+          "es": "Nada nuevo"
+        },
+        {
+          "en": "Only forward rolls",
+          "de": "Nur Rollen vorwärts",
+          "es": "Solo rodamientos adelante"
+        },
+        {
+          "en": "Falls with weapons",
+          "de": "Fallschule mit Waffen",
+          "es": "Caídas con armas"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-repeat",
+      "kup": 0,
+      "question": {
+        "en": "When can a failed Dan exam be repeated?",
+        "de": "Wann kann eine nicht bestandene Dan-Prüfung wiederholt werden?",
+        "es": "¿Cuándo se puede repetir un examen de Dan suspendido?"
+      },
+      "correct": {
+        "en": "After 3 months at the earliest, within 12 months at the latest",
+        "de": "Frühestens nach 3 Monaten, spätestens innerhalb von 12 Monaten",
+        "es": "Como pronto a los 3 meses, como tarde en 12 meses"
+      },
+      "wrong": [
+        {
+          "en": "After 3 weeks, within 12 weeks",
+          "de": "Nach 3 Wochen, innerhalb von 12 Wochen",
+          "es": "A las 3 semanas, en 12 semanas"
+        },
+        {
+          "en": "After 1 year",
+          "de": "Nach 1 Jahr",
+          "es": "Al cabo de 1 año"
+        },
+        {
+          "en": "Never",
+          "de": "Nie",
+          "es": "Nunca"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-board",
+      "kup": 0,
+      "question": {
+        "en": "What is the minimum board thickness for men aged 18-40?",
+        "de": "Wie dick müssen die Bretter für Männer von 18 bis 40 Jahren mindestens sein?",
+        "es": "¿Qué grosor mínimo de tablero para hombres de 18 a 40 años?"
+      },
+      "correct": {
+        "en": "2.5 cm",
+        "de": "2.5 cm",
+        "es": "2.5 cm"
+      },
+      "wrong": [
+        {
+          "en": "1.5 cm",
+          "de": "1.5 cm",
+          "es": "1.5 cm"
+        },
+        {
+          "en": "2.0 cm",
+          "de": "2.0 cm",
+          "es": "2.0 cm"
+        },
+        {
+          "en": "3.5 cm",
+          "de": "3.5 cm",
+          "es": "3.5 cm"
+        }
+      ],
+      "source": "pdf"
+    },
+    {
+      "id": "th-d1-hwarang",
+      "kup": 0,
+      "question": {
+        "en": "What was the Hwa-Rang?",
+        "de": "Was war die Hwa-Rang?",
+        "es": "¿Qué fue el Hwa-Rang?"
+      },
+      "correct": {
+        "en": "An elite youth warrior corps of the Silla kingdom",
+        "de": "Eine Elite-Kriegerjugend des Silla-Reiches",
+        "es": "Un cuerpo de jóvenes guerreros de élite del reino de Silla"
+      },
+      "wrong": [
+        {
+          "en": "A Korean fruit",
+          "de": "Eine koreanische Frucht",
+          "es": "Una fruta coreana"
+        },
+        {
+          "en": "A Japanese sword school",
+          "de": "Eine japanische Schwertschule",
+          "es": "Una escuela japonesa de espada"
+        },
+        {
+          "en": "A Chinese dynasty",
+          "de": "Eine chinesische Dynastie",
+          "es": "Una dinastía china"
+        }
+      ],
+      "source": "general"
+    },
+    {
+      "id": "th-d1-palchang",
+      "kup": 0,
+      "question": {
+        "en": "Which element does Taeguk Pal-Chang (8) stand for?",
+        "de": "Für welches Element steht Taeguk Pal-Chang (8)?",
+        "es": "¿Qué elemento representa Taeguk Pal-Chang (8)?"
+      },
+      "correct": {
+        "en": "Earth",
+        "de": "Erde",
+        "es": "Tierra"
+      },
+      "wrong": [
+        {
+          "en": "Water",
+          "de": "Wasser",
+          "es": "Agua"
+        },
+        {
+          "en": "Mountain",
+          "de": "Berg",
+          "es": "Montaña"
+        },
+        {
+          "en": "Thunder",
+          "de": "Donner",
+          "es": "Trueno"
+        }
+      ],
+      "source": "general"
+    },
+    {
+      "id": "th-d1-blackbelt",
+      "kup": 0,
+      "question": {
+        "en": "Traditionally, what does the black belt express?",
+        "de": "Was drückt der schwarze Gürtel traditionell aus?",
+        "es": "¿Qué expresa tradicionalmente el cinturón negro?"
+      },
+      "correct": {
+        "en": "Maturity and mastery of the basics (the opposite of white)",
+        "de": "Reife und Beherrschung der Grundlagen (Gegenstück zu Weiß)",
+        "es": "Madurez y dominio de lo básico (opuesto al blanco)"
+      },
+      "wrong": [
+        {
+          "en": "Danger of the beginner",
+          "de": "Gefahr des Anfängers",
+          "es": "Peligro del principiante"
+        },
+        {
+          "en": "Growth like a plant",
+          "de": "Wachstum wie eine Pflanze",
+          "es": "Crecimiento como una planta"
+        },
+        {
+          "en": "Purity of the beginner",
+          "de": "Reinheit des Anfängers",
+          "es": "Pureza del principiante"
+        }
+      ],
+      "source": "general"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "u9-elbow-fist",
+      "unit": "kup2",
+      "title": {
+        "en": "Elbow & fist attacks",
+        "de": "Ellenbogen & Faust",
+        "es": "Codo y puño"
+      },
+      "tip": {
+        "en": "\"Palkup\" is the elbow and \"jumok\" the fist: read the name and you see the technique. \"Sewo\" means vertical, \"jechyo\" from below.",
+        "de": "„Palkup“ ist der Ellenbogen, „jumok“ die Faust: Wer den Namen liest, sieht die Technik. „Sewo“ heißt vertikal, „jechyo“ von unten.",
+        "es": "«Palkup» es el codo y «jumok» el puño: leyendo el nombre ves la técnica. «Sewo» es vertical, «jechyo» de abajo."
+      },
+      "cardIds": [
+        "palkup-olgul-paro-ape-chicki",
+        "olgul-du-jumok-sewo-jirugi",
+        "du-jumok-jechyo-jirugi",
+        "kun-dolchogwi",
+        "sonnaldung-an-mok-chicki"
+      ],
+      "checkpoint": false
+    },
+    {
+      "id": "u9-palm-blocks",
+      "unit": "kup2",
+      "title": {
+        "en": "Palm-heel & wedge blocks",
+        "de": "Handballen- & Keilblöcke",
+        "es": "Bloqueos de talón de mano y cuña"
+      },
+      "tip": {
+        "en": "\"Batangson\" is the palm heel. \"Hechyo\" means wedge: both arms open like a wedge. \"Digut-cha\" looks like the letter U.",
+        "de": "„Batangson“ ist der Handballen. „Hechyo“ heißt keilförmig: beide Arme öffnen sich wie ein Keil. „Digut-cha“ sieht aus wie der Buchstabe U.",
+        "es": "«Batangson» es el talón de la mano. «Hechyo» es cuña: ambos brazos se abren como una cuña. «Digut-cha» parece la letra U."
+      },
+      "cardIds": [
+        "momtong-batangson-chukyo-macki",
+        "batangson-an-macki",
+        "momtong-sonnaldung-an-palmok-packat-macki",
+        "digut-cha-macki",
+        "arae-hechyo-macki"
+      ],
+      "checkpoint": false
+    },
+    {
+      "id": "u9-stance-kick",
+      "unit": "kup2",
+      "title": {
+        "en": "Tiger stance & jumping kick",
+        "de": "Tigerstellung & Sprungtritt",
+        "es": "Posición del tigre y patada saltada"
+      },
+      "tip": {
+        "en": "\"Bom\" is the tiger: weight back, front heel up, ready to pounce. \"Twio\" + \"dollyo\" = jumping roundhouse.",
+        "de": "„Bom“ ist der Tiger: Gewicht hinten, vorderer Fuß auf dem Ballen, sprungbereit. „Twio“ + „dollyo“ = gesprungener Halbkreistritt.",
+        "es": "«Bom» es el tigre: peso atrás, talón delantero arriba, listo para saltar. «Twio» + «dollyo» = patada circular saltada."
+      },
+      "cardIds": ["bom-sogi", "twio-dollyo-chagi", "dollyo-chagi", "twio-chagi"],
+      "checkpoint": false
+    },
+    {
+      "id": "u9-yukchang",
+      "unit": "kup2",
+      "title": {
+        "en": "Taeguk Yuk-Chang combos",
+        "de": "Taeguk Yuk-Chang Kombinationen",
+        "es": "Combinaciones Taeguk Yuk-Chang"
+      },
+      "tip": {
+        "en": "Yuk-Chang is the 6th Taeguk (water). Split each combo into its words: block, kick, block.",
+        "de": "Yuk-Chang ist der 6. Taeguk (Wasser). Zerlege jede Kombination in ihre Wörter: Block, Tritt, Block.",
+        "es": "Yuk-Chang es el 6.º Taeguk (agua). Divide cada combinación en palabras: bloqueo, patada, bloqueo."
+      },
+      "cardIds": [
+        "taeguk-yuk-chang-arae-macki-ap-chagi",
+        "taeguk-yuk-chang-batangson-an-macki-chirugi",
+        "arae-macki",
+        "ap-chagi"
+      ],
+      "theoryIds": ["th-k2-yukchang"],
+      "checkpoint": false
+    },
+    {
+      "id": "u9-chunggun-a",
+      "unit": "kup2",
+      "title": {
+        "en": "Hyong Chung-Gun I",
+        "de": "Hyong Chung-Gun I",
+        "es": "Hyong Chung-Gun I"
+      },
+      "tip": {
+        "en": "Chung-Gun honours the patriot Ahn Jung-geun. \"Goduro\" means reinforced: the second hand helps.",
+        "de": "Chung-Gun ehrt den Patrioten Ahn Jung-geun. „Goduro“ heißt verstärkt: die zweite Hand hilft.",
+        "es": "Chung-Gun honra al patriota Ahn Jung-geun. «Goduro» es reforzado: la segunda mano ayuda."
+      },
+      "cardIds": [
+        "hyong-chung-gun-an-palmok-macki-dut-gubi",
+        "hyong-chung-gun-sonnaldung-macki-ap-chagi-dut-pal-sogi",
+        "palkup-kokki"
+      ],
+      "theoryIds": ["th-k2-chunggun"],
+      "checkpoint": false
+    },
+    {
+      "id": "u9-chunggun-b",
+      "unit": "kup2",
+      "title": {
+        "en": "Hyong Chung-Gun II",
+        "de": "Hyong Chung-Gun II",
+        "es": "Hyong Chung-Gun II"
+      },
+      "tip": {
+        "en": "Two more combos: elbow after a double knife-hand block, and a back-fist (\"dung-jumok\") from the L-stance.",
+        "de": "Zwei weitere Kombinationen: Ellenbogen nach doppeltem Handkantenblock und ein Faustrücken („dung-jumok“) aus der L-Stellung.",
+        "es": "Dos combinaciones más: codo tras bloqueo doble de cantos y dorso del puño («dung-jumok») desde la L."
+      },
+      "cardIds": [
+        "hyong-chung-gun-sonnal-kotoro-macki-palkup-chicki",
+        "hyong-chung-gun-dung-jumok-packat-chicki-chirugi",
+        "ap-gubi",
+        "düt-gubi"
+      ],
+      "checkpoint": false
+    },
+    {
+      "id": "u9-referee",
+      "unit": "kup2",
+      "title": {
+        "en": "Referee words",
+        "de": "Kampfrichter-Wörter",
+        "es": "Palabras del árbitro"
+      },
+      "tip": {
+        "en": "\"Chong\" is blue, \"hong\" is red. \"Kyesok\" keeps the fight going, \"geshi\" stops the clock.",
+        "de": "„Chong“ ist Blau, „hong“ Rot. „Kyesok“ lässt weiterkämpfen, „geshi“ stoppt die Zeit.",
+        "es": "«Chong» es azul, «hong» rojo. «Kyesok» sigue el combate, «geshi» para el tiempo."
+      },
+      "cardIds": [
+        "command-chong",
+        "command-hong",
+        "command-chong-sung",
+        "command-hong-sung",
+        "command-kyesok",
+        "command-geshi",
+        "command-kamchom",
+        "command-kyong-go"
+      ],
+      "theoryIds": ["th-k2-kyesok", "th-k2-colors"],
+      "checkpoint": false
+    },
+    {
+      "id": "u9-training",
+      "unit": "kup2",
+      "title": {
+        "en": "Training words & grades",
+        "de": "Trainingsbegriffe & Stufen",
+        "es": "Términos de entrenamiento y niveles"
+      },
+      "tip": {
+        "en": "\"Taeryon\" is partner practice, \"tallyon\" is training. Ko-Kup are the upper grades: red belts.",
+        "de": "„Taeryon“ ist Partnerübung, „tallyon“ Training. Ko-Kup sind die Oberstufen: rote Gürtel.",
+        "es": "«Taeryon» es práctica con compañero, «tallyon» entrenamiento. Ko-Kup son los grados superiores: cinturones rojos."
+      },
+      "cardIds": [
+        "training-taeryon",
+        "training-tallyon",
+        "training-yaksok-taeryon",
+        "training-gibon-donjak",
+        "basic-cho-kup",
+        "basic-jung-kup",
+        "basic-ko-kup"
+      ],
+      "theoryIds": ["th-k2-stage", "th-k2-prep"],
+      "checkpoint": false
+    },
+    {
+      "id": "u9-checkpoint",
+      "unit": "kup2",
+      "title": {
+        "en": "Checkpoint: 2nd Kup",
+        "de": "Checkpoint: 2. Kup",
+        "es": "Punto de control: 2.º Kup"
+      },
+      "tip": {
+        "en": "Red belt checkpoint: mix of everything. Take your time and say the names aloud.",
+        "de": "Checkpoint Rotgurt: eine Mischung aus allem. Lass dir Zeit und sprich die Namen laut.",
+        "es": "Control del cinturón rojo: mezcla de todo. Tómate tu tiempo y di los nombres en voz alta."
+      },
+      "cardIds": [
+        "palkup-olgul-paro-ape-chicki",
+        "du-jumok-jechyo-jirugi",
+        "batangson-an-macki",
+        "digut-cha-macki",
+        "arae-hechyo-macki",
+        "bom-sogi",
+        "twio-dollyo-chagi",
+        "taeguk-yuk-chang-arae-macki-ap-chagi",
+        "hyong-chung-gun-an-palmok-macki-dut-gubi",
+        "command-kyesok"
+      ],
+      "theoryIds": ["th-k2-fight", "th-k2-otherform"],
+      "checkpoint": true
+    },
+    {
+      "id": "u10-fingers",
+      "unit": "kup1",
+      "title": {
+        "en": "Fingers & side block",
+        "de": "Finger & Seitenblock",
+        "es": "Dedos y bloqueo lateral"
+      },
+      "tip": {
+        "en": "\"Pyonsonkut\" are the flat-hand fingertips. \"Opo\" and \"jechyo\" tell you the direction: up, from below.",
+        "de": "„Pyonsonkut“ sind die Fingerspitzen der flachen Hand. „Opo“ und „jechyo“ verraten die Richtung: nach oben, von unten.",
+        "es": "«Pyonsonkut» son las yemas de la mano abierta. «Opo» y «jechyo» indican la dirección: arriba, de abajo."
+      },
+      "cardIds": [
+        "pyonsonkut-jechyo-jirugi",
+        "pyonsonkut-opo-jirugi",
+        "momtong-an-palmok-packat-yop-macki"
+      ],
+      "checkpoint": false
+    },
+    {
+      "id": "u10-mountain",
+      "unit": "kup1",
+      "title": {
+        "en": "Mountain & scissor blocks",
+        "de": "Berg- & Scherenblöcke",
+        "es": "Bloqueos de montaña y tijera"
+      },
+      "tip": {
+        "en": "\"Santul\" is a mountain: both arms form its peaks. \"Gawi\" are scissors: two blocks crossing.",
+        "de": "„Santul“ ist ein Berg: beide Arme bilden die Gipfel. „Gawi“ ist die Schere: zwei sich kreuzende Blöcke.",
+        "es": "«Santul» es montaña: ambos brazos forman las cumbres. «Gawi» son tijeras: dos bloqueos cruzados."
+      },
+      "cardIds": [
+        "santul-macki",
+        "oe-santul-macki",
+        "an-palmok-gawi-macki",
+        "goduro-arae-an-palmok-packat-macki",
+        "sonnal-arae-packat-palmok-packat-macki"
+      ],
+      "checkpoint": false
+    },
+    {
+      "id": "u10-kicks",
+      "unit": "kup1",
+      "title": {
+        "en": "Knee & holding kicks",
+        "de": "Knie- & Festhalte-Tritte",
+        "es": "Rodillazos y patadas con agarre"
+      },
+      "tip": {
+        "en": "\"Murup\" is the knee, \"pyojok\" means target or holding, \"pandal\" the half moon, \"miro\" pushing.",
+        "de": "„Murup“ ist das Knie, „pyojok“ heißt Ziel bzw. Festhalten, „pandal“ Halbmond, „miro“ schiebend.",
+        "es": "«Murup» es la rodilla, «pyojok» objetivo o agarre, «pandal» media luna, «miro» empujando."
+      },
+      "cardIds": [
+        "murup-chicki",
+        "pyojok-chagi",
+        "pyojok-murup-chicki",
+        "miro-chagi",
+        "pandal-chagi"
+      ],
+      "checkpoint": false
+    },
+    {
+      "id": "u10-silchang-a",
+      "unit": "kup1",
+      "title": {
+        "en": "Taeguk Sil-Chang I",
+        "de": "Taeguk Sil-Chang I",
+        "es": "Taeguk Sil-Chang I"
+      },
+      "tip": {
+        "en": "Sil-Chang is the 7th Taeguk (mountain). Warm up with the tiger stance and the scissor block.",
+        "de": "Sil-Chang ist der 7. Taeguk (Berg). Wärme dich mit Tigerstellung und Scherenblock auf.",
+        "es": "Sil-Chang es el 7.º Taeguk (montaña). Calienta con el tigre y el bloqueo en tijera."
+      },
+      "cardIds": [
+        "taeguk-sil-chang-bom-sogi-an-macki-ap-chagi",
+        "taeguk-sil-chang-dubon-gawi-macki",
+        "bom-sogi",
+        "an-palmok-gawi-macki"
+      ],
+      "checkpoint": false
+    },
+    {
+      "id": "u10-silchang-b",
+      "unit": "kup1",
+      "title": {
+        "en": "Taeguk Sil-Chang II",
+        "de": "Taeguk Sil-Chang II",
+        "es": "Taeguk Sil-Chang II"
+      },
+      "tip": {
+        "en": "Longer combos: holding the head, kicking, then a knee. Learn them link by link.",
+        "de": "Längere Kombinationen: Kopf festhalten, treten, dann das Knie. Lerne sie Glied für Glied.",
+        "es": "Combinaciones más largas: sujetar la cabeza, patada y rodillazo. Apréndelas eslabón a eslabón."
+      },
+      "cardIds": [
+        "taeguk-sil-chang-pyojok-chagi-palkup-chicki",
+        "taeguk-sil-chang-hechyo-macki-pyojok-murup-chicki",
+        "pyojok-chagi",
+        "pyojok-murup-chicki"
+      ],
+      "theoryIds": ["th-k1-silchang"],
+      "checkpoint": false
+    },
+    {
+      "id": "u10-toigye",
+      "unit": "kup1",
+      "title": {
+        "en": "Hyong Toi-Gye",
+        "de": "Hyong Toi-Gye",
+        "es": "Hyong Toi-Gye"
+      },
+      "tip": {
+        "en": "Toi-Gye is named after the scholar Yi Hwang. Foot-sword and mountain block in the horse stance start it.",
+        "de": "Toi-Gye ist nach dem Gelehrten Yi Hwang benannt. Fußschwert und Bergblock in der Reiterstellung eröffnen die Form.",
+        "es": "Toi-Gye lleva el nombre del erudito Yi Hwang. Media luna y bloqueo de montaña en jinete abren la forma."
+      },
+      "cardIds": [
+        "hyong-toi-gye-pandal-chagi-santul-macki",
+        "hyong-toi-gye-arae-macki-dung-jumok-dut-chicki",
+        "hyong-toi-gye-packat-palmok-macki-pyonsonkut-jirugi",
+        "pandal-chagi"
+      ],
+      "theoryIds": ["th-k1-toigye"],
+      "checkpoint": false
+    },
+    {
+      "id": "u10-checkpoint",
+      "unit": "kup1",
+      "title": {
+        "en": "Checkpoint: 1st Kup",
+        "de": "Checkpoint: 1. Kup",
+        "es": "Punto de control: 1.er Kup"
+      },
+      "tip": {
+        "en": "Almost black! Mix of all red-black-stripe cards.",
+        "de": "Fast schwarz! Eine Mischung aller Karten des 1. Kup.",
+        "es": "¡Casi negro! Mezcla de todas las tarjetas del 1.er Kup."
+      },
+      "cardIds": [
+        "pyonsonkut-jechyo-jirugi",
+        "santul-macki",
+        "an-palmok-gawi-macki",
+        "oe-santul-macki",
+        "murup-chicki",
+        "pyojok-chagi",
+        "pandal-chagi",
+        "taeguk-sil-chang-dubon-gawi-macki",
+        "hyong-toi-gye-pandal-chagi-santul-macki",
+        "miro-chagi"
+      ],
+      "theoryIds": ["th-k1-firstaid", "th-k1-fall"],
+      "checkpoint": true
+    },
+    {
+      "id": "u11-hands",
+      "unit": "dan1",
+      "title": {
+        "en": "Dan hand techniques",
+        "de": "Handtechniken Dan",
+        "es": "Técnicas de mano Dan"
+      },
+      "tip": {
+        "en": "\"Naeryo\" is downward, \"ollyo\" upward: a hatchet knife-hand and a rising punch.",
+        "de": "„Naeryo“ heißt abwärts, „ollyo“ aufwärts: ein beilartiger Handkantenschlag und ein aufsteigender Fauststoß.",
+        "es": "«Naeryo» es hacia abajo, «ollyo» hacia arriba: un corte tipo hacha y un puñetazo ascendente."
+      },
+      "cardIds": ["hansonnal-naeryo-chicki", "ollyo-pandae-chirugi", "momtong-palkup-düt-jirugi"],
+      "checkpoint": false
+    },
+    {
+      "id": "u11-stances",
+      "unit": "dan1",
+      "title": {
+        "en": "Dan stances",
+        "de": "Dan-Stellungen",
+        "es": "Posiciones Dan"
+      },
+      "tip": {
+        "en": "Crane (\"hagdari\"), vertical, diagonal and stool stances finish the stance list. Feel the weight in each.",
+        "de": "Kranich („hagdari“), vertikal, diagonal und Hocker vervollständigen die Stellungen. Spüre in jeder das Gewicht.",
+        "es": "Grulla («hagdari»), vertical, diagonal y taburete completan las posiciones. Siente el peso en cada una."
+      },
+      "cardIds": ["hagdari-sogi", "soojik-sogi", "sasun-sogi", "oguryo-sogi", "bom-sogi"],
+      "checkpoint": false
+    },
+    {
+      "id": "u11-kicks",
+      "unit": "dan1",
+      "title": {
+        "en": "Dan kicks",
+        "de": "Dan-Tritte",
+        "es": "Patadas Dan"
+      },
+      "tip": {
+        "en": "The 45-degree snap kick is the \"subway kick\". Jumping kicks are tested in the board break.",
+        "de": "Der 45°-Schnapptritt ist der „U-Bahn-Tritt“. Sprungtritte gehören zum Bruchtest.",
+        "es": "La patada a 45° es la «patada de metro». Las patadas saltadas se piden en la rotura."
+      },
+      "cardIds": [
+        "bituro-chagi",
+        "dubal-dangsang-ap-chagi",
+        "twio-chagi",
+        "twio-ap-chagi",
+        "twio-dollyo-chagi"
+      ],
+      "theoryIds": ["th-d1-break"],
+      "checkpoint": false
+    },
+    {
+      "id": "u11-palchang",
+      "unit": "dan1",
+      "title": {
+        "en": "Taeguk Pal-Chang",
+        "de": "Taeguk Pal-Chang",
+        "es": "Taeguk Pal-Chang"
+      },
+      "tip": {
+        "en": "Pal-Chang is the 8th Taeguk (earth): the last of the eight. A jumping kick bridges the distance.",
+        "de": "Pal-Chang ist der 8. Taeguk (Erde): der letzte der acht. Ein Sprungtritt überbrückt die Distanz.",
+        "es": "Pal-Chang es el 8.º Taeguk (tierra): el último de los ocho. Una patada saltada cubre la distancia."
+      },
+      "cardIds": [
+        "taeguk-pal-chang-dubal-dangsang-ap-chagi",
+        "taeguk-pal-chang-oe-santul-macki-dangyo-tok-chirugi",
+        "oe-santul-macki"
+      ],
+      "theoryIds": ["th-d1-form", "th-d1-palchang"],
+      "checkpoint": false
+    },
+    {
+      "id": "u11-hwarang",
+      "unit": "dan1",
+      "title": {
+        "en": "Hyong Hwa-Rang",
+        "de": "Hyong Hwa-Rang",
+        "es": "Hyong Hwa-Rang"
+      },
+      "tip": {
+        "en": "Hwa-Rang honours the youth warriors of Silla. \"Mikurumbal\" means gliding feet.",
+        "de": "Hwa-Rang ehrt die Kriegerjugend von Silla. „Mikurumbal“ heißt gleitende Füße.",
+        "es": "Hwa-Rang honra a los jóvenes guerreros de Silla. «Mikurumbal» significa pies deslizantes."
+      },
+      "cardIds": [
+        "hyong-hwa-rang-kumgang-macki-ollyo-chirugi",
+        "hyong-hwa-rang-arae-macki-dut-gubi-chirugi",
+        "hyong-hwa-rang-sonnal-kotoro-macki-mikurumbal"
+      ],
+      "theoryIds": ["th-d1-hwarang"],
+      "checkpoint": false
+    },
+    {
+      "id": "u11-masters",
+      "unit": "dan1",
+      "title": {
+        "en": "Master titles",
+        "de": "Meistertitel",
+        "es": "Títulos de maestro"
+      },
+      "tip": {
+        "en": "\"Sabom\" teaches, \"-nim\" adds respect, \"-ke\" even more. Cho-dan-bo is a candidate for black.",
+        "de": "„Sabom“ lehrt, „-nim“ bringt Respekt, „-ke“ noch mehr. Cho-dan-bo ist ein Anwärter auf Schwarz.",
+        "es": "«Sabom» enseña, «-nim» añade respeto, «-ke» aún más. Cho-dan-bo es un aspirante a negro."
+      },
+      "cardIds": [
+        "basic-cho-dan-bo",
+        "basic-sabom-nim",
+        "basic-sabom-nim-ke",
+        "basic-cho-dan",
+        "basic-eh-dan",
+        "basic-sam-dan"
+      ],
+      "theoryIds": ["th-d1-title", "th-d1-name"],
+      "checkpoint": false
+    },
+    {
+      "id": "u11-ranks",
+      "unit": "dan1",
+      "title": {
+        "en": "Dan ranks 4-9",
+        "de": "Dan-Grade 4–9",
+        "es": "Grados Dan 4-9"
+      },
+      "tip": {
+        "en": "Sino-Korean numbers again: sa, oh, yuk, chil, pal, ku plus \"dan\".",
+        "de": "Wieder sino-koreanische Zahlen: sa, oh, yuk, chil, pal, ku plus „dan“.",
+        "es": "De nuevo números sino-coreanos: sa, oh, yuk, chil, pal, ku más «dan»."
+      },
+      "cardIds": [
+        "basic-sa-dan",
+        "basic-oh-dan",
+        "basic-yuk-dan",
+        "basic-chil-dan",
+        "basic-pal-dan",
+        "basic-ku-dan"
+      ],
+      "theoryIds": ["th-d1-age", "th-d1-prep"],
+      "checkpoint": false
+    },
+    {
+      "id": "u11-checkpoint",
+      "unit": "dan1",
+      "title": {
+        "en": "Checkpoint: 1st Dan",
+        "de": "Checkpoint: 1. Dan",
+        "es": "Punto de control: 1.er Dan"
+      },
+      "tip": {
+        "en": "Black belt checkpoint! Names, titles and facts.",
+        "de": "Schwarzgurt-Checkpoint! Namen, Titel und Fakten.",
+        "es": "¡Control del cinturón negro! Nombres, títulos y datos."
+      },
+      "cardIds": [
+        "hansonnal-naeryo-chicki",
+        "ollyo-pandae-chirugi",
+        "bituro-chagi",
+        "dubal-dangsang-ap-chagi",
+        "hagdari-sogi",
+        "soojik-sogi",
+        "taeguk-pal-chang-dubal-dangsang-ap-chagi",
+        "hyong-hwa-rang-kumgang-macki-ollyo-chirugi",
+        "basic-cho-dan",
+        "basic-sabom-nim"
+      ],
+      "theoryIds": ["th-d1-age", "th-d1-blackbelt"],
+      "checkpoint": true
+    }
+  ],
+  "units": [
+    {
+      "id": "kup2",
+      "earns": "kup2",
+      "title": {
+        "en": "Unit 9 – Road to 2nd Kup (red belt)",
+        "de": "Einheit 9 – Weg zum 2. Kup (rot)",
+        "es": "Unidad 9 – Camino al 2.º Kup (rojo)"
+      }
+    },
+    {
+      "id": "kup1",
+      "earns": "kup1",
+      "title": {
+        "en": "Unit 10 – Road to 1st Kup (red, black stripe)",
+        "de": "Einheit 10 – Weg zum 1. Kup (rot mit schwarzem Streifen)",
+        "es": "Unidad 10 – Camino al 1.er Kup (rojo con raya negra)"
+      }
+    },
+    {
+      "id": "dan1",
+      "earns": "dan1",
+      "title": {
+        "en": "Unit 11 – Road to 1st Dan (black belt)",
+        "de": "Einheit 11 – Weg zum 1. Dan (schwarzer Gürtel)",
+        "es": "Unidad 11 – Camino al 1.er Dan (cinturón negro)"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "cardId": "bom-sogi",
+      "start": 4336,
+      "end": 4344,
+      "silentSafe": true
+    },
+    {
+      "cardId": "du-jumok-jechyo-jirugi",
+      "start": 4507,
+      "end": 4520,
+      "silentSafe": true
+    },
+    {
+      "cardId": "bituro-chagi",
+      "start": 4568,
+      "end": 4596,
+      "silentSafe": true
+    },
+    {
+      "cardId": "pyojok-chagi",
+      "start": 4599,
+      "end": 4625,
+      "silentSafe": true
+    },
+    {
+      "cardId": "murup-chicki",
+      "start": 4628,
+      "end": 4663,
+      "silentSafe": true
+    },
+    {
+      "cardId": "dubal-dangsang-ap-chagi",
+      "start": 4666,
+      "end": 4696,
+      "silentSafe": true
+    }
+  ],
+  "unverified": [
+    "Hangul for all new techniques is composed from the club spelling and Kukkiwon/ITF conventions (the PDFs give no hangul): check especially kun-dolchogwi (큰돌쩌귀), digut-cha (디귿자), hechyo (헤쳐), otgoro (엇걸어), santul (산틀), oguryo (오그려), dubal-dangsang (두발 당상; ITF spells dangsong), bituro (비틀어), pyojok (표적), chukyo (추켜), mikurumbal (미끄럼발), and the term chui (주의).",
+    "paro/pandae: the club glossary (§6.8) defines paro = gegenseitig and pandae = gleichseitig; hangul follows that literal reading (바로 / 반대) although in common Korean usage the meanings are usually the other way round. Confirm with the club.",
+    "Dan titles: Pruefungsprogramm p.3 gives sabom = 1.-2. Dan, sabom-nim = 3.-4., sabom-nim-ke = 5.-9.; Fachbegriffe §6.4 groups 1-3 / 4-6 / 7-9. The app follows the Pruefungsprogramm (consistent with existing th-sabom); sabom-nim and sabom-nim-ke term meanings follow it too.",
+    "Stage of 2 Kup: Pruefungsprogramm and Fachbegriffe §6.3.3 list 2 and 1 Kup as Oberstufe/Ko-Kup, but the Regularien §1.11 table labels 2 Kup as Jung-Kup. The app follows the programme.",
+    "Diagonal stance is spelled sasun-sogi in the programme and sansun-sogi in the glossary (and in the Hockerstellung description); id uses the programme spelling sasun-sogi.",
+    "Combination ids are invented descriptive ids (form prefix + elements) because the PDF gives no names for them; the 3 Kup and lower-belt combos of other agents may use a different scheme.",
+    "momtong-palkup-düt-jirugi (1 Dan) and palkup-kokki (2 Kup) are listed as techniques; the PDF text for the latter is garbled where palkup-kokki and the batangson sub-blocks are described, so execution details are taken from the 'gleichzeitig' note only.",
+    "dubal-dangsang-ap-chagi: programme only says 'gesprungener Vorwärtsfußstoß (dabei Entfernung überbrücken)'; the description as double/alternating kicks in the air is inferred from the club name and the course's 'scissor front kick' (Tubal dani) and should be confirmed.",
+    "Theory answers marked source 'general' (red/black belt meaning, training structure, Taeguk elements, form namesakes, Hwa-Rang) are not in the club PDFs; confirm with the club.",
+    "Questions asked in the programme without a stated answer in the PDFs (e.g. 'Welche Bedeutung hat der rote Gürtel?', Trainingslehre, 'Welche Bedeutung hat der schwarze Gürtel für dich?') are covered only by 'general' items or skipped (the black-belt one is personal).",
+    "Karate equivalents are approximate (information only); '—' where no clean equivalent is known.",
+    "Regularien §1.13 (shortening of preparation time) table is garbled in text extraction; not turned into questions.",
+    "Clips: six clips added from the red-belt block (4335-4696 s) by caption match + black-fade segmentation + contact sheets: bom-sogi (tiger stance 4336-4344), du-jumok-jechyo-jirugi (4507-4520), bituro-chagi (4568-4596, caption 'diagonal kick to the outside'), pyojok-chagi (4599-4625, 'kick to the inside onto a target hand'), murup-chicki (4628-4663, includes the shoulder-holding knee), dubal-dangsang-ap-chagi (4666-4696, 'scissor front kick, Tubal dani'). The course is another school; identification of bituro-chagi, pyojok-chagi and dubal-dangsang-ap-chagi is probable but not certain. Clips contain short cross-dissolves inside segments but no black fades or title cards.",
+    "Not clipped (not found or not confident): twio-dollyo-chagi, an-palmok-gawi-macki (scissor block at 4401-4416 could not be isolated reliably between cross-dissolves), dangyo-tok-chirugi (not a card), santul-macki, hagdari-sogi and all combinations.",
+    "Terms duplicated by other agents (body-*, training-taeryon etc.) must be de-duplicated by the parent; term meaning of cho-kup/jung-kup/ko-kup hangul (초급/중급/고급) is not given in the PDFs."
+  ]
+}

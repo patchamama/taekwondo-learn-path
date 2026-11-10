@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom'
 import { CARD_BY_ID } from '../../data/cards'
 import { CARDS_WITH_CLIPS, CLIPS_BY_CARD } from '../../data/clips'
 import { SpeakButton } from '../../shared/components/SpeakButton'
+import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { useT } from '../../shared/i18n/useT'
 import { ClipViewer } from './ClipViewer'
 
 export function VideosPage() {
   const { t, loc } = useT()
   const [open, setOpen] = useState<string | null>(null)
+  const { visibleCard } = useBeltFilter()
   return (
     <section className="grid gap-4">
       <div className="flex flex-wrap items-center gap-3">
@@ -23,7 +25,7 @@ export function VideosPage() {
       <p className="text-sm text-slate-600">{t('videosHint')}</p>
       <p className="rounded-lg bg-amber-50 p-3 text-sm">ℹ {t('videoCaveat')}</p>
       <ul className="grid items-start gap-3 md:grid-cols-2">
-        {CARDS_WITH_CLIPS.map((cardId) => {
+        {CARDS_WITH_CLIPS.filter(visibleCard).map((cardId) => {
           const card = CARD_BY_ID[cardId]
           const isOpen = open === cardId
           return (

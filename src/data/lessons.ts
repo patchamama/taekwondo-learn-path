@@ -1,4 +1,5 @@
 import type { Loc } from '../shared/i18n/types'
+import { flat, mergeById } from './curriculum'
 
 export interface Lesson {
   id: string
@@ -11,7 +12,7 @@ export interface Lesson {
   checkpoint?: boolean
 }
 
-export type UnitId = 'kup10' | 'kup9' | 'kup8' | 'bonus'
+export type UnitId = string
 
 export interface Unit {
   id: UnitId
@@ -22,7 +23,7 @@ export interface Unit {
 
 const L = (en: string, de: string, es: string): Loc => ({ en, de, es })
 
-export const UNITS: Unit[] = [
+const BASE_UNITS: Unit[] = [
   {
     id: 'kup10',
     earns: 'kup10',
@@ -62,7 +63,7 @@ export const UNITS: Unit[] = [
 
 const ids = (prefix: string, list: string[]) => list.map((x) => `${prefix}-${x}`)
 
-export const LESSONS: Lesson[] = [
+const BASE_LESSONS: Lesson[] = [
   // ───────── Unit 1: white belt
   {
     id: 'u1-dojang',
@@ -549,6 +550,27 @@ export const LESSONS: Lesson[] = [
     ),
     cardIds: ['taeguk-5', 'taeguk-6', 'taeguk-7', 'taeguk-8'],
   },
+]
+
+const isBonus = (x: { unit?: string; id?: string }) => (x.unit ?? x.id) === 'bonus'
+
+/** Order: units 10/9/8 Kup, then the slices (7 Kup → 1 Dan), then the bonus unit (no belt). */
+export const UNITS: Unit[] = [
+  ...mergeById(
+    BASE_UNITS.filter((u) => !isBonus(u)),
+    flat('units') as Unit[],
+    (u) => u.id,
+  ),
+  ...BASE_UNITS.filter(isBonus),
+]
+
+export const LESSONS: Lesson[] = [
+  ...mergeById(
+    BASE_LESSONS.filter((l) => !isBonus(l)),
+    flat('lessons') as Lesson[],
+    (l) => l.id,
+  ),
+  ...BASE_LESSONS.filter(isBonus),
 ]
 
 export const LESSON_BY_ID: Record<string, Lesson> = Object.fromEntries(

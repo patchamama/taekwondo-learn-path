@@ -7,7 +7,7 @@
 // compilation). External YouTube examples are embed-only (no frames).
 // Set TKD_VIDEO / TKD_SELFDEFENSE_VIDEO to point at your local copies.
 import { execFileSync } from 'node:child_process'
-import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync } from 'node:fs'
 import { homedir, tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -127,7 +127,14 @@ function pickTimes(seg, startSec, lenSec, count, needStudio) {
 }
 
 function run(source) {
-  const clips = JSON.parse(readFileSync(source.clipsFile, 'utf8'))
+  let clips = JSON.parse(readFileSync(source.clipsFile, 'utf8'))
+  if (source.key === 'course') {
+    // curriculum slices (7 Kup → 1 Dan) carry their own course clips
+    const dir = 'src/data/curriculum'
+    for (const f of readdirSync(dir).filter((n) => /^kup.*\.json$/.test(n))) {
+      clips = clips.concat(JSON.parse(readFileSync(join(dir, f), 'utf8')).clips ?? [])
+    }
+  }
   if (clips.length === 0) {
     console.log(`[${source.key}] no clips, skipping`)
     return

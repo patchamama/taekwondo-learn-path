@@ -1,4 +1,6 @@
 import type { Loc } from '../shared/i18n/types'
+import { flat, mergeById } from './curriculum'
+import { TECHNIQUE_INFO } from './techniqueInfo'
 
 export type Category = 'hand' | 'foot' | 'stance' | 'combo' | 'form'
 
@@ -6,16 +8,21 @@ export interface Technique {
   id: string
   ko: string
   parts: string[] // morpheme ids
-  kup: 9 | 8
+  /** exam section: 9..1 Kup, 0 = 1. Dan */
+  kup: number
   category: Category
   names: Loc
   karate: string // approximate, to be verified with sensei
+  /** explicit hangul (slices); base techniques use TECHNIQUE_HANGUL */
+  hangul?: string
+  /** what it is, how it is executed, what it is used for */
+  info?: Loc
 }
 
 const t = (
   ko: string,
   parts: string[],
-  kup: 9 | 8,
+  kup: number,
   category: Category,
   en: string,
   de: string,
@@ -24,7 +31,7 @@ const t = (
 ): Technique => ({ id: ko, ko, parts, kup, category, names: { en, de, es }, karate })
 
 // Source: Pruefungsprogramm 2.1.1 (9. Kup) and 2.1.2 (8. Kup). Karate = approximate.
-export const TECHNIQUES: Technique[] = [
+const BASE: Technique[] = [
   t(
     'momtong-chirugi',
     ['momtong', 'chirugi'],
@@ -316,3 +323,20 @@ export const TECHNIQUES: Technique[] = [
     'kihon-ido (approx.)',
   ),
 ]
+
+/** Base techniques (9-8 Kup) plus the slices 7 Kup → 1 Dan. */
+export const TECHNIQUES: Technique[] = mergeById(
+  BASE.map((x): Technique => ({ ...x, info: x.info ?? TECHNIQUE_INFO[x.id] })),
+  flat('techniques').map((x) => ({
+    id: x.id,
+    ko: x.id,
+    parts: x.parts,
+    kup: x.kup,
+    category: x.category,
+    names: x.names,
+    karate: x.karate,
+    hangul: x.hangul,
+    info: x.info,
+  })),
+  (x) => x.id,
+)

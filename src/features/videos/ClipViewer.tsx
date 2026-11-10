@@ -15,7 +15,7 @@ export function useSourceLabel() {
 }
 
 /** All sources of one technique: tabs when there are several, frames + player for the selected one. */
-export function ClipViewer({ cardId }: { cardId: string }) {
+export function ClipViewer({ cardId, autoplay = true }: { cardId: string; autoplay?: boolean }) {
   const { t } = useT()
   const label = useSourceLabel()
   const clips = CLIPS_BY_CARD[cardId] ?? []
@@ -46,7 +46,7 @@ export function ClipViewer({ cardId }: { cardId: string }) {
         <p className="text-xs text-amber-700">ℹ {t('similarTech')}</p>
       )}
       <FrameStrip key={`${clipKey(clip)}-f`} clip={clip} />
-      <ClipPlayer key={`${clipKey(clip)}-p`} clip={clip} />
+      <ClipPlayer key={`${clipKey(clip)}-p`} clip={clip} autoplay={autoplay} />
     </div>
   )
 }

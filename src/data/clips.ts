@@ -2,6 +2,7 @@ import type { Lang } from '../shared/i18n/types'
 import courseJson from './clips.json'
 import selfDefenseJson from './clips-selfdefense.json'
 import externalJson from './clips-external.json'
+import { flat } from './curriculum'
 
 /** Same course, two dubs. Timestamps match within ~2 s (see docs/video/README.md). */
 export const COURSE_VIDEOS = { es: 'vQb_6i28QK8', de: 'dnYQ1Y0acrE' } as const
@@ -34,7 +35,11 @@ type RawClip = Omit<Clip, 'source'> & { source?: SourceKind }
 // Course ranges sit between the course's black fades (ffmpeg blackdetect) so they never include
 // the French title cards. Spoken names come from the auto captions (docs/video).
 export const CLIPS: Clip[] = [
-  ...(courseJson as RawClip[]).map((c) => ({ silentSafe: true, ...c, source: 'course' as const })),
+  ...[...(courseJson as RawClip[]), ...(flat('clips') as RawClip[])].map((c) => ({
+    silentSafe: true,
+    ...c,
+    source: 'course' as const,
+  })),
   ...(selfDefenseJson as RawClip[]).map((c) => ({ ...c, source: 'selfdefense' as const })),
   ...(externalJson as RawClip[]).map((c) => ({ ...c, source: 'external' as const })),
 ]

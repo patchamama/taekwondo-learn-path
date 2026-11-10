@@ -1,4 +1,5 @@
 import type { Loc } from '../shared/i18n/types'
+import extra from './curriculum/forms-extra.json'
 
 export interface Form {
   id: string
@@ -11,12 +12,16 @@ export interface Form {
   /** short English-first label of the symbol */
   symbol: Loc
   meaning: Loc
+  /** exam level in the club programme: Kup number (7..1) or 0 for 1. Dan */
+  examKup?: number
+  /** Keup number used by the course video (another school) */
+  courseKeup?: number
 }
 
 const L = (en: string, de: string, es: string): Loc => ({ en, de, es })
 
 // Source: Formen §4.3.1 (meanings and move counts). Kukkiwon names: Taegeuk N Jang (태극 N장).
-export const FORMS: Form[] = [
+const BASE: Form[] = [
   {
     id: 'taeguk-1',
     ko: 'Taeguk Il-Chang',
@@ -122,3 +127,36 @@ export const FORMS: Form[] = [
     ),
   },
 ]
+
+const LEVELS: Record<string, { examKup: number; courseKeup: number }> = Object.fromEntries(
+  extra.formLevels.map((l) => [l.id, l]),
+)
+
+/** Taegeuk forms with their exam level (club) and course level (video). */
+export const FORMS: Form[] = BASE.map((f) => ({ ...f, ...LEVELS[f.id] }))
+
+export interface Hyong {
+  id: string
+  ko: string
+  hangul: string
+  moves: number
+  /** Kup exam (7..1) when the form belongs to a Kup grade */
+  examKup?: number
+  /** Dan exam when it belongs to a Dan grade */
+  examDan?: number
+  symbol: Loc
+  meaning: Loc
+  source?: string
+}
+
+/** Hyong (ITF/Chang-Hon) forms from the club's Formen PDF §4.3.3. Hangul copied from the PDF (unverified). */
+export const HYONG: Hyong[] = extra.hyong as Hyong[]
+
+export const FORM_RULES: Loc[] = extra.rules as Loc[]
+
+/** Belt index (0 = 10 Kup … 9 = 1 Kup, 10 = 1 Dan) at which a form is first required. */
+export function formBeltIndex(f: { examKup?: number; examDan?: number }): number {
+  if (f.examDan != null) return 10
+  if (f.examKup == null) return 10
+  return f.examKup === 0 ? 10 : 10 - f.examKup
+}

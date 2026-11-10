@@ -1,6 +1,7 @@
 import { TERMS, type TermGroup } from '../../data/terms'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import type { StringKey } from '../../shared/i18n/strings'
+import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { useT } from '../../shared/i18n/useT'
 
 const GROUPS: { id: TermGroup; key: StringKey }[] = [
@@ -15,6 +16,7 @@ const GROUPS: { id: TermGroup; key: StringKey }[] = [
 
 export function TermsPage() {
   const { t, loc } = useT()
+  const { visibleCard } = useBeltFilter()
   return (
     <section className="grid gap-6">
       <h1 className="text-2xl font-bold">{t('navTerms')}</h1>
@@ -22,7 +24,7 @@ export function TermsPage() {
         <div key={g.id}>
           <h2 className="mb-2 text-lg font-semibold">{t(g.key)}</h2>
           <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {TERMS.filter((x) => x.group === g.id).map((x) => (
+            {TERMS.filter((x) => x.group === g.id && visibleCard(x.id)).map((x) => (
               <li
                 key={x.id}
                 className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 shadow-sm"

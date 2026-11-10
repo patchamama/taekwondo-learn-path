@@ -1,4 +1,5 @@
 import type { Loc } from '../shared/i18n/types'
+import { flat, mergeById } from './curriculum'
 
 export type TermGroup = 'sino' | 'native' | 'command' | 'basic' | 'training' | 'body' | 'kukkiwon'
 
@@ -8,6 +9,8 @@ export interface Term {
   hangul: string
   group: TermGroup
   meaning: Loc
+  /** first belt where it is needed (10..1 Kup, 0 = 1 Dan); omitted = decided from lessons */
+  kup?: number
 }
 
 const t = (
@@ -23,7 +26,7 @@ const n = (group: TermGroup, ko: string, hangul: string, v: number): Term =>
   t(group, ko, hangul, String(v), String(v), String(v))
 
 // Source: Koreanische Fachbegriffe §6.1–6.11 (hangul added for pronunciation)
-export const TERMS: Term[] = [
+const BASE: Term[] = [
   ...[
     ['il', '일'],
     ['i', '이'],
@@ -166,3 +169,17 @@ export const TERMS: Term[] = [
     'capítulo / número de una forma Taegeuk',
   ),
 ]
+
+/** Base terms plus the ones introduced by the curriculum slices. */
+export const TERMS: Term[] = mergeById(
+  BASE,
+  flat('terms').map((x): Term => ({
+    id: `${x.group}-${x.ko}`,
+    ko: x.ko,
+    hangul: x.hangul,
+    group: x.group,
+    meaning: x.meaning,
+    kup: x.kup,
+  })),
+  (x) => x.id,
+)

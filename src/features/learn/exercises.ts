@@ -1,5 +1,6 @@
 import { CARDS, CARD_BY_ID, type Card } from '../../data/cards'
 import type { Lesson } from '../../data/lessons'
+import { CLIPS } from '../../data/clips'
 import { THEORY_BY_ID } from '../../data/theory'
 
 export type Rng = () => number
@@ -30,6 +31,8 @@ export type Exercise =
   | { type: 'meaning'; cardId: string; options: string[] }
   /** show the meaning, pick the Korean term. answer = cardId */
   | { type: 'recall'; cardId: string; options: string[] }
+  /** a sequence of stills of the technique (no names), pick which technique it is. answer = cardId */
+  | { type: 'frames'; cardId: string; options: string[] }
   /** audio only, pick the romanization. answer = cardId */
   | { type: 'listen'; cardId: string; options: string[] }
   /** assemble the technique name from word blocks. answer = card.parts */
@@ -42,6 +45,7 @@ export function isCorrect(ex: Exercise, answer: string | string[] | number): boo
     case 'meaning':
     case 'recall':
     case 'listen':
+    case 'frames':
       return answer === ex.cardId
     case 'build': {
       const parts = CARD_BY_ID[ex.cardId].parts ?? []
@@ -74,7 +78,12 @@ function distractors(card: Card, n: number, rng: Rng, keyOf: (c: Card) => string
 
 const withCorrect = (id: string, others: string[], rng: Rng) => shuffle([id, ...others], rng)
 
-function candidates(card: Card, rng: Rng): Exercise[] {
+/** Cards that have a clip whose frames show no name (course video). */
+const FRAME_CARDS = new Set(
+  CLIPS.filter((c) => c.silentSafe && c.source === 'course').map((c) => c.cardId),
+)
+
+function candidates(card: Card, rng: Rng, listening: boolean): Exercise[] {
   const out: Exercise[] = [
     {
       type: 'meaning',
@@ -85,15 +94,19 @@ function candidates(card: Card, rng: Rng): Exercise[] {
         rng,
       ),
     },
-    {
-      type: 'listen',
-      cardId: card.id,
-      options: withCorrect(
-        card.id,
-        distractors(card, 3, rng, (c) => c.ko),
-        rng,
-      ),
-    },
+    ...(listening
+      ? [
+          {
+            type: 'listen' as const,
+            cardId: card.id,
+            options: withCorrect(
+              card.id,
+              distractors(card, 3, rng, (c) => c.ko),
+              rng,
+            ),
+          },
+        ]
+      : []),
     {
       type: 'recall',
       cardId: card.id,
@@ -104,6 +117,17 @@ function candidates(card: Card, rng: Rng): Exercise[] {
       ),
     },
   ]
+  if (FRAME_CARDS.has(card.id)) {
+    out.push({
+      type: 'frames',
+      cardId: card.id,
+      options: withCorrect(
+        card.id,
+        distractors(card, 3, rng, (c) => c.ko),
+        rng,
+      ),
+    })
+  }
   if (card.parts && card.parts.length >= 2) {
     // add a decoy word block so it is not a pure ordering task
     const extra = shuffle(
@@ -117,16 +141,18 @@ function candidates(card: Card, rng: Rng): Exercise[] {
 
 export interface BuildOptions {
   max?: number
+  /** include listening exercises (false when the learner has no sound) */
+  listening?: boolean
 }
 
 /** Build the exercise list of a lesson. Every card is practised at least once. */
 export function buildExercises(
   lesson: Lesson,
   rng: Rng,
-  { max = 14 }: BuildOptions = {},
+  { max = 14, listening = true }: BuildOptions = {},
 ): Exercise[] {
   const cards = lesson.cardIds.map((id) => CARD_BY_ID[id]).filter(Boolean)
-  const perCard = cards.map((c) => candidates(c, rng))
+  const perCard = cards.map((c) => candidates(c, rng, listening))
   const target = cards.length === 0 ? 0 : Math.min(max, Math.max(cards.length * 2, 6))
   const list: Exercise[] = []
   for (let round = 0; list.length < target && round < 5; round++) {
@@ -151,6 +177,7 @@ export function buildPractice(
   mastery: Record<string, number>,
   rng: Rng,
   count = 10,
+  listening = true,
 ): Exercise[] {
   const sorted = [...learnedCardIds].sort((a, b) => (mastery[a] ?? 0) - (mastery[b] ?? 0))
   const weakest = sorted.slice(0, count)
@@ -161,5 +188,5 @@ export function buildPractice(
     tip: { en: '', de: '', es: '' },
     cardIds: weakest,
   }
-  return buildExercises(lesson, rng, { max: count })
+  return buildExercises(lesson, rng, { max: count, listening })
 }

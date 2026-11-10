@@ -11,6 +11,8 @@ export function SettingsPage() {
   const { t } = useT()
   const strict = useAppStore((s) => s.strictOrder)
   const setStrict = useAppStore((s) => s.setStrictOrder)
+  const listening = useAppStore((s) => s.listening)
+  const setListening = useAppStore((s) => s.setListening)
   const videoLang = useAppStore((s) => s.videoLang)
   const setVideoLang = useAppStore((s) => s.setVideoLang)
 
@@ -29,6 +31,19 @@ export function SettingsPage() {
           <span>{t('strictOrder')}</span>
         </label>
         <p className="mt-2 text-sm text-slate-600">{t('strictOrderHint')}</p>
+      </div>
+
+      <div className="rounded-xl border bg-white p-5">
+        <label className="flex items-start gap-3 font-medium">
+          <input
+            type="checkbox"
+            className="mt-1 h-5 w-5"
+            checked={listening}
+            onChange={(e) => setListening(e.target.checked)}
+          />
+          <span>{t('listening')}</span>
+        </label>
+        <p className="mt-2 text-sm text-slate-600">{t('listeningHint')}</p>
       </div>
 
       <fieldset className="rounded-xl border bg-white p-5">

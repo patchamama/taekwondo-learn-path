@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import { FORMS } from '../../data/forms'
+import { FORMS, HYONG as HYONG_FORMS, formBeltIndex } from '../../data/forms'
+import { BELTS } from '../../data/belts'
+import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { CLIPS_BY_CARD } from '../../data/clips'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useT } from '../../shared/i18n/useT'
@@ -62,6 +64,7 @@ function Card({ title, items }: { title: string; items: string[] }) {
 export function FormsPage() {
   const { t, lang, loc } = useT()
   const [open, setOpen] = useState<string | null>(null)
+  const { visibleIndex } = useBeltFilter()
   return (
     <section className="grid gap-4">
       <h1 className="text-2xl font-bold">{t('formsTitle')}</h1>
@@ -72,7 +75,7 @@ export function FormsPage() {
       <p className="rounded-lg bg-amber-50 p-3 text-sm">{NOTE[lang]}</p>
       <h2 className="mt-4 text-xl font-bold">{t('taegeukForms')}</h2>
       <ul className="grid items-start gap-3 md:grid-cols-2">
-        {FORMS.map((f) => {
+        {FORMS.filter((f) => visibleIndex(formBeltIndex(f))).map((f) => {
           const isOpen = open === f.id
           return (
             <li key={f.id} className="rounded-xl border bg-white p-4 shadow-sm">
@@ -86,6 +89,10 @@ export function FormsPage() {
                   </p>
                   <p className="text-xs text-slate-500">
                     {t('kukkiwonName')}: {f.kukkiwon} · {f.moves} {t('moves')}
+                  </p>
+                  <p className="mt-1 text-xs font-semibold text-amber-800">
+                    {t('examLevel')}: {BELTS[formBeltIndex(f)].rank}
+                    {f.courseKeup ? ` · ${t('courseLevel')}: ${f.courseKeup} Keup` : ''}
                   </p>
                 </div>
                 <SpeakButton text={f.hangul} />
@@ -111,6 +118,34 @@ export function FormsPage() {
             </li>
           )
         })}
+      </ul>
+      <h2 className="mt-4 text-xl font-bold">{t('hyongForms')}</h2>
+      <p className="text-xs text-slate-500">{t('hyongNote')}</p>
+      <ul className="grid items-start gap-3 md:grid-cols-2">
+        {HYONG_FORMS.filter((h) => visibleIndex(formBeltIndex(h))).map((h) => (
+          <li key={h.id} className="rounded-xl border bg-white p-4 shadow-sm">
+            <div className="flex items-start gap-2">
+              <div className="min-w-0 flex-1">
+                <p className="font-bold">
+                  {h.ko}{' '}
+                  <span lang="ko" className="font-normal text-slate-500">
+                    {h.hangul}
+                  </span>
+                </p>
+                <p className="text-xs text-slate-500">
+                  {h.moves} {t('moves')}
+                </p>
+                <p className="mt-1 text-xs font-semibold text-amber-800">
+                  {t('examLevel')}:{' '}
+                  {h.examDan ? `${h.examDan} Dan` : h.examKup ? `${h.examKup} Kup` : '—'}
+                </p>
+              </div>
+              <SpeakButton text={h.hangul} />
+            </div>
+            <p className="mt-1 font-medium">{loc(h.symbol)}</p>
+            <p className="text-sm text-slate-600">{loc(h.meaning)}</p>
+          </li>
+        ))}
       </ul>
     </section>
   )

@@ -7,6 +7,7 @@ import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
 import { Bubble } from '../mascot/Bubble'
+import { CardDetail } from './CardDetail'
 import { buildExercises, buildPractice, makeRng } from './exercises'
 import { LessonPlayer, type PlayerResult } from './LessonPlayer'
 import { heldBeltIndex, isUnlocked, learnedCardIds, starsFor, unitComplete } from './progress'
@@ -67,14 +68,15 @@ function Run({ lessonId, learned = [], mastery = {} }: RunProps) {
   const completeLesson = useAppStore((s) => s.completeLesson)
   const addXp = useAppStore((s) => s.addXp)
   const recordAnswer = useAppStore((s) => s.recordAnswer)
+  const listening = useAppStore((s) => s.listening)
   const beltBefore = useMemo(() => BELTS[heldBeltIndex(completed)], []) // eslint-disable-line react-hooks/exhaustive-deps
   const [stage, setStage] = useState<Stage>(lesson ? 'intro' : 'play')
   const [result, setResult] = useState<PlayerResult | null>(null)
   const [earned, setEarned] = useState<string | null>(null)
   const [exercises] = useState(() =>
     lesson
-      ? buildExercises(lesson, makeRng(Date.now()))
-      : buildPractice(learned, mastery, makeRng(Date.now())),
+      ? buildExercises(lesson, makeRng(Date.now()), { listening })
+      : buildPractice(learned, mastery, makeRng(Date.now()), 10, listening),
   )
 
   const finish = (r: PlayerResult) => {
@@ -102,27 +104,10 @@ function Run({ lessonId, learned = [], mastery = {} }: RunProps) {
           {loc(lesson.tip)}
         </Bubble>
         {lesson.cardIds.length > 0 && (
-          <ul className="grid gap-2 sm:grid-cols-2">
-            {lesson.cardIds.map((cid) => {
-              const c = CARD_BY_ID[cid]
-              return (
-                <li
-                  key={cid}
-                  className="flex items-center gap-2 rounded-xl border bg-white px-3 py-2"
-                >
-                  <SpeakButton text={c.hangul} />
-                  <div className="min-w-0">
-                    <p className="truncate font-bold">
-                      {c.ko}{' '}
-                      <span lang="ko" className="font-normal text-slate-500">
-                        {c.hangul}
-                      </span>
-                    </p>
-                    <p className="truncate text-sm text-slate-600">{loc(c.meaning)}</p>
-                  </div>
-                </li>
-              )
-            })}
+          <ul className="grid gap-2">
+            {lesson.cardIds.map((cid, k) => (
+              <CardDetail key={cid} cardId={cid} defaultOpen={k === 0} />
+            ))}
           </ul>
         )}
         <button

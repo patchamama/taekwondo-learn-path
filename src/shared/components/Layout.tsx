@@ -1,8 +1,9 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { LANGS } from '../i18n/types'
 import { useT } from '../i18n/useT'
 import { useAppStore } from '../store/useAppStore'
 import { Banner } from './Banner'
+import { BeltRangeSlider } from './BeltRangeSlider'
 import { activeStreak, dayString } from '../../features/learn/progress'
 import type { StringKey } from '../i18n/strings'
 
@@ -18,7 +19,10 @@ const LINKS: { to: string; key: StringKey }[] = [
   { to: '/settings', key: 'navSettings' },
 ]
 
+const FILTERED = ['/techniques', '/videos', '/video-quiz', '/terms', '/forms', '/kukkiwon']
+
 export function Layout() {
+  const { pathname } = useLocation()
   const { t, lang } = useT()
   const setLang = useAppStore((s) => s.setLang)
   const xp = useAppStore((s) => s.xp)
@@ -57,6 +61,7 @@ export function Layout() {
             ))}
           </select>
         </div>
+        {FILTERED.includes(pathname) && <BeltRangeSlider />}
       </header>
       <main className="mx-auto max-w-6xl px-4 py-6">
         <Outlet />

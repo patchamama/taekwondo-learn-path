@@ -1,12 +1,17 @@
 import type { Loc } from '../shared/i18n/types'
+import { flat, mergeById } from './curriculum'
+import type { MorphemeFamily } from './curriculum/types'
 
 export interface Morpheme {
   id: string
   ko: string
   hangul: string
   group: 'action' | 'zone' | 'direction' | 'tool'
+  family: MorphemeFamily
   meaning: Loc
 }
+
+type BaseMorpheme = Omit<Morpheme, 'family'>
 
 const m = (
   id: string,
@@ -15,9 +20,9 @@ const m = (
   en: string,
   de: string,
   es: string,
-): Morpheme => ({ id, ko: id, hangul, group, meaning: { en, de, es } })
+): BaseMorpheme => ({ id, ko: id, hangul, group, meaning: { en, de, es } })
 
-export const MORPHEMES: Morpheme[] = [
+const BASE: BaseMorpheme[] = [
   m('macki', '막기', 'action', 'block', 'Abwehr, Block', 'bloqueo'),
   m('chirugi', '지르기', 'action', 'thrust / punch', 'Stoß', 'golpe directo'),
   m('chicki', '치기', 'action', 'strike', 'Schlag', 'golpe de corte'),
@@ -56,5 +61,45 @@ export const MORPHEMES: Morpheme[] = [
   m('palmok', '팔목', 'tool', 'forearm', 'Unterarm', 'antebrazo'),
   m('batangson', '바탕손', 'tool', 'palm heel', 'Handballen', 'talón de la mano'),
 ]
+
+const FAMILY: Record<string, MorphemeFamily> = {
+  macki: 'action',
+  chirugi: 'action',
+  chicki: 'action',
+  chagi: 'action',
+  sogi: 'stance',
+  gubi: 'stance',
+  olgul: 'height',
+  momtong: 'height',
+  arae: 'height',
+  mok: 'target',
+  ap: 'direction-axis',
+  yop: 'direction-axis',
+  düt: 'direction-axis',
+  an: 'in-out',
+  packat: 'in-out',
+  naeryo: 'motion',
+  dollyo: 'motion',
+  twio: 'motion',
+  kotoro: 'reinforce',
+  goduro: 'reinforce',
+  sonnal: 'tool',
+  palmok: 'tool',
+  batangson: 'tool',
+}
+
+/** Base morphemes plus the ones introduced by the curriculum slices (7 Kup → 1 Dan). */
+export const MORPHEMES: Morpheme[] = mergeById(
+  BASE.map((x) => ({ ...x, family: FAMILY[x.id] ?? 'other' })),
+  flat('morphemes').map((x) => ({
+    id: x.id,
+    ko: x.id,
+    hangul: x.hangul,
+    group: x.group,
+    family: x.family ?? 'other',
+    meaning: x.meaning,
+  })),
+  (x) => x.id,
+)
 
 export const MORPHEME_BY_ID = Object.fromEntries(MORPHEMES.map((x) => [x.id, x]))

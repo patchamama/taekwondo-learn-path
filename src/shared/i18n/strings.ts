@@ -322,6 +322,48 @@ export const STRINGS = {
     de: 'Zeigt Selbstverteidigungs-Anwendungen der Techniken dieser Form, nicht die ganze Form.',
     es: 'Muestra aplicaciones de defensa personal de las técnicas de esta forma, no la forma completa.',
   },
+  levelFilter: {
+    en: 'Show content from 10 Kup up to',
+    de: 'Inhalte von 10 Kup bis',
+    es: 'Mostrar contenido desde 10 Kup hasta',
+  },
+  listening: {
+    en: 'Include listening exercises',
+    de: 'Hörübungen einbeziehen',
+    es: 'Incluir ejercicios de escucha',
+  },
+  listeningHint: {
+    en: 'Turn off if you cannot use sound (no headphones).',
+    de: 'Ausschalten, wenn du keinen Ton nutzen kannst (keine Kopfhörer).',
+    es: 'Desactívalo si no puedes usar sonido (sin auriculares).',
+  },
+  cannotListen: {
+    en: "I can't listen now",
+    de: 'Ich kann gerade nicht hören',
+    es: 'No puedo escuchar ahora',
+  },
+  examLevel: { en: 'Club exam', de: 'Vereinsprüfung', es: 'Examen del club' },
+  courseLevel: { en: 'Course video', de: 'Kursvideo', es: 'Vídeo del curso' },
+  hyongForms: {
+    en: 'Hyong forms (ITF/Chang-Hon)',
+    de: 'Hyong-Formen (ITF/Chang-Hon)',
+    es: 'Formas Hyong (ITF/Chang-Hon)',
+  },
+  hyongNote: {
+    en: 'Hangul copied from the club PDF (unverified).',
+    de: 'Hangul aus dem Vereins-PDF übernommen (nicht verifiziert).',
+    es: 'Hangul copiado del PDF del club (sin verificar).',
+  },
+  examplesHint: {
+    en: 'Technique names that contain this word',
+    de: 'Technik-Namen mit diesem Wort',
+    es: 'Nombres de técnicas que contienen esta palabra',
+  },
+  qFrames: {
+    en: 'Which technique are these frames?',
+    de: 'Welche Technik zeigen diese Einzelbilder?',
+    es: '¿Qué técnica muestran estos fotogramas?',
+  },
 } satisfies Dict
 
 export type StringKey = keyof typeof STRINGS

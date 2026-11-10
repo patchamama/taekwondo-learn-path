@@ -31,7 +31,7 @@ describe('lesson order setting', () => {
 
   it('locks a later lesson when the checkbox is ticked', () => {
     render(<SettingsPage />)
-    fireEvent.click(screen.getByRole('checkbox'))
+    fireEvent.click(screen.getByRole('checkbox', { name: /Lock lessons/ }))
     expect(useAppStore.getState().strictOrder).toBe(true)
     openLesson()
     expect(screen.getByText('Locked')).toBeInTheDocument()
