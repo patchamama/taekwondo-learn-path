@@ -529,6 +529,21 @@ const BASE_LESSONS: Lesson[] = [
     ],
   },
   {
+    id: 'b-defense-kinds',
+    unit: 'bonus',
+    title: L(
+      'Self-defence: releases, locks, throws, chokes',
+      'Selbstverteidigung: Befreiungen, Hebel, Würfe, Würgen',
+      'Defensa personal: liberaciones, luxaciones, proyecciones, estrangulaciones',
+    ),
+    tip: L(
+      "Four families of self-defence skills. Watch each chapter and notice what the defender does to the attacker's balance first.",
+      'Vier Familien der Selbstverteidigung. Sieh dir jedes Kapitel an und achte darauf, wie der Verteidiger zuerst das Gleichgewicht des Angreifers stört.',
+      'Cuatro familias de defensa personal. Mira cada capítulo y fíjate en cómo el defensor rompe primero el equilibrio del atacante.',
+    ),
+    cardIds: ['sd-05', 'sd-06', 'sd-07', 'sd-08', 'training-nak-bop'],
+  },
+  {
     id: 'b-taeguk-a',
     unit: 'bonus',
     title: L('Taegeuk 1–4', 'Taegeuk 1–4', 'Taegeuk 1–4'),

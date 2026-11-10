@@ -31,6 +31,7 @@ Objective: gamified trilingual (EN/DE/ES) lessons with Korean TTS and a tiger in
 - E15 delegated+inline – Kukkiwon documentation, Kukkiwon names page, 22 self-defence clips with studio-only frames — v0.6.0 — done
 - E16 inline – morpheme families + hover hints, level filter slider (10 Kup → 1 Dan), form exam levels + Hyong, rich lesson intro, frames exercise, listening skip/setting — v0.7.0 — done
 - E17 delegated – curriculum 7 Kup → 1 Dan (kup7-5, kup4-3, kup2-dan1 slices, forms-extra) — integrated, content unverified items listed in docs/curriculum/*.md
+- E18 inline – review of 16 new course clips (docs/curriculum/clip-review.md); self-defence bonus section (25 chapters, page /selfdefense, clips + frames) — v0.8.0 — done
 
 ## Log
 - L1 2026-11-09 user: "has commit desde ya. Arregla que el primer eslabon debe de ser el 10 Kup que es el cinturón blanco. Continua con el resto de tareas ... fase 3 y no pares hasta lograr una version funcional ..."

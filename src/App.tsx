@@ -6,6 +6,7 @@ import { SettingsPage } from './features/settings/SettingsPage'
 import { VideoQuizPage } from './features/videos/VideoQuizPage'
 import { VideosPage } from './features/videos/VideosPage'
 import { KukkiwonPage } from './features/kukkiwon/KukkiwonPage'
+import { SelfDefensePage } from './features/selfdefense/SelfDefensePage'
 import { PathPage } from './features/path/PathPage'
 import { TechniquesPage } from './features/techniques/TechniquesPage'
 import { TermsPage } from './features/terms/TermsPage'
@@ -21,6 +22,7 @@ export function App() {
           <Route path="practice" element={<PracticePage />} />
           <Route path="videos" element={<VideosPage />} />
           <Route path="video-quiz" element={<VideoQuizPage />} />
+          <Route path="selfdefense" element={<SelfDefensePage />} />
           <Route path="kukkiwon" element={<KukkiwonPage />} />
           <Route path="settings" element={<SettingsPage />} />
           <Route path="techniques" element={<TechniquesPage />} />

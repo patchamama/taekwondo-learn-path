@@ -138,5 +138,155 @@
     "start": 1414,
     "end": 1542,
     "similarity": "exact"
+  },
+  {
+    "cardId": "sd-05",
+    "start": 148,
+    "end": 223,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-06",
+    "start": 225,
+    "end": 351,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-07",
+    "start": 353,
+    "end": 464,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-08",
+    "start": 466,
+    "end": 524,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-27",
+    "start": 2892,
+    "end": 2987,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-28",
+    "start": 2989,
+    "end": 3078,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-29",
+    "start": 3080,
+    "end": 3199,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-30",
+    "start": 3201,
+    "end": 3240,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-31",
+    "start": 3242,
+    "end": 3283,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-32",
+    "start": 3285,
+    "end": 3326,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-33",
+    "start": 3328,
+    "end": 3368,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-34",
+    "start": 3370,
+    "end": 3414,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-35",
+    "start": 3416,
+    "end": 3458,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-36",
+    "start": 3460,
+    "end": 3502,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-37",
+    "start": 3504,
+    "end": 3540,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-38",
+    "start": 3542,
+    "end": 3577,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-39",
+    "start": 3579,
+    "end": 3613,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-40",
+    "start": 3615,
+    "end": 3765,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-41",
+    "start": 3767,
+    "end": 3831,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-42",
+    "start": 3833,
+    "end": 3871,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-43",
+    "start": 3873,
+    "end": 3969,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-44",
+    "start": 3971,
+    "end": 4033,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-45",
+    "start": 4035,
+    "end": 4127,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-46",
+    "start": 4129,
+    "end": 4225,
+    "similarity": "exact"
+  },
+  {
+    "cardId": "sd-47",
+    "start": 4227,
+    "end": 4343,
+    "similarity": "exact"
   }
 ]

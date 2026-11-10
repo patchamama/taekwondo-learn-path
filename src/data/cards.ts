@@ -4,6 +4,7 @@ import { TECHNIQUES } from './techniques'
 import { TECHNIQUE_HANGUL } from './hangul'
 import { TERMS } from './terms'
 import { FORMS, HYONG } from './forms'
+import { SELF_DEFENSE } from './selfDefense'
 
 export type CardKind = 'morpheme' | 'technique' | 'term' | 'form'
 
@@ -56,6 +57,15 @@ export const CARDS: Card[] = [
     ko: f.ko,
     hangul: f.hangul,
     meaning: f.symbol,
+  })),
+  ...SELF_DEFENSE.map<Card>((d) => ({
+    id: d.id,
+    kind: 'term',
+    group: 'selfdefense',
+    ko: d.ko,
+    hangul: d.hangul,
+    meaning: d.title,
+    info: d.desc,
   })),
   ...TERMS.map<Card>((x) => ({
     id: x.id,

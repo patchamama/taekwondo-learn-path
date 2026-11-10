@@ -25,7 +25,7 @@ export function VideosPage() {
       <p className="text-sm text-slate-600">{t('videosHint')}</p>
       <p className="rounded-lg bg-amber-50 p-3 text-sm">ℹ {t('videoCaveat')}</p>
       <ul className="grid items-start gap-3 md:grid-cols-2">
-        {CARDS_WITH_CLIPS.filter(visibleCard).map((cardId) => {
+        {CARDS_WITH_CLIPS.filter((id) => !id.startsWith('sd-') && visibleCard(id)).map((cardId) => {
           const card = CARD_BY_ID[cardId]
           const isOpen = open === cardId
           return (

@@ -54,3 +54,20 @@ describe('whole curriculum (10 Kup → 1 Dan)', () => {
     }
   })
 })
+
+describe('self-defence section', () => {
+  it('has a card and a clip for every chapter entry', async () => {
+    const { SELF_DEFENSE } = await import('../selfDefense')
+    for (const d of SELF_DEFENSE) {
+      expect(CARD_BY_ID[d.id], d.id).toBeDefined()
+      const clip = CLIPS.find((c) => c.cardId === d.id && c.source === 'selfdefense')
+      expect(clip, d.id).toBeDefined()
+      expect(clip!.start).toBeGreaterThanOrEqual(d.start)
+    }
+  })
+
+  it('never treats the self-defence compilation as silent-safe (names are on screen)', () => {
+    for (const c of CLIPS.filter((x) => x.source === 'selfdefense'))
+      expect(c.silentSafe).not.toBe(true)
+  })
+})

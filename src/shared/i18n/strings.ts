@@ -364,6 +364,22 @@ export const STRINGS = {
     de: 'Welche Technik zeigen diese Einzelbilder?',
     es: '¿Qué técnica muestran estos fotogramas?',
   },
+  navDefense: { en: 'Self-defence', de: 'Selbstverteidigung', es: 'Defensa personal' },
+  sdTitle: {
+    en: 'Self-defence (bonus)',
+    de: 'Selbstverteidigung (Bonus)',
+    es: 'Defensa personal (bonus)',
+  },
+  sdSafety: {
+    en: 'These are demonstrations with a partner. Practise releases, locks, throws, chokes and defences against weapons only with a qualified instructor, never alone.',
+    de: 'Dies sind Vorführungen mit Partner. Befreiungen, Hebel, Würfe, Würgegriffe und Waffenabwehr nur mit qualifiziertem Trainer üben, niemals allein.',
+    es: 'Son demostraciones con compañero. Practica liberaciones, luxaciones, proyecciones, estrangulaciones y defensas contra armas solo con un instructor cualificado, nunca en solitario.',
+  },
+  sdSource: {
+    en: 'Source: the 91-minute Kukkiwon self-defence compilation (Revised Romanization). Names on screen: not used in the silent quizzes.',
+    de: 'Quelle: die 91-minütige Kukkiwon-Selbstverteidigungs-Zusammenstellung (Revised Romanization). Namen im Bild: werden in den stummen Quiz nicht verwendet.',
+    es: 'Fuente: la compilación de defensa personal Kukkiwon de 91 minutos (Revised Romanization). Los nombres salen en pantalla, por eso no se usan en los quizzes mudos.',
+  },
 } satisfies Dict
 
 export type StringKey = keyof typeof STRINGS
