@@ -69,3 +69,10 @@ The eight Taegeuk floor-pattern diagrams (`public/diagrams/taeguk-N.png`, data i
 
 ### Not integrated yet
 About 100 techniques and combos still have no clip. Wikipedia (ko/en/de/es) facts and long-video subtitles, and the book "Taekwondo perfect" (Kim and Gil), are being researched; they are added here when verified.
+
+### Book: "Taekwondo perfekt" (Kim Chul-Hwan, Konstantin Gil)
+Searched, **not integrated**: no legitimate preview or table of contents exists online, so no explanation from the book is used in the app. Bibliographic data found (from retailer and library listings, partly from search snippets):
+- German series, 4 volumes, Jaguar Verlag (Hannover), 2010-2012: vol. 1 "Die Formen- und Technikschule vom 7. bis 3. Keup" (ISBN 978-3-9812909-0-5), vol. 2 from 2. Keup to 2. Dan (978-3-9812909-1-2), vol. 3 Dan grades (978-3-9812909-2-9), vol. 4 master forms Jitae, Chong-Won, Hansu, Ilyo (978-3-9812909-3-6). An older Falken edition (1987) exists.
+- No English, Spanish, Russian or Korean edition, no e-book. Sold new at about 15-17 EUR per volume (vol. 1 reported out of print), used on ZVAB/AbeBooks.
+- Kim Chul-hwan (1954-2018) was a member of the Korean team that won the first WTF World Championships in 1973; Gil's credentials come only from publisher blurbs.
+To use it: put your own copy (PDF or photos of pages) in `docs/` and the relevant explanations can be integrated with page citations.
