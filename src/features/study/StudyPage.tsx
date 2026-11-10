@@ -9,6 +9,9 @@ import { levelContent } from '../../data/levelContent'
 import { UNITS, LESSONS } from '../../data/lessons'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
+import { ExportBar } from '../../shared/components/ExportBar'
+import { buildLevelDoc } from '../export/document'
+import { FormDiagram } from '../../shared/components/FormDiagram'
 import { useT } from '../../shared/i18n/useT'
 import { MATCH_LABEL, MATCH_STYLE } from '../kukkiwon/content'
 import { ClipViewer } from '../videos/ClipViewer'
@@ -56,6 +59,7 @@ function ReadingCard({ cardId }: { cardId: string }) {
           </span>
         </p>
       )}
+      <FormDiagram cardId={cardId} />
       {CLIPS_BY_CARD[cardId] && (
         <div className="mt-3 grid gap-2">
           {firstClip && <FrameStrip clip={firstClip} quiet />}
@@ -76,7 +80,7 @@ function ReadingCard({ cardId }: { cardId: string }) {
 
 /** Reading view: everything to learn at one belt, in one scroll. */
 export function StudyPage() {
-  const { t, loc } = useT()
+  const { t, loc, lang } = useT()
   const { level } = useParams()
   const { max } = useBeltFilter()
   const parsed = Number(level)
@@ -108,6 +112,10 @@ export function StudyPage() {
     <section className="grid gap-6">
       <h1 className="text-2xl font-bold">{t('studyTitle')}</h1>
       <p className="text-sm text-slate-600">{t('studyIntro')}</p>
+      <div className="grid gap-2">
+        <ExportBar label={t('exportThis')} build={() => buildLevelDoc(index, { lang, t, loc })} />
+        <ExportBar label={t('exportAll')} build={() => buildLevelDoc(null, { lang, t, loc })} />
+      </div>
       <nav aria-label={t('studyTitle')} className="flex flex-wrap gap-2">
         {BELTS.map((b, i) => (
           <Link

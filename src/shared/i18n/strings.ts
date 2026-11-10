@@ -371,6 +371,26 @@ export const STRINGS = {
   },
   maximize: { en: 'Maximize', de: 'Vergrößern', es: 'Maximizar' },
   close: { en: 'Close', de: 'Schließen', es: 'Cerrar' },
+  exportLabel: { en: 'Export', de: 'Exportieren', es: 'Exportar' },
+  exportAll: { en: 'All levels', de: 'Alle Stufen', es: 'Todos los niveles' },
+  exportThis: { en: 'This level', de: 'Diese Stufe', es: 'Este nivel' },
+  exportPdfHint: {
+    en: 'In the print window choose "Save as PDF".',
+    de: 'Im Druckfenster „Als PDF sichern“ wählen.',
+    es: 'En la ventana de impresión elige «Guardar como PDF».',
+  },
+  exportPopup: {
+    en: 'The browser blocked the window: allow pop-ups and try again.',
+    de: 'Der Browser hat das Fenster blockiert: Pop-ups erlauben und erneut versuchen.',
+    es: 'El navegador bloqueó la ventana: permite las ventanas emergentes e inténtalo de nuevo.',
+  },
+  diagramTitle: {
+    en: 'Floor pattern (top view)',
+    de: 'Laufschema (Draufsicht)',
+    es: 'Esquema en el suelo (vista cenital)',
+  },
+  diagramAlt: { en: 'Floor pattern', de: 'Laufschema', es: 'Esquema en el suelo' },
+  diagramCredit: { en: 'Diagram', de: 'Diagramm', es: 'Diagrama' },
   navStudy: { en: 'Study', de: 'Lernen', es: 'Estudio' },
   studyTitle: { en: 'Study by level', de: 'Lernen nach Stufe', es: 'Estudio por nivel' },
   studyIntro: {

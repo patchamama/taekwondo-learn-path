@@ -58,6 +58,14 @@ Video ids: azqXl4ys3WY, qqlObIyF-tw, p-D4m0rYRvQ, a5rTS4TF9Mg, ekrf7IC3M7o, ZsYC
 
 Built from the same method with videos QPROtyBoPEk (Spanish dub), igKJbAfpW1o and an interview (hjUuPJr0Ec4), plus a NotebookLM notebook (https://notebook.google.com/notebook/e46f4416-b8ba-4e43-b9f3-b4a0af256665). Its own sources are listed in that repository (`docs/notebooklm/`, `AGENT-HANDOFF.md`).
 
-## 7. Pending: web research by the research agent
+## 7. Web research (second round)
 
-Extra YouTube demonstrations and drawn form diagrams (with licences) are being collected in a background search. When it finishes, its verified entries and their licences are appended here.
+### Extra YouTube demonstrations (embed only)
+29 more clips found by a research pass and checked for embedding with yt-dlp: all 24 ITF Hyong forms (mostly the TKDTube channel, Joel Denis; one performer, same hall) plus `oe-santul-macki`, `momdollyo-pandae-dollyo-chagi`, `batangson-an-macki`, `kima-sogi` and `an-palmok-gawi-macki`. Video ids and labels are in `src/data/clips-external.json`. Channels: Academie Grand Lyon; Dr. Jason Han; Exceed TKD (Kukkiwon); Global Fitness & Martial Arts Institute (ITF); Golden Kick Taekwondo Cayman Islands; Juergen Englerth; Lupo Taekwondo (Kukkiwon); Online Taekwondo | Kukkiwon Digital Academy; Rudolf Kang (ITF HQ Korea); Shannon TKD Team (ITF); Sonkal (ITF); Sonkal - Taekwon-Do ITF school; TKD KICKS VT; TKDCoaching.com; TKDTube (Joel Denis); Taekwondo Preschool (Kukkiwon); TaekwondoMika (ITF); Thailand Hapkido Association (other); irishtkdassociation (ITF); kenji1to6 (ITF).
+Doubts: the form identity comes from the uploader's title (movements were not counted against the pattern); Se-Yong and Ko-Dang clips show names on screen (not silent-safe); `kima-sogi` and `an-palmok-gawi-macki` are "similar", not exact.
+
+### Drawings (Wikimedia Commons)
+The eight Taegeuk floor-pattern diagrams (`public/diagrams/taeguk-N.png`, data in `src/data/diagrams.json`) are by Jim Northrup, licence CC BY-SA 4.0; each card shows author, licence and link. ShareAlike applies to derived images. Not used: CC0 stance SVGs (artwork not checked against the cards) and one AI-generated SVG (unclear basis).
+
+### Not integrated yet
+About 100 techniques and combos still have no clip. Wikipedia (ko/en/de/es) facts and long-video subtitles, and the book "Taekwondo perfect" (Kim and Gil), are being researched; they are added here when verified.

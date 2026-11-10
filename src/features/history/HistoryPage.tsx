@@ -1,10 +1,12 @@
 import { KOREA_FACTS } from '../../data/koreaFacts'
 import { FactSections } from '../../shared/components/FactSections'
+import { ExportBar } from '../../shared/components/ExportBar'
+import { buildSectionsDoc } from '../export/document'
 import { useT } from '../../shared/i18n/useT'
 import { CHOI, TIMELINE } from './timeline'
 
 export function HistoryPage() {
-  const { t, loc } = useT()
+  const { t, loc, lang } = useT()
   return (
     <section className="grid gap-8">
       <h1 className="text-2xl font-bold">{t('historyTitle')}</h1>
@@ -33,6 +35,7 @@ export function HistoryPage() {
       </div>
       <div className="grid gap-3">
         <h2 className="text-lg font-semibold">{t('koreaTitle')}</h2>
+        <ExportBar build={() => buildSectionsDoc(t('koreaTitle'), KOREA_FACTS, { lang, t, loc })} />
         <FactSections sections={KOREA_FACTS} />
       </div>
     </section>

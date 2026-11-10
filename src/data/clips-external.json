@@ -86,5 +86,266 @@
     "end": 180,
     "label": "irishtkdassociation (ITF)",
     "similarity": "exact"
+  },
+  {
+    "cardId": "hyong-chong-ji",
+    "videoId": "4vAdfbs0Rlo",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 35
+  },
+  {
+    "cardId": "hyong-tang-gun",
+    "videoId": "4W9lza3V5R4",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 40
+  },
+  {
+    "cardId": "hyong-to-san",
+    "videoId": "ofN5mdiQqMQ",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 43
+  },
+  {
+    "cardId": "hyong-won-hyo",
+    "videoId": "xjLmmyvNWT8",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 50
+  },
+  {
+    "cardId": "hyong-yul-gok",
+    "videoId": "ccOy9Z1hZVk",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 59
+  },
+  {
+    "cardId": "hyong-chung-gun",
+    "videoId": "Lc3aI94y1JM",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 60
+  },
+  {
+    "cardId": "hyong-toi-gye",
+    "videoId": "P_6i96pDZLw",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 70
+  },
+  {
+    "cardId": "hyong-hwa-rang",
+    "videoId": "m7UEsVD-hpg",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 55
+  },
+  {
+    "cardId": "hyong-chung-mu",
+    "videoId": "L35mUDanJtc",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 58
+  },
+  {
+    "cardId": "hyong-gwang-gae",
+    "videoId": "yjX_nw31m-4",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 79
+  },
+  {
+    "cardId": "hyong-po-eun",
+    "videoId": "RE2mg_pu-BI",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 49
+  },
+  {
+    "cardId": "hyong-ge-baek",
+    "videoId": "SHcNcUaaxv8",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 71
+  },
+  {
+    "cardId": "hyong-chung-ang",
+    "videoId": "cWZL2LErGTg",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 96
+  },
+  {
+    "cardId": "hyong-sam-il",
+    "videoId": "xG4uBuH4NCE",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 59
+  },
+  {
+    "cardId": "hyong-yoo-sin",
+    "videoId": "8TOZVmWKJws",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 99
+  },
+  {
+    "cardId": "hyong-choi-yong",
+    "videoId": "PZXdNG3Bs4U",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 74
+  },
+  {
+    "cardId": "hyong-yon-gae",
+    "videoId": "8wX0JzYe8n0",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 86
+  },
+  {
+    "cardId": "hyong-ul-ji",
+    "videoId": "ftELWqMPfZ4",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 72
+  },
+  {
+    "cardId": "hyong-moon-moo",
+    "videoId": "vCwsyv0-Lno",
+    "start": 0,
+    "label": "TKDTube (Joel Denis)",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 117
+  },
+  {
+    "cardId": "hyong-eui-am",
+    "videoId": "UumpE4DCCGQ",
+    "start": 6,
+    "label": "Sonkal - Taekwon-Do ITF school",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 88
+  },
+  {
+    "cardId": "hyong-ko-dang",
+    "videoId": "-X7lrrEswyk",
+    "start": 6,
+    "label": "kenji1to6 (ITF)",
+    "similarity": "exact",
+    "silentSafe": false,
+    "end": 77
+  },
+  {
+    "cardId": "hyong-so-san",
+    "videoId": "tHz0f9Vb5Fk",
+    "start": 0,
+    "label": "TKDCoaching.com",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 120
+  },
+  {
+    "cardId": "hyong-se-yong",
+    "videoId": "hL6WLJ1tDto",
+    "start": 0,
+    "label": "Rudolf Kang (ITF HQ Korea)",
+    "similarity": "exact",
+    "silentSafe": false,
+    "end": 58
+  },
+  {
+    "cardId": "hyong-tong-il",
+    "videoId": "NEoTVPwlUyY",
+    "start": 0,
+    "label": "Juergen Englerth",
+    "similarity": "exact",
+    "silentSafe": true,
+    "end": 98
+  },
+  {
+    "cardId": "oe-santul-macki",
+    "videoId": "w3kxvS6HE9g",
+    "start": 1,
+    "label": "Academie Grand Lyon",
+    "similarity": "exact",
+    "silentSafe": false,
+    "end": 16
+  },
+  {
+    "cardId": "momdollyo-pandae-dollyo-chagi",
+    "videoId": "4wGudFjj6mc",
+    "start": 10,
+    "label": "Dr. Jason Han",
+    "similarity": "exact",
+    "silentSafe": false,
+    "end": 26
+  },
+  {
+    "cardId": "batangson-an-macki",
+    "videoId": "Xwkz7FcOUGA",
+    "start": 4,
+    "label": "Golden Kick Taekwondo Cayman Islands",
+    "similarity": "exact",
+    "silentSafe": false,
+    "end": 28
+  },
+  {
+    "cardId": "kima-sogi",
+    "videoId": "1kik_Z-Nqa0",
+    "start": 3,
+    "label": "TKD KICKS VT",
+    "similarity": "similar",
+    "silentSafe": false,
+    "end": 30
+  },
+  {
+    "cardId": "an-palmok-gawi-macki",
+    "videoId": "BAUv-3plhKM",
+    "start": 2,
+    "label": "Online Taekwondo | Kukkiwon Digital Academy",
+    "similarity": "similar",
+    "silentSafe": true,
+    "end": 30
   }
 ]

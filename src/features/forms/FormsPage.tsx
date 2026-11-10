@@ -4,6 +4,7 @@ import { BELTS } from '../../data/belts'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { CLIPS_BY_CARD } from '../../data/clips'
 import { SpeakButton } from '../../shared/components/SpeakButton'
+import { FormDiagram } from '../../shared/components/FormDiagram'
 import { useT } from '../../shared/i18n/useT'
 import { ClipViewer } from '../videos/ClipViewer'
 import type { Lang } from '../../shared/i18n/types'
@@ -99,6 +100,7 @@ export function FormsPage() {
               </div>
               <p className="mt-1 font-medium">{loc(f.symbol)}</p>
               <p className="text-sm text-slate-600">{loc(f.meaning)}</p>
+              <FormDiagram cardId={f.id} />
               {CLIPS_BY_CARD[f.id] && (
                 <div className="mt-2">
                   <button
@@ -189,6 +191,22 @@ export function FormsPage() {
             </div>
             <p className="mt-1 font-medium">{loc(h.symbol)}</p>
             <p className="text-sm text-slate-600">{loc(h.meaning)}</p>
+            {CLIPS_BY_CARD[h.id] && (
+              <div className="mt-2">
+                <button
+                  className="rounded-lg border px-3 py-1 text-sm"
+                  aria-expanded={open === h.id}
+                  onClick={() => setOpen(open === h.id ? null : h.id)}
+                >
+                  {open === h.id ? t('hide') : `▶ ${t('watch')}`}
+                </button>
+                {open === h.id && (
+                  <div className="mt-2">
+                    <ClipViewer cardId={h.id} />
+                  </div>
+                )}
+              </div>
+            )}
           </li>
         ))}
       </ul>

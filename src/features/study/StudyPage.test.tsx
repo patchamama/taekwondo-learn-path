@@ -32,3 +32,19 @@ describe('StudyPage', () => {
     expect(screen.getByRole('heading', { level: 2, name: /10 Kup/ })).toBeInTheDocument()
   })
 })
+
+describe('StudyPage export', () => {
+  it('offers Markdown, Word and PDF for this level and for all levels', () => {
+    open('/study/2')
+    expect(screen.getAllByRole('button', { name: 'Markdown' })).toHaveLength(2)
+    expect(screen.getAllByRole('button', { name: 'Word' })).toHaveLength(2)
+    expect(screen.getAllByRole('button', { name: 'PDF' })).toHaveLength(2)
+  })
+})
+
+describe('StudyPage diagrams', () => {
+  it('shows the Taegeuk floor pattern with its licence', () => {
+    open('/study/3')
+    expect(screen.getAllByText(/CC BY-SA 4.0/).length).toBeGreaterThan(0)
+  })
+})
