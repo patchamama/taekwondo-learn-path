@@ -12,6 +12,7 @@ import {
   nextLesson,
   type Completed,
 } from '../learn/progress'
+import { PathRoadmap } from './PathRoadmap'
 import { Bubble } from '../mascot/Bubble'
 import { GREETING } from '../mascot/lines'
 
@@ -44,6 +45,8 @@ export function PathPage() {
   const streak = useAppStore((s) => s.streak)
   const strict = useAppStore((s) => s.strictOrder)
   const reset = useAppStore((s) => s.reset)
+  const view = useAppStore((s) => s.pathView)
+  const setView = useAppStore((s) => s.setPathView)
   const held = heldBeltIndex(completed)
   const [open, setOpen] = useState<Set<string>>(() => new Set([BELTS[held].id]))
   const next = nextLesson(completed)
@@ -112,6 +115,25 @@ export function PathPage() {
           </div>
         </div>
 
+        <div
+          className="flex items-center gap-2 text-sm"
+          role="group"
+          aria-label={t('pathViewLabel')}
+        >
+          <span className="font-medium">{t('pathViewLabel')}:</span>
+          {(['list', 'map'] as const).map((v) => (
+            <button
+              key={v}
+              type="button"
+              aria-pressed={view === v}
+              onClick={() => setView(v)}
+              className={`rounded-full border px-3 py-1 ${view === v ? 'bg-slate-900 text-white' : 'bg-white'}`}
+            >
+              {t(v === 'list' ? 'pathViewList' : 'pathViewMap')}
+            </button>
+          ))}
+        </div>
+
         <Bubble mood="happy" beltColor={BELTS[held].color}>
           <p>{loc(GREETING(BELTS[held].name, days))}</p>
           {next ? (
@@ -126,63 +148,81 @@ export function PathPage() {
           )}
         </Bubble>
 
-        {sections.map((s, i) => {
-          const pct = percent(s.lessons, completed)
-          const isOpen = open.has(s.id)
-          return (
-            <details
-              key={s.id}
-              id={`sec-${s.id}`}
-              open={isOpen}
-              onToggle={(e) => toggle(s.id, e.currentTarget.open)}
-              className="rounded-2xl border bg-white shadow-sm"
-            >
-              <summary className="grid cursor-pointer gap-2 p-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-sm font-semibold text-slate-400">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span
-                    aria-hidden
-                    className="inline-block h-4 w-8 rounded border border-slate-800"
-                    style={{ background: swatch(s.belt) }}
-                  />
-                  <span className="flex-1">
-                    <span className="block font-bold">
-                      {s.belt.rank} · {loc(s.belt.name)}
-                      {i === held && (
-                        <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 text-xs">
-                          {t('youAreHere')}
+        {view === 'map' && (
+          <PathRoadmap
+            sections={[
+              ...sections.map((x) => ({
+                id: x.id,
+                belt: x.belt,
+                title: x.title,
+                lessons: x.lessons,
+              })),
+              ...(bonus ? [{ id: 'bonus', title: loc(bonus.title), lessons: bonusLessons }] : []),
+            ]}
+            completed={completed}
+            strict={strict}
+            nextId={next?.id}
+          />
+        )}
+
+        {view === 'list' &&
+          sections.map((s, i) => {
+            const pct = percent(s.lessons, completed)
+            const isOpen = open.has(s.id)
+            return (
+              <details
+                key={s.id}
+                id={`sec-${s.id}`}
+                open={isOpen}
+                onToggle={(e) => toggle(s.id, e.currentTarget.open)}
+                className="rounded-2xl border bg-white shadow-sm"
+              >
+                <summary className="grid cursor-pointer gap-2 p-4">
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm font-semibold text-slate-400">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span
+                      aria-hidden
+                      className="inline-block h-4 w-8 rounded border border-slate-800"
+                      style={{ background: swatch(s.belt) }}
+                    />
+                    <span className="flex-1">
+                      <span className="block font-bold">
+                        {s.belt.rank} · {loc(s.belt.name)}
+                        {i === held && (
+                          <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 text-xs">
+                            {t('youAreHere')}
+                          </span>
+                        )}
+                      </span>
+                      {s.lessons.length > 0 && (
+                        <span className="block text-xs text-slate-500">
+                          {s.lessons.map((l) => loc(l.title)).join(' · ')}
                         </span>
                       )}
                     </span>
-                    {s.lessons.length > 0 && (
-                      <span className="block text-xs text-slate-500">
-                        {s.lessons.map((l) => loc(l.title)).join(' · ')}
-                      </span>
-                    )}
-                  </span>
-                  <span className="text-sm font-semibold">{pct}%</span>
+                    <span className="text-sm font-semibold">{pct}%</span>
+                  </div>
+                  <ProgressBar value={pct} />
+                </summary>
+                <div className="grid gap-3 border-t p-4">
+                  {s.lessons.length > 0 ? (
+                    <LessonList lessons={s.lessons} completed={completed} strict={strict} />
+                  ) : (
+                    <p className="rounded-lg bg-slate-50 p-3 text-sm text-slate-500">
+                      {t('comingSoon')}
+                    </p>
+                  )}
+                  <Link to={`/study/${s.index}`} className="w-fit text-sm underline">
+                    📖 {t('pathStudyLink')}
+                  </Link>
                 </div>
-                <ProgressBar value={pct} />
-              </summary>
-              <div className="grid gap-3 border-t p-4">
-                {s.lessons.length > 0 ? (
-                  <LessonList lessons={s.lessons} completed={completed} strict={strict} />
-                ) : (
-                  <p className="rounded-lg bg-slate-50 p-3 text-sm text-slate-500">
-                    {t('comingSoon')}
-                  </p>
-                )}
-                <Link to={`/study/${s.index}`} className="w-fit text-sm underline">
-                  📖 {t('pathStudyLink')}
-                </Link>
-              </div>
-            </details>
-          )
-        })}
+              </details>
+            )
+          })}
 
-        {bonus && (
+        {view === 'list' && bonus && (
           <details className="rounded-2xl border border-dashed border-amber-400 bg-amber-50/50">
             <summary className="cursor-pointer p-4 font-bold">
               {loc(bonus.title)}

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { BELTS } from '../../data/belts'
@@ -16,7 +16,7 @@ const open = () =>
 describe('PathPage', () => {
   beforeEach(() => {
     useAppStore.getState().reset()
-    useAppStore.setState({ lang: 'en' })
+    useAppStore.setState({ lang: 'en', pathView: 'list' })
   })
 
   it('lists every belt as a numbered section with a progress bar', () => {
@@ -33,6 +33,15 @@ describe('PathPage', () => {
       'href',
       '/study/0',
     )
+  })
+
+  it('switches between the list and the path view', () => {
+    open()
+    expect(screen.queryByTestId('roadmap')).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'Path' }))
+    expect(screen.getByTestId('roadmap')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'List' }))
+    expect(screen.queryByTestId('roadmap')).toBeNull()
   })
 
   it('shows 100% for a belt once all its lessons are complete', () => {

@@ -23,6 +23,9 @@ export const STRINGS = {
     de: 'Öffne einen Gürtel, um Lektionen und Quiz zu sehen. Schließe alle Lektionen einer Einheit ab, um den Gürtel zu erhalten.',
     es: 'Abre un cinturón para ver sus lecciones y quizzes. Termina todas las lecciones de una unidad para ganar el cinturón.',
   },
+  pathViewList: { en: 'List', de: 'Liste', es: 'Lista' },
+  pathViewMap: { en: 'Path', de: 'Pfad', es: 'Camino' },
+  pathViewLabel: { en: 'View', de: 'Ansicht', es: 'Vista' },
   pathLesson: { en: 'Lesson', de: 'Lektion', es: 'Lección' },
   pathQuiz: { en: 'Quiz', de: 'Quiz', es: 'Quiz' },
   pathStudyLink: {
