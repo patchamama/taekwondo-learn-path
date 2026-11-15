@@ -26,6 +26,18 @@ export const STRINGS = {
   pathViewList: { en: 'List', de: 'Liste', es: 'Lista' },
   pathViewMap: { en: 'Path', de: 'Pfad', es: 'Camino' },
   pathViewLabel: { en: 'View', de: 'Ansicht', es: 'Vista' },
+  beltScheme: { en: 'Belt colours', de: 'Gürtelfarben', es: 'Colores de los cinturones' },
+  beltSchemeClub: {
+    en: 'Club colours (white, white-yellow, yellow, yellow-green, ...)',
+    de: 'Vereinsfarben (weiß, weiß-gelb, gelb, gelb-grün, ...)',
+    es: 'Colores del club (blanco, blanco-amarillo, amarillo, amarillo-verde, ...)',
+  },
+  beltSchemeTrad: {
+    en: 'Traditional sequence (white, yellow, orange, green, blue, brown, black)',
+    de: 'Traditionelle Reihenfolge (weiß, gelb, orange, grün, blau, braun, schwarz)',
+    es: 'Secuencia tradicional (blanco, amarillo, naranja, verde, azul, marrón, negro)',
+  },
+  pathViewMapOld: { en: 'Map', de: 'Karte', es: 'Mapa' },
   pathLesson: { en: 'Lesson', de: 'Lektion', es: 'Lección' },
   pathQuiz: { en: 'Quiz', de: 'Quiz', es: 'Quiz' },
   pathStudyLink: {

@@ -1,13 +1,15 @@
-import { BELTS } from '../../data/belts'
+import type { Belt } from '../../data/belts'
+import { useBelts } from '../store/useBelts'
 import { useT } from '../i18n/useT'
 import { useBeltFilter } from '../hooks/useBeltFilter'
 
-const swatch = (b: (typeof BELTS)[number]) =>
+const swatch = (b: Belt) =>
   b.stripe ? `linear-gradient(${b.color} 55%, ${b.stripe} 55%)` : b.color
 
 /** Slider 10 Kup → 1 Dan (cumulative) plus one button per belt to show only what is new there. */
 export function BeltRangeSlider() {
   const { t } = useT()
+  const BELTS = useBelts()
   const { max, setMax, only, setOnly } = useBeltFilter()
   const belt = BELTS[only ?? max]
   return (

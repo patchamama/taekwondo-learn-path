@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BELTS, type Belt } from '../../data/belts'
+import type { Belt } from '../../data/belts'
 import { LESSONS, UNITS, lessonsOfUnit, type Lesson } from '../../data/lessons'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
@@ -12,6 +12,8 @@ import {
   nextLesson,
   type Completed,
 } from '../learn/progress'
+import { useBelts } from '../../shared/store/useBelts'
+import { PathMap } from './PathMap'
 import { PathRoadmap } from './PathRoadmap'
 import { Bubble } from '../mascot/Bubble'
 import { GREETING } from '../mascot/lines'
@@ -41,6 +43,7 @@ function ProgressBar({ value }: { value: number }) {
 /** Course outline: numbered belt sections with a chapter preview, typed rows and a % per section. */
 export function PathPage() {
   const { t, loc } = useT()
+  const BELTS = useBelts()
   const completed = useAppStore((s) => s.completed)
   const streak = useAppStore((s) => s.streak)
   const strict = useAppStore((s) => s.strictOrder)
@@ -48,6 +51,7 @@ export function PathPage() {
   const view = useAppStore((s) => s.pathView)
   const setView = useAppStore((s) => s.setPathView)
   const held = heldBeltIndex(completed)
+  const [selected, setSelected] = useState(held)
   const [open, setOpen] = useState<Set<string>>(() => new Set([BELTS[held].id]))
   const next = nextLesson(completed)
   const days = activeStreak(streak, dayString())
@@ -121,7 +125,7 @@ export function PathPage() {
           aria-label={t('pathViewLabel')}
         >
           <span className="font-medium">{t('pathViewLabel')}:</span>
-          {(['list', 'map'] as const).map((v) => (
+          {(['list', 'path', 'map'] as const).map((v) => (
             <button
               key={v}
               type="button"
@@ -129,7 +133,7 @@ export function PathPage() {
               onClick={() => setView(v)}
               className={`rounded-full border px-3 py-1 ${view === v ? 'bg-slate-900 text-white' : 'bg-white'}`}
             >
-              {t(v === 'list' ? 'pathViewList' : 'pathViewMap')}
+              {t(v === 'list' ? 'pathViewList' : v === 'path' ? 'pathViewMap' : 'pathViewMapOld')}
             </button>
           ))}
         </div>
@@ -149,6 +153,28 @@ export function PathPage() {
         </Bubble>
 
         {view === 'map' && (
+          <div className="grid gap-4">
+            <PathMap
+              currentIndex={held}
+              selectedIndex={selected}
+              onSelect={setSelected}
+              youAreHere={t('youAreHere')}
+            />
+            <div className="rounded-2xl border bg-white p-5 shadow">
+              <h2 className="text-lg font-bold">
+                {sections[selected].belt.rank} · {loc(sections[selected].belt.name)}
+              </h2>
+              <p className="mb-2 text-sm text-slate-600">{sections[selected].title}</p>
+              <LessonList
+                lessons={sections[selected].lessons}
+                completed={completed}
+                strict={strict}
+              />
+            </div>
+          </div>
+        )}
+
+        {view === 'path' && (
           <PathRoadmap
             sections={[
               ...sections.map((x) => ({

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { BELTS } from '../../data/belts'
+import { useBelts } from '../../shared/store/useBelts'
 import { CARD_BY_ID } from '../../data/cards'
 import { CLIPS_BY_CARD } from '../../data/clips'
 import { KUKKIWON_BY_ID } from '../../data/kukkiwon'
@@ -85,6 +85,7 @@ export function StudyPage() {
   const { t, loc, lang } = useT()
   const { level } = useParams()
   const { max } = useBeltFilter()
+  const BELTS = useBelts()
   const parsed = Number(level)
   const index = Number.isInteger(parsed) && parsed >= 0 && parsed < BELTS.length ? parsed : 0
   const belt = BELTS[index]

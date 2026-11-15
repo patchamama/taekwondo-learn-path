@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import type { BeltScheme } from '../../data/beltScheme'
 import { persist } from 'zustand/middleware'
 import type { Lang } from '../i18n/types'
 
@@ -15,13 +16,15 @@ interface AppState {
   strictOrder: boolean // lock lessons until the previous one is done
   maxBelt: number // content filter: show items up to this belt index (0 = 10 Kup … 10 = 1 Dan)
   onlyBelt: number | null // when set, show only the items first needed at this belt
-  pathView: 'list' | 'map' // how the Path page shows the course
+  beltScheme: BeltScheme // belt colours: the club's or the traditional sequence
+  pathView: 'list' | 'path' | 'map' // how the Path page shows the course
   listening: boolean // include listening exercises
   videoLang: VideoLang
   setLang: (l: Lang) => void
   setStrictOrder: (v: boolean) => void
   setMaxBelt: (v: number) => void
-  setPathView: (v: 'list' | 'map') => void
+  setPathView: (v: 'list' | 'path' | 'map') => void
+  setBeltScheme: (v: BeltScheme) => void
   setOnlyBelt: (v: number | null) => void
   setListening: (v: boolean) => void
   setVideoLang: (v: VideoLang) => void
@@ -47,6 +50,7 @@ export const useAppStore = create<AppState>()(
       strictOrder: false,
       maxBelt: 10,
       pathView: 'list',
+      beltScheme: 'club',
       onlyBelt: null,
       listening: true,
       videoLang: 'auto',
@@ -54,6 +58,7 @@ export const useAppStore = create<AppState>()(
       setLang: (lang) => set({ lang }),
       setStrictOrder: (strictOrder) => set({ strictOrder }),
       setMaxBelt: (v) => set({ maxBelt: Math.max(0, Math.min(10, Math.round(v))) }),
+      setBeltScheme: (beltScheme) => set({ beltScheme }),
       setPathView: (pathView) => set({ pathView }),
       setOnlyBelt: (onlyBelt) => set({ onlyBelt }),
       setListening: (listening) => set({ listening }),

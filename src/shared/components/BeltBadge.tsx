@@ -1,10 +1,11 @@
-import { BELTS } from '../../data/belts'
+import { useBelts } from '../store/useBelts'
 import { cardBeltIndex } from '../../data/levels'
 import { useT } from '../i18n/useT'
 
 /** Small belt-coloured chip telling at which level a card first appears. */
 export function BeltBadge({ cardId, index }: { cardId?: string; index?: number }) {
   const { t } = useT()
+  const BELTS = useBelts()
   const i = index ?? (cardId ? cardBeltIndex(cardId) : 0)
   const b = BELTS[i]
   return (

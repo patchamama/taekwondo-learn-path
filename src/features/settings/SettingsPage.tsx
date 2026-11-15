@@ -15,6 +15,8 @@ export function SettingsPage() {
   const setListening = useAppStore((s) => s.setListening)
   const videoLang = useAppStore((s) => s.videoLang)
   const setVideoLang = useAppStore((s) => s.setVideoLang)
+  const scheme = useAppStore((s) => s.beltScheme)
+  const setScheme = useAppStore((s) => s.setBeltScheme)
 
   return (
     <section className="mx-auto grid max-w-xl gap-6">
@@ -45,6 +47,24 @@ export function SettingsPage() {
         </label>
         <p className="mt-2 text-sm text-slate-600">{t('listeningHint')}</p>
       </div>
+
+      <fieldset className="rounded-xl border bg-white p-5">
+        <legend className="px-1 font-medium">{t('beltScheme')}</legend>
+        <div className="grid gap-2">
+          {(['club', 'traditional'] as const).map((id) => (
+            <label key={id} className="flex items-start gap-3">
+              <input
+                type="radio"
+                name="beltScheme"
+                className="mt-1"
+                checked={scheme === id}
+                onChange={() => setScheme(id)}
+              />
+              <span>{t(id === 'club' ? 'beltSchemeClub' : 'beltSchemeTrad')}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
       <fieldset className="rounded-xl border bg-white p-5">
         <legend className="px-1 font-medium">{t('videoLang')}</legend>
