@@ -347,5 +347,113 @@
     "similarity": "similar",
     "silentSafe": true,
     "end": 30
+  },
+  {
+    "cardId": "ap-chagi",
+    "videoId": "aKA3TgYmShY",
+    "start": 0,
+    "end": 5,
+    "label": "Korean Academy of Taekwondo — English-title front kick demo",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "dollyo-chagi",
+    "videoId": "bb7UIJJGcrw",
+    "start": 0,
+    "end": 18,
+    "label": "Korean Academy of Taekwondo — English instruction / roundhouse demo",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "yop-chagi",
+    "videoId": "pFWrNhumO5k",
+    "start": 0,
+    "end": 18,
+    "label": "Korean Academy of Taekwondo — English instruction / side kick demo",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "naeryo-chagi",
+    "videoId": "ZwAs2lOPlSE",
+    "start": 0,
+    "end": 3,
+    "label": "Korean Academy of Taekwondo — English-title axe kick demo (3 s)",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "düt-chagi",
+    "videoId": "kjyvvqcTHh0",
+    "start": 0,
+    "end": 11,
+    "label": "Korean Academy of Taekwondo — English-title slow-motion back kick demo",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-1",
+    "videoId": "MDrNXuqTeE0",
+    "start": 160,
+    "end": 240,
+    "label": "Korean Academy of Taekwondo — English instruction excerpt / Taegeuk 1",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-2",
+    "videoId": "TkMQSBanLUk",
+    "start": 160,
+    "end": 240,
+    "label": "Korean Academy of Taekwondo — English instruction excerpt / Taegeuk 2",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-3",
+    "videoId": "CxKala6GhsA",
+    "start": 160,
+    "end": 300,
+    "label": "Korean Academy of Taekwondo — English instruction excerpt / Taegeuk 3",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-4",
+    "videoId": "m5VPW-gRvAI",
+    "start": 170,
+    "end": 280,
+    "label": "Korean Academy of Taekwondo — English instruction excerpt / Taegeuk 4",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-6",
+    "videoId": "gzae5gZEgcU",
+    "start": 159,
+    "end": 309,
+    "label": "Korean Academy of Taekwondo — English instruction excerpt / Taegeuk 6",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-7",
+    "videoId": "F-kDzz1_oqQ",
+    "start": 230,
+    "end": 278,
+    "label": "Korean Academy of Taekwondo — English instruction excerpt / Taegeuk 7",
+    "similarity": "similar",
+    "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-8",
+    "videoId": "pxZQUm5SYjQ",
+    "start": 200,
+    "end": 248,
+    "label": "Korean Academy of Taekwondo — English instruction excerpt / Taegeuk 8",
+    "similarity": "similar",
+    "silentSafe": false
   }
 ]

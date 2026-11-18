@@ -1,0 +1,89 @@
+import { createHash } from 'node:crypto'
+import { createElement } from 'react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it } from 'vitest'
+import { CARD_BY_ID } from './cards'
+import { CLIPS, CLIPS_BY_CARD, embedUrl } from './clips'
+import { ClipViewer } from '../features/videos/ClipViewer'
+import { buildVideoRounds } from '../features/videos/videoQuiz'
+import { useAppStore } from '../shared/store/useAppStore'
+
+const supplements = [
+  ['ap-chagi', 'aKA3TgYmShY', 0, 5, 5],
+  ['dollyo-chagi', 'bb7UIJJGcrw', 0, 18, 18],
+  ['yop-chagi', 'pFWrNhumO5k', 0, 18, 18],
+  ['naeryo-chagi', 'ZwAs2lOPlSE', 0, 3, 3],
+  ['düt-chagi', 'kjyvvqcTHh0', 0, 11, 11],
+  ['taeguk-1', 'MDrNXuqTeE0', 160, 240, 414],
+  ['taeguk-2', 'TkMQSBanLUk', 160, 240, 339],
+  ['taeguk-3', 'CxKala6GhsA', 160, 300, 449],
+  ['taeguk-4', 'm5VPW-gRvAI', 170, 280, 418],
+  ['taeguk-6', 'gzae5gZEgcU', 159, 309, 415],
+  ['taeguk-7', 'F-kDzz1_oqQ', 230, 278, 507],
+  ['taeguk-8', 'pxZQUm5SYjQ', 200, 248, 476],
+] as const
+const ids = new Set<string>(supplements.map(([, videoId]) => videoId))
+
+afterEach(cleanup)
+
+describe('EPUB supplements through the public clip inventory', () => {
+  it.each(supplements)('%s maps to its reviewed individual source and bounded excerpt', (cardId, videoId, start, end, duration) => {
+    expect(CARD_BY_ID[cardId]).toBeDefined()
+    const matches = CLIPS.filter((c) => c.cardId === cardId && c.videoId === videoId)
+    expect(matches).toHaveLength(1)
+    const clip = matches[0]
+    expect(CLIPS_BY_CARD[cardId]).toContain(clip)
+    expect(clip).toMatchObject({ source: 'external', start, end, similarity: 'similar', silentSafe: false })
+    expect(clip.label).toMatch(/Korean Academy of Taekwondo.*English/)
+    expect(clip.label).toMatch(cardId.startsWith('taeguk-') ? /instruction excerpt/ : /demo/)
+    expect(start).toBeGreaterThanOrEqual(0)
+    expect(end).toBeGreaterThan(start)
+    expect(end).toBeLessThanOrEqual(duration)
+    const url = new URL(embedUrl('de', clip))
+    expect(url.pathname).toBe(`/embed/${videoId}`)
+    expect(url.searchParams.get('start')).toBe(String(start))
+    expect(url.searchParams.get('end')).toBe(String(end))
+    expect(url.searchParams.has('list')).toBe(false)
+  })
+
+  it.each(supplements)('%s keeps its course default and exposes the supplement as a working source tab', (cardId, videoId) => {
+    useAppStore.setState({ lang: 'en' })
+    const clips = CLIPS_BY_CARD[cardId]
+    expect(clips[0].source).toBe('course')
+    const { container } = render(createElement(ClipViewer, { cardId, autoplay: false }))
+    expect(container.querySelector('iframe')?.getAttribute('src')).toBe(embedUrl('es', clips[0]))
+    const added = clips.find((c) => c.videoId === videoId)!
+    fireEvent.click(screen.getByRole('tab', { name: added.label }))
+    expect(screen.getByRole('tab', { name: added.label })).toHaveAttribute('aria-selected', 'true')
+    expect(container.querySelector('iframe')?.getAttribute('src')).toBe(embedUrl('es', added))
+  })
+
+  it('appends only the twelve reviewed sources after all forty unchanged legacy external records', () => {
+    const external = CLIPS.filter((c) => c.source === 'external')
+    expect(external).toHaveLength(52)
+    const legacy = external.slice(0, 40).map((clip) =>
+      Object.fromEntries(Object.entries(clip).filter(([key]) => key !== 'source')),
+    )
+    // Fixed pre-change inventory fingerprint: no dependency on Git history in tests.
+    expect(createHash('sha256').update(JSON.stringify(legacy)).digest('hex'))
+      .toBe('74b33300ab0c53e8b360e6539b7bcfaf76b30a9e5354fa139d233f1370fa8f9d')
+    expect(external.slice(40).map((c) => c.videoId)).toEqual(supplements.map(([, id]) => id))
+    expect(CLIPS.some((c) => c.videoId === 'qNpQpJLHyUg')).toBe(false)
+  })
+
+  it('never offers a review-only source in the public silent video quiz', () => {
+    expect(CLIPS.filter((c) => c.silentSafe).some((c) => ids.has(c.videoId ?? ''))).toBe(false)
+    for (const rng of [() => 0, () => 0.5, () => 0.999]) {
+      const rounds = buildVideoRounds(rng, CLIPS.length, (id) => supplements.some(([cardId]) => cardId === id))
+      // The five kicks have safe course clips; the named form recordings do not.
+      expect(rounds.map((round) => round.cardId).sort()).toEqual(
+        supplements.slice(0, 5).map(([cardId]) => cardId).sort(),
+      )
+      for (const round of rounds) {
+        expect(round.clip.silentSafe).toBe(true)
+        expect(ids.has(round.clip.videoId ?? '')).toBe(false)
+        expect(round.clip.source).toBe('course')
+      }
+    }
+  })
+})
