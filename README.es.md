@@ -16,6 +16,7 @@ La mayoría del material de Taekwondo está en un solo idioma y pide memorizar l
 
 - **Ruta de aprendizaje** con mapa de cinturones (10 Kup → 1 Dan), lecciones, quizzes, XP y rachas
 - **Vista de lectura** por cinturón, acumulada o solo lo nuevo, exportable a **PDF, Word y Markdown**
+- **Conceptos y práctica** (`#/concepts`): lecturas en tres idiomas sobre movimiento, propósito de las técnicas, bloqueos, formas y principios, además de meditación opcional, calentamiento, estiramientos y ejercicios adaptables. Hay enlaces contextuales en las introducciones de lecciones y el estudio por cinturón; leer no cambia los resultados del quiz ni el progreso de cinturones.
 - **Técnicas, formas y términos** con desglose de palabras, hangul, audio, equivalentes de karate y el cinturón en que aparece cada tarjeta
 - **Vídeos y tiras de fotogramas** por técnica, maximizables, y quizzes de vídeo (clip sin sonido → elige la técnica)
 - **Formas**: Taegeuk (con diagramas del recorrido), Hyong/Tul y formas de maestro (Yudanja)
@@ -54,6 +55,8 @@ Cada push a `main` ejecuta los tests y publica en GitHub Pages (`.github/workflo
 ## Contenido y fuentes
 
 El contenido viene de los PDFs de examen del club (en `docs/`), las convenciones del Kukkiwon, Wikipedia (CC BY-SA 4.0, parafraseada con enlaces) y vídeos públicos de YouTube. Todas las fuentes y su fiabilidad están en [`docs/sources.md`](docs/sources.md). Los equivalentes de karate y las grafías Kukkiwon generadas están marcados como no verificados: confírmalos con tu instructor.
+
+Las nuevas lecturas son paráfrasis originales basadas en los EPUB; consulta las [notas de fuentes de conceptos](docs/curriculum/epub-concepts.md) y el [registro de fuentes y permisos EPUB](docs/epub-sources.md). El permiso de reutilización declarado por la persona propietaria no es una licencia pública de los libros. Los ejercicios son ejemplos opcionales, no orientación sanitaria individual.
 
 ## Notas
 

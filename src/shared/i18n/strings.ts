@@ -9,6 +9,17 @@ export const STRINGS = {
     es: 'Taekwondo – El Camino (Do)',
   },
   navPath: { en: 'Path', de: 'Pfad', es: 'Camino' },
+  navConcepts: { en: 'Concepts & practice', de: 'Konzepte & Praxis', es: 'Conceptos y práctica' },
+  readingContext: {
+    en: 'Connect what you learn to practice',
+    de: 'Verbinde das Gelernte mit der Praxis',
+    es: 'Relaciona lo aprendido con la práctica',
+  },
+  readingPreparation: {
+    en: 'Optional preparation: meditation, warm-up, stretching and exercises',
+    de: 'Freiwillige Vorbereitung: Meditation, Aufwärmen, Dehnen und Übungen',
+    es: 'Preparación opcional: meditación, calentamiento, estiramientos y ejercicios',
+  },
   navTechniques: { en: 'Techniques', de: 'Techniken', es: 'Técnicas' },
   navTerms: { en: 'Korean terms', de: 'Koreanische Begriffe', es: 'Términos coreanos' },
   navForms: { en: 'Forms', de: 'Formen', es: 'Formas' },

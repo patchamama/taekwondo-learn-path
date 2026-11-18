@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useBelts } from '../../shared/store/useBelts'
 import { CARD_BY_ID } from '../../data/cards'
+import { CONCEPTS } from '../../data/concepts'
 import { CLIPS_BY_CARD } from '../../data/clips'
 import { KUKKIWON_BY_ID } from '../../data/kukkiwon'
 import { MORPHEME_BY_ID } from '../../data/morphemes'
@@ -156,6 +157,23 @@ export function StudyPage() {
           </Link>
         )}
       </header>
+
+      <aside className="grid gap-3 rounded-xl border bg-white p-4 text-sm">
+        <h2 className="font-bold">{t('readingContext')}</h2>
+        <ul className="grid gap-2 sm:grid-cols-2">
+          {CONCEPTS.filter((topic) => ['movement', 'technique-purpose', 'blocks', 'patterns', 'principles', 'practice'].includes(topic.id))
+            .map((topic) => (
+              <li key={topic.id}><Link className="underline" to={`/concepts#${topic.id}`}>{loc(topic.title)}</Link></li>
+            ))}
+        </ul>
+        <h3 className="font-semibold">{t('readingPreparation')}</h3>
+        <ul className="grid gap-2 sm:grid-cols-2">
+          {CONCEPTS.filter((topic) => ['meditation', 'warmup-mobility', 'stretching', 'conditioning'].includes(topic.id))
+            .map((topic) => (
+              <li key={topic.id}><Link className="underline" to={`/concepts#${topic.id}`}>{loc(topic.title)}</Link></li>
+            ))}
+        </ul>
+      </aside>
 
       {c.cardIds.length === 0 && c.theory.length === 0 && (
         <p className="text-slate-500">{t('studyEmpty')}</p>

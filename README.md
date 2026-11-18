@@ -16,6 +16,7 @@ Most Taekwondo material is in one language and treats technique names as things 
 
 - **Learning path** with a belt-by-belt map (10 Kup → 1 Dan), lessons, quizzes, XP and streaks
 - **Study (reading) view** per belt, cumulative or only what is new, exportable to **PDF, Word and Markdown**
+- **Concepts & practice** (`#/concepts`): trilingual readings on movement, technique purpose, blocks, forms and principles, plus optional meditation, warm-up, stretching and adaptable exercises. Find contextual links in lesson intros and belt study; reading does not change quiz results or belt progress.
 - **Techniques, forms, terms** with Korean word breakdown, hangul, audio, karate equivalents and the belt where each card first appears
 - **Videos and frame strips** per technique, maximizable, plus video quizzes (silent clip → pick the technique)
 - **Forms**: Taegeuk (with floor diagrams), Hyong/Tul and master forms (Yudanja)
@@ -54,6 +55,8 @@ Every push to `main` runs tests and deploys to GitHub Pages (`.github/workflows/
 ## Content and sources
 
 Content comes from the club's exam PDFs (in `docs/`), the Kukkiwon textbook conventions, Wikipedia (CC BY-SA 4.0, paraphrased with links) and public YouTube videos. Every source and its trust level is listed in [`docs/sources.md`](docs/sources.md). Karate equivalents and generated Kukkiwon spellings are marked as unverified: check with your instructor.
+
+The new readings use original EPUB-grounded paraphrases; see the [concept source notes](docs/curriculum/epub-concepts.md) and [EPUB source/permission ledger](docs/epub-sources.md). Owner-asserted reuse permission is not a public book licence. Exercise examples are optional learning aids, not individual health advice.
 
 ## Notes
 

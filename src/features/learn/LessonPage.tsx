@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { BELTS } from '../../data/belts'
+import { CONCEPTS } from '../../data/concepts'
 import { CARD_BY_ID } from '../../data/cards'
 import { LESSON_BY_ID, LESSONS, UNITS } from '../../data/lessons'
 import { SpeakButton } from '../../shared/components/SpeakButton'
@@ -54,6 +55,28 @@ export function PracticePage() {
   return <Run key="practice" lessonId={null} learned={learned} mastery={mastery} />
 }
 
+function LessonReadings({ cardIds, theory }: { cardIds: string[]; theory: boolean }) {
+  const { t, loc } = useT()
+  const cards = cardIds.map((id) => CARD_BY_ID[id])
+  const topics = new Set(['practice'])
+  if (cards.some((c) => c.kind === 'technique' || c.group === 'morpheme-action')) topics.add('technique-purpose')
+  if (cards.some((c) => c.group.includes('stance') || c.id === 'sogi' || c.id === 'gubi')) topics.add('movement')
+  if (cards.some((c) => c.id.includes('macki'))) topics.add('blocks')
+  if (cards.some((c) => c.kind === 'form')) topics.add('patterns')
+  if (theory || cards.some((c) => c.group.includes('basic') || c.group.includes('command'))) topics.add('principles')
+  return (
+    <aside className="grid gap-3 rounded-xl border bg-white p-4 text-sm">
+      <h2 className="font-bold">{t('readingContext')}</h2>
+      <ul className="flex flex-wrap gap-x-4 gap-y-2">
+        {CONCEPTS.filter((c) => topics.has(c.id)).map((c) => (
+          <li key={c.id}><Link className="underline" to={`/concepts#${c.id}`}>{loc(c.title)}</Link></li>
+        ))}
+      </ul>
+      <Link className="underline" to="/concepts#meditation">{t('readingPreparation')}</Link>
+    </aside>
+  )
+}
+
 interface RunProps {
   lessonId: string | null
   learned?: string[]
@@ -103,6 +126,7 @@ function Run({ lessonId, learned = [], mastery = {} }: RunProps) {
         <Bubble mood="happy" beltColor={beltBefore.color}>
           {loc(lesson.tip)}
         </Bubble>
+        <LessonReadings cardIds={lesson.cardIds} theory={Boolean(lesson.theoryIds?.length)} />
         {lesson.cardIds.length > 0 && (
           <ul className="grid gap-2">
             {lesson.cardIds.map((cid, k) => (

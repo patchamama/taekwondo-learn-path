@@ -16,6 +16,7 @@ Die meisten Taekwondo-Unterlagen sind einsprachig und lassen Technikbezeichnunge
 
 - **Lernpfad** mit Gürtelkarte (10 Kup → 1 Dan), Lektionen, Quiz, XP und Serien
 - **Lese-Ansicht** pro Gürtel, kumulativ oder nur das Neue, exportierbar als **PDF, Word und Markdown**
+- **Konzepte & Praxis** (`#/concepts`): dreisprachige Lesetexte zu Bewegung, Technikzweck, Blocks, Formen und Grundsätzen sowie freiwilliger Meditation, Aufwärmen, Dehnen und anpassbaren Übungen. Kontextlinks stehen in Lektionseinleitungen und der Gürtel-Leseansicht; Lesen verändert weder Quiz-Ergebnisse noch Gürtelfortschritt.
 - **Techniken, Formen, Begriffe** mit Wortzerlegung, Hangul, Audio, Karate-Entsprechungen und dem Gürtel, ab dem jede Karte vorkommt
 - **Videos und Bildfolgen** pro Technik, vergrößerbar, dazu Video-Quiz (stummer Clip → Technik wählen)
 - **Formen**: Taegeuk (mit Laufwegen), Hyong/Tul und Meisterformen (Yudanja)
@@ -54,6 +55,8 @@ Jeder Push auf `main` startet die Tests und veröffentlicht auf GitHub Pages (`.
 ## Inhalte und Quellen
 
 Die Inhalte stammen aus den Prüfungs-PDFs des Vereins (in `docs/`), den Kukkiwon-Konventionen, Wikipedia (CC BY-SA 4.0, paraphrasiert mit Links) und öffentlichen YouTube-Videos. Alle Quellen samt Verlässlichkeit stehen in [`docs/sources.md`](docs/sources.md). Karate-Entsprechungen und erzeugte Kukkiwon-Schreibweisen sind als ungeprüft markiert: bitte mit dem Trainer abklären.
+
+Die neuen Lesetexte sind eigene, auf EPUBs gestützte Paraphrasen; siehe [Quellennachweise zu den Konzepten](docs/curriculum/epub-concepts.md) und [EPUB-Quellen- und Genehmigungsübersicht](docs/epub-sources.md). Die von der besitzenden Person erklärte Nutzungserlaubnis ist keine öffentliche Buchlizenz. Übungsbeispiele sind freiwillige Lernhilfen, keine individuelle Gesundheitsberatung.
 
 ## Hinweise
 
