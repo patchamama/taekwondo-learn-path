@@ -1,0 +1,210 @@
+{
+  "taeguk-1": {
+    "file": "diagrams/books/woo-taegeuk-1-sequence.jpg",
+    "title": "Taegeuk 1 — Sung Woo",
+    "author": "Sung Woo",
+    "bookTitle": "Taekwondo Poomsae (Taegeuk 1-8 Jang)",
+    "copyright": "© 2015 Sung Woo. All rights reserved.",
+    "permission": "owner-confirmed",
+    "sourceBookId": "woo-2015",
+    "sourceMember": "OEBPS/image_rsrc223.jpg",
+    "chapterMember": "OEBPS/cSD.xhtml",
+    "overviewMember": "OEBPS/c75.xhtml",
+    "sha256": "3d43f00f2709343767f33f545b266a38fb787cbc40355c0d0c71c2eab28fbb70",
+    "bytes": 49568,
+    "width": 624,
+    "height": 832,
+    "caption": {
+      "en": "Taegeuk 1: supplemental full-form photographic reference. Embedded text: English and Korean. Follow the numbered movements with your instructor; this is not a translated lesson.",
+      "de": "Taegeuk 1: ergänzende fotografische Referenz der vollständigen Form. Bildtext: Englisch und Koreanisch. Die nummerierten Bewegungen mit der Lehrkraft durchgehen; dies ist keine übersetzte Anleitung.",
+      "es": "Taegeuk 1: referencia fotográfica complementaria de la forma completa. Texto en la imagen: inglés y coreano. Sigue los movimientos numerados con tu instructor; no es una lección traducida."
+    },
+    "alt": {
+      "en": "Taegeuk 1: complete photographic sequence and floor directions. Embedded text: English and Korean.",
+      "de": "Taegeuk 1: vollständige Fotosequenz und Laufrichtungen. Bildtext: Englisch und Koreanisch.",
+      "es": "Taegeuk 1: secuencia fotográfica completa y direcciones de desplazamiento. Texto en la imagen: inglés y coreano."
+    }
+  },
+  "taeguk-2": {
+    "file": "diagrams/books/woo-taegeuk-2-sequence.jpg",
+    "title": "Taegeuk 2 — Sung Woo",
+    "author": "Sung Woo",
+    "bookTitle": "Taekwondo Poomsae (Taegeuk 1-8 Jang)",
+    "copyright": "© 2015 Sung Woo. All rights reserved.",
+    "permission": "owner-confirmed",
+    "sourceBookId": "woo-2015",
+    "sourceMember": "OEBPS/image_rsrc224.jpg",
+    "chapterMember": "OEBPS/cTZ.xhtml",
+    "overviewMember": "OEBPS/c7E.xhtml",
+    "sha256": "5cb82b003e1b795617e59e23a6ede6b5ad2411735b1034ddbac1735aefb9aa26",
+    "bytes": 53255,
+    "width": 624,
+    "height": 832,
+    "caption": {
+      "en": "Taegeuk 2: supplemental full-form photographic reference. Embedded text: English and Korean. Follow the numbered movements with your instructor; this is not a translated lesson.",
+      "de": "Taegeuk 2: ergänzende fotografische Referenz der vollständigen Form. Bildtext: Englisch und Koreanisch. Die nummerierten Bewegungen mit der Lehrkraft durchgehen; dies ist keine übersetzte Anleitung.",
+      "es": "Taegeuk 2: referencia fotográfica complementaria de la forma completa. Texto en la imagen: inglés y coreano. Sigue los movimientos numerados con tu instructor; no es una lección traducida."
+    },
+    "alt": {
+      "en": "Taegeuk 2: complete photographic sequence and floor directions. Embedded text: English and Korean.",
+      "de": "Taegeuk 2: vollständige Fotosequenz und Laufrichtungen. Bildtext: Englisch und Koreanisch.",
+      "es": "Taegeuk 2: secuencia fotográfica completa y direcciones de desplazamiento. Texto en la imagen: inglés y coreano."
+    }
+  },
+  "taeguk-3": {
+    "file": "diagrams/books/woo-taegeuk-3-sequence.jpg",
+    "title": "Taegeuk 3 — Sung Woo",
+    "author": "Sung Woo",
+    "bookTitle": "Taekwondo Poomsae (Taegeuk 1-8 Jang)",
+    "copyright": "© 2015 Sung Woo. All rights reserved.",
+    "permission": "owner-confirmed",
+    "sourceBookId": "woo-2015",
+    "sourceMember": "OEBPS/image_rsrc225.jpg",
+    "chapterMember": "OEBPS/cVS.xhtml",
+    "overviewMember": "OEBPS/c7P.xhtml",
+    "sha256": "c11f0037338cb88a85157252913aa50da7aea00aed9d2ee93df4530b8b02d513",
+    "bytes": 57834,
+    "width": 624,
+    "height": 832,
+    "caption": {
+      "en": "Taegeuk 3: supplemental full-form photographic reference. Embedded text: English and Korean. Follow the numbered movements with your instructor; this is not a translated lesson.",
+      "de": "Taegeuk 3: ergänzende fotografische Referenz der vollständigen Form. Bildtext: Englisch und Koreanisch. Die nummerierten Bewegungen mit der Lehrkraft durchgehen; dies ist keine übersetzte Anleitung.",
+      "es": "Taegeuk 3: referencia fotográfica complementaria de la forma completa. Texto en la imagen: inglés y coreano. Sigue los movimientos numerados con tu instructor; no es una lección traducida."
+    },
+    "alt": {
+      "en": "Taegeuk 3: complete photographic sequence and floor directions. Embedded text: English and Korean.",
+      "de": "Taegeuk 3: vollständige Fotosequenz und Laufrichtungen. Bildtext: Englisch und Koreanisch.",
+      "es": "Taegeuk 3: secuencia fotográfica completa y direcciones de desplazamiento. Texto en la imagen: inglés y coreano."
+    }
+  },
+  "taeguk-4": {
+    "file": "diagrams/books/woo-taegeuk-4-sequence.jpg",
+    "title": "Taegeuk 4 — Sung Woo",
+    "author": "Sung Woo",
+    "bookTitle": "Taekwondo Poomsae (Taegeuk 1-8 Jang)",
+    "copyright": "© 2015 Sung Woo. All rights reserved.",
+    "permission": "owner-confirmed",
+    "sourceBookId": "woo-2015",
+    "sourceMember": "OEBPS/image_rsrc226.jpg",
+    "chapterMember": "OEBPS/cYJ.xhtml",
+    "overviewMember": "OEBPS/c7Y.xhtml",
+    "sha256": "88c71a6de13f72fd7a681e4773666788388e219599fed0cf3e6ad78d0cec6c97",
+    "bytes": 55930,
+    "width": 624,
+    "height": 832,
+    "caption": {
+      "en": "Taegeuk 4: supplemental full-form photographic reference. Embedded text: English and Korean. Follow the numbered movements with your instructor; this is not a translated lesson.",
+      "de": "Taegeuk 4: ergänzende fotografische Referenz der vollständigen Form. Bildtext: Englisch und Koreanisch. Die nummerierten Bewegungen mit der Lehrkraft durchgehen; dies ist keine übersetzte Anleitung.",
+      "es": "Taegeuk 4: referencia fotográfica complementaria de la forma completa. Texto en la imagen: inglés y coreano. Sigue los movimientos numerados con tu instructor; no es una lección traducida."
+    },
+    "alt": {
+      "en": "Taegeuk 4: complete photographic sequence and floor directions. Embedded text: English and Korean.",
+      "de": "Taegeuk 4: vollständige Fotosequenz und Laufrichtungen. Bildtext: Englisch und Koreanisch.",
+      "es": "Taegeuk 4: secuencia fotográfica completa y direcciones de desplazamiento. Texto en la imagen: inglés y coreano."
+    }
+  },
+  "taeguk-5": {
+    "file": "diagrams/books/woo-taegeuk-5-sequence.jpg",
+    "title": "Taegeuk 5 — Sung Woo",
+    "author": "Sung Woo",
+    "bookTitle": "Taekwondo Poomsae (Taegeuk 1-8 Jang)",
+    "copyright": "© 2015 Sung Woo. All rights reserved.",
+    "permission": "owner-confirmed",
+    "sourceBookId": "woo-2015",
+    "sourceMember": "OEBPS/image_rsrc227.jpg",
+    "chapterMember": "OEBPS/c10V.xhtml",
+    "overviewMember": "OEBPS/c86.xhtml",
+    "sha256": "e21e5b85ec5aab8e94f2cad834038961e42d3f7724d767f6890e4b579296ce15",
+    "bytes": 60023,
+    "width": 624,
+    "height": 832,
+    "caption": {
+      "en": "Taegeuk 5: supplemental full-form photographic reference. Embedded text: English and Korean. Follow the numbered movements with your instructor; this is not a translated lesson.",
+      "de": "Taegeuk 5: ergänzende fotografische Referenz der vollständigen Form. Bildtext: Englisch und Koreanisch. Die nummerierten Bewegungen mit der Lehrkraft durchgehen; dies ist keine übersetzte Anleitung.",
+      "es": "Taegeuk 5: referencia fotográfica complementaria de la forma completa. Texto en la imagen: inglés y coreano. Sigue los movimientos numerados con tu instructor; no es una lección traducida."
+    },
+    "alt": {
+      "en": "Taegeuk 5: complete photographic sequence and floor directions. Embedded text: English and Korean.",
+      "de": "Taegeuk 5: vollständige Fotosequenz und Laufrichtungen. Bildtext: Englisch und Koreanisch.",
+      "es": "Taegeuk 5: secuencia fotográfica completa y direcciones de desplazamiento. Texto en la imagen: inglés y coreano."
+    }
+  },
+  "taeguk-6": {
+    "file": "diagrams/books/woo-taegeuk-6-sequence.jpg",
+    "title": "Taegeuk 6 — Sung Woo",
+    "author": "Sung Woo",
+    "bookTitle": "Taekwondo Poomsae (Taegeuk 1-8 Jang)",
+    "copyright": "© 2015 Sung Woo. All rights reserved.",
+    "permission": "owner-confirmed",
+    "sourceBookId": "woo-2015",
+    "sourceMember": "OEBPS/image_rsrc228.jpg",
+    "chapterMember": "OEBPS/c13M.xhtml",
+    "overviewMember": "OEBPS/c8E.xhtml",
+    "sha256": "ec8b8b9023e62a31a4833222c29fe360b8d9f14f0cb511c4b9c5582c6a9a7f2e",
+    "bytes": 48677,
+    "width": 624,
+    "height": 832,
+    "caption": {
+      "en": "Taegeuk 6: supplemental full-form photographic reference. Embedded text: English and Korean. Follow the numbered movements with your instructor; this is not a translated lesson.",
+      "de": "Taegeuk 6: ergänzende fotografische Referenz der vollständigen Form. Bildtext: Englisch und Koreanisch. Die nummerierten Bewegungen mit der Lehrkraft durchgehen; dies ist keine übersetzte Anleitung.",
+      "es": "Taegeuk 6: referencia fotográfica complementaria de la forma completa. Texto en la imagen: inglés y coreano. Sigue los movimientos numerados con tu instructor; no es una lección traducida."
+    },
+    "alt": {
+      "en": "Taegeuk 6: complete photographic sequence and floor directions. Embedded text: English and Korean.",
+      "de": "Taegeuk 6: vollständige Fotosequenz und Laufrichtungen. Bildtext: Englisch und Koreanisch.",
+      "es": "Taegeuk 6: secuencia fotográfica completa y direcciones de desplazamiento. Texto en la imagen: inglés y coreano."
+    }
+  },
+  "taeguk-7": {
+    "file": "diagrams/books/woo-taegeuk-7-sequence.jpg",
+    "title": "Taegeuk 7 — Sung Woo",
+    "author": "Sung Woo",
+    "bookTitle": "Taekwondo Poomsae (Taegeuk 1-8 Jang)",
+    "copyright": "© 2015 Sung Woo. All rights reserved.",
+    "permission": "owner-confirmed",
+    "sourceBookId": "woo-2015",
+    "sourceMember": "OEBPS/image_rsrc229.jpg",
+    "chapterMember": "OEBPS/c165.xhtml",
+    "overviewMember": "OEBPS/c8P.xhtml",
+    "sha256": "cdaa78ea73e58919e133e405c34d5e8548b2e943520a0ad0015b5760559c583a",
+    "bytes": 58072,
+    "width": 624,
+    "height": 832,
+    "caption": {
+      "en": "Taegeuk 7: supplemental full-form photographic reference. Embedded text: English and Korean. Follow the numbered movements with your instructor; this is not a translated lesson.",
+      "de": "Taegeuk 7: ergänzende fotografische Referenz der vollständigen Form. Bildtext: Englisch und Koreanisch. Die nummerierten Bewegungen mit der Lehrkraft durchgehen; dies ist keine übersetzte Anleitung.",
+      "es": "Taegeuk 7: referencia fotográfica complementaria de la forma completa. Texto en la imagen: inglés y coreano. Sigue los movimientos numerados con tu instructor; no es una lección traducida."
+    },
+    "alt": {
+      "en": "Taegeuk 7: complete photographic sequence and floor directions. Embedded text: English and Korean.",
+      "de": "Taegeuk 7: vollständige Fotosequenz und Laufrichtungen. Bildtext: Englisch und Koreanisch.",
+      "es": "Taegeuk 7: secuencia fotográfica completa y direcciones de desplazamiento. Texto en la imagen: inglés y coreano."
+    }
+  },
+  "taeguk-8": {
+    "file": "diagrams/books/woo-taegeuk-8-sequence.jpg",
+    "title": "Taegeuk 8 — Sung Woo",
+    "author": "Sung Woo",
+    "bookTitle": "Taekwondo Poomsae (Taegeuk 1-8 Jang)",
+    "copyright": "© 2015 Sung Woo. All rights reserved.",
+    "permission": "owner-confirmed",
+    "sourceBookId": "woo-2015",
+    "sourceMember": "OEBPS/image_rsrc22A.jpg",
+    "chapterMember": "OEBPS/c18P.xhtml",
+    "overviewMember": "OEBPS/c8Y.xhtml",
+    "sha256": "886a87d49181a54b5f19e04a06d76ff9f52c0ec2f5b044aee5985cf43ca8bdfa",
+    "bytes": 63430,
+    "width": 624,
+    "height": 832,
+    "caption": {
+      "en": "Taegeuk 8: supplemental full-form photographic reference. Embedded text: English and Korean. Follow the numbered movements with your instructor; this is not a translated lesson.",
+      "de": "Taegeuk 8: ergänzende fotografische Referenz der vollständigen Form. Bildtext: Englisch und Koreanisch. Die nummerierten Bewegungen mit der Lehrkraft durchgehen; dies ist keine übersetzte Anleitung.",
+      "es": "Taegeuk 8: referencia fotográfica complementaria de la forma completa. Texto en la imagen: inglés y coreano. Sigue los movimientos numerados con tu instructor; no es una lección traducida."
+    },
+    "alt": {
+      "en": "Taegeuk 8: complete photographic sequence and floor directions. Embedded text: English and Korean.",
+      "de": "Taegeuk 8: vollständige Fotosequenz und Laufrichtungen. Bildtext: Englisch und Koreanisch.",
+      "es": "Taegeuk 8: secuencia fotográfica completa y direcciones de desplazamiento. Texto en la imagen: inglés y coreano."
+    }
+  }
+}

@@ -36,6 +36,14 @@ Video ids: azqXl4ys3WY, qqlObIyF-tw, p-D4m0rYRvQ, a5rTS4TF9Mg, ekrf7IC3M7o, ZsYC
 - Kim Un-yong (1997), *Taekwondo Textbook*, Kukkiwon, Seoul (English edition). Source of the Kukkiwon names (Revised Romanization), hangul and printed page numbers in `src/data/kukkiwon.json` and `docs/kukkiwon-terminology.md`. Page numbers are **printed** pages; PDF page = printed + 4.
 - Bibliography cited by the club PDFs (Kachel 2011, Kang 2016, Kildare) appears in `docs/kukkiwon-terminology.md` where it supported a fact.
 
+### Supplied EPUBs consulted for course enrichment
+
+Seven local English EPUBs were progressively examined: Clint Sharp (2022), Adam Gold (ITF theory, 2016), Ted Hillson (classic Hyung, 2013 electronic edition), Scott McMillan (sparring, 2024), Sung Woo (Taegeuk 1–8, 2015), Bill & Katie Pottle (2025 update; OPF date 2013), and Bryan McWhorter (2016). The [EPUB source ledger](epub-sources.md) records exact filenames, OPF/copyright metadata, internal chapter/member locators, quality limits, source-to-course plans and SHA-256 hashes.
+
+Eight visually identified full-form photographic plates from Sung Woo supplement, **not replace**, the existing Wikimedia floor diagrams. Attribution: Sung Woo, *Taekwondo Poomsae (Taegeuk 1-8 Jang)*, © 2015 Sung Woo, all rights reserved. **Used with owner-confirmed permission**: the user selected «Tengo permiso para reutilizarlas». This is owner-asserted reuse permission, not public domain/CC status or independent rights clearance. The book's “Official” title wording does not establish institutional endorsement. Embedded plate text remains English/Korean; app captions and alt text are en/de/es. Exact origin members, local asset names, byte counts and hashes are in the ledger and `src/data/bookFormImages.json`.
+
+The supplied EPUBs remain unchanged, untracked and not publicly linked or published. Classic Hillson Kuk Mu 1 and ITF Chang-Hon patterns are not Taegeuk 1. Source numbering (notably Woo's Taegeuk 8 plate) is not used to overwrite club curriculum move counts. Parallel content units must retain source/uncertainty notes and avoid importing unsafe training claims.
+
 ## 4. Derived or generated content (verify before relying on it)
 
 | Content | How it was made | Trust |
