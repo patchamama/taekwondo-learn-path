@@ -7,6 +7,16 @@ Files: facts.json (52), terms.json (85), videos.json (4 mined, 6 notes). All und
 - Verified against a primary-ish document: 2026 WT kyorugi rule update (USA Taekwondo PDF of 30 Jan 2026): turning head kick 6 points, no coach video replay for head kicks, PSS punch scoring, technical judge.
 - Not available / empty on Wikipedia: en "Taekwondo technique terminology", "Palgwae", "Oh Do Kwan", "Tenets of taekwondo"; de Chung Do Kwan/Taekgyeon extracts failed (HTTP 429) and were not retried; ko articles for Keumgang..Ilyeo, belts (띠/단) do not exist or are empty. Tables are dropped by the plain-text API, so ITF tul move counts, Taegeuk meanings per jang and Kukkiwon move counts were NOT verified from Wikipedia (the app already has them from the club PDF).
 
+## EPUB history reconciliation (T3)
+
+The history course now separates Tangun’s foundation myth from documented modern development, cultural inspiration from uninterrupted lineage, and 1910 annexation from earlier Japanese pressure. The naming question refers to the 1955 proposal, not universal immediate acceptance. Choi remains the first ITF president in the quiz, without implying that every Taekwondo tradition accepts a sole founder.
+
+Read [EPUB history evidence and limits](curriculum/epub-history.md) for exact English EPUB members/headings and the claim-by-claim decisions. Sharp’s `OEBPS/c2A.xhtml` is useful but conflates the 1966 ITF foundation with its 1972 Toronto headquarters move. Pottle’s `OEBPS/c4Z.xhtml` history separates those events and dates WTF to May 1973, while its Associations section incorrectly says 1972. Books therefore supplement, not override, the existing reliable repository evidence.
+
+The reconciled timeline separates **ITF: Seoul, 22 March 1966**, **ITF headquarters: Toronto, 1972**, **Kukkiwon: 30 November 1972**, and **WTF: 28 May 1973** (World Taekwondo since 2017). Kukkiwon education/certification and WT sport governance are distinct; Chang-Hon Hyong / Tul do not replace Kukkiwon Taegeuk. Disputed exact poomsae development dates are reduced to a broad period, not silently resolved from one language edition.
+
+Evidence strength differs: the parent directly fetched Kukkiwon’s official introduction, which explicitly states its 30 November 1972 foundation. Official ITF history and WT sustainability-PDF search results corroborated the other institutional milestones, but ITF direct fetch was blocked (403) and the WT PDF extraction was a stub. This writer performed fresh read-only EPUB/XML extraction, not fresh web retrieval. The source note records those limits and existing repository citations; no official full-text verification is claimed for blocked content. Competition rules and other unrelated disputes below remain outside this unit.
+
 ## Biggest gaps this fills (ranked)
 1. Competition scoring is absent from the app; WT 2026 values (fact wt-scoring-2026, wt-match-format).
 2. History nuance: name story and its disputes, five/nine kwans with hangul and founders, Kukkiwon/WT/IOC dates, taekkyeon (UNESCO), Hwarang sources, karate-origin debate.
