@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { CHOI, TIMELINE } from './timeline'
+import { CHOI, HISTORY_CONTEXT, HISTORY_READING_SOURCE, HISTORY_READING_TITLE, TIMELINE } from './timeline'
 
 const languages = ['en', 'de', 'es'] as const
 
@@ -19,8 +19,23 @@ describe('historical distinctions', () => {
     expect(tradition.text.es.toLowerCase()).toContain('mito')
   })
 
-  it('keeps every event and biography note localized', () => {
-    for (const text of [...TIMELINE.map((event) => event.text), ...CHOI]) {
+  it('retains institutional roles and book-account qualifications in every reading language', () => {
+    for (const language of languages) {
+      const military = HISTORY_CONTEXT.find((topic) => topic.id === 'military-and-associations')!.paragraphs[1][language]
+      for (const institution of ['KTA', 'ITF', 'Kukkiwon', 'WT']) expect(military).toContain(institution)
+      expect(HISTORY_READING_SOURCE[language]).toContain('Clint Sharp')
+      expect(HISTORY_READING_SOURCE[language]).toContain('OEBPS/c2A.xhtml')
+      expect(HISTORY_CONTEXT.find((topic) => topic.id === 'cultural-memory')!.paragraphs[1][language]).toContain('Taekkyeon')
+    }
+    expect(HISTORY_CONTEXT.find((topic) => topic.id === 'olympic-development')!.paragraphs[0].en).toContain('book-reported')
+    expect(HISTORY_CONTEXT.find((topic) => topic.id === 'american-pioneers')!.paragraphs[1].en).toContain('not adopted')
+    expect(new Set(HISTORY_CONTEXT.map((topic) => topic.id)).size).toBe(HISTORY_CONTEXT.length)
+    expect(TIMELINE.every((event) => event.source === 'general' || event.source === 'pdf')).toBe(true)
+  })
+
+  it('keeps every event, biography note and reading localized', () => {
+    const reading = HISTORY_CONTEXT.flatMap((topic) => [topic.title, ...topic.paragraphs])
+    for (const text of [...TIMELINE.map((event) => event.text), ...CHOI, ...reading, HISTORY_READING_SOURCE, HISTORY_READING_TITLE]) {
       expect(Object.keys(text).sort()).toEqual(['de', 'en', 'es'])
       for (const language of languages) expect(text[language].trim().length).toBeGreaterThan(10)
     }

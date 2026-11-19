@@ -158,6 +158,100 @@ export const TIMELINE: Event[] = [
   },
 ]
 
+// Original reading notes from Sharp, chapter 1; claim-level treatment is in the ledger.
+// Kept outside Event so book narratives cannot become dated quiz facts implicitly.
+export const HISTORY_READING_TITLE = L(
+  'Beyond the dates', 'Hinter den Jahreszahlen', 'Más allá de las fechas',
+)
+export const HISTORY_READING_SOURCE = L(
+  'Reading source: Clint Sharp, Taekwondo: A Comprehensive Guide…, chapter 1 (OEBPS/c2A.xhtml). Original summaries with qualifications, not independently verified primary history. Book rights remain with the owner; no CC license is asserted.',
+  'Lektürequelle: Clint Sharp, Taekwondo: A Comprehensive Guide…, Kapitel 1 (OEBPS/c2A.xhtml). Eigene Zusammenfassungen mit Einordnungen, keine unabhängig geprüfte Primärgeschichte. Die Buchrechte verbleiben beim Rechteinhaber; keine CC-Lizenz wird behauptet.',
+  'Fuente de lectura: Clint Sharp, Taekwondo: A Comprehensive Guide…, capítulo 1 (OEBPS/c2A.xhtml). Resúmenes originales con matices, no historia primaria verificada independientemente. Los derechos del libro siguen perteneciendo a su titular; no se afirma una licencia CC.',
+)
+
+export const HISTORY_CONTEXT: { id: string; title: Loc; paragraphs: Loc[] }[] = [
+  {
+    id: 'cultural-memory',
+    title: L('Cultural memory, not a continuous syllabus', 'Kulturelle Erinnerung, kein durchgehender Lehrplan', 'Memoria cultural, no un programa ininterrumpido'),
+    paragraphs: [
+      L(
+        'Sharp portrays Silla’s Hwarang education as a combination of physical training, weapons and ethical duties such as service and exemplary conduct. This helps explain why modern martial-arts narratives draw on them for ideals of character, not just fighting ability.',
+        'Sharp beschreibt die Erziehung der Hwarang Sillas als Verbindung von körperlichem Training, Waffen und ethischen Pflichten wie Dienst und vorbildlichem Verhalten. Das erklärt, warum moderne Kampfkunsterzählungen sie als Vorbilder für Charakter und nicht nur für Kampfkraft heranziehen.',
+        'Sharp presenta la educación de los Hwarang de Silla como una combinación de preparación física, armas y deberes éticos, como el servicio y la conducta ejemplar. Esto ayuda a entender por qué los relatos marciales modernos los usan como modelos de carácter, no solo de destreza en combate.',
+      ),
+      L(
+        'The book also invokes Subak and Taekkyeon. Treat its ancient succession story as an origin narrative: shared values or an emphasis on kicking do not establish an unbroken technical lineage to today’s Taekwondo. Modern kwan development and karate influence require their own history.',
+        'Das Buch beruft sich auch auf Subak und Taekkyeon. Seine antike Abfolge ist als Ursprungserzählung zu lesen: Gemeinsame Werte oder eine Betonung der Tritte belegen keine lückenlose technische Linie zum heutigen Taekwondo. Die moderne Kwan-Entwicklung und der Karate-Einfluss brauchen eine eigene Geschichte.',
+        'El libro también recurre al Subak y al Taekkyeon. Su cadena de sucesión antigua debe leerse como un relato de origen: los valores compartidos o el énfasis en las patadas no prueban un linaje técnico ininterrumpido hasta el Taekwondo actual. El desarrollo moderno de los kwans y la influencia del karate tienen su propia historia.',
+      ),
+    ],
+  },
+  {
+    id: 'kwans-and-identity',
+    title: L('From kwans to a shared identity', 'Von Kwans zu einer gemeinsamen Identität', 'De los kwans a una identidad compartida'),
+    paragraphs: [
+      L(
+        'Sharp describes postwar schools in Seoul with differing methods and teachers’ varied training backgrounds, including karate and Chinese martial arts. “Traditional Taekwondo” is therefore an umbrella label in this account, not the name of one unchanged ancient school.',
+        'Sharp beschreibt Nachkriegsschulen in Seoul mit unterschiedlichen Methoden und Ausbildungshintergründen ihrer Lehrer, darunter Karate und chinesische Kampfkünste. „Traditionelles Taekwondo“ ist in dieser Darstellung ein Sammelbegriff, nicht der Name einer unveränderten antiken Schule.',
+        'Sharp describe escuelas de posguerra en Seúl con métodos distintos y diversas formaciones de sus maestros, entre ellas karate y artes marciales chinas. En este relato, «Taekwondo tradicional» es una denominación colectiva, no el nombre de una única escuela antigua e inmutable.',
+      ),
+      L(
+        'A common name and shared teaching standards were organizing projects, not proof that differences vanished. Read the book’s unification story alongside the timeline’s gradual acceptance of the name: multiple instructors and school traditions contributed, rather than one inventor replacing every other tradition.',
+        'Ein gemeinsamer Name und gemeinsame Unterrichtsstandards waren organisatorische Vorhaben, kein Beweis für das Verschwinden aller Unterschiede. Die Einigungserzählung des Buches ist neben der schrittweisen Namensübernahme in der Zeittafel zu lesen: Mehrere Lehrer und Schultraditionen wirkten mit, nicht ein Erfinder, der alle anderen Traditionen ersetzte.',
+        'Un nombre común y criterios compartidos de enseñanza eran proyectos organizativos, no pruebas de que desaparecieran las diferencias. El relato de unificación del libro debe leerse junto a la aceptación gradual del nombre en la cronología: contribuyeron múltiples instructores y tradiciones, no un inventor que sustituyera a todos los demás.',
+      ),
+    ],
+  },
+  {
+    id: 'military-and-associations',
+    title: L('Military training and teaching abroad', 'Militärische Ausbildung und Unterricht im Ausland', 'Instrucción militar y enseñanza en el extranjero'),
+    paragraphs: [
+      L(
+        'In Sharp’s account, military instruction created demand for common training methods, while demonstrations and instructors sent abroad carried the art to new audiences. Choi’s organizing and promotional work belongs within this wider network of teachers; it does not make all their methods his invention.',
+        'In Sharps Darstellung schuf der Militärunterricht Bedarf an gemeinsamen Trainingsmethoden; Vorführungen und ins Ausland entsandte Lehrer erschlossen neue Zielgruppen. Chois Organisations- und Werbearbeit gehört in dieses größere Lehrernetzwerk; sie macht nicht alle Methoden zu seiner Erfindung.',
+        'En el relato de Sharp, la instrucción militar generó demanda de métodos comunes, mientras las exhibiciones y los instructores enviados al extranjero acercaron el arte a nuevos públicos. La labor organizativa y de difusión de Choi forma parte de esa red más amplia de maestros; no convierte todos sus métodos en invenciones suyas.',
+      ),
+      L(
+        'The Korea Taekwondo Association (KTA) appears in the book as a vehicle for coordinating Korean schools. Keep national coordination separate from the ITF’s international organization, Kukkiwon’s education and certification, and WT’s international sport governance. These are different roles, not successive names for a single institution.',
+        'Die Korea Taekwondo Association (KTA) erscheint im Buch als Mittel zur Koordination koreanischer Schulen. Nationale Koordination ist von der internationalen Organisation der ITF, Kukkiwons Ausbildung und Zertifizierung sowie der internationalen Sportverwaltung durch WT zu trennen. Das sind verschiedene Aufgaben, keine aufeinanderfolgenden Namen derselben Institution.',
+        'La Korea Taekwondo Association (KTA) aparece en el libro como un medio para coordinar las escuelas coreanas. Hay que distinguir esa coordinación nacional de la organización internacional de la ITF, la enseñanza y certificación de Kukkiwon y la gestión deportiva internacional de WT. Son funciones distintas, no nombres sucesivos de una sola institución.',
+      ),
+    ],
+  },
+  {
+    id: 'american-pioneers',
+    title: L('More than one American pioneer', 'Mehr als ein amerikanischer Pionier', 'Más de un pionero en Estados Unidos'),
+    paragraphs: [
+      L(
+        'Sharp highlights Jhoon Goo Rhee’s teaching in Washington, DC, and the reputation “Father of American Taekwondo,” but also acknowledges other pioneers. Such an honorific recognizes influence; it should not be read as proof that he alone introduced the art to an entire country.',
+        'Sharp hebt Jhoon Goo Rhees Unterricht in Washington, DC, und den Ruf als „Vater des amerikanischen Taekwondo“ hervor, erwähnt aber auch andere Pioniere. Ein solcher Ehrentitel würdigt Einfluss; er beweist nicht, dass er die Kunst allein in ein ganzes Land brachte.',
+        'Sharp destaca la enseñanza de Jhoon Goo Rhee en Washington, DC, y su reputación de «padre del Taekwondo estadounidense», pero reconoce también a otros pioneros. Ese título honorífico reconoce su influencia; no demuestra que él solo introdujera el arte en todo un país.',
+      ),
+      L(
+        'The chapter also discusses the American Taekwondo Association (ATA) and its own forms tradition. Overseas expansion involved schools and organizations building distinct teaching communities, not just the spread of one competition rulebook. The book’s “first school” and organizational chronology claims are not adopted here.',
+        'Das Kapitel behandelt auch die American Taekwondo Association (ATA) und ihre eigene Formentradition. Die Ausbreitung im Ausland umfasste Schulen und Organisationen mit eigenen Lehrgemeinschaften, nicht nur die Verbreitung eines Wettkampfregelwerks. Die Behauptungen des Buches zur „ersten Schule“ und zur Verbandschronologie werden hier nicht übernommen.',
+        'El capítulo también trata la American Taekwondo Association (ATA) y su propia tradición de formas. La expansión internacional implicó escuelas y organizaciones que crearon comunidades de enseñanza distintas, no solo la difusión de un reglamento competitivo. Aquí no se adoptan las afirmaciones del libro sobre la «primera escuela» ni su cronología organizativa.',
+      ),
+    ],
+  },
+  {
+    id: 'olympic-development',
+    title: L('From demonstration to Olympic medals', 'Von der Vorführung zu olympischen Medaillen', 'De la exhibición a las medallas olímpicas'),
+    paragraphs: [
+      L(
+        'Sharp’s Olympic account distinguishes demonstration appearances in 1988 and 1992 from medal-sport participation in 2000 in Sydney. These book-reported milestones describe sport recognition, not the beginning of Taekwondo or a replacement of its other teaching traditions; they are not new independently verified timeline entries.',
+        'Sharps olympische Darstellung unterscheidet Vorführungen 1988 und 1992 von der Teilnahme als Medaillensportart 2000 in Sydney. Diese im Buch genannten Stationen betreffen die sportliche Anerkennung, nicht den Beginn des Taekwondo oder die Ablösung anderer Lehrtraditionen; sie sind keine neuen unabhängig geprüften Zeittafeleinträge.',
+        'El relato olímpico de Sharp distingue las exhibiciones de 1988 y 1992 de la participación como deporte de medallas en 2000 en Sydney. Estos hitos, según el libro, describen el reconocimiento deportivo, no el inicio del Taekwondo ni la sustitución de sus otras tradiciones de enseñanza; no son nuevas entradas de cronología verificadas independientemente.',
+      ),
+      L(
+        'The chapter contrasts sporting emphasis with other training aims, while acknowledging traditional elements in sport-oriented schools. Avoid turning this into “WT is only sport, ITF is only self-defense”: an organization’s competition rules do not describe everything that an individual dojang teaches.',
+        'Das Kapitel stellt den sportlichen Schwerpunkt anderen Trainingszielen gegenüber und erkennt zugleich traditionelle Elemente in sportorientierten Schulen an. Daraus sollte nicht „WT ist nur Sport, ITF nur Selbstverteidigung“ werden: Wettkampfregeln eines Verbands beschreiben nicht alles, was ein einzelner Dojang lehrt.',
+        'El capítulo contrasta el énfasis deportivo con otros objetivos de entrenamiento y reconoce elementos tradicionales en escuelas deportivas. No debe reducirse a «WT es solo deporte, ITF solo defensa personal»: las reglas competitivas de una organización no describen todo lo que enseña cada dojang.',
+      ),
+    ],
+  },
+]
+
 export const CHOI: Loc[] = [
   L(
     'Born on 9 Nov 1918 in what is now North Korea.',

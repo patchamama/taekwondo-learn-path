@@ -3,7 +3,7 @@ import { FactSections } from '../../shared/components/FactSections'
 import { ExportBar } from '../../shared/components/ExportBar'
 import { buildSectionsDoc } from '../export/document'
 import { useT } from '../../shared/i18n/useT'
-import { CHOI, TIMELINE } from './timeline'
+import { CHOI, HISTORY_CONTEXT, HISTORY_READING_SOURCE, HISTORY_READING_TITLE, TIMELINE } from './timeline'
 
 export function HistoryPage() {
   const { t, loc, lang } = useT()
@@ -32,6 +32,18 @@ export function HistoryPage() {
             <li key={c.en}>{loc(c)}</li>
           ))}
         </ul>
+      </div>
+      <div className="grid gap-4">
+        <h2 className="text-lg font-semibold">{loc(HISTORY_READING_TITLE)}</h2>
+        <p className="text-sm text-slate-600">{loc(HISTORY_READING_SOURCE)}</p>
+        {HISTORY_CONTEXT.map((topic) => (
+          <section key={topic.id} aria-labelledby={`history-${topic.id}`} className="rounded-xl border bg-white p-5">
+            <h3 id={`history-${topic.id}`} className="mb-2 font-semibold">{loc(topic.title)}</h3>
+            <div className="space-y-3 text-sm text-slate-700">
+              {topic.paragraphs.map((paragraph) => <p key={paragraph.en}>{loc(paragraph)}</p>)}
+            </div>
+          </section>
+        ))}
       </div>
       <div className="grid gap-3">
         <h2 className="text-lg font-semibold">{t('koreaTitle')}</h2>

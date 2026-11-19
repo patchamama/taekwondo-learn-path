@@ -1,6 +1,6 @@
 # History: modern development, cultural memory and separate institutions
 
-The history timeline now distinguishes Korean foundation tradition from documented modern Taekwondo development. Choi’s ITF role, the Toronto headquarters move, Kukkiwon and WTF are not interchangeable events. The existing history UI, curriculum IDs, progression and quiz answer sets remain unchanged; only three short quiz prompts are clarified.
+History distinguishes Korean foundation tradition from documented modern Taekwondo development. Choi’s ITF role, the Toronto headquarters move, Kukkiwon and WTF are not interchangeable events. The initial reconciliation clarified three quiz prompts without changing answers. The S16/S18 follow-up below adds substantive trilingual reading, leaving those reconciled dates, curriculum IDs, progression, quiz answers and Korea export unchanged.
 
 ## Read-only EPUB evidence
 
@@ -41,6 +41,34 @@ The original club provenance is catalogued in `docs/sources.md`: `HoSinSul-TKD-P
 - Remove weakly supported childhood, rapid-rank and superiority anecdotes from Choi’s short biography; retain basic dates, karate study and his influential modern/ITF role without claiming a sole-founder consensus.
 - The existing `source: 'pdf' | 'general'` UI contract is unchanged. Reconciled entries use `general`; this document provides the actual multi-source provenance. `general` does not mean “independently proven,” and `pdf` does not make the club a primary historical authority.
 
+## S16 / S18: Sharp chapter-one reading enrichment
+
+**Outcome:** “Beyond the dates” adds contextual reading in en/de/es, not extra exam material or a competing timeline. Gaps were selected after reading the current HistoryPage, TIMELINE, CHOI, KOREA_FACTS and quiz-contract tests: the page had chronology and a Choi biography, but little explanation of cultural storytelling, coordination, overseas teaching or Olympic development.
+
+### Exact source and rights
+
+The confirmed owner-supplied source is `docs/clint-sharp/Taekwondo_ A Comprehensive Guide to Tae Kwon Do Techniques, Bas for Beginners Wanting to Master This Martial Art - Clint Sharp.epub`. Read-only ZIP/XML inspection read `OEBPS/c13.xhtml` (Table of Contents) and the whole `OEBPS/c2A.xhtml` (Chapter 1: A Brief History of Taekwondo). No other book or chapter was reread for this follow-up. Source bytes were not written. The app credits Sharp and the chapter/member; all new prose is concise original paraphrase/editorial qualification. Book rights remain with the owner, not CC.
+
+### Claim ledger for new reading
+
+All rows below refer to `OEBPS/c2A.xhtml`. “Supported” means present in the inspected book and compatible with the prior reconciliation, **not** newly verified against primary records. No new web verification is claimed. “Qualified” means explicitly framed as the book’s account or editorial interpretation, not promoted to a dated historical fact.
+
+| App topic | Actual book section | New coverage and disposition |
+|---|---|---|
+| `cultural-memory` | Ancient History | **Qualified:** Hwarang education combines physical/weapon training and ethical service in Sharp’s portrayal. Explains their use as character models. **Omitted:** battle-by-battle claims, exact ancient martial dates and a Subak → Taekkyeon → Taekwondo technical lineage. Similar values do not prove transmission. |
+| `kwans-and-identity` | Chapter opening; Modern Taekwondo | **Supported:** postwar Seoul schools, differing teaching backgrounds including karate/Chinese arts, “traditional” as an umbrella label. **Qualified:** common identity/standards as an organizing process, reconciled with gradual naming acceptance. **Omitted:** all nine schools immediately united in 1955 and removal of every foreign influence. |
+| `military-and-associations` | Modern Taekwondo; The Taekwondo Associations | **Supported at general level:** military standardization, demonstrations, overseas instructors and KTA coordination. **Qualified:** interpretation as a network, with Choi an influential organizer rather than sole inventor. Institutional-role distinction retains prior reconciliation. **Omitted:** 1952 presidential anecdote, disputed ranks, KTA founding day/name/presidency sequence, 1966 North Korea mission and speculative motives. No KTA date is introduced or confused with ITF/Kukkiwon/WT. |
+| `american-pioneers` | Taekwondo in America | **Qualified book account:** Jhoon Goo Rhee’s Washington teaching and honorific alongside other pioneers; ATA’s distinct forms tradition illustrates multiple teaching communities. **Omitted:** “first American school”/1962 priority, ATA founder spelling/date, US federation succession, membership totals and business-model claims. No sole-pioneer or federation-equivalence claim. |
+| `olympic-development` | WTF and Olympic History (heading follows the America paragraph in this EPUB) | **Qualified book-reported milestones:** demonstrations in 1988/1992 versus medals in Sydney 2000; sport recognition is not the origin of the art. Not new verified timeline entries. **Supported editorial caution:** the book acknowledges traditional elements in sport-oriented teaching; organizational rules do not exhaust dojang practice. **Omitted:** current headquarters/certification counts/country totals, Commonwealth Games claim and rigid ITF-traditional versus WT-sport hierarchy. |
+
+### Compatibility and review path
+
+- **S16:** substantive context, a further named figure (Rhee), overseas development and Olympic narrative now render as accessible topic regions; this is not a dates-only polish. The topic list follows actual gaps rather than a target count.
+- **S18:** exclusively the user-confirmed Sharp chapter, with visible author/member attribution and full local `Loc` wording. No shared dictionary edits.
+- `TIMELINE`, `CHOI`, `Event.source`, existing quiz answers/IDs and shared `KOREA_FACTS` are unchanged. Reading uses a separate `HISTORY_CONTEXT` structure and does not enter quiz pools or the Korea-only export.
+- Public rendering tests cover all topics in three languages, source attribution, Rhee, Olympic distinctions and live language switching. Data tests protect localization, stable unique reading anchors, institutional-role presence and qualifications; existing date and quiz-contract tests stay in the focused run.
+- **Risk 6 independent review:** check the five ledger rows against the actual chapter, translation equivalence, whether every qualification survives the paraphrase, the Rhee honorific without priority, and the Olympic book-account label. Tests prove rendering/contracts, not historical truth. No fresh primary-source claim or independent review verdict is asserted by this writer.
+
 ## Verification boundary
 
-Deterministic tests protect distinct event dates, localization, naming wording, concise prompts and selected unchanged answer sets. They cannot establish historical truth or natural translation quality. Risk item 6 remains: independent source/language review is required, especially day-level WTF evidence, institutional roles and tradition-versus-lineage wording. Competition/scoring rules, other curriculum content and the history UI are outside this unit.
+Deterministic tests protect distinct event dates, localization, naming wording, concise prompts and selected unchanged answer sets. They cannot establish historical truth or natural translation quality. Risk item 6 remains: independent source/language review is required, especially day-level WTF evidence, institutional roles and tradition-versus-lineage wording. Competition/scoring rules and other curriculum content remain outside scope. The initial reconciliation did not change the UI; the S16/S18 follow-up adds reading sections as detailed below.
