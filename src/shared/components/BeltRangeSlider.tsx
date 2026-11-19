@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import type { Belt } from '../../data/belts'
 import { useBelts } from '../store/useBelts'
 import { useT } from '../i18n/useT'
@@ -6,30 +7,43 @@ import { useBeltFilter } from '../hooks/useBeltFilter'
 const swatch = (b: Belt) =>
   b.stripe ? `linear-gradient(${b.color} 55%, ${b.stripe} 55%)` : b.color
 
+interface BeltRangeSliderProps {
+  /** Local reading views keep their own URL links and do not mutate the global filter. */
+  range?: { max: number; only: number | null; onChange: (index: number) => void }
+}
+
 /** Slider 10 Kup → 1 Dan (cumulative) plus one button per belt to show only what is new there. */
-export function BeltRangeSlider() {
+export function BeltRangeSlider({ range }: BeltRangeSliderProps = {}) {
   const { t } = useT()
   const BELTS = useBelts()
-  const { max, setMax, only, setOnly } = useBeltFilter()
+  const global = useBeltFilter()
+  const { max, only } = range ?? global
+  const { setMax, setOnly } = global
+  const inputId = useId()
   const belt = BELTS[only ?? max]
+  const visualMax = only === null ? max : 0
   return (
     <div className="grid gap-2 border-t bg-slate-50 px-4 py-2 text-sm">
       <div className="flex flex-wrap items-center gap-3">
-        <label htmlFor="belt-range" className="font-medium">
+        <label htmlFor={inputId} className="font-medium">
           {t('levelFilter')}
         </label>
         <input
-          id="belt-range"
+          id={inputId}
           type="range"
           min={0}
           max={BELTS.length - 1}
           step={1}
-          value={max}
+          value={visualMax}
           onChange={(e) => {
-            setOnly(null)
-            setMax(Number(e.target.value))
+            const index = Number(e.target.value)
+            if (range) range.onChange(index)
+            else {
+              setOnly(null)
+              setMax(index)
+            }
           }}
-          aria-valuetext={belt.rank}
+          aria-valuetext={BELTS[visualMax].rank}
           className="w-48 accent-amber-500"
         />
         <span className="flex items-center gap-2 font-semibold">
@@ -40,7 +54,7 @@ export function BeltRangeSlider() {
           {belt.rank}
         </span>
       </div>
-      <div
+      {!range && <div
         className="flex flex-wrap items-center gap-1.5"
         role="group"
         aria-label={t('beltOnlyNew')}
@@ -58,9 +72,9 @@ export function BeltRangeSlider() {
           <button
             key={b.id}
             type="button"
-            aria-pressed={only === i}
+            aria-pressed={only === null ? i <= max : only === i}
             onClick={() => setOnly(only === i ? null : i)}
-            className={`flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 ${only === i ? 'bg-slate-900 text-white' : 'bg-white'}`}
+            className={`flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 ${(only === null ? i <= max : only === i) ? 'bg-slate-900 text-white' : 'bg-white'}`}
           >
             <span
               aria-hidden
@@ -70,7 +84,7 @@ export function BeltRangeSlider() {
             {b.rank}
           </button>
         ))}
-      </div>
+      </div>}
     </div>
   )
 }

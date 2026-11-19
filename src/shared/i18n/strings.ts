@@ -180,9 +180,9 @@ export const STRINGS = {
     es: 'Elijo las palabras que menos dominas.',
   },
   practiceEmpty: {
-    en: 'Finish a lesson first, then I can quiz you.',
-    de: 'Schließe zuerst eine Lektion ab, dann kann ich dich abfragen.',
-    es: 'Termina una lección y te podré preguntar.',
+    en: 'No practice questions for this belt yet. Choose another belt or range.',
+    de: 'Für diesen Gürtel gibt es noch keine Übungsfragen. Wähle einen anderen Gürtel oder Bereich.',
+    es: 'Aún no hay preguntas para este cinturón. Elige otro cinturón o rango.',
   },
   xp: { en: 'XP', de: 'XP', es: 'XP' },
   days: { en: 'days', de: 'Tage', es: 'días' },
@@ -358,9 +358,9 @@ export const STRINGS = {
     es: 'Muestra aplicaciones de defensa personal de las técnicas de esta forma, no la forma completa.',
   },
   levelFilter: {
-    en: 'Show content from 10 Kup up to',
-    de: 'Inhalte von 10 Kup bis',
-    es: 'Mostrar contenido desde 10 Kup hasta',
+    en: 'Show content up to',
+    de: 'Inhalte bis',
+    es: 'Mostrar contenido hasta',
   },
   beltAll: {
     en: 'All up to the slider',

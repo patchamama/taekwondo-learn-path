@@ -7,13 +7,16 @@ import { LESSON_BY_ID, LESSONS, UNITS } from '../../data/lessons'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore } from '../../shared/store/useAppStore'
+import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { Bubble } from '../mascot/Bubble'
 import { CardDetail } from './CardDetail'
 import { buildExercises, buildPractice, makeRng } from './exercises'
 import { LessonPlayer, type PlayerResult } from './LessonPlayer'
-import { heldBeltIndex, isUnlocked, learnedCardIds, starsFor, unitComplete } from './progress'
+import { heldBeltIndex, isUnlocked, starsFor, unitComplete } from './progress'
 
 type Stage = 'intro' | 'play' | 'done'
+
+const PRACTICE_CANDIDATES = [...new Set(LESSONS.flatMap((lesson) => lesson.cardIds))]
 
 export function LessonPage() {
   const { id } = useParams()
@@ -39,9 +42,9 @@ function Missing({ locked = false }: { locked?: boolean }) {
 
 export function PracticePage() {
   const { t } = useT()
-  const completed = useAppStore((s) => s.completed)
   const mastery = useAppStore((s) => s.mastery)
-  const learned = useMemo(() => learnedCardIds(completed), [completed])
+  const { max, only, visibleCard } = useBeltFilter()
+  const learned = PRACTICE_CANDIDATES.filter(visibleCard)
   if (learned.length === 0) {
     return (
       <div className="mx-auto max-w-xl">
@@ -52,7 +55,8 @@ export function PracticePage() {
       </div>
     )
   }
-  return <Run key="practice" lessonId={null} learned={learned} mastery={mastery} />
+  // Only a filter change starts a new session; mastery updates must not rebuild questions.
+  return <Run key={`practice-${only === null ? `up-to-${max}` : `only-${only}`}`} lessonId={null} learned={learned} mastery={mastery} />
 }
 
 function LessonReadings({ cardIds, theory }: { cardIds: string[]; theory: boolean }) {

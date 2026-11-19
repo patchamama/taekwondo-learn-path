@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { CONCEPTS } from './data/concepts'
+import { LESSONS } from './data/lessons'
 import { useAppStore } from './shared/store/useAppStore'
 import { App } from './App'
 import pkg from '../package.json'
@@ -69,6 +70,39 @@ describe('App reading navigation', () => {
 })
 
 describe('App', () => {
+  it('keeps Study active through HashRouter Kup navigation with the same layout nodes', async () => {
+    window.location.hash = '#/study'
+    render(<App />)
+    const main = screen.getByRole('main')
+    const banner = screen.getByTestId('version-banner')
+    fireEvent.click(screen.getByRole('link', { name: '8 Kup' }))
+    await waitFor(() => expect(window.location.hash).toBe('#/study/2'))
+    expect(screen.getByRole('link', { name: 'Study' })).toHaveAttribute('aria-current', 'page')
+    expect(screen.getByRole('main')).toBe(main)
+    expect(screen.getByTestId('version-banner')).toBe(banner)
+    expect(screen.getAllByRole('slider')).toHaveLength(1)
+  })
+
+  it('preserves lesson route grouping and the existing strict-order settings behavior', async () => {
+    const lesson = LESSONS[1]
+    useAppStore.setState({ strictOrder: true, pathView: 'list' })
+    window.location.hash = `#/lesson/${lesson.id}`
+    render(<App />)
+    expect(await screen.findByText('Locked')).toBeInTheDocument()
+    // A lesson was never a child of the root navigation URL; do not invent a new grouping.
+    expect(screen.getByRole('link', { name: 'Path' })).not.toHaveAttribute('aria-current')
+    fireEvent.click(screen.getByRole('link', { name: 'Settings' }))
+    const lock = await screen.findByRole('checkbox', { name: 'Lock lessons until the previous one is completed' })
+    expect(lock).toBeChecked()
+    fireEvent.click(lock)
+    fireEvent.click(screen.getByRole('link', { name: 'Path' }))
+    const lessonLink = await screen.findByRole('link', { name: new RegExp(lesson.title.en) })
+    fireEvent.click(lessonLink)
+    expect(await screen.findByRole('heading', { name: lesson.title.en })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Start' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Path' })).not.toHaveAttribute('aria-current')
+  })
+
   it('shows the version from package.json in the banner', () => {
     render(<App />)
     expect(screen.getByTestId('version-banner')).toHaveTextContent(`v${pkg.version}`)

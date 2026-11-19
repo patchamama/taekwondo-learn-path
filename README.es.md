@@ -24,6 +24,13 @@ La mayoría del material de Taekwondo está en un solo idioma y pide memorizar l
 - **Reglas de examen, datos de Corea y contexto de Wikipedia** con fuentes
 - **Defensa personal** y un filtro de cinturón (barra + botones «solo lo nuevo de este cinturón») en cada lista
 
+## Controles de Estudio y Práctica
+
+- La barra global de Kup incluye los niveles anteriores y también marca sus botones. Un botón de Kup selecciona solo ese nivel; al pulsarlo de nuevo se vuelve al modo acumulado. En modo individual, el control de la barra vuelve al inicio sin cambiar el cinturón elegido.
+- Estudio tiene su propio selector basado en la URL, independiente del filtro global y del progreso guardado. Los enlaces de cinturones y lecturas se pueden abrir en pestañas nuevas.
+- La práctica libre funciona sin lecciones completadas y sigue el filtro global de Kup. Cambiar el filtro inicia una sesión nueva; responder y cambiar de idioma mantienen la sesión actual.
+- El engranaje superior derecho abre Ajustes. Su código QR apunta a la URL del sitio.
+
 ## Inicio rápido
 
 Requiere [Node.js](https://nodejs.org) 20+.

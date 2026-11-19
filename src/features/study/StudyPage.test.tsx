@@ -5,6 +5,7 @@ import { useAppStore } from '../../shared/store/useAppStore'
 import { StudyPage } from './StudyPage'
 import { CONCEPTS } from '../../data/concepts'
 import { STRINGS } from '../../shared/i18n/strings'
+import { levelContent, levelContentUpTo } from '../../data/levelContent'
 
 const open = (path: string) =>
   render(
@@ -44,6 +45,35 @@ describe('StudyPage', () => {
     expect(screen.getByRole('link', { name: '10 Kup' })).toHaveAttribute('href', '/study/0')
     expect(useAppStore.getState().completed).toEqual(before.completed)
     expect(useAppStore.getState().xp).toBe(before.xp)
+  })
+
+  it.each(['en', 'de', 'es'] as const)('keeps the local bar, range marks, URL links and reading content consistent in %s', (lang) => {
+    useAppStore.setState({ lang, maxBelt: 7, onlyBelt: 6 })
+    const { container } = open('/study/2')
+    const cards = () => [...container.querySelectorAll('article[id^="card-"]')].map((a) => a.id.slice(5)).sort()
+    expect(screen.getByRole('slider', { name: STRINGS.levelFilter[lang] })).toHaveValue('0')
+    expect(cards()).toEqual([...levelContent(2).cardIds].sort())
+    fireEvent.click(screen.getByRole('checkbox', { name: STRINGS.studyCumulative[lang] }))
+    expect(screen.getByRole('slider')).toHaveValue('2')
+    expect(screen.getByRole('link', { name: '10 Kup' })).toHaveAttribute('aria-current', 'true')
+    expect(screen.getByRole('link', { name: '9 Kup' })).toHaveAttribute('aria-current', 'true')
+    expect(cards()).toEqual([...levelContentUpTo(2).cardIds].sort())
+    fireEvent.change(screen.getByRole('slider'), { target: { value: '3' } })
+    expect(screen.getByRole('checkbox')).toBeChecked()
+    expect(screen.getByRole('link', { name: '7 Kup' })).toHaveAttribute('aria-current', 'page')
+    expect(screen.getByRole('link', { name: '6 Kup' })).not.toHaveAttribute('aria-current')
+    expect(cards()).toEqual([...levelContentUpTo(3).cardIds].sort())
+    const link = screen.getByRole('link', { name: '9 Kup' })
+    expect(link).toHaveAttribute('href', '/study/1')
+    fireEvent.click(link, { ctrlKey: true })
+    expect(screen.getByRole('checkbox')).toBeChecked()
+    fireEvent.click(link)
+    expect(screen.getByRole('checkbox')).not.toBeChecked()
+    expect(screen.getByRole('slider')).toHaveValue('0')
+    expect(screen.getByRole('link', { name: '9 Kup' })).toHaveAttribute('aria-current', 'page')
+    expect(cards()).toEqual([...levelContent(1).cardIds].sort())
+    expect(useAppStore.getState().maxBelt).toBe(7)
+    expect(useAppStore.getState().onlyBelt).toBe(6)
   })
 
   it('falls back to the first level for a bad parameter', () => {

@@ -24,6 +24,13 @@ Die meisten Taekwondo-Unterlagen sind einsprachig und lassen Technikbezeichnunge
 - **Prüfungsregeln, Korea-Fakten und Wikipedia-Hintergrund** mit Quellen
 - **Selbstverteidigung** und ein Gürtelfilter (Regler + „nur neu in diesem Gürtel“) in jeder Liste
 
+## Steuerung für Lernen und Üben
+
+- Der globale Kup-Regler schließt frühere Stufen ein und markiert auch deren Schaltflächen. Eine Kup-Schaltfläche wählt nur diese Stufe; erneutes Anklicken kehrt zur kumulativen Auswahl zurück. Bei einer Einzelstufe springt der Regler zurück, ohne den gewählten Gürtel zu ändern.
+- Die Leseansicht hat eine eigene URL-basierte Auswahl, unabhängig vom globalen Filter und gespeicherten Fortschritt. Gürtel- und Leselinks lassen sich in neuen Tabs öffnen.
+- Freies Üben funktioniert ohne abgeschlossene Lektionen und folgt dem globalen Kup-Filter. Ein Filterwechsel beginnt eine neue Sitzung; Antworten und Sprachwechsel behalten die aktuelle Sitzung bei.
+- Das Zahnrad oben rechts öffnet die Einstellungen. Der dortige QR-Code verweist auf die Website-URL.
+
 ## Schnellstart
 
 Benötigt [Node.js](https://nodejs.org) 20+.

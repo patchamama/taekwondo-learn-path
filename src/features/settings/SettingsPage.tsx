@@ -1,5 +1,6 @@
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore, type VideoLang } from '../../shared/store/useAppStore'
+import { SiteQrCode } from './SiteQrCode'
 
 const VIDEO_OPTIONS: { id: VideoLang; key: 'videoAuto' | 'videoEs' | 'videoDe' }[] = [
   { id: 'auto', key: 'videoAuto' },
@@ -82,6 +83,8 @@ export function SettingsPage() {
           ))}
         </div>
       </fieldset>
+
+      <SiteQrCode />
     </section>
   )
 }

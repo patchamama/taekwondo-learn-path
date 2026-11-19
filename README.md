@@ -24,6 +24,13 @@ Most Taekwondo material is in one language and treats technique names as things 
 - **Exam rules, Korea facts and Wikipedia background** with sources
 - **Self-defence** chapters and a belt filter (slider + "only new at this belt" buttons) on every list
 
+## Study and Practice controls
+
+- The global Kup slider includes earlier levels and marks their buttons too. A Kup button selects only that level; clicking it again returns to cumulative mode. In single-level mode the slider thumb resets without changing the selected belt.
+- Study has its own URL-based selector, separate from the global filter and saved progress. Belt and reading links can be opened in new tabs.
+- Free Practice works without completed lessons and follows the global Kup filter. Changing that filter starts a new session; answering and changing language preserve the current session.
+- Open Settings with the top-right gear. Its QR code points to the site URL.
+
 ## Quick start
 
 Requires [Node.js](https://nodejs.org) 20+.

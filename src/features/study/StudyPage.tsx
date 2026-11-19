@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useBelts } from '../../shared/store/useBelts'
 import { CARD_BY_ID } from '../../data/cards'
 import { CONCEPTS } from '../../data/concepts'
@@ -9,6 +9,7 @@ import { MORPHEME_BY_ID } from '../../data/morphemes'
 import { levelContent, levelContentUpTo } from '../../data/levelContent'
 import { UNITS, LESSONS } from '../../data/lessons'
 import { BeltBadge } from '../../shared/components/BeltBadge'
+import { BeltRangeSlider } from '../../shared/components/BeltRangeSlider'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { ExportBar } from '../../shared/components/ExportBar'
@@ -85,6 +86,7 @@ function ReadingCard({ cardId }: { cardId: string }) {
 export function StudyPage() {
   const { t, loc, lang } = useT()
   const { level } = useParams()
+  const navigate = useNavigate()
   const { max } = useBeltFilter()
   const BELTS = useBelts()
   const parsed = Number(level)
@@ -121,13 +123,24 @@ export function StudyPage() {
         <ExportBar label={t('exportThis')} build={() => buildLevelDoc(index, { lang, t, loc })} />
         <ExportBar label={t('exportAll')} build={() => buildLevelDoc(null, { lang, t, loc })} />
       </div>
+      <BeltRangeSlider range={{
+        max: index,
+        only: upTo ? null : index,
+        onChange: (next) => {
+          setUpTo(true)
+          navigate(`/study/${next}`)
+        },
+      }} />
       <nav aria-label={t('studyTitle')} className="flex flex-wrap gap-2">
         {BELTS.map((b, i) => (
           <Link
             key={b.id}
             to={`/study/${i}`}
-            aria-current={i === index ? 'page' : undefined}
-            className={`flex items-center gap-2 rounded-full border px-3 py-1 text-sm ${i === index ? 'bg-slate-900 text-white' : 'bg-white'} ${i > max ? 'opacity-50' : ''}`}
+            aria-current={i === index ? 'page' : upTo && i < index ? 'true' : undefined}
+            onClick={(event) => {
+              if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) setUpTo(false)
+            }}
+            className={`flex items-center gap-2 rounded-full border px-3 py-1 text-sm ${(upTo ? i <= index : i === index) ? 'bg-slate-900 text-white' : 'bg-white'} ${i > max ? 'opacity-50' : ''}`}
           >
             <span
               aria-hidden
