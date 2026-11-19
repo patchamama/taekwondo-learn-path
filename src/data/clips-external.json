@@ -455,5 +455,14 @@
     "label": "Korean Academy of Taekwondo — English instruction excerpt / Taegeuk 8",
     "similarity": "similar",
     "silentSafe": false
+  },
+  {
+    "cardId": "taeguk-5",
+    "videoId": "qNpQpJLHyUg",
+    "start": 184,
+    "end": 226,
+    "label": "Korean Academy of Taekwondo — English instruction excerpt / Taegeuk 5",
+    "similarity": "similar",
+    "silentSafe": false
   }
 ]

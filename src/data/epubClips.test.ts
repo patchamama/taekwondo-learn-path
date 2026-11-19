@@ -21,6 +21,7 @@ const supplements = [
   ['taeguk-6', 'gzae5gZEgcU', 159, 309, 415],
   ['taeguk-7', 'F-kDzz1_oqQ', 230, 278, 507],
   ['taeguk-8', 'pxZQUm5SYjQ', 200, 248, 476],
+  ['taeguk-5', 'qNpQpJLHyUg', 184, 226, 502],
 ] as const
 const ids = new Set<string>(supplements.map(([, videoId]) => videoId))
 
@@ -58,9 +59,9 @@ describe('EPUB supplements through the public clip inventory', () => {
     expect(container.querySelector('iframe')?.getAttribute('src')).toBe(embedUrl('es', added))
   })
 
-  it('appends only the twelve reviewed sources after all forty unchanged legacy external records', () => {
+  it('appends thirteen reviewed sources while preserving the legacy forty and previously accepted twelve', () => {
     const external = CLIPS.filter((c) => c.source === 'external')
-    expect(external).toHaveLength(52)
+    expect(external).toHaveLength(53)
     const legacy = external.slice(0, 40).map((clip) =>
       Object.fromEntries(Object.entries(clip).filter(([key]) => key !== 'source')),
     )
@@ -68,7 +69,12 @@ describe('EPUB supplements through the public clip inventory', () => {
     expect(createHash('sha256').update(JSON.stringify(legacy)).digest('hex'))
       .toBe('74b33300ab0c53e8b360e6539b7bcfaf76b30a9e5354fa139d233f1370fa8f9d')
     expect(external.slice(40).map((c) => c.videoId)).toEqual(supplements.map(([, id]) => id))
-    expect(CLIPS.some((c) => c.videoId === 'qNpQpJLHyUg')).toBe(false)
+    const previouslyAccepted = external.slice(0, 52).map((clip) =>
+      Object.fromEntries(Object.entries(clip).filter(([key]) => key !== 'source')),
+    )
+    expect(createHash('sha256').update(JSON.stringify(previouslyAccepted)).digest('hex'))
+      .toBe('1b89ff68374c15057d30d2526ee7c1060b28b7e5d05c67c14934f84e36667a83')
+    expect(external[52].videoId).toBe('qNpQpJLHyUg')
   })
 
   it('never offers a review-only source in the public silent video quiz', () => {
