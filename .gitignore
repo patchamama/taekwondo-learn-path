@@ -11,3 +11,4 @@ dist
 /video/epub-backup/
 
 __pycache__/
+docs/clint-sharp/
