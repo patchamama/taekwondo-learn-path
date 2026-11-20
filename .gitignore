@@ -9,3 +9,5 @@ dist
 *.tsbuildinfo
 /resources/epub/
 /video/epub-backup/
+
+__pycache__/
