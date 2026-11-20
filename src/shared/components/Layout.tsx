@@ -36,6 +36,21 @@ export function Layout() {
       <header className="border-b bg-white">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-4 py-3">
           <span className="min-w-0 flex-1 font-bold">{t('appTitle')}</span>
+          <span className="text-sm font-semibold" aria-label="progress">
+            🔥 {activeStreak(streak, dayString())} {t('days')} · ⭐ {xp} {t('xp')}
+          </span>
+          <select
+            aria-label="Language"
+            value={lang}
+            onChange={(e) => setLang(e.target.value as typeof lang)}
+            className="rounded border px-2 py-1 text-sm"
+          >
+            {LANGS.map((l) => (
+              <option key={l} value={l}>
+                {l.toUpperCase()}
+              </option>
+            ))}
+          </select>
           <NavLink
             to="/settings"
             aria-label={t('navSettings')}
@@ -60,21 +75,6 @@ export function Layout() {
               </NavLink>
             ))}
           </nav>
-          <span className="ml-auto text-sm font-semibold" aria-label="progress">
-            🔥 {activeStreak(streak, dayString())} {t('days')} · ⭐ {xp} {t('xp')}
-          </span>
-          <select
-            aria-label="Language"
-            value={lang}
-            onChange={(e) => setLang(e.target.value as typeof lang)}
-            className="rounded border px-2 py-1 text-sm"
-          >
-            {LANGS.map((l) => (
-              <option key={l} value={l}>
-                {l.toUpperCase()}
-              </option>
-            ))}
-          </select>
         </div>
         {FILTERED.includes(pathname) && <BeltRangeSlider />}
       </header>

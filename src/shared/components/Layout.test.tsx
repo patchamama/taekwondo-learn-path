@@ -93,6 +93,19 @@ describe('Persistent layout navigation', () => {
     expect(screen.getByRole('link', { name: 'Einstellungen' })).toBe(gear)
   })
 
+  it('places progress and the language selector in the top row, before the Settings gear', () => {
+    open('/')
+    const progress = screen.getByLabelText('progress')
+    const language = screen.getByRole('combobox', { name: 'Language' })
+    const gear = screen.getByRole('link', { name: 'Settings' })
+    const nav = screen.getByRole('navigation')
+    const before = (a: Node, b: Node) => Boolean(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING)
+    expect(progress).toHaveTextContent(/🔥 \d+ .*⭐ \d+/)
+    expect(before(progress, language)).toBe(true)
+    expect(before(language, gear)).toBe(true)
+    expect(before(gear, nav)).toBe(true)
+  })
+
   it.each(['/techniques', '/videos', '/video-quiz', '/terms', '/forms', '/kukkiwon'])('preserves the existing global filter on %s', (path) => {
     open(path)
     const main = screen.getByRole('main')
