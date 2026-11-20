@@ -686,6 +686,9 @@ def export_clip(root, source, spec, timeout):
     if not verified(root, original):
         spec['export'] = {'status': 'missing-original', 'reason': 'Requires hash-verified source'}
         return False
+    if 0 < spec['end'] - original['duration'] < 1 and spec['start'] < original['duration']:
+        # Ranges come from rounded metadata durations; trim a sub-second overshoot, reject anything larger.
+        spec['end'] = original['duration']
     validate_range(spec['start'], spec['end'], original['duration'])
     if whole_source(spec, original['duration']):
         spec['export'] = dict(original, reused_original=True)

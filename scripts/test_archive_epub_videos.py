@@ -508,7 +508,7 @@ class ArchiveTests(unittest.TestCase):
         self.assertGreaterEqual(len(app), 43)
         self.assertEqual(len(epub), 57)
         self.assertEqual(inv['epub_count'], 7)
-        self.assertEqual(len(inv['sources']), 100)
+        self.assertEqual(len(inv['sources']), 101)
         taegeuk6 = next(s for s in inv['sources'] if s['id'] == 'gzae5gZEgcU')
         self.assertIn(159, [a['offset'] for a in taegeuk6['associations'] if a['kind'] == 'epub'])
         refs = [a for s in inv['sources'] for a in s['associations'] if a['kind'] == 'epub']
@@ -558,6 +558,32 @@ class ArchiveTests(unittest.TestCase):
             status = archive.status_report(archive.DEFAULT_ROOT)
         self.assertEqual(status['availability'], {'unavailable': 1, 'accessible': 1})
         self.assertEqual(status['backup'], {'not-started': 1, 'complete': 1})
+
+
+class PreviewClampTests(unittest.TestCase):
+    def source(self):
+        return {'id': 'abc', 'backup': {'path': 'originals/abc.mkv', 'duration': 14.701}}
+
+    def test_preview_end_is_clamped_to_real_original_duration(self):
+        spec = {'start': 0, 'end': 15, 'key': '0000', 'label': 'review-preview-not-technically-reviewed', 'cardIds': []}
+        with patch.object(archive, 'verified', side_effect=[False, True]), patch.object(archive, 'run_process') as run:
+            self.assertTrue(archive.export_clip(Path('/unused'), self.source(), spec, 10))
+        self.assertEqual(spec['end'], 14.701)
+        self.assertTrue(spec['export']['reused_original'])
+        run.assert_not_called()
+
+    def test_curated_whole_video_range_is_clamped_for_sub_second_rounding(self):
+        spec = {'start': 0, 'end': 15, 'key': '0000', 'label': 'curated', 'cardIds': ['ap-chagi']}
+        with patch.object(archive, 'verified', side_effect=[False, True]), patch.object(archive, 'run_process') as run:
+            self.assertTrue(archive.export_clip(Path('/unused'), self.source(), spec, 10))
+        self.assertEqual(spec['end'], 14.701)
+        run.assert_not_called()
+
+    def test_curated_range_overshooting_by_over_a_second_is_still_rejected(self):
+        spec = {'start': 0, 'end': 20, 'key': '0000', 'label': 'curated', 'cardIds': ['ap-chagi']}
+        with patch.object(archive, 'verified', side_effect=[False, True]), patch.object(archive, 'run_process'):
+            with self.assertRaises(ValueError):
+                archive.export_clip(Path('/unused'), self.source(), spec, 10)
 
 
 class UnattemptedTests(unittest.TestCase):
