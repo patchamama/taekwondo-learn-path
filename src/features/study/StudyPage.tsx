@@ -66,7 +66,7 @@ function ReadingCard({ cardId }: { cardId: string }) {
       <FormDiagram cardId={cardId} />
       {CLIPS_BY_CARD[cardId] && (
         <div className="mt-3 grid gap-2">
-          {firstClip && <FrameStrip clip={firstClip} quiet />}
+          {firstClip && !watch && <FrameStrip clip={firstClip} quiet />}
           <button
             type="button"
             className="w-fit rounded-lg border px-3 py-1 text-sm"

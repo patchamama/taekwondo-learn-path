@@ -70,3 +70,17 @@ describe('clips', () => {
     expect(clipKey(course({ source: 'external', videoId: 'abc' }))).toBe('ext-abc')
   })
 })
+
+describe('previously clipless techniques', () => {
+  it('links momtong-packat-macki to the course outer-block segment as a similar technique', () => {
+    const c = CLIPS_BY_CARD['momtong-packat-macki']
+    expect(c).toHaveLength(1)
+    expect(c[0]).toMatchObject({ source: 'course', start: 2279, end: 2295, similarity: 'similar' })
+  })
+
+  it('links pyonhi-sogi to the reviewed parallel-stance video', () => {
+    const c = CLIPS_BY_CARD['pyonhi-sogi']
+    expect(c).toHaveLength(1)
+    expect(c[0]).toMatchObject({ source: 'external', videoId: '5KJhsjbGupg', start: 12, end: 36 })
+  })
+})

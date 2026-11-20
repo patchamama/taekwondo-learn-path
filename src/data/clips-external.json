@@ -464,5 +464,13 @@
     "label": "Korean Academy of Taekwondo — English instruction excerpt / Taegeuk 5",
     "similarity": "similar",
     "silentSafe": false
+  },
+  {
+    "cardId": "pyonhi-sogi",
+    "videoId": "5KJhsjbGupg",
+    "start": 12,
+    "end": 36,
+    "label": "Phoenix Taekwondo (Kukkiwon)",
+    "similarity": "exact"
   }
 ]

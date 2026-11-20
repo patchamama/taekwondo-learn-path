@@ -97,3 +97,20 @@ describe('StudyPage diagrams', () => {
     expect(screen.getAllByText(/CC BY-SA 4.0/).length).toBeGreaterThan(0)
   })
 })
+
+describe('StudyPage clip frames', () => {
+  beforeEach(() => {
+    useAppStore.getState().reset()
+    useAppStore.setState({ lang: 'en' })
+  })
+
+  it('does not repeat the frame sequence when a technique is watched', () => {
+    open('/study/1')
+    const heading = screen.getByRole('heading', { name: /ap-chagi/ })
+    const article = heading.closest('article') as HTMLElement
+    expect(article.querySelectorAll('ol[aria-label]')).toHaveLength(1)
+    fireEvent.click(article.querySelector('button[aria-expanded]') as HTMLElement)
+    expect(article.querySelector('iframe')).not.toBeNull()
+    expect(article.querySelectorAll('ol[aria-label]')).toHaveLength(1)
+  })
+})
