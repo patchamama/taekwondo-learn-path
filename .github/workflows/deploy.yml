@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,19 +27,34 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - run: npm run test:release
       - run: npm run build
         env:
           VITE_GATE: '1'
+      - name: Record build version
+        id: version
+        run: |
+          VERSION="$(node -p "require('./dist/version.json').version")"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          printf '## Built app v%s\n' "$VERSION" >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
+    name: Deploy v${{ needs.build.outputs.version }}
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
+      - name: Deploy v${{ needs.build.outputs.version }}
+        id: deployment
         uses: actions/deploy-pages@v4
+      - name: Record deployed version
+        env:
+          APP_VERSION: ${{ needs.build.outputs.version }}
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          printf '## Deployed app v%s\n\n%s\n' "$APP_VERSION" "$PAGE_URL" >> "$GITHUB_STEP_SUMMARY"

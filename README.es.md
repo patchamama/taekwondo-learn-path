@@ -47,6 +47,7 @@ cd taekwondo-learn-path
 | -------------------------- | ------------------------------------------- |
 | `npm run dev`              | servidor de desarrollo                      |
 | `npm test`                 | pruebas unitarias y de componentes (Vitest) |
+| `npm run test:release`      | pruebas de metadatos de versión del build   |
 | `npm run lint`             | ESLint                                      |
 | `npm run build`            | comprobación de tipos y build de producción |
 | `npm run frames -- [course | selfdefense                                 | external]` | extraer fotogramas de los vídeos (requiere `ffmpeg`, `yt-dlp`) |
@@ -58,6 +59,8 @@ React 19 · TypeScript · Vite · Tailwind CSS · Zustand (progreso en `localSto
 ## Despliegue
 
 Cada push a `main` ejecuta los tests y publica en GitHub Pages (`.github/workflows/deploy.yml`). La versión publicada pide una contraseña; es un freno, no seguridad real.
+
+Antes de cada publicación de la app, aumenta y guarda en un commit la versión de `package.json` y `package-lock.json`: usa `npm version patch --no-git-tag-version` para correcciones o `minor` para funciones nuevas. No reutilices una versión publicada ni la aumentes después del build. El banner del frontend, el archivo `version.json` generado en el sitio y el job y resumen del despliegue en GitHub muestran esa misma versión. CI publica la versión del commit; no la modifica.
 
 ## Contenido y fuentes
 
