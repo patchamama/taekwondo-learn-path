@@ -1,6 +1,7 @@
 import type { Loc } from '../shared/i18n/types'
 import { flat, mergeById } from './curriculum'
 import { TECHNIQUE_INFO } from './techniqueInfo'
+import { overrideOf } from './overrides'
 
 export type Category = 'hand' | 'foot' | 'stance' | 'combo' | 'form'
 
@@ -365,4 +366,7 @@ export const TECHNIQUES: Technique[] = mergeById(
     info: x.info,
   })),
   (x) => x.id,
-).map(withMovement)
+).map(withMovement).map((t): Technique => {
+  const o = overrideOf(t.id)
+  return { ...t, ...(o.ko && { ko: o.ko }), ...(o.hangul && { hangul: o.hangul }), ...(o.meaning && { names: o.meaning }), ...(o.info && { info: o.info }) }
+})

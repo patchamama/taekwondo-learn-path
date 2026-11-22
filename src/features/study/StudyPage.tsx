@@ -1,3 +1,5 @@
+import { CardViewToggle } from '../../shared/components/CardViewToggle'
+import { CardImages } from '../../shared/components/CardImages'
 import { partLabel } from '../../data/japanese'
 import { BookSynonym } from '../../shared/components/BookSynonym'
 import { useState } from 'react'
@@ -31,17 +33,22 @@ function ReadingCard({ cardId }: { cardId: string }) {
   const kk = KUKKIWON_BY_ID[cardId]
   const firstClip = CLIPS.find((x) => x.cardId === cardId && x.source !== 'selfdefense')
   return (
-    <article className="rounded-xl border bg-white p-4 shadow-sm" id={`card-${cardId}`}>
-      <h3 className="flex flex-wrap items-center gap-2 text-lg font-bold">
+    <article className="relative rounded-xl border bg-white p-4 shadow-sm" id={`card-${cardId}`}>
+      <span className="absolute right-3 top-3">
+        <BeltBadge cardId={cardId} />
+      </span>
+      <h3 className="flex flex-wrap items-center gap-2 pr-24 text-lg font-bold">
         {c.ko}
         <span lang="ko" className="font-normal text-slate-500">
           {c.hangul}
         </span>
         <SpeakButton text={c.hangul} />
         <SpeakButton text={c.hangul} slow />
-        <BeltBadge cardId={cardId} />
       </h3>
       <p className="font-medium">{loc(c.meaning)}</p>
+      <div className="mt-1">
+        <CardImages cardId={cardId} />
+      </div>
       {c.info && <p className="mt-2 text-sm">{loc(c.info)}</p>}
       {c.kind === 'technique' && (
         <div className="mt-1 text-sm">
@@ -132,6 +139,7 @@ export function StudyPage() {
     >
       <h1 className="text-2xl font-bold">{t('studyTitle')}</h1>
       <p className="text-sm text-slate-600">{t('studyIntro')}</p>
+      <CardViewToggle />
       <div className="grid gap-2">
         <ExportBar label={t('exportThis')} build={() => buildLevelDoc(index, { lang, t, loc })} />
         <ExportBar label={t('exportAll')} build={() => buildLevelDoc(null, { lang, t, loc })} />

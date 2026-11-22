@@ -1,3 +1,5 @@
+import { CardViewToggle } from '../../shared/components/CardViewToggle'
+import { CardImages } from '../../shared/components/CardImages'
 import { TERMS, type TermGroup } from '../../data/terms'
 import { BeltBadge } from '../../shared/components/BeltBadge'
 import { SpeakButton } from '../../shared/components/SpeakButton'
@@ -21,6 +23,7 @@ export function TermsPage() {
   return (
     <section className="grid gap-6">
       <h1 className="text-2xl font-bold">{t('navTerms')}</h1>
+      <CardViewToggle />
       {GROUPS.map((g) => (
         <div key={g.id}>
           <h2 className="mb-2 text-lg font-semibold">{t(g.key)}</h2>
@@ -28,21 +31,24 @@ export function TermsPage() {
             {TERMS.filter((x) => x.group === g.id && visibleCard(x.id)).map((x) => (
               <li
                 key={x.id}
-                className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 shadow-sm"
+                className="relative grid gap-1 rounded-lg bg-white px-3 py-2 shadow-sm"
               >
-                <SpeakButton text={x.hangul} />
-                <div className="min-w-0">
-                  <p className="truncate font-bold">
-                    {x.ko}{' '}
-                    <span lang="ko" className="font-normal text-slate-500">
-                      {x.hangul}
-                    </span>
-                  </p>
-                  <p className="truncate text-sm text-slate-600">{loc(x.meaning)}</p>
-                </div>
-                <span className="ml-auto shrink-0">
+                <span className="absolute right-2 top-2">
                   <BeltBadge cardId={x.id} />
                 </span>
+                <div className="flex items-center gap-2 pr-20">
+                  <SpeakButton text={x.hangul} />
+                  <div className="min-w-0">
+                    <p className="truncate font-bold">
+                      {x.ko}{' '}
+                      <span lang="ko" className="font-normal text-slate-500">
+                        {x.hangul}
+                      </span>
+                    </p>
+                    <p className="truncate text-sm text-slate-600">{loc(x.meaning)}</p>
+                  </div>
+                </div>
+                <CardImages cardId={x.id} />
               </li>
             ))}
           </ul>

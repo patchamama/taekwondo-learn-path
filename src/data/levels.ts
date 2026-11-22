@@ -1,3 +1,4 @@
+import { overrideOf } from './overrides'
 import { BELTS } from './belts'
 import { CARD_BY_ID } from './cards'
 import { FORMS, HYONG, YUDANJA, formBeltIndex } from './forms'
@@ -35,6 +36,8 @@ function build(): Record<string, number> {
 
 /** Belt index at which a card is first needed. Cards not tied to a belt (bonus vocabulary) show from the start. */
 export function cardBeltIndex(cardId: string): number {
+  const moved = overrideOf(cardId).kup // moved to another Kup in the editor
+  if (moved != null) return moved
   cache ??= build()
   return CARD_BY_ID[cardId] ? (cache[cardId] ?? 0) : 0
 }

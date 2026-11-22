@@ -1,3 +1,5 @@
+import { BeltBadge } from '../../shared/components/BeltBadge'
+import { CardImages } from '../../shared/components/CardImages'
 import { partLabel } from '../../data/japanese'
 import { BookSynonym } from '../../shared/components/BookSynonym'
 import { useState } from 'react'
@@ -48,6 +50,9 @@ export function CardDetail({
             🎬
           </span>
         )}
+        <span className="ml-auto shrink-0">
+          <BeltBadge cardId={cardId} />
+        </span>
         {hasMore && (
           <span aria-hidden className="text-slate-400">
             {open ? '▲' : '▼'}
@@ -56,6 +61,7 @@ export function CardDetail({
       </div>
       {open && (
         <div className="grid gap-2 border-t px-3 py-3 text-sm">
+          <CardImages cardId={cardId} />
           {c.info && <p>{loc(c.info)}</p>}
           {c.kind === 'technique' && <BookSynonym cardId={cardId} />}
           {c.parts && c.parts.length > 0 && (

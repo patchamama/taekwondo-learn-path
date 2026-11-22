@@ -1,3 +1,5 @@
+import { CardViewToggle } from '../../shared/components/CardViewToggle'
+import { CardImages } from '../../shared/components/CardImages'
 import { partLabel } from '../../data/japanese'
 import { useState } from 'react'
 import { MORPHEME_BY_ID } from '../../data/morphemes'
@@ -34,6 +36,9 @@ export function TechniquesPage() {
 
   return (
     <section>
+      <div className="mb-4">
+        <CardViewToggle />
+      </div>
       <details className="mb-6 rounded-xl border bg-white p-4" open>
         <summary className="cursor-pointer font-semibold">{t('morphemes')}</summary>
         <p className="my-2 text-sm text-slate-600">{t('morphemesHint')}</p>
@@ -63,8 +68,9 @@ export function TechniquesPage() {
                   <h3 className="flex items-center gap-2 text-lg font-bold">
                     {x.ko} <SpeakButton text={CARD_BY_ID[x.id].hangul} />
                   </h3>
-                  <BeltBadge cardId={x.id} />
                 </div>
+                <div className="flex flex-col items-end gap-1">
+                <BeltBadge cardId={x.id} />
                 <label className="flex items-center gap-1 text-xs">
                   <input
                     type="checkbox"
@@ -74,8 +80,12 @@ export function TechniquesPage() {
                   />
                   {t('learnedToggle')}
                 </label>
+                </div>
               </div>
               <p className="mt-1 font-medium">{loc(x.names)}</p>
+              <div className="mt-1">
+                <CardImages cardId={x.id} />
+              </div>
               <p className="mt-2 text-sm text-slate-700">
                 <span className="font-semibold">{t('breakdown')}: </span>
                 {x.parts.map((p) => partLabel(p, loc(MORPHEME_BY_ID[p].meaning))).join(' + ')}

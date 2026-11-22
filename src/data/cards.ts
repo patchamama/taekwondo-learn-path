@@ -5,6 +5,7 @@ import { TECHNIQUE_HANGUL } from './hangul'
 import { TERMS } from './terms'
 import { FORMS, HYONG, YUDANJA } from './forms'
 import { SELF_DEFENSE } from './selfDefense'
+import { overrideOf } from './overrides'
 
 export type CardKind = 'morpheme' | 'technique' | 'term' | 'form'
 
@@ -22,7 +23,7 @@ export interface Card {
   info?: Loc
 }
 
-export const CARDS: Card[] = [
+const BASE_CARDS: Card[] = [
   ...MORPHEMES.map<Card>((m) => ({
     id: m.id,
     kind: 'morpheme',
@@ -84,5 +85,17 @@ export const CARDS: Card[] = [
     meaning: x.meaning,
   })),
 ]
+
+/** Every card with the edits made in the local editor applied (see cardOverrides.json). */
+export const CARDS: Card[] = BASE_CARDS.map((c) => {
+  const o = overrideOf(c.id)
+  return {
+    ...c,
+    ...(o.ko && { ko: o.ko }),
+    ...(o.hangul && { hangul: o.hangul }),
+    ...(o.meaning && { meaning: o.meaning }),
+    ...(o.info && { info: o.info }),
+  }
+})
 
 export const CARD_BY_ID: Record<string, Card> = Object.fromEntries(CARDS.map((c) => [c.id, c]))

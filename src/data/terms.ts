@@ -1,6 +1,7 @@
 import type { Loc } from '../shared/i18n/types'
 import { flat, mergeById } from './curriculum'
 import wikiTerms from './wikiTerms.json'
+import { overrideOf } from './overrides'
 
 export type TermGroup = 'sino' | 'native' | 'command' | 'basic' | 'training' | 'body' | 'kukkiwon'
 
@@ -219,4 +220,7 @@ export const TERMS: Term[] = mergeById(
     kup: x.kup,
   })),
   (x) => x.id,
-)
+).map((t) => {
+  const o = overrideOf(t.id)
+  return { ...t, ...(o.ko && { ko: o.ko }), ...(o.hangul && { hangul: o.hangul }), ...(o.meaning && { meaning: o.meaning }) }
+})

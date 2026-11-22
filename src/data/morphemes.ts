@@ -1,6 +1,7 @@
 import type { Loc } from '../shared/i18n/types'
 import { flat, mergeById } from './curriculum'
 import type { MorphemeFamily } from './curriculum/types'
+import { overrideOf } from './overrides'
 
 export interface Morpheme {
   id: string
@@ -100,6 +101,14 @@ export const MORPHEMES: Morpheme[] = mergeById(
     meaning: x.meaning,
   })),
   (x) => x.id,
-)
+).map((m) => {
+  const o = overrideOf(m.id)
+  return {
+    ...m,
+    ...(o.ko && { ko: o.ko }),
+    ...(o.hangul && { hangul: o.hangul }),
+    ...(o.meaning && { meaning: o.meaning }),
+  }
+})
 
 export const MORPHEME_BY_ID = Object.fromEntries(MORPHEMES.map((x) => [x.id, x]))
