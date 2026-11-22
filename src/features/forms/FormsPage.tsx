@@ -1,13 +1,11 @@
-import { useState } from 'react'
 import { FORMS, HYONG as HYONG_FORMS, YUDANJA, formBeltIndex } from '../../data/forms'
 import { BELTS } from '../../data/belts'
+import { isVisible } from '../../data/visibility'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
-import { CLIPS_BY_CARD } from '../../data/clips'
 import { BeltBadge } from '../../shared/components/BeltBadge'
 import { SpeakButton } from '../../shared/components/SpeakButton'
-import { FormDiagram } from '../../shared/components/FormDiagram'
+import { FormMedia } from './FormMedia'
 import { useT } from '../../shared/i18n/useT'
-import { ClipViewer } from '../videos/ClipViewer'
 import type { Lang } from '../../shared/i18n/types'
 
 const POOMSE: Record<Lang, string[]> = {
@@ -65,7 +63,6 @@ function Card({ title, items }: { title: string; items: string[] }) {
 
 export function FormsPage() {
   const { t, lang, loc } = useT()
-  const [open, setOpen] = useState<string | null>(null)
   const { visibleIndex } = useBeltFilter()
   return (
     <section className="grid gap-4">
@@ -77,8 +74,7 @@ export function FormsPage() {
       <p className="rounded-lg bg-amber-50 p-3 text-sm">{NOTE[lang]}</p>
       <h2 className="mt-4 text-xl font-bold">{t('taegeukForms')}</h2>
       <ul className="grid items-start gap-3 md:grid-cols-2">
-        {FORMS.filter((f) => visibleIndex(formBeltIndex(f))).map((f) => {
-          const isOpen = open === f.id
+        {FORMS.filter((f) => isVisible(f.id) && visibleIndex(formBeltIndex(f))).map((f) => {
           return (
             <li key={f.id} className="rounded-xl border bg-white p-4 shadow-sm">
               <div className="flex items-start gap-2">
@@ -102,31 +98,14 @@ export function FormsPage() {
               </div>
               <p className="mt-1 font-medium">{loc(f.symbol)}</p>
               <p className="text-sm text-slate-600">{loc(f.meaning)}</p>
-              <FormDiagram cardId={f.id} />
-              {CLIPS_BY_CARD[f.id] && (
-                <div className="mt-2">
-                  <button
-                    className="rounded-lg border px-3 py-1 text-sm"
-                    aria-expanded={isOpen}
-                    onClick={() => setOpen(isOpen ? null : f.id)}
-                  >
-                    {isOpen ? t('hide') : `▶ ${t('watch')}`}
-                  </button>
-                  {isOpen && (
-                    <div className="mt-2">
-                      <ClipViewer cardId={f.id} />
-                    </div>
-                  )}
-                </div>
-              )}
+              <FormMedia cardId={f.id} />
             </li>
           )
         })}
       </ul>
       <h2 className="mt-4 text-xl font-bold">{t('yudanjaForms')}</h2>
       <ul className="grid items-start gap-3 md:grid-cols-2">
-        {YUDANJA.filter((y) => visibleIndex(formBeltIndex(y))).map((y) => {
-          const isOpen = open === y.id
+        {YUDANJA.filter((y) => isVisible(y.id) && visibleIndex(formBeltIndex(y))).map((y) => {
           return (
             <li key={y.id} className="rounded-xl border bg-white p-4 shadow-sm">
               <div className="flex items-start gap-2">
@@ -149,22 +128,7 @@ export function FormsPage() {
               </div>
               <p className="mt-1 font-medium">{loc(y.symbol)}</p>
               <p className="text-sm text-slate-600">{loc(y.meaning)}</p>
-              {CLIPS_BY_CARD[y.id] && (
-                <div className="mt-2">
-                  <button
-                    className="rounded-lg border px-3 py-1 text-sm"
-                    aria-expanded={isOpen}
-                    onClick={() => setOpen(isOpen ? null : y.id)}
-                  >
-                    {isOpen ? t('hide') : `▶ ${t('watch')}`}
-                  </button>
-                  {isOpen && (
-                    <div className="mt-2">
-                      <ClipViewer cardId={y.id} />
-                    </div>
-                  )}
-                </div>
-              )}
+              <FormMedia cardId={y.id} />
             </li>
           )
         })}
@@ -172,7 +136,7 @@ export function FormsPage() {
       <h2 className="mt-4 text-xl font-bold">{t('hyongForms')}</h2>
       <p className="text-xs text-slate-500">{t('hyongNote')}</p>
       <ul className="grid items-start gap-3 md:grid-cols-2">
-        {HYONG_FORMS.filter((h) => visibleIndex(formBeltIndex(h))).map((h) => (
+        {HYONG_FORMS.filter((h) => isVisible(h.id) && visibleIndex(formBeltIndex(h))).map((h) => (
           <li key={h.id} className="rounded-xl border bg-white p-4 shadow-sm">
             <div className="flex items-start gap-2">
               <div className="min-w-0 flex-1">
@@ -195,22 +159,7 @@ export function FormsPage() {
             </div>
             <p className="mt-1 font-medium">{loc(h.symbol)}</p>
             <p className="text-sm text-slate-600">{loc(h.meaning)}</p>
-            {CLIPS_BY_CARD[h.id] && (
-              <div className="mt-2">
-                <button
-                  className="rounded-lg border px-3 py-1 text-sm"
-                  aria-expanded={open === h.id}
-                  onClick={() => setOpen(open === h.id ? null : h.id)}
-                >
-                  {open === h.id ? t('hide') : `▶ ${t('watch')}`}
-                </button>
-                {open === h.id && (
-                  <div className="mt-2">
-                    <ClipViewer cardId={h.id} />
-                  </div>
-                )}
-              </div>
-            )}
+            <FormMedia cardId={h.id} />
           </li>
         ))}
       </ul>

@@ -36,9 +36,10 @@ export function TermsPage() {
               >
                 <span className="absolute right-2 top-2 flex items-center gap-1">
                   <EditButton cardId={x.id} />
+                  <CardImages cardId={x.id} display="compact" />
                   <BeltBadge cardId={x.id} />
                 </span>
-                <div className="flex items-center gap-2 pr-20">
+                <div className="flex items-center gap-2 pr-28">
                   <SpeakButton text={x.hangul} />
                   <div className="min-w-0">
                     <p className="truncate font-bold">
@@ -50,7 +51,7 @@ export function TermsPage() {
                     <p className="truncate text-sm text-slate-600">{loc(x.meaning)}</p>
                   </div>
                 </div>
-                <CardImages cardId={x.id} />
+                <CardImages cardId={x.id} display="details" />
               </li>
             ))}
           </ul>

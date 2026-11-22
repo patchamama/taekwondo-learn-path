@@ -73,6 +73,7 @@ export function TechniquesPage() {
                 <div className="flex flex-col items-end gap-1">
                 <span className="flex items-center gap-1">
                   <EditButton cardId={x.id} />
+                  <CardImages cardId={x.id} display="compact" />
                   <BeltBadge cardId={x.id} />
                 </span>
                 <label className="flex items-center gap-1 text-xs">
@@ -88,7 +89,7 @@ export function TechniquesPage() {
               </div>
               <p className="mt-1 font-medium">{loc(x.names)}</p>
               <div className="mt-1">
-                <CardImages cardId={x.id} />
+                <CardImages cardId={x.id} display="details" />
               </div>
               <p className="mt-2 text-sm text-slate-700">
                 <span className="font-semibold">{t('breakdown')}: </span>
