@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { useAppStore } from '../../shared/store/useAppStore'
 import type { PlaybackStep } from './audioPlan'
@@ -436,4 +436,23 @@ it('restarts the transport at the next item after completing the preceding item 
   expect(clips[0].src).toBe('/b-ko')
   expect(screen.getByRole('button', { name: 'Stop' })).toBeEnabled()
   expect(position()).toBe(7)
+})
+
+it('moves a revisited technique to the top of the transcript after it is spoken', async () => {
+  const plan: PlaybackStep[] = [
+    { id: 'basic-dojang', file: 'a-ko', role: 'ko' },
+    { id: 'ap-chagi', file: 'b-ko', role: 'ko' },
+    { id: 'basic-dojang', file: 'a-ko', role: 'ko' },
+  ]
+  render(<VocabularyPlayer steps={plan} base="/" />)
+  click('Play')
+  await flush()
+  await act(async () => { clips[0].onended?.() })
+  await act(async () => { clips[0].onended?.() })
+  let cards = within(screen.getByRole('list', { name: 'Words as they are said' })).getAllByRole('listitem')
+  expect(within(cards[0]).getByRole('button', { name: 'Repeat this word: ap-chagi' })).toBeInTheDocument()
+  await act(async () => { clips[0].onended?.() })
+  cards = within(screen.getByRole('list', { name: 'Words as they are said' })).getAllByRole('listitem')
+  expect(within(cards[0]).getByText('도장')).toBeInTheDocument()
+  expect(cards).toHaveLength(2)
 })

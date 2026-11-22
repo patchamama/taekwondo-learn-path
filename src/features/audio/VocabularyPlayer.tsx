@@ -372,11 +372,12 @@ export function VocabularyPlayer({
         setSaid((prev) => {
           const at = prev.findIndex((s) => s.id === step.id)
           if (at === -1) return [...prev, { id: step.id, parts: { [step.role]: true } }]
-          const next = [...prev]
           // the reverse pass starts again from the meaning, so the Korean word is hidden until it is said
-          const kept = step.pass === 'reverse' && step.role === 'meaning' ? {} : next[at].parts
-          next[at] = { ...next[at], parts: { ...kept, [step.role]: true } }
-          return next
+          const kept = step.pass === 'reverse' && step.role === 'meaning' ? {} : prev[at].parts
+          return [
+            ...prev.filter((_, index) => index !== at),
+            { ...prev[at], parts: { ...kept, [step.role]: true } },
+          ]
         })
       }
     }
