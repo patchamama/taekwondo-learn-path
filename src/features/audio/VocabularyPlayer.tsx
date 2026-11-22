@@ -85,9 +85,11 @@ export function VocabularyPlayer({
   const updateRate = useRef<() => void>(() => {})
   const [durations, setDurations] = useState<Record<string, number>>({})
   const [running, setRunning] = useState(false)
+  const [playbackError, setPlaybackError] = useState(false)
   const [position, setPosition] = useState(0)
   const [said, setSaid] = useState<Said[]>([])
   const [currentId, setCurrentId] = useState<string | null>(null)
+  const playerRef = useRef<HTMLAudioElement | null>(null)
   const cancel = useRef<() => void>(() => {})
   const run = useRef(0)
   const seekTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
@@ -180,10 +182,16 @@ export function VocabularyPlayer({
       return
     }
     const mine = ++run.current
+    // Reuse the media element started by the user gesture across asynchronous steps.
+    const player = playerRef.current ?? (playerRef.current = new Audio())
+    setPlaybackError(false)
+    let failed = false
     let cancelled = false
     let release: () => void = () => {}
     let current: HTMLAudioElement | null = null
     let stepIndex = 0
+    let lastAudioTime = 0
+    let lastAudioAdvance = performance.now()
     let clockOffset = 0
     let clockAnchor = performance.now()
     let clockRate = rateRef.current
@@ -191,6 +199,14 @@ export function VocabularyPlayer({
     const ticker = setInterval(() => {
       if (cancelled || performance.now() < seekingUntil.current) return
       const at = current ? current.currentTime : elapsed()
+      if (current) {
+        if (at !== lastAudioTime) { lastAudioTime = at; lastAudioAdvance = performance.now() }
+        else if (performance.now() - lastAudioAdvance >= 15000) {
+          current.pause()
+          release()
+          return
+        }
+      }
       const end = timeline.starts[stepIndex + 1] ?? timeline.total
       setPosition(Math.min(end, timeline.starts[stepIndex] + at))
     }, 200)
@@ -253,8 +269,11 @@ export function VocabularyPlayer({
         ])
       }
       const ok = await new Promise<boolean>((resolve) => {
-        const audio = new Audio(base + step.file)
+        const audio = player
+        audio.src = base + step.file
         current = audio
+        lastAudioTime = offset
+        lastAudioAdvance = performance.now()
         let settled = false
         let speaking = false
         let utterance: SpeechSynthesisUtterance | null = null
@@ -325,7 +344,7 @@ export function VocabularyPlayer({
         audio.playbackRate = rateRef.current
         audio.onended = () => finish(true)
         audio.onerror = fallback
-        if (offset > 0) audio.currentTime = offset
+        audio.currentTime = offset
         void audio.play()?.catch((error: unknown) => {
           // A permission failure is not a missing recording: never bypass autoplay policy.
           if ((error as { name?: string })?.name === 'NotAllowedError') finish(false)
@@ -334,6 +353,12 @@ export function VocabularyPlayer({
       })
       offset = 0
       if (cancelled || run.current !== mine) break
+      if (!ok) {
+        failed = true
+        setPlaybackError(true)
+        setPosition(timeline.starts[i])
+        break
+      }
       if (ok) {
         setSaid((prev) => {
           const at = prev.findIndex((s) => s.id === step.id)
@@ -349,7 +374,7 @@ export function VocabularyPlayer({
     clearInterval(ticker)
     if (run.current === mine) {
       setRunning(false)
-      if (!cancelled) setPosition(timeline.total)
+      if (!cancelled && !failed) setPosition(timeline.total)
     }
   }
 
@@ -415,6 +440,11 @@ export function VocabularyPlayer({
 
   return (
     <div className="grid gap-3">
+      {playbackError && <p role="alert" className="text-sm text-red-700">{({
+        en: 'Audio could not play. Press Play to try again.',
+        de: 'Audio konnte nicht abgespielt werden. Drücke auf Abspielen, um es erneut zu versuchen.',
+        es: 'No se pudo reproducir el audio. Pulsa Reproducir para intentarlo de nuevo.',
+      })[lang]}</p>}
       <label className="flex w-full items-center gap-2 text-xs text-slate-600">
         <span className="tabular-nums">{formatTime(position)}</span>
         <span className="audio-seek min-w-0 flex-1">

@@ -185,7 +185,7 @@ describe('accessible transport', () => {
     await act(async () => {
       await vi.advanceTimersByTimeAsync(1000)
     })
-    expect(clips).toHaveLength(count + 1)
+    expect(clips).toHaveLength(count)
     expect(screen.getByRole('button', { name: 'Play' })).toBeEnabled()
   })
 
@@ -349,4 +349,60 @@ it('selects the actual section across reverse and description passes and reports
     'aria-current',
     'true',
   )
+})
+
+it('reuses the user-initiated audio element for sequential recordings', async () => {
+  render(<VocabularyPlayer steps={steps} base="/" />)
+  click('Play')
+  await flush()
+  await act(async () => { clips[0].onended?.(); await vi.advanceTimersByTimeAsync(2000) })
+  expect(clips).toHaveLength(1)
+  expect(clips[0].src).toBe('/a-es')
+})
+
+it('stops on blocked playback without silently advancing past the failed recording', async () => {
+  vi.stubGlobal('Audio', class extends Clip {
+    play = vi.fn(() => Promise.reject({ name: 'NotAllowedError' }))
+  })
+  render(<VocabularyPlayer steps={steps} base="/" />)
+  click('Play')
+  await flush()
+  await act(async () => { await vi.advanceTimersByTimeAsync(10000) })
+  expect(position()).toBe(0)
+  expect(screen.getByRole('button', { name: 'Play' })).toBeEnabled()
+  expect(clips).toHaveLength(1)
+})
+
+
+it('stops a stalled recording instead of running the timeline silently', async () => {
+  render(<VocabularyPlayer steps={steps} base="/" />)
+  click('Play')
+  await flush()
+  await act(async () => { await vi.advanceTimersByTimeAsync(16000) })
+  expect(screen.getByRole('alert')).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Play' })).toBeEnabled()
+  expect(position()).toBe(0)
+})
+
+it('retains the same audio element across seeking and restarting', async () => {
+  render(<VocabularyPlayer steps={steps} base="/" />)
+  click('Play')
+  await flush()
+  click('Next term / technique')
+  await flush()
+  expect(clips).toHaveLength(1)
+  expect(clips[0].src).toBe('/b-ko')
+  click('Stop')
+  click('Play')
+  await flush()
+  expect(clips).toHaveLength(1)
+})
+
+it('creates the reusable audio element during the play gesture even when the plan starts with silence', async () => {
+  render(<VocabularyPlayer steps={[{ silence: 2 }, steps[0]]} base="/" />)
+  click('Play')
+  expect(clips).toHaveLength(1)
+  await act(async () => { await vi.advanceTimersByTimeAsync(2000) })
+  expect(clips).toHaveLength(1)
+  expect(clips[0].src).toBe('/a-ko')
 })
