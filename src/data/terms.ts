@@ -175,9 +175,41 @@ const WIKI: Term[] = (
   meaning: x.meaning,
 }))
 
+/** Terms from the photographed German glossary "Koreanische Fachausdrücke" (Taekwondo Perfekt 2, pp. 10-12); the spelling follows the book. */
+const BOOK: Term[] = (
+  [
+    ['juchum-sogi', '주춤서기', 9, 'horse-riding stance', 'Sitzstellung', 'posición de jinete'],
+    ['wen-sogi', '왼서기', 9, 'left stance', 'Linksstellung', 'posición izquierda'],
+    ['oreun-sogi', '오른서기', 9, 'right stance', 'Rechtsstellung', 'posición derecha'],
+    ['dwit', '뒤', 9, 'back, backwards (book spelling of düt)', 'zurück, rückwärts', 'atrás, hacia atrás (grafía del libro para düt)'],
+    ['du', '두', 9, 'double, two', 'doppelt, zwei', 'doble, dos'],
+    ['sonkeut', '손끝', 9, 'fingertips', 'Fingerspitzen', 'yemas de los dedos'],
+    ['agwison', '아귀손', 8, 'arc hand (web of the hand)', 'Bogenhand', 'mano en arco'],
+    ['godeuro', '거들어', 8, 'support, reinforced', 'Schutz, Unterstützung', 'apoyo, reforzado'],
+    ['biteuro', '비틀어', 8, 'twisted', 'verdreht', 'torcido'],
+    ['gawi-makki', '가위막기', 8, 'scissors block', 'Scherenblock', 'bloqueo en tijera'],
+    ['deung-jumok', '등주먹', 8, 'back fist', 'Faustrücken', 'dorso del puño'],
+    ['sonnal-chigi', '손날치기', 8, 'knife-hand strike', 'Handkantenschlag', 'golpe de canto de mano'],
+    ['sonnal-bakkat-chigi', '손날바깥치기', 8, 'knife-hand strike outward', 'Handkantenschlag nach außen', 'golpe de canto de mano hacia fuera'],
+    ['sonnal-makki', '손날막기', 8, 'knife-hand block', 'Handkantenblock', 'bloqueo de canto de mano'],
+    ['yop-chigi', '옆치기', 8, 'side strike', 'Seitwärtsschlag', 'golpe lateral'],
+    ['yop-jireugi', '옆지르기', 8, 'side punch', 'Seitwärtsfauststoß', 'puñetazo lateral'],
+    ['yop-makki', '옆막기', 8, 'side block', 'Seitwärtsblock', 'bloqueo lateral'],
+    ['bandae-jireugi', '반대지르기', 8, 'opposite-side punch', 'seitenverkehrter Fauststoß', 'puñetazo del lado contrario'],
+    ['baro-jireugi', '바로지르기', 8, 'same-side punch', 'gleichseitiger Fauststoß', 'puñetazo del mismo lado'],
+    ['mureup-chigi', '무릎치기', 8, 'knee strike', 'Tritt mit dem Knie, Knieschlag', 'golpe de rodilla'],
+    ['mureup-kokki', '무릎꺾기', 8, 'strike-grip on the knee', 'Schlaggriff auf das Knie', 'agarre-golpe a la rodilla'],
+    ['kyok-pa', '격파', 8, 'breaking test', 'Bruchtest', 'prueba de rotura'],
+    ['keup', '급', 10, 'student grade', 'Schülergrad', 'grado de alumno'],
+    ['dan', '단', 10, 'master grade', 'Meistergrad', 'grado de maestro'],
+    ['poom', '품', 10, 'child dan (1-3)', 'Kinder-Dan (1.-3.)', 'dan infantil (1.º-3.º)'],
+    ['taekwondoin', '태권도인', 10, 'taekwondo practitioner', 'Taekwondo-Treibende(r)', 'practicante de taekwondo'],
+  ] as [string, string, number, string, string, string][]
+).map(([ko, hangul, kup, en, de, es]) => ({ ...t('basic', ko, hangul, en, de, es), kup }))
+
 /** Base terms plus the ones introduced by the curriculum slices. */
 export const TERMS: Term[] = mergeById(
-  [...BASE, ...WIKI],
+  [...BASE, ...WIKI, ...BOOK],
   flat('terms').map((x): Term => ({
     id: `${x.group}-${x.ko}`,
     ko: x.ko,
