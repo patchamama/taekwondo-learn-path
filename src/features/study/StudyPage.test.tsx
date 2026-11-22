@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { useAppStore } from '../../shared/store/useAppStore'
@@ -8,6 +8,16 @@ import { selectItems } from '../audio/audioPlan'
 import { CONCEPTS } from '../../data/concepts'
 import { STRINGS } from '../../shared/i18n/strings'
 import { levelContent, levelContentUpTo } from '../../data/levelContent'
+import { CLIPS_BY_CARD, videoIdFor } from '../../data/clips'
+import { mockYouTube, teardownYouTube } from '../videos/playerTestUtils'
+import { downloadMarkdown, downloadWord, printPdf } from '../export/download'
+import { buildLevelDoc } from '../export/document'
+
+vi.mock('../export/download', () => ({
+  downloadMarkdown: vi.fn(), downloadWord: vi.fn(), printPdf: vi.fn(() => true),
+}))
+
+afterEach(teardownYouTube)
 
 const open = (path: string) =>
   render(
@@ -78,6 +88,24 @@ describe('StudyPage', () => {
     expect(useAppStore.getState().onlyBelt).toBe(6)
   })
 
+  it('includes the content of both 10 and 9 Kup when the existing range is set to 10–9', () => {
+    useAppStore.setState({ maxBelt: 7, onlyBelt: 6 })
+    const { container } = open('/study/1')
+    const cards = () => [...container.querySelectorAll('article[id^="card-"]')].map((a) => a.id.slice(5)).sort()
+    const single = [...levelContent(1).cardIds].sort()
+    expect(single.length).toBeGreaterThan(0)
+    expect(cards()).toEqual(single)
+    fireEvent.change(screen.getByRole('slider'), { target: { value: '1' } })
+    const first = levelContent(0).cardIds
+    expect(first.length).toBeGreaterThan(0)
+    expect(cards()).toEqual([...first, ...single].sort())
+    expect(screen.getByRole('link', { name: '10 Kup' })).toHaveAttribute('aria-current', 'true')
+    expect(screen.getByRole('link', { name: '9 Kup' })).toHaveAttribute('aria-current', 'page')
+    expect(screen.getByRole('link', { name: '8 Kup' })).not.toHaveAttribute('aria-current')
+    expect(useAppStore.getState().maxBelt).toBe(7)
+    expect(useAppStore.getState().onlyBelt).toBe(6)
+  })
+
   it('falls back to the first level for a bad parameter', () => {
     open('/study/99')
     expect(screen.getByRole('heading', { level: 2, name: /10 Kup/ })).toBeInTheDocument()
@@ -85,11 +113,38 @@ describe('StudyPage', () => {
 })
 
 describe('StudyPage export', () => {
-  it('offers Markdown, Word and PDF for this level and for all levels', () => {
+  it.each(['en', 'de', 'es'] as const)('uses one scoped icon row and exports the actual selected data in %s', (lang) => {
+    vi.clearAllMocks()
+    useAppStore.setState({ lang })
     open('/study/2')
-    expect(screen.getAllByRole('button', { name: 'Markdown' })).toHaveLength(2)
-    expect(screen.getAllByRole('button', { name: 'Word' })).toHaveLength(2)
-    expect(screen.getAllByRole('button', { name: 'PDF' })).toHaveLength(2)
+    const scope = screen.getByRole('combobox', { name: STRINGS.exportLabel[lang] })
+    expect(within(scope).getAllByRole('option').map((o) => o.textContent)).toEqual([
+      STRINGS.exportThis[lang], STRINGS.exportAll[lang],
+    ])
+    const ctx = { lang, t: (key: keyof typeof STRINGS) => STRINGS[key][lang], loc: (text: { en: string; de: string; es: string }) => text[lang] }
+    const current = buildLevelDoc(2, ctx)
+    const all = buildLevelDoc(null, ctx)
+    expect(all.blocks.length).toBeGreaterThan(current.blocks.length)
+    const formats = [
+      ['Markdown', downloadMarkdown], ['Word', downloadWord], ['PDF', printPdf],
+    ] as const
+    for (const [name, download] of formats) {
+      const buttons = screen.getAllByRole('button', { name })
+      expect(buttons).toHaveLength(1)
+      expect(buttons[0]).toHaveAttribute('title', name)
+      expect(buttons[0].querySelector('svg')).toHaveAttribute('aria-hidden', 'true')
+      fireEvent.click(buttons[0])
+      expect(vi.mocked(download).mock.calls.at(-1)?.[0]).toEqual(current)
+    }
+    fireEvent.change(scope, { target: { value: 'all' } })
+    for (const [name, download] of formats) {
+      fireEvent.click(screen.getByRole('button', { name }))
+      expect(vi.mocked(download).mock.calls.at(-1)?.[0]).toEqual(all)
+    }
+    fireEvent.change(scope, { target: { value: 'level' } })
+    fireEvent.click(screen.getByRole('link', { name: '9 Kup' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Markdown' }))
+    expect(vi.mocked(downloadMarkdown).mock.calls.at(-1)?.[0]).toEqual(buildLevelDoc(1, ctx))
   })
 })
 
@@ -107,12 +162,20 @@ describe('StudyPage clip frames', () => {
   })
 
   it('does not repeat the frame sequence when a technique is watched', () => {
+    const platform = mockYouTube()
+    useAppStore.setState({ videoLang: 'auto' })
     open('/study/1')
     const heading = screen.getByRole('heading', { name: /ap-chagi/ })
     const article = heading.closest('article') as HTMLElement
     expect(article.querySelectorAll('ol[aria-label]')).toHaveLength(1)
-    fireEvent.click(article.querySelector('button[aria-expanded]') as HTMLElement)
-    expect(article.querySelector('iframe')).not.toBeNull()
+    fireEvent.click(within(article).getByRole('button', { name: /Watch/ }))
+    platform.ready()
+    const clip = CLIPS_BY_CARD['ap-chagi'][0]
+    const host = document.querySelector(`[data-video-source="${videoIdFor(clip, 'es')}"]`)!
+    expect(host).not.toHaveAttribute('hidden')
+    expect(new URL(host.querySelector('iframe')!.src).pathname).toBe(`/embed/${videoIdFor(clip, 'es')}`)
+    expect(platform.players[0].seekTo).toHaveBeenLastCalledWith(clip.start, true)
+    expect(platform.players[0].playVideo).not.toHaveBeenCalled()
     expect(article.querySelectorAll('ol[aria-label]')).toHaveLength(1)
   })
 })

@@ -110,6 +110,7 @@ export function StudyPage() {
   const index = Number.isInteger(parsed) && parsed >= 0 && parsed < BELTS.length ? parsed : 0
   const belt = BELTS[index]
   const [upTo, setUpTo] = useState(false)
+  const [exportScope, setExportScope] = useState('level')
   const [repeating, setRepeating] = useState(false)
   const c = upTo ? levelContentUpTo(index) : levelContent(index)
   const unit = UNITS.find((u) => u.earns === belt.id)
@@ -142,10 +143,21 @@ export function StudyPage() {
       <h1 className="text-2xl font-bold">{t('studyTitle')}</h1>
       <p className="text-sm text-slate-600">{t('studyIntro')}</p>
       <CardViewToggle />
-      <div className="grid gap-2">
-        <ExportBar label={t('exportThis')} build={() => buildLevelDoc(index, { lang, t, loc })} />
-        <ExportBar label={t('exportAll')} build={() => buildLevelDoc(null, { lang, t, loc })} />
-      </div>
+      <ExportBar
+        compact
+        build={() => buildLevelDoc(exportScope === 'all' ? null : index, { lang, t, loc })}
+        scope={
+          <select
+            aria-label={t('exportLabel')}
+            value={exportScope}
+            onChange={(event) => setExportScope(event.target.value)}
+            className="min-h-11 min-w-0 max-w-full rounded-lg border bg-white px-2 text-sm"
+          >
+            <option value="level">{t('exportThis')}</option>
+            <option value="all">{t('exportAll')}</option>
+          </select>
+        }
+      />
       <AudioCard maxBelt={index} onlyBelt={upTo ? null : index} onPlayingChange={setRepeating} />
       <BeltRangeSlider range={{
         max: index,
