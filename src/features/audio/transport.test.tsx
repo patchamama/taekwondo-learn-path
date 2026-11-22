@@ -406,3 +406,12 @@ it('creates the reusable audio element during the play gesture even when the pla
   expect(clips).toHaveLength(1)
   expect(clips[0].src).toBe('/a-ko')
 })
+
+it('uses monochrome icons for previous and next navigation', () => {
+  render(<VocabularyPlayer steps={steps} base="/" />)
+  for (const name of ['Previous term / technique', 'Next term / technique']) {
+    const icon = screen.getByRole('button', { name }).querySelector('svg')
+    expect(icon).toHaveAttribute('aria-hidden', 'true')
+    expect(icon).toHaveAttribute('fill', 'currentColor')
+  }
+})

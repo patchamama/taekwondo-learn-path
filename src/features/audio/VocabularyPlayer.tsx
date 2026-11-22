@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { AUDIO_ITEMS, SECTION_BY_ID } from '../../data/audioManifest'
 import { CARD_BY_ID } from '../../data/cards'
 import { CLIPS_BY_CARD } from '../../data/clips'
@@ -425,7 +425,7 @@ export function VocabularyPlayer({
     const index = steps.findIndex((step) => 'id' in step && step.id === id && step.role === role)
     if (index >= 0) jumpToStep(index)
   }
-  const iconButton = (label: string, icon: string, action: () => void, disabled: boolean) => (
+  const iconButton = (label: string, icon: ReactNode, action: () => void, disabled: boolean) => (
     <button
       type="button"
       aria-label={label}
@@ -478,7 +478,7 @@ export function VocabularyPlayer({
       >
         {iconButton(
           copy.previous,
-          '⏮',
+          <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4"><path d="M4 3h2v14H4zM16 4v12L7 10z" /></svg>,
           () => navigateItem(-1),
           itemIds.length === 0 || itemNumber <= 1,
         )}
@@ -486,7 +486,7 @@ export function VocabularyPlayer({
         {iconButton(t('audioStop'), '⏹', stop, !running)}
         {iconButton(
           copy.next,
-          '⏭',
+          <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4"><path d="M14 3h2v14h-2zM4 4v12l9-6z" /></svg>,
           () => navigateItem(1),
           itemIds.length === 0 || itemNumber >= itemIds.length,
         )}
