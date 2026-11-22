@@ -1,15 +1,30 @@
 import assert from 'node:assert/strict'
 import { afterEach, test } from 'node:test'
-import { aiConfig, buildTranslatePrompt, chat, parseJsonObject, translate } from './ai.mjs'
+import { aiConfig, aiPublic, buildTranslatePrompt, chat, parseJsonObject, translate } from './ai.mjs'
 
 const realFetch = globalThis.fetch
 afterEach(() => {
   globalThis.fetch = realFetch
 })
 
-test('aiConfig is disabled unless a provider is defined', () => {
+test('aiConfig infers OpenAI only with a key and no chosen provider', () => {
   assert.equal(aiConfig({}).enabled, false)
-  assert.equal(aiConfig({ OPENAI_API_KEY: 'k' }).enabled, false) // a TTS key alone does not enable the assistant
+  assert.equal(aiConfig({ OPENAI_API_KEY: '' }).enabled, false)
+  assert.equal(aiConfig({ LLM_API_KEY: 'generic' }).enabled, false)
+  for (const LLM_PROVIDER of [undefined, '']) {
+    const cfg = aiConfig({ LLM_PROVIDER, OPENAI_API_KEY: 'test-key' })
+    assert.deepEqual(cfg, { enabled: true, provider: 'openai', model: 'gpt-4o-mini', baseUrl: 'https://api.openai.com/v1', key: 'test-key' })
+    assert.deepEqual(aiPublic(cfg), { enabled: true, provider: 'openai', model: 'gpt-4o-mini' })
+  }
+  for (const LLM_PROVIDER of ['disabled', 'none', 'off', 'nonsense']) {
+    assert.deepEqual(aiConfig({ LLM_PROVIDER, OPENAI_API_KEY: 'test-key' }), { enabled: false, provider: '', model: '', baseUrl: '', key: '' })
+  }
+})
+
+test('aiConfig preserves explicit provider choices even with an OpenAI key', () => {
+  assert.equal(aiConfig({ LLM_PROVIDER: 'ollama', OPENAI_API_KEY: 'ignored' }).provider, 'ollama')
+  assert.equal(aiConfig({ LLM_PROVIDER: 'anthropic', OPENAI_API_KEY: 'ignored' }).enabled, false)
+  assert.equal(aiConfig({ LLM_PROVIDER: 'ANTHROPIC', ANTHROPIC_API_KEY: 'a', OPENAI_API_KEY: 'ignored' }).key, 'a')
   assert.deepEqual(aiConfig({ LLM_PROVIDER: 'ollama' }), { enabled: true, provider: 'ollama', model: 'llama3.1', baseUrl: 'http://127.0.0.1:11434', key: '' })
   assert.equal(aiConfig({ LLM_PROVIDER: 'openai' }).enabled, false) // needs a key
   const o = aiConfig({ LLM_PROVIDER: 'openai', OPENAI_API_KEY: 'sk-x', LLM_MODEL: 'gpt-4o' })
@@ -46,6 +61,30 @@ test('translate calls an OpenAI-compatible endpoint and returns only the asked l
   assert.equal(calls[0].url, 'https://api.openai.com/v1/chat/completions')
   assert.equal(calls[0].init.headers.Authorization, 'Bearer sk-x')
   assert.equal(JSON.parse(calls[0].init.body).model, 'gpt-4o-mini')
+})
+
+test('translate supports Japanese targets, names Japanese, and filters unexpected output', async () => {
+  let request
+  globalThis.fetch = async (_url, init) => {
+    request = JSON.parse(init.body)
+    return { ok: true, json: async () => ({ choices: [{ message: { content: '{"ja":" 前蹴り ","en":"ignored"}' } }] }) }
+  }
+  assert.deepEqual(await translate(aiConfig({ OPENAI_API_KEY: 'test-key' }), {
+    from: 'en', targets: ['ja'], text: 'front kick', context: { ko: 'ap-chagi', hangul: '앞차기' },
+  }), { ja: '前蹴り' })
+  assert.match(request.messages[1].content, /into Japanese:/)
+  assert.match(request.messages[1].content, /ap-chagi/)
+  assert.match(request.messages[0].content, /equivalent.*invent/i)
+})
+
+test('translate rejects unsupported languages and Japanese sources without calling a provider', async () => {
+  let calls = 0
+  globalThis.fetch = async () => { calls++; throw new Error('unexpected request') }
+  const cfg = aiConfig({ LLM_PROVIDER: 'ollama' })
+  for (const [from, targets] of [['ja', ['en']], ['en', ['fr']], ['en', []]]) {
+    await assert.rejects(() => translate(cfg, { from, targets, text: 'kick' }), { message: 'Invalid languages' })
+  }
+  assert.equal(calls, 0)
 })
 
 test('translate works with a local Ollama server and with Anthropic', async () => {

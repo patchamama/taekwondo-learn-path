@@ -1,14 +1,18 @@
 // Optional language-model helper for the local editor and the site bot.
-// Nothing is sent anywhere unless LLM_PROVIDER is defined (in the environment or in the git-ignored .env.local):
+// Server-only configuration: OPENAI_API_KEY enables OpenAI when LLM_PROVIDER is unset/empty.
+// Set LLM_PROVIDER=disabled to opt out, or choose a provider explicitly (this always takes precedence).
+// Configuration alone sends nothing; only an explicit translation/chat request invokes the model.
+// Settings come from the server environment (including the git-ignored .env.local):
 //   LLM_PROVIDER=ollama                     local model, no key (LLM_MODEL=llama3.1, OLLAMA_URL=http://127.0.0.1:11434)
 //   LLM_PROVIDER=openai  + OPENAI_API_KEY   (LLM_MODEL=gpt-4o-mini; LLM_BASE_URL for any OpenAI-compatible server)
 //   LLM_PROVIDER=anthropic + ANTHROPIC_API_KEY (LLM_MODEL=claude-haiku-4-5)
 
 const LANG_NAME = { en: 'English', de: 'German', es: 'Spanish' }
+const TARGET_LANG_NAME = { ...LANG_NAME, ja: 'Japanese' }
 
-/** Reads the provider settings. `enabled` is false unless a provider is explicitly defined and usable. */
+/** Reads server settings; an OpenAI key implies OpenAI only when no provider is chosen. */
 export function aiConfig(env = process.env) {
-  const provider = (env.LLM_PROVIDER ?? '').toLowerCase()
+  const provider = (env.LLM_PROVIDER || (env.OPENAI_API_KEY ? 'openai' : '')).toLowerCase()
   if (provider === 'ollama') {
     return { enabled: true, provider, model: env.LLM_MODEL ?? 'llama3.1', baseUrl: env.OLLAMA_URL ?? 'http://127.0.0.1:11434', key: '' }
   }
@@ -35,10 +39,11 @@ export function parseJsonObject(text) {
 }
 
 export function buildTranslatePrompt({ from, targets, text, context = {} }) {
-  const names = targets.map((l) => LANG_NAME[l]).join(', ')
+  const names = targets.map((l) => TARGET_LANG_NAME[l]).join(', ')
   const system =
     'You translate taekwondo vocabulary and short descriptions for a learning app. Keep Korean terms, romanizations and proper names unchanged. ' +
-    'Use the usual taekwondo terminology of each language. Reply with ONLY a JSON object whose keys are the language codes ' +
+    'Use the usual taekwondo terminology of each language. For Japanese, give a translation or an established martial-arts equivalent; never invent karate equivalences. ' +
+    'Reply with ONLY a JSON object whose keys are the language codes ' +
     `${targets.map((l) => `"${l}"`).join(', ')} and whose values are the translations.`
   const ctx = [context.ko && `Korean term (romanized): ${context.ko}`, context.hangul && `Hangul: ${context.hangul}`].filter(Boolean).join('\n')
   const user = `${ctx ? ctx + '\n' : ''}Translate from ${LANG_NAME[from]} into ${names}:\n${text}`
@@ -49,7 +54,7 @@ const trimError = (cfg, body) => String(body).split(cfg.key || '\u0000').join('*
 
 /** One question → one answer text, with whichever provider is configured. */
 export async function chat(cfg, { system, user }) {
-  if (!cfg.enabled) throw new Error('No language model is configured (set LLM_PROVIDER)')
+  if (!cfg.enabled) throw new Error('No language model is configured (set LLM_PROVIDER or OPENAI_API_KEY)')
   const headers = { 'Content-Type': 'application/json' }
   let url
   let body
@@ -76,7 +81,7 @@ export async function chat(cfg, { system, user }) {
 
 /** Translates one text into the asked languages; only those languages are returned. */
 export async function translate(cfg, { from, targets, text, context }) {
-  if (!LANG_NAME[from] || !targets.length || targets.some((l) => !LANG_NAME[l])) throw new Error('Invalid languages')
+  if (!LANG_NAME[from] || !targets.length || targets.some((l) => !TARGET_LANG_NAME[l])) throw new Error('Invalid languages')
   if (typeof text !== 'string' || !text.trim() || text.length > 4000) throw new Error('Invalid text')
   const answer = parseJsonObject(await chat(cfg, buildTranslatePrompt({ from, targets, text, context })))
   return Object.fromEntries(targets.filter((l) => typeof answer[l] === 'string').map((l) => [l, answer[l].trim()]))

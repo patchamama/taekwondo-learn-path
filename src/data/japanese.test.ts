@@ -42,6 +42,32 @@ describe('japaneseOf', () => {
     expect(jp('basic-dojang')).toBe('dōjō')
   })
 
+  it('covers literal body vocabulary and established training categories', () => {
+    const expected = {
+      'body-ipsul': 'kuchibiru',
+      'body-dunbu': 'koshi',
+      'body-eongdeongi': 'shiri',
+      'training-ilon': 'riron',
+      'training-tae-sogi': 'tachi-kata',
+      'kukkiwon-jireugi': 'tsuki',
+      'kukkiwon-chigi': 'uchi',
+      'kukkiwon-chagi': 'geri',
+      'kukkiwon-makgi': 'uke',
+      'kukkiwon-seogi': 'dachi',
+      'kukkiwon-kkeokgi': 'kansetsu-waza',
+      'kukkiwon-neomgigi': 'nage-waza',
+      'kukkiwon-joleugi': 'shime-waza',
+      'kukkiwon-poomsae': 'kata',
+    }
+    for (const [id, term] of Object.entries(expected)) expect(jp(id), id).toBe(term)
+  })
+
+  it('leaves Korean-specific grades and form identifiers untranslated', () => {
+    expect(jp('basic-poom')).toBeUndefined()
+    expect(jp('basic-taekwondoin')).toBeUndefined()
+    expect(jp('kukkiwon-jang')).toBeUndefined()
+  })
+
   it('returns nothing when there is no reliable equivalent', () => {
     expect(jp('pyonhi')).toBeUndefined()
   })
