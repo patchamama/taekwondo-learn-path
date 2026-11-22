@@ -115,3 +115,49 @@ describe('autoplay blocked by the browser', () => {
     expect(spoken).toEqual([AUDIO_ITEMS[0].hangul])
   })
 })
+
+describe('origin of the last spoken audio', () => {
+  class OkAudio {
+    onerror: (() => void) | null = null
+    playbackRate = 1
+    constructor(public src: string) {}
+    play() {
+      return Promise.resolve()
+    }
+    pause() {}
+  }
+  class DeniedAudio extends OkAudio {
+    play() {
+      return Promise.reject(Object.assign(new Error('blocked'), { name: 'NotAllowedError' }))
+    }
+  }
+  beforeEach(() => {
+    vi.stubGlobal('SpeechSynthesisUtterance', class { lang = ''; rate = 1; voice = null; constructor(public text: string) {} })
+    vi.stubGlobal('speechSynthesis', { getVoices: () => [], cancel: () => {}, speak: () => {} })
+  })
+  afterEach(() => vi.unstubAllGlobals())
+
+  it('records the mp3 file for a word that has a recording', async () => {
+    vi.stubGlobal('Audio', OkAudio)
+    const { speakKorean, getLastSpoken, clipFor } = await import('./speech')
+    const { AUDIO_ITEMS } = await import('../../data/audioManifest')
+    speakKorean(AUDIO_ITEMS[0].hangul)
+    expect(getLastSpoken()).toMatchObject({ source: 'mp3', text: AUDIO_ITEMS[0].hangul, file: clipFor(AUDIO_ITEMS[0].hangul) })
+  })
+
+  it('records the browser voice for text without a recording', async () => {
+    vi.stubGlobal('Audio', OkAudio)
+    const { speakKorean, getLastSpoken } = await import('./speech')
+    speakKorean('아무도없는말')
+    expect(getLastSpoken()).toMatchObject({ source: 'browser', text: '아무도없는말' })
+  })
+
+  it('records when the browser blocked the autoplay', async () => {
+    vi.stubGlobal('Audio', DeniedAudio)
+    const { speakKorean, getLastSpoken } = await import('./speech')
+    const { AUDIO_ITEMS } = await import('../../data/audioManifest')
+    speakKorean(AUDIO_ITEMS[1].hangul)
+    await new Promise((r) => setTimeout(r, 0))
+    expect(getLastSpoken()?.source).toBe('blocked')
+  })
+})

@@ -1,3 +1,4 @@
+import { AudioSourceBadge } from './AudioSourceBadge'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { LANGS } from '../i18n/types'
 import { useT } from '../i18n/useT'
@@ -81,6 +82,7 @@ export function Layout() {
       <main className="mx-auto max-w-6xl px-4 py-6">
         <Outlet />
       </main>
+      <AudioSourceBadge />
     </div>
   )
 }

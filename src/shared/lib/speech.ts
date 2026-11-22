@@ -13,6 +13,26 @@ export const clipFor = (text: string) => CLIPS.get(text)
 
 let playing: HTMLAudioElement | null = null
 
+/** What the last call to speakKorean actually used, so the UI can show whether it was the recording or the browser. */
+export interface SpokenInfo {
+  text: string
+  source: 'mp3' | 'browser' | 'blocked'
+  /** site-relative path of the mp3 (source "mp3" or "blocked") */
+  file?: string
+}
+
+let last: SpokenInfo | null = null
+const listeners = new Set<() => void>()
+const record = (info: SpokenInfo) => {
+  last = info
+  listeners.forEach((l) => l())
+}
+export const getLastSpoken = () => last
+export const subscribeSpoken = (listener: () => void) => {
+  listeners.add(listener)
+  return () => listeners.delete(listener)
+}
+
 export function scoreVoice(
   v: Pick<SpeechSynthesisVoice, 'name' | 'lang' | 'localService'>,
 ): number {
@@ -38,23 +58,25 @@ export const speechSupported = () => typeof window !== 'undefined' && 'speechSyn
 /** True when the word can be spoken: it has a recorded clip, or the browser can synthesise it. */
 export const canSpeak = (text: string) => CLIPS.has(text) || speechSupported()
 
-function playClip(file: string, slow: boolean, fallback: () => void) {
+function playClip(file: string, text: string, slow: boolean, fallback: () => void) {
   playing?.pause()
   const audio = new Audio(import.meta.env.BASE_URL + file)
   audio.playbackRate = slow ? 0.7 : 1
+  record({ text, source: 'mp3', file })
   audio.onerror = fallback
   playing = audio
   // Autoplay blocked by the browser (NotAllowedError) is not a missing file: keep the recorded voice and let the
   // next click on a speaker button play it. Only a file that cannot be played falls back to the browser voice.
   void audio.play()?.catch((e: unknown) => {
-    if ((e as { name?: string })?.name !== 'NotAllowedError') fallback()
+    if ((e as { name?: string })?.name === 'NotAllowedError') record({ text, source: 'blocked', file })
+    else fallback()
   })
 }
 
 export function speakKorean(text: string, slow = false): boolean {
   const file = CLIPS.get(text)
   if (file) {
-    playClip(file, slow, () => speakWithBrowser(text, slow))
+    playClip(file, text, slow, () => speakWithBrowser(text, slow))
     return true
   }
   return speakWithBrowser(text, slow)
@@ -62,6 +84,7 @@ export function speakKorean(text: string, slow = false): boolean {
 
 function speakWithBrowser(text: string, slow: boolean): boolean {
   if (!speechSupported()) return false
+  record({ text, source: 'browser' })
   const synth = window.speechSynthesis
   const u = new SpeechSynthesisUtterance(text)
   u.lang = 'ko-KR'
