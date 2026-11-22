@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { CARD_BY_ID } from '../../data/cards'
@@ -242,11 +242,14 @@ describe('Practice options panel', () => {
   })
 
   it('passes the chosen formats to the question builder', () => {
+    // Keep this options-wiring test independent of the size of the question pool.
+    useAppStore.setState({ maxBelt: 0 })
     open()
     openPanel()
+    const formats = within(screen.getByRole('group', { name: 'Question formats' }))
     for (const f of everyFormat) if (!['video', 'pickclip'].includes(f)) {
       const label = { meaning: /Korean → meaning/, recall: /Meaning → Korean/, listen: /Listen → Korean/, listenmeaning: /Listen → meaning/, frames: /Stills/, build: /word blocks/ }[f as 'meaning']
-      fireEvent.click(screen.getByRole('checkbox', { name: label }))
+      fireEvent.click(formats.getByRole('checkbox', { name: label }))
     }
     expect(useAppStore.getState().practiceFormats.sort()).toEqual(['pickclip', 'video'])
     expect((build.mock.lastCall as unknown[])[5]).toEqual(expect.arrayContaining(['video', 'pickclip']))
