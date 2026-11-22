@@ -85,7 +85,7 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
     if (ex.type === 'frames' || ex.type === 'video')
       return ex.options.map((id) => ({
         key: id,
-        label: `${hangulOnly ? CARD_BY_ID[id].hangul : CARD_BY_ID[id].ko} · ${loc(CARD_BY_ID[id].meaning)}`,
+        label: hangulOnly ? CARD_BY_ID[id].hangul : CARD_BY_ID[id].ko,
       }))
     if (ex.type === 'pickclip')
       return ex.options.map((id) => ({

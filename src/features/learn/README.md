@@ -16,4 +16,6 @@ Horangi celebrates with alternating short bounce/pulse variants and a supportive
 
 Word-building tokens show Korean words without translations. Each small `?` hint button reveals only that token’s localized meaning and any existing Japanese equivalent. Hints do not select a token and reset on advancing. The question’s target meaning remains visible so the learner knows what to construct.
 
+Korean-answer choices never include the interface-language meaning in their text, tooltips or accessible labels. Frame and silent-video questions show only the romanized Korean term (for example, **düt-chagi**, not **düt-chagi · Patada hacia atrás**), or only Hangul when **Hangul only** is enabled. Recall retains romanization plus Hangul; listening retains romanization; both respect Hangul-only mode and keep their speaker icons. Meaning-answer questions (`meaning`, `listenmeaning`), clip-choice exercises, explicit word-building hints and post-answer localized meanings retain their existing behavior.
+
 Frame questions with a quiz-safe clip offer **Watch muted video** (localized). This toggles an inline muted player without choosing or checking an answer. Advancing removes the player. Existing silent video questions and clip-choice exercises are unchanged.

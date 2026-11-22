@@ -206,6 +206,63 @@ describe('LessonPlayer new formats and options', () => {
   })
 })
 
+describe('Korean-answer choices do not disclose translations', () => {
+  const options = ['düt-chagi', 'ap-chagi', 'yop-chagi', 'dollyo-chagi']
+
+  beforeEach(() => {
+    useAppStore.setState({ quizAutoCheck: false, quizResultMode: 'button', quizAutoContinue: false })
+    vi.spyOn(HTMLMediaElement.prototype, 'play').mockResolvedValue(undefined)
+    vi.spyOn(HTMLMediaElement.prototype, 'pause').mockImplementation(() => {})
+  })
+  afterEach(() => vi.restoreAllMocks())
+
+  for (const lang of ['es', 'en', 'de'] as const) {
+    for (const type of ['frames', 'video', 'recall', 'listen'] as const) {
+      for (const hangulOnly of [false, true]) {
+        it(`${lang} ${type} keeps choices Korean-only (hangulOnly=${hangulOnly}) and still scores the answer`, () => {
+          useAppStore.setState({ lang, hangulOnly })
+          const onFinish = vi.fn()
+          render(<LessonPlayer exercises={[{ type, cardId: 'düt-chagi', options }]} beltColor="#fff" onFinish={onFinish} onExit={() => {}} />)
+
+          if (lang === 'es' && type === 'frames') {
+            expect(screen.getByRole('heading', { name: '¿Qué técnica muestran estos fotogramas?' })).toBeInTheDocument()
+            expect(screen.queryByText('düt-chagi · Patada hacia atrás')).not.toBeInTheDocument()
+          }
+          const choices = screen.getAllByRole('button', { pressed: false })
+          expect(choices).toHaveLength(options.length)
+          for (const [index, id] of options.entries()) {
+            const card = CARD_BY_ID[id]
+            const label = hangulOnly ? card.hangul : type === 'recall' ? `${card.ko} · ${card.hangul}` : card.ko
+            expect(choices[index]).toHaveTextContent(label)
+            expect(choices[index].textContent).toBe(label)
+            expect(choices[index]).toHaveAccessibleName(label)
+            const row = choices[index].closest('li')!
+            expect(within(row).getAllByRole('button')).toHaveLength(2)
+            expect(within(row).getByRole('button', { name: new RegExp(`: ${card.hangul}$`) })).toHaveTextContent('🔊')
+            for (const candidate of options) {
+              const meaning = CARD_BY_ID[candidate].meaning[lang]
+              expect(row).not.toHaveTextContent(meaning)
+              for (const node of [row, ...row.querySelectorAll('*')]) {
+                for (const attribute of ['title', 'aria-label', 'aria-description', 'alt']) {
+                  expect(node.getAttribute(attribute) ?? '').not.toContain(meaning)
+                }
+              }
+            }
+          }
+          expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+          fireEvent.click(choices[0])
+          expect(choices[0]).toHaveAttribute('aria-pressed', 'true')
+          // Manual checking, correct feedback and completion remain available.
+          fireEvent.click(screen.getByRole('button', { name: { es: 'Comprobar', en: 'Check', de: 'Prüfen' }[lang] }))
+          const dialog = screen.getByRole('dialog')
+          fireEvent.click(within(dialog).getByRole('button', { name: { es: 'Continuar', en: 'Continue', de: 'Weiter' }[lang] }))
+          expect(onFinish).toHaveBeenCalledWith({ correct: 1, total: 1, answers: [{ cardId: 'düt-chagi', correct: true }] })
+        })
+      }
+    }
+  }
+})
+
 describe('LessonPlayer countdown and review', () => {
   const two: Exercise = { type: 'meaning', cardId: 'chagi', options: ['macki', 'chagi', 'sogi', 'gubi'] }
   const answer = (id: string) => fireEvent.click(screen.getByRole('button', { name: CARD_BY_ID[id].meaning.en }))
