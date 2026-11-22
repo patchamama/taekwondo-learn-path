@@ -112,6 +112,15 @@ export const TIMELINE: Event[] = [
     ),
   },
   {
+    year: '1965',
+    source: 'general',
+    text: L(
+      'Taekwondo reaches West Germany: a German Taekwondo guide dates its presence there to 1965, and Sharp names Park Jong Soo as the coach who arrived that year for the German Taekwondo Association.',
+      'Taekwondo kommt in die Bundesrepublik Deutschland: Ein deutscher Taekwondo-Ratgeber datiert die Anwesenheit auf 1965, und Sharp nennt Park Jong Soo als den Trainer, der in jenem Jahr für den Deutschen Taekwondo-Verband kam.',
+      'El Taekwondo llega a la Alemania Occidental: una guía alemana de Taekwondo data su presencia en 1965, y Sharp nombra a Park Jong Soo como el entrenador que llegó ese año para la Asociación Alemana de Taekwondo.',
+    ),
+  },
+  {
     year: '1960s – 1970s',
     source: 'general',
     text: L(
@@ -297,6 +306,51 @@ export const HISTORY_CONTEXT: { id: string; title: Loc; paragraphs: Loc[] }[] = 
         'The execution also differs. In the club material Poomse swing the arms from the shoulders and Hyong start from the hip. ITF patterns are typically performed with a characteristic rise and fall of the body, which Poomse do not use in the same way. The sources of the names differ too: Taegeuk refers to the I Ching trigrams, Hyong to historical figures and events.',
         'Auch die Ausführung unterscheidet sich. Im Vereinsmaterial holen Poomse aus Schulterhöhe aus, Hyong starten von der Hüfte. ITF-Muster werden typischerweise mit einem charakteristischen Heben und Senken des Körpers ausgeführt, das Poomse so nicht verwenden. Auch die Namensquellen unterscheiden sich: Taegeuk bezieht sich auf die Trigramme des I Ging, Hyong auf historische Persönlichkeiten und Ereignisse.',
         'La ejecución también difiere. En el material del club los Poomse sacan los brazos desde los hombros y los Hyong parten de la cadera. Los patrones ITF suelen hacerse con un característico subir y bajar del cuerpo que los Poomse no usan del mismo modo. Las fuentes de los nombres también difieren: Taegeuk remite a los trigramas del I Ching, Hyong a personajes y hechos históricos.',
+      ),
+    ],
+  },
+  {
+    id: 'original-masters',
+    title: L(
+      'The "Original Masters" who took Taekwondo abroad',
+      'Die „Original Masters“, die Taekwondo ins Ausland brachten',
+      'Los «Maestros Originales» que llevaron el Taekwondo al extranjero',
+    ),
+    paragraphs: [
+      L(
+        'Sharp distinguishes two groups. The Korea Taekwondo Association was founded by nine men who each led their own kwan. The "Original Masters" are a different list of 12 South Korean instructors who were among the first to adopt the name Taekwondo and promote it; many of them had trained under other names, such as kong soo do or tae soo do. Several worked with the ITF and later settled in North America, Australia and Europe.',
+        'Sharp unterscheidet zwei Gruppen. Den koreanischen Taekwondo-Verband gründeten neun Männer, die jeweils eine eigene Kwan leiteten. Die „Original Masters“ sind eine andere Liste von 12 südkoreanischen Lehrern, die zu den Ersten gehörten, die den Namen Taekwondo annahmen und verbreiteten; viele hatten zuvor unter anderen Namen trainiert, etwa Kong Soo Do oder Tae Soo Do. Mehrere arbeiteten mit der ITF zusammen und ließen sich später in Nordamerika, Australien und Europa nieder.',
+        'Sharp distingue dos grupos. La Asociación Coreana de Taekwondo fue fundada por nueve hombres que dirigían cada uno su propio kwan. Los «Maestros Originales» son otra lista de 12 instructores surcoreanos que estuvieron entre los primeros en adoptar el nombre Taekwondo y difundirlo; muchos habían entrenado antes bajo otros nombres, como kong soo do o tae soo do. Varios trabajaron con la ITF y luego se establecieron en Norteamérica, Australia y Europa.',
+      ),
+      L(
+        'Two of them matter for Germany. Kim Kwang Il was the ITF head instructor in West Germany until 1971 and, in 1976, promoted Rolf Becking, who led the ITF Germany technical committee, to 2nd dan. Park Jong Soo went to West Germany in 1965 as coach of the German Taekwondo Association, founded the Dutch branch in 1966 and moved to Canada in 1968. Others spread the art elsewhere: Han Cha Kyo performed outside Korea as early as March 1959 (Vietnam and Taiwan), Rhee Ki Ha is called the father of Irish and British Taekwondo, and Park Sun Jae lectured in Croatia in 1964 and became vice-president of the European Taekwondo Union in 1976.',
+        'Zwei von ihnen sind für Deutschland wichtig. Kim Kwang Il war bis 1971 ITF-Cheftrainer in der Bundesrepublik und beförderte 1976 Rolf Becking, den Leiter des ITF-Technikausschusses Deutschland, zum 2. Dan. Park Jong Soo ging 1965 als Trainer des Deutschen Taekwondo-Verbandes nach Westdeutschland, gründete 1966 die niederländische Sektion und zog 1968 nach Kanada. Andere verbreiteten die Kunst anderswo: Han Cha Kyo trat schon im März 1959 außerhalb Koreas auf (Vietnam und Taiwan), Rhee Ki Ha gilt als Vater des irischen und britischen Taekwondo, und Park Sun Jae hielt 1964 Vorträge in Kroatien und wurde 1976 Vizepräsident der Europäischen Taekwondo Union.',
+        'Dos de ellos importan para Alemania. Kim Kwang Il fue instructor jefe de la ITF en la Alemania Occidental hasta 1971 y, en 1976, promovió a 2.º dan a Rolf Becking, jefe del comité técnico de la ITF en Alemania. Park Jong Soo fue en 1965 a la Alemania Occidental como entrenador de la Asociación Alemana de Taekwondo, fundó en 1966 la rama neerlandesa y se trasladó a Canadá en 1968. Otros difundieron el arte en otros lugares: Han Cha Kyo actuó fuera de Corea ya en marzo de 1959 (Vietnam y Taiwán), a Rhee Ki Ha se le llama padre del Taekwondo irlandés y británico, y Park Sun Jae dio conferencias en Croacia en 1964 y fue vicepresidente de la Unión Europea de Taekwondo en 1976.',
+      ),
+      L(
+        'These are biographical claims from one book, with a few visible typing slips, so treat exact ranks and dates as indicative.',
+        'Dies sind biografische Angaben aus einem einzelnen Buch, mit einigen erkennbaren Tippfehlern; genaue Grade und Daten sind daher als Richtwerte zu verstehen.',
+        'Son afirmaciones biográficas de un solo libro, con algunos descuidos de tecleo visibles, así que los grados y fechas exactos deben tomarse como orientativos.',
+      ),
+    ],
+  },
+  {
+    id: 'belt-system-origin',
+    title: L(
+      'Where the coloured belts come from',
+      'Woher die farbigen Gürtel kommen',
+      'De dónde vienen los cinturones de colores',
+    ),
+    paragraphs: [
+      L(
+        'According to Sharp, the graded Kup system was not part of the original practice: students went from white to black belt after years of training. It was introduced when Taekwondo reached the Western world, because Western students wanted milestones to keep them motivated. Stripes (tags) were added to the solid colours to make the stages: white, yellow, green, blue, red and then black.',
+        'Nach Sharp gehörte das gestufte Kup-System nicht zur ursprünglichen Praxis: Schüler gingen nach Jahren des Trainings vom weißen zum schwarzen Gürtel. Es wurde eingeführt, als Taekwondo in die westliche Welt kam, weil westliche Schüler Etappenziele wollten, um motiviert zu bleiben. Zu den einfarbigen Gürteln kamen Streifen (Tags) hinzu, um die Stufen zu bilden: Weiß, Gelb, Grün, Blau, Rot und dann Schwarz.',
+        'Según Sharp, el sistema de grados Kup no formaba parte de la práctica original: los alumnos pasaban del cinturón blanco al negro tras años de entrenamiento. Se introdujo cuando el Taekwondo llegó al mundo occidental, porque los alumnos occidentales querían hitos que los mantuvieran motivados. A los colores lisos se añadieron rayas (tags) para formar las etapas: blanco, amarillo, verde, azul, rojo y después negro.',
+      ),
+      L(
+        'Grading is typically held every three months, only for students who have trained consistently and completed the minimum number of lessons. It covers basics, forms, sparring and breaking, plus theory and Korean terminology, and the waits between grades grow longer towards black belt; the book puts the whole path at roughly three to four years. The idea of ranks marked by belt colour is usually traced to Japanese judo and karate, so this is a shared martial-arts convention rather than something unique to Korea.',
+        'Prüfungen finden typischerweise alle drei Monate statt, nur für Schüler, die regelmäßig trainiert und die Mindestzahl an Stunden absolviert haben. Sie umfassen Grundtechniken, Formen, Kampf und Bruchtest sowie Theorie und koreanische Fachbegriffe, und die Wartezeiten zwischen den Graden werden zum Schwarzgurt hin länger; das Buch nennt für den ganzen Weg etwa drei bis vier Jahre. Die Idee von Rängen, die durch Gürtelfarben angezeigt werden, wird meist auf japanisches Judo und Karate zurückgeführt; es ist also eine gemeinsame Kampfkunst-Konvention und nichts speziell Koreanisches.',
+        'Los exámenes suelen celebrarse cada tres meses, solo para quienes han entrenado con constancia y completado el mínimo de clases. Cubren básicos, formas, combate y rotura, además de teoría y terminología coreana, y las esperas entre grados se alargan hacia el cinturón negro; el libro calcula unos tres a cuatro años para todo el camino. La idea de rangos marcados por el color del cinturón suele remontarse al judo y al karate japoneses, así que es una convención compartida de las artes marciales y no algo exclusivo de Corea.',
       ),
     ],
   },

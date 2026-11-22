@@ -55,3 +55,24 @@ describe('Poomse reading from the German book', () => {
     }
   })
 })
+
+describe('Sharp chapters 2 and 3 in the history reading', () => {
+  it('covers the original masters and the origin of the coloured belt system in every language', () => {
+    for (const language of languages) {
+      const masters = HISTORY_CONTEXT.find((topic) => topic.id === 'original-masters')
+      const belts = HISTORY_CONTEXT.find((topic) => topic.id === 'belt-system-origin')
+      expect(masters, 'original-masters').toBeDefined()
+      expect(belts, 'belt-system-origin').toBeDefined()
+      const m = masters!.paragraphs.map((p) => p[language]).join(' ')
+      expect(m).toMatch(/Kim Kwang Il/)
+      expect(m).toMatch(/Park Jong Soo/)
+      expect(m).toMatch(/12/)
+      const b = belts!.paragraphs.map((p) => p[language]).join(' ')
+      expect(b).toMatch(/Kup/)
+    }
+  })
+
+  it('records that Taekwondo reached West Germany in 1965', () => {
+    expect(TIMELINE.some((e) => e.year === '1965' && /Germany|Deutschland|Alemania/.test(e.text.en + e.text.de + e.text.es))).toBe(true)
+  })
+})
