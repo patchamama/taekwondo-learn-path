@@ -12,13 +12,26 @@ type Said = { id: string; parts: Partial<Record<PlaybackRole, true>> }
  * Plays the plan clip by clip and writes each word only after it has been said, so you can see how it is spelled.
  * Playing clip by clip (instead of the joined file) keeps the text exactly in step with the voice.
  */
-export function VocabularyPlayer({ steps, base }: { steps: PlaybackStep[]; base: string }) {
+export function VocabularyPlayer({
+  steps,
+  base,
+  onRunningChange,
+}: {
+  steps: PlaybackStep[]
+  base: string
+  onRunningChange?: (running: boolean) => void
+}) {
   const { t, loc } = useT()
   const [running, setRunning] = useState(false)
   const [said, setSaid] = useState<Said[]>([])
   const cancel = useRef<() => void>(() => {})
   // leaving the card (or changing the selection) must silence the voice
   useEffect(() => () => cancel.current(), [])
+  // lets the page hide everything else while the repetition plays
+  useEffect(() => {
+    onRunningChange?.(running)
+    return () => onRunningChange?.(false)
+  }, [running, onRunningChange])
 
   const play = async () => {
     let cancelled = false

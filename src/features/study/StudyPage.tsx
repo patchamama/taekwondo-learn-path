@@ -100,6 +100,7 @@ export function StudyPage() {
   const index = Number.isInteger(parsed) && parsed >= 0 && parsed < BELTS.length ? parsed : 0
   const belt = BELTS[index]
   const [upTo, setUpTo] = useState(false)
+  const [repeating, setRepeating] = useState(false)
   const c = upTo ? levelContentUpTo(index) : levelContent(index)
   const unit = UNITS.find((u) => u.earns === belt.id)
   const firstLesson = unit ? LESSONS.find((l) => l.unit === unit.id) : undefined
@@ -123,14 +124,18 @@ export function StudyPage() {
   const rest = c.techniques.filter((x) => !shown.has(x.id))
 
   return (
-    <section className="grid gap-6">
+    <section
+      data-study-root
+      // while the repetition plays, everything but the audio card is blurred so the words cannot be read ahead
+      className={`grid gap-6 ${repeating ? '[&>*:not([data-audio-card])]:pointer-events-none [&>*:not([data-audio-card])]:select-none [&>*:not([data-audio-card])]:blur-md' : ''}`}
+    >
       <h1 className="text-2xl font-bold">{t('studyTitle')}</h1>
       <p className="text-sm text-slate-600">{t('studyIntro')}</p>
       <div className="grid gap-2">
         <ExportBar label={t('exportThis')} build={() => buildLevelDoc(index, { lang, t, loc })} />
         <ExportBar label={t('exportAll')} build={() => buildLevelDoc(null, { lang, t, loc })} />
       </div>
-      <AudioCard maxBelt={index} onlyBelt={upTo ? null : index} />
+      <AudioCard maxBelt={index} onlyBelt={upTo ? null : index} onPlayingChange={setRepeating} />
       <BeltRangeSlider range={{
         max: index,
         only: upTo ? null : index,

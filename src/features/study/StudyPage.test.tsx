@@ -1,6 +1,6 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { useAppStore } from '../../shared/store/useAppStore'
 import { StudyPage } from './StudyPage'
 import { AUDIO_ITEMS } from '../../data/audioManifest'
@@ -146,5 +146,35 @@ describe('StudyPage vocabulary audio card', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Set up audio' }))
     const base = { lang: 'en', maxBelt: 1, vocabulary: true, techniques: true, descriptions: false, japanese: false } as const
     expect(count()).toBe(selectItems(AUDIO_ITEMS, { ...base, onlyBelt: 1 }).length)
+  })
+})
+
+describe('StudyPage repetition focus', () => {
+  class FakeAudio {
+    onended: (() => void) | null = null
+    onerror: (() => void) | null = null
+    constructor(public src: string) {}
+    play() {
+      return new Promise<void>(() => {}) // never ends: the exercise stays running
+    }
+    pause() {}
+  }
+  beforeEach(() => {
+    useAppStore.getState().reset()
+    useAppStore.setState({ lang: 'en' })
+    vi.stubGlobal('Audio', FakeAudio)
+  })
+  afterEach(() => vi.unstubAllGlobals())
+
+  it('blurs everything except the audio card while the repetition plays, then restores it', async () => {
+    const { container } = open('/study/0')
+    const root = container.querySelector('[data-study-root]') as HTMLElement
+    expect(root.className).not.toMatch(/blur/)
+    fireEvent.click(screen.getByRole('button', { name: 'Set up audio' }))
+    fireEvent.click(screen.getByRole('button', { name: /Play/ }))
+    expect(root.className).toMatch(/blur/)
+    expect(root.querySelector('[data-audio-card]')).not.toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: /Stop/ }))
+    await waitFor(() => expect(root.className).not.toMatch(/blur/))
   })
 })

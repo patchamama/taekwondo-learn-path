@@ -7,7 +7,15 @@ import { backendStatus, buildMp3, generateMissing } from './backend'
 import { buildAudio } from './buildAudio'
 
 /** Study card: builds a study audio for the belts Study is showing (one belt, or everything up to it). */
-export function AudioCard({ maxBelt, onlyBelt }: { maxBelt: number; onlyBelt: number | null }) {
+export function AudioCard({
+  maxBelt,
+  onlyBelt,
+  onPlayingChange,
+}: {
+  maxBelt: number
+  onlyBelt: number | null
+  onPlayingChange?: (playing: boolean) => void
+}) {
   const { t, lang } = useT()
   const [vocabulary, setVocabulary] = useState(true)
   const [techniques, setTechniques] = useState(true)
@@ -110,6 +118,7 @@ export function AudioCard({ maxBelt, onlyBelt }: { maxBelt: number; onlyBelt: nu
 
   return (
     <section
+      data-audio-card
       className="grid gap-4 rounded-xl border bg-white p-5"
       aria-labelledby="audio-card-title"
     >
@@ -143,6 +152,7 @@ export function AudioCard({ maxBelt, onlyBelt }: { maxBelt: number; onlyBelt: nu
             key={steps.length + lang}
             steps={steps}
             base={import.meta.env.BASE_URL}
+            onRunningChange={onPlayingChange}
           />
           <button
             type="button"

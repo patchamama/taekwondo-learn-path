@@ -6,9 +6,9 @@
 //   node scripts/generate-audio.mjs --provider openai  # better Korean; needs OPENAI_API_KEY (.env.local)
 //   node scripts/generate-audio.mjs --sample           # 12 Korean words per provider in audio-sample/
 //   node scripts/generate-audio.mjs --dry-run          # only count what is missing
-// Other flags: --force, --only ko|en|de|es|ja|info, --limit N
+// Other flags: --force, --only ko|en|de|es|ja|info, --limit N, --jobs N (parallel requests; default 4 for openai)
 import { execFileSync, spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import process from 'node:process'
@@ -47,7 +47,14 @@ const run = (cmd, a, o = {}) => execFileSync(cmd, a, { stdio: ['ignore', 'ignore
 
 function toMp3(input, output, info) {
   mkdirSync(dirname(output), { recursive: true })
-  run('ffmpeg', ['-y', '-v', 'error', '-i', input, '-ac', '1', '-ar', '16000', '-b:a', info ? '16k' : '24k', output])
+  // trim leading/trailing silence (TTS engines pad clips) so the planned pauses stay exact
+  const trim = 'silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,areverse,' +
+    'silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.12,areverse'
+  const encode = (filter) =>
+    run('ffmpeg', ['-y', '-v', 'error', '-i', input, ...(filter ? ['-af', filter] : []), '-ac', '1', '-ar', '16000', '-b:a', info ? '16k' : '24k', output])
+  encode(trim)
+  // very short words can be trimmed to nothing: keep them untrimmed instead
+  if (statSync(output).size < 600) encode(null)
 }
 
 async function synth(track, text, wav) {
@@ -65,19 +72,27 @@ async function synth(track, text, wav) {
   if (PROVIDER === 'openai') {
     const key = process.env.OPENAI_API_KEY
     if (!key) throw new Error('OPENAI_API_KEY is missing: put it in .env.local (see .env.local.example)')
-    const res = await fetch('https://api.openai.com/v1/audio/speech', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: process.env.OPENAI_TTS_MODEL ?? 'gpt-4o-mini-tts',
-        voice: oa,
-        input: text,
-        instructions: `Speak ${LANG_NAME[lang]}, clearly and at a calm pace, as in a language lesson.`,
-        response_format: 'wav',
-      }),
+    const body = JSON.stringify({
+      model: process.env.OPENAI_TTS_MODEL ?? 'gpt-4o-mini-tts',
+      voice: process.env.OPENAI_TTS_VOICE ?? oa,
+      input: text,
+      instructions: `Speak ${LANG_NAME[lang]}, clearly and at a calm pace, as in a language lesson.`,
+      response_format: 'wav',
     })
-    if (!res.ok) throw new Error(`OpenAI TTS ${res.status}: ${(await res.text()).slice(0, 200)}`)
-    return writeFileSync(wav, Buffer.from(await res.arrayBuffer()))
+    // rate limits (429) and server errors are retried with a growing pause
+    for (let attempt = 1; ; attempt++) {
+      const res = await fetch('https://api.openai.com/v1/audio/speech', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+        body,
+      })
+      if (res.ok) return writeFileSync(wav, Buffer.from(await res.arrayBuffer()))
+      if ((res.status === 429 || res.status >= 500) && attempt < 6) {
+        await new Promise((r) => setTimeout(r, 1500 * 2 ** (attempt - 1)))
+        continue
+      }
+      throw new Error(`OpenAI TTS ${res.status}: ${(await res.text()).slice(0, 200)}`)
+    }
   }
   throw new Error(`Unknown provider "${PROVIDER}"`)
 }
@@ -118,17 +133,23 @@ async function main() {
     console.log(`${total - missing}/${total} clips present, ${todo.length} of ${missing} missing to generate with "${PROVIDER}"`)
     if (flag('dry-run')) return
     let done = 0
-    for (const c of todo) {
-      const wav = join(tmp, 'clip.wav')
-      try {
-        await synth(c.track, c.text, wav)
-        toMp3(wav, join(ROOT, 'public', c.file), c.track.startsWith('info-'))
-      } catch (e) {
-        console.error(`FAILED ${c.track}/${c.id}: ${String(e.message ?? e).split('\n')[0]}`)
-        process.exitCode = 1
+    let next = 0
+    const jobs = Math.max(1, Number(opt('jobs') ?? (PROVIDER === 'openai' ? 4 : 1)))
+    const worker = async (n) => {
+      const wav = join(tmp, `clip-${n}.wav`)
+      while (next < todo.length) {
+        const c = todo[next++]
+        try {
+          await synth(c.track, c.text, wav)
+          toMp3(wav, join(ROOT, 'public', c.file), c.track.startsWith('info-'))
+        } catch (e) {
+          console.error(`FAILED ${c.track}/${c.id}: ${String(e.message ?? e).split('\n')[0]}`)
+          process.exitCode = 1
+        }
+        if (++done % 100 === 0) console.log(`${done}/${todo.length}`)
       }
-      if (++done % 100 === 0) console.log(`${done}/${todo.length}`)
     }
+    await Promise.all(Array.from({ length: jobs }, (_, n) => worker(n)))
     console.log(`Done: ${done} processed${process.exitCode ? ' (some failed, see above)' : ''}`)
   } finally {
     rmSync(tmp, { recursive: true, force: true })
