@@ -22,6 +22,8 @@ export interface KnowledgeDoc {
   text: Loc
   /** route inside the app (HashRouter path) */
   route: string
+  /** belt index (0 = 10 Kup … 10 = 1 Dan) for cards */
+  belt?: number
   videos?: VideoLink[]
 }
 
@@ -74,6 +76,7 @@ export function buildKnowledge(): KnowledgeDoc[] {
       ],
       text,
       route: `/study/${cardBeltIndex(c.id)}`,
+      belt: cardBeltIndex(c.id),
       videos: videosOf(c.id),
     })
   }

@@ -1,7 +1,7 @@
 {
   "name": "taekwondo-learn",
   "private": true,
-  "version": "0.36.0",
+  "version": "0.37.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +10,7 @@
     "format": "prettier --write src",
     "test": "vitest run",
     "test:release": "node --test scripts/test_build_version.mjs",
+    "notebook-pack": "node scripts/export-notebook-pack.mjs",
     "test:server": "node --test \"server/*.test.mjs\"",
     "preview": "vite preview",
     "frames": "node scripts/extract-frames.mjs"

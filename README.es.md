@@ -60,6 +60,12 @@ Con `./start.sh` / `start.bat` en marcha, cada ficha (términos, técnicas, ladr
 - **Ayuda de traducción (opcional):** define `LLM_PROVIDER` en `.env.local` (`ollama` para un modelo local, o `openai`/`anthropic` con su clave de API; `LLM_MODEL` opcional) y el editor muestra **✨ Sugerir traducciones**. No se envía nada a ningún sitio si no lo defines, y las sugerencias solo se rellenan para que las revises antes de guardar.
 - `npm run test:server` ejecuta los tests del backend.
 
+## Asistente y NotebookLM
+
+El botón redondo de abajo a la derecha abre un **asistente** (preguntas en inglés, alemán o español). En el sitio publicado busca en el contenido del curso (técnicas, términos, conceptos, historia, teoría) y responde con enlaces a las páginas y a los vídeos en el momento exacto. Si el backend local tiene un modelo de lenguaje definido (`LLM_PROVIDER`, ver arriba), el modelo redacta la respuesta usando solo esos pasajes; si falla, se muestra la respuesta de la búsqueda.
+
+NotebookLM no tiene una API pública para cuadernos personales, así que el sitio solo enlaza a él. Para alimentar tu cuaderno con el mismo contenido ejecuta `npm run notebook-pack` y sube como fuentes los archivos Markdown de `notebooklm-pack/` (incluyen los tres idiomas, enlaces a cada página y a cada vídeo con su tiempo de inicio).
+
 ## Scripts
 
 | Comando                    |                                             |

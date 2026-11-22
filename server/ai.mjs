@@ -81,3 +81,27 @@ export async function translate(cfg, { from, targets, text, context }) {
   const answer = parseJsonObject(await chat(cfg, buildTranslatePrompt({ from, targets, text, context })))
   return Object.fromEntries(targets.filter((l) => typeof answer[l] === 'string').map((l) => [l, answer[l].trim()]))
 }
+
+const MAX_CONTEXTS = 8
+const MAX_CONTEXT_CHARS = 1200
+
+/** Question + the best passages of the site; the model may use nothing else. */
+export function buildChatPrompt({ question, lang, contexts }) {
+  const system =
+    'You are the assistant of a taekwondo learning website (Kukkiwon/WT style, with some ITF notes). ' +
+    'Answer ONLY with the information in the numbered passages of the CONTEXT. If they do not contain the answer, say so briefly and do not invent anything. ' +
+    'Reply in the same language as the question (English, German or Spanish). Be concise, keep Korean terms and romanizations unchanged, and mention the passage titles you used.'
+  const ctx = contexts
+    .slice(0, MAX_CONTEXTS)
+    .map((c, i) => `[${i + 1}] ${String(c.title).slice(0, 160)}\n${String(c.text).slice(0, MAX_CONTEXT_CHARS)}`)
+    .join('\n\n')
+  const user = `CONTEXT:\n${ctx}\n\nSite language: ${LANG_NAME[lang] ?? 'English'}\nQUESTION: ${question}`
+  return { system, user }
+}
+
+export async function answerQuestion(cfg, { question, lang, contexts }) {
+  if (typeof question !== 'string' || !question.trim() || question.length > 1000) throw new Error('Invalid question')
+  if (!Array.isArray(contexts) || contexts.length === 0) throw new Error('No context')
+  const text = await chat(cfg, buildChatPrompt({ question: question.trim(), lang, contexts }))
+  return text.trim()
+}

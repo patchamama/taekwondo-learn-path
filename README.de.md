@@ -60,6 +60,12 @@ Mit laufendem `./start.sh` / `start.bat` hat jede Karte (Begriffe, Techniken, Wo
 - **Übersetzungshilfe (optional):** Definiere `LLM_PROVIDER` in `.env.local` (`ollama` für ein lokales Modell oder `openai`/`anthropic` mit API-Schlüssel; `LLM_MODEL` optional), dann zeigt der Editor **✨ Übersetzungen vorschlagen**. Ohne Definition wird nichts gesendet, und Vorschläge werden nur eingetragen, damit du sie vor dem Speichern prüfst.
 - `npm run test:server` führt die Backend-Tests aus.
 
+## Assistent und NotebookLM
+
+Der runde Knopf unten rechts öffnet einen **Assistenten** (Fragen auf Englisch, Deutsch oder Spanisch). Auf der veröffentlichten Seite durchsucht er die Inhalte des Kurses (Techniken, Begriffe, Konzepte, Geschichte, Theorie) und antwortet mit Links zu den Seiten und zu den Videos an der genauen Stelle. Ist im lokalen Backend ein Sprachmodell definiert (`LLM_PROVIDER`, siehe oben), formuliert das Modell die Antwort nur mit diesen Passagen; bei einem Fehler erscheint die Suchantwort.
+
+NotebookLM hat keine öffentliche API für persönliche Notizbücher, deshalb verlinkt die Seite nur darauf. Um dein Notizbuch mit denselben Inhalten zu füttern, führe `npm run notebook-pack` aus und lade die Markdown-Dateien aus `notebooklm-pack/` als Quellen hoch (sie enthalten die drei Sprachen, Links zu jeder Seite und zu jedem Video mit Startzeit).
+
 ## Skripte
 
 | Befehl                     |                                     |

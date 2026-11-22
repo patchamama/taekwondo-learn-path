@@ -11,7 +11,7 @@ import {
   searchLines,
   videoDuration,
 } from './library.mjs'
-import { aiConfig, translate } from './ai.mjs'
+import { aiConfig, answerQuestion, translate } from './ai.mjs'
 import { ensureDir, frameTimes, saveClips, validFrameKey, validateClips } from './clips.mjs'
 import { readOverrides, saveOverride, validId, validateOverride } from './overrides.mjs'
 
@@ -158,6 +158,11 @@ export async function handleEditor(req, res, url, { root, send, readBody }) {
     if (req.method === 'POST' && p === '/api/ai/translate') {
       const { from, targets, text, context } = JSON.parse(await readBody(req))
       return send(res, 200, { ok: true, translations: await translate(aiConfig(), { from, targets, text, context }) }), true
+    }
+
+    if (req.method === 'POST' && p === '/api/ai/chat') {
+      const { question, lang, contexts } = JSON.parse(await readBody(req))
+      return send(res, 200, { ok: true, answer: await answerQuestion(aiConfig(), { question, lang, contexts }) }), true
     }
 
     // ---- clips (re-timing and their frames) -------------------------------------------------

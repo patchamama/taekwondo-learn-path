@@ -52,6 +52,12 @@ With `./start.sh` / `start.bat` running, every card (terms, techniques, word blo
 - **Translation helper (optional):** define `LLM_PROVIDER` in `.env.local` (`ollama` for a local model, or `openai`/`anthropic` with their API key; `LLM_MODEL` optional) and the editor shows **✨ Suggest translations**. Nothing is sent anywhere unless you define it, and suggestions are only filled in for you to review before saving.
 - `npm run test:server` runs the backend tests.
 
+## Assistant and NotebookLM
+
+The round button at the bottom-right opens an **assistant** (questions in English, German or Spanish). On the deployed site it searches the content of the course (techniques, terms, concepts, history, theory) and answers with links to the pages and the videos at the exact moment. If the local backend has a language model defined (`LLM_PROVIDER`, see above), the model writes the answer using only those passages; if it fails, the search answer is shown.
+
+NotebookLM has no public API for personal notebooks, so the site only links to it. To feed your notebook with the same content run `npm run notebook-pack` and upload the Markdown files of `notebooklm-pack/` as sources (they contain the three languages, links to each page and to each video with its start time).
+
 ## Scripts
 
 | Command                    |                                   |

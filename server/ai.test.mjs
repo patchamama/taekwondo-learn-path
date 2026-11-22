@@ -71,3 +71,33 @@ test('errors from the provider are reported without leaking the key', async () =
   const cfg = aiConfig({ LLM_PROVIDER: 'openai', OPENAI_API_KEY: 'sk-SECRET' })
   await assert.rejects(() => chat(cfg, { system: 's', user: 'u' }), (e) => /401/.test(e.message) && !/sk-SECRET/.test(e.message))
 })
+
+import { answerQuestion, buildChatPrompt } from './ai.mjs'
+
+test('buildChatPrompt grounds the model in the given passages and the language of the question', () => {
+  const { system, user } = buildChatPrompt({
+    question: 'What is ap-chagi?',
+    lang: 'en',
+    contexts: [{ title: 'ap-chagi 앞차기', text: 'Front kick for a pad.', url: '/study/1' }],
+  })
+  assert.match(system, /ONLY/)
+  assert.match(system, /same language as the question/i)
+  assert.match(user, /\[1\] ap-chagi 앞차기/)
+  assert.match(user, /Front kick for a pad\./)
+  assert.match(user, /What is ap-chagi\?/)
+})
+
+test('buildChatPrompt limits what is sent to the model', () => {
+  const many = Array.from({ length: 30 }, (_, i) => ({ title: `t${i}`, text: 'x'.repeat(5000), url: '/x' }))
+  const { user } = buildChatPrompt({ question: 'q', lang: 'es', contexts: many })
+  assert.ok(user.length < 20000)
+  assert.ok(!user.includes('t9]'))
+})
+
+test('answerQuestion rejects an empty question or missing context and returns the model text', async () => {
+  const cfg = aiConfig({ LLM_PROVIDER: 'ollama' })
+  await assert.rejects(() => answerQuestion(cfg, { question: '  ', lang: 'en', contexts: [{ title: 't', text: 'x', url: '/' }] }))
+  await assert.rejects(() => answerQuestion(cfg, { question: 'q', lang: 'en', contexts: [] }))
+  globalThis.fetch = async () => ({ ok: true, json: async () => ({ message: { content: '  A front kick.  ' } }) })
+  assert.equal(await answerQuestion(cfg, { question: 'q', lang: 'en', contexts: [{ title: 't', text: 'x', url: '/' }] }), 'A front kick.')
+})
