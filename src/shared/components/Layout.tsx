@@ -1,3 +1,4 @@
+import { ChatBot } from '../../features/bot/ChatBot'
 import { AudioSourceBadge } from './AudioSourceBadge'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { LANGS } from '../i18n/types'
@@ -83,6 +84,7 @@ export function Layout() {
         <Outlet />
       </main>
       <AudioSourceBadge />
+      <ChatBot />
     </div>
   )
 }
