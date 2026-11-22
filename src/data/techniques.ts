@@ -324,6 +324,32 @@ const BASE: Technique[] = [
   ),
 ]
 
+/** Movement of simple blocks, from the glossary: an = from outside to inside, packat/bakkat = from inside to outside. */
+const OUT_TO_IN: Loc = {
+  en: 'Movement: from outside to inside.',
+  de: 'Bewegung: von außen nach innen.',
+  es: 'Movimiento: de afuera hacia adentro.',
+}
+const IN_TO_OUT: Loc = {
+  en: 'Movement: from inside to outside.',
+  de: 'Bewegung: von innen nach außen.',
+  es: 'Movimiento: de adentro hacia afuera.',
+}
+const BLOCK_MOVEMENT: Record<string, Loc> = {
+  'momtong-an-macki': OUT_TO_IN,
+  'batangson-an-macki': OUT_TO_IN,
+  'momtong-packat-macki': IN_TO_OUT,
+  'momtong-hansonnal-packat-macki': IN_TO_OUT,
+  'goduro-packat-palmok-packat-macki': IN_TO_OUT,
+}
+
+const withMovement = (x: Technique): Technique => {
+  const move = BLOCK_MOVEMENT[x.id]
+  if (!move) return x
+  const add = (l: keyof Loc) => (x.info ? `${x.info[l]} ${move[l]}` : move[l])
+  return { ...x, info: { en: add('en'), de: add('de'), es: add('es') } }
+}
+
 /** Base techniques (9-8 Kup) plus the slices 7 Kup → 1 Dan. */
 export const TECHNIQUES: Technique[] = mergeById(
   BASE.map((x): Technique => ({ ...x, info: x.info ?? TECHNIQUE_INFO[x.id] })),
@@ -339,4 +365,4 @@ export const TECHNIQUES: Technique[] = mergeById(
     info: x.info,
   })),
   (x) => x.id,
-)
+).map(withMovement)

@@ -143,11 +143,6 @@ export const STRINGS = {
     de: 'Tippe die Wortbausteine der Reihe nach',
     es: 'Toca los bloques de palabras en orden',
   },
-  generalSource: {
-    en: 'General knowledge – confirm with your club',
-    de: 'Allgemeinwissen – bitte mit eurem Verein abgleichen',
-    es: 'Conocimiento general: confirma con tu club',
-  },
   lessonComplete: { en: 'Lesson complete!', de: 'Lektion geschafft!', es: '¡Lección completada!' },
   accuracy: { en: 'accuracy', de: 'Genauigkeit', es: 'precisión' },
   wordsRecap: {

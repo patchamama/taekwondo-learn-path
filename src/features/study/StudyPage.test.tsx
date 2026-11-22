@@ -114,3 +114,12 @@ describe('StudyPage clip frames', () => {
     expect(article.querySelectorAll('ol[aria-label]')).toHaveLength(1)
   })
 })
+
+describe('StudyPage general-knowledge notice', () => {
+  it('no longer shows the "confirm with your club" notice', () => {
+    useAppStore.getState().reset()
+    useAppStore.setState({ lang: 'es' })
+    open('/study/2')
+    expect(screen.queryByText(/confirma con tu club/)).not.toBeInTheDocument()
+  })
+})

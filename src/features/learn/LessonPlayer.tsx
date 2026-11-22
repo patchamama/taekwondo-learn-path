@@ -181,9 +181,6 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
         {ex.type === 'theory' && (
           <>
             <p className="text-lg font-medium">{loc(THEORY_BY_ID[ex.theoryId].question)}</p>
-            {THEORY_BY_ID[ex.theoryId].source === 'general' && (
-              <p className="mt-2 text-xs text-amber-700">ℹ {t('generalSource')}</p>
-            )}
           </>
         )}
         {ex.type === 'meaning' && (

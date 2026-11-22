@@ -213,9 +213,6 @@ export function StudyPage() {
               <li key={th.id} className="rounded-xl border bg-white p-4">
                 <p className="font-semibold">{loc(th.question)}</p>
                 <p className="text-sm">{loc(th.correct)}</p>
-                {th.source === 'general' && (
-                  <p className="text-xs text-amber-700">ℹ {t('generalSource')}</p>
-                )}
               </li>
             ))}
           </ul>

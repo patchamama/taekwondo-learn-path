@@ -242,6 +242,63 @@ const BASE: TheoryItem[] = [
     correct: L('Seoul', 'Seoul', 'Seúl'),
     wrong: [same('Tokyo'), same('Beijing'), same('Berlin')],
   },
+  // Source: Taekwondo book glossary p. 17 (Kardinalzahlen / Ordnungszahlen), photographed 2026-11.
+  {
+    id: 'th-ord-first',
+    source: 'pdf',
+    kup: 9,
+    question: L(
+      'Which Korean number is "first" (1st) in a form name such as Taegeuk Il Jang?',
+      'Welche koreanische Zahl bedeutet „erste(r)“ in einem Formnamen wie Taegeuk Il Jang?',
+      '¿Qué número coreano es «primero» (1.º) en un nombre de forma como Taegeuk Il Jang?',
+    ),
+    correct: same('il'),
+    wrong: [same('hana'), same('sam'), same('sib')],
+  },
+  {
+    id: 'th-ord-series',
+    source: 'pdf',
+    kup: 9,
+    question: L(
+      'Ordinal numbers 1st–10th (Sino-Korean, used to number the forms)',
+      'Ordnungszahlen 1–10 (sino-koreanisch, nummerieren die Formen)',
+      'Ordinales 1.º–10.º (sino-coreanos, numeran las formas)',
+    ),
+    correct: same('il, i, sam, sa, oh, yuk, sil, pal, gu, sib'),
+    wrong: [
+      same('hana, dul, set, net, dasŏt, yŏsŏt, ilgob, yŏdŭl, ahŏb, yŏl'),
+      same('il, dul, sam, net, oh, yŏsŏt, sil, yŏdŭl, gu, yŏl'),
+      same('hana, i, set, sa, dasŏt, yuk, ilgob, pal, ahŏb, sib'),
+    ],
+  },
+  {
+    id: 'th-ord-native',
+    source: 'pdf',
+    kup: 9,
+    question: L(
+      'Cardinal numbers 1–10 (native Korean, used to count repetitions)',
+      'Kardinalzahlen 1–10 (koreanisch, zählen Wiederholungen)',
+      'Cardinales 1–10 (coreano nativo, cuentan repeticiones)',
+    ),
+    correct: same('hana (han), dul (du), set (se), net, dasŏt, yŏsŏt, ilgob, yŏdŭl, ahŏb, yŏl'),
+    wrong: [
+      same('il, i, sam, sa, oh, yuk, sil, pal, gu, sib'),
+      same('hana, i, set, sa, dasŏt, yuk, ilgob, pal, ahŏb, sib'),
+      same('il, dul, sam, net, oh, yŏsŏt, sil, yŏdŭl, gu, yŏl'),
+    ],
+  },
+  {
+    id: 'th-ord-eighth',
+    source: 'pdf',
+    kup: 9,
+    question: L(
+      'Which word is "eighth" (8th) in form numbering (Taegeuk Pal Jang)?',
+      'Welches Wort ist „achte(r)“ bei der Formnummerierung (Taegeuk Pal Jang)?',
+      '¿Qué palabra es «octavo» (8.º) en la numeración de formas (Taegeuk Pal Jang)?',
+    ),
+    correct: same('pal'),
+    wrong: [same('yŏdŭl'), same('yuk'), same('gu')],
+  },
 ]
 
 /** Base theory plus the questions of the curriculum slices. */

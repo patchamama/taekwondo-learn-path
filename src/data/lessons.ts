@@ -289,6 +289,22 @@ const BASE_LESSONS: Lesson[] = [
     theoryIds: ['th-saju'],
   },
   {
+    id: 'u2-ordinals',
+    unit: 'kup9',
+    title: L(
+      'Korean ordinals: first, second, third…',
+      'Koreanische Ordnungszahlen: erste, zweite, dritte …',
+      'Ordinales coreanos: primero, segundo, tercero…',
+    ),
+    tip: L(
+      'Forms are numbered with Sino-Korean ordinals: 1st il, 2nd i, 3rd sam, 4th sa, 5th oh, 6th yuk, 7th sil, 8th pal, 9th gu, 10th sib. Repetitions are counted with native numbers: hana (han), dul (du), set (se), net, dasŏt, yŏsŏt, ilgob, yŏdŭl, ahŏb, yŏl.',
+      'Die Formen werden mit sino-koreanischen Ordnungszahlen nummeriert: 1. il, 2. i, 3. sam, 4. sa, 5. oh, 6. yuk, 7. sil, 8. pal, 9. gu, 10. sib. Wiederholungen zählt man mit koreanischen Zahlen: hana (han), dul (du), set (se), net, dasŏt, yŏsŏt, ilgob, yŏdŭl, ahŏb, yŏl.',
+      'Las formas se numeran con ordinales sino-coreanos: 1.º il, 2.º i, 3.º sam, 4.º sa, 5.º oh, 6.º yuk, 7.º sil, 8.º pal, 9.º gu, 10.º sib. Las repeticiones se cuentan con números nativos: hana (han), dul (du), set (se), net, dasŏt, yŏsŏt, ilgob, yŏdŭl, ahŏb, yŏl.',
+    ),
+    cardIds: [],
+    theoryIds: ['th-ord-first', 'th-ord-series', 'th-ord-native', 'th-ord-eighth'],
+  },
+  {
     id: 'u2-theory',
     unit: 'kup9',
     title: L('Theory: belts & titles', 'Theorie: Gürtel & Titel', 'Teoría: cinturones y títulos'),

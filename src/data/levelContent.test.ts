@@ -30,3 +30,12 @@ describe('levelContent', () => {
     expect(levelContent(10).forms.length).toBeGreaterThan(0)
   })
 })
+
+describe('9 Kup Korean ordinals', () => {
+  it('teaches the ordinal series 1st-10th in the 9 Kup reading view', () => {
+    const ids = levelContent(1).theory.map((t) => t.id)
+    expect(ids).toEqual(expect.arrayContaining(['th-ord-first', 'th-ord-series', 'th-ord-native']))
+    const series = levelContent(1).theory.find((t) => t.id === 'th-ord-series')
+    expect(series?.correct.es).toBe('il, i, sam, sa, oh, yuk, sil, pal, gu, sib')
+  })
+})

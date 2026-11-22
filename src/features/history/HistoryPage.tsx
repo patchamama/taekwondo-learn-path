@@ -18,9 +18,6 @@ export function HistoryPage() {
               <span className="absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full bg-amber-500" />
               <p className="font-bold">{e.year}</p>
               <p className="text-sm text-slate-700">{loc(e.text)}</p>
-              {e.source === 'general' && (
-                <p className="text-xs text-amber-700">ℹ {t('generalSource')}</p>
-              )}
             </li>
           ))}
         </ol>
