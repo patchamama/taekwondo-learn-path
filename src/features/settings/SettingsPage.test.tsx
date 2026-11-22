@@ -75,3 +75,33 @@ describe('SettingsPage audio', () => {
     expect(screen.queryByRole('link', { name: /Vocabulary audio/ })).not.toBeInTheDocument()
   })
 })
+
+describe('SettingsPage quiz options', () => {
+  beforeEach(() => {
+    useAppStore.getState().reset()
+    useAppStore.setState({ lang: 'en', quizAutoCheck: true, quizResultMode: 'button', quizAutoContinue: false, quizMaxQuestions: 14 })
+  })
+  const show = () => render(<MemoryRouter><SettingsPage /></MemoryRouter>)
+
+  it('switches between checking on choice and the Check button', () => {
+    show()
+    const box = screen.getByRole('checkbox', { name: /Check the answer as soon as I choose it/ })
+    expect(box).toBeChecked()
+    fireEvent.click(box)
+    expect(useAppStore.getState().quizAutoCheck).toBe(false)
+  })
+
+  it('chooses how long the result stays and whether to continue automatically', () => {
+    show()
+    fireEvent.change(screen.getByRole('combobox', { name: 'Result window' }), { target: { value: '5s' } })
+    expect(useAppStore.getState().quizResultMode).toBe('5s')
+    fireEvent.click(screen.getByRole('checkbox', { name: /continue automatically/ }))
+    expect(useAppStore.getState().quizAutoContinue).toBe(true)
+  })
+
+  it('sets the maximum number of questions per quiz section', () => {
+    show()
+    fireEvent.change(screen.getByRole('spinbutton', { name: 'Maximum questions per quiz section' }), { target: { value: '20' } })
+    expect(useAppStore.getState().quizMaxQuestions).toBe(20)
+  })
+})

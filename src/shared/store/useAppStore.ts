@@ -6,6 +6,8 @@ import type { Lang } from '../i18n/types'
 export type VideoLang = 'auto' | 'es' | 'de'
 import { dayString, updateStreak, type Completed, type Streak } from '../../features/learn/progress'
 
+export type QuizResultMode = 'button' | '3s' | '5s'
+
 interface AppState {
   lang: Lang
   learned: string[] // techniques ticked as learned manually
@@ -20,6 +22,14 @@ interface AppState {
   pathView: 'list' | 'path' | 'map' // how the Path page shows the course
   listening: boolean // include listening exercises
   videoLang: VideoLang
+  quizAutoCheck: boolean // check the answer as soon as it is chosen (no Check button)
+  quizResultMode: QuizResultMode // how long the centred result stays
+  quizAutoContinue: boolean // after the timed result, go on without pressing Continue
+  quizMaxQuestions: number // maximum questions per quiz section
+  setQuizAutoCheck: (v: boolean) => void
+  setQuizResultMode: (v: QuizResultMode) => void
+  setQuizAutoContinue: (v: boolean) => void
+  setQuizMaxQuestions: (v: number) => void
   setLang: (l: Lang) => void
   setStrictOrder: (v: boolean) => void
   setMaxBelt: (v: number) => void
@@ -54,6 +64,10 @@ export const useAppStore = create<AppState>()(
       onlyBelt: null,
       listening: true,
       videoLang: 'auto',
+      quizAutoCheck: true,
+      quizResultMode: 'button',
+      quizAutoContinue: false,
+      quizMaxQuestions: 14,
       ...empty,
       setLang: (lang) => set({ lang }),
       setStrictOrder: (strictOrder) => set({ strictOrder }),
@@ -63,6 +77,10 @@ export const useAppStore = create<AppState>()(
       setOnlyBelt: (onlyBelt) => set({ onlyBelt }),
       setListening: (listening) => set({ listening }),
       setVideoLang: (videoLang) => set({ videoLang }),
+      setQuizAutoCheck: (quizAutoCheck) => set({ quizAutoCheck }),
+      setQuizResultMode: (quizResultMode) => set({ quizResultMode }),
+      setQuizAutoContinue: (quizAutoContinue) => set({ quizAutoContinue }),
+      setQuizMaxQuestions: (v) => set({ quizMaxQuestions: Math.max(3, Math.min(40, Math.round(v))) }),
       toggleLearned: (id) =>
         set((s) => ({
           learned: s.learned.includes(id) ? s.learned.filter((x) => x !== id) : [...s.learned, id],

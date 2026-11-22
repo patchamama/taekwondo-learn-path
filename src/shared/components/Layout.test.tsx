@@ -22,7 +22,7 @@ function open(path: string) {
 
 beforeEach(() => {
   useAppStore.getState().reset()
-  useAppStore.setState({ lang: 'en', maxBelt: 2, onlyBelt: null, listening: false })
+  useAppStore.setState({ lang: 'en', maxBelt: 2, onlyBelt: null, listening: false, quizAutoCheck: false })
 })
 
 describe('Persistent layout navigation', () => {

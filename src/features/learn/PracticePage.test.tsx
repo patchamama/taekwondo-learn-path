@@ -16,7 +16,7 @@ const open = () => render(<MemoryRouter><BeltRangeSlider /><PracticePage /></Mem
 beforeEach(() => {
   build.mockClear()
   useAppStore.getState().reset()
-  useAppStore.setState({ lang: 'en', maxBelt: 2, onlyBelt: null, listening: false, strictOrder: true })
+  useAppStore.setState({ lang: 'en', maxBelt: 2, onlyBelt: null, listening: false, strictOrder: true, quizAutoCheck: false })
 })
 
 describe('Public free practice', () => {

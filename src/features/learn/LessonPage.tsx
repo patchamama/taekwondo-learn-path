@@ -96,14 +96,15 @@ function Run({ lessonId, learned = [], mastery = {} }: RunProps) {
   const addXp = useAppStore((s) => s.addXp)
   const recordAnswer = useAppStore((s) => s.recordAnswer)
   const listening = useAppStore((s) => s.listening)
+  const maxQuestions = useAppStore((s) => s.quizMaxQuestions)
   const beltBefore = useMemo(() => BELTS[heldBeltIndex(completed)], []) // eslint-disable-line react-hooks/exhaustive-deps
   const [stage, setStage] = useState<Stage>(lesson ? 'intro' : 'play')
   const [result, setResult] = useState<PlayerResult | null>(null)
   const [earned, setEarned] = useState<string | null>(null)
   const [exercises] = useState(() =>
     lesson
-      ? buildExercises(lesson, makeRng(Date.now()), { listening })
-      : buildPractice(learned, mastery, makeRng(Date.now()), 10, listening),
+      ? buildExercises(lesson, makeRng(Date.now()), { listening, max: maxQuestions })
+      : buildPractice(learned, mastery, makeRng(Date.now()), maxQuestions, listening),
   )
 
   const finish = (r: PlayerResult) => {
