@@ -49,6 +49,7 @@ With `./start.sh` / `start.bat` running, every card (terms, techniques, word blo
 - Video capture needs a local copy of the video (the SSD archive `video/epub-backup/originals`, or folders listed in `TKD_VIDEO_DIRS`).
 - **Clips:** the editor also re-times the clips of a card (start/end with ±1/3 s buttons and a preview of the first and last frame); the six frames are regenerated from the local video and the range is stored in `src/data/clipOverrides.json`.
 - Cards show a Kup badge top-right and their images either as a hover icon (**Compact**) or inline (**With images**).
+- **Translation helper (optional):** define `LLM_PROVIDER` in `.env.local` (`ollama` for a local model, or `openai`/`anthropic` with their API key; `LLM_MODEL` optional) and the editor shows **✨ Suggest translations**. Nothing is sent anywhere unless you define it, and suggestions are only filled in for you to review before saving.
 - `npm run test:server` runs the backend tests.
 
 ## Scripts

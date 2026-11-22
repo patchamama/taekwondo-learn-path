@@ -57,6 +57,7 @@ Mit laufendem `./start.sh` / `start.bat` hat jede Karte (Begriffe, Techniken, Wo
 - Die Videoaufnahme braucht eine lokale Kopie (das SSD-Archiv `video/epub-backup/originals` oder Ordner in `TKD_VIDEO_DIRS`).
 - **Clips:** Der Editor passt auch die Clips einer Karte an (Start/Ende mit ±1/3-s-Knöpfen und Vorschau von erstem und letztem Bild); die sechs Bilder werden aus dem lokalen Video neu erzeugt, der Bereich steht in `src/data/clipOverrides.json`.
 - Karten zeigen den Kup oben rechts und ihre Bilder als Hover-Symbol (**Kompakt**) oder direkt (**Mit Bildern**).
+- **Übersetzungshilfe (optional):** Definiere `LLM_PROVIDER` in `.env.local` (`ollama` für ein lokales Modell oder `openai`/`anthropic` mit API-Schlüssel; `LLM_MODEL` optional), dann zeigt der Editor **✨ Übersetzungen vorschlagen**. Ohne Definition wird nichts gesendet, und Vorschläge werden nur eingetragen, damit du sie vor dem Speichern prüfst.
 - `npm run test:server` führt die Backend-Tests aus.
 
 ## Skripte

@@ -91,3 +91,66 @@ describe('EditButton', () => {
     expect(container).toBeEmptyDOMElement()
   })
 })
+
+describe('CardEditor language-model helper', () => {
+  const withHealth = (
+    ai: unknown,
+    translations: unknown = { de: 'Übungshalle', es: 'sala de entrenamiento' },
+  ) =>
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: string, init?: RequestInit) => {
+        calls.push({ url: String(input), init })
+        if (String(input) === '/api/health')
+          return { ok: true, json: async () => ({ ok: true, editor: true, ai }) } as Response
+        if (String(input) === '/api/ai/translate')
+          return { ok: true, json: async () => ({ ok: true, translations }) } as Response
+        return { ok: true, json: async () => ({ ok: true, override: {} }) } as Response
+      }),
+    )
+
+  it('has no suggest button when no model is defined', async () => {
+    resetEditorCache()
+    withHealth({ enabled: false })
+    render(
+      <MemoryRouter>
+        <CardEditor cardId="basic-dojang" onClose={() => {}} onSaved={() => {}} />
+      </MemoryRouter>,
+    )
+    await new Promise((r) => setTimeout(r, 20))
+    expect(screen.queryByRole('button', { name: /Suggest translations/ })).not.toBeInTheDocument()
+  })
+
+  it('fills the other languages from the chosen one when a model is defined', async () => {
+    resetEditorCache()
+    withHealth({ enabled: true, provider: 'ollama', model: 'llama3.1' })
+    render(
+      <MemoryRouter>
+        <CardEditor cardId="basic-dojang" onClose={() => {}} onSaved={() => {}} />
+      </MemoryRouter>,
+    )
+    fireEvent.change(screen.getByRole('textbox', { name: 'Meaning (EN)' }), {
+      target: { value: 'training hall' },
+    })
+    fireEvent.click(await screen.findByRole('button', { name: /Suggest translations/ }))
+    await waitFor(() =>
+      expect(
+        (screen.getByRole('textbox', { name: 'Meaning (DE)' }) as HTMLInputElement).value,
+      ).toBe('Übungshalle'),
+    )
+    expect((screen.getByRole('textbox', { name: 'Meaning (ES)' }) as HTMLInputElement).value).toBe(
+      'sala de entrenamiento',
+    )
+    const call = calls.find((c) => c.url === '/api/ai/translate')!
+    expect(call.init?.method).toBe('POST')
+    expect((call.init?.headers as Record<string, string>)['X-Editor']).toBe('1')
+    const body = JSON.parse(String(call.init?.body))
+    expect(body).toMatchObject({
+      from: 'en',
+      targets: ['de', 'es'],
+      text: 'training hall',
+      context: { ko: 'dojang' },
+    })
+    expect(screen.getByText(/Review them before saving/)).toBeInTheDocument()
+  })
+})

@@ -57,6 +57,7 @@ Con `./start.sh` / `start.bat` en marcha, cada ficha (términos, técnicas, ladr
 - La captura de vídeo necesita una copia local (el archivo del SSD `video/epub-backup/originals`, o carpetas en `TKD_VIDEO_DIRS`).
 - **Clips:** el editor también reajusta los clips de una ficha (inicio/fin con botones ±1/3 s y vista previa del primer y último fotograma); los seis fotogramas se regeneran desde el vídeo local y el rango se guarda en `src/data/clipOverrides.json`.
 - Las fichas muestran el Kup arriba a la derecha y sus imágenes como icono al pasar el ratón (**Compacto**) o en línea (**Con imágenes**).
+- **Ayuda de traducción (opcional):** define `LLM_PROVIDER` en `.env.local` (`ollama` para un modelo local, o `openai`/`anthropic` con su clave de API; `LLM_MODEL` opcional) y el editor muestra **✨ Sugerir traducciones**. No se envía nada a ningún sitio si no lo defines, y las sugerencias solo se rellenan para que las revises antes de guardar.
 - `npm run test:server` ejecuta los tests del backend.
 
 ## Scripts

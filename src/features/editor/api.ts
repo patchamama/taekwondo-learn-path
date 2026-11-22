@@ -9,20 +9,41 @@ async function json<T>(res: Response): Promise<T> {
   return body as T
 }
 
-let available: Promise<boolean> | null = null
-
-/** True when the local backend runs with the editor API (start.sh / start.bat). Cached for the session. */
-export function editorAvailable(): Promise<boolean> {
-  available ??= fetch('/api/health')
-    .then((r) => (r.ok ? r.json() : null))
-    .then((b) => Boolean(b?.ok && b?.editor))
-    .catch(() => false)
-  return available
+export interface HealthInfo {
+  editor: boolean
+  ai: { enabled: boolean; provider?: string; model?: string }
 }
+
+let healthPromise: Promise<HealthInfo> | null = null
+
+/** What the local backend offers (editor, language model). Cached for the session. */
+export function health(): Promise<HealthInfo> {
+  healthPromise ??= fetch('/api/health')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((b) => ({ editor: Boolean(b?.ok && b?.editor), ai: b?.ai ?? { enabled: false } }))
+    .catch(() => ({ editor: false, ai: { enabled: false } }))
+  return healthPromise
+}
+
+/** True when the local backend runs with the editor API (start.sh / start.bat). */
+export const editorAvailable = () => health().then((h) => h.editor)
 
 export const resetEditorCache = () => {
-  available = null
+  healthPromise = null
 }
+
+export type Lang = 'en' | 'de' | 'es'
+
+/** Asks the configured language model (if any) to translate a text; nothing is saved by this call. */
+export const translateWithAi = (p: {
+  from: Lang
+  targets: Lang[]
+  text: string
+  context?: { ko?: string; hangul?: string }
+}) =>
+  fetch('/api/ai/translate', { method: 'POST', headers: WRITE, body: JSON.stringify(p) }).then(
+    (r) => json<{ ok: true; translations: Partial<Record<Lang, string>> }>(r),
+  )
 
 export const saveCard = (id: string, override: CardOverride) =>
   fetch(`/api/cards/${encodeURIComponent(id)}`, {

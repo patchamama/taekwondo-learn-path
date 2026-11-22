@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CARD_BY_ID } from '../../data/cards'
 import { cardBeltIndex } from '../../data/levels'
 import { OVERRIDES, type CardImageOverride, type CardOverride } from '../../data/overrides'
 import { useT } from '../../shared/i18n/useT'
 import { useBelts } from '../../shared/store/useBelts'
 import type { Loc } from '../../shared/i18n/types'
-import { saveCard } from './api'
+import { health, saveCard, translateWithAi, type Lang as AiLang } from './api'
 import { ClipsEditor } from './ClipsEditor'
 import { ImagePicker } from './ImagePicker'
 
@@ -44,6 +44,20 @@ export function CardEditor({
   const [picker, setPicker] = useState(false)
   const [state, setState] = useState<'idle' | 'saving' | 'saved'>('idle')
   const [error, setError] = useState('')
+  const [ai, setAi] = useState<{ enabled: boolean; provider?: string; model?: string }>({
+    enabled: false,
+  })
+  const [from, setFrom] = useState<AiLang>('en')
+  const [translating, setTranslating] = useState(false)
+  const [aiNote, setAiNote] = useState('')
+
+  useEffect(() => {
+    let alive = true
+    health().then((h) => alive && setAi(h.ai))
+    return () => {
+      alive = false
+    }
+  }, [])
 
   const run = async (override: CardOverride) => {
     setState('saving')
@@ -67,6 +81,31 @@ export function CardEditor({
     if (kup !== currentKup) body.kup = kup
     if (images.length > 0 || existing.images) body.images = images
     return run(body)
+  }
+
+  /** Fills the other languages from the chosen one with the configured model; the user reviews before saving. */
+  const suggest = async () => {
+    setTranslating(true)
+    setError('')
+    setAiNote('')
+    const targets = LANGS.filter((l) => l !== from)
+    const context = { ko, hangul }
+    try {
+      if (meaning[from].trim()) {
+        const r = await translateWithAi({ from, targets, text: meaning[from], context })
+        setMeaning((m) => ({ ...m, ...r.translations }))
+      }
+      if (info[from].trim()) {
+        const r = await translateWithAi({ from, targets, text: info[from], context })
+        setInfo((m) => ({ ...m, ...r.translations }))
+      }
+      setAiNote(
+        t('aiNote').replace('{provider}', `${ai.provider}${ai.model ? ` (${ai.model})` : ''}`),
+      )
+    } catch (e) {
+      setError((e as Error).message)
+    }
+    setTranslating(false)
   }
 
   const field = (label: string, value: string, set: (v: string) => void, multiline = false) => (
@@ -130,6 +169,34 @@ export function CardEditor({
             ),
           )}
         </fieldset>
+
+        {ai.enabled && (
+          <div className="flex flex-wrap items-center gap-2 rounded-lg border border-dashed p-2 text-sm">
+            <label className="flex items-center gap-1">
+              {t('aiFrom')}
+              <select
+                className="rounded border px-1 py-0.5"
+                value={from}
+                onChange={(e) => setFrom(e.target.value as AiLang)}
+              >
+                {LANGS.map((l) => (
+                  <option key={l} value={l}>
+                    {l.toUpperCase()}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button
+              type="button"
+              disabled={translating}
+              onClick={suggest}
+              className="rounded-lg border px-3 py-1 disabled:opacity-50"
+            >
+              {translating ? t('aiWorking') : `✨ ${t('aiSuggest')}`}
+            </button>
+            {aiNote && <span className="text-xs text-slate-500">{aiNote}</span>}
+          </div>
+        )}
 
         <label className="grid gap-0.5 text-sm font-medium">
           {t('edKup')}

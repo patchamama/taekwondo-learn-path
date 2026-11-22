@@ -5,6 +5,8 @@
 //   POST /api/audio/generate  → runs scripts/generate-audio.mjs (creates clips for new terms)
 // Started by start.sh / start.bat; the Vite dev server proxies /api to it.
 import { spawn, spawnSync } from 'node:child_process'
+import { aiConfig, aiPublic } from './ai.mjs'
+import { loadEnv } from './env.mjs'
 import { handleEditor } from './editor.mjs'
 import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { createServer } from 'node:http'
@@ -20,6 +22,7 @@ const MAX_BODY = 12 * 1024 * 1024
 const MAX_STEPS = 20000
 const CLIP = /^audio\/(ko|en|de|es|ja|info-en|info-de|info-es)\/[a-z0-9-]+-[0-9a-f]{8}\.mp3$/
 
+loadEnv(ROOT)
 const hasFfmpeg = () => !spawnSync('ffmpeg', ['-version'], { stdio: 'ignore' }).error
 let generating = false
 
@@ -101,7 +104,7 @@ createServer(async (req, res) => {
   try {
     const url = new URL(req.url ?? '/', 'http://localhost')
     if (req.method === 'GET' && url.pathname === '/api/health') {
-      return send(res, 200, { ok: true, ffmpeg: hasFfmpeg(), generating, editor: true })
+      return send(res, 200, { ok: true, ffmpeg: hasFfmpeg(), generating, editor: true, ai: aiPublic(aiConfig()) })
     }
     if (await handleEditor(req, res, url, { root: ROOT, send, readBody })) return
     if (req.method === 'POST' && url.pathname === '/api/audio/build') {
