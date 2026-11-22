@@ -1,8 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AUDIO_ITEMS } from '../../data/audioManifest'
 import { CARD_BY_ID } from '../../data/cards'
 import type { StringKey } from '../../shared/i18n/strings'
 import { useT } from '../../shared/i18n/useT'
+import { pickKoreanVoice, speechSupported } from '../../shared/lib/speech'
+import { PLAYBACK_RATES, transportCopy } from './transportCopy'
 import type { PlaybackRole, PlaybackStep } from './audioPlan'
 import { loadDurations } from './durations'
 import { framesFor } from './images'
@@ -60,7 +62,11 @@ export function VocabularyPlayer({
   base: string
   onRunningChange?: (running: boolean) => void
 }) {
-  const { t, loc } = useT()
+  const { t, loc, lang } = useT()
+  const copy = transportCopy(lang)
+  const [rate, setRate] = useState(1)
+  const rateRef = useRef(1)
+  const updateRate = useRef<() => void>(() => {})
   const [durations, setDurations] = useState<Record<string, number>>({})
   const [running, setRunning] = useState(false)
   const [position, setPosition] = useState(0)
@@ -89,14 +95,28 @@ export function VocabularyPlayer({
     return map
   }, [steps])
 
-  // leaving the card (or changing the selection) must silence the voice
-  useEffect(
-    () => () => {
-      cancel.current()
-      clearTimeout(seekTimer.current)
-    },
-    [],
-  )
+  // Adjust selection-owned state during render so no stale card or position is committed.
+  // Identity matters: different selections can have exactly the same number of steps.
+  const [selection, setSelection] = useState({ steps, base })
+  if (selection.steps !== steps || selection.base !== base) {
+    setSelection({ steps, base })
+    setRunning(false)
+    setPosition(0)
+    setSaid([])
+    setCurrentId(null)
+  }
+
+  // Cleanup intentionally reads the latest active run, not the refs' setup-time values.
+  const disposePlayback = useCallback(() => {
+    ++run.current
+    cancel.current()
+    clearTimeout(seekTimer.current)
+    seekingUntil.current = 0
+  }, [])
+  useEffect(() => disposePlayback, [steps, base, disposePlayback])
+
+  const itemIds = [...firstStepOf.keys()]
+  const itemNumber = currentId ? itemIds.indexOf(currentId) + 1 : 0
   // lets the page hide everything else while the repetition plays
   useEffect(() => {
     onRunningChange?.(running)
@@ -105,54 +125,143 @@ export function VocabularyPlayer({
 
   /** Plays from a position (seconds); a previous run is cancelled first, so jumping never overlaps voices. */
   const start = async (from: number) => {
+    clearTimeout(seekTimer.current)
+    seekingUntil.current = 0
     cancel.current()
+    if (steps.length === 0) return
+    from = Math.max(0, Math.min(timeline.total, from))
+    if (from >= timeline.total) {
+      ++run.current
+      setRunning(false)
+      setPosition(timeline.total)
+      return
+    }
     const mine = ++run.current
     let cancelled = false
     let release: () => void = () => {}
     let current: HTMLAudioElement | null = null
     let stepIndex = 0
-    let stepStartedAt = performance.now()
+    let clockOffset = 0
+    let clockAnchor = performance.now()
+    let clockRate = rateRef.current
+    const elapsed = () => clockOffset + (performance.now() - clockAnchor) / 1000 * clockRate
     const ticker = setInterval(() => {
       if (cancelled || performance.now() < seekingUntil.current) return
-      const elapsed = current ? current.currentTime : (performance.now() - stepStartedAt) / 1000
-      setPosition(Math.min(timeline.total, timeline.starts[stepIndex] + elapsed))
+      const at = current ? current.currentTime : elapsed()
+      const end = timeline.starts[stepIndex + 1] ?? timeline.total
+      setPosition(Math.min(end, timeline.starts[stepIndex] + at))
     }, 200)
     cancel.current = () => {
+      if (cancelled) return
       cancelled = true
       current?.pause()
       release()
+      updateRate.current = () => {}
       clearInterval(ticker)
     }
-    setSaid([])
+    // Transport changes must not erase cards already revealed in this review.
     setRunning(true)
     let i = stepAt(timeline, from)
     let offset = Math.max(0, from - timeline.starts[i])
     for (; i < steps.length; i++) {
       if (cancelled || run.current !== mine) break
       stepIndex = i
-      stepStartedAt = performance.now() - offset * 1000
+      current = null
+      clockOffset = offset
+      clockAnchor = performance.now()
+      clockRate = rateRef.current
+      const rebaseClock = () => {
+        clockOffset = elapsed()
+        clockAnchor = performance.now()
+        clockRate = rateRef.current
+      }
       setPosition(timeline.starts[i] + offset)
       const step = steps[i]
       if ('silence' in step) {
         await new Promise<void>((resolve) => {
-          const timer = setTimeout(resolve, Math.max(0, step.silence - offset) * 1000)
-          release = () => {
+          let timer: ReturnType<typeof setTimeout>
+          const schedule = () => {
             clearTimeout(timer)
-            resolve()
+            timer = setTimeout(resolve, Math.max(0, step.silence - elapsed()) * 1000 / rateRef.current)
           }
+          updateRate.current = () => { rebaseClock(); schedule() }
+          schedule()
+          release = () => { clearTimeout(timer); resolve() }
         })
         offset = 0
         continue
       }
       setCurrentId(step.id)
+      // A description is explanatory rather than a question: keep its complete card visible,
+      // including when the listener seeks directly into the description chapter.
+      if (step.role === 'info') {
+        setSaid((prev) => [
+          ...prev.filter((s) => s.id !== step.id),
+          { id: step.id, parts: { ko: true, meaning: true, info: true } },
+        ])
+      }
       const ok = await new Promise<boolean>((resolve) => {
         const audio = new Audio(base + step.file)
         current = audio
-        release = () => resolve(false)
-        audio.onended = () => resolve(true)
-        audio.onerror = () => resolve(false)
+        let settled = false
+        let speaking = false
+        let utterance: SpeechSynthesisUtterance | null = null
+        const finish = (ok: boolean) => {
+          if (settled) return
+          settled = true
+          audio.onended = null
+          audio.onerror = null
+          updateRate.current = () => {}
+          resolve(ok)
+        }
+        release = () => {
+          if (settled) return
+          if (utterance) {
+            utterance.onend = null
+            utterance.onerror = null
+            window.speechSynthesis.cancel()
+          }
+          finish(false)
+        }
+        const fallback = () => {
+          if (cancelled || settled || speaking) return
+          audio.pause()
+          current = null
+          const item = ITEM_BY_ID.get(step.id)
+          const text = item && (step.role === 'ko' ? item.hangul : step.role === 'ja' ? item.ja
+            : step.role === 'info' ? item.info && loc(item.info) : loc(item.meaning))
+          if (!text || !speechSupported()) { finish(false); return }
+          speaking = true
+          const synth = window.speechSynthesis
+          const speak = () => {
+            if (utterance) {
+              utterance.onend = null
+              utterance.onerror = null
+              synth.cancel()
+            }
+            utterance = new SpeechSynthesisUtterance(text)
+            utterance.lang = step.role === 'ko' ? 'ko-KR' : step.role === 'ja' ? 'ja-JP' : lang
+            const voice = step.role === 'ko' ? pickKoreanVoice(synth.getVoices())
+              : synth.getVoices().find(v => v.lang.startsWith(utterance!.lang))
+            if (voice) utterance.voice = voice
+            utterance.rate = rateRef.current
+            utterance.onend = () => finish(true)
+            utterance.onerror = () => finish(false)
+            synth.speak(utterance)
+          }
+          updateRate.current = () => { rebaseClock(); speak() }
+          speak()
+        }
+        updateRate.current = () => { audio.playbackRate = rateRef.current }
+        audio.playbackRate = rateRef.current
+        audio.onended = () => finish(true)
+        audio.onerror = fallback
         if (offset > 0) audio.currentTime = offset
-        void audio.play()?.catch(() => resolve(false))
+        void audio.play()?.catch((error: unknown) => {
+          // A permission failure is not a missing recording: never bypass autoplay policy.
+          if ((error as { name?: string })?.name === 'NotAllowedError') finish(false)
+          else fallback()
+        })
       })
       offset = 0
       if (cancelled || run.current !== mine) break
@@ -171,11 +280,17 @@ export function VocabularyPlayer({
     clearInterval(ticker)
     if (run.current === mine) {
       setRunning(false)
-      if (!cancelled) setPosition(0)
+      if (!cancelled) setPosition(timeline.total)
     }
   }
 
-  const stop = () => cancel.current()
+  const stop = () => {
+    clearTimeout(seekTimer.current)
+    seekingUntil.current = 0
+    ++run.current
+    cancel.current()
+    setRunning(false)
+  }
 
   /** Jump right away and keep playing (chapters, repeat buttons). */
   const jumpToStep = (index: number) => {
@@ -184,26 +299,59 @@ export function VocabularyPlayer({
   }
 
   /** The progress bar: moves the marker at once, and restarts playback once the bar stops moving. */
-  const seek = (value: number) => {
+  const seek = (value: number, immediate = false) => {
+    value = Math.max(0, Math.min(timeline.total, value))
     setPosition(value)
+    const preceding = steps.slice(0, stepAt(timeline, value) + 1).reverse()
+      .find((s) => 'id' in s)
+    setCurrentId(preceding && 'id' in preceding ? preceding.id : null)
     seekingUntil.current = performance.now() + 600
     clearTimeout(seekTimer.current)
-    if (running) seekTimer.current = setTimeout(() => void start(value), 200)
+    if (running) {
+      if (immediate) void start(value)
+      else seekTimer.current = setTimeout(() => void start(value), 200)
+    }
   }
 
-  const play = () => void start(position >= timeline.total - 0.5 ? 0 : position)
+  const play = () => void start(position >= timeline.total ? 0 : position)
+  const changeRate = (value: number) => {
+    if (!PLAYBACK_RATES.includes(value)) return
+    rateRef.current = value
+    setRate(value)
+    updateRate.current()
+  }
+  const navigateItem = (direction: number) => {
+    const at = Math.max(0, itemIds.indexOf(currentId ?? ''))
+    const id = itemIds[Math.max(0, Math.min(itemIds.length - 1, at + direction))]
+    if (id) jumpToStep(firstStepOf.get(id)!)
+  }
+  const iconButton = (label: string, icon: string, action: () => void, disabled: boolean) => (
+    <button type="button" aria-label={label} title={label} onClick={action} disabled={disabled}
+      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border px-2 hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-40">
+      <span aria-hidden="true">{icon}</span>
+    </button>
+  )
 
   return (
     <div className="grid gap-3">
       <div className="flex flex-wrap items-center gap-3">
-        <button
-          type="button"
-          className="w-fit rounded-lg border px-4 py-2"
-          onClick={() => (running ? stop() : play())}
-          disabled={steps.length === 0}
-        >
-          {running ? `⏹ ${t('audioStop')}` : `▶ ${t('audioPlay')}`}
-        </button>
+        <div className="flex flex-wrap gap-1">
+          {iconButton(copy.previous, '⏮', () => navigateItem(-1), itemIds.length === 0 || itemNumber <= 1)}
+          {iconButton(t('audioPlay'), '▶', play, steps.length === 0 || running)}
+          {iconButton(t('audioStop'), '⏹', stop, !running)}
+          {iconButton(copy.next, '⏭', () => navigateItem(1), itemIds.length === 0 || itemNumber >= itemIds.length)}
+        </div>
+        <label className="flex items-center gap-2 text-xs text-slate-600">
+          {copy.speed}
+          <select aria-label={copy.speed} title={copy.speed} value={rate}
+            disabled={steps.length === 0} onChange={e => changeRate(Number(e.target.value))}
+            className="min-h-11 rounded-lg border bg-white px-2">
+            {PLAYBACK_RATES.map(value => <option key={value} value={value}>{value}×</option>)}
+          </select>
+        </label>
+        <span aria-label="audio-position" className="text-xs tabular-nums text-slate-600">
+          {itemNumber}/{itemIds.length}
+        </span>
         <label className="flex min-w-48 flex-1 items-center gap-2 text-xs text-slate-600">
           <span className="tabular-nums">{formatTime(position)}</span>
           <input
@@ -211,14 +359,28 @@ export function VocabularyPlayer({
             aria-label={t('audioSeek')}
             className="w-full"
             min={0}
-            max={Math.max(1, Math.round(timeline.total))}
-            step={1}
-            value={Math.min(Math.round(position), Math.round(timeline.total))}
+            max={timeline.total || 1}
+            step={0.1}
+            value={Math.min(position, timeline.total)}
             onChange={(e) => seek(Number(e.target.value))}
             disabled={steps.length === 0}
           />
           <span className="tabular-nums">{formatTime(timeline.total)}</span>
         </label>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {[-1, 1].map(direction => (
+          <div key={direction} className="flex flex-wrap gap-1">
+            {[2, 5, 10, 15].map(seconds => (
+              <span key={seconds}>
+                {iconButton(`${direction < 0 ? copy.back : copy.forward} ${seconds} s`,
+                  `${direction < 0 ? '↶' : '↷'} ${seconds}`, () => seek(position + direction * seconds, true),
+                  steps.length === 0 || (direction < 0 ? position <= 0 : position >= timeline.total))}
+              </span>
+            ))}
+          </div>
+        ))}
       </div>
 
       {chapters.length > 1 && (
@@ -237,7 +399,7 @@ export function VocabularyPlayer({
         </nav>
       )}
 
-      {currentId && running && <StepImage key={currentId} id={currentId} />}
+      {currentId && <StepImage key={currentId} id={currentId} />}
 
       <ol aria-live="polite" aria-label={t('audioTranscript')} className="grid gap-2">
         {[...said].reverse().map((s) => {

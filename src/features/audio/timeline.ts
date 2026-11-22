@@ -48,7 +48,7 @@ export function buildChapters(
   const seen = new Set<string>()
   steps.forEach((s, i) => {
     if ('silence' in s) return
-    const key = s.role === 'info' ? 'descriptions' : sectionOf(s.id)
+    const key = s.pass === 'description' || s.role === 'info' ? 'descriptions' : sectionOf(s.id)
     if (!key || seen.has(key)) return
     seen.add(key)
     chapters.push({ key, stepIndex: i })

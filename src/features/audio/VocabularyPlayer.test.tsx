@@ -1,9 +1,12 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { audioFile } from '../../data/audioFiles'
+import { AUDIO_ITEMS } from '../../data/audioManifest'
 import { useAppStore } from '../../shared/store/useAppStore'
-import type { PlaybackStep } from './audioPlan'
+import { buildPlayback, type PlaybackStep } from './audioPlan'
 import { VocabularyPlayer } from './VocabularyPlayer'
+
+vi.mock('./images', () => ({ framesFor: () => ['/technique.jpg'] }))
 
 const played: string[] = []
 
@@ -102,6 +105,68 @@ describe('VocabularyPlayer seeking and chapters', () => {
     vi.unstubAllGlobals()
   })
 
+  it('shows the selected item ordinal and total alongside progress, including seeking and completion', async () => {
+    render(<VocabularyPlayer steps={MORE} base="/" />)
+    expect(screen.getByLabelText('audio-position')).toHaveTextContent('0/2')
+    fireEvent.click(screen.getByRole('button', { name: /Reproducir/ }))
+    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    expect(screen.getByLabelText('audio-position')).toHaveTextContent('1/2')
+    fireEvent.click(screen.getByRole('button', { name: 'Descripciones' }))
+    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    expect(screen.getByLabelText('audio-position')).toHaveTextContent('2/2')
+    await act(async () => { await vi.advanceTimersByTimeAsync(2000) })
+    expect(screen.getByLabelText('audio-position')).toHaveTextContent('2/2')
+    fireEvent.change(screen.getByRole('slider'), { target: { value: '0' } })
+    expect(screen.getByLabelText('audio-position')).toHaveTextContent('1/2')
+  })
+
+  it('resets and silences playback when a different selection has the same step count', async () => {
+    const onRunningChange = vi.fn()
+    const { rerender } = render(<VocabularyPlayer steps={STEPS} base="/" onRunningChange={onRunningChange} />)
+    fireEvent.click(screen.getByRole('button', { name: /Reproducir/ }))
+    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    const replacement: PlaybackStep[] = [MORE[4], MORE[5], MORE[6], MORE[7]]
+    rerender(<VocabularyPlayer steps={replacement} base="/" onRunningChange={onRunningChange} />)
+    await act(async () => { await vi.advanceTimersByTimeAsync(10000) })
+    expect(played).toEqual(['/' + audioFile('ko', 'dojang')])
+    expect(screen.getByRole('button', { name: /Reproducir/ })).toBeInTheDocument()
+    expect(screen.queryByText('도장')).not.toBeInTheDocument()
+    expect(screen.getByLabelText('audio-position')).toHaveTextContent('0/1')
+    expect(onRunningChange).toHaveBeenLastCalledWith(false)
+    fireEvent.click(screen.getByRole('button', { name: /Reproducir/ }))
+    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    expect(played.at(-1)).toBe('/' + audioFile('ko', 'm2'))
+  })
+
+  it('keeps the technique card and image visible during and after a description, even when jumping directly there', async () => {
+    let finish: (() => void) | undefined
+    vi.stubGlobal('Audio', class extends FakeAudio {
+      play() {
+        if (!this.src.includes('/info-')) return super.play()
+        played.push(this.src)
+        finish = () => this.onended?.()
+        return Promise.resolve()
+      }
+    })
+    const technique = AUDIO_ITEMS.find((item) => item.kind === 'technique' && item.info)!
+    const descriptionSteps: PlaybackStep[] = [
+      ...STEPS,
+      { file: audioFile('info-es', technique.id), role: 'info', id: technique.id },
+      { silence: 2 },
+    ]
+    render(<VocabularyPlayer steps={descriptionSteps} base="/" />)
+    fireEvent.click(screen.getByRole('button', { name: 'Descripciones' }))
+    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    expect(screen.getByText(technique.hangul)).toBeInTheDocument()
+    expect(screen.getByRole('listitem')).toHaveTextContent(technique.meaning.es)
+    expect(screen.getByRole('listitem')).toHaveTextContent(technique.info!.es)
+    expect(screen.getByRole('img')).toHaveAttribute('src', '/technique.jpg')
+    await act(async () => { finish?.(); await vi.advanceTimersByTimeAsync(2000) })
+    expect(screen.getByRole('button', { name: /Reproducir/ })).toBeInTheDocument()
+    expect(screen.getByText(technique.hangul)).toBeInTheDocument()
+    expect(screen.getByRole('img')).toHaveAttribute('src', '/technique.jpg')
+  })
+
   it('shows a progress bar that can be moved to any position', async () => {
     render(<VocabularyPlayer steps={MORE} base="/" />)
     const bar = screen.getByRole('slider', { name: 'Posición' })
@@ -119,6 +184,27 @@ describe('VocabularyPlayer seeking and chapters', () => {
     })
     expect(played.some((f) => f.includes('/m2-'))).toBe(true)
     expect(played.filter((f) => f.includes('/m1-'))).toHaveLength(1)
+  })
+
+  it('starts the generated descriptions chapter with the existing Korean mp3, then meaning and description', async () => {
+    const technique = AUDIO_ITEMS.find((item) => item.kind === 'technique' && item.info)!
+    const steps = buildPlayback([technique], {
+      lang: 'es', maxBelt: 10, onlyBelt: null, vocabulary: true,
+      techniques: true, descriptions: true, japanese: false,
+    })
+    render(<VocabularyPlayer steps={steps} base="/" />)
+    fireEvent.click(screen.getByRole('button', { name: 'Descripciones' }))
+    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    expect(played).toEqual(['/' + audioFile('ko', technique.id)])
+    expect(screen.getByText(technique.hangul)).toBeInTheDocument()
+    await act(async () => { await vi.advanceTimersByTimeAsync(2000) })
+    expect(played).toEqual([
+      '/' + audioFile('ko', technique.id), '/' + audioFile('es', technique.id),
+      '/' + audioFile('info-es', technique.id),
+    ])
+    expect(screen.getByRole('listitem')).toHaveTextContent(technique.info!.es)
+    await act(async () => { await vi.advanceTimersByTimeAsync(2000) })
+    expect(screen.getByRole('img')).toBeInTheDocument()
   })
 
   it('jumps to a chapter and to the descriptions', async () => {

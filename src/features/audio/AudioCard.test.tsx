@@ -35,6 +35,19 @@ describe('AudioCard', () => {
     expect(screen.getByText(/No hay nada seleccionado/)).toBeInTheDocument()
   })
 
+  it('updates the position total when filtering without counting repeated passes or descriptions twice', () => {
+    render(<AudioCard maxBelt={2} onlyBelt={null} />)
+    openCard()
+    expect(screen.getByLabelText('audio-position')).toHaveTextContent(`0/${count()}`)
+    fireEvent.click(screen.getByLabelText(/Preguntar también en la otra dirección/))
+    fireEvent.click(screen.getByLabelText(/descripción hablada/))
+    expect(screen.getByLabelText('audio-position')).toHaveTextContent(`0/${count()}`)
+    fireEvent.click(screen.getByLabelText(/Vocabulario/))
+    expect(screen.getByLabelText('audio-position')).toHaveTextContent(`0/${count()}`)
+    fireEvent.click(screen.getByLabelText(/Técnicas y formas/))
+    expect(screen.getByLabelText('audio-position')).toHaveTextContent('0/0')
+  })
+
   it('makes the audio longer when it also asks the other way round', () => {
     render(<AudioCard maxBelt={0} onlyBelt={0} />)
     openCard()

@@ -146,14 +146,13 @@ export function AudioCard({
             {box(t('audioTechniques'), techniques, setTechniques)}
             {box(t('audioDescriptions'), descriptions, setDescriptions)}
             {box(t('audioJapanese'), japanese, setJapanese)}
-        {box(t('audioBidirectional'), bidirectional, setBidirectional)}
+            {box(t('audioBidirectional'), bidirectional, setBidirectional)}
           </div>
           <p className="text-sm font-semibold" aria-live="polite" aria-label="audio-count">
             {count} {t('audioSummary')}
           </p>
           {count === 0 && <p className="text-sm text-amber-700">{t('audioEmpty')}</p>}
           <VocabularyPlayer
-            key={steps.length + lang}
             steps={steps}
             base={import.meta.env.BASE_URL}
             onRunningChange={onPlayingChange}

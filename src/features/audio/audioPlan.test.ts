@@ -109,7 +109,7 @@ describe('buildPlayback', () => {
     const roles = steps
       .filter((s) => 'role' in s)
       .map((s) => ('role' in s ? `${s.role}:${s.id}` : ''))
-    expect(roles).toEqual(['ko:ap-chagi', 'meaning:ap-chagi', 'ja:ap-chagi', 'info:ap-chagi'])
+    expect(roles).toEqual(['ko:ap-chagi', 'meaning:ap-chagi', 'ja:ap-chagi', 'ko:ap-chagi', 'meaning:ap-chagi', 'info:ap-chagi'])
   })
 
   it('matches buildPlan once the tags are removed', () => {
@@ -130,6 +130,29 @@ describe('buildPlayback order', () => {
 })
 
 describe('bidirectional audio', () => {
+  it('finishes every forward question before asking inverse-direction questions, with descriptions last', () => {
+    const clips = buildPlayback(ITEMS, opts({ bidirectional: true, descriptions: true }))
+      .filter((s) => 'file' in s)
+    expect(clips.map((s) => `${s.id}:${s.role}`)).toEqual([
+      'arae:ko', 'arae:meaning', 'ap-chagi:ko', 'ap-chagi:meaning',
+      'dojang:ko', 'dojang:meaning', 'taeguk-1:ko', 'taeguk-1:meaning',
+      'arae:meaning', 'arae:ko', 'ap-chagi:meaning', 'ap-chagi:ko',
+      'dojang:meaning', 'dojang:ko', 'taeguk-1:meaning', 'taeguk-1:ko',
+      'ap-chagi:ko', 'ap-chagi:meaning', 'ap-chagi:info',
+    ])
+  })
+
+  it('introduces every appended description with Korean mp3 and localized meaning even without bidirectionality', () => {
+    for (const lang of ['es', 'de', 'en'] as const) {
+      const clips = buildPlan(ITEMS, opts({ descriptions: true, lang }))
+        .filter((s) => 'file' in s)
+      expect(clips.slice(-3)).toEqual([
+        { file: audioFile('ko', 'ap-chagi') },
+        { file: audioFile(lang, 'ap-chagi') },
+        { file: audioFile(`info-${lang}`, 'ap-chagi') },
+      ])
+    }
+  })
   it('asks the other way round too: meaning, a 2 s pause, then the Korean word', () => {
     const steps = buildPlayback([ITEMS[0]], opts({ lang: 'de', bidirectional: true }))
     expect(steps).toEqual([
