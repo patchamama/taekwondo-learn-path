@@ -18,6 +18,11 @@ export interface AudioOptions {
 
 export type PlanStep = { file: string } | { silence: number }
 
+export type PlaybackRole = 'ko' | 'meaning' | 'ja' | 'info'
+
+/** A plan step that also says which word and part it is, so the player can write it after it is said. */
+export type PlaybackStep = { file: string; role: PlaybackRole; id: string } | { silence: number }
+
 /** Seconds between the Korean word and its meaning. */
 export const MEANING_DELAY = 2
 const AFTER_ITEM = 1.5
@@ -32,18 +37,36 @@ export function selectItems(items: AudioItem[], o: AudioOptions): AudioItem[] {
 }
 
 /** Korean word, 2 s, meaning in the chosen language (optionally the Japanese term), then the descriptions. */
-export function buildPlan(items: AudioItem[], o: AudioOptions): PlanStep[] {
+export function buildPlayback(items: AudioItem[], o: AudioOptions): PlaybackStep[] {
   const chosen = selectItems(items, o)
-  const steps: PlanStep[] = []
+  const steps: PlaybackStep[] = []
   for (const i of chosen) {
-    steps.push({ file: audioFile('ko', i.id) }, { silence: MEANING_DELAY }, { file: audioFile(o.lang, i.id) })
-    if (o.japanese && i.ja) steps.push({ silence: BEFORE_JAPANESE }, { file: audioFile('ja', i.id) })
+    steps.push(
+      { file: audioFile('ko', i.id), role: 'ko', id: i.id },
+      { silence: MEANING_DELAY },
+      { file: audioFile(o.lang, i.id), role: 'meaning', id: i.id },
+    )
+    if (o.japanese && i.ja)
+      steps.push(
+        { silence: BEFORE_JAPANESE },
+        { file: audioFile('ja', i.id), role: 'ja', id: i.id },
+      )
     steps.push({ silence: AFTER_ITEM })
   }
   if (o.descriptions) {
     for (const i of chosen) {
-      if (i.kind === 'technique' && i.info) steps.push({ file: audioFile(`info-${o.lang}`, i.id) }, { silence: 2 })
+      if (i.kind === 'technique' && i.info) {
+        steps.push(
+          { file: audioFile(`info-${o.lang}`, i.id), role: 'info', id: i.id },
+          { silence: 2 },
+        )
+      }
     }
   }
   return steps
+}
+
+/** The same plan without the display tags, as the backend and the WAV builder expect it. */
+export function buildPlan(items: AudioItem[], o: AudioOptions): PlanStep[] {
+  return buildPlayback(items, o).map((s) => ('file' in s ? { file: s.file } : s))
 }

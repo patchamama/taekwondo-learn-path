@@ -12,7 +12,6 @@ import { VideosPage } from './features/videos/VideosPage'
 import { KukkiwonPage } from './features/kukkiwon/KukkiwonPage'
 import { SelfDefensePage } from './features/selfdefense/SelfDefensePage'
 import { StudyPage } from './features/study/StudyPage'
-import { AudioPage } from './features/audio/AudioPage'
 import { ExamPage } from './features/exam/ExamPage'
 import { BackgroundPage } from './features/background/BackgroundPage'
 import { PathPage } from './features/path/PathPage'
@@ -84,7 +83,6 @@ export function App() {
             <Route path="selfdefense" element={<SelfDefensePage />} />
             <Route path="kukkiwon" element={<KukkiwonPage />} />
             <Route path="settings" element={<SettingsPage />} />
-            <Route path="audio" element={<AudioPage />} />
             <Route path="techniques" element={<TechniquesPage />} />
             <Route path="terms" element={<TermsPage />} />
             <Route path="forms" element={<FormsPage />} />

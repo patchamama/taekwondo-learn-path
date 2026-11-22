@@ -2,7 +2,8 @@
 export function encodeWav(samples: Float32Array, sampleRate: number): ArrayBuffer {
   const buffer = new ArrayBuffer(44 + samples.length * 2)
   const v = new DataView(buffer)
-  const text = (o: number, s: string) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)))
+  const text = (o: number, s: string) =>
+    [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)))
   text(0, 'RIFF')
   v.setUint32(4, 36 + samples.length * 2, true)
   text(8, 'WAVE')

@@ -66,3 +66,12 @@ it('preserves strict lesson locks, listening, belt scheme and video language con
   fireEvent.click(radios[4])
   expect(useAppStore.getState().videoLang).toBe('de')
 })
+
+describe('SettingsPage audio', () => {
+  it('no longer links to the vocabulary audio', () => {
+    useAppStore.getState().reset()
+    useAppStore.setState({ lang: 'en' })
+    render(<MemoryRouter><SettingsPage /></MemoryRouter>)
+    expect(screen.queryByRole('link', { name: /Vocabulary audio/ })).not.toBeInTheDocument()
+  })
+})

@@ -1,9 +1,20 @@
 import { describe, expect, it } from 'vitest'
 import { audioFile } from '../../data/audioFiles'
 import type { AudioItem } from '../../data/audioManifest'
-import { buildPlan, MEANING_DELAY, selectItems, type AudioOptions } from './audioPlan'
+import {
+  buildPlan,
+  buildPlayback,
+  MEANING_DELAY,
+  selectItems,
+  type AudioOptions,
+} from './audioPlan'
 
-const item = (id: string, kind: AudioItem['kind'], belt: number, extra: Partial<AudioItem> = {}): AudioItem => ({
+const item = (
+  id: string,
+  kind: AudioItem['kind'],
+  belt: number,
+  extra: Partial<AudioItem> = {},
+): AudioItem => ({
   id,
   kind,
   belt,
@@ -36,12 +47,22 @@ describe('selectItems', () => {
   })
 
   it('covers every belt up to the chosen one when several are selected', () => {
-    expect(selectItems(ITEMS, opts({ maxBelt: 1 })).map((i) => i.id)).toEqual(['dojang', 'ap-chagi', 'arae'])
+    expect(selectItems(ITEMS, opts({ maxBelt: 1 })).map((i) => i.id)).toEqual([
+      'dojang',
+      'ap-chagi',
+      'arae',
+    ])
   })
 
   it('splits vocabulary from techniques', () => {
-    expect(selectItems(ITEMS, opts({ techniques: false })).map((i) => i.id)).toEqual(['dojang', 'arae'])
-    expect(selectItems(ITEMS, opts({ vocabulary: false })).map((i) => i.id)).toEqual(['ap-chagi', 'taeguk-1'])
+    expect(selectItems(ITEMS, opts({ techniques: false })).map((i) => i.id)).toEqual([
+      'dojang',
+      'arae',
+    ])
+    expect(selectItems(ITEMS, opts({ vocabulary: false })).map((i) => i.id)).toEqual([
+      'ap-chagi',
+      'taeguk-1',
+    ])
   })
 })
 
@@ -68,6 +89,30 @@ describe('buildPlan', () => {
     const plan = buildPlan(ITEMS, opts({ descriptions: true, lang: 'en' }))
     const last = plan.filter((s): s is { file: string } => 'file' in s).pop()!
     expect(last.file).toBe(audioFile('info-en', 'ap-chagi'))
-    expect(buildPlan(ITEMS, opts({ descriptions: false })).some((s) => 'file' in s && s.file.includes('/info-'))).toBe(false)
+    expect(
+      buildPlan(ITEMS, opts({ descriptions: false })).some(
+        (s) => 'file' in s && s.file.includes('/info-'),
+      ),
+    ).toBe(false)
+  })
+})
+
+describe('buildPlayback', () => {
+  it('tags every clip with its role and item so the player can write the word after it is said', () => {
+    const steps = buildPlayback(
+      [ITEMS[1]],
+      opts({ japanese: true, descriptions: true, lang: 'de' }),
+    )
+    const roles = steps
+      .filter((s) => 'role' in s)
+      .map((s) => ('role' in s ? `${s.role}:${s.id}` : ''))
+    expect(roles).toEqual(['ko:ap-chagi', 'meaning:ap-chagi', 'ja:ap-chagi', 'info:ap-chagi'])
+  })
+
+  it('matches buildPlan once the tags are removed', () => {
+    const o = opts({ japanese: true, descriptions: true })
+    expect(buildPlan(ITEMS, o)).toEqual(
+      buildPlayback(ITEMS, o).map((s) => ('file' in s ? { file: s.file } : s)),
+    )
   })
 })

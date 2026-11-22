@@ -3,6 +3,8 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { useAppStore } from '../../shared/store/useAppStore'
 import { StudyPage } from './StudyPage'
+import { AUDIO_ITEMS } from '../../data/audioManifest'
+import { selectItems } from '../audio/audioPlan'
 import { CONCEPTS } from '../../data/concepts'
 import { STRINGS } from '../../shared/i18n/strings'
 import { levelContent, levelContentUpTo } from '../../data/levelContent'
@@ -121,5 +123,28 @@ describe('StudyPage general-knowledge notice', () => {
     useAppStore.setState({ lang: 'es' })
     open('/study/2')
     expect(screen.queryByText(/confirma con tu club/)).not.toBeInTheDocument()
+  })
+})
+
+describe('StudyPage vocabulary audio card', () => {
+  beforeEach(() => {
+    useAppStore.getState().reset()
+    useAppStore.setState({ lang: 'en' })
+  })
+
+  const count = () => Number(screen.getByLabelText('audio-count').textContent!.split(' ')[0])
+
+  it('shows the audio card inside Study', () => {
+    open('/study/0')
+    expect(screen.getByRole('heading', { name: /Vocabulary audio/ })).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Set up audio' }))
+    expect(screen.getByRole('button', { name: 'Create audio' })).toBeInTheDocument()
+  })
+
+  it('follows the belt chosen in Study', () => {
+    open('/study/1')
+    fireEvent.click(screen.getByRole('button', { name: 'Set up audio' }))
+    const base = { lang: 'en', maxBelt: 1, vocabulary: true, techniques: true, descriptions: false, japanese: false } as const
+    expect(count()).toBe(selectItems(AUDIO_ITEMS, { ...base, onlyBelt: 1 }).length)
   })
 })

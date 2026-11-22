@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useT } from '../../shared/i18n/useT'
 import { useAppStore, type VideoLang } from '../../shared/store/useAppStore'
 import { SiteQrCode } from './SiteQrCode'
@@ -84,10 +83,6 @@ export function SettingsPage() {
           ))}
         </div>
       </fieldset>
-
-      <Link to="/audio" className="w-fit rounded-lg border bg-white px-4 py-2 font-medium">
-        🎧 {t('audioLink')}
-      </Link>
 
       <SiteQrCode />
     </section>

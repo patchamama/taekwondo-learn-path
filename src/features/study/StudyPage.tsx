@@ -14,6 +14,7 @@ import { BeltRangeSlider } from '../../shared/components/BeltRangeSlider'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { ExportBar } from '../../shared/components/ExportBar'
+import { AudioCard } from '../audio/AudioCard'
 import { buildLevelDoc } from '../export/document'
 import { FormDiagram } from '../../shared/components/FormDiagram'
 import { useT } from '../../shared/i18n/useT'
@@ -129,6 +130,7 @@ export function StudyPage() {
         <ExportBar label={t('exportThis')} build={() => buildLevelDoc(index, { lang, t, loc })} />
         <ExportBar label={t('exportAll')} build={() => buildLevelDoc(null, { lang, t, loc })} />
       </div>
+      <AudioCard maxBelt={index} onlyBelt={upTo ? null : index} />
       <BeltRangeSlider range={{
         max: index,
         only: upTo ? null : index,

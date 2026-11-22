@@ -46,5 +46,9 @@ export async function buildAudio(
     samples.set(p, at)
     at += p.length
   }
-  return { blob: new Blob([encodeWav(samples, RATE)], { type: 'audio/wav' }), seconds: total / RATE, missing }
+  return {
+    blob: new Blob([encodeWav(samples, RATE)], { type: 'audio/wav' }),
+    seconds: total / RATE,
+    missing,
+  }
 }

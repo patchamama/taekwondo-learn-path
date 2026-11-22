@@ -43,7 +43,7 @@ cd taekwondo-learn-path
 
 ## Vokabel-Audio und lokales Backend
 
-Unter **Einstellungen → Vokabel-Audio** erstellst du ein Lern-Audio: das koreanische Wort, 2 Sekunden Pause, dann die Bedeutung in der App-Sprache. Der Gürtelfilter bestimmt den Inhalt (ein Gürtel oder alles bis zu einem Gürtel); am Ende lassen sich die Technikbeschreibungen und der japanische (Karate-)Begriff anhängen.
+Unter die Karte **Vokabel-Audio** im **Lernbereich** erstellst du ein Lern-Audio: das koreanische Wort, 2 Sekunden Pause, dann die Bedeutung in der App-Sprache. Der Gürtelfilter bestimmt den Inhalt (ein Gürtel oder alles bis zu einem Gürtel); am Ende lassen sich die Technikbeschreibungen und der japanische (Karate-)Begriff anhängen.
 
 - `./start.sh` (macOS/Linux) oder `start.bat` (Windows) startet die App **und** ein kleines lokales Backend und öffnet den Browser. Mit dem Backend fügt **ffmpeg** das Audio zusammen, Download als **MP3**. Auf der statischen Seite (ohne Backend) nutzt die Seite WAV.
 - Die Clips liegen in `public/audio/` und werden mit `node scripts/generate-audio.mjs` erzeugt. Nach neuen Begriffen erneut ausführen: Es entstehen nur fehlende Clips (oder den Knopf „Audio für neue Begriffe erzeugen“ bei laufendem Backend nutzen). Benötigt `ffmpeg`.

@@ -43,7 +43,7 @@ cd taekwondo-learn-path
 
 ## Audio de vocabulario y backend local
 
-En **Ajustes → Audio de vocabulario** puedes crear un audio de estudio: la palabra en coreano, una pausa de 2 segundos y el significado en el idioma de la app. El filtro de cinturones decide qué se incluye (un cinturón, o todo hasta un cinturón); al final puedes añadir la descripción de las técnicas y el término japonés (karate).
+En la tarjeta **Audio de vocabulario** en **Estudio** puedes crear un audio de estudio: la palabra en coreano, una pausa de 2 segundos y el significado en el idioma de la app. El filtro de cinturones decide qué se incluye (un cinturón, o todo hasta un cinturón); al final puedes añadir la descripción de las técnicas y el término japonés (karate).
 
 - `./start.sh` (macOS/Linux) o `start.bat` (Windows) arranca la app **y** un pequeño backend local, y abre el navegador. Con el backend, **ffmpeg** une el audio y se descarga como **MP3**. En el sitio estático (sin backend) la página usa WAV.
 - Los clips están en `public/audio/` y los genera `node scripts/generate-audio.mjs`. Vuelve a ejecutarlo al añadir términos: solo crea los que faltan (o usa el botón «Generar audio de términos nuevos» con el backend en marcha). Necesita `ffmpeg`.
