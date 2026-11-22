@@ -44,7 +44,11 @@ function playClip(file: string, slow: boolean, fallback: () => void) {
   audio.playbackRate = slow ? 0.7 : 1
   audio.onerror = fallback
   playing = audio
-  void audio.play()?.catch(fallback)
+  // Autoplay blocked by the browser (NotAllowedError) is not a missing file: keep the recorded voice and let the
+  // next click on a speaker button play it. Only a file that cannot be played falls back to the browser voice.
+  void audio.play()?.catch((e: unknown) => {
+    if ((e as { name?: string })?.name !== 'NotAllowedError') fallback()
+  })
 }
 
 export function speakKorean(text: string, slow = false): boolean {

@@ -73,3 +73,45 @@ describe('speakKorean with pre-generated voices', () => {
     expect(canSpeak(AUDIO_ITEMS[0].hangul)).toBe(true)
   })
 })
+
+describe('autoplay blocked by the browser', () => {
+  const spoken: string[] = []
+  class BlockedAudio {
+    onerror: (() => void) | null = null
+    playbackRate = 1
+    constructor(public src: string) {}
+    play() {
+      return Promise.reject(Object.assign(new Error('blocked'), { name: 'NotAllowedError' }))
+    }
+    pause() {}
+  }
+  class BrokenAudio extends BlockedAudio {
+    play() {
+      return Promise.reject(Object.assign(new Error('bad file'), { name: 'NotSupportedError' }))
+    }
+  }
+  beforeEach(() => {
+    spoken.length = 0
+    vi.stubGlobal('SpeechSynthesisUtterance', class { lang = ''; rate = 1; voice = null; constructor(public text: string) {} })
+    vi.stubGlobal('speechSynthesis', { getVoices: () => [], cancel: () => {}, speak: (u: { text: string }) => spoken.push(u.text) })
+  })
+  afterEach(() => vi.unstubAllGlobals())
+
+  it('does not switch to the browser voice when the browser only blocks autoplay', async () => {
+    vi.stubGlobal('Audio', BlockedAudio)
+    const { speakKorean } = await import('./speech')
+    const { AUDIO_ITEMS } = await import('../../data/audioManifest')
+    speakKorean(AUDIO_ITEMS[0].hangul)
+    await new Promise((r) => setTimeout(r, 0))
+    expect(spoken).toEqual([])
+  })
+
+  it('does fall back to the browser voice when the recorded file cannot be played', async () => {
+    vi.stubGlobal('Audio', BrokenAudio)
+    const { speakKorean } = await import('./speech')
+    const { AUDIO_ITEMS } = await import('../../data/audioManifest')
+    speakKorean(AUDIO_ITEMS[0].hangul)
+    await new Promise((r) => setTimeout(r, 0))
+    expect(spoken).toEqual([AUDIO_ITEMS[0].hangul])
+  })
+})
