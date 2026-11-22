@@ -190,6 +190,7 @@ export function VocabularyPlayer({
     let release: () => void = () => {}
     let current: HTMLAudioElement | null = null
     let stepIndex = 0
+    let previousItem: string | undefined
     let lastAudioTime = 0
     let lastAudioAdvance = performance.now()
     let clockOffset = 0
@@ -259,6 +260,14 @@ export function VocabularyPlayer({
         offset = 0
         continue
       }
+      // Start a fresh transport run at each item boundary, as when stopping and
+      // resuming manually. Keep the same audio element and preserve preceding silence.
+      if (previousItem !== undefined && previousItem !== step.id) {
+        player.pause()
+        void start(timeline.starts[i])
+        return
+      }
+      previousItem = step.id
       setCurrentId(step.id)
       // A description is explanatory rather than a question: keep its complete card visible,
       // including when the listener seeks directly into the description chapter.

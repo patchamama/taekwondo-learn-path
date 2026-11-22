@@ -415,3 +415,25 @@ it('uses monochrome icons for previous and next navigation', () => {
     expect(icon).toHaveAttribute('fill', 'currentColor')
   }
 })
+
+it('restarts the transport at the next item after completing the preceding item and its pause', async () => {
+  const plan: PlaybackStep[] = [
+    { id: 'basic-dojang', file: 'a-ko', role: 'ko' },
+    { silence: 2 },
+    { id: 'basic-dojang', file: 'a-es', role: 'meaning' },
+    { silence: 2 },
+    { id: 'ap-chagi', file: 'b-ko', role: 'ko' },
+  ]
+  render(<VocabularyPlayer steps={plan} base="/" />)
+  click('Play')
+  await flush()
+  await act(async () => { clips[0].onended?.(); await vi.advanceTimersByTimeAsync(2000) })
+  expect(clips[0].src).toBe('/a-es')
+  expect(clips[0].pause).not.toHaveBeenCalled()
+  await act(async () => { clips[0].onended?.(); await vi.advanceTimersByTimeAsync(2000) })
+  expect(clips).toHaveLength(1)
+  expect(clips[0].pause).toHaveBeenCalledTimes(1)
+  expect(clips[0].src).toBe('/b-ko')
+  expect(screen.getByRole('button', { name: 'Stop' })).toBeEnabled()
+  expect(position()).toBe(7)
+})
