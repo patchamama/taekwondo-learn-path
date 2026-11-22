@@ -5,6 +5,7 @@ import { CLIPS_BY_CARD } from '../../data/clips'
 import { hasDiagram } from '../../shared/components/FormDiagram'
 import { useState } from 'react'
 import { CardMediaActions } from '../../shared/components/CardMediaActions'
+import { CardViewToggle } from '../../shared/components/CardViewToggle'
 import { useAppStore } from '../../shared/store/useAppStore'
 import { FORMS, HYONG as HYONG_FORMS, YUDANJA, formBeltIndex } from '../../data/forms'
 import { BELTS } from '../../data/belts'
@@ -81,6 +82,7 @@ export function FormsPage() {
   return (
     <section className="grid gap-4">
       <h1 className="text-2xl font-bold">{t('formsTitle')}</h1>
+      <CardViewToggle />
       <div className="grid gap-4 md:grid-cols-2">
         <Card title="Poomse (품새)" items={POOMSE[lang]} />
         <Card title="Hyong / Tul (형 / 틀)" items={HYONG[lang]} />

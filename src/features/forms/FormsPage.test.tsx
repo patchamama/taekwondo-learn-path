@@ -28,6 +28,20 @@ vi.mock('../../shared/components/SpeakButton', () => ({ SpeakButton: () => <butt
 beforeEach(() => useAppStore.setState({ lang: 'en', cardView: 'details' }))
 const card = (name: string) => screen.getByText(name).closest('li')!
 
+it('offers the shared card view controls and switches between compact and images', () => {
+  useAppStore.setState({ cardView: 'compact' })
+  render(<FormsPage />)
+  const compact = screen.getByRole('radio', { name: 'Compact' })
+  const details = screen.getByRole('radio', { name: 'With images' })
+  expect(compact).toBeChecked()
+  expect(within(card('Multi form')).queryByRole('tablist')).not.toBeInTheDocument()
+  fireEvent.click(details)
+  expect(details).toBeChecked()
+  expect(within(card('Multi form')).getByRole('tablist')).toBeInTheDocument()
+  fireEvent.click(compact)
+  expect(within(card('Multi form')).queryByRole('tablist')).not.toBeInTheDocument()
+})
+
 describe('forms media S12', () => {
   it('uses tabs within multi-media cards, showing just the selected material', () => {
     render(<FormsPage />)
