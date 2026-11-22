@@ -160,7 +160,6 @@ export const STRINGS = {
   audioSummary: { en: 'items in this audio', de: 'Einträge in diesem Audio', es: 'elementos en este audio' },
   audioGenerate: { en: 'Create audio', de: 'Audio erstellen', es: 'Crear audio' },
   audioWorking: { en: 'Preparing audio…', de: 'Audio wird vorbereitet…', es: 'Preparando el audio…' },
-  audioDownload: { en: 'Download audio (WAV)', de: 'Audio herunterladen (WAV)', es: 'Descargar audio (WAV)' },
   audioDownloadMp3: { en: 'Download audio (MP3)', de: 'Audio herunterladen (MP3)', es: 'Descargar audio (MP3)' },
   audioGenerateMissing: {
     en: 'Generate audio for new terms',

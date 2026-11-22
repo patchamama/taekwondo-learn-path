@@ -1,4 +1,4 @@
-import { speakKorean, speechSupported } from '../lib/speech'
+import { canSpeak, speakKorean } from '../lib/speech'
 import { useT } from '../i18n/useT'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 
 export function SpeakButton({ text, slow = false, className = '' }: Props) {
   const { t } = useT()
-  if (!speechSupported()) return null
+  if (!canSpeak(text)) return null
   return (
     <button
       type="button"

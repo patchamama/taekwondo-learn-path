@@ -1,4 +1,17 @@
-/** Korean text-to-speech via the Web Speech API (uses the best installed ko-KR voice). */
+import { audioFile } from '../../data/audioFiles'
+import { AUDIO_ITEMS } from '../../data/audioManifest'
+
+/**
+ * Korean speech. Words of the course play their pre-generated high-quality clip (public/audio/ko);
+ * anything else falls back to the Web Speech API (the best installed ko-KR voice).
+ */
+
+const CLIPS = new Map(AUDIO_ITEMS.map((i) => [i.hangul, audioFile('ko', i.id)]))
+
+/** Site-relative path of the recorded clip of a Korean word, if there is one. */
+export const clipFor = (text: string) => CLIPS.get(text)
+
+let playing: HTMLAudioElement | null = null
 
 export function scoreVoice(
   v: Pick<SpeechSynthesisVoice, 'name' | 'lang' | 'localService'>,
@@ -22,7 +35,28 @@ export function pickKoreanVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesis
 
 export const speechSupported = () => typeof window !== 'undefined' && 'speechSynthesis' in window
 
+/** True when the word can be spoken: it has a recorded clip, or the browser can synthesise it. */
+export const canSpeak = (text: string) => CLIPS.has(text) || speechSupported()
+
+function playClip(file: string, slow: boolean, fallback: () => void) {
+  playing?.pause()
+  const audio = new Audio(import.meta.env.BASE_URL + file)
+  audio.playbackRate = slow ? 0.7 : 1
+  audio.onerror = fallback
+  playing = audio
+  void audio.play()?.catch(fallback)
+}
+
 export function speakKorean(text: string, slow = false): boolean {
+  const file = CLIPS.get(text)
+  if (file) {
+    playClip(file, slow, () => speakWithBrowser(text, slow))
+    return true
+  }
+  return speakWithBrowser(text, slow)
+}
+
+function speakWithBrowser(text: string, slow: boolean): boolean {
   if (!speechSupported()) return false
   const synth = window.speechSynthesis
   const u = new SpeechSynthesisUtterance(text)

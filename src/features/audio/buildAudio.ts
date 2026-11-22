@@ -1,4 +1,4 @@
-import { encodeWav } from './wav'
+import { encodeMp3 } from './mp3'
 import type { PlanStep } from './audioPlan'
 
 const RATE = 16000
@@ -10,7 +10,7 @@ export interface BuiltAudio {
   missing: number
 }
 
-/** Fetches the clips of a plan, decodes them and joins them with the planned silences into one WAV. */
+/** Fetches the clips of a plan, decodes them and joins them with the planned silences into one MP3. */
 export async function buildAudio(
   plan: PlanStep[],
   base: string,
@@ -47,7 +47,7 @@ export async function buildAudio(
     at += p.length
   }
   return {
-    blob: new Blob([encodeWav(samples, RATE)], { type: 'audio/wav' }),
+    blob: new Blob([encodeMp3(samples, RATE)], { type: 'audio/mpeg' }),
     seconds: total / RATE,
     missing,
   }

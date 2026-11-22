@@ -66,7 +66,7 @@ export function buildPlayback(items: AudioItem[], o: AudioOptions): PlaybackStep
   return steps
 }
 
-/** The same plan without the display tags, as the backend and the WAV builder expect it. */
+/** The same plan without the display tags, as the backend and the browser builder expect it. */
 export function buildPlan(items: AudioItem[], o: AudioOptions): PlanStep[] {
   return buildPlayback(items, o).map((s) => ('file' in s ? { file: s.file } : s))
 }

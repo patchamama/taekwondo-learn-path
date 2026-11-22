@@ -1,7 +1,7 @@
 {
   "name": "taekwondo-learn",
   "private": true,
-  "version": "0.25.0",
+  "version": "0.26.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,6 +14,7 @@
     "frames": "node scripts/extract-frames.mjs"
   },
   "dependencies": {
+    "@breezystack/lamejs": "^1.2.7",
     "docx": "^9.15.3",
     "qrcode.react": "4.2.0",
     "react": "^19.3.1",

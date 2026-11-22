@@ -45,7 +45,7 @@ cd taekwondo-learn-path
 
 En la tarjeta **Audio de vocabulario** en **Estudio** puedes crear un audio de estudio: la palabra en coreano, una pausa de 2 segundos y el significado en el idioma de la app. El filtro de cinturones decide qué se incluye (un cinturón, o todo hasta un cinturón); al final puedes añadir la descripción de las técnicas y el término japonés (karate).
 
-- `./start.sh` (macOS/Linux) o `start.bat` (Windows) arranca la app **y** un pequeño backend local, y abre el navegador. Con el backend, **ffmpeg** une el audio y se descarga como **MP3**. En el sitio estático (sin backend) la página usa WAV.
+- `./start.sh` (macOS/Linux) o `start.bat` (Windows) arranca la app **y** un pequeño backend local, y abre el navegador. Con el backend, **ffmpeg** une el audio y se descarga como **MP3**. En el sitio estático (sin backend) el navegador codifica el MP3 por sí mismo.
 - Los clips están en `public/audio/` y los genera `node scripts/generate-audio.mjs`. Vuelve a ejecutarlo al añadir términos: solo crea los que faltan (o usa el botón «Generar audio de términos nuevos» con el backend en marcha). Necesita `ffmpeg`.
 - Voces: `say` de macOS (por defecto en macOS), voces de Windows, `espeak-ng` en Linux, u **OpenAI** (`--provider openai`) para mejor coreano. Para OpenAI crea un `.env.local` (ignorado por git) con `OPENAI_API_KEY=tu-clave`; la clave nunca se sube ni se envía a otro sitio. `--sample` guarda 12 palabras coreanas por proveedor en `audio-sample/` para compararlas de oído.
 

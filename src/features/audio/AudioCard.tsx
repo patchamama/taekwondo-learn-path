@@ -15,7 +15,7 @@ export function AudioCard({ maxBelt, onlyBelt }: { maxBelt: number; onlyBelt: nu
   const [japanese, setJapanese] = useState(false)
   const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState<[number, number] | null>(null)
-  const [result, setResult] = useState<{ url: string; missing: number; mp3: boolean } | null>(null)
+  const [result, setResult] = useState<{ url: string; missing: number } | null>(null)
   const [backend, setBackend] = useState(false)
   const [generating, setGenerating] = useState(false)
   const [error, setError] = useState('')
@@ -73,10 +73,10 @@ export function AudioCard({ maxBelt, onlyBelt }: { maxBelt: number; onlyBelt: nu
     try {
       if (backend) {
         const blob = await buildMp3(plan)
-        setResult({ url: URL.createObjectURL(blob), missing: 0, mp3: true })
+        setResult({ url: URL.createObjectURL(blob), missing: 0 })
       } else {
         const built = await buildAudio(plan, import.meta.env.BASE_URL, (d, n) => setBusy([d, n]))
-        setResult({ url: URL.createObjectURL(built.blob), missing: built.missing, mp3: false })
+        setResult({ url: URL.createObjectURL(built.blob), missing: built.missing })
       }
     } catch (e) {
       setError(String((e as Error).message ?? e))
@@ -173,9 +173,9 @@ export function AudioCard({ maxBelt, onlyBelt }: { maxBelt: number; onlyBelt: nu
               <a
                 className="w-fit rounded-lg border px-4 py-2"
                 href={result.url}
-                download={result.mp3 ? 'taekwondo-vocabulary.mp3' : 'taekwondo-vocabulary.wav'}
+                download="taekwondo-vocabulary.mp3"
               >
-                {result.mp3 ? t('audioDownloadMp3') : t('audioDownload')}
+                {t('audioDownloadMp3')}
               </a>
               {result.missing > 0 && (
                 <p className="text-sm text-amber-700">
