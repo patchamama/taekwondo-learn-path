@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { editorAvailable, frameUrl, resetEditorCache, saveCard } from './api'
+import { editorAvailable, frameUrl, resetEditorCache, saveCard, translateWithAi, type Lang, type TranslationTarget } from './api'
 
 describe('editor api', () => {
   beforeEach(() => resetEditorCache())
@@ -45,6 +45,34 @@ describe('editor api', () => {
       }),
     )
     await expect(saveCard('x', { kup: 99 })).rejects.toThrow('Invalid kup')
+  })
+
+  it('requests secondary Japanese translations only through the server editor endpoint', async () => {
+    const target: TranslationTarget = 'ja'
+    // Japanese is not an interface/source language.
+    // @ts-expect-error Japanese must not widen the editor source-language contract.
+    const source: Lang = 'ja'
+    void source
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true, json: async () => ({ ok: true, translations: { ja: '前蹴り' } }),
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    const input = { from: 'en' as const, targets: [target], text: 'front kick' }
+    expect((await translateWithAi(input)).translations.ja).toBe('前蹴り')
+    expect(fetchMock).toHaveBeenCalledExactlyOnceWith('/api/ai/translate', {
+      method: 'POST', headers: { 'X-Editor': '1', 'Content-Type': 'application/json' },
+      body: JSON.stringify(input),
+    })
+  })
+
+  it('preserves the existing German and Spanish translation request', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true, json: async () => ({ ok: true, translations: { de: 'Tritt', es: 'patada' } }),
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    const input = { from: 'en' as const, targets: ['de', 'es'] as Lang[], text: 'kick' }
+    expect(await translateWithAi(input)).toEqual({ ok: true, translations: { de: 'Tritt', es: 'patada' } })
+    expect(JSON.parse(fetchMock.mock.calls[0][1].body)).toEqual(input)
   })
 
   it('builds frame URLs with one decimal and never a negative time', () => {

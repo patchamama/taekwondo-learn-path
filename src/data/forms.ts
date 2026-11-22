@@ -1,5 +1,6 @@
 import type { Loc } from '../shared/i18n/types'
 import extra from './curriculum/forms-extra.json'
+import { CUSTOM } from './customCards'
 
 export interface Form {
   id: string
@@ -133,7 +134,7 @@ const LEVELS: Record<string, { examKup: number; courseKeup: number }> = Object.f
 )
 
 /** Taegeuk forms with their exam level (club) and course level (video). */
-export const FORMS: Form[] = BASE.map((f) => ({ ...f, ...LEVELS[f.id] }))
+export const FORMS: Form[] = [...BASE.map((f) => ({ ...f, ...LEVELS[f.id] })), ...CUSTOM.forms]
 
 export interface Hyong {
   id: string
@@ -150,10 +151,10 @@ export interface Hyong {
 }
 
 /** Hyong (ITF/Chang-Hon) forms from the club's Formen PDF §4.3.3. Hangul copied from the PDF (unverified). */
-export const HYONG: Hyong[] = extra.hyong as Hyong[]
+export const HYONG: Hyong[] = [...extra.hyong as Hyong[], ...CUSTOM.hyong]
 
 /** Master forms (Yudanja, Koryo → Ilyeo): Dan exam forms of the Poomse system, Formen PDF §4.3.2. */
-export const YUDANJA: Hyong[] = (extra as { yudanja: Hyong[] }).yudanja
+export const YUDANJA: Hyong[] = [...(extra as { yudanja: Hyong[] }).yudanja, ...CUSTOM.yudanja]
 
 export const FORM_RULES: Loc[] = extra.rules as Loc[]
 

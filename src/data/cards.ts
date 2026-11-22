@@ -6,6 +6,7 @@ import { TERMS } from './terms'
 import { FORMS, HYONG, YUDANJA } from './forms'
 import { SELF_DEFENSE } from './selfDefense'
 import { overrideOf } from './overrides'
+import { isVisible } from './visibility'
 
 export type CardKind = 'morpheme' | 'technique' | 'term' | 'form'
 
@@ -87,7 +88,7 @@ const BASE_CARDS: Card[] = [
 ]
 
 /** Every card with the edits made in the local editor applied (see cardOverrides.json). */
-export const CARDS: Card[] = BASE_CARDS.map((c) => {
+export const ALL_CARDS: Card[] = BASE_CARDS.map((c) => {
   const o = overrideOf(c.id)
   return {
     ...c,
@@ -98,4 +99,6 @@ export const CARDS: Card[] = BASE_CARDS.map((c) => {
   }
 })
 
-export const CARD_BY_ID: Record<string, Card> = Object.fromEntries(CARDS.map((c) => [c.id, c]))
+/** Visible enumeration; full lookup deliberately retains hidden decomposition dependencies. */
+export const CARDS: Card[] = ALL_CARDS.filter((c) => isVisible(c.id))
+export const CARD_BY_ID: Record<string, Card> = Object.fromEntries(ALL_CARDS.map((c) => [c.id, c]))

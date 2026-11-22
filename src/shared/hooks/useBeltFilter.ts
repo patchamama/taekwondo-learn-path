@@ -1,4 +1,5 @@
 import { cardBeltIndex } from '../../data/levels'
+import { isVisible } from '../../data/visibility'
 import { useAppStore } from '../store/useAppStore'
 
 /**
@@ -16,7 +17,7 @@ export function useBeltFilter() {
     setMax,
     only,
     setOnly,
-    visibleCard: (cardId: string) => visibleIndex(cardBeltIndex(cardId)),
+    visibleCard: (cardId: string) => isVisible(cardId) && visibleIndex(cardBeltIndex(cardId)),
     visibleIndex,
   }
 }

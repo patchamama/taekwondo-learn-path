@@ -1,4 +1,5 @@
 import type { CardOverride } from '../../data/overrides'
+import type { CustomCard, CustomCatalogue } from '../../data/customCards'
 
 const WRITE = { 'X-Editor': '1', 'Content-Type': 'application/json' }
 
@@ -33,17 +34,32 @@ export const resetEditorCache = () => {
 }
 
 export type Lang = 'en' | 'de' | 'es'
+/** Japanese is a secondary translation target, not an interface or editor source language. */
+export type TranslationTarget = Lang | 'ja'
 
-/** Asks the configured language model (if any) to translate a text; nothing is saved by this call. */
+/** Asks the server-side model for translations (including Japanese); no keys or saving in the browser. */
 export const translateWithAi = (p: {
   from: Lang
-  targets: Lang[]
+  targets: TranslationTarget[]
   text: string
   context?: { ko?: string; hangul?: string }
 }) =>
   fetch('/api/ai/translate', { method: 'POST', headers: WRITE, body: JSON.stringify(p) }).then(
-    (r) => json<{ ok: true; translations: Partial<Record<Lang, string>> }>(r),
+    (r) => json<{ ok: true; translations: Partial<Record<TranslationTarget, string>> }>(r),
   )
+
+export const customCatalogue = () => fetch('/api/cards/custom').then((r) => json<CustomCatalogue>(r))
+
+export const createCard = (entry: CustomCard) =>
+  fetch('/api/cards/custom', { method: 'POST', headers: WRITE, body: JSON.stringify(entry) }).then(
+    (r) => json<{ ok: true; entry: CustomCard }>(r),
+  )
+
+/** Soft hide/unhide only; no content, overrides, clips or progress are removed. */
+export const setCardVisibility = (id: string, hidden: boolean) =>
+  fetch(`/api/cards/${encodeURIComponent(id)}/visibility`, {
+    method: 'PUT', headers: WRITE, body: JSON.stringify({ hidden }),
+  }).then((r) => json<{ ok: true; id: string; hidden: boolean }>(r))
 
 export const saveCard = (id: string, override: CardOverride) =>
   fetch(`/api/cards/${encodeURIComponent(id)}`, {
@@ -61,6 +77,26 @@ export const saveClipRanges = (
     headers: WRITE,
     body: JSON.stringify({ clips }),
   }).then((r) => json<{ ok: true }>(r))
+
+/** Local originals only; never downloads the supplied URL. */
+export const sourceVideoUrl = (id: string) => `/api/video/source?id=${encodeURIComponent(id)}`
+
+export function videoIdFromUrl(value: string): string | null {
+  try {
+    const url = new URL(value)
+    if (url.protocol !== 'https:' || url.username || url.password || url.port) return null
+    const id = url.hostname === 'youtu.be' ? url.pathname.slice(1)
+      : ['youtube.com', 'www.youtube.com', 'm.youtube.com'].includes(url.hostname)
+        ? url.pathname === '/watch' ? url.searchParams.get('v') : url.pathname.match(/^\/(?:embed|shorts)\/([\w-]+)$/)?.[1]
+        : null
+    return /^[\w-]{11}$/.test(id ?? '') ? id! : null
+  } catch { return null }
+}
+
+export const addClip = (p: { cardId: string; url: string; start: number; end: number }) =>
+  fetch('/api/clips/add', { method: 'POST', headers: WRITE, body: JSON.stringify(p) }).then(
+    (r) => json<{ ok: true; clip: { cardId: string; videoId: string; start: number; end: number } }>(r),
+  )
 
 export const regenerateFrames = (p: {
   cardId: string

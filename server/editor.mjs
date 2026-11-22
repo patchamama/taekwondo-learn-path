@@ -1,7 +1,8 @@
 import { createHash } from 'node:crypto'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { createReadStream, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import {
+  byteRange,
   epubImage,
   epubList,
   extractFrame,
@@ -12,8 +13,9 @@ import {
   videoDuration,
 } from './library.mjs'
 import { aiConfig, answerQuestion, translate } from './ai.mjs'
-import { ensureDir, frameTimes, saveClips, validFrameKey, validateClips } from './clips.mjs'
+import { ensureDir, frameTimes, saveClips, saveExternalClip, validFrameKey, validateClips } from './clips.mjs'
 import { readOverrides, saveOverride, validId, validateOverride } from './overrides.mjs'
+import { createCustomCard, existingCatalogue, readCustomCatalogue, setCardHidden } from './custom-cards.mjs'
 
 const OVERRIDES_FILE = (root) => join(root, 'src', 'data', 'cardOverrides.json')
 const CLIPS_FILE = (root) => join(root, 'src', 'data', 'clipOverrides.json')
@@ -84,8 +86,27 @@ export async function handleEditor(req, res, url, { root, send, readBody }) {
   if (!sameOrigin(req)) return send(res, 403, { ok: false, error: 'Forbidden host' }), true
   if (write && req.headers['x-editor'] !== '1') return send(res, 403, { ok: false, error: 'Missing X-Editor header' }), true
 
+  if (write && p.startsWith('/api/clips') && req.headers.origin && req.headers.origin !== `http://${req.headers.host}`) {
+    return send(res, 403, { ok: false, error: 'Forbidden origin' }), true
+  }
+
   try {
     // ---- cards -----------------------------------------------------------------------------
+    const customFile = join(root, 'src', 'data', 'customCards.json')
+    if (req.method === 'GET' && p === '/api/cards/custom') {
+      return send(res, 200, readCustomCatalogue(customFile)), true
+    }
+    if (req.method === 'POST' && p === '/api/cards/custom') {
+      const body = JSON.parse(await readBody(req))
+      const entry = createCustomCard(customFile, body, await existingCatalogue(root))
+      return send(res, 200, { ok: true, entry }), true
+    }
+    const visibility = p.match(/^\/api\/cards\/(.+)\/visibility$/)
+    if (req.method === 'PUT' && visibility) {
+      const { hidden } = JSON.parse(await readBody(req))
+      const result = setCardHidden(customFile, decodeURIComponent(visibility[1]), hidden, await existingCatalogue(root))
+      return send(res, 200, { ok: true, ...result }), true
+    }
     if (req.method === 'GET' && p === '/api/cards/overrides') {
       return send(res, 200, readOverrides(OVERRIDES_FILE(root))), true
     }
@@ -133,6 +154,27 @@ export async function handleEditor(req, res, url, { root, send, readBody }) {
       const hits = searchLines(loadIndex(root), url.searchParams.get('q') ?? '').slice(0, 80)
       return send(res, 200, hits), true
     }
+    if (req.method === 'GET' && p === '/api/video/source') {
+      const file = findVideoFile(root, url.searchParams.get('id') ?? '')
+      if (!file) return send(res, 404, { ok: false, error: 'No local copy of this video' }), true
+      const size = statSync(file).size
+      const range = byteRange(req.headers.range, size)
+      if (!range) {
+        res.writeHead(416, { 'Content-Range': `bytes */${size}` })
+        return res.end(), true
+      }
+      const mime = file.endsWith('.webm') ? 'video/webm' : file.endsWith('.mkv') ? 'video/x-matroska' : 'video/mp4'
+      res.writeHead(range.partial ? 206 : 200, {
+        'Content-Type': mime, 'Accept-Ranges': 'bytes',
+        'Content-Length': range.end - range.start + 1,
+        ...(range.partial ? { 'Content-Range': `bytes ${range.start}-${range.end}/${size}` } : {}),
+      })
+      const stream = createReadStream(file, { start: range.start, end: range.end })
+      stream.on('error', () => res.destroy())
+      res.on('close', () => stream.destroy())
+      stream.pipe(res)
+      return true
+    }
     if (req.method === 'GET' && p === '/api/video/info') {
       const file = findVideoFile(root, url.searchParams.get('id') ?? '')
       if (!file) return send(res, 404, { ok: false, error: 'No local copy of this video' }), true
@@ -166,6 +208,18 @@ export async function handleEditor(req, res, url, { root, send, readBody }) {
     }
 
     // ---- clips (re-timing and their frames) -------------------------------------------------
+    if (req.method === 'POST' && p === '/api/clips/add') {
+      const input = JSON.parse(await readBody(req))
+      const data = join(root, 'src', 'data')
+      const read = (file) => existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : []
+      const base = [...read(join(data, 'clips.json')), ...read(join(data, 'clips-selfdefense.json'))]
+      const curriculum = join(data, 'curriculum')
+      if (existsSync(curriculum)) {
+        for (const file of readdirSync(curriculum).filter((f) => f.endsWith('.json'))) base.push(...(read(join(curriculum, file)).clips ?? []))
+      }
+      const clip = saveExternalClip(join(data, 'clips-external.json'), input, base.some((c) => c.cardId === input.cardId))
+      return send(res, 200, { ok: true, clip }), true
+    }
     if (req.method === 'PUT' && p.startsWith('/api/clips/') && p !== '/api/clips/frames') {
       const cardId = decodeURIComponent(p.slice('/api/clips/'.length))
       const { clips } = JSON.parse(await readBody(req))

@@ -2,6 +2,7 @@ import type { Loc } from '../shared/i18n/types'
 import { flat, mergeById } from './curriculum'
 import wikiTerms from './wikiTerms.json'
 import { overrideOf } from './overrides'
+import { CUSTOM } from './customCards'
 
 export type TermGroup = 'sino' | 'native' | 'command' | 'basic' | 'training' | 'body' | 'kukkiwon'
 
@@ -210,7 +211,7 @@ const BOOK: Term[] = (
 
 /** Base terms plus the ones introduced by the curriculum slices. */
 export const TERMS: Term[] = mergeById(
-  [...BASE, ...WIKI, ...BOOK],
+  [...BASE, ...WIKI, ...BOOK, ...CUSTOM.terms],
   flat('terms').map((x): Term => ({
     id: `${x.group}-${x.ko}`,
     ko: x.ko,

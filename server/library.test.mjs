@@ -1,6 +1,15 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
+import { byteRange } from './library.mjs'
 import { parseIndexMarkdown, parseTranscript, searchLines } from './library.mjs'
+
+test('local source byte ranges support seeking and reject invalid/outside ranges', () => {
+  assert.deepEqual(byteRange(undefined, 100), { start: 0, end: 99, partial: false })
+  assert.deepEqual(byteRange('bytes=20-39', 100), { start: 20, end: 39, partial: true })
+  assert.deepEqual(byteRange('bytes=80-', 100), { start: 80, end: 99, partial: true })
+  assert.deepEqual(byteRange('bytes=-20', 100), { start: 80, end: 99, partial: true })
+  for (const header of ['bytes=100-', 'bytes=30-20', 'bytes=0-1,5-9', 'bad']) assert.equal(byteRange(header, 100), null)
+})
 
 test('parses the course chapter table', () => {
   const md = '| Start | Chapter | Notes |\n|---|---|---|\n| 47 (0:47) | Ceintures blanches | intro |\n| 822 | Les positions | moa, **gibon** |\n'

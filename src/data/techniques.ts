@@ -2,6 +2,7 @@ import type { Loc } from '../shared/i18n/types'
 import { flat, mergeById } from './curriculum'
 import { TECHNIQUE_INFO } from './techniqueInfo'
 import { overrideOf } from './overrides'
+import { CUSTOM } from './customCards'
 
 export type Category = 'hand' | 'foot' | 'stance' | 'combo' | 'form'
 
@@ -353,7 +354,7 @@ const withMovement = (x: Technique): Technique => {
 
 /** Base techniques (9-8 Kup) plus the slices 7 Kup → 1 Dan. */
 export const TECHNIQUES: Technique[] = mergeById(
-  BASE.map((x): Technique => ({ ...x, info: x.info ?? TECHNIQUE_INFO[x.id] })),
+  [...BASE.map((x): Technique => ({ ...x, info: x.info ?? TECHNIQUE_INFO[x.id] })), ...CUSTOM.techniques],
   flat('techniques').map((x) => ({
     id: x.id,
     ko: x.id,

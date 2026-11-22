@@ -2,6 +2,7 @@ import type { Loc } from '../shared/i18n/types'
 import { flat, mergeById } from './curriculum'
 import type { MorphemeFamily } from './curriculum/types'
 import { overrideOf } from './overrides'
+import { CUSTOM } from './customCards'
 
 export interface Morpheme {
   id: string
@@ -91,7 +92,7 @@ const FAMILY: Record<string, MorphemeFamily> = {
 
 /** Base morphemes plus the ones introduced by the curriculum slices (7 Kup → 1 Dan). */
 export const MORPHEMES: Morpheme[] = mergeById(
-  BASE.map((x) => ({ ...x, family: FAMILY[x.id] ?? 'other' })),
+  [...BASE.map((x) => ({ ...x, family: FAMILY[x.id] ?? 'other' })), ...CUSTOM.morphemes],
   flat('morphemes').map((x) => ({
     id: x.id,
     ko: x.id,

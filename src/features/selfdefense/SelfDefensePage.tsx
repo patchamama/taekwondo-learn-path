@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { isVisible } from '../../data/visibility'
 import { SELF_DEFENSE, SELF_DEFENSE_GROUPS } from '../../data/selfDefense'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useT } from '../../shared/i18n/useT'
@@ -18,7 +19,7 @@ export function SelfDefensePage() {
           <h2 className="text-lg font-bold">{loc(g.title)}</h2>
           <p className="mb-2 text-sm text-slate-600">{loc(g.hint)}</p>
           <ul className="grid items-start gap-3 md:grid-cols-2">
-            {SELF_DEFENSE.filter((x) => x.group === g.id).map((x) => {
+            {SELF_DEFENSE.filter((x) => x.group === g.id && isVisible(x.id)).map((x) => {
               const isOpen = open === x.id
               return (
                 <li key={x.id} className="rounded-xl border bg-white p-4 shadow-sm">

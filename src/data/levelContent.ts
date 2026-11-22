@@ -1,5 +1,7 @@
 import { BELTS } from './belts'
 import { CARD_BY_ID, type Card } from './cards'
+import { CUSTOM_CARDS } from './customCards'
+import { isVisible } from './visibility'
 import { cardBeltIndex } from './levels'
 import { LESSONS, UNITS } from './lessons'
 import { TECHNIQUES } from './techniques'
@@ -23,7 +25,7 @@ export function levelContent(index: number): LevelContent {
   const theoryIds: string[] = []
   const add = (id: string) => {
     const c = CARD_BY_ID[id]
-    if (c && c.group !== 'selfdefense' && cardBeltIndex(id) === index && !ordered.includes(id))
+    if (c && isVisible(id) && c.group !== 'selfdefense' && cardBeltIndex(id) === index && !ordered.includes(id))
       ordered.push(id)
   }
   for (const l of LESSONS) {
@@ -31,6 +33,7 @@ export function levelContent(index: number): LevelContent {
     l.cardIds.forEach(add)
     for (const t of l.theoryIds ?? []) if (!theoryIds.includes(t)) theoryIds.push(t)
   }
+  CUSTOM_CARDS.forEach((c) => add(c.id))
   TECHNIQUES.forEach((t) => add(t.id))
   ;[...FORMS, ...HYONG].forEach((f) => add(f.id))
   const cards = ordered.map((id) => CARD_BY_ID[id])
