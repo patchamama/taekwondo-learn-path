@@ -1,3 +1,4 @@
+import { EditButton } from '../editor/EditButton'
 import { CardViewToggle } from '../../shared/components/CardViewToggle'
 import { CardImages } from '../../shared/components/CardImages'
 import { partLabel } from '../../data/japanese'
@@ -34,7 +35,8 @@ function ReadingCard({ cardId }: { cardId: string }) {
   const firstClip = CLIPS.find((x) => x.cardId === cardId && x.source !== 'selfdefense')
   return (
     <article className="relative rounded-xl border bg-white p-4 shadow-sm" id={`card-${cardId}`}>
-      <span className="absolute right-3 top-3">
+      <span className="absolute right-3 top-3 flex items-center gap-1">
+        <EditButton cardId={cardId} />
         <BeltBadge cardId={cardId} />
       </span>
       <h3 className="flex flex-wrap items-center gap-2 pr-24 text-lg font-bold">

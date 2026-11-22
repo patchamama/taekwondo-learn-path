@@ -128,3 +128,32 @@ describe('buildPlayback order', () => {
     expect(order).toEqual(['arae', 'ap-chagi', 'dojang', 'taeguk-1'])
   })
 })
+
+describe('bidirectional audio', () => {
+  it('asks the other way round too: meaning, a 2 s pause, then the Korean word', () => {
+    const steps = buildPlayback([ITEMS[0]], opts({ lang: 'de', bidirectional: true }))
+    expect(steps).toEqual([
+      { file: audioFile('ko', 'dojang'), role: 'ko', id: 'dojang' },
+      { silence: MEANING_DELAY },
+      { file: audioFile('de', 'dojang'), role: 'meaning', id: 'dojang' },
+      { silence: 1.5 },
+      { file: audioFile('de', 'dojang'), role: 'meaning', id: 'dojang', pass: 'reverse' },
+      { silence: MEANING_DELAY },
+      { file: audioFile('ko', 'dojang'), role: 'ko', id: 'dojang', pass: 'reverse' },
+      { silence: 1.5 },
+    ])
+  })
+
+  it('is off by default and does not change the usual plan', () => {
+    const plain = buildPlayback(ITEMS, opts())
+    expect(buildPlayback(ITEMS, opts({ bidirectional: false }))).toEqual(plain)
+    expect(plain.some((s) => 'pass' in s)).toBe(false)
+  })
+
+  it('puts the Japanese term after the forward pair only', () => {
+    const roles = buildPlayback([ITEMS[1]], opts({ japanese: true, bidirectional: true }))
+      .filter((s) => 'role' in s)
+      .map((s) => ('role' in s ? `${s.role}${'pass' in s ? '*' : ''}` : ''))
+    expect(roles).toEqual(['ko', 'meaning', 'ja', 'meaning*', 'ko*'])
+  })
+})

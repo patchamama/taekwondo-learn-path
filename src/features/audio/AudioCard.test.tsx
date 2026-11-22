@@ -34,4 +34,14 @@ describe('AudioCard', () => {
     expect(screen.getByRole('button', { name: 'Crear audio' })).toBeDisabled()
     expect(screen.getByText(/No hay nada seleccionado/)).toBeInTheDocument()
   })
+
+  it('makes the audio longer when it also asks the other way round', () => {
+    render(<AudioCard maxBelt={0} onlyBelt={0} />)
+    openCard()
+    const total = () => screen.getAllByText(/^\d+:\d\d$/).at(-1)!.textContent!
+    const seconds = (v: string) => Number(v.split(':')[0]) * 60 + Number(v.split(':')[1])
+    const before = seconds(total())
+    fireEvent.click(screen.getByLabelText(/Preguntar también en la otra dirección/))
+    expect(seconds(total())).toBeGreaterThan(before * 1.5)
+  })
 })

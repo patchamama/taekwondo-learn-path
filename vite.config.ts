@@ -1,5 +1,6 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite'
+import { configDefaults } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -11,6 +12,8 @@ export default defineConfig({
   server: { proxy: { '/api': 'http://127.0.0.1:8787' } },
   test: {
     environment: 'jsdom',
+    // server/*.test.mjs run with node:test (npm run test:server)
+    exclude: [...configDefaults.exclude, 'server/**'],
     globals: true,
     setupFiles: ['./src/test-setup.ts'],
   },

@@ -145,3 +145,47 @@ describe('VocabularyPlayer seeking and chapters', () => {
     expect(played[0]).toBe('/' + audioFile('ko', 'm1'))
   })
 })
+
+describe('VocabularyPlayer reverse pass', () => {
+  const REVERSE: PlaybackStep[] = [
+    { file: audioFile('ko', 'dojang'), role: 'ko', id: 'basic-dojang' },
+    { silence: 2 },
+    { file: audioFile('es', 'dojang'), role: 'meaning', id: 'basic-dojang' },
+    { silence: 1.5 },
+    { file: audioFile('es', 'dojang'), role: 'meaning', id: 'basic-dojang', pass: 'reverse' },
+    { silence: 2 },
+    { file: audioFile('ko', 'dojang'), role: 'ko', id: 'basic-dojang', pass: 'reverse' },
+    { silence: 1.5 },
+  ]
+  beforeEach(() => {
+    played.length = 0
+    vi.useFakeTimers()
+    vi.stubGlobal('Audio', FakeAudio)
+    useAppStore.getState().reset()
+    useAppStore.setState({ lang: 'es' })
+  })
+  afterEach(() => {
+    vi.useRealTimers()
+    vi.unstubAllGlobals()
+  })
+
+  it('hides the Korean word again when the meaning is asked first, and writes it after it is said', async () => {
+    render(<VocabularyPlayer steps={REVERSE} base="/" />)
+    fireEvent.click(screen.getByRole('button', { name: /Reproducir/ }))
+    // forward pass: ko, 2 s, meaning, 1.5 s → then the reverse meaning clip
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+      await vi.advanceTimersByTimeAsync(2000)
+      await vi.advanceTimersByTimeAsync(1500)
+      await vi.advanceTimersByTimeAsync(0)
+    })
+    expect(played).toHaveLength(3) // ko, meaning, meaning (reverse)
+    expect(screen.getByText('sala de entrenamiento')).toBeInTheDocument()
+    expect(screen.queryByText('도장')).not.toBeInTheDocument() // hidden until said again
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(2000)
+    })
+    expect(played).toHaveLength(4)
+    expect(screen.getByText('도장')).toBeInTheDocument()
+  })
+})

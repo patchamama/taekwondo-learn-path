@@ -1,3 +1,4 @@
+import { EditButton } from '../editor/EditButton'
 import { CardViewToggle } from '../../shared/components/CardViewToggle'
 import { CardImages } from '../../shared/components/CardImages'
 import { TERMS, type TermGroup } from '../../data/terms'
@@ -33,7 +34,8 @@ export function TermsPage() {
                 key={x.id}
                 className="relative grid gap-1 rounded-lg bg-white px-3 py-2 shadow-sm"
               >
-                <span className="absolute right-2 top-2">
+                <span className="absolute right-2 top-2 flex items-center gap-1">
+                  <EditButton cardId={x.id} />
                   <BeltBadge cardId={x.id} />
                 </span>
                 <div className="flex items-center gap-2 pr-20">

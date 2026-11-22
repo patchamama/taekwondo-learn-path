@@ -41,6 +41,15 @@ cd taekwondo-learn-path
 ./start.sh      # macOS / Linux  (Windows: start.bat)
 ```
 
+## Local card editor
+
+With `./start.sh` / `start.bat` running, every card (terms, techniques, word blocks…) gets a **✎** button. It opens an editor for the texts (romanization, hangul, meaning and description in three languages), the **Kup** (listbox) and the **images**. Changes are written to `src/data/cardOverrides.json`, so the deployed site uses them after you commit and push; the pencil never appears on the deployed site.
+
+- **Image picker:** tab *Clip frames* (all clip stills, searchable by technique), tab *Book images* (pictures extracted from your EPUBs in `docs/`, kept out of git) and tab *Videos* (local copies of the videos: search the chapter index and subtitles, move ±3/5/10 s and capture the frame). Picked pictures are stored in `public/images/cards/`.
+- Video capture needs a local copy of the video (the SSD archive `video/epub-backup/originals`, or folders listed in `TKD_VIDEO_DIRS`).
+- Cards show a Kup badge top-right and their images either as a hover icon (**Compact**) or inline (**With images**).
+- `npm run test:server` runs the backend tests.
+
 ## Scripts
 
 | Command                    |                                   |

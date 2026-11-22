@@ -49,6 +49,15 @@ En la tarjeta **Audio de vocabulario** en **Estudio** puedes crear un audio de e
 - Los clips están en `public/audio/` y los genera `node scripts/generate-audio.mjs`. Vuelve a ejecutarlo al añadir términos: solo crea los que faltan (o usa el botón «Generar audio de términos nuevos» con el backend en marcha). Necesita `ffmpeg`.
 - Voces: `say` de macOS (por defecto en macOS), voces de Windows, `espeak-ng` en Linux, u **OpenAI** (`--provider openai`) para mejor coreano. Para OpenAI crea un `.env.local` (ignorado por git) con `OPENAI_API_KEY=tu-clave`; la clave nunca se sube ni se envía a otro sitio. `--sample` guarda 12 palabras coreanas por proveedor en `audio-sample/` para compararlas de oído.
 
+## Editor local de fichas
+
+Con `./start.sh` / `start.bat` en marcha, cada ficha (términos, técnicas, ladrillos de palabras…) tiene un botón **✎**. Abre un editor de los textos (romanización, hangul, significado y descripción en tres idiomas), del **Kup** (listbox) y de las **imágenes**. Los cambios se guardan en `src/data/cardOverrides.json`, así que el sitio publicado los usa tras hacer commit y push; el lápiz nunca aparece en el sitio publicado.
+
+- **Selector de imágenes:** pestaña *Fotogramas de clips* (todos los fotogramas, con búsqueda por técnica), pestaña *Imágenes de libros* (imágenes extraídas de tus EPUB en `docs/`, fuera de git) y pestaña *Vídeos* (copias locales: busca en el índice y los subtítulos, avanza o retrocede 3/5/10 s y captura el fotograma). Las imágenes elegidas se guardan en `public/images/cards/`.
+- La captura de vídeo necesita una copia local (el archivo del SSD `video/epub-backup/originals`, o carpetas en `TKD_VIDEO_DIRS`).
+- Las fichas muestran el Kup arriba a la derecha y sus imágenes como icono al pasar el ratón (**Compacto**) o en línea (**Con imágenes**).
+- `npm run test:server` ejecuta los tests del backend.
+
 ## Scripts
 
 | Comando                    |                                             |

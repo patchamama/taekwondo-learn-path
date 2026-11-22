@@ -1,3 +1,4 @@
+import { EditButton } from '../editor/EditButton'
 import { BeltBadge } from '../../shared/components/BeltBadge'
 import { CardImages } from '../../shared/components/CardImages'
 import { partLabel } from '../../data/japanese'
@@ -50,7 +51,8 @@ export function CardDetail({
             🎬
           </span>
         )}
-        <span className="ml-auto shrink-0">
+        <span className="ml-auto flex shrink-0 items-center gap-1">
+          <EditButton cardId={cardId} />
           <BeltBadge cardId={cardId} />
         </span>
         {hasMore && (

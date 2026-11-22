@@ -21,6 +21,7 @@ export function AudioCard({
   const [techniques, setTechniques] = useState(true)
   const [descriptions, setDescriptions] = useState(false)
   const [japanese, setJapanese] = useState(false)
+  const [bidirectional, setBidirectional] = useState(false)
   const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState<[number, number] | null>(null)
   const [result, setResult] = useState<{ url: string; missing: number } | null>(null)
@@ -44,6 +45,7 @@ export function AudioCard({
     techniques,
     descriptions,
     japanese,
+    bidirectional,
   }
   const count = useMemo(
     () =>
@@ -69,8 +71,9 @@ export function AudioCard({
         techniques,
         descriptions,
         japanese,
+        bidirectional,
       }),
-    [lang, maxBelt, onlyBelt, vocabulary, techniques, descriptions, japanese],
+    [lang, maxBelt, onlyBelt, vocabulary, techniques, descriptions, japanese, bidirectional],
   )
 
   const create = async () => {
@@ -143,6 +146,7 @@ export function AudioCard({
             {box(t('audioTechniques'), techniques, setTechniques)}
             {box(t('audioDescriptions'), descriptions, setDescriptions)}
             {box(t('audioJapanese'), japanese, setJapanese)}
+        {box(t('audioBidirectional'), bidirectional, setBidirectional)}
           </div>
           <p className="text-sm font-semibold" aria-live="polite" aria-label="audio-count">
             {count} {t('audioSummary')}

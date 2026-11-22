@@ -49,6 +49,15 @@ Unter die Karte **Vokabel-Audio** im **Lernbereich** erstellst du ein Lern-Audio
 - Die Clips liegen in `public/audio/` und werden mit `node scripts/generate-audio.mjs` erzeugt. Nach neuen Begriffen erneut ausführen: Es entstehen nur fehlende Clips (oder den Knopf „Audio für neue Begriffe erzeugen“ bei laufendem Backend nutzen). Benötigt `ffmpeg`.
 - Stimmen: macOS `say` (Standard unter macOS), Windows-Sprachstimmen, `espeak-ng` unter Linux oder **OpenAI** (`--provider openai`) für besseres Koreanisch. Für OpenAI eine git-ignorierte `.env.local` mit `OPENAI_API_KEY=dein-schlüssel` anlegen; der Schlüssel wird weder eingecheckt noch anderswohin gesendet. `--sample` schreibt 12 koreanische Wörter je Anbieter nach `audio-sample/` zum Vergleich per Gehör.
 
+## Lokaler Karten-Editor
+
+Mit laufendem `./start.sh` / `start.bat` hat jede Karte (Begriffe, Techniken, Wortbausteine …) einen **✎**-Knopf. Er öffnet einen Editor für die Texte (Umschrift, Hangul, Bedeutung und Beschreibung in drei Sprachen), den **Kup** (Listbox) und die **Bilder**. Änderungen landen in `src/data/cardOverrides.json`, die veröffentlichte Seite nutzt sie nach Commit und Push; der Stift erscheint nie auf der veröffentlichten Seite.
+
+- **Bildauswahl:** Tab *Clip-Bilder* (alle Standbilder, nach Technik durchsuchbar), Tab *Buchbilder* (aus deinen EPUBs in `docs/` extrahiert, nicht in git) und Tab *Videos* (lokale Kopien: Index und Untertitel durchsuchen, ±3/5/10 s springen und das Bild aufnehmen). Gewählte Bilder liegen in `public/images/cards/`.
+- Die Videoaufnahme braucht eine lokale Kopie (das SSD-Archiv `video/epub-backup/originals` oder Ordner in `TKD_VIDEO_DIRS`).
+- Karten zeigen den Kup oben rechts und ihre Bilder als Hover-Symbol (**Kompakt**) oder direkt (**Mit Bildern**).
+- `npm run test:server` führt die Backend-Tests aus.
+
 ## Skripte
 
 | Befehl                     |                                     |

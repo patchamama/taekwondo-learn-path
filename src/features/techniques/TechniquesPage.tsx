@@ -1,3 +1,4 @@
+import { EditButton } from '../editor/EditButton'
 import { CardViewToggle } from '../../shared/components/CardViewToggle'
 import { CardImages } from '../../shared/components/CardImages'
 import { partLabel } from '../../data/japanese'
@@ -70,7 +71,10 @@ export function TechniquesPage() {
                   </h3>
                 </div>
                 <div className="flex flex-col items-end gap-1">
-                <BeltBadge cardId={x.id} />
+                <span className="flex items-center gap-1">
+                  <EditButton cardId={x.id} />
+                  <BeltBadge cardId={x.id} />
+                </span>
                 <label className="flex items-center gap-1 text-xs">
                   <input
                     type="checkbox"

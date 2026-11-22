@@ -14,6 +14,8 @@ export interface AudioOptions {
   /** spoken description of each selected technique, after all the vocabulary */
   descriptions: boolean
   japanese: boolean
+  /** after each word, ask the other way round too: meaning, a pause, then the Korean word */
+  bidirectional?: boolean
 }
 
 export type PlanStep = { file: string } | { silence: number }
@@ -21,7 +23,9 @@ export type PlanStep = { file: string } | { silence: number }
 export type PlaybackRole = 'ko' | 'meaning' | 'ja' | 'info'
 
 /** A plan step that also says which word and part it is, so the player can write it after it is said. */
-export type PlaybackStep = { file: string; role: PlaybackRole; id: string } | { silence: number }
+export type PlaybackStep =
+  | { file: string; role: PlaybackRole; id: string; pass?: 'reverse' }
+  | { silence: number }
 
 /** Seconds between the Korean word and its meaning. */
 export const MEANING_DELAY = 2
@@ -55,6 +59,14 @@ export function buildPlayback(items: AudioItem[], o: AudioOptions): PlaybackStep
         { file: audioFile('ja', i.id), role: 'ja', id: i.id },
       )
     steps.push({ silence: AFTER_ITEM })
+    if (o.bidirectional) {
+      steps.push(
+        { file: audioFile(o.lang, i.id), role: 'meaning', id: i.id, pass: 'reverse' },
+        { silence: MEANING_DELAY },
+        { file: audioFile('ko', i.id), role: 'ko', id: i.id, pass: 'reverse' },
+        { silence: AFTER_ITEM },
+      )
+    }
   }
   if (o.descriptions) {
     for (const i of chosen) {
