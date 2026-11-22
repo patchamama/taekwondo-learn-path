@@ -22,7 +22,7 @@ const LINKS: { to: string; key: StringKey }[] = [
   { to: '/background', key: 'navBackground' },
 ]
 
-const FILTERED = ['/techniques', '/videos', '/video-quiz', '/terms', '/forms', '/kukkiwon', '/practice']
+const FILTERED = ['/audio', '/techniques', '/videos', '/video-quiz', '/terms', '/forms', '/kukkiwon', '/practice']
 
 export function Layout() {
   const { pathname } = useLocation()

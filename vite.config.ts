@@ -7,6 +7,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: process.env.GITHUB_ACTIONS ? '/taekwondo-learn-path/' : '/',
   plugins: [react(), tailwindcss()],
+  // local audio backend (start.sh / start.bat); absent on the static site, where the page falls back to WAV
+  server: { proxy: { '/api': 'http://127.0.0.1:8787' } },
   test: {
     environment: 'jsdom',
     globals: true,

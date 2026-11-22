@@ -30,7 +30,7 @@ describe('lesson order setting', () => {
   })
 
   it('locks a later lesson when the checkbox is ticked', () => {
-    render(<SettingsPage />)
+    render(<MemoryRouter><SettingsPage /></MemoryRouter>)
     fireEvent.click(screen.getByRole('checkbox', { name: /Lock lessons/ }))
     expect(useAppStore.getState().strictOrder).toBe(true)
     openLesson()
@@ -38,21 +38,21 @@ describe('lesson order setting', () => {
   })
 
   it('stores the preferred video language', () => {
-    render(<SettingsPage />)
+    render(<MemoryRouter><SettingsPage /></MemoryRouter>)
     fireEvent.click(screen.getByLabelText('German'))
     expect(useAppStore.getState().videoLang).toBe('de')
   })
 })
 
 it('appends a real site QR after every existing settings control', () => {
-  const { container } = render(<SettingsPage />)
+  const { container } = render(<MemoryRouter><SettingsPage /></MemoryRouter>)
   const qr = screen.getByRole('region', { name: 'Open this site on another device' })
   expect(container.querySelector('section')?.lastElementChild).toBe(qr)
   expect(screen.getByRole('img', { name: 'QR code for this site' }).tagName.toLowerCase()).toBe('svg')
 })
 
 it('preserves strict lesson locks, listening, belt scheme and video language controls', () => {
-  render(<SettingsPage />)
+  render(<MemoryRouter><SettingsPage /></MemoryRouter>)
   const [strict, listening] = screen.getAllByRole('checkbox')
   fireEvent.click(strict)
   expect(useAppStore.getState().strictOrder).toBe(true)
