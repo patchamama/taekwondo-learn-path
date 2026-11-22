@@ -3,7 +3,8 @@ import { createElement } from 'react'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import { CARD_BY_ID } from './cards'
-import { CLIPS, CLIPS_BY_CARD, embedUrl } from './clips'
+import { CLIPS, CLIPS_BY_CARD, embedUrl, videoIdFor } from './clips'
+import { mockYouTube, teardownYouTube } from '../features/videos/playerTestUtils'
 import { ClipViewer } from '../features/videos/ClipViewer'
 import { buildVideoRounds } from '../features/videos/videoQuiz'
 import { useAppStore } from '../shared/store/useAppStore'
@@ -25,7 +26,7 @@ const supplements = [
 ] as const
 const ids = new Set<string>(supplements.map(([, videoId]) => videoId))
 
-afterEach(cleanup)
+afterEach(() => { teardownYouTube(); cleanup() })
 
 describe('EPUB supplements through the public clip inventory', () => {
   it.each(supplements)('%s maps to its reviewed individual source and bounded excerpt', (cardId, videoId, start, end, duration) => {
@@ -48,15 +49,40 @@ describe('EPUB supplements through the public clip inventory', () => {
   })
 
   it.each(supplements)('%s keeps its course default and exposes the supplement as a working source tab', (cardId, videoId) => {
-    useAppStore.setState({ lang: 'en' })
+    const platform = mockYouTube()
+    useAppStore.setState({ lang: 'en', videoLang: 'auto' })
     const clips = CLIPS_BY_CARD[cardId]
     expect(clips[0].source).toBe('course')
-    const { container } = render(createElement(ClipViewer, { cardId, autoplay: false }))
-    expect(container.querySelector('iframe')?.getAttribute('src')).toBe(embedUrl('es', clips[0]))
+    render(createElement(ClipViewer, { cardId, autoplay: false }))
+    platform.ready()
+    const courseTab = screen.getAllByRole('tab')[0]
+    expect(courseTab).toHaveAttribute('aria-selected', 'true')
+    const courseHost = document.querySelector(`[data-video-source="${videoIdFor(clips[0], 'es')}"]`)!
+    const courseIframe = courseHost.querySelector('iframe')!
+    expect(courseHost).not.toHaveAttribute('hidden')
+    expect(new URL(courseIframe.src).pathname).toBe(`/embed/${videoIdFor(clips[0], 'es')}`)
+    expect(platform.players[0].seekTo).toHaveBeenLastCalledWith(clips[0].start, true)
+    expect(platform.players[0].playVideo).not.toHaveBeenCalled()
+    expect(screen.getByRole('progressbar')).toHaveAttribute('max', String(clips[0].end - clips[0].start))
     const added = clips.find((c) => c.videoId === videoId)!
     fireEvent.click(screen.getByRole('tab', { name: added.label }))
+    platform.ready()
     expect(screen.getByRole('tab', { name: added.label })).toHaveAttribute('aria-selected', 'true')
-    expect(container.querySelector('iframe')?.getAttribute('src')).toBe(embedUrl('es', added))
+    expect(courseTab).toHaveAttribute('aria-selected', 'false')
+    expect(courseHost).toHaveAttribute('hidden')
+    expect(platform.players[0].pauseVideo).toHaveBeenCalled()
+    const addedHost = document.querySelector(`[data-video-source="${videoId}"]`)!
+    expect(addedHost).not.toHaveAttribute('hidden')
+    expect(new URL(addedHost.querySelector('iframe')!.src).pathname).toBe(`/embed/${videoId}`)
+    expect(platform.players[1].seekTo).toHaveBeenLastCalledWith(added.start, true)
+    expect(platform.players[1].playVideo).not.toHaveBeenCalled()
+    expect(screen.getByRole('progressbar')).toHaveAttribute('max', String(added.end - added.start))
+    fireEvent.click(courseTab)
+    expect(courseTab).toHaveAttribute('aria-selected', 'true')
+    expect(courseHost).not.toHaveAttribute('hidden')
+    expect(courseHost.querySelector('iframe')).toBe(courseIframe)
+    expect(addedHost).toHaveAttribute('hidden')
+    expect(platform.players).toHaveLength(2)
   })
 
   it('appends thirteen reviewed sources while preserving the legacy forty and previously accepted twelve', () => {

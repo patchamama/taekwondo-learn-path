@@ -48,7 +48,7 @@ export function ClipViewer({ cardId, autoplay = true }: { cardId: string; autopl
         <p className="text-xs text-amber-700">ℹ {t('similarTech')}</p>
       )}
       <FrameStrip key={`${clipKey(clip)}-f`} clip={clip} maximizable={false} />
-      <ClipPlayer key={`${clipKey(clip)}-p`} clip={clip} autoplay={big || autoplay} />
+      <ClipPlayer clip={clip} autoplay={big || autoplay} maximizable={false} />
     </>
   )
   if (big) return <MaximizeOverlay onClose={() => setBig(false)}>{body}</MaximizeOverlay>

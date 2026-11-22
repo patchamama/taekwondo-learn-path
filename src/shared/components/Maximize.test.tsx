@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { teardownYouTube } from '../../features/videos/playerTestUtils'
+
+afterEach(teardownYouTube)
 import { useAppStore } from '../store/useAppStore'
 import { MaximizeButton, MaximizeOverlay } from './Maximize'
 import { ClipViewer } from '../../features/videos/ClipViewer'
@@ -140,15 +143,20 @@ describe('Maximize public modal keyboard contract', () => {
     expect(screen.getByRole('button', { name: /Maximize/ })).toHaveFocus()
   })
 
-  it('keeps ClipViewer source tabs, iframe and replay within the host modal cycle', async () => {
+  it('keeps ClipViewer source tabs and playback controls in the modal cycle with a stable iframe' , async () => {
     const user = userEvent.setup()
     render(<ClipViewer cardId="ap-chagi" autoplay={false} />)
+    const iframe = document.querySelector('[data-video-source]:not([hidden]) iframe')
+    expect(iframe).not.toBeNull()
     await user.click(screen.getByRole('button', { name: /Maximize/ }))
     const dialog = screen.getByRole('dialog')
     expect(within(dialog).getAllByRole('tab').length).toBeGreaterThan(1)
-    expect(dialog.querySelector('iframe')).not.toBeNull()
+    expect(document.querySelector('[data-video-source]:not([hidden]) iframe')).toBe(iframe)
+    // The noninteractive iframe stays at its stable parent; shared controls remain tabbable.
+    expect(iframe).toHaveAttribute('tabindex', '-1')
+    expect(within(dialog).getByRole('button', { name: /Replay/ })).toBeInTheDocument()
     await user.tab({ shift: true })
-    expect(screen.getByRole('button', { name: /Replay/ })).toHaveFocus()
+    expect(screen.getByRole('button', { name: 'Play / Pause' })).toHaveFocus()
     await user.tab()
     expect(screen.getByRole('button', { name: /Close/ })).toHaveFocus()
     fireEvent.keyDown(window, { key: 'Escape' })

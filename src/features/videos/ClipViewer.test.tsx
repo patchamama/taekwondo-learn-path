@@ -10,8 +10,9 @@ describe('ClipViewer maximize', () => {
     render(<ClipViewer cardId="ap-chagi" autoplay={false} />)
     expect(screen.queryByRole('dialog')).toBeNull()
     fireEvent.click(screen.getByRole('button', { name: /Maximize/ }))
-    const dialog = screen.getByRole('dialog')
-    expect(dialog.querySelector('iframe')).not.toBeNull()
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    // The stable player host is positioned over the modal, never reparented into it.
+    expect(document.querySelector('[data-video-cache] iframe')).not.toBeNull()
     fireEvent.keyDown(window, { key: 'Escape' })
     expect(screen.queryByRole('dialog')).toBeNull()
     expect(screen.getByRole('button', { name: /Maximize/ })).toBeInTheDocument()
