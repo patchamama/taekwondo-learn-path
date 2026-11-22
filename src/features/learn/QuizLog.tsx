@@ -11,10 +11,23 @@ export interface LogEntry {
   ok: boolean
   correctText: string
   cardId?: string
+  /** index of the progress segment this answer belongs to */
+  segment: number
+  /** what the question showed (term, meaning…) */
+  subject?: string
+  options?: { label: string; correct: boolean; given: boolean }[]
 }
 
 /** What has happened so far, oldest first, so the latest evaluation is the last line. */
-export function QuizLog({ entries }: { entries: LogEntry[] }) {
+export function QuizLog({
+  entries,
+  onReview,
+  activeSegment,
+}: {
+  entries: LogEntry[]
+  onReview?: (e: LogEntry) => void
+  activeSegment?: number | null
+}) {
   const { t } = useT()
   const [media, setMedia] = useState<string | null>(null)
   if (entries.length === 0) return null
@@ -27,7 +40,7 @@ export function QuizLog({ entries }: { entries: LogEntry[] }) {
         {entries.slice(-6).map((e) => (
           <li
             key={e.n}
-            className={`flex flex-wrap items-baseline gap-x-2 rounded-lg px-2 py-1 ${e.ok ? 'bg-emerald-50' : 'bg-rose-50'}`}
+            className={`flex flex-wrap items-baseline gap-x-2 rounded-lg px-2 py-1 ${e.ok ? 'bg-emerald-50' : 'bg-rose-50'} ${activeSegment === e.segment ? 'ring-2 ring-sky-500' : ''}`}
           >
             <span className="font-semibold">
               {e.n}. {e.ok ? `✓ ${t('logCorrect')}` : `✗ ${t('logWrong')}`}
@@ -40,6 +53,16 @@ export function QuizLog({ entries }: { entries: LogEntry[] }) {
               <span>
                 {t('correctAnswer')}: <b>{e.correctText}</b>
               </span>
+            )}
+            {onReview && (
+              <button
+                type="button"
+                className="rounded-full border bg-white px-2 text-xs"
+                aria-label={`${t('reviewButton')} ${e.n}`}
+                onClick={() => onReview(e)}
+              >
+                ↺ {t('reviewButton')}
+              </button>
             )}
             {e.cardId && CLIPS_BY_CARD[e.cardId] && (
               <button

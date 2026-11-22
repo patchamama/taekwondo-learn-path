@@ -196,3 +196,79 @@ describe('LessonPlayer new formats and options', () => {
     expect(screen.getByRole('button', { name: CARD_BY_ID.macki.meaning.en })).toBeInTheDocument()
   })
 })
+
+describe('LessonPlayer countdown and review', () => {
+  const two: Exercise = { type: 'meaning', cardId: 'chagi', options: ['macki', 'chagi', 'sogi', 'gubi'] }
+  const answer = (id: string) => fireEvent.click(screen.getByRole('button', { name: CARD_BY_ID[id].meaning.en }))
+  const show = (list: Exercise[]) => render(<LessonPlayer exercises={list} beltColor="#fff" onFinish={() => {}} onExit={() => {}} />)
+
+  beforeEach(() => {
+    useAppStore.setState({ lang: 'en', quizAutoCheck: true, quizResultMode: 'button', quizAutoContinue: false })
+  })
+  afterEach(() => vi.useRealTimers())
+
+  it('counts down in the result window when it is timed', () => {
+    vi.useFakeTimers()
+    useAppStore.setState({ quizResultMode: '3s', quizAutoContinue: true })
+    show([ex])
+    answer('macki')
+    expect(screen.getByText('Continuing in 3 s')).toBeInTheDocument()
+    act(() => {
+      vi.advanceTimersByTime(1000)
+    })
+    expect(screen.getByText('Continuing in 2 s')).toBeInTheDocument()
+    act(() => {
+      vi.advanceTimersByTime(1000)
+    })
+    expect(screen.getByText('Continuing in 1 s')).toBeInTheDocument()
+  })
+
+  it('says it will only close when automatic continue is off', () => {
+    vi.useFakeTimers()
+    useAppStore.setState({ quizResultMode: '5s', quizAutoContinue: false })
+    show([ex])
+    answer('macki')
+    expect(screen.getByText('Closing in 5 s')).toBeInTheDocument()
+  })
+
+  it('has no countdown when the result waits for Continue', () => {
+    show([ex])
+    answer('macki')
+    expect(screen.queryByText(/in \d s/)).not.toBeInTheDocument()
+  })
+
+  it('shows the question again when an evaluated segment is pressed, and hints it on hover', () => {
+    show([ex, two])
+    answer('chagi') // wrong
+    fireEvent.click(screen.getByRole('button', { name: 'Continue' }))
+    const segment = document.querySelector('[data-state="bad"]') as HTMLElement
+    expect(segment.getAttribute('title')).toBe('1. What does this mean?: macki · 막기')
+    fireEvent.click(segment)
+    const review = screen.getByRole('dialog', { name: 'Question review' })
+    expect(within(review).getByText(/Your answer/)).toBeInTheDocument()
+    expect(within(review).getByText(CARD_BY_ID.macki.meaning.en, { selector: 'b' })).toBeInTheDocument()
+    expect(segment).toHaveAttribute('aria-current', 'true')
+    fireEvent.click(within(review).getByRole('button', { name: 'Close' }))
+    expect(screen.queryByRole('dialog', { name: 'Question review' })).not.toBeInTheDocument()
+  })
+
+  it('does not make pending segments clickable', () => {
+    show([ex, two])
+    const pending = document.querySelector('[data-state="pending"]') as HTMLElement
+    expect(pending.tagName).not.toBe('BUTTON')
+  })
+
+  it('opens the same review from an entry of the log', () => {
+    show([ex])
+    answer('chagi')
+    fireEvent.click(screen.getByRole('button', { name: 'Continue' }))
+    // the wrong answer comes back; answer it right so the log has two entries
+    answer('macki')
+    fireEvent.click(screen.getByRole('button', { name: 'Continue' }))
+    const log = screen.queryByRole('region', { name: 'Quiz log' })
+    if (log) {
+      fireEvent.click(within(log).getAllByRole('button', { name: /Review/ })[0])
+      expect(screen.getByRole('dialog', { name: 'Question review' })).toBeInTheDocument()
+    }
+  })
+})

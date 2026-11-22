@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useT } from '../../shared/i18n/useT'
 import { Bubble } from '../mascot/Bubble'
 import { SpeakButton } from '../../shared/components/SpeakButton'
@@ -37,6 +37,12 @@ export function ResultModal({
   useEffect(() => {
     callbacks.current = { onContinue, onClose }
   })
+  const [left, setLeft] = useState(seconds)
+  useEffect(() => {
+    if (seconds <= 0) return
+    const tick = setInterval(() => setLeft((n) => Math.max(0, n - 1)), 1000)
+    return () => clearInterval(tick)
+  }, [seconds])
   useEffect(() => {
     if (seconds <= 0) return
     const timer = setTimeout(
@@ -68,6 +74,11 @@ export function ResultModal({
           {!ok && retryNote && <p className="mt-1 text-xs text-rose-700">{t('askedAgain')}</p>}
           {hangul && <SpeakButton text={hangul} className="mt-1" />}
         </Bubble>
+        {seconds > 0 && left > 0 && (
+          <p className="text-center text-xs text-slate-500">
+            {t(autoContinue ? 'countdownContinue' : 'countdownClose').replace('{n}', String(left))}
+          </p>
+        )}
         <button
           autoFocus
           onClick={onContinue}

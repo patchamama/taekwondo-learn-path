@@ -12,9 +12,18 @@ const COLOR: Record<SegmentState, string> = {
 export function QuizProgress({
   segments,
   position,
+  titles = [],
+  active = null,
+  onSelect,
 }: {
   segments: SegmentState[]
   position: number
+  /** hint of each segment (the question), shown on hover */
+  titles?: (string | undefined)[]
+  /** segment whose question is being reviewed */
+  active?: number | null
+  /** pressing an already evaluated segment */
+  onSelect?: (i: number) => void
 }) {
   const done = segments.filter((s) => s === 'ok' || s === 'bad' || s === 'skipped').length
   const percent =
@@ -28,9 +37,23 @@ export function QuizProgress({
         aria-valuemin={0}
         aria-valuemax={100}
       >
-        {segments.map((s, i) => (
-          <span key={i} data-state={s} className={`h-full flex-1 transition-colors ${COLOR[s]}`} />
-        ))}
+        {segments.map((s, i) => {
+          const cls = `h-full flex-1 transition-colors ${COLOR[s]} ${active === i ? 'ring-2 ring-inset ring-slate-900' : ''}`
+          return (s === 'ok' || s === 'bad') && onSelect ? (
+            <button
+              key={i}
+              type="button"
+              data-state={s}
+              title={titles[i]}
+              aria-label={titles[i] ?? String(i + 1)}
+              aria-current={active === i ? 'true' : undefined}
+              onClick={() => onSelect(i)}
+              className={`${cls} cursor-pointer`}
+            />
+          ) : (
+            <span key={i} data-state={s} title={titles[i]} className={cls} />
+          )
+        })}
       </div>
       <span
         className="text-xs font-semibold tabular-nums text-slate-600"

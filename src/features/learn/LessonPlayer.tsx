@@ -15,6 +15,7 @@ import { MaximizeOverlay } from '../../shared/components/Maximize'
 import { useAppStore } from '../../shared/store/useAppStore'
 import { isCorrect, type Exercise } from './exercises'
 import { QuizLog, type LogEntry } from './QuizLog'
+import { QuizReview } from './QuizReview'
 import { QuizProgress, type SegmentState } from './QuizProgress'
 import { ResultModal } from './ResultModal'
 
@@ -52,6 +53,7 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
   const [resultOpen, setResultOpen] = useState(false)
   const [outcomes, setOutcomes] = useState<Record<number, boolean>>({})
   const [entries, setEntries] = useState<LogEntry[]>([])
+  const [review, setReview] = useState<LogEntry | null>(null)
   const log = useRef<PlayerResult['answers']>([])
   const retried = useRef(new Set<Exercise>())
 
@@ -116,9 +118,37 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
       ex.type === 'build'
         ? (given as string[]).map((c) => MORPHEME_BY_ID[c].ko).join(' + ')
         : (options.find((o) => o.key === given)?.label ?? String(given))
+    const optionRows =
+      ex.type === 'build'
+        ? undefined
+        : options.map((o) => ({
+            label: String(o.label),
+            correct: isCorrect(ex, o.key),
+            given: o.key === given,
+          }))
+    const subject =
+      ex.type === 'meaning'
+        ? `${cardOf!.ko} · ${cardOf!.hangul}`
+        : ex.type === 'recall' || ex.type === 'build'
+          ? loc(cardOf!.meaning)
+          : ex.type === 'listen' || ex.type === 'listenmeaning'
+            ? '🔊'
+            : ex.type === 'theory'
+              ? loc(THEORY_BY_ID[ex.theoryId].question)
+              : undefined
     setEntries((list) => [
       ...list,
-      { n: list.length + 1, prompt, given: givenLabel, ok, correctText, cardId: cardOf?.id },
+      {
+        n: list.length + 1,
+        prompt,
+        given: givenLabel,
+        ok,
+        correctText,
+        cardId: cardOf?.id,
+        segment: pos,
+        subject,
+        options: optionRows,
+      },
     ])
     setResultOpen(true)
     if (!retried.current.has(ex)) setFirstTry((f) => ({ ...f, [pos]: ok }))
@@ -217,7 +247,16 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
         >
           ✕ {t('exit')}
         </button>
-        <QuizProgress segments={segments} position={pos + 1} />
+        <QuizProgress
+          segments={segments}
+          position={pos + 1}
+          titles={segments.map((_, i) => {
+            const e = [...entries].reverse().find((x) => x.segment === i)
+            return e ? `${e.n}. ${e.prompt}${e.subject ? `: ${e.subject}` : ''}` : undefined
+          })}
+          active={review?.segment ?? null}
+          onSelect={(i) => setReview([...entries].reverse().find((x) => x.segment === i) ?? null)}
+        />
       </div>
 
       <h2 className="text-lg font-bold">{prompt}</h2>
@@ -430,7 +469,9 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
         )}
       </div>
 
-      <QuizLog entries={entries} />
+      <QuizLog entries={entries} onReview={setReview} activeSegment={review?.segment ?? null} />
+
+      {review && <QuizReview entry={review} onClose={() => setReview(null)} />}
 
       {clipModal && (
         <MaximizeOverlay onClose={() => setClipModal(null)}>
