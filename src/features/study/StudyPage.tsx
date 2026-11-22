@@ -1,5 +1,7 @@
 import { EditButton } from '../editor/EditButton'
 import { CardViewToggle } from '../../shared/components/CardViewToggle'
+import { CardMediaActions } from '../../shared/components/CardMediaActions'
+import { useAppStore } from '../../shared/store/useAppStore'
 import { CardImages } from '../../shared/components/CardImages'
 import { partLabel } from '../../data/japanese'
 import { BookSynonym } from '../../shared/components/BookSynonym'
@@ -20,7 +22,7 @@ import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { ExportBar } from '../../shared/components/ExportBar'
 import { AudioCard } from '../audio/AudioCard'
 import { buildLevelDoc } from '../export/document'
-import { FormDiagram } from '../../shared/components/FormDiagram'
+import { FormDiagram, hasDiagram } from '../../shared/components/FormDiagram'
 import { useT } from '../../shared/i18n/useT'
 import { MATCH_LABEL, MATCH_STYLE } from '../kukkiwon/content'
 import { ClipViewer } from '../videos/ClipViewer'
@@ -29,17 +31,15 @@ import { CLIPS } from '../../data/clips'
 
 function ReadingCard({ cardId }: { cardId: string }) {
   const { t, loc } = useT()
-  const [watch, setWatch] = useState(false)
+  const [watch, setWatch] = useState(0)
+  const compact = useAppStore((s) => s.cardView === 'compact')
   const c = CARD_BY_ID[cardId]
   const kk = KUKKIWON_BY_ID[cardId]
   const firstClip = CLIPS.find((x) => x.cardId === cardId && x.source !== 'selfdefense')
   return (
     <article className="relative rounded-xl border bg-white p-4 shadow-sm" id={`card-${cardId}`}>
-      <span className="absolute right-3 top-3 flex items-center gap-1">
-        <EditButton cardId={cardId} />
-        <BeltBadge cardId={cardId} />
-      </span>
-      <h3 className="flex flex-wrap items-center gap-2 pr-24 text-lg font-bold">
+      <div data-card-header className="flex flex-wrap items-start justify-between gap-2">
+      <h3 className="flex flex-wrap items-center gap-2 text-lg font-bold">
         {c.ko}
         <span lang="ko" className="font-normal text-slate-500">
           {c.hangul}
@@ -47,9 +47,16 @@ function ReadingCard({ cardId }: { cardId: string }) {
         <SpeakButton text={c.hangul} />
         <SpeakButton text={c.hangul} slow />
       </h3>
+      <span data-card-media-toolbar className="flex shrink-0 flex-wrap items-center justify-end gap-1">
+        <EditButton cardId={cardId} />
+        {compact && !CLIPS_BY_CARD[cardId]?.length && hasDiagram(cardId) && <button type="button" className="rounded border p-1" aria-label={t('diagramTitle')} onClick={() => setWatch((n) => n + 1)}>▧</button>}
+        <CardMediaActions cardId={cardId} expanded={Boolean(watch)} onOpen={() => setWatch((n) => n + 1)} />
+        <BeltBadge cardId={cardId} />
+      </span>
+      </div>
       <p className="font-medium">{loc(c.meaning)}</p>
       <div className="mt-1">
-        <CardImages cardId={cardId} />
+        <CardImages cardId={cardId} display="details" expanded={Boolean(watch)} />
       </div>
       {c.info && <p className="mt-2 text-sm">{loc(c.info)}</p>}
       {c.kind === 'technique' && (
@@ -80,19 +87,14 @@ function ReadingCard({ cardId }: { cardId: string }) {
           </span>
         </p>
       )}
-      <FormDiagram cardId={cardId} />
+      {(!compact || watch > 0) && <FormDiagram cardId={cardId} />}
       {CLIPS_BY_CARD[cardId] && (
         <div className="mt-3 grid gap-2">
-          {firstClip && !watch && <FrameStrip clip={firstClip} quiet />}
-          <button
-            type="button"
-            className="w-fit rounded-lg border px-3 py-1 text-sm"
-            aria-expanded={watch}
-            onClick={() => setWatch(!watch)}
-          >
-            {watch ? t('hide') : `▶ ${t('watch')}`}
-          </button>
-          {watch && <ClipViewer cardId={cardId} autoplay={false} />}
+          {firstClip && !compact && !watch && <FrameStrip clip={firstClip} quiet />}
+          {watch > 0 && <>
+            <button type="button" className="w-fit text-sm underline" onClick={() => setWatch(0)}>{t('hide')}</button>
+            <ClipViewer key={watch} cardId={cardId} autoplay />
+          </>}
         </div>
       )}
     </article>

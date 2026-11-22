@@ -1,9 +1,19 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { editorAvailable, frameUrl, resetEditorCache, saveCard, translateWithAi, type Lang, type TranslationTarget } from './api'
+import { editorAvailable, frameUrl, resetEditorCache, saveCard, saveClipRanges, translateWithAi, type Lang, type TranslationTarget } from './api'
 
 describe('editor api', () => {
   beforeEach(() => resetEditorCache())
   afterEach(() => vi.unstubAllGlobals())
+
+  it('saves a clip removal using the same guarded endpoint as retiming', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => ({ ok: true }) })
+    vi.stubGlobal('fetch', fetchMock)
+    await saveClipRanges('momtong-packat-macki', [{ index: 0, removed: true }])
+    expect(fetchMock).toHaveBeenCalledExactlyOnceWith('/api/clips/momtong-packat-macki', {
+      method: 'PUT', headers: { 'X-Editor': '1', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ clips: [{ index: 0, removed: true }] }),
+    })
+  })
 
   it('is available only when the backend says it has the editor', async () => {
     vi.stubGlobal(

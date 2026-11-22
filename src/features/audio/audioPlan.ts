@@ -16,6 +16,8 @@ export interface AudioOptions {
   japanese: boolean
   /** after the complete forward review, ask meaning, a pause, then Korean; descriptions remain last */
   bidirectional?: boolean
+  /** Seeded item-level shuffle; omitted keeps the course/chapter order. */
+  randomSeed?: number
 }
 
 export type PlanStep = { file: string } | { silence: number }
@@ -46,6 +48,14 @@ export function buildPlayback(items: AudioItem[], o: AudioOptions): PlaybackStep
   const chosen = selectItems(items, o).sort(
     (a, b) => SECTION_ORDER.indexOf(a.section) - SECTION_ORDER.indexOf(b.section),
   )
+  if (o.randomSeed !== undefined) {
+    let seed = o.randomSeed >>> 0
+    for (let i = chosen.length - 1; i > 0; i--) {
+      seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0
+      const j = Math.floor((seed / 0x100000000) * (i + 1))
+      ;[chosen[i], chosen[j]] = [chosen[j], chosen[i]]
+    }
+  }
   const steps: PlaybackStep[] = []
   for (const i of chosen) {
     steps.push(

@@ -186,6 +186,22 @@ describe('LessonPlayer new formats and options', () => {
     expect(platform.players[0].playVideo).toHaveBeenCalled()
   })
 
+  it('autoplays again for consecutive questions using the same clip', () => {
+    useAppStore.setState({ quizAutoCheck: true })
+    const video: Exercise = { type: 'video', cardId: 'ap-chagi', options: ['ap-chagi', 'yop-chagi'] }
+    const platform = mockYouTube()
+    show([video, video])
+    platform.ready()
+    const player = platform.players[0]
+    player.playVideo.mockClear()
+    fireEvent.click(screen.getByRole('button', { name: CARD_BY_ID['ap-chagi'].ko, pressed: false }))
+    fireEvent.click(screen.getByRole('button', { name: 'Continue' }))
+    expect(platform.players).toHaveLength(1)
+    expect(player.playVideo).toHaveBeenCalledTimes(1)
+    expect(player.seekTo).toHaveBeenCalled()
+    expect(player.mute).toHaveBeenCalled()
+  })
+
   it('offers clips as the options, in one scrolling row by default and in rows when asked', () => {
     const pick: Exercise = { type: 'pickclip', cardId: 'ap-chagi', options: ['ap-chagi', 'yop-chagi', 'dollyo-chagi', 'düt-chagi'] }
     const { container, unmount } = show([pick])

@@ -43,7 +43,7 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
   const [choice, setChoice] = useState<string | number | null>(null)
   const [chips, setChips] = useState<string[]>([])
   const [hints, setHints] = useState<Record<number, boolean>>({})
-  const [frameVideo, setFrameVideo] = useState(false)
+  const [frameVideo, setFrameVideo] = useState(exercises[0]?.type === 'frames')
   const [firstTry, setFirstTry] = useState<Record<number, boolean>>({})
   const [lastMsg, setLastMsg] = useState(0)
   const [skipped, setSkipped] = useState(0)
@@ -165,7 +165,7 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
 
   const next = () => {
     setHints({})
-    setFrameVideo(false)
+    setFrameVideo(queue[pos + 1]?.type === 'frames')
     if (pos + 1 >= queue.length) {
       const allAnswers = log.current
       onFinish({ correct: correctCount, total, answers: allAnswers })
@@ -305,11 +305,11 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
             >
               {loc(PRACTICE_COPY.watchMuted)}
             </button>
-            {frameVideo && <ClipPlayer clip={frameClip} muted autoplay />}
+            {frameVideo && <ClipPlayer key={pos} clip={frameClip} muted autoplay />}
           </div>
         )}
         {ex.type === 'recall' && <p className="text-2xl font-bold">{loc(cardOf!.meaning)}</p>}
-        {ex.type === 'video' && videoClip && <ClipPlayer clip={videoClip} muted autoplay />}
+        {ex.type === 'video' && videoClip && <ClipPlayer key={pos} clip={videoClip} muted autoplay />}
         {ex.type === 'pickclip' && (
           <div className="flex items-center gap-3">
             <p className="text-2xl font-bold">

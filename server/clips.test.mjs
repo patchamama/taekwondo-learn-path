@@ -16,6 +16,43 @@ test('validateClips rounds to a tenth and rejects bad ranges', () => {
   assert.throws(() => validateClips('x'))
 })
 
+test('public clip removal persists a tombstone and preserves unrelated retimings and source bytes', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'clip-remove-'))
+  const data = join(root, 'src', 'data')
+  mkdirSync(data, { recursive: true })
+  const file = join(data, 'clipOverrides.json')
+  const source = join(data, 'clips.json')
+  writeFileSync(file, JSON.stringify({ a: [{ index: 0, start: 1, end: 3 }, { index: 1, start: 5, end: 7 }], b: [{ index: 0, start: 8, end: 9 }] }))
+  writeFileSync(source, JSON.stringify([{ cardId: 'a', start: 1, end: 3 }]))
+  const sourceBytes = readFileSync(source)
+  const request = async (clips) => {
+    let result
+    await handleEditor({ method: 'PUT', headers: { host: 'localhost', 'x-editor': '1' } }, {}, new URL('http://localhost/api/clips/a'), {
+      root, readBody: async () => JSON.stringify({ clips }), send: (_res, status, body) => { result = { status, body } },
+    })
+    return result
+  }
+  assert.deepEqual(await request([{ index: 0, removed: true }]), { status: 200, body: { ok: true } })
+  assert.deepEqual(JSON.parse(readFileSync(file, 'utf8')), { a: [{ index: 0, removed: true }, { index: 1, start: 5, end: 7 }], b: [{ index: 0, start: 8, end: 9 }] })
+  assert.deepEqual(await request([{ index: 2, start: 12.3, end: 16.7 }]), { status: 200, body: { ok: true } })
+  assert.deepEqual(JSON.parse(readFileSync(file, 'utf8')), {
+    a: [{ index: 0, removed: true }, { index: 1, start: 5, end: 7 }, { index: 2, start: 12.3, end: 16.7 }],
+    b: [{ index: 0, start: 8, end: 9 }],
+  })
+  assert.deepEqual(readFileSync(source), sourceBytes)
+  for (const bad of [{ index: -1, removed: true }, { index: 0, removed: 'true' }, { index: 0, removed: false }, { index: 0, removed: true, start: 1, end: 2 }]) {
+    const before = readFileSync(file)
+    assert.equal((await request([bad])).status, 400)
+    assert.deepEqual(readFileSync(file), before)
+  }
+  const beforeDuplicate = readFileSync(file)
+  assert.deepEqual(await request([{ index: 0, removed: true }, { index: 0, start: 1, end: 2 }]), {
+    status: 400, body: { ok: false, error: 'Duplicate clip index' },
+  })
+  assert.deepEqual(readFileSync(file), beforeDuplicate)
+  assert.deepEqual(readFileSync(source), sourceBytes)
+})
+
 test('saveClips stores per card, sorted, and removes with an empty list', () => {
   const dir = mkdtempSync(join(tmpdir(), 'cl-'))
   const file = join(dir, 'clipOverrides.json')

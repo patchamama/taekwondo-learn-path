@@ -1,3 +1,6 @@
+import { CardMediaActions } from '../../shared/components/CardMediaActions'
+import { BeltBadge } from '../../shared/components/BeltBadge'
+import { CardImages } from '../../shared/components/CardImages'
 import { useState } from 'react'
 import { isVisible } from '../../data/visibility'
 import { SELF_DEFENSE, SELF_DEFENSE_GROUPS } from '../../data/selfDefense'
@@ -9,6 +12,7 @@ import { ClipViewer } from '../videos/ClipViewer'
 export function SelfDefensePage() {
   const { t, loc } = useT()
   const [open, setOpen] = useState<string | null>(null)
+  const [play, setPlay] = useState(0)
   return (
     <section className="grid gap-6">
       <h1 className="text-2xl font-bold">{t('sdTitle')}</h1>
@@ -31,19 +35,18 @@ export function SelfDefensePage() {
                       </p>
                     </div>
                     <SpeakButton text={x.hangul} />
+                    <span data-card-media-toolbar className="flex items-center gap-1">
+                      <CardMediaActions cardId={x.id} expanded={isOpen} onOpen={() => { setOpen(x.id); setPlay((n) => n + 1) }} />
+                      <BeltBadge cardId={x.id} />
+                    </span>
                   </div>
                   <p className="mt-1 text-sm text-slate-700">{loc(x.desc)}</p>
                   <p className="mt-1 text-xs text-slate-500">{x.contents}</p>
-                  <button
-                    className="mt-2 rounded-lg border px-3 py-1 text-sm"
-                    aria-expanded={isOpen}
-                    onClick={() => setOpen(isOpen ? null : x.id)}
-                  >
-                    {isOpen ? t('hide') : `▶ ${t('watch')}`}
-                  </button>
                   {isOpen && (
                     <div className="mt-2">
-                      <ClipViewer cardId={x.id} autoplay={false} />
+                      <button type="button" className="text-sm underline" onClick={() => setOpen(null)}>{t('hide')}</button>
+                      <CardImages cardId={x.id} display="details" expanded />
+                      <ClipViewer key={play} cardId={x.id} autoplay />
                     </div>
                   )}
                 </li>

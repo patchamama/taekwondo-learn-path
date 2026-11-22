@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { FRAMES_PER_CLIP, clipKey, type Clip } from '../../data/clips'
 import { MaximizeButton, MaximizeOverlay } from '../../shared/components/Maximize'
 import { useT } from '../../shared/i18n/useT'
+import { ExpandableImage } from '../../shared/components/CardImages'
 
 interface Props {
   clip: Clip
@@ -27,12 +28,13 @@ export function FrameStrip({ clip, quiet = false, maximizable = true }: Props) {
     >
       {Array.from({ length: FRAMES_PER_CLIP }, (_, i) => (
         <li key={i} className="relative">
-          <img
+          <ExpandableImage
             src={frameSrc(clip, i + 1)}
             alt={`${i + 1}/${FRAMES_PER_CLIP}`}
             loading="lazy"
             onError={() => setMissing(true)}
             className="aspect-video w-full rounded-md border bg-slate-100 object-cover"
+            disabled={large}
           />
           <span className="absolute left-1 top-1 rounded bg-black/70 px-1.5 text-[10px] font-bold text-white">
             {i + 1}

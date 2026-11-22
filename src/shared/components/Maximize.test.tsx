@@ -42,7 +42,7 @@ function Example({ controls = false }: { controls?: boolean }) {
 async function openExample(controls = false) {
   const user = userEvent.setup()
   render(<Example controls={controls} />)
-  await user.click(screen.getByRole('button', { name: /Maximize/ }))
+  await user.click(screen.getByRole('button', { name: '⛶ Maximize' }))
   return user
 }
 
@@ -83,7 +83,7 @@ describe('Maximize public modal keyboard contract', () => {
     const user = await openExample()
     await user.keyboard('{Escape}')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /Maximize/ })).toHaveFocus()
+    expect(screen.getByRole('button', { name: '⛶ Maximize' })).toHaveFocus()
     await user.tab({ shift: true })
     expect(screen.getByRole('button', { name: 'Turtle speed' })).toHaveFocus()
   })
@@ -94,20 +94,20 @@ describe('Maximize public modal keyboard contract', () => {
     expect(screen.getByRole('dialog')).toHaveAttribute('aria-modal', 'true')
     await user.click(screen.getByRole('button', { name: /Close/ }))
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /Maximize/ })).toHaveFocus()
+    expect(screen.getByRole('button', { name: '⛶ Maximize' })).toHaveFocus()
   })
 
   it('contains focus for image-only FrameStrip with just Close', async () => {
     const user = userEvent.setup()
     render(<FrameStrip clip={{ cardId: 'ap-chagi', source: 'course', start: 1200, end: 1235 }} />)
-    await user.click(screen.getByRole('button', { name: /Maximize/ }))
+    await user.click(screen.getByRole('button', { name: '⛶ Maximize' }))
     expect(screen.getAllByRole('img')).toHaveLength(6)
     await user.tab({ shift: true })
     expect(screen.getByRole('button', { name: /Close/ })).toHaveFocus()
     await user.tab()
     expect(screen.getByRole('button', { name: /Close/ })).toHaveFocus()
     await user.keyboard('{Escape}')
-    expect(screen.getByRole('button', { name: /Maximize/ })).toHaveFocus()
+    expect(screen.getByRole('button', { name: '⛶ Maximize' })).toHaveFocus()
   })
 
   it('uses the dialog as fallback when no enabled controls remain', async () => {
@@ -130,17 +130,16 @@ describe('Maximize public modal keyboard contract', () => {
     expect(screen.getByRole('button')).toHaveFocus()
   })
 
-  it('keeps FormDiagram image and attribution links in the modal cycle', async () => {
+  it('keeps the FormDiagram book image in the modal cycle', async () => {
     const user = userEvent.setup()
     render(<FormDiagram cardId="taeguk-1" />)
-    await user.click(screen.getByRole('button', { name: /Maximize/ }))
+    await user.click(screen.getByRole('button', { name: '⛶ Maximize' }))
     const dialog = screen.getByRole('dialog')
     expect(within(dialog).getAllByRole('img').length).toBeGreaterThan(0)
-    const links = within(dialog).getAllByRole('link')
     await user.tab({ shift: true })
-    expect(links.at(-1)).toHaveFocus()
+    expect(within(dialog).getByRole('button', { name: /Close/ })).toHaveFocus()
     await user.keyboard('{Escape}')
-    expect(screen.getByRole('button', { name: /Maximize/ })).toHaveFocus()
+    expect(screen.getByRole('button', { name: '⛶ Maximize' })).toHaveFocus()
   })
 
   it('keeps ClipViewer source tabs and playback controls in the modal cycle with a stable iframe' , async () => {
@@ -148,7 +147,7 @@ describe('Maximize public modal keyboard contract', () => {
     render(<ClipViewer cardId="ap-chagi" autoplay={false} />)
     const iframe = document.querySelector('[data-video-source]:not([hidden]) iframe')
     expect(iframe).not.toBeNull()
-    await user.click(screen.getByRole('button', { name: /Maximize/ }))
+    await user.click(screen.getByRole('button', { name: '⛶ Maximize' }))
     const dialog = screen.getByRole('dialog')
     expect(within(dialog).getAllByRole('tab').length).toBeGreaterThan(1)
     expect(document.querySelector('[data-video-source]:not([hidden]) iframe')).toBe(iframe)
@@ -160,6 +159,6 @@ describe('Maximize public modal keyboard contract', () => {
     await user.tab()
     expect(screen.getByRole('button', { name: /Close/ })).toHaveFocus()
     fireEvent.keyDown(window, { key: 'Escape' })
-    expect(screen.getByRole('button', { name: /Maximize/ })).toHaveFocus()
+    expect(screen.getByRole('button', { name: '⛶ Maximize' })).toHaveFocus()
   })
 })

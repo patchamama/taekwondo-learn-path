@@ -27,11 +27,11 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals())
 
 describe('ClipsEditor', () => {
-  it('excludes hidden techniques from new video choices', () => {
+  it('edits only the current card, without the unrelated add-to-another-technique form', () => {
     const hidden = Object.values(CARD_BY_ID).find((c) => c.kind === 'technique' && !CLIPS_BY_CARD[c.id])!
     render(<ClipsEditor cardId={hidden.id} onSaved={() => {}} />)
-    const choices = screen.getByRole('combobox', { name: 'Technique without video' }) as HTMLSelectElement
-    expect(Array.from(choices.options).some((o) => o.value === hidden.id)).toBe(false)
+    expect(screen.queryByText('Add video to an existing technique')).not.toBeInTheDocument()
+    expect(screen.queryByRole('combobox', { name: 'Technique without video' })).not.toBeInTheDocument()
   })
   it('marks precise source playback times and can save without automatic regeneration', async () => {
     const onSaved = vi.fn()
@@ -56,7 +56,7 @@ describe('ClipsEditor', () => {
     const card = Object.values(CARD_BY_ID).filter((c) => c.kind === 'technique' && !CLIPS_BY_CARD[c.id])[1]!
     const onSaved = vi.fn()
     render(<ClipsEditor cardId={card.id} onSaved={onSaved} />)
-    expect(screen.getByRole('combobox', { name: 'Technique without video' })).toHaveValue(card.id)
+    expect(screen.queryByRole('combobox', { name: 'Technique without video' })).not.toBeInTheDocument()
     const add = screen.getByRole('button', { name: 'Add video' })
     fireEvent.change(screen.getByLabelText('Video URL'), { target: { value: 'https://evil.test/x' } })
     expect(add).toBeDisabled()
@@ -96,6 +96,29 @@ describe('ClipsEditor', () => {
     expect(screen.getByRole('spinbutton', { name: /End .*course/i })).toHaveValue(1235)
     const imgs = screen.getAllByRole('img')
     expect(imgs[0].getAttribute('src')).toContain('/api/frame?id=dnYQ1Y0acrE&t=1200.0')
+  })
+
+  it('plays the existing course video when its local original is unavailable', () => {
+    render(<ClipsEditor cardId="momtong-packat-macki" onSaved={() => {}} />)
+    fireEvent.error(screen.getByLabelText('Source playback'))
+    const remote = screen.getByTitle('Source video preview')
+    expect(remote).toHaveAttribute('src', expect.stringContaining('youtube-nocookie.com/embed/dnYQ1Y0acrE'))
+    expect(remote.getAttribute('src')).toContain('start=2279')
+    expect(remote.getAttribute('src')).toContain('end=2295')
+    expect(remote.getAttribute('src')).toContain('controls=1')
+    expect(screen.getByRole('button', { name: 'Mark start' })).toBeDisabled()
+  })
+
+  it('removes a built-in video without regenerating frames or deleting shared sources', async () => {
+    const onSaved = vi.fn()
+    render(<ClipsEditor cardId="momtong-packat-macki" onSaved={onSaved} />)
+    fireEvent.click(screen.getByRole('button', { name: 'Remove video' }))
+    await waitFor(() => expect(onSaved).toHaveBeenCalledOnce())
+    const writes = calls.filter((c) => c.init?.method === 'PUT')
+    expect(writes).toHaveLength(1)
+    expect(writes[0].url).toBe('/api/clips/momtong-packat-macki')
+    expect(JSON.parse(String(writes[0].init?.body))).toEqual({ clips: [{ index: 0, removed: true }] })
+    expect(calls.some((c) => c.url === '/api/clips/frames' || c.init?.method === 'DELETE')).toBe(false)
   })
 
   it('moves the start and end with the second buttons', () => {

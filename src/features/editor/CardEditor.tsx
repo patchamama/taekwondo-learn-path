@@ -138,17 +138,17 @@ export function CardEditor({
   }
 
   const field = (label: string, value: string, set: (v: string) => void, multiline = false) => (
-    <label className="grid gap-0.5 text-sm font-medium">
+    <label className="grid min-w-0 gap-0.5 text-sm font-medium">
       {label}
       {multiline ? (
         <textarea
-          className="min-h-20 rounded border px-2 py-1 font-normal"
+          className="min-h-20 min-w-0 w-full rounded border px-2 py-1 font-normal"
           value={value}
           onChange={(e) => set(e.target.value)}
         />
       ) : (
         <input
-          className="rounded border px-2 py-1 font-normal"
+          className="min-w-0 w-full rounded border px-2 py-1 font-normal"
           value={value}
           onChange={(e) => set(e.target.value)}
         />
@@ -168,9 +168,9 @@ export function CardEditor({
       }}
       className="fixed inset-0 m-0 h-[100dvh] max-h-none w-screen max-w-none overflow-hidden bg-white p-0 text-slate-900 backdrop:bg-black/40"
     >
-      <div className="grid h-full min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]">
+      <div className="mx-auto grid h-full min-h-0 min-w-0 w-full max-w-6xl grid-rows-[auto_minmax(0,1fr)_auto]">
         <div className="flex items-center justify-between gap-3 border-b px-4 py-3 sm:px-6">
-          <h2 className="text-lg font-bold">
+          <h2 className="min-w-0 break-words text-lg font-bold">
             {t('edEdit')}: {card.ko}
           </h2>
           <button
@@ -184,8 +184,8 @@ export function CardEditor({
           </button>
         </div>
 
-        <div data-editor-body className="grid min-h-0 content-start gap-4 overflow-y-auto overscroll-contain p-4 sm:p-6">
-        <fieldset className="grid gap-3">
+        <div data-editor-body className="grid min-h-0 min-w-0 content-start gap-4 overflow-x-hidden overflow-y-auto overscroll-contain p-4 sm:p-6 [&_input]:min-w-0 [&_input]:max-w-full [&_select]:min-w-0 [&_select]:max-w-full [&_textarea]:min-w-0 [&_textarea]:max-w-full">
+        <fieldset className="grid min-w-0 gap-3">
           <legend className="font-semibold text-slate-600">{t('edText')}</legend>
           <div className="grid gap-3 sm:grid-cols-2">
             {field(t('edRomanization'), ko, setKo)}
@@ -249,7 +249,7 @@ export function CardEditor({
           </select>
         </label>
 
-        <fieldset className="grid gap-2">
+        <fieldset className="grid min-w-0 gap-2">
           <legend className="font-semibold text-slate-600">{t('edImages')}</legend>
           <div className="flex flex-wrap gap-2">
             {images.map((img, i) => (

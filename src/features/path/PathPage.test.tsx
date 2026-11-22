@@ -55,3 +55,11 @@ describe('PathPage', () => {
     ).toBe(true)
   })
 })
+
+it('defaults to the path view for a fresh state', () => {
+  expect(useAppStore.getInitialState().pathView).toBe('path')
+  useAppStore.setState({ pathView: useAppStore.getInitialState().pathView })
+  open()
+  expect(screen.getByTestId('roadmap')).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Path' })).toHaveAttribute('aria-pressed', 'true')
+})

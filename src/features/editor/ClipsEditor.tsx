@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import { CARD_BY_ID } from '../../data/cards'
-import { isVisible } from '../../data/visibility'
 import { CLIPS_BY_CARD, clipKey, type Clip } from '../../data/clips'
 import { useT } from '../../shared/i18n/useT'
 import { addClip, frameUrl, health, regenerateFrames, saveClipRanges, translateWithAi, videoIdFromUrl, type Lang } from './api'
@@ -18,15 +16,13 @@ const STEPS = [-3, -1, 1, 3]
 
 /** Re-times the clips of a card (start/end) and regenerates their six frames from the local video. */
 export function ClipsEditor({ cardId, onSaved }: { cardId: string; onSaved: () => void }) {
-  const { t } = useT()
+  const { t, loc } = useT()
   const clips = CLIPS_BY_CARD[cardId] ?? []
   const [ranges, setRanges] = useState(clips.map((c) => ({ start: c.start, end: c.end })))
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [autoFrames, setAutoFrames] = useState(true)
   const [active, setActive] = useState(0)
-  const eligible = Object.values(CARD_BY_ID).filter((c) => isVisible(c.id) && c.kind === 'technique' && !CLIPS_BY_CARD[c.id]?.length)
-  const [selected, setSelected] = useState(eligible.some((c) => c.id === cardId) ? cardId : eligible[0]?.id ?? '')
   const [url, setUrl] = useState('')
   const [newRange, setNewRange] = useState({ start: 0, end: 5 })
   const [aiEnabled, setAiEnabled] = useState(false)
@@ -57,7 +53,7 @@ export function ClipsEditor({ cardId, onSaved }: { cardId: string; onSaved: () =
       const payload = clips
         .map((c, i) => ({ index: i, start: ranges[i].start, end: ranges[i].end, was: c }))
         .filter((x, i) => changed[i])
-        .map(({ index, start, end }) => ({ index, start, end }))
+        .map(({ index, start, end }) => ({ index: clips[index].originalIndex ?? index, start, end }))
       await saveClipRanges(cardId, payload)
       for (let i = 0; i < clips.length; i++) {
         if (!changed[i] || !autoFrames) continue
@@ -78,18 +74,28 @@ export function ClipsEditor({ cardId, onSaved }: { cardId: string; onSaved: () =
   }
 
   const add = async () => {
-    if (!newVideoId || !rangeValid(newRange) || !selected) return
+    if (!newVideoId || !rangeValid(newRange)) return
     setBusy(true)
     setError('')
     let saved = false
     try {
-      await addClip({ cardId: selected, url, ...newRange })
+      await addClip({ cardId, url, ...newRange })
       saved = true
-      if (autoFrames) await regenerateFrames({ cardId: selected, key: `ext-${newVideoId}`, videoId: newVideoId, ...newRange })
+      if (autoFrames) await regenerateFrames({ cardId, key: `ext-${newVideoId}`, videoId: newVideoId, ...newRange })
       onSaved()
     } catch (e) {
       setError(`${saved ? 'Video saved; frame generation failed. Reload before further edits. ' : ''}${(e as Error).message}`)
     } finally { setBusy(false) }
+  }
+
+  const remove = async (index: number) => {
+    setBusy(true)
+    setError('')
+    try {
+      await saveClipRanges(cardId, [{ index: clips[index].originalIndex ?? index, removed: true }])
+      onSaved()
+    } catch (e) { setError((e as Error).message) }
+    finally { setBusy(false) }
   }
 
   const suggest = async () => {
@@ -103,7 +109,7 @@ export function ClipsEditor({ cardId, onSaved }: { cardId: string; onSaved: () =
   }
 
   return (
-    <fieldset className="grid gap-3" disabled={busy}>
+    <fieldset className="grid min-w-0 gap-3" disabled={busy}>
       <legend className="font-semibold text-slate-600">{t('edClips')}</legend>
       <p className="text-xs text-slate-500">Mark boundaries while the local source plays, or enter seconds to one decimal. Saving updates ranges; optional regeneration extracts six frames locally.</p>
       <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={autoFrames} onChange={(e) => setAutoFrames(e.target.checked)} />Automatically regenerate frames</label>
@@ -119,15 +125,15 @@ export function ClipsEditor({ cardId, onSaved }: { cardId: string; onSaved: () =
         const id = videoOf(c)
         const label = c.label ?? c.source
         return (
-          <div key={i} className="grid gap-2 rounded-lg border p-2 sm:grid-cols-2">
+          <div key={i} className="grid min-w-0 gap-2 rounded-lg border p-2 sm:grid-cols-2">
             {(['start', 'end'] as const).map((key) => (
-              <div key={key} className="grid gap-1">
+              <div key={key} className="grid min-w-0 gap-1">
                 <img
                   src={frameUrl(id, ranges[i][key], 320)}
                   alt={`${t(key === 'start' ? 'edClipStart' : 'edClipEnd')} ${label}`}
-                  className="aspect-video w-full rounded bg-black object-contain"
+                  className="aspect-video max-h-40 w-full max-w-sm justify-self-center rounded bg-black object-contain"
                 />
-                <label className="flex items-center gap-2 text-sm font-medium">
+                <label className="flex min-w-0 flex-wrap items-center gap-2 text-sm font-medium">
                   <span>
                     {t(key === 'start' ? 'edClipStart' : 'edClipEnd')} · {label}
                   </span>
@@ -157,16 +163,12 @@ export function ClipsEditor({ cardId, onSaved }: { cardId: string; onSaved: () =
                 </div>
               </div>
             ))}
+            <button type="button" onClick={() => remove(i)} className="min-h-10 w-fit rounded border border-red-300 px-3 text-sm text-red-700 sm:col-span-2">{loc({ en: 'Remove video', de: 'Video entfernen', es: 'Eliminar video' })}</button>
           </div>
         )
       })}
-      <fieldset className="grid gap-2 rounded-lg border p-3">
-        <legend>Add video to an existing technique</legend>
-        <label className="grid gap-1 text-sm">Technique without video
-          <select value={selected} onChange={(e) => setSelected(e.target.value)} className="rounded border p-2">
-            {eligible.map((c) => <option key={c.id} value={c.id}>{c.ko} · {c.meaning.en}</option>)}
-          </select>
-        </label>
+      {clips.length === 0 && <fieldset className="grid min-w-0 gap-2 rounded-lg border p-3">
+        <legend>Video for this card</legend>
         <label className="grid gap-1 text-sm">Video URL<input type="url" value={url} onChange={(e) => setUrl(e.target.value)} className="rounded border p-2" placeholder="https://www.youtube.com/watch?v=…" /></label>
         <p className="text-xs text-slate-500">HTTPS YouTube links only. The source must already be available locally for playback or frame extraction. No download is performed.</p>
         <div className="grid gap-2 sm:grid-cols-2">
@@ -175,9 +177,9 @@ export function ClipsEditor({ cardId, onSaved }: { cardId: string; onSaved: () =
           </label>)}
         </div>
         {newVideoId && <ClipSourcePreview key={newVideoId} videoId={newVideoId} {...newRange} onMark={(edge, time) => setNewRange((r) => ({ ...r, [edge]: time }))} />}
-        <button type="button" className="w-fit rounded border px-3 py-2 disabled:opacity-50" disabled={busy || !selected || !newVideoId || !rangeValid(newRange)} onClick={add}>Add video</button>
-      </fieldset>
-      <fieldset className="grid gap-2 rounded-lg border border-dashed p-3">
+        <button type="button" className="w-fit rounded border px-3 py-2 disabled:opacity-50" disabled={busy || !newVideoId || !rangeValid(newRange)} onClick={add}>Add video</button>
+      </fieldset>}
+      <fieldset className="grid min-w-0 gap-2 rounded-lg border border-dashed p-3">
         <legend>Source text translation</legend>
         <label className="grid gap-1 text-sm">Source language<select value={from} onChange={(e) => setFrom(e.target.value as Lang)} className="rounded border p-2">{(['en', 'de', 'es'] as const).map((l) => <option key={l}>{l}</option>)}</select></label>
         <label className="grid gap-1 text-sm">Source text<textarea value={sourceText} onChange={(e) => setSourceText(e.target.value)} maxLength={4000} className="rounded border p-2" /></label>

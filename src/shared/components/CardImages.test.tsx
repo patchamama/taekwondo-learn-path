@@ -46,7 +46,7 @@ describe('CardImages', () => {
     expect(screen.queryByText('First author')).not.toBeInTheDocument()
     act(() => { vi.advanceTimersByTime(1500) })
     expect(screen.getByRole('img')).toHaveAttribute('src', '/first.jpg')
-    fireEvent.blur(screen.getByRole('button'))
+    fireEvent.blur(screen.getByRole('button', { name: 'Ver imagen' }))
     expect(screen.queryByRole('img')).not.toBeInTheDocument()
   })
 
@@ -82,4 +82,39 @@ describe('CardViewToggle', () => {
     fireEvent.click(screen.getByRole('radio', { name: 'Compact' }))
     expect(useAppStore.getState().cardView).toBe('compact')
   })
+})
+
+it('expands one card without changing the global compact preference', () => {
+  vi.mocked(imagesFor).mockReturnValue([{ src: '/expanded.jpg', kind: 'custom' }])
+  useAppStore.setState({ cardView: 'compact' })
+  render(<CardImages cardId="ap-chagi" display="details" expanded />)
+  expect(screen.getByRole('img')).toHaveAttribute('src', '/expanded.jpg')
+  expect(useAppStore.getState().cardView).toBe('compact')
+})
+
+it('opens the exact clicked detail image in a modal and restores focus on close', () => {
+  vi.mocked(imagesFor).mockReturnValue([{ src: '/one.jpg', kind: 'custom' }, { src: '/two.jpg', kind: 'custom', source: 'Second author' }])
+  useAppStore.setState({ lang: 'en', cardView: 'details' })
+  render(<CardImages cardId="ap-chagi" />)
+  const second = screen.getAllByRole('img')[1]
+  const opener = second.closest('button')!
+  opener.focus()
+  fireEvent.click(second)
+  const dialog = screen.getByRole('dialog')
+  expect(dialog.querySelector('img')).toHaveAttribute('src', '/two.jpg')
+  expect(dialog).toHaveTextContent('Second author')
+  fireEvent.keyDown(window, { key: 'Escape' })
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  expect(opener).toHaveFocus()
+})
+
+it('opens the compact preview image when clicked', () => {
+  vi.mocked(imagesFor).mockReturnValue([{ src: '/preview.jpg', kind: 'custom' }])
+  useAppStore.setState({ lang: 'en', cardView: 'compact' })
+  render(<CardImages cardId="ap-chagi" />)
+  fireEvent.click(screen.getByRole('button', { name: 'Show image' }))
+  const preview = screen.getByRole('img')
+  fireEvent.click(preview)
+  fireEvent.mouseLeave(screen.getByRole('button', { name: 'Show image' }).parentElement!)
+  expect(screen.getByRole('dialog').querySelector('img')).toHaveAttribute('src', '/preview.jpg')
 })

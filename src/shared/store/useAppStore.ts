@@ -69,7 +69,7 @@ export const useAppStore = create<AppState>()(
       lang: 'en',
       strictOrder: false,
       maxBelt: 10,
-      pathView: 'list',
+      pathView: 'path',
       beltScheme: 'club',
       onlyBelt: null,
       listening: true,

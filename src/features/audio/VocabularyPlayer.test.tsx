@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { audioFile } from '../../data/audioFiles'
+import { CARD_BY_ID } from '../../data/cards'
 import { AUDIO_ITEMS } from '../../data/audioManifest'
 import { useAppStore } from '../../shared/store/useAppStore'
 import { buildPlayback, type PlaybackStep } from './audioPlan'
@@ -109,12 +110,18 @@ describe('VocabularyPlayer seeking and chapters', () => {
     render(<VocabularyPlayer steps={MORE} base="/" />)
     expect(screen.getByLabelText('audio-position')).toHaveTextContent('0/2')
     fireEvent.click(screen.getByRole('button', { name: /Reproducir/ }))
-    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
     expect(screen.getByLabelText('audio-position')).toHaveTextContent('1/2')
-    fireEvent.click(screen.getByRole('button', { name: 'Descripciones' }))
-    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    fireEvent.click(screen.getByRole('button', { name: /^Descripciones \(/ }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
     expect(screen.getByLabelText('audio-position')).toHaveTextContent('2/2')
-    await act(async () => { await vi.advanceTimersByTimeAsync(2000) })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(2000)
+    })
     expect(screen.getByLabelText('audio-position')).toHaveTextContent('2/2')
     fireEvent.change(screen.getByRole('slider'), { target: { value: '0' } })
     expect(screen.getByLabelText('audio-position')).toHaveTextContent('1/2')
@@ -122,32 +129,43 @@ describe('VocabularyPlayer seeking and chapters', () => {
 
   it('resets and silences playback when a different selection has the same step count', async () => {
     const onRunningChange = vi.fn()
-    const { rerender } = render(<VocabularyPlayer steps={STEPS} base="/" onRunningChange={onRunningChange} />)
+    const { rerender } = render(
+      <VocabularyPlayer steps={STEPS} base="/" onRunningChange={onRunningChange} />,
+    )
     fireEvent.click(screen.getByRole('button', { name: /Reproducir/ }))
-    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
     const replacement: PlaybackStep[] = [MORE[4], MORE[5], MORE[6], MORE[7]]
     rerender(<VocabularyPlayer steps={replacement} base="/" onRunningChange={onRunningChange} />)
-    await act(async () => { await vi.advanceTimersByTimeAsync(10000) })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(10000)
+    })
     expect(played).toEqual(['/' + audioFile('ko', 'dojang')])
     expect(screen.getByRole('button', { name: /Reproducir/ })).toBeInTheDocument()
     expect(screen.queryByText('도장')).not.toBeInTheDocument()
     expect(screen.getByLabelText('audio-position')).toHaveTextContent('0/1')
     expect(onRunningChange).toHaveBeenLastCalledWith(false)
     fireEvent.click(screen.getByRole('button', { name: /Reproducir/ }))
-    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
     expect(played.at(-1)).toBe('/' + audioFile('ko', 'm2'))
   })
 
   it('keeps the technique card and image visible during and after a description, even when jumping directly there', async () => {
     let finish: (() => void) | undefined
-    vi.stubGlobal('Audio', class extends FakeAudio {
-      play() {
-        if (!this.src.includes('/info-')) return super.play()
-        played.push(this.src)
-        finish = () => this.onended?.()
-        return Promise.resolve()
-      }
-    })
+    vi.stubGlobal(
+      'Audio',
+      class extends FakeAudio {
+        play() {
+          if (!this.src.includes('/info-')) return super.play()
+          played.push(this.src)
+          finish = () => this.onended?.()
+          return Promise.resolve()
+        }
+      },
+    )
     const technique = AUDIO_ITEMS.find((item) => item.kind === 'technique' && item.info)!
     const descriptionSteps: PlaybackStep[] = [
       ...STEPS,
@@ -155,16 +173,27 @@ describe('VocabularyPlayer seeking and chapters', () => {
       { silence: 2 },
     ]
     render(<VocabularyPlayer steps={descriptionSteps} base="/" />)
-    fireEvent.click(screen.getByRole('button', { name: 'Descripciones' }))
-    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    fireEvent.click(screen.getByRole('button', { name: /^Descripciones \(/ }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
     expect(screen.getByText(technique.hangul)).toBeInTheDocument()
     expect(screen.getByRole('listitem')).toHaveTextContent(technique.meaning.es)
     expect(screen.getByRole('listitem')).toHaveTextContent(technique.info!.es)
-    expect(screen.getByRole('img')).toHaveAttribute('src', '/technique.jpg')
-    await act(async () => { finish?.(); await vi.advanceTimersByTimeAsync(2000) })
+    expect(screen.getByRole('img', { name: CARD_BY_ID[technique.id].ko })).toHaveAttribute(
+      'src',
+      '/technique.jpg',
+    )
+    await act(async () => {
+      finish?.()
+      await vi.advanceTimersByTimeAsync(2000)
+    })
     expect(screen.getByRole('button', { name: /Reproducir/ })).toBeInTheDocument()
     expect(screen.getByText(technique.hangul)).toBeInTheDocument()
-    expect(screen.getByRole('img')).toHaveAttribute('src', '/technique.jpg')
+    expect(screen.getByRole('img', { name: CARD_BY_ID[technique.id].ko })).toHaveAttribute(
+      'src',
+      '/technique.jpg',
+    )
   })
 
   it('shows a progress bar that can be moved to any position', async () => {
@@ -189,32 +218,51 @@ describe('VocabularyPlayer seeking and chapters', () => {
   it('starts the generated descriptions chapter with the existing Korean mp3, then meaning and description', async () => {
     const technique = AUDIO_ITEMS.find((item) => item.kind === 'technique' && item.info)!
     const steps = buildPlayback([technique], {
-      lang: 'es', maxBelt: 10, onlyBelt: null, vocabulary: true,
-      techniques: true, descriptions: true, japanese: false,
+      lang: 'es',
+      maxBelt: 10,
+      onlyBelt: null,
+      vocabulary: true,
+      techniques: true,
+      descriptions: true,
+      japanese: false,
     })
     render(<VocabularyPlayer steps={steps} base="/" />)
-    fireEvent.click(screen.getByRole('button', { name: 'Descripciones' }))
-    await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+    fireEvent.click(screen.getByRole('button', { name: /^Descripciones \(/ }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
     expect(played).toEqual(['/' + audioFile('ko', technique.id)])
     expect(screen.getByText(technique.hangul)).toBeInTheDocument()
-    await act(async () => { await vi.advanceTimersByTimeAsync(2000) })
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(2000)
+    })
     expect(played).toEqual([
-      '/' + audioFile('ko', technique.id), '/' + audioFile('es', technique.id),
+      '/' + audioFile('ko', technique.id),
+      '/' + audioFile('es', technique.id),
       '/' + audioFile('info-es', technique.id),
     ])
     expect(screen.getByRole('listitem')).toHaveTextContent(technique.info!.es)
-    await act(async () => { await vi.advanceTimersByTimeAsync(2000) })
-    expect(screen.getByRole('img')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: technique.info!.es }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
+    expect(played.at(-1)).toBe('/' + audioFile('info-es', technique.id))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(2000)
+    })
+    expect(screen.getByRole('img', { name: CARD_BY_ID[technique.id].ko })).toBeInTheDocument()
   })
 
   it('jumps to a chapter and to the descriptions', async () => {
     render(<VocabularyPlayer steps={MORE} base="/" />)
-    fireEvent.click(screen.getByRole('button', { name: 'Descripciones' }))
+    fireEvent.click(screen.getByRole('button', { name: /^Descripciones \(/ }))
     await act(async () => {
       await vi.advanceTimersByTimeAsync(0)
     })
     expect(played).toEqual(['/' + audioFile('info-es', 'm2')])
-    expect(screen.getByRole('button', { name: 'Ladrillos de las palabras' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', { name: /^Ladrillos de las palabras \(/ }),
+    ).toBeInTheDocument()
   })
 
   it('repeats a single word from the transcript', async () => {
@@ -274,4 +322,84 @@ describe('VocabularyPlayer reverse pass', () => {
     expect(played).toHaveLength(4)
     expect(screen.getByText('도장')).toBeInTheDocument()
   })
+})
+
+describe('clickable transcript', () => {
+  beforeEach(() => {
+    played.length = 0
+    vi.useFakeTimers()
+    vi.stubGlobal('Audio', FakeAudio)
+    useAppStore.getState().reset()
+    useAppStore.setState({ lang: 'es' })
+  })
+  afterEach(() => {
+    vi.useRealTimers()
+    vi.unstubAllGlobals()
+  })
+
+  it('replays the chosen Korean and Japanese transcript parts', async () => {
+    const item = AUDIO_ITEMS.find((item) => item.ja)!
+    const selected: PlaybackStep[] = [
+      { file: 'word-ko', role: 'ko', id: item.id },
+      { file: 'word-ja', role: 'ja', id: item.id },
+    ]
+    render(<VocabularyPlayer steps={selected} base="/" />)
+    fireEvent.click(screen.getByRole('button', { name: /Reproducir/ }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: `${item.ja}${item.jaRomaji ? ` (${item.jaRomaji})` : ''}`,
+      }),
+    )
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
+    expect(played.at(-1)).toBe('/word-ja')
+    fireEvent.click(
+      screen.getByRole('button', { name: `${item.hangul} ${CARD_BY_ID[item.id].ko}` }),
+    )
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
+    expect(played.slice(-2)).toEqual(['/word-ko', '/word-ja'])
+  })
+
+  it('replays the selected meaning rather than the first Korean recording and shows section and Kup', async () => {
+    render(<VocabularyPlayer steps={STEPS} base="/" />)
+    fireEvent.click(screen.getByRole('button', { name: /Reproducir/ }))
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(2000)
+    })
+    const meaning = screen.getByRole('button', { name: 'sala de entrenamiento' })
+    played.length = 0
+    fireEvent.click(meaning)
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(0)
+    })
+    expect(played[0]).toBe('/' + audioFile('es', 'dojang'))
+    expect(screen.getByRole('listitem')).toHaveTextContent('10 Kup')
+    expect(screen.getByRole('listitem')).toHaveTextContent('Términos')
+  })
+})
+
+it('matches chapter button colors to every repeated timeline segment', () => {
+  useAppStore.setState({ lang: 'es' })
+  const steps: PlaybackStep[] = [
+    { file: 'a', role: 'ko', id: 'macki' }, { silence: 2 },
+    { file: 'b', role: 'ko', id: 'ap-chagi' },
+    { file: 'c', role: 'ko', id: 'macki' },
+    { file: 'd', role: 'info', id: 'macki', pass: 'description' },
+  ]
+  const { container } = render(<VocabularyPlayer steps={steps} base="/" />)
+  const segments = container.querySelectorAll<HTMLElement>('[data-audio-segment]')
+  expect(Array.from(segments, (node) => node.dataset.audioSegment)).toEqual(['words', 'foot', 'words', 'descriptions'])
+  const buttons = container.querySelectorAll<HTMLElement>('[data-audio-chapter]')
+  for (const segment of segments) {
+    const button = Array.from(buttons).find((node) => node.dataset.audioChapter === segment.dataset.audioSegment)
+    expect(segment.style.backgroundColor).toBe(button?.style.backgroundColor)
+  }
+  expect(segments[0].style.width).toBe('15%')
+  expect(screen.getByRole('slider')).toBeEnabled()
 })

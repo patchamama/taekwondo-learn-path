@@ -12,12 +12,11 @@ const labels = {
 afterEach(cleanup)
 
 describe('form diagrams and supplemental book references', () => {
-  it('preserves the existing Wikimedia image and its real attribution', () => {
+  it('does not display floor patterns while retaining the book reference', () => {
     useAppStore.setState({ lang: 'en' })
     render(<FormDiagram cardId="taeguk-1" />)
-    expect(screen.getByAltText('Floor pattern: Taegeuk Il Jang.png')).toHaveAttribute('src', '/diagrams/taeguk-1.png')
-    expect(screen.getByRole('link', { name: 'CC BY-SA 4.0' })).toHaveAttribute('href', 'https://creativecommons.org/licenses/by-sa/4.0')
-    expect(screen.getByText(/Jim Northrup/)).toHaveTextContent('Wikimedia Commons')
+    expect(screen.queryByAltText('Floor pattern: Taegeuk Il Jang.png')).not.toBeInTheDocument()
+    expect(screen.getByText('Supplemental book reference')).toBeInTheDocument()
   })
 
   for (const lang of ['en', 'de', 'es'] as const) {
@@ -25,24 +24,24 @@ describe('form diagrams and supplemental book references', () => {
       it(`renders accessible Taegeuk ${number} with separate permission in ${lang}`, () => {
         useAppStore.setState({ lang })
         render(<FormDiagram cardId={`taeguk-${number}`} />)
-        expect(screen.getAllByRole('img')).toHaveLength(2)
+        expect(screen.getAllByRole('img')).toHaveLength(1)
         const alt = labels[lang].alt.replace('Taegeuk 1:', `Taegeuk ${number}:`)
         expect(screen.getByAltText(alt)).toHaveAttribute(
           'src', `/diagrams/books/woo-taegeuk-${number}-sequence.jpg`,
         )
         expect(screen.getByText(labels[lang].permission, { exact: false })).toHaveTextContent('Sung Woo')
         expect(screen.queryByRole('link', { name: labels[lang].permission })).not.toBeInTheDocument()
-        expect(screen.getByRole('link', { name: 'CC BY-SA 4.0' })).toBeInTheDocument()
+        expect(screen.queryByRole('link', { name: 'CC BY-SA 4.0' })).not.toBeInTheDocument()
       })
     }
   }
 
-  it('keeps both images and separate attributions in the maximize view', () => {
+  it('keeps the book reference in the maximize view', () => {
     useAppStore.setState({ lang: 'en' })
     render(<FormDiagram cardId="taeguk-8" />)
-    fireEvent.click(screen.getByRole('button'))
-    expect(screen.getAllByRole('img')).toHaveLength(2)
-    expect(screen.getByRole('link', { name: 'CC BY-SA 4.0' })).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: '⛶ Maximize' }))
+    expect(screen.getAllByRole('img')).toHaveLength(1)
+    expect(screen.queryByRole('link', { name: 'CC BY-SA 4.0' })).not.toBeInTheDocument()
     expect(screen.getByText(/Used with owner-confirmed permission/)).toHaveTextContent('Sung Woo')
   })
 
@@ -52,4 +51,11 @@ describe('form diagrams and supplemental book references', () => {
     const { container } = render(<FormDiagram cardId="unknown-form" />)
     expect(container).toBeEmptyDOMElement()
   })
+})
+
+it('opens the book image itself in a modal', () => {
+  useAppStore.setState({ lang: 'en' })
+  render(<FormDiagram cardId="taeguk-1" />)
+  fireEvent.click(screen.getByRole('img'))
+  expect(screen.getByRole('dialog').querySelector('img')).toHaveAttribute('src', '/diagrams/books/woo-taegeuk-1-sequence.jpg')
 })

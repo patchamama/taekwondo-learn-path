@@ -7,6 +7,12 @@ export function validateClips(list) {
   const indices = new Set()
   return list.map((c) => {
     if (!c || !Number.isInteger(c.index) || c.index < 0 || c.index > 50) throw new Error('Invalid clip index')
+    if (Object.hasOwn(c, 'removed')) {
+      if (c.removed !== true || Object.keys(c).some((key) => !['index', 'removed'].includes(key))) throw new Error('Invalid clip removal')
+      if (indices.has(c.index)) throw new Error('Duplicate clip index')
+      indices.add(c.index)
+      return { index: c.index, removed: true }
+    }
     if (![c.start, c.end].every((n) => typeof n === 'number' && Number.isFinite(n) && n >= 0 && n <= 100000)) throw new Error('Invalid clip range')
     if (c.end <= c.start) throw new Error('The end must be after the start')
     if (indices.has(c.index)) throw new Error('Duplicate clip index')

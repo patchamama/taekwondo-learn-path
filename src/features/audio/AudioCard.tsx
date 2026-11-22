@@ -1,10 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AUDIO_ITEMS } from '../../data/audioManifest'
 import { useT } from '../../shared/i18n/useT'
-import { buildPlan, buildPlayback, selectItems, type AudioOptions } from './audioPlan'
+import { buildPlayback, selectItems } from './audioPlan'
 import { VocabularyPlayer } from './VocabularyPlayer'
 import { backendStatus, buildMp3, generateMissing } from './backend'
 import { buildAudio } from './buildAudio'
+import { transportCopy } from './transportCopy'
+
+const optionsLabel = { en: 'Audio options', de: 'Audiooptionen', es: 'Opciones de audio' } as const
 
 /** Study card: builds a study audio for the belts Study is showing (one belt, or everything up to it). */
 export function AudioCard({
@@ -19,7 +22,9 @@ export function AudioCard({
   const { t, lang } = useT()
   const [vocabulary, setVocabulary] = useState(true)
   const [techniques, setTechniques] = useState(true)
-  const [descriptions, setDescriptions] = useState(false)
+  const [descriptions, setDescriptions] = useState(true)
+  const [random, setRandom] = useState(false)
+  const [randomSeed] = useState(() => Math.floor(Math.random() * 0x100000000))
   const [japanese, setJapanese] = useState(false)
   const [bidirectional, setBidirectional] = useState(false)
   const [open, setOpen] = useState(false)
@@ -37,16 +42,6 @@ export function AudioCard({
     }
   }, [])
 
-  const options: AudioOptions = {
-    lang,
-    maxBelt,
-    onlyBelt,
-    vocabulary,
-    techniques,
-    descriptions,
-    japanese,
-    bidirectional,
-  }
   const count = useMemo(
     () =>
       selectItems(AUDIO_ITEMS, {
@@ -72,15 +67,27 @@ export function AudioCard({
         descriptions,
         japanese,
         bidirectional,
+        randomSeed: random ? randomSeed : undefined,
       }),
-    [lang, maxBelt, onlyBelt, vocabulary, techniques, descriptions, japanese, bidirectional],
+    [
+      lang,
+      maxBelt,
+      onlyBelt,
+      vocabulary,
+      techniques,
+      descriptions,
+      japanese,
+      bidirectional,
+      random,
+      randomSeed,
+    ],
   )
 
   const create = async () => {
     setResult(null)
     setError('')
     setBusy([0, 1])
-    const plan = buildPlan(AUDIO_ITEMS, options)
+    const plan = steps.map((step) => ('file' in step ? { file: step.file } : step))
     try {
       if (backend) {
         const blob = await buildMp3(plan)
@@ -140,14 +147,18 @@ export function AudioCard({
       </div>
       {open && (
         <>
-          <p className="text-sm text-slate-600">{t('audioIntro')}</p>
-          <div className="grid gap-3">
-            {box(t('audioVocabulary'), vocabulary, setVocabulary)}
-            {box(t('audioTechniques'), techniques, setTechniques)}
-            {box(t('audioDescriptions'), descriptions, setDescriptions)}
-            {box(t('audioJapanese'), japanese, setJapanese)}
-            {box(t('audioBidirectional'), bidirectional, setBidirectional)}
-          </div>
+          <details className="rounded-lg border p-3">
+            <summary className="cursor-pointer font-semibold">{optionsLabel[lang]}</summary>
+            <p className="mt-3 text-sm text-slate-600">{t('audioIntro')}</p>
+            <div className="mt-3 grid gap-3">
+              {box(t('audioVocabulary'), vocabulary, setVocabulary)}
+              {box(t('audioTechniques'), techniques, setTechniques)}
+              {box(t('audioDescriptions'), descriptions, setDescriptions)}
+              {box(t('audioJapanese'), japanese, setJapanese)}
+              {box(t('audioBidirectional'), bidirectional, setBidirectional)}
+              {box(transportCopy(lang).random, random, setRandom)}
+            </div>
+          </details>
           <p className="text-sm font-semibold" aria-live="polite" aria-label="audio-count">
             {count} {t('audioSummary')}
           </p>
@@ -157,24 +168,26 @@ export function AudioCard({
             base={import.meta.env.BASE_URL}
             onRunningChange={onPlayingChange}
           />
-          <button
-            type="button"
-            className="w-fit rounded-lg bg-slate-900 px-4 py-2 text-white disabled:opacity-50"
-            disabled={count === 0 || busy !== null}
-            onClick={create}
-          >
-            {busy ? `${t('audioWorking')} ${busy[0]}/${busy[1]}` : t('audioGenerate')}
-          </button>
-          {backend && (
+          <div className="flex flex-wrap gap-2">
             <button
               type="button"
-              className="w-fit rounded-lg border px-4 py-2 text-sm"
-              disabled={generating}
-              onClick={makeMissing}
+              className="w-fit rounded-lg bg-slate-900 px-4 py-2 text-white disabled:opacity-50"
+              disabled={count === 0 || busy !== null}
+              onClick={create}
             >
-              {generating ? t('audioWorking') : t('audioGenerateMissing')}
+              {busy ? `${t('audioWorking')} ${busy[0]}/${busy[1]}` : t('audioGenerate')}
             </button>
-          )}
+            {backend && (
+              <button
+                type="button"
+                className="w-fit rounded-lg border px-4 py-2 text-sm"
+                disabled={generating}
+                onClick={makeMissing}
+              >
+                {generating ? t('audioWorking') : transportCopy(lang).generateNew}
+              </button>
+            )}
+          </div>
           {error && (
             <p role="alert" className="whitespace-pre-wrap text-sm text-red-700">
               {error}

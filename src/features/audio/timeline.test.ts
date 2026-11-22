@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import type { PlaybackStep } from './audioPlan'
-import { buildChapters, buildTimeline, formatTime, stepAt } from './timeline'
+import {
+  buildChapters,
+  buildTimeline,
+  chapterDurations,
+  formatAudioTime,
+  formatTime,
+  stepAt,
+} from './timeline'
 
 const STEPS: PlaybackStep[] = [
   { file: 'audio/ko/a.mp3', role: 'ko', id: 'a' },
@@ -72,5 +79,31 @@ describe('formatTime', () => {
     expect(formatTime(0)).toBe('0:00')
     expect(formatTime(65.4)).toBe('1:05')
     expect(formatTime(3725)).toBe('62:05')
+    expect(formatAudioTime(3725)).toBe('1:02:05')
+    expect(formatAudioTime(3661)).toBe('1:01:01')
+    expect(formatAudioTime(65.4)).toBe('1:05')
+  })
+})
+
+describe('chapterDurations', () => {
+  it('aggregates shuffled section visits and trailing pauses separately from descriptions', () => {
+    const steps: PlaybackStep[] = [
+      { file: 'foot-first', role: 'ko', id: 'foot' },
+      { silence: 2 },
+      { file: 'hand-meaning', role: 'meaning', id: 'hand' },
+      { file: 'foot-next', role: 'ko', id: 'foot' },
+      { file: 'hand-description', role: 'info', id: 'hand', pass: 'description' },
+    ]
+    const timeline = buildTimeline(steps, {
+      'foot-first': 1,
+      'hand-meaning': 3,
+      'foot-next': 5,
+      'hand-description': 3600,
+    })
+    expect(chapterDurations(steps, timeline, (id) => id)).toEqual({
+      foot: 8,
+      hand: 3,
+      descriptions: 3600,
+    })
   })
 })

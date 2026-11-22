@@ -1,5 +1,6 @@
 import type { CardOverride } from '../../data/overrides'
 import type { CustomCard, CustomCatalogue } from '../../data/customCards'
+import type { ClipOverride } from '../../data/clips'
 
 const WRITE = { 'X-Editor': '1', 'Content-Type': 'application/json' }
 
@@ -70,7 +71,7 @@ export const saveCard = (id: string, override: CardOverride) =>
 
 export const saveClipRanges = (
   cardId: string,
-  clips: { index: number; start: number; end: number }[],
+  clips: ClipOverride[],
 ) =>
   fetch(`/api/clips/${encodeURIComponent(cardId)}`, {
     method: 'PUT',

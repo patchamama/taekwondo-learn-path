@@ -85,12 +85,10 @@ describe('word building hints', () => {
 })
 
 describe('frame question video', () => {
-  it('opens an explicitly muted video without submitting an answer and closes it before the next question', () => {
+  it('autoplays a muted frame question without submitting and closes it before the next question', () => {
     const frames: Exercise = { type: 'frames', cardId: 'ap-chagi', options: ['ap-chagi', 'yop-chagi'] }
     const platform = mockYouTube()
     show([frames, { type: 'meaning', cardId: 'macki', options }])
-    expect(document.querySelector('[data-video-source]:not([hidden])')).toBeNull()
-    fireEvent.click(screen.getByRole('button', { name: 'Watch muted video' }))
     platform.ready()
     const host = document.querySelector('[data-video-source]:not([hidden])')
     expect(host?.querySelector('iframe')?.src).toContain('mute=1')

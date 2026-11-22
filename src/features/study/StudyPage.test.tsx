@@ -149,9 +149,11 @@ describe('StudyPage export', () => {
 })
 
 describe('StudyPage diagrams', () => {
-  it('shows the Taegeuk floor pattern with its licence', () => {
+  it('shows the supplemental book reference without the floor pattern', () => {
+    useAppStore.setState({ cardView: 'details' })
     open('/study/3')
-    expect(screen.getAllByText(/CC BY-SA 4.0/).length).toBeGreaterThan(0)
+    expect(screen.queryByText(/CC BY-SA 4.0/)).not.toBeInTheDocument()
+    expect(document.querySelector('img[src*="/diagrams/books/woo-taegeuk-"]')).not.toBeNull()
   })
 })
 
@@ -163,7 +165,7 @@ describe('StudyPage clip frames', () => {
 
   it('does not repeat the frame sequence when a technique is watched', () => {
     const platform = mockYouTube()
-    useAppStore.setState({ videoLang: 'auto' })
+    useAppStore.setState({ videoLang: 'auto', cardView: 'details' })
     open('/study/1')
     const heading = screen.getByRole('heading', { name: /ap-chagi/ })
     const article = heading.closest('article') as HTMLElement
@@ -175,7 +177,7 @@ describe('StudyPage clip frames', () => {
     expect(host).not.toHaveAttribute('hidden')
     expect(new URL(host.querySelector('iframe')!.src).pathname).toBe(`/embed/${videoIdFor(clip, 'es')}`)
     expect(platform.players[0].seekTo).toHaveBeenLastCalledWith(clip.start, true)
-    expect(platform.players[0].playVideo).not.toHaveBeenCalled()
+    expect(platform.players[0].playVideo).toHaveBeenCalled()
     expect(article.querySelectorAll('ol[aria-label]')).toHaveLength(1)
   })
 })
@@ -240,4 +242,27 @@ describe('StudyPage repetition focus', () => {
     fireEvent.click(screen.getByRole('button', { name: /Stop/ }))
     await waitFor(() => expect(root.className).not.toMatch(/blur/))
   })
+})
+
+it('compact study cards keep clips hidden until the header media icon opens the full card', () => {
+  const platform = mockYouTube()
+  useAppStore.setState({ lang: 'en', cardView: 'compact' })
+  open('/study/1')
+  const article = screen.getByRole('heading', { name: /ap-chagi/ }).closest('article')!
+  expect(article.querySelector('ol[aria-label]')).toBeNull()
+  const toolbar = article.querySelector('[data-card-media-toolbar]')!
+  expect(toolbar.lastElementChild).toHaveAttribute('title', expect.stringContaining('Kup'))
+  fireEvent.click(within(article).getByRole('button', { name: /frames/i }))
+  platform.ready()
+  expect(article.querySelectorAll('ol[aria-label]')).toHaveLength(1)
+  expect(platform.players[0].playVideo).toHaveBeenCalled()
+})
+
+it('places the title and media controls in the same responsive header', () => {
+  useAppStore.setState({ lang: 'en', cardView: 'compact' })
+  open('/study/1')
+  const article = screen.getByRole('heading', { name: /ap-chagi/ }).closest('article')!
+  const header = article.querySelector('[data-card-header]')!
+  expect(header).toContainElement(within(article).getByRole('heading', { name: /ap-chagi/ }))
+  expect(header).toContainElement(article.querySelector('[data-card-media-toolbar]'))
 })

@@ -29,6 +29,8 @@ export interface Clip {
   note?: 'applications'
   /** true if nothing on screen or in the sound reveals the technique name (safe for the silent quizzes) */
   silentSafe?: boolean
+  /** Stable index in the unfiltered per-card catalogue, used by local editor overrides. */
+  originalIndex?: number
 }
 
 type RawClip = Omit<Clip, 'source'> & { source?: SourceKind }
@@ -48,16 +50,21 @@ const BASE_CLIPS: Clip[] = [
   ...(externalJson as RawClip[]).map((c) => ({ ...c, source: 'external' as const })),
 ]
 /** Clip ranges re-timed in the local editor: { cardId: [{ index (among that card's clips), start, end }] }. */
-const RETIMED = clipOverrides as Record<string, { index: number; start: number; end: number }[]>
+export type ClipOverride = { index: number; start: number; end: number } | { index: number; removed: true }
+const RETIMED = clipOverrides as Record<string, ClipOverride[]>
 
 function applyClipOverrides(clips: Clip[]): Clip[] {
   const seen: Record<string, number> = {}
-  return clips.map((c) => {
+  return clips.flatMap((c) => {
     const index = (seen[c.cardId] = (seen[c.cardId] ?? -1) + 1)
     const o = RETIMED[c.cardId]?.find((x) => x.index === index)
-    return o && Number.isFinite(o.start) && Number.isFinite(o.end) && o.start >= 0 && o.end > o.start
+    if (o && 'removed' in o && o.removed === true) return []
+    const effective = o && 'start' in o && Number.isFinite(o.start) && Number.isFinite(o.end) && o.start >= 0 && o.end > o.start
       ? { ...c, start: o.start, end: o.end }
-      : c
+      : { ...c }
+    // Editor-only identity must not alter the serialized public clip inventory.
+    Object.defineProperty(effective, 'originalIndex', { value: index, enumerable: false })
+    return [effective]
   })
 }
 

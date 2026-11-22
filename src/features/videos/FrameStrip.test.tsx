@@ -38,3 +38,17 @@ describe('FrameStrip', () => {
     expect(container).toBeEmptyDOMElement()
   })
 })
+
+it('maximizes the selected frame rather than another frame', () => {
+  render(<FrameStrip clip={clip} />)
+  fireEvent.click(screen.getAllByRole('img')[2])
+  expect(screen.getByRole('dialog').querySelector('img')).toHaveAttribute('src', frameSrc(clip, 3))
+  fireEvent.keyDown(window, { key: 'Escape' })
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+})
+
+it('does not open another dialog for a frame inside an existing maximized view', () => {
+  render(<div role="dialog"><FrameStrip clip={clip} maximizable={false} /></div>)
+  fireEvent.click(screen.getAllByRole('img')[1])
+  expect(screen.getAllByRole('dialog')).toHaveLength(1)
+})

@@ -68,7 +68,7 @@ it('shows duration/progress, clamps playback to fractional bounds and replays vi
   player.time = 15
   act(() => vi.advanceTimersByTime(100))
   expect(player.pauseVideo).toHaveBeenCalled()
-  expect(player.seekTo).toHaveBeenLastCalledWith(14.75, true)
+  expect(player.seekTo).toHaveBeenLastCalledWith(10.25, true)
   expect(screen.getByRole('progressbar')).toHaveAttribute('value', '4.5')
   fireEvent.click(screen.getByRole('button', { name: /Replay/ }))
   expect(player.seekTo).toHaveBeenLastCalledWith(10.25, true)
@@ -107,4 +107,130 @@ it('does not allow a late ready or play event to restart an inactive player', ()
   })
   expect(old.playVideo).not.toHaveBeenCalled()
   expect(old.pauseVideo).toHaveBeenCalled()
+})
+
+it('Play restarts at the beginning after reaching the clip boundary', () => {
+  render(<ClipPlayer clip={clip} muted />)
+  ready()
+  const player = players[0]
+  player.time = clip.start + 0.5
+  act(() => vi.advanceTimersByTime(50))
+  player.time = clip.end
+  act(() => vi.advanceTimersByTime(50))
+  player.seekTo.mockClear()
+  player.playVideo.mockClear()
+  fireEvent.click(screen.getByRole('button', { name: 'Play / Pause' }))
+  expect(player.seekTo).toHaveBeenCalledWith(clip.start, true)
+  expect(player.playVideo).toHaveBeenCalledTimes(1)
+})
+
+it('retains Play and Pause intentions while the platform is loading', () => {
+  const view = render(<ClipPlayer clip={clip} autoplay={false} />)
+  fireEvent.click(screen.getByRole('button', { name: 'Play / Pause' }))
+  ready()
+  expect(players[0].playVideo).toHaveBeenCalledTimes(1)
+  view.rerender(<ClipPlayer clip={{ ...clip, videoId: 'two' }} autoplay />)
+  fireEvent.click(screen.getByRole('button', { name: 'Play / Pause' }))
+  ready()
+  expect(players[1].playVideo).not.toHaveBeenCalled()
+  expect(players[1].pauseVideo).toHaveBeenCalled()
+})
+
+it('resumes within the clip without resetting and toggles back to pause', () => {
+  render(<ClipPlayer clip={clip} autoplay={false} />)
+  ready()
+  const player = players[0]
+  player.time = 12
+  player.seekTo.mockClear()
+  fireEvent.click(screen.getByRole('button', { name: 'Play / Pause' }))
+  expect(player.playVideo).toHaveBeenCalledTimes(1)
+  expect(player.seekTo).not.toHaveBeenCalled()
+  player.pauseVideo.mockClear()
+  fireEvent.click(screen.getByRole('button', { name: 'Play / Pause' }))
+  expect(player.pauseVideo).toHaveBeenCalledTimes(1)
+})
+
+it('allows an asynchronous restart seek to settle before enforcing the old end boundary', () => {
+  render(<ClipPlayer clip={clip} muted />)
+  ready()
+  const player = players[0]
+  player.time = clip.end
+  act(() => vi.advanceTimersByTime(1600))
+  player.pauseVideo.mockClear()
+  fireEvent.click(screen.getByRole('button', { name: 'Play / Pause' }))
+  act(() => {
+    player.events.onStateChange({ data: 1 })
+    vi.advanceTimersByTime(100)
+  })
+  expect(player.pauseVideo).not.toHaveBeenCalled()
+  player.time = clip.start + 0.1
+  act(() => vi.advanceTimersByTime(50))
+  player.time = clip.end
+  act(() => vi.advanceTimersByTime(50))
+  expect(player.pauseVideo).toHaveBeenCalledTimes(1)
+})
+
+it('keeps multiple mounted clips of the same source visible and independently controllable', () => {
+  render(<><ClipPlayer clip={clip} autoplay={false} /><ClipPlayer clip={{ ...clip, start: 30, end: 35 }} autoplay={false} /></>)
+  expect(players).toHaveLength(2)
+  act(() => players.forEach((player) => player.events.onReady()))
+  const hosts = document.querySelectorAll('[data-video-source="one"]')
+  expect(hosts).toHaveLength(2)
+  hosts.forEach((host) => expect(host).not.toHaveAttribute('hidden'))
+  const buttons = screen.getAllByRole('button', { name: 'Play / Pause' })
+  fireEvent.click(buttons[0])
+  expect(players[0].playVideo).toHaveBeenCalledTimes(1)
+  fireEvent.click(buttons[1])
+  expect(players[1].playVideo).toHaveBeenCalledTimes(1)
+  expect(players[0].pauseVideo).toHaveBeenCalled()
+  fireEvent.click(buttons[0])
+  expect(players[0].playVideo).toHaveBeenCalledTimes(2)
+})
+
+it('shows the excerpt start when paused and after reaching the end', () => {
+  render(<ClipPlayer clip={clip} autoplay={false} />)
+  ready()
+  const player = players[0]
+  expect(player.seekTo).toHaveBeenLastCalledWith(10.25, true)
+  player.time = 10.75
+  act(() => vi.advanceTimersByTime(50))
+  fireEvent.click(screen.getByRole('button', { name: 'Play / Pause' }))
+  player.time = clip.end
+  act(() => vi.advanceTimersByTime(100))
+  expect(player.seekTo).toHaveBeenLastCalledWith(10.25, true)
+  expect(screen.getByRole('progressbar')).toHaveAttribute('value', '4.5')
+  fireEvent.click(screen.getByRole('button', { name: 'Play / Pause' }))
+  expect(player.seekTo).toHaveBeenLastCalledWith(10.25, true)
+})
+
+it('waits for the player constructor when the YouTube global exists before the API is ready', () => {
+  Object.assign(window, { YT: {} })
+  render(<ClipPlayer clip={clip} autoplay={false} />)
+  expect(players).toHaveLength(0)
+  expect(screen.getByLabelText('Clip: ap-chagi')).toBeInTheDocument()
+  Object.assign(window, { YT: { Player: MockPlayer } })
+  act(() => window.onYouTubeIframeAPIReady?.())
+  expect(players).toHaveLength(1)
+  ready()
+  expect(players[0].seekTo).toHaveBeenCalledWith(10.25, true)
+})
+
+it('can switch clips before the constructed YouTube player exposes its methods', () => {
+  class PendingPlayer { constructor(_iframe: unknown, _options: unknown) {} }
+  Object.assign(window, { YT: { Player: PendingPlayer } })
+  const view = render(<ClipPlayer clip={clip} autoplay={false} />)
+  expect(() => view.rerender(<ClipPlayer clip={{ ...clip, videoId: 'other' }} autoplay={false} />)).not.toThrow()
+  expect(() => view.unmount()).not.toThrow()
+})
+
+it('previews a zero-start video at one second, bounded by the excerpt', () => {
+  render(<ClipPlayer clip={{ ...clip, start: 0, end: 5 }} autoplay={false} />)
+  ready()
+  expect(players[0].seekTo).toHaveBeenLastCalledWith(1, true)
+})
+
+it('keeps a short zero-start preview inside the excerpt', () => {
+  render(<ClipPlayer clip={{ ...clip, start: 0, end: 0.4 }} autoplay={false} />)
+  ready()
+  expect(players[0].seekTo).toHaveBeenLastCalledWith(0.399, true)
 })

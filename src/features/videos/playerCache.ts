@@ -23,14 +23,17 @@ type Request = {
   progress: (seconds: number) => void
 }
 type Entry = {
+  id: string
   host: HTMLDivElement
   iframe: HTMLIFrameElement
   player?: Player
   ready: boolean
   request?: Request
   playing: boolean
+  seekUntil?: number
+  ended?: boolean
 }
-const entries = new Map<string, Entry>()
+const entries = new Set<Entry>()
 let cache: HTMLDivElement | undefined
 let timer: ReturnType<typeof setInterval> | undefined
 let observer: MutationObserver | undefined
@@ -48,24 +51,39 @@ function position(entry: Entry) {
     zIndex: anchor.closest('[role="dialog"]') ? '60' : '10',
   })
 }
+function pauseOthers(entry: Entry) {
+  entries.forEach((other) => {
+    if (other === entry || !other.request) return
+    other.request.autoplay = false
+    other.player?.pauseVideo?.()
+    other.playing = false
+  })
+}
+function previewTime(clip: Clip) {
+  return clip.start === 0 ? Math.min(1, Math.max(0, clip.end - 0.001)) : clip.start
+}
 function start(entry: Entry) {
   const request = entry.request
   if (!entry.ready || !entry.player) return
   if (!request) { entry.player.pauseVideo(); return }
   if (request.muted) entry.player.mute()
   else entry.player.unMute()
-  entry.player.seekTo(request.clip.start, true)
+  // The iframe clock can briefly report the previous position after any seek.
+  entry.seekUntil = Date.now() + 1500
+  entry.ended = false
+  entry.player.seekTo(request.autoplay ? request.clip.start : previewTime(request.clip), true)
   entry.playing = request.autoplay
-  if (request.autoplay) entry.player.playVideo()
+  if (request.autoplay) { pauseOthers(entry); entry.player.playVideo() }
   else entry.player.pauseVideo()
   request.progress(0)
 }
 function connect(entry: Entry) {
-  if (entry.player || !window.YT) return
+  if (entry.player || typeof window.YT?.Player !== 'function') return
   entry.player = new window.YT.Player(entry.iframe, { events: {
     onReady: () => { entry.ready = true; start(entry) },
     onStateChange: ({ data }) => {
-      if (!entry.request) { entry.player?.pauseVideo(); return }
+      if (!entry.request) { entry.player?.pauseVideo?.(); return }
+      if (data === 1 && !entry.request.autoplay) { entry.player?.pauseVideo?.(); entry.playing = false; return }
       entry.playing = data === 1
       // Enforce boundaries immediately as well as on the progress clock.
       tick(entry)
@@ -80,16 +98,25 @@ function tick(entry: Entry) {
   const time = player.getCurrentTime()
   if (!Number.isFinite(time)) return
   const { start, end } = request.clip
+  // YouTube seeks asynchronously: its clock may still report the old clip's end.
+  if (entry.seekUntil !== undefined) {
+    if ((time < start || time >= end) && Date.now() < entry.seekUntil) return
+    entry.seekUntil = undefined
+  }
+  if (entry.ended) return
   if (time >= end) {
     player.pauseVideo()
-    if (time > end) player.seekTo(end, true)
+    entry.ended = true
+    request.autoplay = false
+    entry.seekUntil = Date.now() + 1500
+    player.seekTo(previewTime(request.clip), true)
     entry.playing = false
   } else if (time < start) player.seekTo(start, true)
   request.progress(Math.max(0, Math.min(end - start, time - start)))
 }
 function updatePositions() { entries.forEach(position) }
 function dispose() {
-  entries.forEach((entry) => { entry.player?.destroy(); entry.host.remove() })
+  entries.forEach((entry) => { entry.player?.destroy?.(); entry.host.remove() })
   entries.clear()
   cache?.remove()
   cache = undefined
@@ -117,7 +144,7 @@ function ensureCache() {
     observer.observe(document.body, { childList: true, subtree: true })
   }
   timer = setInterval(() => entries.forEach(tick), 50)
-  if (!window.YT) {
+  if (typeof window.YT?.Player !== 'function') {
     priorReady = window.onYouTubeIframeAPIReady
     readyCallback = () => { priorReady?.(); entries.forEach(connect) }
     window.onYouTubeIframeAPIReady = readyCallback
@@ -130,11 +157,11 @@ function ensureCache() {
   }
 }
 
-/** One retained browsing context per video ID, never per clip or language preference. */
+/** Retain idle browsing contexts by source, but never share one between mounted clips. */
 export function acquirePlayer(language: VideoLanguage, request: Request) {
   ensureCache()
   const id = videoIdFor(request.clip, language)
-  let entry = entries.get(id)
+  let entry = [...entries].find((candidate) => candidate.id === id && !candidate.request)
   if (!entry) {
     const host = document.createElement('div')
     host.dataset.videoSource = id
@@ -158,16 +185,10 @@ export function acquirePlayer(language: VideoLanguage, request: Request) {
     iframe.style.cssText = 'width:100%;height:100%;border:0'
     host.append(iframe)
     cache!.append(host)
-    entry = { host, iframe, ready: false, playing: false }
-    entries.set(id, entry)
+    entry = { id, host, iframe, ready: false, playing: false }
+    entries.add(entry)
   }
-  // A new owner is the only audible/playing owner, including late API callbacks.
-  entries.forEach((other) => {
-    other.player?.pauseVideo()
-    other.request = undefined
-    other.playing = false
-    other.host.hidden = true
-  })
+  if (request.autoplay) pauseOthers(entry)
   entry.request = request
   entry.iframe.title = request.muted ? 'Silent technique clip' : `Clip: ${request.clip.cardId}`
   entry.host.hidden = false
@@ -178,14 +199,31 @@ export function acquirePlayer(language: VideoLanguage, request: Request) {
   return {
     replay: () => { if (current.request === request) { request.autoplay = true; start(current) } },
     toggle: () => {
-      if (current.request !== request || !current.ready) return
-      if (current.playing) current.player?.pauseVideo()
-      else current.player?.playVideo()
-      current.playing = !current.playing
+      if (current.request !== request) return
+      if (!current.ready) {
+        request.autoplay = !request.autoplay
+        if (request.autoplay) pauseOthers(current)
+        return
+      }
+      const shouldPlay = !current.playing
+      request.autoplay = shouldPlay
+      current.playing = shouldPlay
+      if (!shouldPlay) current.player?.pauseVideo?.()
+      else {
+        pauseOthers(current)
+        const time = current.player?.getCurrentTime()
+        if (current.ended || (time !== undefined && (time >= request.clip.end || time < request.clip.start))) {
+          current.ended = false
+          current.seekUntil = Date.now() + 1500
+          current.player?.seekTo(request.clip.start, true)
+          request.progress(0)
+        }
+        current.player?.playVideo()
+      }
     },
     release: () => {
       if (current.request !== request) return
-      current.player?.pauseVideo()
+      current.player?.pauseVideo?.()
       current.request = undefined
       current.playing = false
       current.host.hidden = true

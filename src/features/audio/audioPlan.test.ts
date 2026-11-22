@@ -7,6 +7,7 @@ import {
   MEANING_DELAY,
   selectItems,
   type AudioOptions,
+  type PlaybackStep,
 } from './audioPlan'
 
 const SECTION = { morpheme: 'words', technique: 'hand', term: 'terms', form: 'forms' } as const
@@ -109,7 +110,14 @@ describe('buildPlayback', () => {
     const roles = steps
       .filter((s) => 'role' in s)
       .map((s) => ('role' in s ? `${s.role}:${s.id}` : ''))
-    expect(roles).toEqual(['ko:ap-chagi', 'meaning:ap-chagi', 'ja:ap-chagi', 'ko:ap-chagi', 'meaning:ap-chagi', 'info:ap-chagi'])
+    expect(roles).toEqual([
+      'ko:ap-chagi',
+      'meaning:ap-chagi',
+      'ja:ap-chagi',
+      'ko:ap-chagi',
+      'meaning:ap-chagi',
+      'info:ap-chagi',
+    ])
   })
 
   it('matches buildPlan once the tags are removed', () => {
@@ -131,21 +139,35 @@ describe('buildPlayback order', () => {
 
 describe('bidirectional audio', () => {
   it('finishes every forward question before asking inverse-direction questions, with descriptions last', () => {
-    const clips = buildPlayback(ITEMS, opts({ bidirectional: true, descriptions: true }))
-      .filter((s) => 'file' in s)
+    const clips = buildPlayback(ITEMS, opts({ bidirectional: true, descriptions: true })).filter(
+      (s) => 'file' in s,
+    )
     expect(clips.map((s) => `${s.id}:${s.role}`)).toEqual([
-      'arae:ko', 'arae:meaning', 'ap-chagi:ko', 'ap-chagi:meaning',
-      'dojang:ko', 'dojang:meaning', 'taeguk-1:ko', 'taeguk-1:meaning',
-      'arae:meaning', 'arae:ko', 'ap-chagi:meaning', 'ap-chagi:ko',
-      'dojang:meaning', 'dojang:ko', 'taeguk-1:meaning', 'taeguk-1:ko',
-      'ap-chagi:ko', 'ap-chagi:meaning', 'ap-chagi:info',
+      'arae:ko',
+      'arae:meaning',
+      'ap-chagi:ko',
+      'ap-chagi:meaning',
+      'dojang:ko',
+      'dojang:meaning',
+      'taeguk-1:ko',
+      'taeguk-1:meaning',
+      'arae:meaning',
+      'arae:ko',
+      'ap-chagi:meaning',
+      'ap-chagi:ko',
+      'dojang:meaning',
+      'dojang:ko',
+      'taeguk-1:meaning',
+      'taeguk-1:ko',
+      'ap-chagi:ko',
+      'ap-chagi:meaning',
+      'ap-chagi:info',
     ])
   })
 
   it('introduces every appended description with Korean mp3 and localized meaning even without bidirectionality', () => {
     for (const lang of ['es', 'de', 'en'] as const) {
-      const clips = buildPlan(ITEMS, opts({ descriptions: true, lang }))
-        .filter((s) => 'file' in s)
+      const clips = buildPlan(ITEMS, opts({ descriptions: true, lang })).filter((s) => 'file' in s)
       expect(clips.slice(-3)).toEqual([
         { file: audioFile('ko', 'ap-chagi') },
         { file: audioFile(lang, 'ap-chagi') },
@@ -178,5 +200,41 @@ describe('bidirectional audio', () => {
       .filter((s) => 'role' in s)
       .map((s) => ('role' in s ? `${s.role}${'pass' in s ? '*' : ''}` : ''))
     expect(roles).toEqual(['ko', 'meaning', 'ja', 'meaning*', 'ko*'])
+  })
+})
+
+describe('random narration', () => {
+  it('shuffles complete item groups stably and keeps joined audio aligned with playback', () => {
+    const o = opts({ randomSeed: 12345, descriptions: true, bidirectional: true })
+    const steps = buildPlayback(ITEMS, o)
+    const normal = buildPlayback(ITEMS, opts({ descriptions: true, bidirectional: true }))
+    expect(steps).not.toEqual(normal)
+    expect(buildPlayback(ITEMS, o)).toEqual(steps)
+    expect(buildPlan(ITEMS, o)).toEqual(steps.map((s) => ('file' in s ? { file: s.file } : s)))
+    const forward = steps.filter(
+      (s): s is Exclude<PlaybackStep, { silence: number }> => 'file' in s && !s.pass,
+    )
+    expect(
+      forward
+        .filter((s) => s.role === 'ko')
+        .map((s) => s.id)
+        .sort(),
+    ).toEqual(ITEMS.map((i) => i.id).sort())
+    for (let i = 0; i < forward.length; i += 2) {
+      expect(forward[i].role).toBe('ko')
+      expect(forward[i + 1]).toMatchObject({ role: 'meaning', id: forward[i].id })
+    }
+    expect(
+      steps
+        .filter(
+          (s): s is Exclude<PlaybackStep, { silence: number }> =>
+            'file' in s && s.pass === 'reverse',
+        )
+        .map((s) => s.id),
+    ).toEqual(forward.map((s) => s.id))
+    expect(steps.filter((s) => 'file' in s).at(-1)).toMatchObject({
+      role: 'info',
+      pass: 'description',
+    })
   })
 })

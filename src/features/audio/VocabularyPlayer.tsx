@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { AUDIO_ITEMS } from '../../data/audioManifest'
+import { AUDIO_ITEMS, SECTION_BY_ID } from '../../data/audioManifest'
 import { CARD_BY_ID } from '../../data/cards'
+import { CLIPS_BY_CARD } from '../../data/clips'
+import { BeltBadge } from '../../shared/components/BeltBadge'
 import type { StringKey } from '../../shared/i18n/strings'
 import { useT } from '../../shared/i18n/useT'
 import { pickKoreanVoice, speechSupported } from '../../shared/lib/speech'
@@ -8,7 +10,15 @@ import { PLAYBACK_RATES, transportCopy } from './transportCopy'
 import type { PlaybackRole, PlaybackStep } from './audioPlan'
 import { loadDurations } from './durations'
 import { framesFor } from './images'
-import { buildChapters, buildTimeline, formatTime, stepAt } from './timeline'
+import './VocabularyPlayer.css'
+import {
+  buildChapters,
+  buildTimeline,
+  chapterDurations,
+  chapterKey,
+  formatAudioTime as formatTime,
+  stepAt,
+} from './timeline'
 
 const ITEM_BY_ID = new Map(AUDIO_ITEMS.map((i) => [i.id, i]))
 
@@ -21,6 +31,11 @@ const CHAPTER_LABEL: Record<string, StringKey> = {
   terms: 'studyTerms',
   forms: 'navForms',
   descriptions: 'audioDescriptionsChapter',
+}
+
+const CHAPTER_COLOR: Record<string, string> = {
+  words: '#bfdbfe', hand: '#fbcfe8', foot: '#bbf7d0', stance: '#fde68a',
+  combo: '#ddd6fe', terms: '#fed7aa', forms: '#a5f3fc', descriptions: '#e2e8f0',
 }
 
 type Said = { id: string; parts: Partial<Record<PlaybackRole, true>> }
@@ -65,6 +80,7 @@ export function VocabularyPlayer({
   const { t, loc, lang } = useT()
   const copy = transportCopy(lang)
   const [rate, setRate] = useState(1)
+  const [seekSeconds, setSeekSeconds] = useState(5)
   const rateRef = useRef(1)
   const updateRate = useRef<() => void>(() => {})
   const [durations, setDurations] = useState<Record<string, number>>({})
@@ -87,6 +103,33 @@ export function VocabularyPlayer({
 
   const timeline = useMemo(() => buildTimeline(steps, durations), [steps, durations])
   const chapters = useMemo(() => buildChapters(steps, (id) => ITEM_BY_ID.get(id)?.section), [steps])
+  const sectionTimes = useMemo(
+    () => chapterDurations(steps, timeline, (id) => SECTION_BY_ID[id]),
+    [steps, timeline],
+  )
+  // Silence belongs to the preceding section; shuffled/reversed plans can revisit it.
+  const segments = useMemo(() => {
+    const result: { key: string; start: number; end: number }[] = []
+    let key: string | undefined
+    steps.forEach((step, index) => {
+      if ('id' in step) key = chapterKey(step, (id) => SECTION_BY_ID[id])
+      const start = timeline.starts[index]
+      const end = timeline.starts[index + 1] ?? timeline.total
+      if (!key || end <= start) return
+      const last = result.at(-1)
+      if (last?.key === key && last.end === start) last.end = end
+      else result.push({ key, start, end })
+    })
+    return result
+  }, [steps, timeline])
+  const activeStep = steps
+    .slice(0, stepAt(timeline, position) + 1)
+    .reverse()
+    .find((step) => 'id' in step)
+  const activeChapter =
+    currentId && activeStep && 'id' in activeStep
+      ? chapterKey(activeStep, (id) => SECTION_BY_ID[id])
+      : undefined
   const firstStepOf = useMemo(() => {
     const map = new Map<string, number>()
     steps.forEach((s, i) => {
@@ -144,7 +187,7 @@ export function VocabularyPlayer({
     let clockOffset = 0
     let clockAnchor = performance.now()
     let clockRate = rateRef.current
-    const elapsed = () => clockOffset + (performance.now() - clockAnchor) / 1000 * clockRate
+    const elapsed = () => clockOffset + ((performance.now() - clockAnchor) / 1000) * clockRate
     const ticker = setInterval(() => {
       if (cancelled || performance.now() < seekingUntil.current) return
       const at = current ? current.currentTime : elapsed()
@@ -182,11 +225,20 @@ export function VocabularyPlayer({
           let timer: ReturnType<typeof setTimeout>
           const schedule = () => {
             clearTimeout(timer)
-            timer = setTimeout(resolve, Math.max(0, step.silence - elapsed()) * 1000 / rateRef.current)
+            timer = setTimeout(
+              resolve,
+              (Math.max(0, step.silence - elapsed()) * 1000) / rateRef.current,
+            )
           }
-          updateRate.current = () => { rebaseClock(); schedule() }
+          updateRate.current = () => {
+            rebaseClock()
+            schedule()
+          }
           schedule()
-          release = () => { clearTimeout(timer); resolve() }
+          release = () => {
+            clearTimeout(timer)
+            resolve()
+          }
         })
         offset = 0
         continue
@@ -228,9 +280,19 @@ export function VocabularyPlayer({
           audio.pause()
           current = null
           const item = ITEM_BY_ID.get(step.id)
-          const text = item && (step.role === 'ko' ? item.hangul : step.role === 'ja' ? item.ja
-            : step.role === 'info' ? item.info && loc(item.info) : loc(item.meaning))
-          if (!text || !speechSupported()) { finish(false); return }
+          const text =
+            item &&
+            (step.role === 'ko'
+              ? item.hangul
+              : step.role === 'ja'
+                ? item.ja
+                : step.role === 'info'
+                  ? item.info && loc(item.info)
+                  : loc(item.meaning))
+          if (!text || !speechSupported()) {
+            finish(false)
+            return
+          }
           speaking = true
           const synth = window.speechSynthesis
           const speak = () => {
@@ -241,18 +303,25 @@ export function VocabularyPlayer({
             }
             utterance = new SpeechSynthesisUtterance(text)
             utterance.lang = step.role === 'ko' ? 'ko-KR' : step.role === 'ja' ? 'ja-JP' : lang
-            const voice = step.role === 'ko' ? pickKoreanVoice(synth.getVoices())
-              : synth.getVoices().find(v => v.lang.startsWith(utterance!.lang))
+            const voice =
+              step.role === 'ko'
+                ? pickKoreanVoice(synth.getVoices())
+                : synth.getVoices().find((v) => v.lang.startsWith(utterance!.lang))
             if (voice) utterance.voice = voice
             utterance.rate = rateRef.current
             utterance.onend = () => finish(true)
             utterance.onerror = () => finish(false)
             synth.speak(utterance)
           }
-          updateRate.current = () => { rebaseClock(); speak() }
+          updateRate.current = () => {
+            rebaseClock()
+            speak()
+          }
           speak()
         }
-        updateRate.current = () => { audio.playbackRate = rateRef.current }
+        updateRate.current = () => {
+          audio.playbackRate = rateRef.current
+        }
         audio.playbackRate = rateRef.current
         audio.onended = () => finish(true)
         audio.onerror = fallback
@@ -302,7 +371,9 @@ export function VocabularyPlayer({
   const seek = (value: number, immediate = false) => {
     value = Math.max(0, Math.min(timeline.total, value))
     setPosition(value)
-    const preceding = steps.slice(0, stepAt(timeline, value) + 1).reverse()
+    const preceding = steps
+      .slice(0, stepAt(timeline, value) + 1)
+      .reverse()
       .find((s) => 'id' in s)
     setCurrentId(preceding && 'id' in preceding ? preceding.id : null)
     seekingUntil.current = performance.now() + 600
@@ -325,75 +396,129 @@ export function VocabularyPlayer({
     const id = itemIds[Math.max(0, Math.min(itemIds.length - 1, at + direction))]
     if (id) jumpToStep(firstStepOf.get(id)!)
   }
+  const repeatPart = (id: string, role: PlaybackRole) => {
+    const index = steps.findIndex((step) => 'id' in step && step.id === id && step.role === role)
+    if (index >= 0) jumpToStep(index)
+  }
   const iconButton = (label: string, icon: string, action: () => void, disabled: boolean) => (
-    <button type="button" aria-label={label} title={label} onClick={action} disabled={disabled}
-      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border px-2 hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-40">
+    <button
+      type="button"
+      aria-label={label}
+      title={label}
+      onClick={action}
+      disabled={disabled}
+      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border px-2 hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-40"
+    >
       <span aria-hidden="true">{icon}</span>
     </button>
   )
 
   return (
     <div className="grid gap-3">
-      <div className="flex flex-wrap items-center gap-3">
-        <div className="flex flex-wrap gap-1">
-          {iconButton(copy.previous, '⏮', () => navigateItem(-1), itemIds.length === 0 || itemNumber <= 1)}
-          {iconButton(t('audioPlay'), '▶', play, steps.length === 0 || running)}
-          {iconButton(t('audioStop'), '⏹', stop, !running)}
-          {iconButton(copy.next, '⏭', () => navigateItem(1), itemIds.length === 0 || itemNumber >= itemIds.length)}
-        </div>
-        <label className="flex items-center gap-2 text-xs text-slate-600">
-          {copy.speed}
-          <select aria-label={copy.speed} title={copy.speed} value={rate}
-            disabled={steps.length === 0} onChange={e => changeRate(Number(e.target.value))}
-            className="min-h-11 rounded-lg border bg-white px-2">
-            {PLAYBACK_RATES.map(value => <option key={value} value={value}>{value}×</option>)}
-          </select>
-        </label>
+      <label className="flex w-full items-center gap-2 text-xs text-slate-600">
+        <span className="tabular-nums">{formatTime(position)}</span>
+        <span className="audio-seek min-w-0 flex-1">
+          <span className="audio-seek-track" aria-hidden="true">
+            {segments.map((segment, i) => (
+              <span key={`${segment.key}-${i}`} data-audio-segment={segment.key} style={{
+                left: `${segment.start / timeline.total * 100}%`,
+                width: `${(segment.end - segment.start) / timeline.total * 100}%`,
+                backgroundColor: CHAPTER_COLOR[segment.key] ?? '#e2e8f0',
+              }} />
+            ))}
+          </span>
+        <input
+          type="range"
+          aria-label={t('audioSeek')}
+          className="audio-seek-input"
+          min={0}
+          max={timeline.total || 1}
+          step={0.1}
+          value={Math.min(position, timeline.total)}
+          onChange={(e) => seek(Number(e.target.value))}
+          disabled={steps.length === 0}
+        />
+        </span>
+        <span className="tabular-nums">{formatTime(timeline.total)}</span>
+      </label>
+      <div
+        role="group"
+        aria-label={copy.controls}
+        className="flex flex-wrap items-center justify-center gap-2"
+      >
+        {iconButton(
+          copy.previous,
+          '⏮',
+          () => navigateItem(-1),
+          itemIds.length === 0 || itemNumber <= 1,
+        )}
+        {iconButton(t('audioPlay'), '▶', play, steps.length === 0 || running)}
+        {iconButton(t('audioStop'), '⏹', stop, !running)}
+        {iconButton(
+          copy.next,
+          '⏭',
+          () => navigateItem(1),
+          itemIds.length === 0 || itemNumber >= itemIds.length,
+        )}
+        {iconButton(
+          `${copy.back} ${seekSeconds} s`,
+          '↶',
+          () => seek(position - seekSeconds, true),
+          steps.length === 0 || position <= 0,
+        )}
+        <select
+          aria-label={copy.seekSeconds}
+          title={copy.seekSeconds}
+          value={seekSeconds}
+          disabled={steps.length === 0}
+          onChange={(e) => setSeekSeconds(Number(e.target.value))}
+          className="min-h-11 rounded-lg border bg-white px-2"
+        >
+          {[2, 5, 10, 15].map((seconds) => (
+            <option key={seconds} value={seconds}>
+              {seconds} s
+            </option>
+          ))}
+        </select>
+        {iconButton(
+          `${copy.forward} ${seekSeconds} s`,
+          '↷',
+          () => seek(position + seekSeconds, true),
+          steps.length === 0 || position >= timeline.total,
+        )}
+        <select
+          aria-label={copy.speed}
+          title={copy.speed}
+          value={rate}
+          disabled={steps.length === 0}
+          onChange={(e) => changeRate(Number(e.target.value))}
+          className="min-h-11 rounded-lg border bg-white px-2"
+        >
+          {PLAYBACK_RATES.map((value) => (
+            <option key={value} value={value}>
+              {value}×
+            </option>
+          ))}
+        </select>
         <span aria-label="audio-position" className="text-xs tabular-nums text-slate-600">
           {itemNumber}/{itemIds.length}
         </span>
-        <label className="flex min-w-48 flex-1 items-center gap-2 text-xs text-slate-600">
-          <span className="tabular-nums">{formatTime(position)}</span>
-          <input
-            type="range"
-            aria-label={t('audioSeek')}
-            className="w-full"
-            min={0}
-            max={timeline.total || 1}
-            step={0.1}
-            value={Math.min(position, timeline.total)}
-            onChange={(e) => seek(Number(e.target.value))}
-            disabled={steps.length === 0}
-          />
-          <span className="tabular-nums">{formatTime(timeline.total)}</span>
-        </label>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {[-1, 1].map(direction => (
-          <div key={direction} className="flex flex-wrap gap-1">
-            {[2, 5, 10, 15].map(seconds => (
-              <span key={seconds}>
-                {iconButton(`${direction < 0 ? copy.back : copy.forward} ${seconds} s`,
-                  `${direction < 0 ? '↶' : '↷'} ${seconds}`, () => seek(position + direction * seconds, true),
-                  steps.length === 0 || (direction < 0 ? position <= 0 : position >= timeline.total))}
-              </span>
-            ))}
-          </div>
-        ))}
-      </div>
-
-      {chapters.length > 1 && (
+      {chapters.length > 0 && (
         <nav aria-label={t('audioChapters')} className="flex flex-wrap items-center gap-1.5">
           <span className="text-xs font-semibold text-slate-500">{t('audioChapters')}:</span>
           {chapters.map((c) => (
             <button
               key={c.key}
               type="button"
-              className="rounded-full border bg-white px-3 py-0.5 text-xs hover:bg-slate-100"
+              data-audio-chapter={c.key}
+              aria-current={activeChapter === c.key ? 'true' : undefined}
+              style={{ backgroundColor: CHAPTER_COLOR[c.key] ?? '#e2e8f0' }}
+              className={`rounded-full border px-3 py-0.5 text-xs text-slate-900 ${activeChapter === c.key ? 'border-slate-900 font-semibold ring-2 ring-slate-700' : 'border-slate-400 hover:brightness-95'}`}
               onClick={() => jumpToStep(c.stepIndex)}
             >
-              {t(CHAPTER_LABEL[c.key])}
+              {t(CHAPTER_LABEL[c.key])} ({formatTime(sectionTimes[c.key] ?? 0)})
             </button>
           ))}
         </nav>
@@ -407,33 +532,71 @@ export function VocabularyPlayer({
           const card = CARD_BY_ID[s.id]
           if (!item || !card) return null
           return (
-            <li key={s.id} className="flex items-start gap-2 rounded-lg border bg-slate-50 p-3">
-              <div className="min-w-0 flex-1">
-                {s.parts.ko && (
-                  <p className="text-lg font-bold">
-                    <span lang="ko">{item.hangul}</span>{' '}
-                    <span className="text-sm font-normal text-slate-500">{card.ko}</span>
-                  </p>
+            <li key={s.id} className="grid gap-2 rounded-lg border bg-slate-50 p-3">
+              <div className="flex flex-wrap items-center justify-end gap-2 text-xs text-slate-600">
+                <span>{t(CHAPTER_LABEL[item.section])}</span>
+                {framesFor(s.id).length > 0 && (
+                  <span role="img" aria-label={copy.clip} title={copy.clip}>
+                    🎞
+                  </span>
                 )}
-                {s.parts.meaning && <p>{loc(item.meaning)}</p>}
-                {s.parts.ja && (
-                  <p className="text-sm text-slate-600">
-                    <span lang="ja">{item.ja}</span>
-                    {item.jaRomaji ? ` (${item.jaRomaji})` : ''}
-                  </p>
+                {(CLIPS_BY_CARD[s.id]?.length ?? 0) > 0 && (
+                  <span role="img" aria-label={copy.video} title={copy.video}>
+                    ▶
+                  </span>
                 )}
-                {s.parts.info && item.info && (
-                  <p className="mt-1 text-sm text-slate-700">{loc(item.info)}</p>
-                )}
+                <BeltBadge cardId={s.id} />
               </div>
-              <button
-                type="button"
-                className="shrink-0 rounded-full border px-2 text-sm hover:bg-white"
-                aria-label={`${t('audioRepeatWord')}: ${card.ko}`}
-                onClick={() => jumpToStep(firstStepOf.get(s.id) ?? 0)}
-              >
-                ↺
-              </button>
+              <div className="flex items-start gap-2">
+                <div className="min-w-0 flex-1">
+                  {s.parts.ko && (
+                    <button
+                      type="button"
+                      className="block text-left text-lg font-bold hover:underline"
+                      onClick={() => repeatPart(s.id, 'ko')}
+                    >
+                      <span lang="ko">{item.hangul}</span>{' '}
+                      <span className="text-sm font-normal text-slate-500">{card.ko}</span>
+                    </button>
+                  )}
+                  {s.parts.meaning && (
+                    <button
+                      type="button"
+                      className="block text-left hover:underline"
+                      onClick={() => repeatPart(s.id, 'meaning')}
+                    >
+                      {loc(item.meaning)}
+                    </button>
+                  )}
+                  {s.parts.ja && (
+                    <button
+                      type="button"
+                      className="block text-left text-sm text-slate-600 hover:underline"
+                      onClick={() => repeatPart(s.id, 'ja')}
+                    >
+                      <span lang="ja">{item.ja}</span>
+                      {item.jaRomaji ? ` (${item.jaRomaji})` : ''}
+                    </button>
+                  )}
+                  {s.parts.info && item.info && (
+                    <button
+                      type="button"
+                      className="mt-1 block text-left text-sm text-slate-700 hover:underline"
+                      onClick={() => repeatPart(s.id, 'info')}
+                    >
+                      {loc(item.info)}
+                    </button>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  className="shrink-0 rounded-full border px-2 text-sm hover:bg-white"
+                  aria-label={`${t('audioRepeatWord')}: ${card.ko}`}
+                  onClick={() => jumpToStep(firstStepOf.get(s.id) ?? 0)}
+                >
+                  ↺
+                </button>
+              </div>
             </li>
           )
         })}

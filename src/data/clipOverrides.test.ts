@@ -12,6 +12,20 @@ afterEach(() => {
 })
 
 describe('clip overrides', () => {
+  it('removes built-in videos without deleting their catalogue identity or shifting other retimings', async () => {
+    const { CLIPS_BY_CARD } = await load({
+      'momtong-packat-macki': [{ index: 0, removed: true }],
+      'ap-chagi': [{ index: 0, removed: true }, { index: 1, start: 12, end: 16 }],
+    })
+    expect(CLIPS_BY_CARD['momtong-packat-macki']).toBeUndefined()
+    const remaining = CLIPS_BY_CARD['ap-chagi']
+    expect(remaining.length).toBeGreaterThan(0)
+    expect(remaining.every((clip) => clip.originalIndex !== 0)).toBe(true)
+    expect(remaining[0]).toMatchObject({ originalIndex: 1, start: 12, end: 16 })
+    expect(Object.keys(remaining[0])).not.toContain('originalIndex')
+    expect(JSON.stringify(remaining[0])).not.toContain('originalIndex')
+  })
+
   it('leave the clips as they are when there are none', async () => {
     const { CLIPS_BY_CARD } = await load({})
     expect(CLIPS_BY_CARD['ap-chagi'][0]).toMatchObject({ source: 'course', start: 1200, end: 1235 })

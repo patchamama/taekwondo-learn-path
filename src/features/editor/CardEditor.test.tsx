@@ -81,6 +81,8 @@ describe('CardEditor', () => {
     expect(dialog.tagName).toBe('DIALOG')
     expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalledOnce()
     expect(dialog).toHaveClass('h-[100dvh]', 'w-screen', 'max-w-none', 'max-h-none')
+    expect(dialog.querySelector('[data-editor-body]')).toHaveClass('min-w-0', 'overflow-x-hidden')
+    expect(screen.getByRole('textbox', { name: 'Meaning (EN)' })).toHaveClass('min-w-0', 'w-full')
     const close = screen.getByRole('button', { name: 'Close' })
     expect(close).toHaveFocus()
     const body = screen.getByRole('textbox', { name: 'Meaning (EN)' }).closest('[data-editor-body]')!

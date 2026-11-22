@@ -1,5 +1,6 @@
 import { EditButton } from '../editor/EditButton'
 import { CardViewToggle } from '../../shared/components/CardViewToggle'
+import { CardMediaActions } from '../../shared/components/CardMediaActions'
 import { CardImages } from '../../shared/components/CardImages'
 import { partLabel } from '../../data/japanese'
 import { useState } from 'react'
@@ -30,6 +31,7 @@ export function TechniquesPage() {
   const { t, loc } = useT()
   const [cat, setCat] = useState<Category | 'all'>('all')
   const [watching, setWatching] = useState<string | null>(null)
+  const [play, setPlay] = useState(0)
   const learned = useAppStore((s) => s.learned)
   const toggle = useAppStore((s) => s.toggleLearned)
   const { visibleCard } = useBeltFilter()
@@ -71,9 +73,9 @@ export function TechniquesPage() {
                   </h3>
                 </div>
                 <div className="flex flex-col items-end gap-1">
-                <span className="flex items-center gap-1">
+                <span data-card-media-toolbar className="flex items-center gap-1">
                   <EditButton cardId={x.id} />
-                  <CardImages cardId={x.id} display="compact" />
+                  <CardMediaActions cardId={x.id} expanded={watching === x.id} onOpen={() => { setWatching(x.id); setPlay((n) => n + 1) }} />
                   <BeltBadge cardId={x.id} />
                 </span>
                 <label className="flex items-center gap-1 text-xs">
@@ -89,7 +91,7 @@ export function TechniquesPage() {
               </div>
               <p className="mt-1 font-medium">{loc(x.names)}</p>
               <div className="mt-1">
-                <CardImages cardId={x.id} display="details" />
+                <CardImages cardId={x.id} display="details" expanded={watching === x.id} />
               </div>
               <p className="mt-2 text-sm text-slate-700">
                 <span className="font-semibold">{t('breakdown')}: </span>
@@ -113,16 +115,10 @@ export function TechniquesPage() {
               )}
               {CLIPS_BY_CARD[x.id] && (
                 <div className="mt-3">
-                  <button
-                    className="rounded-lg border px-3 py-1 text-sm"
-                    aria-expanded={watching === x.id}
-                    onClick={() => setWatching(watching === x.id ? null : x.id)}
-                  >
-                    {watching === x.id ? t('hide') : `▶ ${t('watch')}`}
-                  </button>
                   {watching === x.id && (
                     <div className="mt-2">
-                      <ClipViewer cardId={x.id} />
+                      <button type="button" className="text-sm underline" onClick={() => setWatching(null)}>{t('hide')}</button>
+                      <ClipViewer key={play} cardId={x.id} />
                     </div>
                   )}
                 </div>

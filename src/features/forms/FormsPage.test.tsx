@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { useAppStore } from '../../shared/store/useAppStore'
 import { FormsPage } from './FormsPage'
 
+vi.mock('../editor/EditButton', () => ({ EditButton: ({ cardId }: { cardId: string }) => <button>Edit {cardId}</button> }))
 vi.mock('../../shared/hooks/useBeltFilter', () => ({ useBeltFilter: () => ({ visibleIndex: () => true }) }))
 vi.mock('../../data/forms', () => ({
   FORMS: [{ id: 'multi', ko: 'Multi form', hangul: '폼', kukkiwon: 'Multi', moves: 20, symbol: { en: 'Sky' }, meaning: { en: 'Sky meaning' } }],
@@ -24,7 +25,7 @@ vi.mock('../videos/FrameStrip', () => ({ FrameStrip: () => <div>Frames</div> }))
 vi.mock('../videos/ClipViewer', () => ({ useSourceLabel: () => (c: { label?: string }) => c.label ?? 'Course video' }))
 vi.mock('../../shared/components/SpeakButton', () => ({ SpeakButton: () => <button>Speak</button> }))
 
-beforeEach(() => useAppStore.setState({ lang: 'en' }))
+beforeEach(() => useAppStore.setState({ lang: 'en', cardView: 'details' }))
 const card = (name: string) => screen.getByText(name).closest('li')!
 
 describe('forms media S12', () => {
@@ -69,6 +70,40 @@ describe('forms media S12', () => {
     expect(single.getByText('Diagram with attribution')).toBeInTheDocument()
     expect(single.getByRole('button', { name: /Maximize/ })).toBeInTheDocument()
     expect(within(card('Empty form')).queryByRole('button', { name: /Maximize/ })).not.toBeInTheDocument()
-    expect(screen.getAllByRole('button', { name: 'Speak' })).toHaveLength(3)
+    expect(screen.getAllByRole('button', { name: 'Speak' })).toHaveLength(5)
   })
+})
+
+it('compact forms hide all inline media until a header video action expands and plays it', () => {
+  useAppStore.setState({ cardView: 'compact' })
+  render(<FormsPage />)
+  const multi = within(card('Multi form'))
+  expect(multi.queryByRole('tablist')).not.toBeInTheDocument()
+  expect(multi.queryByTestId('player')).not.toBeInTheDocument()
+  fireEvent.click(multi.getByRole('button', { name: 'Watch' }))
+  expect(multi.getByRole('tablist')).toBeInTheDocument()
+  expect(multi.getByTestId('player')).toHaveAttribute('data-autoplay', 'true')
+})
+
+it('keeps diagram-only forms accessible from the compact header', () => {
+  useAppStore.setState({ cardView: 'compact' })
+  render(<FormsPage />)
+  const single = within(card('Single form'))
+  expect(single.queryByText('Diagram with attribution')).not.toBeInTheDocument()
+  fireEvent.click(single.getByRole('button', { name: 'Floor pattern (top view)' }))
+  expect(single.getByText('Diagram with attribution')).toBeInTheDocument()
+})
+
+it('provides editing for every form category', () => {
+  render(<FormsPage />)
+  for (const id of ['multi', 'single', 'empty']) expect(screen.getByRole('button', { name: `Edit ${id}` })).toBeInTheDocument()
+})
+
+it('opens the selected custom form image in its own modal', () => {
+  render(<FormsPage />)
+  const multi = within(card('Multi form'))
+  fireEvent.click(multi.getByRole('tab', { name: 'Show image 1' }))
+  fireEvent.click(multi.getByRole('img'))
+  expect(screen.getByRole('dialog').querySelector('img')).toHaveAttribute('src', '/custom.jpg')
+  expect(screen.getByRole('dialog')).toHaveTextContent('Image owner')
 })

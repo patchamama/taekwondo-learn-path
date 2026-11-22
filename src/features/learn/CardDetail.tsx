@@ -1,5 +1,6 @@
 import { EditButton } from '../editor/EditButton'
 import { BeltBadge } from '../../shared/components/BeltBadge'
+import { CardMediaActions } from '../../shared/components/CardMediaActions'
 import { CardImages } from '../../shared/components/CardImages'
 import { partLabel } from '../../data/japanese'
 import { BookSynonym } from '../../shared/components/BookSynonym'
@@ -23,6 +24,7 @@ export function CardDetail({
 }) {
   const { t, loc } = useT()
   const [open, setOpen] = useState(defaultOpen)
+  const [play, setPlay] = useState(0)
   const c = CARD_BY_ID[cardId]
   if (!c) return null
   const kk = KUKKIWON_BY_ID[cardId]
@@ -46,24 +48,16 @@ export function CardDetail({
           </p>
           <p className="truncate text-sm text-slate-600">{loc(c.meaning)}</p>
         </button>
-        {hasMedia && (
-          <span aria-hidden title={t('watch')}>
-            🎬
-          </span>
-        )}
-        <span className="ml-auto flex shrink-0 items-center gap-1">
+        <span data-card-media-toolbar className="ml-auto flex shrink-0 items-center gap-1">
+          {hasMore && <span aria-hidden className="text-slate-400">{open ? '▲' : '▼'}</span>}
           <EditButton cardId={cardId} />
+          <CardMediaActions cardId={cardId} expanded={open} onOpen={() => { setOpen(true); setPlay((n) => n + 1) }} />
           <BeltBadge cardId={cardId} />
         </span>
-        {hasMore && (
-          <span aria-hidden className="text-slate-400">
-            {open ? '▲' : '▼'}
-          </span>
-        )}
       </div>
       {open && (
         <div className="grid gap-2 border-t px-3 py-3 text-sm">
-          <CardImages cardId={cardId} />
+          <CardImages cardId={cardId} display="details" expanded />
           {c.info && <p>{loc(c.info)}</p>}
           {c.kind === 'technique' && <BookSynonym cardId={cardId} />}
           {c.parts && c.parts.length > 0 && (
@@ -89,7 +83,7 @@ export function CardDetail({
               </span>
             </p>
           )}
-          {hasMedia && <ClipViewer cardId={cardId} autoplay={false} />}
+          {hasMedia && <ClipViewer key={play} cardId={cardId} autoplay={play > 0} />}
         </div>
       )}
     </li>

@@ -61,7 +61,7 @@ describe('EPUB supplements through the public clip inventory', () => {
     const courseIframe = courseHost.querySelector('iframe')!
     expect(courseHost).not.toHaveAttribute('hidden')
     expect(new URL(courseIframe.src).pathname).toBe(`/embed/${videoIdFor(clips[0], 'es')}`)
-    expect(platform.players[0].seekTo).toHaveBeenLastCalledWith(clips[0].start, true)
+    expect(platform.players[0].seekTo).toHaveBeenLastCalledWith(clips[0].start === 0 ? Math.min(1, Math.max(0, clips[0].end - 0.001)) : clips[0].start, true)
     expect(platform.players[0].playVideo).not.toHaveBeenCalled()
     expect(screen.getByRole('progressbar')).toHaveAttribute('max', String(clips[0].end - clips[0].start))
     const added = clips.find((c) => c.videoId === videoId)!
@@ -74,7 +74,7 @@ describe('EPUB supplements through the public clip inventory', () => {
     const addedHost = document.querySelector(`[data-video-source="${videoId}"]`)!
     expect(addedHost).not.toHaveAttribute('hidden')
     expect(new URL(addedHost.querySelector('iframe')!.src).pathname).toBe(`/embed/${videoId}`)
-    expect(platform.players[1].seekTo).toHaveBeenLastCalledWith(added.start, true)
+    expect(platform.players[1].seekTo).toHaveBeenLastCalledWith(added.start === 0 ? Math.min(1, Math.max(0, added.end - 0.001)) : added.start, true)
     expect(platform.players[1].playVideo).not.toHaveBeenCalled()
     expect(screen.getByRole('progressbar')).toHaveAttribute('max', String(added.end - added.start))
     fireEvent.click(courseTab)

@@ -1,29 +1,54 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ImgHTMLAttributes, type ReactNode } from 'react'
 import { CARD_BY_ID } from '../../data/cards'
 import { imagesFor } from '../../data/cardImages'
 import { useT } from '../i18n/useT'
 import { useAppStore } from '../store/useAppStore'
+import { MaximizeOverlay } from './Maximize'
+
+/** Open the selected image, not the entire card, using the shared accessible dialog. */
+export function ExpandableImage({ caption, disabled = false, onOpenChange, ...props }: ImgHTMLAttributes<HTMLImageElement> & { caption?: ReactNode; disabled?: boolean; onOpenChange?: (open: boolean) => void }) {
+  const { t } = useT()
+  const [open, setOpen] = useState(false)
+  if (disabled) return <img {...props} />
+  return <>
+    <button type="button" aria-label={`${t('maximize')}: ${props.alt ?? ''}`} className="block max-w-full text-left" onClick={(event) => {
+      // Existing full-window dialogs already maximize their content; do not nest focus traps.
+      if (event.currentTarget.closest('[role="dialog"]')) return
+      setOpen(true); onOpenChange?.(true)
+    }}>
+      <img {...props} />
+    </button>
+    {open && <MaximizeOverlay onClose={() => { setOpen(false); onOpenChange?.(false) }}>
+      <figure className="grid gap-2">
+        <img {...props} className="max-h-[85vh] w-full object-contain" />
+        {caption && <figcaption className="text-sm text-slate-600">{caption}</figcaption>}
+      </figure>
+    </MaximizeOverlay>}
+  </>
+}
 
 /** Images of a card: a hover/focus hint icon in compact view, the pictures themselves in details view. */
-export function CardImages({ cardId, display }: { cardId: string; display?: 'compact' | 'details' }) {
+export function CardImages({ cardId, display, expanded = false }: { cardId: string; display?: 'compact' | 'details'; expanded?: boolean }) {
   const { t, loc } = useT()
-  const view = useAppStore((s) => s.cardView)
+  const preference = useAppStore((s) => s.cardView)
+  const view = expanded ? 'details' : preference
   const [hover, setHover] = useState(false)
+  const [imageOpen, setImageOpen] = useState(false)
   const [broken, setBroken] = useState<Set<string>>(new Set())
   const images = imagesFor(cardId).filter((i) => !broken.has(i.src))
   const [frame, setFrame] = useState(0)
   const active = hover && view === 'compact' && (!display || display === view)
   useEffect(() => {
-    if (!active || images.length < 2) return
+    if (!active || imageOpen || images.length < 2) return
     const timer = window.setInterval(() => setFrame((n) => n + 1), 1500)
     return () => window.clearInterval(timer)
-  }, [active, images.length])
+  }, [active, imageOpen, images.length])
   const card = CARD_BY_ID[cardId]
   const title = card ? `${card.ko} — ${loc(card.meaning)}` : cardId
   if (images.length === 0 || (display && display !== view)) return null
   const current = images[frame % images.length]
   const img = (i: (typeof images)[number], cls: string) => (
-    <img
+    <ExpandableImage
       key={i.src}
       src={i.src}
       alt={i.caption ?? title}
@@ -31,6 +56,8 @@ export function CardImages({ cardId, display }: { cardId: string; display?: 'com
       loading="lazy"
       onError={() => setBroken((b) => new Set(b).add(i.src))}
       className={cls}
+      caption={[i.caption, i.source].filter(Boolean).join(' · ')}
+      onOpenChange={setImageOpen}
     />
   )
   if (view === 'details') {
@@ -46,7 +73,7 @@ export function CardImages({ cardId, display }: { cardId: string; display?: 'com
     )
   }
   return (
-    <span className="relative inline-block" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <span className="relative inline-block" onMouseEnter={() => setHover(true)} onMouseLeave={() => { if (!imageOpen) setHover(false) }}>
       <button
         type="button"
         aria-label={t('showImage')}
@@ -56,7 +83,7 @@ export function CardImages({ cardId, display }: { cardId: string; display?: 'com
         onClick={() => setHover(true)}
         onKeyDown={(e) => { if (e.key === 'Escape') setHover(false) }}
         onFocus={() => setHover(true)}
-        onBlur={() => setHover(false)}
+        onBlur={(e) => { if (!e.currentTarget.parentElement?.contains(e.relatedTarget)) setHover(false) }}
       >
         <svg
           aria-hidden="true"

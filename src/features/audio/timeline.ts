@@ -60,3 +60,39 @@ export function formatTime(seconds: number): string {
   const s = Math.max(0, Math.floor(seconds))
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 }
+
+/** Audio chapters can run for hours without changing the existing editor clock format. */
+export function formatAudioTime(seconds: number): string {
+  const s = Math.max(0, Math.floor(seconds))
+  const minutes = Math.floor(s / 60)
+  const remainder = String(s % 60).padStart(2, '0')
+  return s >= 3600
+    ? `${Math.floor(s / 3600)}:${String(minutes % 60).padStart(2, '0')}:${remainder}`
+    : `${minutes}:${remainder}`
+}
+
+/** Include each section's repeated visits and their trailing pauses, even with shuffled items. */
+export function chapterDurations(
+  steps: PlaybackStep[],
+  timeline: Timeline,
+  sectionOf: (id: string) => string | undefined,
+): Record<string, number> {
+  const durations: Record<string, number> = {}
+  let key: string | undefined
+  steps.forEach((step, index) => {
+    if ('id' in step) key = chapterKey(step, sectionOf)
+    if (key)
+      durations[key] =
+        (durations[key] ?? 0) +
+        (timeline.starts[index + 1] ?? timeline.total) -
+        timeline.starts[index]
+  })
+  return durations
+}
+
+export function chapterKey(
+  step: Exclude<PlaybackStep, { silence: number }>,
+  sectionOf: (id: string) => string | undefined,
+): string | undefined {
+  return step.pass === 'description' || step.role === 'info' ? 'descriptions' : sectionOf(step.id)
+}
