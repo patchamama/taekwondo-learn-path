@@ -143,6 +143,7 @@ export const STRINGS = {
     de: 'Tippe die Wortbausteine der Reihe nach',
     es: 'Toca los bloques de palabras en orden',
   },
+  synonymBook: { en: 'Synonym (book)', de: 'Synonym (Buch)', es: 'Sinónimo (libro)' },
   lessonComplete: { en: 'Lesson complete!', de: 'Lektion geschafft!', es: '¡Lección completada!' },
   accuracy: { en: 'accuracy', de: 'Genauigkeit', es: 'precisión' },
   wordsRecap: {

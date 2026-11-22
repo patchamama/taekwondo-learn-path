@@ -41,3 +41,17 @@ describe('historical distinctions', () => {
     }
   })
 })
+
+describe('Poomse reading from the German book', () => {
+  it('summarises the forms and contrasts Poomse with Hyong in every language', () => {
+    for (const language of languages) {
+      const forms = HISTORY_CONTEXT.find((topic) => topic.id === 'poomse-forms')
+      const diff = HISTORY_CONTEXT.find((topic) => topic.id === 'poomse-vs-hyong')
+      expect(forms, 'poomse-forms').toBeDefined()
+      expect(diff, 'poomse-vs-hyong').toBeDefined()
+      expect(forms!.paragraphs.map((p) => p[language]).join(' ')).toMatch(/Taegeuk|Taegŭk|Taegük/)
+      expect(diff!.paragraphs.map((p) => p[language]).join(' ')).toMatch(/Hyong/)
+      expect(diff!.paragraphs.map((p) => p[language]).join(' ')).toMatch(/24/)
+    }
+  })
+})

@@ -250,6 +250,56 @@ export const HISTORY_CONTEXT: { id: string; title: Loc; paragraphs: Loc[] }[] = 
       ),
     ],
   },
+  {
+    id: 'poomse-forms',
+    title: L(
+      'Poomse: what the forms are for',
+      'Poomse: wozu die Formen da sind',
+      'Poomse: para qué sirven las formas',
+    ),
+    paragraphs: [
+      L(
+        'A German Taekwondo guide notes that many see forms as a necessary evil for exams. Competition-minded and leisure athletes often reject them, because an exam form lacks the flow of sparring and its meaning is rarely explained. Students then pass on movements they do not understand, and many candidates fail the 1st Dan exam because of it.',
+        'Ein deutscher Taekwondo-Ratgeber hält fest, dass viele Formen als notwendiges Übel für die Prüfung ansehen. Wettkampf- und Freizeitsportler lehnen sie oft ab, weil einer Prüfungsform der Fluss des Kampfes fehlt und ihr Sinn selten erklärt wird. Schüler geben dann Bewegungen weiter, die sie nicht verstehen; viele Anwärter scheitern deshalb an der 1.-Dan-Prüfung.',
+        'Una guía alemana de Taekwondo señala que muchos ven las formas como un mal necesario para el examen. Los deportistas de competición y de ocio suelen rechazarlas, porque a una forma de examen le falta el fluir del combate y casi nunca se explica su sentido. Los alumnos transmiten entonces movimientos que no entienden, y muchos candidatos suspenden por ello el examen de 1.er Dan.',
+      ),
+      L(
+        'Forms arose when sparring was done without protective gear: they let you practise techniques safely. They also train concentration, rhythm, breathing and self-defence situations, and every form starts and ends on the same spot. The ritual is part of it: the salute (charyot, kyongne), the ready stance (junbi) and the start (sijak) and end (guman). The shout (gihap) is used once, on the last technique, in the first seven Taegeuk forms, and twice in the remaining ten.',
+        'Formen entstanden, als ohne Schutzausrüstung trainiert wurde: Sie erlauben, Techniken gefahrlos zu üben. Sie schulen außerdem Konzentration, Rhythmus, Atmung und Selbstverteidigungssituationen, und jede Form beginnt und endet am selben Punkt. Zum Ritual gehören Gruß (Charyŏt, Kyŏngne), Vorbereitungsstellung (Junbi), Beginn (Sijak) und Ende (Gŭman). Der Kampfschrei (Gihap) wird in den ersten sieben Taegeuk einmal bei der Schlusstechnik ausgeführt, in den restlichen zehn Formen zweimal.',
+        'Las formas nacieron cuando se entrenaba sin protecciones: permiten practicar técnicas sin riesgo. También entrenan concentración, ritmo, respiración y situaciones de defensa personal, y cada forma empieza y termina en el mismo punto. El ritual forma parte: el saludo (charyot, kyongne), la posición de preparación (junbi), el inicio (sijak) y el final (guman). El grito (gihap) se da una vez, en la última técnica, en las siete primeras Taegeuk, y dos veces en las diez restantes.',
+      ),
+      L(
+        'Taegeuk is the youngest of the form lines in Korea. When the Korean Taekwondo Association was founded, its member schools could not agree on one of their nine lines, so a committee created new forms: Palgwe, Taegeuk and the master forms. Palgwe was dropped soon after. The book glosses Taegeuk freely as "greatness of eternity"; the eight forms use the eight trigrams of the I Ching, four of which are on the Korean flag.',
+        'Taegeuk ist der jüngste Zweig der Formenrichtungen in Korea. Bei der Gründung des koreanischen Taekwondo-Verbandes konnten sich die Mitgliedsschulen nicht auf eine ihrer neun Richtungen einigen; ein Gremium schuf deshalb neue Formen: Palgwe, Taegeuk und die Meisterformen. Palgwe wurde bald wieder verworfen. Das Buch übersetzt Taegeuk frei mit „Größe der Ewigkeit“; die acht Formen verwenden die acht Trigramme des I Ging, von denen vier auf der koreanischen Flagge stehen.',
+        'Taegeuk es la línea de formas más joven de Corea. Al fundarse la Asociación Coreana de Taekwondo, sus escuelas no pudieron ponerse de acuerdo en una de sus nueve líneas, así que un comité creó formas nuevas: Palgwe, Taegeuk y las formas de maestro. Palgwe se abandonó poco después. El libro traduce Taegeuk libremente como «grandeza de la eternidad»; las ocho formas usan los ocho trigramas del I Ching, cuatro de los cuales están en la bandera coreana.',
+      ),
+      L(
+        'Form competitions grew on top of this: Germany has held national poomse championships since 1982, and after a 1986 decision of the European Taekwondo Union, European poomse championships have been held since 1988.',
+        'Darauf baute der Formenwettbewerb auf: In Deutschland gibt es seit 1982 Poomse-Meisterschaften auf Bundesebene, und nach einem Beschluss der Europäischen Taekwondo Union von 1986 finden seit 1988 europäische Poomse-Meisterschaften statt.',
+        'Sobre esa base creció la competición de formas: Alemania celebra campeonatos nacionales de poomse desde 1982 y, tras una decisión de 1986 de la Unión Europea de Taekwondo, hay campeonatos europeos de poomse desde 1988.',
+      ),
+    ],
+  },
+  {
+    id: 'poomse-vs-hyong',
+    title: L(
+      'Poomse (Kukkiwon/WT) versus Hyong (ITF)',
+      'Poomse (Kukkiwon/WT) gegenüber Hyong (ITF)',
+      'Poomse (Kukkiwon/WT) frente a Hyong (ITF)',
+    ),
+    paragraphs: [
+      L(
+        'The two styles use different forms and are not interchangeable. Kukkiwon/WT teaches Poomse: the eight Taegeuk forms for the colour belts, numbered Il Jang to Pal Jang, plus separate black-belt poomse. ITF/Chang-Hon teaches 24 Hyong (teul), which carry names taken from Korean history instead of numbers, such as Chon-Ji, and adds three beginner exercises called saju.',
+        'Die beiden Stile verwenden verschiedene Formen, die nicht austauschbar sind. Kukkiwon/WT lehrt Poomse: die acht Taegeuk-Formen für die Farbgurte, nummeriert von Il Jang bis Pal Jang, dazu eigene Schwarzgurt-Poomse. ITF/Chang-Hon lehrt 24 Hyong (Teul), die statt Nummern Namen aus der koreanischen Geschichte tragen, etwa Chon-Ji, und ergänzt drei Anfängerübungen namens Saju.',
+        'Los dos estilos usan formas distintas y no son intercambiables. Kukkiwon/WT enseña Poomse: las ocho formas Taegeuk para los cinturones de color, numeradas de Il Jang a Pal Jang, más poomse propias de cinturón negro. ITF/Chang-Hon enseña 24 Hyong (teul), que llevan nombres tomados de la historia coreana en vez de números, como Chon-Ji, y añade tres ejercicios de principiante llamados saju.',
+      ),
+      L(
+        'The execution also differs. In the club material Poomse swing the arms from the shoulders and Hyong start from the hip. ITF patterns are typically performed with a characteristic rise and fall of the body, which Poomse do not use in the same way. The sources of the names differ too: Taegeuk refers to the I Ching trigrams, Hyong to historical figures and events.',
+        'Auch die Ausführung unterscheidet sich. Im Vereinsmaterial holen Poomse aus Schulterhöhe aus, Hyong starten von der Hüfte. ITF-Muster werden typischerweise mit einem charakteristischen Heben und Senken des Körpers ausgeführt, das Poomse so nicht verwenden. Auch die Namensquellen unterscheiden sich: Taegeuk bezieht sich auf die Trigramme des I Ging, Hyong auf historische Persönlichkeiten und Ereignisse.',
+        'La ejecución también difiere. En el material del club los Poomse sacan los brazos desde los hombros y los Hyong parten de la cadera. Los patrones ITF suelen hacerse con un característico subir y bajar del cuerpo que los Poomse no usan del mismo modo. Las fuentes de los nombres también difieren: Taegeuk remite a los trigramas del I Ching, Hyong a personajes y hechos históricos.',
+      ),
+    ],
+  },
 ]
 
 export const CHOI: Loc[] = [

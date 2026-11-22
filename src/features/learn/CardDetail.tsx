@@ -1,3 +1,4 @@
+import { BookSynonym } from '../../shared/components/BookSynonym'
 import { useState } from 'react'
 import { CARD_BY_ID } from '../../data/cards'
 import { CLIPS_BY_CARD } from '../../data/clips'
@@ -55,6 +56,7 @@ export function CardDetail({
       {open && (
         <div className="grid gap-2 border-t px-3 py-3 text-sm">
           {c.info && <p>{loc(c.info)}</p>}
+          {c.kind === 'technique' && <BookSynonym cardId={cardId} />}
           {c.parts && c.parts.length > 0 && (
             <p className="text-slate-700">
               <span className="font-semibold">{t('breakdown')}: </span>

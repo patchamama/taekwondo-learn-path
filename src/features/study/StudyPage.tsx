@@ -1,3 +1,4 @@
+import { BookSynonym } from '../../shared/components/BookSynonym'
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useBelts } from '../../shared/store/useBelts'
@@ -40,6 +41,11 @@ function ReadingCard({ cardId }: { cardId: string }) {
       </h3>
       <p className="font-medium">{loc(c.meaning)}</p>
       {c.info && <p className="mt-2 text-sm">{loc(c.info)}</p>}
+      {c.kind === 'technique' && (
+        <div className="mt-1 text-sm">
+          <BookSynonym cardId={cardId} />
+        </div>
+      )}
       {c.parts && c.parts.length > 0 && (
         <p className="mt-2 text-sm text-slate-700">
           <span className="font-semibold">{t('breakdown')}: </span>
