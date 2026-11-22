@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { StudyPage } from '../../features/study/StudyPage'
@@ -6,6 +7,20 @@ import { PracticePage } from '../../features/learn/LessonPage'
 import { SettingsPage } from '../../features/settings/SettingsPage'
 import { useAppStore } from '../store/useAppStore'
 import { Layout } from './Layout'
+
+function openLayout() {
+  return render(<MemoryRouter><Routes><Route element={<Layout />}>
+    <Route index element={<p>Home content</p>} />
+    <Route path="settings" element={<p>Settings content</p>} />
+    <Route path="study/:level" element={<p>Study content</p>} />
+    <Route path="history" element={<p>History content</p>} />
+  </Route></Routes></MemoryRouter>)
+}
+
+beforeEach(() => {
+  useAppStore.getState().reset()
+  useAppStore.setState({ lang: 'en', maxBelt: 2, onlyBelt: null, listening: false, quizAutoCheck: false })
+})
 
 function open(path: string) {
   return render(<MemoryRouter initialEntries={[path]}><Routes>
@@ -19,11 +34,6 @@ function open(path: string) {
     </Route>
   </Routes></MemoryRouter>)
 }
-
-beforeEach(() => {
-  useAppStore.getState().reset()
-  useAppStore.setState({ lang: 'en', maxBelt: 2, onlyBelt: null, listening: false, quizAutoCheck: false })
-})
 
 describe('Persistent layout navigation', () => {
   it('keeps Study selected through actual Kup links without replacing the shell or duplicating its local slider', () => {
@@ -121,5 +131,94 @@ describe('Persistent layout navigation', () => {
     open('/')
     expect(screen.getByRole('link', { name: 'Path' })).toHaveAttribute('aria-current', 'page')
     expect(screen.getByRole('link', { name: 'Study' })).not.toHaveAttribute('aria-current')
+  })
+})
+
+describe('global search', () => {
+  it('places the search action before settings and preserves navigation and settings', async () => {
+    const user = userEvent.setup()
+    openLayout()
+    const search = screen.getByRole('button', { name: 'Search the site' })
+    const settings = screen.getByRole('link', { name: 'Settings' })
+    expect(search.compareDocumentPosition(settings) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    expect(settings).toHaveAttribute('href', '/settings')
+    expect(screen.getByRole('link', { name: 'History' })).toHaveAttribute('href', '/history')
+    await user.click(settings)
+    expect(screen.getByText('Settings content')).toBeInTheDocument()
+    await user.click(screen.getByRole('link', { name: 'History' }))
+    expect(screen.getByText('History content')).toBeInTheDocument()
+  })
+
+  it('opens by keyboard, contains focus, closes on Escape, and restores the trigger', async () => {
+    const user = userEvent.setup()
+    openLayout()
+    const trigger = screen.getByRole('button', { name: 'Search the site' })
+    trigger.focus()
+    await user.keyboard('{Enter}')
+    const dialog = screen.getByRole('dialog', { name: 'Search the site' })
+    expect(dialog).toHaveAttribute('aria-modal', 'true')
+    const input = within(dialog).getByRole('textbox', { name: 'Search query' })
+    expect(input).toHaveFocus()
+    expect(within(dialog).getByText(/Enter a term/)).toBeInTheDocument()
+    await user.tab({ shift: true })
+    expect(within(dialog).getByRole('button', { name: 'Close search' })).toHaveFocus()
+    await user.tab()
+    expect(input).toHaveFocus()
+    screen.getByRole('link', { name: 'Settings' }).focus()
+    expect(dialog.contains(document.activeElement)).toBe(true)
+    await user.keyboard('{Escape}')
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(trigger).toHaveFocus()
+  })
+
+  it('searches the real corpus locally, groups results, and navigates to existing study routes', async () => {
+    const user = userEvent.setup()
+    openLayout()
+    await user.click(screen.getByRole('button', { name: 'Search the site' }))
+    const dialog = screen.getByRole('dialog')
+    const input = within(dialog).getByRole('textbox', { name: 'Search query' })
+    fireEvent.change(input, { target: { value: 'taekwondo' } })
+    expect(within(dialog).getByRole('heading', { name: 'History' })).toBeInTheDocument()
+    expect(within(dialog).getByRole('heading', { name: 'Background' })).toBeInTheDocument()
+    fireEvent.change(input, { target: { value: 'front kick' } })
+    expect(within(dialog).getByRole('heading', { name: 'Vocabulary and techniques' })).toBeInTheDocument()
+    const link = within(dialog).getAllByRole('link').find((node) => /ap-chagi/.test(node.textContent ?? ''))!
+    expect(link).toHaveAttribute('href', expect.stringMatching(/^\/study\/\d+$/))
+    await user.click(link)
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(screen.getByText('Study content')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Search the site' })).toHaveFocus()
+  })
+
+  it('retains unmatched queries, offers clear, and closes with its button', async () => {
+    const user = userEvent.setup()
+    openLayout()
+    const trigger = screen.getByRole('button', { name: 'Search the site' })
+    await user.click(trigger)
+    const input = screen.getByRole('textbox', { name: 'Search query' })
+    fireEvent.change(input, { target: { value: 'zzqxqxzz' } })
+    expect(screen.getByRole('status')).toHaveTextContent('No results. Try another term or clear your search.')
+    expect(input).toHaveValue('zzqxqxzz')
+    await user.click(screen.getByRole('button', { name: 'Clear search' }))
+    expect(input).toHaveValue('')
+    expect(input).toHaveFocus()
+    await user.click(screen.getByRole('button', { name: 'Close search' }))
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(trigger).toHaveFocus()
+  })
+
+  it.each([
+    ['de', 'Website durchsuchen', 'Suchbegriff', 'Gib einen Begriff', 'Wortschatz und Techniken', 'Vorwärtsfußstoß'],
+    ['es', 'Buscar en el sitio', 'Término de búsqueda', 'Escribe un término', 'Vocabulario y técnicas', 'patada frontal'],
+  ] as const)('localizes search in %s and accepts translated terms', async (lang, title, label, empty, group, query) => {
+    useAppStore.setState({ lang })
+    const user = userEvent.setup()
+    openLayout()
+    await user.click(screen.getByRole('button', { name: title }))
+    const dialog = screen.getByRole('dialog', { name: title })
+    expect(within(dialog).getByText(new RegExp(empty))).toBeInTheDocument()
+    fireEvent.change(within(dialog).getByRole('textbox', { name: label }), { target: { value: query } })
+    expect(within(dialog).getByRole('heading', { name: group })).toBeInTheDocument()
+    expect(within(dialog).getAllByRole('link').some((link) => /ap-chagi/.test(link.textContent ?? ''))).toBe(true)
   })
 })

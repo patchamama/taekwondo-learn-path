@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CARD_BY_ID } from '../../data/cards'
 import { cardBeltIndex } from '../../data/levels'
 import { OVERRIDES, type CardImageOverride, type CardOverride } from '../../data/overrides'
 import { useT } from '../../shared/i18n/useT'
 import { useBelts } from '../../shared/store/useBelts'
 import type { Loc } from '../../shared/i18n/types'
-import { health, saveCard, translateWithAi, type Lang as AiLang } from './api'
+import { health, saveCard, setCardVisibility, translateWithAi, type Lang as AiLang } from './api'
 import { ClipsEditor } from './ClipsEditor'
 import { ImagePicker } from './ImagePicker'
 
@@ -29,7 +29,9 @@ export function CardEditor({
   onClose: () => void
   onSaved?: () => void
 }) {
-  const { t } = useT()
+  const { t, loc } = useT()
+  const text = (en: string, de: string, es: string) => loc({ en, de, es })
+  const [confirmHide, setConfirmHide] = useState(false)
   const belts = useBelts()
   const card = CARD_BY_ID[cardId]
   const existing: CardOverride = OVERRIDES[cardId] ?? {}
@@ -50,6 +52,20 @@ export function CardEditor({
   const [from, setFrom] = useState<AiLang>('en')
   const [translating, setTranslating] = useState(false)
   const [aiNote, setAiNote] = useState('')
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    const opener = document.activeElement
+    const dialog = dialogRef.current!
+    // The native modal supplies top-layer rendering, background inertness and Tab containment.
+    dialog.showModal()
+    closeRef.current?.focus()
+    return () => {
+      dialog.close()
+      if (opener instanceof HTMLElement && opener.isConnected) opener.focus()
+    }
+  }, [])
 
   useEffect(() => {
     let alive = true
@@ -64,6 +80,19 @@ export function CardEditor({
     setError('')
     try {
       await saveCard(cardId, override)
+      setState('saved')
+      onSaved()
+    } catch (e) {
+      setError((e as Error).message)
+      setState('idle')
+    }
+  }
+
+  const hide = async () => {
+    setState('saving')
+    setError('')
+    try {
+      await setCardVisibility(cardId, true)
       setState('saved')
       onSaved()
     } catch (e) {
@@ -128,27 +157,34 @@ export function CardEditor({
   )
 
   return (
-    <div className="fixed inset-0 z-40 flex items-start justify-center overflow-y-auto bg-black/40 p-4">
-      <div
-        role="dialog"
-        aria-modal="true"
-        aria-label={`${t('edEdit')}: ${card.ko}`}
-        className="grid w-full max-w-2xl gap-4 rounded-2xl bg-white p-5 shadow-xl"
-      >
-        <div className="flex items-center justify-between">
+    <dialog
+      ref={dialogRef}
+      aria-modal="true"
+      aria-label={`${t('edEdit')}: ${card.ko}`}
+      onCancel={(event) => {
+        event.preventDefault()
+        if (picker) setPicker(false)
+        else onClose()
+      }}
+      className="fixed inset-0 m-0 h-[100dvh] max-h-none w-screen max-w-none overflow-hidden bg-white p-0 text-slate-900 backdrop:bg-black/40"
+    >
+      <div className="grid h-full min-h-0 grid-rows-[auto_minmax(0,1fr)_auto]">
+        <div className="flex items-center justify-between gap-3 border-b px-4 py-3 sm:px-6">
           <h2 className="text-lg font-bold">
             {t('edEdit')}: {card.ko}
           </h2>
           <button
             type="button"
-            aria-label="Close"
+            ref={closeRef}
+            aria-label={t('close')}
             onClick={onClose}
-            className="rounded-full border px-2"
+            className="h-11 w-11 shrink-0 rounded-full border focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-600"
           >
             ✕
           </button>
         </div>
 
+        <div data-editor-body className="grid min-h-0 content-start gap-4 overflow-y-auto overscroll-contain p-4 sm:p-6">
         <fieldset className="grid gap-3">
           <legend className="font-semibold text-slate-600">{t('edText')}</legend>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -247,13 +283,19 @@ export function CardEditor({
 
         <ClipsEditor cardId={cardId} onSaved={onSaved} />
 
+        {confirmHide && <section role="alert" className="grid gap-2 rounded-lg border border-amber-600 p-3">
+          <p>{text('Hiding is not deletion. Saved edits, media and references remain. Unsaved text changes are not saved. Unhide later using Hidden cards.', 'Ausblenden ist kein Löschen. Gespeicherte Änderungen, Medien und Referenzen bleiben. Ungespeicherte Texte werden nicht gespeichert. Unter Verborgene Karten wieder einblenden.', 'Ocultar no es eliminar. Ediciones guardadas, medios y referencias se conservan. Los textos sin guardar no se guardan. Puedes mostrarla desde Tarjetas ocultas.')}</p>
+          <button type="button" disabled={state !== 'idle'} onClick={hide} className="min-h-11 rounded border border-amber-700 px-3 py-2">{text('Confirm hide', 'Ausblenden bestätigen', 'Confirmar ocultar')}</button>
+          <button type="button" disabled={state !== 'idle'} onClick={() => setConfirmHide(false)} className="min-h-11 rounded border px-3 py-2">{text('Keep visible', 'Sichtbar lassen', 'Mantener visible')}</button>
+        </section>}
         {error && (
           <p role="alert" className="text-sm text-red-700">
             {error}
           </p>
         )}
 
-        <div className="flex flex-wrap items-center gap-3">
+        </div>
+        <div className="flex flex-wrap items-center gap-3 border-t bg-white px-4 py-3 sm:px-6">
           <button
             type="button"
             disabled={state !== 'idle'}
@@ -270,6 +312,7 @@ export function CardEditor({
           >
             {t('edReset')}
           </button>
+          <button type="button" disabled={state !== 'idle'} onClick={() => setConfirmHide(true)} className="min-h-11 rounded border px-3 py-2 text-sm">{text('Hide card', 'Karte ausblenden', 'Ocultar tarjeta')}</button>
           {state === 'saved' && <span className="text-sm text-emerald-700">{t('edSaved')}</span>}
         </div>
       </div>
@@ -283,6 +326,6 @@ export function CardEditor({
           }}
         />
       )}
-    </div>
+    </dialog>
   )
 }

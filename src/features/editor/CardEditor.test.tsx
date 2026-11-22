@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 import { CARD_BY_ID } from '../../data/cards'
 import { useAppStore } from '../../shared/store/useAppStore'
 import { resetEditorCache } from './api'
@@ -8,9 +8,32 @@ import { CardEditor } from './CardEditor'
 import { EditButton } from './EditButton'
 
 const calls: { url: string; init?: RequestInit }[] = []
+const dialogMethods = ['showModal', 'close'] as const
+const originalDialogMethods = dialogMethods.map((key) => Object.getOwnPropertyDescriptor(HTMLDialogElement.prototype, key))
+beforeAll(() => {
+  for (const key of dialogMethods) {
+    if (!HTMLDialogElement.prototype[key]) {
+      Object.defineProperty(HTMLDialogElement.prototype, key, { configurable: true, value() {} })
+    }
+  }
+})
+afterAll(() => {
+  dialogMethods.forEach((key, i) => {
+    const original = originalDialogMethods[i]
+    if (original) Object.defineProperty(HTMLDialogElement.prototype, key, original)
+    else Reflect.deleteProperty(HTMLDialogElement.prototype, key)
+  })
+})
 
 beforeEach(() => {
   calls.length = 0
+  // JSDOM does not implement native dialog lifecycle or keyboard handling.
+  vi.spyOn(HTMLDialogElement.prototype, 'showModal').mockImplementation(function (this: HTMLDialogElement) {
+    this.setAttribute('open', '')
+  })
+  vi.spyOn(HTMLDialogElement.prototype, 'close').mockImplementation(function (this: HTMLDialogElement) {
+    this.removeAttribute('open')
+  })
   resetEditorCache()
   useAppStore.setState({ lang: 'en' })
   vi.stubGlobal(
@@ -23,9 +46,69 @@ beforeEach(() => {
     }),
   )
 })
-afterEach(() => vi.unstubAllGlobals())
+afterEach(() => {
+  vi.unstubAllGlobals()
+  vi.restoreAllMocks()
+})
 
 describe('CardEditor', () => {
+  it('confirms soft hiding and writes visibility only, never overrides or deletion', async () => {
+    const onSaved = vi.fn()
+    render(<CardEditor cardId="basic-dojang" onClose={() => {}} onSaved={onSaved} />)
+    fireEvent.change(screen.getByRole('textbox', { name: 'Meaning (EN)' }), { target: { value: 'Unsaved draft' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Hide card' }))
+    expect(calls.filter((c) => c.init?.method === 'PUT')).toHaveLength(0)
+    expect(screen.getByText(/Hiding is not deletion/)).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Keep visible' }))
+    expect(calls.filter((c) => c.init?.method === 'PUT')).toHaveLength(0)
+    fireEvent.click(screen.getByRole('button', { name: 'Hide card' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Confirm hide' }))
+    await waitFor(() => expect(onSaved).toHaveBeenCalledOnce())
+    const writes = calls.filter((c) => c.init?.method === 'PUT')
+    expect(writes).toHaveLength(1)
+    expect(writes[0].url).toBe('/api/cards/basic-dojang/visibility')
+    expect(JSON.parse(String(writes[0].init?.body))).toEqual({ hidden: true })
+    expect(calls.some((c) => c.init?.method === 'DELETE')).toBe(false)
+  })
+
+  it('opens a viewport dialog with a scrolling body, persistent actions and focus restoration', () => {
+    const trigger = document.createElement('button')
+    document.body.append(trigger)
+    trigger.focus()
+    const onClose = vi.fn()
+    const { unmount } = render(<CardEditor cardId="basic-dojang" onClose={onClose} />)
+    const dialog = screen.getByRole('dialog', { name: 'Edit card: dojang' })
+    expect(dialog.tagName).toBe('DIALOG')
+    expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalledOnce()
+    expect(dialog).toHaveClass('h-[100dvh]', 'w-screen', 'max-w-none', 'max-h-none')
+    const close = screen.getByRole('button', { name: 'Close' })
+    expect(close).toHaveFocus()
+    const body = screen.getByRole('textbox', { name: 'Meaning (EN)' }).closest('[data-editor-body]')!
+    expect(body).toHaveClass('min-h-0', 'overflow-y-auto')
+    expect(body).not.toContainElement(screen.getByRole('button', { name: 'Save' }))
+    expect(body).not.toContainElement(close)
+    fireEvent.click(close)
+    expect(onClose).toHaveBeenCalledOnce()
+    unmount()
+    expect(trigger).toHaveFocus()
+    trigger.remove()
+  })
+
+  it('handles native Escape cancellation without saving and preserves the editor behind the image picker', () => {
+    const onClose = vi.fn()
+    render(<CardEditor cardId="ap-chagi" onClose={onClose} />)
+    const editor = screen.getByRole('dialog')
+    fireEvent.change(screen.getByRole('textbox', { name: 'Meaning (EN)' }), { target: { value: 'Draft kick' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Add image…' }))
+    fireEvent.keyDown(window, { key: 'Escape' })
+    expect(screen.getAllByRole('dialog')).toHaveLength(1)
+    expect(onClose).not.toHaveBeenCalled()
+    expect(screen.getByRole('textbox', { name: 'Meaning (EN)' })).toHaveValue('Draft kick')
+    fireEvent(editor, new Event('cancel', { bubbles: false, cancelable: true }))
+    expect(onClose).toHaveBeenCalledOnce()
+    expect(calls.some((c) => c.init?.method === 'PUT')).toBe(false)
+  })
+
   it('starts from the current card, saves only what changed and lets the Kup be moved with a listbox', async () => {
     const onSaved = vi.fn()
     render(

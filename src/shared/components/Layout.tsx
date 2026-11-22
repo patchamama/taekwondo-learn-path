@@ -1,4 +1,6 @@
 import { ChatBot } from '../../features/bot/ChatBot'
+import { GlobalSearch } from '../../features/search/GlobalSearch'
+import { CatalogueEditor } from '../../features/editor/CatalogueEditor'
 import { AudioSourceBadge } from './AudioSourceBadge'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { LANGS } from '../i18n/types'
@@ -53,6 +55,8 @@ export function Layout() {
               </option>
             ))}
           </select>
+          <CatalogueEditor />
+          <GlobalSearch />
           <NavLink
             to="/settings"
             aria-label={t('navSettings')}

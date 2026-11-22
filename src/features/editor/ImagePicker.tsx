@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { CARD_BY_ID } from '../../data/cards'
+import { isVisible } from '../../data/visibility'
 import { CARDS_WITH_CLIPS, CLIPS_BY_CARD, FRAMES_PER_CLIP, clipKey } from '../../data/clips'
 import { MaximizeOverlay } from '../../shared/components/Maximize'
 import { useT } from '../../shared/i18n/useT'
@@ -31,7 +32,7 @@ function ClipsTab({ onPick }: { onPick: (i: PickedImage) => void }) {
     const needle = norm(q)
     return CARDS_WITH_CLIPS.map((id) => CARD_BY_ID[id]).filter(
       (c) =>
-        c &&
+        c && isVisible(c.id) &&
         (!needle ||
           norm(
             `${c.id} ${c.ko} ${c.hangul} ${c.meaning.en} ${c.meaning.de} ${c.meaning.es}`,

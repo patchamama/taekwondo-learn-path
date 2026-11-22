@@ -3,6 +3,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { useAppStore } from '../../shared/store/useAppStore'
 import { ImagePicker } from './ImagePicker'
 
+vi.mock('../../data/visibility', () => ({ isVisible: (id: string) => id !== 'dollyo-chagi' }))
+
 const routes: Record<string, unknown> = {}
 const calls: { url: string; init?: RequestInit }[] = []
 
@@ -48,6 +50,12 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals())
 
 describe('ImagePicker', () => {
+  it('excludes hidden cards even when searched by exact ID', () => {
+    render(<ImagePicker onPick={() => {}} onClose={() => {}} />)
+    fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'dollyo-chagi' } })
+    expect(screen.queryByRole('group', { name: 'dollyo-chagi' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /^dollyo-chagi / })).not.toBeInTheDocument()
+  })
   it('clips tab: finds a technique by name and picks one of its frames', () => {
     const onPick = vi.fn()
     render(<ImagePicker onPick={onPick} onClose={() => {}} />)
