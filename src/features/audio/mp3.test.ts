@@ -4,7 +4,9 @@ import { encodeMp3 } from './mp3'
 describe('encodeMp3', () => {
   it('encodes mono samples into a valid, much smaller MP3 stream', () => {
     const rate = 16000
-    const samples = new Float32Array(rate * 2).map((_, i) => Math.sin((2 * Math.PI * 440 * i) / rate) * 0.5)
+    const samples = new Float32Array(rate * 2).map(
+      (_, i) => Math.sin((2 * Math.PI * 440 * i) / rate) * 0.5,
+    )
     const mp3 = encodeMp3(samples, rate)
     expect(mp3.byteLength).toBeGreaterThan(500)
     expect(mp3.byteLength).toBeLessThan(samples.length * 2 * 0.3)

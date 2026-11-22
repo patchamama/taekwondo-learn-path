@@ -1,5 +1,5 @@
 import { audioFile } from '../../data/audioFiles'
-import type { AudioItem } from '../../data/audioManifest'
+import { SECTION_ORDER, type AudioItem } from '../../data/audioManifest'
 import type { Lang } from '../../shared/i18n/types'
 
 export interface AudioOptions {
@@ -38,7 +38,10 @@ export function selectItems(items: AudioItem[], o: AudioOptions): AudioItem[] {
 
 /** Korean word, 2 s, meaning in the chosen language (optionally the Japanese term), then the descriptions. */
 export function buildPlayback(items: AudioItem[], o: AudioOptions): PlaybackStep[] {
-  const chosen = selectItems(items, o)
+  // grouped by section so the chapters are contiguous; the order inside a section is the course order
+  const chosen = selectItems(items, o).sort(
+    (a, b) => SECTION_ORDER.indexOf(a.section) - SECTION_ORDER.indexOf(b.section),
+  )
   const steps: PlaybackStep[] = []
   for (const i of chosen) {
     steps.push(

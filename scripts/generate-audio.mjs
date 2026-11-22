@@ -6,9 +6,10 @@
 //   node scripts/generate-audio.mjs --provider openai  # better Korean; needs OPENAI_API_KEY (.env.local)
 //   node scripts/generate-audio.mjs --sample           # 12 Korean words per provider in audio-sample/
 //   node scripts/generate-audio.mjs --dry-run          # only count what is missing
+//   node scripts/generate-audio.mjs --durations        # rebuild public/audio/durations.json (progress bar)
 // Other flags: --force, --only ko|en|de|es|ja|info, --limit N, --jobs N (parallel requests; default 4 for openai)
-import { execFileSync, spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs'
+import { execFile, execFileSync, spawnSync } from 'node:child_process'
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import process from 'node:process'
@@ -97,6 +98,29 @@ async function synth(track, text, wav) {
   throw new Error(`Unknown provider "${PROVIDER}"`)
 }
 
+/** public/audio/durations.json: seconds of every clip, so the player can draw its progress bar and seek. */
+async function writeDurations() {
+  const root = join(ROOT, 'public', 'audio')
+  const files = readdirSync(root, { recursive: true }).filter((f) => String(f).endsWith('.mp3')).map(String).sort()
+  const out = {}
+  let next = 0
+  const probe = (f) =>
+    new Promise((ok) =>
+      execFile('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', join(root, f)], (err, stdout) => {
+        const d = Number.parseFloat(String(stdout).trim())
+        if (!err && Number.isFinite(d)) out[`audio/${f.split('\\').join('/')}`] = Math.round(d * 100) / 100
+        ok()
+      }),
+    )
+  await Promise.all(
+    Array.from({ length: 8 }, async () => {
+      while (next < files.length) await probe(files[next++])
+    }),
+  )
+  writeFileSync(join(root, 'durations.json'), JSON.stringify(out))
+  console.log(`durations.json: ${Object.keys(out).length}/${files.length} clips`)
+}
+
 async function loadManifest() {
   const { createServer } = await import('vite')
   const server = await createServer({ root: ROOT, logLevel: 'silent', server: { middlewareMode: true }, appType: 'custom' })
@@ -114,6 +138,10 @@ async function main() {
   }
   const tmp = mkdtempSync(join(tmpdir(), 'tkd-audio-'))
   try {
+    if (flag('durations')) {
+      await writeDurations()
+      return
+    }
     if (flag('sample')) {
       const out = join(ROOT, 'audio-sample', PROVIDER)
       const words = ['사범', '도장', '차렷', '경례', '앞차기', '옆차기', '몸통지르기', '아래막기', '얼굴막기', '앞굽이', '주춤서기', '태극']
@@ -150,6 +178,7 @@ async function main() {
       }
     }
     await Promise.all(Array.from({ length: jobs }, (_, n) => worker(n)))
+    if (done > 0) await writeDurations()
     console.log(`Done: ${done} processed${process.exitCode ? ' (some failed, see above)' : ''}`)
   } finally {
     rmSync(tmp, { recursive: true, force: true })

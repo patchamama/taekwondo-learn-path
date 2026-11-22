@@ -9,6 +9,8 @@ import {
   type AudioOptions,
 } from './audioPlan'
 
+const SECTION = { morpheme: 'words', technique: 'hand', term: 'terms', form: 'forms' } as const
+
 const item = (
   id: string,
   kind: AudioItem['kind'],
@@ -17,6 +19,7 @@ const item = (
 ): AudioItem => ({
   id,
   kind,
+  section: SECTION[kind],
   belt,
   hangul: id,
   meaning: { en: id, de: id, es: id },
@@ -114,5 +117,14 @@ describe('buildPlayback', () => {
     expect(buildPlan(ITEMS, o)).toEqual(
       buildPlayback(ITEMS, o).map((s) => ('file' in s ? { file: s.file } : s)),
     )
+  })
+})
+
+describe('buildPlayback order', () => {
+  it('groups the items by chapter: words, techniques, terms, forms', () => {
+    const order = buildPlayback(ITEMS, opts())
+      .filter((s) => 'role' in s && s.role === 'ko')
+      .map((s) => ('id' in s ? s.id : ''))
+    expect(order).toEqual(['arae', 'ap-chagi', 'dojang', 'taeguk-1'])
   })
 })

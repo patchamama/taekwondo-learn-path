@@ -1,3 +1,4 @@
+import { partLabel } from '../../data/japanese'
 import { useState } from 'react'
 import { MORPHEME_BY_ID } from '../../data/morphemes'
 import { TECHNIQUES, type Category } from '../../data/techniques'
@@ -77,7 +78,7 @@ export function TechniquesPage() {
               <p className="mt-1 font-medium">{loc(x.names)}</p>
               <p className="mt-2 text-sm text-slate-700">
                 <span className="font-semibold">{t('breakdown')}: </span>
-                {x.parts.map((p) => `${p} (${loc(MORPHEME_BY_ID[p].meaning)})`).join(' + ')}
+                {x.parts.map((p) => partLabel(p, loc(MORPHEME_BY_ID[p].meaning))).join(' + ')}
               </p>
               <p className="text-sm text-slate-600">
                 <span className="font-semibold">{t('karate')}: </span>

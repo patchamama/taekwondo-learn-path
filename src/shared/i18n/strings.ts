@@ -147,6 +147,10 @@ export const STRINGS = {
   audioPlay: { en: 'Play', de: 'Abspielen', es: 'Reproducir' },
   audioStop: { en: 'Stop', de: 'Stopp', es: 'Detener' },
   audioTranscript: { en: 'Words as they are said', de: 'Wörter, sobald sie gesprochen sind', es: 'Palabras a medida que se dicen' },
+  audioDescriptionsChapter: { en: 'Descriptions', de: 'Beschreibungen', es: 'Descripciones' },
+  audioSeek: { en: 'Position', de: 'Position', es: 'Posición' },
+  audioChapters: { en: 'Go to', de: 'Gehe zu', es: 'Ir a' },
+  audioRepeatWord: { en: 'Repeat this word', de: 'Dieses Wort wiederholen', es: 'Repetir esta palabra' },
   audioOpen: { en: 'Set up audio', de: 'Audio einrichten', es: 'Configurar audio' },
   audioIntro: {
     en: 'Download an audio file to learn: the Korean word, a pause of 2 seconds, then the meaning in your language. The belts selected in Study decide what is included.',

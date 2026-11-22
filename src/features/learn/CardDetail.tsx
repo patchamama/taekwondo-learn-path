@@ -1,3 +1,4 @@
+import { partLabel } from '../../data/japanese'
 import { BookSynonym } from '../../shared/components/BookSynonym'
 import { useState } from 'react'
 import { CARD_BY_ID } from '../../data/cards'
@@ -61,7 +62,7 @@ export function CardDetail({
             <p className="text-slate-700">
               <span className="font-semibold">{t('breakdown')}: </span>
               {c.parts
-                .map((p) => `${p} (${loc(MORPHEME_BY_ID[p]?.meaning ?? { en: p, de: p, es: p })})`)
+                .map((p) => partLabel(p, loc(MORPHEME_BY_ID[p]?.meaning ?? { en: p, de: p, es: p })))
                 .join(' + ')}
             </p>
           )}

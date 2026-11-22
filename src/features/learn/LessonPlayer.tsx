@@ -1,3 +1,4 @@
+import { japanesePart } from '../../data/japanese'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { CARD_BY_ID } from '../../data/cards'
 import { MORPHEME_BY_ID } from '../../data/morphemes'
@@ -245,6 +246,11 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
                   <span className="ml-1 text-xs font-normal text-slate-500">
                     {loc(MORPHEME_BY_ID[c].meaning)}
                   </span>
+                  {japanesePart(c) && (
+                    <span lang="ja-Latn" className="ml-1 text-xs font-normal text-rose-700">
+                      JP {japanesePart(c)}
+                    </span>
+                  )}
                 </button>
               )
             })}
