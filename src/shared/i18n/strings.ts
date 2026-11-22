@@ -113,6 +113,7 @@ export const STRINGS = {
     es: 'Se completará en una fase posterior.',
   },
   version: { en: 'Version', de: 'Version', es: 'Versión' },
+  navChoosePractice: { en: 'Choose & practise', de: 'Auswählen & üben', es: 'Elegir y practicar' },
   navPractice: { en: 'Practice', de: 'Üben', es: 'Practicar' },
   speak: { en: 'Listen', de: 'Anhören', es: 'Escuchar' },
   slow: { en: 'Listen slowly', de: 'Langsam anhören', es: 'Escuchar despacio' },

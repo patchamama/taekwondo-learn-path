@@ -108,3 +108,21 @@ describe('App', () => {
     expect(screen.getByTestId('version-banner')).toHaveTextContent(`v${pkg.version}`)
   })
 })
+
+describe('App "Choose & practise" shortcut', () => {
+  it.each([
+    ['en', 'Concepts & practice', 'Choose & practise'],
+    ['de', 'Konzepte & Praxis', 'Auswählen & üben'],
+    ['es', 'Conceptos y práctica', 'Elegir y practicar'],
+  ] as const)('sits right after "Concepts & practice" in %s and opens the practice options', async (lang, concepts, choose) => {
+    useAppStore.setState({ lang })
+    render(<App />)
+    const first = screen.getByRole('link', { name: concepts })
+    const second = screen.getByRole('link', { name: choose })
+    expect(first.nextElementSibling).toBe(second)
+    expect(second).toHaveAttribute('href', '#/practice')
+    fireEvent.click(second)
+    const panelButton = await screen.findByRole('button', { name: /⚙/ })
+    expect(panelButton).toHaveAttribute('aria-expanded', 'true')
+  })
+})

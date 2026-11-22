@@ -28,6 +28,10 @@ function ReadingNavigation() {
         <NavLink to="/concepts" className={({ isActive }) =>
           `rounded-xl border bg-white px-4 py-2 ${isActive ? 'font-bold underline' : 'text-slate-600'}`
         }>{t('navConcepts')}</NavLink>
+        {/* opens Practice with the "choose what to practise" panel unfolded */}
+        <NavLink to="/practice" state={{ options: true }} className={({ isActive }) =>
+          `rounded-xl border bg-white px-4 py-2 ${isActive ? 'font-bold underline' : 'text-slate-600'}`
+        }>{t('navChoosePractice')}</NavLink>
       </nav>
       <Outlet />
     </>

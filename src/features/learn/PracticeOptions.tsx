@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import type { AudioSection } from '../../data/audioManifest'
 import { SECTION_ORDER } from '../../data/audioManifest'
 import type { StringKey } from '../../shared/i18n/strings'
@@ -29,7 +30,9 @@ export const FORMATS: { id: string; label: StringKey }[] = [
 /** Foldable panel above Practice: which sections and which question formats to practise. */
 export function PracticeOptions({ available }: { available: Record<string, number> }) {
   const { t } = useT()
-  const [open, setOpen] = useState(false)
+  const location = useLocation()
+  // the "Choose & practise" shortcut opens the panel
+  const [open, setOpen] = useState(Boolean((location.state as { options?: boolean } | null)?.options))
   const sections = useAppStore((s) => s.practiceSections)
   const setSections = useAppStore((s) => s.setPracticeSections)
   const formats = useAppStore((s) => s.practiceFormats)
