@@ -210,6 +210,9 @@ export async function handleEditor(req, res, url, { root, send, readBody }) {
     // ---- clips (re-timing and their frames) -------------------------------------------------
     if (req.method === 'POST' && p === '/api/clips/add') {
       const input = JSON.parse(await readBody(req))
+      if (!validId(input.cardId)) throw new Error('Invalid card id')
+      const catalogue = [...await existingCatalogue(root), ...readCustomCatalogue(customFile).entries]
+      if (!catalogue.some((card) => card.id === input.cardId)) throw new Error('Unknown card id')
       const data = join(root, 'src', 'data')
       const read = (file) => existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : []
       const base = [...read(join(data, 'clips.json')), ...read(join(data, 'clips-selfdefense.json'))]

@@ -69,8 +69,12 @@ Successful responses use HTTP 200; validation errors use 400 `{ ok: false, error
 (the client wrappers supply it). No CORS preflight is enabled. The creation UI must display server
 errors rather than assuming success or incrementing its own success counters.
 
-Create the record first, then attach clips/images with its returned stable ID. Inline `video` or
-`clips` fields are deliberately rejected, so the UI must use the established media APIs and their
+Create the record first, then attach clips/images with its returned stable ID. `POST /api/clips/add`
+checks membership in the built-in catalogue plus the current custom records before saving. All
+card kinds may receive clips, including morphemes, terms and forms; hidden IDs remain valid lookup
+references. Unknown IDs return HTTP 400 `{ ok: false, error: 'Unknown card id' }` without changing
+stored files or record counts. Invalid ID syntax still returns `Invalid card id`.
+Inline `video` or `clips` fields are deliberately rejected, so the UI must use the established media APIs and their
 validation/normalization. Clip creation is a separate save, not a multi-file transaction: if it fails,
 the valid new card remains stored and the UI should offer retry. URLs are not downloaded by creation.
 For forms, the existing `FormMedia` resolves attached media through the same stable ID.

@@ -67,6 +67,8 @@ test('public add-video endpoint validates URL/range and preserves existing exter
   const root = mkdtempSync(join(tmpdir(), 'clip-add-'))
   const dir = join(root, 'src', 'data')
   mkdirSync(dir, { recursive: true })
+  writeFileSync(join(dir, 'cards.ts'), 'export const ALL_CARDS = [{ id: "new-technique", kind: "technique" }, { id: "other", kind: "technique" }]')
+  writeFileSync(join(dir, 'customCards.ts'), 'export const CUSTOM_CARDS = []')
   const file = join(dir, 'clips-external.json')
   const existing = [{ cardId: 'other', videoId: 'abcdefghijk', start: 1, end: 2, label: 'Kept' }]
   writeFileSync(file, JSON.stringify(existing))
