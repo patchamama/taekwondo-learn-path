@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { CARD_BY_ID } from '../../data/cards'
+import { CLIPS_BY_CARD } from '../../data/clips'
 import { LESSONS } from '../../data/lessons'
 import { THEORY_BY_ID } from '../../data/theory'
 import { buildExercises, buildPractice, isCorrect, makeRng } from './exercises'
@@ -92,5 +93,73 @@ describe('buildPractice', () => {
       1,
     )
     expect(ex.every((e) => 'cardId' in e && e.cardId === 'chagi')).toBe(true)
+  })
+})
+
+describe('exercise formats and families', () => {
+  const lesson = {
+    id: 'fam',
+    unit: 'kup10',
+    title: { en: '', de: '', es: '' },
+    tip: { en: '', de: '', es: '' },
+    cardIds: ['ap-chagi', 'yop-chagi', 'dollyo-chagi', 'momtong-chirugi', 'olgul-macki'],
+  }
+
+  it('only builds the chosen formats', () => {
+    const list = buildExercises(lesson, makeRng(3), { max: 30, formats: ['recall'] })
+    expect(list.length).toBeGreaterThan(0)
+    expect(new Set(list.map((e) => e.type))).toEqual(new Set(['recall']))
+  })
+
+  it('offers silent video, pick-the-clip and listen-to-meaning formats for techniques with clips', () => {
+    const types = new Set<string>()
+    for (let seed = 1; seed < 40; seed++) {
+      buildExercises(lesson, makeRng(seed), { max: 30, formats: ['video', 'pickclip', 'listenmeaning'] }).forEach((e) => types.add(e.type))
+    }
+    expect(types).toEqual(new Set(['video', 'pickclip', 'listenmeaning']))
+  })
+
+  it('accepts the card id as the answer of the new formats', () => {
+    for (const type of ['video', 'pickclip', 'listenmeaning'] as const) {
+      const ex = { type, cardId: 'ap-chagi', options: ['ap-chagi', 'yop-chagi', 'dollyo-chagi', 'olgul-macki'] }
+      expect(isCorrect(ex, 'ap-chagi')).toBe(true)
+      expect(isCorrect(ex, 'yop-chagi')).toBe(false)
+    }
+  })
+
+  it('fills the options with terms of the same family (shared word parts) instead of unrelated ones', () => {
+    let related = 0
+    let total = 0
+    for (let seed = 1; seed < 30; seed++) {
+      for (const e of buildExercises(lesson, makeRng(seed), { max: 30, formats: ['recall'] })) {
+        if (e.type !== 'recall' || e.cardId !== 'ap-chagi') continue
+        for (const id of e.options.filter((o) => o !== 'ap-chagi')) {
+          total++
+          if (id.endsWith('chagi')) related++
+        }
+      }
+    }
+    expect(total).toBeGreaterThan(0)
+    expect(related / total).toBeGreaterThan(0.6)
+  })
+
+  it('pick-the-clip options are all cards that have a clip', () => {
+    for (let seed = 1; seed < 20; seed++) {
+      for (const e of buildExercises(lesson, makeRng(seed), { max: 30, formats: ['pickclip'] })) {
+        if (e.type !== 'pickclip') continue
+        for (const id of e.options) expect(CLIPS_BY_CARD[id], id).toBeDefined()
+      }
+    }
+  })
+})
+
+describe('formats without material', () => {
+  it('leaves out cards that cannot be asked in the chosen format instead of asking something else', () => {
+    const lesson = { id: 'x', unit: 'kup10', title: { en: '', de: '', es: '' }, tip: { en: '', de: '', es: '' }, cardIds: ['dojang', 'ap-chagi'] }
+    const list = buildExercises(lesson as never, makeRng(5), { max: 30, formats: ['video'] })
+    expect(list.every((e) => e.type === 'video')).toBe(true)
+    expect(list.every((e) => 'cardId' in e && e.cardId === 'ap-chagi')).toBe(true)
+    const built = buildExercises(lesson as never, makeRng(5), { max: 30, formats: ['build'] })
+    expect(built.every((e) => e.type === 'build' && e.cardId === 'ap-chagi')).toBe(true) // dojang has no word parts
   })
 })

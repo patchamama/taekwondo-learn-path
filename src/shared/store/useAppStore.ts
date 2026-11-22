@@ -26,6 +26,14 @@ interface AppState {
   quizResultMode: QuizResultMode // how long the centred result stays
   quizAutoContinue: boolean // after the timed result, go on without pressing Continue
   quizMaxQuestions: number // maximum questions per quiz section
+  practiceSections: string[] // sections to practise (word blocks, hand, foot, stances, combos, terms, forms)
+  practiceFormats: string[] // exercise formats to practise
+  hangulOnly: boolean // show Korean terms in hangul only, without Latin letters
+  clipLayout: 'row' | 'grid' // clip choices in one scrolling row, or complete in several rows
+  setPracticeSections: (v: string[]) => void
+  setPracticeFormats: (v: string[]) => void
+  setHangulOnly: (v: boolean) => void
+  setClipLayout: (v: 'row' | 'grid') => void
   setQuizAutoCheck: (v: boolean) => void
   setQuizResultMode: (v: QuizResultMode) => void
   setQuizAutoContinue: (v: boolean) => void
@@ -68,6 +76,10 @@ export const useAppStore = create<AppState>()(
       quizResultMode: 'button',
       quizAutoContinue: false,
       quizMaxQuestions: 14,
+      practiceSections: ['words', 'hand', 'foot', 'stance', 'combo', 'terms', 'forms'],
+      practiceFormats: ['meaning', 'recall', 'listen', 'listenmeaning', 'frames', 'video', 'pickclip', 'build'],
+      hangulOnly: false,
+      clipLayout: 'row',
       ...empty,
       setLang: (lang) => set({ lang }),
       setStrictOrder: (strictOrder) => set({ strictOrder }),
@@ -77,6 +89,10 @@ export const useAppStore = create<AppState>()(
       setOnlyBelt: (onlyBelt) => set({ onlyBelt }),
       setListening: (listening) => set({ listening }),
       setVideoLang: (videoLang) => set({ videoLang }),
+      setPracticeSections: (practiceSections) => set({ practiceSections }),
+      setPracticeFormats: (practiceFormats) => set({ practiceFormats }),
+      setHangulOnly: (hangulOnly) => set({ hangulOnly }),
+      setClipLayout: (clipLayout) => set({ clipLayout }),
       setQuizAutoCheck: (quizAutoCheck) => set({ quizAutoCheck }),
       setQuizResultMode: (quizResultMode) => set({ quizResultMode }),
       setQuizAutoContinue: (quizAutoContinue) => set({ quizAutoContinue }),

@@ -146,3 +146,53 @@ describe('LessonPlayer quiz behaviour', () => {
     expect(screen.getByRole('button', { name: 'Continue' })).toBeInTheDocument()
   })
 })
+
+describe('LessonPlayer new formats and options', () => {
+  const show = (list: Exercise[]) =>
+    render(<LessonPlayer exercises={list} beltColor="#fff" onFinish={() => {}} onExit={() => {}} />)
+  const recall: Exercise = { type: 'recall', cardId: 'macki', options: ['macki', 'chagi', 'sogi', 'gubi'] }
+
+  beforeEach(() => {
+    useAppStore.setState({ lang: 'en', quizAutoCheck: false, quizResultMode: 'button', quizAutoContinue: false, hangulOnly: false, clipLayout: 'row' })
+  })
+
+  it('puts a speaker icon on every Korean option that has a recorded voice', () => {
+    show([recall])
+    const buttons = screen.getAllByRole('button', { name: /Listen:|Escuchar:|Speak|Hear/i })
+    expect(buttons.length).toBeGreaterThanOrEqual(4)
+  })
+
+  it('shows Korean terms in hangul only, with no Latin letters, when the option is on', () => {
+    useAppStore.setState({ hangulOnly: true })
+    show([recall])
+    const labels = screen.getAllByRole('button', { pressed: false }).map((b) => b.textContent ?? '')
+    expect(labels.some((l) => l.includes(CARD_BY_ID.macki.hangul) && !/[a-z]/i.test(l.replace(/Listen.*/i, '')))).toBe(true)
+    expect(screen.queryByText(new RegExp(`${CARD_BY_ID.macki.ko} · `))).not.toBeInTheDocument()
+  })
+
+  it('shows a silent clip and asks which technique it is', () => {
+    const video: Exercise = { type: 'video', cardId: 'ap-chagi', options: ['ap-chagi', 'yop-chagi', 'dollyo-chagi', 'düt-chagi'] }
+    const { container } = show([video])
+    expect(screen.getByText('Which technique is this? (silent clip)')).toBeInTheDocument()
+    expect(container.querySelector('iframe')?.getAttribute('src')).toContain('mute=1')
+  })
+
+  it('offers clips as the options, in one scrolling row by default and in rows when asked', () => {
+    const pick: Exercise = { type: 'pickclip', cardId: 'ap-chagi', options: ['ap-chagi', 'yop-chagi', 'dollyo-chagi', 'düt-chagi'] }
+    const { container, unmount } = show([pick])
+    const tiles = container.querySelectorAll('[data-clip-option]')
+    expect(tiles).toHaveLength(4)
+    expect(container.querySelector('[data-clip-row]')?.className).toMatch(/overflow-x-auto/)
+    unmount()
+    useAppStore.setState({ clipLayout: 'grid' })
+    const second = show([pick])
+    expect(second.container.querySelector('[data-clip-row]')?.className).toMatch(/grid/)
+  })
+
+  it('plays the audio and asks for the meaning in the app language', () => {
+    const lm: Exercise = { type: 'listenmeaning', cardId: 'macki', options: ['macki', 'chagi', 'sogi', 'gubi'] }
+    show([lm])
+    expect(screen.getByText('Listen and pick the meaning')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: CARD_BY_ID.macki.meaning.en })).toBeInTheDocument()
+  })
+})

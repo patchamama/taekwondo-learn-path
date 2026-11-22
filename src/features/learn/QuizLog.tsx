@@ -20,7 +20,9 @@ export function QuizLog({ entries }: { entries: LogEntry[] }) {
   if (entries.length === 0) return null
   return (
     <section aria-label={t('quizLog')} className="grid gap-1 border-t pt-3 text-sm">
-      <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">{t('quizLog')}</h3>
+      <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        {t('quizLog')}
+      </h3>
       <ol className="grid gap-1">
         {entries.slice(-6).map((e) => (
           <li

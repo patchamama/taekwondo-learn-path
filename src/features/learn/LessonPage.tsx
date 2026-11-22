@@ -10,7 +10,9 @@ import { useAppStore } from '../../shared/store/useAppStore'
 import { useBeltFilter } from '../../shared/hooks/useBeltFilter'
 import { Bubble } from '../mascot/Bubble'
 import { CardDetail } from './CardDetail'
-import { buildExercises, buildPractice, makeRng } from './exercises'
+import { buildExercises, buildPractice, makeRng, type ExerciseType } from './exercises'
+import { PracticeOptions } from './PracticeOptions'
+import { SECTION_BY_ID } from '../../data/audioManifest'
 import { LessonPlayer, type PlayerResult } from './LessonPlayer'
 import { heldBeltIndex, isUnlocked, starsFor, unitComplete } from './progress'
 
@@ -43,9 +45,14 @@ function Missing({ locked = false }: { locked?: boolean }) {
 export function PracticePage() {
   const { t } = useT()
   const mastery = useAppStore((s) => s.mastery)
+  const sections = useAppStore((s) => s.practiceSections)
+  const formats = useAppStore((s) => s.practiceFormats)
   const { max, only, visibleCard } = useBeltFilter()
-  const learned = PRACTICE_CANDIDATES.filter(visibleCard)
-  if (learned.length === 0) {
+  const inRange = PRACTICE_CANDIDATES.filter(visibleCard)
+  const learned = inRange.filter((id) => sections.includes(SECTION_BY_ID[id]))
+  const available: Record<string, number> = {}
+  for (const id of inRange) available[SECTION_BY_ID[id]] = (available[SECTION_BY_ID[id]] ?? 0) + 1
+  if (inRange.length === 0) {
     return (
       <div className="mx-auto max-w-xl">
         <Bubble mood="think">{t('practiceEmpty')}</Bubble>
@@ -55,8 +62,18 @@ export function PracticePage() {
       </div>
     )
   }
-  // Only a filter change starts a new session; mastery updates must not rebuild questions.
-  return <Run key={`practice-${only === null ? `up-to-${max}` : `only-${only}`}`} lessonId={null} learned={learned} mastery={mastery} />
+  // Only a filter or option change starts a new session; mastery updates must not rebuild questions.
+  const sessionKey = `practice-${only === null ? `up-to-${max}` : `only-${only}`}-${sections.join()}-${formats.join()}`
+  return (
+    <div className="mx-auto grid max-w-xl gap-3">
+      <PracticeOptions available={available} />
+      {learned.length === 0 ? (
+        <Bubble mood="think">{t('practiceNoSection')}</Bubble>
+      ) : (
+        <Run key={sessionKey} lessonId={null} learned={learned} mastery={mastery} formats={formats as ExerciseType[]} />
+      )}
+    </div>
+  )
 }
 
 function LessonReadings({ cardIds, theory }: { cardIds: string[]; theory: boolean }) {
@@ -85,9 +102,10 @@ interface RunProps {
   lessonId: string | null
   learned?: string[]
   mastery?: Record<string, number>
+  formats?: ExerciseType[]
 }
 
-function Run({ lessonId, learned = [], mastery = {} }: RunProps) {
+function Run({ lessonId, learned = [], mastery = {}, formats }: RunProps) {
   const { t, loc } = useT()
   const nav = useNavigate()
   const lesson = lessonId ? LESSON_BY_ID[lessonId] : null
@@ -104,7 +122,7 @@ function Run({ lessonId, learned = [], mastery = {} }: RunProps) {
   const [exercises] = useState(() =>
     lesson
       ? buildExercises(lesson, makeRng(Date.now()), { listening, max: maxQuestions })
-      : buildPractice(learned, mastery, makeRng(Date.now()), maxQuestions, listening),
+      : buildPractice(learned, mastery, makeRng(Date.now()), maxQuestions, listening, formats),
   )
 
   const finish = (r: PlayerResult) => {

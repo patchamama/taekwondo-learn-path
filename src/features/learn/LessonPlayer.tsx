@@ -7,8 +7,11 @@ import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useT } from '../../shared/i18n/useT'
 import { speakKorean } from '../../shared/lib/speech'
 import { COMFORT, PRAISE, pick } from '../mascot/lines'
-import { CLIPS } from '../../data/clips'
+import { CLIPS, CLIPS_BY_CARD } from '../../data/clips'
 import { FrameStrip } from '../videos/FrameStrip'
+import { ClipPlayer } from '../videos/ClipPlayer'
+import { ClipTile } from '../videos/ClipTile'
+import { MaximizeOverlay } from '../../shared/components/Maximize'
 import { useAppStore } from '../../shared/store/useAppStore'
 import { isCorrect, type Exercise } from './exercises'
 import { QuizLog, type LogEntry } from './QuizLog'
@@ -43,6 +46,9 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
   const autoCheck = useAppStore((s) => s.quizAutoCheck)
   const resultMode = useAppStore((s) => s.quizResultMode)
   const autoContinue = useAppStore((s) => s.quizAutoContinue)
+  const hangulOnly = useAppStore((s) => s.hangulOnly)
+  const clipLayout = useAppStore((s) => s.clipLayout)
+  const [clipModal, setClipModal] = useState<string | null>(null)
   const [resultOpen, setResultOpen] = useState(false)
   const [outcomes, setOutcomes] = useState<Record<number, boolean>>({})
   const [entries, setEntries] = useState<LogEntry[]>([])
@@ -55,7 +61,8 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
 
   // play audio automatically for listening exercises
   useEffect(() => {
-    if (ex?.type === 'listen') speakKorean(CARD_BY_ID[ex.cardId].hangul)
+    if (ex?.type === 'listen' || ex?.type === 'listenmeaning')
+      speakKorean(CARD_BY_ID[ex.cardId].hangul)
   }, [ex])
 
   const options = useMemo(() => {
@@ -68,23 +75,29 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
             ? loc(THEORY_BY_ID[ex.theoryId].correct)
             : loc(THEORY_BY_ID[ex.theoryId].wrong[i - 1]),
       }))
-    if (ex.type === 'meaning')
+    if (ex.type === 'meaning' || ex.type === 'listenmeaning')
       return ex.options.map((id) => ({ key: id, label: loc(CARD_BY_ID[id].meaning) }))
-    if (ex.type === 'frames')
+    if (ex.type === 'frames' || ex.type === 'video')
       return ex.options.map((id) => ({
         key: id,
-        label: `${CARD_BY_ID[id].ko} · ${loc(CARD_BY_ID[id].meaning)}`,
+        label: `${hangulOnly ? CARD_BY_ID[id].hangul : CARD_BY_ID[id].ko} · ${loc(CARD_BY_ID[id].meaning)}`,
+      }))
+    if (ex.type === 'pickclip')
+      return ex.options.map((id) => ({
+        key: id,
+        label: hangulOnly ? CARD_BY_ID[id].hangul : CARD_BY_ID[id].ko,
       }))
     if (ex.type === 'recall' || ex.type === 'listen')
       return ex.options.map((id) => ({
         key: id,
-        label:
-          ex.type === 'listen'
+        label: hangulOnly
+          ? CARD_BY_ID[id].hangul
+          : ex.type === 'listen'
             ? CARD_BY_ID[id].ko
             : `${CARD_BY_ID[id].ko} · ${CARD_BY_ID[id].hangul}`,
       }))
     return []
-  }, [ex, loc])
+  }, [ex, loc, hangulOnly])
 
   if (!ex) return null
 
@@ -94,7 +107,8 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
     phase === 'answering' && (ex.type === 'build' ? chips.length > 0 : choice !== null)
 
   const check = (given: string | string[] | number | null = answer) => {
-    if (phase !== 'answering' || given === null || (Array.isArray(given) && given.length === 0)) return
+    if (phase !== 'answering' || given === null || (Array.isArray(given) && given.length === 0))
+      return
     const ok = isCorrect(ex, given)
     log.current.push({ cardId: cardOf?.id, correct: ok })
     setOutcomes((o) => (pos in o ? o : { ...o, [pos]: ok }))
@@ -149,18 +163,30 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
 
   const frameClip =
     ex.type === 'frames' ? CLIPS.find((c) => c.cardId === ex.cardId && c.silentSafe) : undefined
+  const videoClip =
+    ex.type === 'video' ? CLIPS.find((c) => c.cardId === ex.cardId && c.silentSafe) : undefined
 
   const segments: SegmentState[] = queue.map((_, i) =>
-    i in outcomes ? (outcomes[i] ? 'ok' : 'bad') : i === pos ? 'current' : i < pos ? 'skipped' : 'pending',
+    i in outcomes
+      ? outcomes[i]
+        ? 'ok'
+        : 'bad'
+      : i === pos
+        ? 'current'
+        : i < pos
+          ? 'skipped'
+          : 'pending',
   )
   const correctText =
     ex.type === 'build'
       ? (cardOf?.parts ?? []).map((p) => MORPHEME_BY_ID[p].ko).join(' + ')
       : ex.type === 'theory'
         ? loc(THEORY_BY_ID[ex.theoryId].correct)
-        : ex.type === 'meaning'
+        : ex.type === 'meaning' || ex.type === 'listenmeaning'
           ? loc(cardOf!.meaning)
-          : `${cardOf!.ko} · ${cardOf!.hangul}`
+          : hangulOnly
+            ? cardOf!.hangul
+            : `${cardOf!.ko} · ${cardOf!.hangul}`
 
   const prompt =
     ex.type === 'meaning'
@@ -169,11 +195,17 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
         ? t('qRecall')
         : ex.type === 'listen'
           ? t('qListen')
-          : ex.type === 'frames'
-            ? t('qFrames')
-            : ex.type === 'build'
-              ? t('qBuild')
-              : t('qTheory')
+          : ex.type === 'listenmeaning'
+            ? t('qListenMeaning')
+            : ex.type === 'video'
+              ? t('qVideo')
+              : ex.type === 'pickclip'
+                ? t('qPickClip')
+                : ex.type === 'frames'
+                  ? t('qFrames')
+                  : ex.type === 'build'
+                    ? t('qBuild')
+                    : t('qTheory')
 
   return (
     <div className="mx-auto flex min-h-[80vh] max-w-xl flex-col gap-4">
@@ -199,10 +231,18 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
         {ex.type === 'meaning' && (
           <div className="flex items-center gap-3">
             <div>
-              <p className="text-2xl font-bold">{cardOf!.ko}</p>
-              <p lang="ko" className="text-slate-500">
-                {cardOf!.hangul}
-              </p>
+              {hangulOnly ? (
+                <p lang="ko" className="text-2xl font-bold">
+                  {cardOf!.hangul}
+                </p>
+              ) : (
+                <>
+                  <p className="text-2xl font-bold">{cardOf!.ko}</p>
+                  <p lang="ko" className="text-slate-500">
+                    {cardOf!.hangul}
+                  </p>
+                </>
+              )}
             </div>
             <SpeakButton text={cardOf!.hangul} />
             <SpeakButton text={cardOf!.hangul} slow />
@@ -210,7 +250,25 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
         )}
         {ex.type === 'frames' && frameClip && <FrameStrip clip={frameClip} />}
         {ex.type === 'recall' && <p className="text-2xl font-bold">{loc(cardOf!.meaning)}</p>}
-        {ex.type === 'listen' && (
+        {ex.type === 'video' && videoClip && <ClipPlayer clip={videoClip} muted autoplay />}
+        {ex.type === 'pickclip' && (
+          <div className="flex items-center gap-3">
+            <p className="text-2xl font-bold">
+              {hangulOnly ? (
+                <span lang="ko">{cardOf!.hangul}</span>
+              ) : (
+                <>
+                  {cardOf!.ko}{' '}
+                  <span lang="ko" className="text-lg font-normal text-slate-500">
+                    {cardOf!.hangul}
+                  </span>
+                </>
+              )}
+            </p>
+            <SpeakButton text={cardOf!.hangul} />
+          </div>
+        )}
+        {(ex.type === 'listen' || ex.type === 'listenmeaning') && (
           <div className="flex items-center gap-3">
             <SpeakButton text={cardOf!.hangul} className="!h-14 !w-14 !text-2xl" />
             <SpeakButton text={cardOf!.hangul} slow />
@@ -268,14 +326,63 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
             })}
           </div>
         </div>
+      ) : ex.type === 'pickclip' ? (
+        <div
+          data-clip-row
+          className={
+            clipLayout === 'row'
+              ? 'flex snap-x gap-3 overflow-x-auto pb-2'
+              : 'grid grid-cols-1 gap-3 sm:grid-cols-2'
+          }
+        >
+          {options.map((o) => {
+            const id = String(o.key)
+            const selected = choice === id
+            const right = phase !== 'answering' && isCorrect(ex, id)
+            const wrong = phase === 'wrong' && selected && !right
+            return (
+              <div
+                key={id}
+                data-clip-option
+                className={`relative shrink-0 snap-start rounded-xl border-2 p-2 ${clipLayout === 'row' ? 'w-60' : ''} ${right ? 'border-emerald-500 bg-emerald-50' : wrong ? 'border-rose-500 bg-rose-50' : selected ? 'border-sky-500 bg-sky-50' : 'bg-white'}`}
+              >
+                <button
+                  disabled={phase !== 'answering'}
+                  aria-pressed={selected}
+                  aria-label={`${t('qPickClip')} ${o.label}`}
+                  onClick={() => {
+                    setChoice(id)
+                    if (autoCheck) check(id)
+                  }}
+                  className="block w-full"
+                >
+                  <ClipTile cardId={id} label={String(o.label)} />
+                </button>
+                <button
+                  type="button"
+                  className="absolute right-3 top-3 rounded-full bg-white/90 px-2 text-sm shadow"
+                  aria-label={`▶ ${o.label}`}
+                  onClick={() => setClipModal(id)}
+                >
+                  ▶
+                </button>
+              </div>
+            )
+          })}
+        </div>
       ) : (
         <ul className="grid gap-2">
           {options.map((o) => {
             const selected = choice === o.key
             const right = phase !== 'answering' && isCorrect(ex, o.key)
             const wrong = phase === 'wrong' && selected && !right
+            const voiced =
+              ex.type === 'recall' ||
+              ex.type === 'listen' ||
+              ex.type === 'frames' ||
+              ex.type === 'video'
             return (
-              <li key={String(o.key)}>
+              <li key={String(o.key)} className="relative">
                 <button
                   disabled={phase !== 'answering'}
                   aria-pressed={selected}
@@ -283,10 +390,16 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
                     setChoice(o.key)
                     if (autoCheck) check(o.key)
                   }}
-                  className={`w-full rounded-xl border-2 px-4 py-3 text-left font-medium ${right ? 'border-emerald-500 bg-emerald-50' : wrong ? 'border-rose-500 bg-rose-50' : selected ? 'border-sky-500 bg-sky-50' : 'bg-white hover:bg-slate-50'}`}
+                  className={`w-full rounded-xl border-2 px-4 py-3 text-left font-medium ${voiced ? 'pr-14' : ''} ${right ? 'border-emerald-500 bg-emerald-50' : wrong ? 'border-rose-500 bg-rose-50' : selected ? 'border-sky-500 bg-sky-50' : 'bg-white hover:bg-slate-50'}`}
                 >
                   {o.label}
                 </button>
+                {voiced && (
+                  <SpeakButton
+                    text={CARD_BY_ID[String(o.key)].hangul}
+                    className="absolute right-2 top-2 !h-8 !w-8 !text-base"
+                  />
+                )}
               </li>
             )
           })}
@@ -318,6 +431,12 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
       </div>
 
       <QuizLog entries={entries} />
+
+      {clipModal && (
+        <MaximizeOverlay onClose={() => setClipModal(null)}>
+          <ClipPlayer clip={CLIPS_BY_CARD[clipModal][0]} muted autoplay />
+        </MaximizeOverlay>
+      )}
 
       {resultOpen && phase !== 'answering' && (
         <ResultModal

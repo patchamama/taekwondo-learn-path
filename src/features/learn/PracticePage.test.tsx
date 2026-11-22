@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { CARD_BY_ID } from '../../data/cards'
 import { LESSONS } from '../../data/lessons'
 import { cardBeltIndex } from '../../data/levels'
 import { useAppStore } from '../../shared/store/useAppStore'
@@ -55,5 +56,59 @@ describe('Public free practice', () => {
     })
     expect(build).toHaveBeenCalledTimes(calls)
     expect(screen.getByRole('button', { name: 'Check' })).toBe(question)
+  })
+})
+
+describe('Practice options panel', () => {
+  const everySection = ['words', 'hand', 'foot', 'stance', 'combo', 'terms', 'forms']
+  const everyFormat = ['meaning', 'recall', 'listen', 'listenmeaning', 'frames', 'video', 'pickclip', 'build']
+
+  beforeEach(() => {
+    useAppStore.setState({ practiceSections: everySection, practiceFormats: everyFormat, hangulOnly: false, clipLayout: 'row' })
+  })
+
+  const openPanel = () => fireEvent.click(screen.getByRole('button', { name: /Choose what to practise/ }))
+
+  it('lists sections and formats as checkboxes, all on by default', () => {
+    open()
+    openPanel()
+    for (const name of ['Word blocks', 'Hand', 'Foot', 'Stances', 'Combos', 'Korean terms', 'Forms']) {
+      expect(screen.getByRole('checkbox', { name })).toBeChecked()
+    }
+    for (const name of [/Silent clip/, /choose the clip/, /Listen → meaning/, /Stills/]) {
+      expect(screen.getByRole('checkbox', { name })).toBeChecked()
+    }
+  })
+
+  it('restricts the questions to the chosen section and rebuilds the session', () => {
+    open()
+    openPanel()
+    for (const name of ['Word blocks', 'Foot', 'Stances', 'Combos', 'Korean terms', 'Forms']) {
+      fireEvent.click(screen.getByRole('checkbox', { name }))
+    }
+    expect(useAppStore.getState().practiceSections).toEqual(['hand'])
+    const ids = build.mock.lastCall![0] as string[]
+    expect(ids.length).toBeGreaterThan(0)
+    expect(ids.every((id) => CARD_BY_ID[id].group.includes('hand'))).toBe(true)
+  })
+
+  it('passes the chosen formats to the question builder', () => {
+    open()
+    openPanel()
+    for (const f of everyFormat) if (!['video', 'pickclip'].includes(f)) {
+      const label = { meaning: /Korean → meaning/, recall: /Meaning → Korean/, listen: /Listen → Korean/, listenmeaning: /Listen → meaning/, frames: /Stills/, build: /word blocks/ }[f as 'meaning']
+      fireEvent.click(screen.getByRole('checkbox', { name: label }))
+    }
+    expect(useAppStore.getState().practiceFormats.sort()).toEqual(['pickclip', 'video'])
+    expect((build.mock.lastCall as unknown[])[5]).toEqual(expect.arrayContaining(['video', 'pickclip']))
+  })
+
+  it('has the hangul-only and clip-layout options', () => {
+    open()
+    openPanel()
+    fireEvent.click(screen.getByRole('checkbox', { name: /hangul only/i }))
+    expect(useAppStore.getState().hangulOnly).toBe(true)
+    fireEvent.click(screen.getByRole('radio', { name: /several rows/i }))
+    expect(useAppStore.getState().clipLayout).toBe('grid')
   })
 })

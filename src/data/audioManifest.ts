@@ -61,6 +61,9 @@ export const AUDIO_ITEMS: AudioItem[] = CARDS.filter((c) => CARD_BY_ID[c.id] ===
   info: c.info,
 }))
 
+/** Chapter of a card by id (used by Practice to filter by section). */
+export const SECTION_BY_ID: Record<string, AudioSection> = Object.fromEntries(AUDIO_ITEMS.map((i) => [i.id, i.section]))
+
 /** Every clip one item needs; the generator script and the player both read this list. */
 export function clipsOf(item: AudioItem): ClipSpec[] {
   const clip = (track: AudioTrack, text: string): ClipSpec => ({ track, text, file: audioFile(track, item.id) })
