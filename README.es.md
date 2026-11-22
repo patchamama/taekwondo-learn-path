@@ -55,6 +55,7 @@ Con `./start.sh` / `start.bat` en marcha, cada ficha (términos, técnicas, ladr
 
 - **Selector de imágenes:** pestaña *Fotogramas de clips* (todos los fotogramas, con búsqueda por técnica), pestaña *Imágenes de libros* (imágenes extraídas de tus EPUB en `docs/`, fuera de git) y pestaña *Vídeos* (copias locales: busca en el índice y los subtítulos, avanza o retrocede 3/5/10 s y captura el fotograma). Las imágenes elegidas se guardan en `public/images/cards/`.
 - La captura de vídeo necesita una copia local (el archivo del SSD `video/epub-backup/originals`, o carpetas en `TKD_VIDEO_DIRS`).
+- **Clips:** el editor también reajusta los clips de una ficha (inicio/fin con botones ±1/3 s y vista previa del primer y último fotograma); los seis fotogramas se regeneran desde el vídeo local y el rango se guarda en `src/data/clipOverrides.json`.
 - Las fichas muestran el Kup arriba a la derecha y sus imágenes como icono al pasar el ratón (**Compacto**) o en línea (**Con imágenes**).
 - `npm run test:server` ejecuta los tests del backend.
 

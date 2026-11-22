@@ -11,9 +11,11 @@ import {
   searchLines,
   videoDuration,
 } from './library.mjs'
+import { ensureDir, frameTimes, saveClips, validFrameKey, validateClips } from './clips.mjs'
 import { readOverrides, saveOverride, validId, validateOverride } from './overrides.mjs'
 
 const OVERRIDES_FILE = (root) => join(root, 'src', 'data', 'cardOverrides.json')
+const CLIPS_FILE = (root) => join(root, 'src', 'data', 'clipOverrides.json')
 const IMAGES_DIR = (root) => join(root, 'public', 'images', 'cards')
 
 // Videos whose ids are fixed in src/data/clips.ts (course dubs and the self-defense compilation).
@@ -75,7 +77,7 @@ const sameOrigin = (req) => {
 export async function handleEditor(req, res, url, { root, send, readBody }) {
   const p = url.pathname
   const write = req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE'
-  if (!p.startsWith('/api/cards') && !p.startsWith('/api/images') && !p.startsWith('/api/library') && !p.startsWith('/api/video') && !p.startsWith('/api/frame')) {
+  if (!p.startsWith('/api/cards') && !p.startsWith('/api/images') && !p.startsWith('/api/library') && !p.startsWith('/api/video') && !p.startsWith('/api/frame') && !p.startsWith('/api/clips')) {
     return false
   }
   if (!sameOrigin(req)) return send(res, 403, { ok: false, error: 'Forbidden host' }), true
@@ -150,6 +152,25 @@ export async function handleEditor(req, res, url, { root, send, readBody }) {
       if (!file || !Number.isFinite(t)) throw new Error('No local copy of this video')
       const jpg = await extractFrame(file, t, 0)
       return send(res, 200, { ok: true, src: storeImage(root, jpg, 'jpg'), source: `Video ${id} @ ${Math.round(t * 10) / 10}s` }), true
+    }
+    // ---- clips (re-timing and their frames) -------------------------------------------------
+    if (req.method === 'PUT' && p.startsWith('/api/clips/') && p !== '/api/clips/frames') {
+      const cardId = decodeURIComponent(p.slice('/api/clips/'.length))
+      const { clips } = JSON.parse(await readBody(req))
+      saveClips(CLIPS_FILE(root), cardId, validateClips(clips))
+      return send(res, 200, { ok: true }), true
+    }
+    if (req.method === 'POST' && p === '/api/clips/frames') {
+      const { cardId, key, videoId, start, end } = JSON.parse(await readBody(req))
+      if (!validId(cardId) || !validFrameKey(key)) throw new Error('Invalid clip')
+      validateClips([{ index: 0, start, end }])
+      const file = findVideoFile(root, videoId) ?? (key === 'course' ? findVideoFile(root, COURSE.es) : null)
+      if (!file) throw new Error('No local copy of this video')
+      const dir = join(root, 'public', 'frames', key, cardId)
+      ensureDir(dir)
+      const times = frameTimes(start, end)
+      for (let i = 0; i < times.length; i++) writeFileSync(join(dir, `${i + 1}.jpg`), await extractFrame(file, times[i], 480))
+      return send(res, 200, { ok: true, frames: times.length }), true
     }
   } catch (e) {
     return send(res, 400, { ok: false, error: String(e.message ?? e) }), true

@@ -31,6 +31,27 @@ export const saveCard = (id: string, override: CardOverride) =>
     body: JSON.stringify(override),
   }).then((r) => json<{ ok: true; override: CardOverride }>(r))
 
+export const saveClipRanges = (
+  cardId: string,
+  clips: { index: number; start: number; end: number }[],
+) =>
+  fetch(`/api/clips/${encodeURIComponent(cardId)}`, {
+    method: 'PUT',
+    headers: WRITE,
+    body: JSON.stringify({ clips }),
+  }).then((r) => json<{ ok: true }>(r))
+
+export const regenerateFrames = (p: {
+  cardId: string
+  key: string
+  videoId: string
+  start: number
+  end: number
+}) =>
+  fetch('/api/clips/frames', { method: 'POST', headers: WRITE, body: JSON.stringify(p) }).then(
+    (r) => json<{ ok: true; frames: number }>(r),
+  )
+
 export interface PickedImage {
   src: string
   source?: string

@@ -3,6 +3,7 @@ import courseJson from './clips.json'
 import selfDefenseJson from './clips-selfdefense.json'
 import externalJson from './clips-external.json'
 import { flat } from './curriculum'
+import clipOverrides from './clipOverrides.json'
 
 /** Same course, two dubs. Timestamps match within ~2 s (see docs/video/README.md). */
 export const COURSE_VIDEOS = { es: 'vQb_6i28QK8', de: 'dnYQ1Y0acrE' } as const
@@ -34,7 +35,7 @@ type RawClip = Omit<Clip, 'source'> & { source?: SourceKind }
 
 // Course ranges sit between the course's black fades (ffmpeg blackdetect) so they never include
 // the French title cards. Spoken names come from the auto captions (docs/video).
-export const CLIPS: Clip[] = [
+const BASE_CLIPS: Clip[] = [
   ...[...(courseJson as RawClip[]), ...(flat('clips') as RawClip[])].map((c) => ({
     silentSafe: true,
     ...c,
@@ -46,6 +47,22 @@ export const CLIPS: Clip[] = [
     .map((c) => ({ ...c, source: 'selfdefense' as const })),
   ...(externalJson as RawClip[]).map((c) => ({ ...c, source: 'external' as const })),
 ]
+/** Clip ranges re-timed in the local editor: { cardId: [{ index (among that card's clips), start, end }] }. */
+const RETIMED = clipOverrides as Record<string, { index: number; start: number; end: number }[]>
+
+function applyClipOverrides(clips: Clip[]): Clip[] {
+  const seen: Record<string, number> = {}
+  return clips.map((c) => {
+    const index = (seen[c.cardId] = (seen[c.cardId] ?? -1) + 1)
+    const o = RETIMED[c.cardId]?.find((x) => x.index === index)
+    return o && Number.isFinite(o.start) && Number.isFinite(o.end) && o.start >= 0 && o.end > o.start
+      ? { ...c, start: o.start, end: o.end }
+      : c
+  })
+}
+
+export const CLIPS: Clip[] = applyClipOverrides(BASE_CLIPS)
+
 export const FRAMES_PER_CLIP = 6
 
 export const CLIPS_BY_CARD: Record<string, Clip[]> = CLIPS.reduce(

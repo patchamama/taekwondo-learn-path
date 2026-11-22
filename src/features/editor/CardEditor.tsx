@@ -6,6 +6,7 @@ import { useT } from '../../shared/i18n/useT'
 import { useBelts } from '../../shared/store/useBelts'
 import type { Loc } from '../../shared/i18n/types'
 import { saveCard } from './api'
+import { ClipsEditor } from './ClipsEditor'
 import { ImagePicker } from './ImagePicker'
 
 const LANGS = ['en', 'de', 'es'] as const
@@ -176,6 +177,8 @@ export function CardEditor({
             {t('edAddImage')}
           </button>
         </fieldset>
+
+        <ClipsEditor cardId={cardId} onSaved={onSaved} />
 
         {error && (
           <p role="alert" className="text-sm text-red-700">

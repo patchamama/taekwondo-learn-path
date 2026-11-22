@@ -55,6 +55,7 @@ Mit laufendem `./start.sh` / `start.bat` hat jede Karte (Begriffe, Techniken, Wo
 
 - **Bildauswahl:** Tab *Clip-Bilder* (alle Standbilder, nach Technik durchsuchbar), Tab *Buchbilder* (aus deinen EPUBs in `docs/` extrahiert, nicht in git) und Tab *Videos* (lokale Kopien: Index und Untertitel durchsuchen, ±3/5/10 s springen und das Bild aufnehmen). Gewählte Bilder liegen in `public/images/cards/`.
 - Die Videoaufnahme braucht eine lokale Kopie (das SSD-Archiv `video/epub-backup/originals` oder Ordner in `TKD_VIDEO_DIRS`).
+- **Clips:** Der Editor passt auch die Clips einer Karte an (Start/Ende mit ±1/3-s-Knöpfen und Vorschau von erstem und letztem Bild); die sechs Bilder werden aus dem lokalen Video neu erzeugt, der Bereich steht in `src/data/clipOverrides.json`.
 - Karten zeigen den Kup oben rechts und ihre Bilder als Hover-Symbol (**Kompakt**) oder direkt (**Mit Bildern**).
 - `npm run test:server` führt die Backend-Tests aus.
 
