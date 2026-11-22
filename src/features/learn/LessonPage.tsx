@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { BELTS } from '../../data/belts'
 import { CONCEPTS } from '../../data/concepts'
 import { CARD_BY_ID } from '../../data/cards'
+import { CUSTOM_CARDS } from '../../data/customCards'
+import { isVisible } from '../../data/visibility'
 import { LESSON_BY_ID, LESSONS, UNITS } from '../../data/lessons'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 import { useT } from '../../shared/i18n/useT'
@@ -12,13 +14,14 @@ import { Bubble } from '../mascot/Bubble'
 import { CardDetail } from './CardDetail'
 import { buildExercises, buildPractice, makeRng, type ExerciseType } from './exercises'
 import { PracticeOptions } from './PracticeOptions'
+import { PRACTICE_COPY } from './practiceCopy'
 import { SECTION_BY_ID } from '../../data/audioManifest'
 import { LessonPlayer, type PlayerResult } from './LessonPlayer'
 import { heldBeltIndex, isUnlocked, starsFor, unitComplete } from './progress'
 
 type Stage = 'intro' | 'play' | 'done'
 
-const PRACTICE_CANDIDATES = [...new Set(LESSONS.flatMap((lesson) => lesson.cardIds))]
+const PRACTICE_CANDIDATES = [...new Set([...LESSONS.flatMap((lesson) => lesson.cardIds), ...CUSTOM_CARDS.map((c) => c.id)])]
 
 export function LessonPage() {
   const { id } = useParams()
@@ -44,7 +47,6 @@ function Missing({ locked = false }: { locked?: boolean }) {
 
 export function PracticePage() {
   const { t } = useT()
-  const mastery = useAppStore((s) => s.mastery)
   const sections = useAppStore((s) => s.practiceSections)
   const formats = useAppStore((s) => s.practiceFormats)
   const { max, only, visibleCard } = useBeltFilter()
@@ -67,18 +69,43 @@ export function PracticePage() {
   return (
     <div className="mx-auto grid max-w-xl gap-3">
       <PracticeOptions available={available} />
-      {learned.length === 0 ? (
-        <Bubble mood="think">{t('practiceNoSection')}</Bubble>
-      ) : (
-        <Run key={sessionKey} lessonId={null} learned={learned} mastery={mastery} formats={formats as ExerciseType[]} />
-      )}
+      <PracticeSession key={sessionKey} learned={learned} formats={formats as ExerciseType[]} />
     </div>
   )
 }
 
+/** Keep bulk IDs frozen for a run; progress updates refresh totals, not its question queue. */
+function PracticeSession({ learned, formats }: { learned: string[]; formats: ExerciseType[] }) {
+  const { t, loc } = useT()
+  const mastery = useAppStore((s) => s.mastery)
+  const listening = useAppStore((s) => s.listening)
+  const [bulk, setBulk] = useState<{ ids: string[]; serial: number } | null>(null)
+  // Reuse the public generator's material/visibility rules, without its ordinary quiz cap.
+  const eligible = useMemo(() => [...new Set(buildExercises({
+    id: 'practice-totals', unit: 'kup10', title: { en: '', de: '', es: '' },
+    tip: { en: '', de: '', es: '' }, cardIds: learned,
+  }, makeRng(0), { max: Infinity, listening, formats }).flatMap((ex) => 'cardId' in ex ? [ex.cardId] : []))], [learned, listening, formats])
+  const pending = eligible.filter((id) => !Object.hasOwn(mastery, id))
+  return <>
+    <aside className="grid gap-2 rounded-xl border bg-white p-3 text-sm">
+      <p role="status">{loc(PRACTICE_COPY.practiced)}: {eligible.length - pending.length} · {loc(PRACTICE_COPY.pending)}: {pending.length}</p>
+      <p>{loc(PRACTICE_COPY.progressMeaning)}</p>
+      <button type="button" disabled={pending.length === 0} aria-describedby="pending-help"
+        className="rounded-xl bg-emerald-500 p-3 font-bold text-white disabled:bg-slate-300"
+        onClick={() => setBulk({ ids: pending, serial: (bulk?.serial ?? 0) + 1 })}>
+        {loc(PRACTICE_COPY.allPending)}
+      </button>
+      <p id="pending-help">{loc(eligible.length === 0 ? PRACTICE_COPY.noEligible : pending.length === 0 ? PRACTICE_COPY.nonePending : PRACTICE_COPY.bulkHelp)}</p>
+    </aside>
+    {learned.length === 0 ? <Bubble mood="think">{t('practiceNoSection')}</Bubble>
+      : eligible.length > 0 && <Run key={bulk?.serial ?? 0} lessonId={null} learned={bulk?.ids ?? learned}
+          mastery={mastery} formats={formats} allPending={bulk !== null} />}
+  </>
+}
+
 function LessonReadings({ cardIds, theory }: { cardIds: string[]; theory: boolean }) {
   const { t, loc } = useT()
-  const cards = cardIds.map((id) => CARD_BY_ID[id])
+  const cards = cardIds.filter((id) => isVisible(id)).map((id) => CARD_BY_ID[id]).filter(Boolean)
   const topics = new Set(['practice'])
   if (cards.some((c) => c.kind === 'technique' || c.group === 'morpheme-action')) topics.add('technique-purpose')
   if (cards.some((c) => c.group.includes('stance') || c.id === 'sogi' || c.id === 'gubi')) topics.add('movement')
@@ -103,12 +130,14 @@ interface RunProps {
   learned?: string[]
   mastery?: Record<string, number>
   formats?: ExerciseType[]
+  allPending?: boolean
 }
 
-function Run({ lessonId, learned = [], mastery = {}, formats }: RunProps) {
+function Run({ lessonId, learned = [], mastery = {}, formats, allPending = false }: RunProps) {
   const { t, loc } = useT()
   const nav = useNavigate()
-  const lesson = lessonId ? LESSON_BY_ID[lessonId] : null
+  const originalLesson = lessonId ? LESSON_BY_ID[lessonId] : null
+  const lesson = originalLesson ? { ...originalLesson, cardIds: originalLesson.cardIds.filter((id) => isVisible(id)) } : null
   const completed = useAppStore((s) => s.completed)
   const completeLesson = useAppStore((s) => s.completeLesson)
   const addXp = useAppStore((s) => s.addXp)
@@ -122,7 +151,7 @@ function Run({ lessonId, learned = [], mastery = {}, formats }: RunProps) {
   const [exercises] = useState(() =>
     lesson
       ? buildExercises(lesson, makeRng(Date.now()), { listening, max: maxQuestions })
-      : buildPractice(learned, mastery, makeRng(Date.now()), maxQuestions, listening, formats),
+      : buildPractice(learned, mastery, makeRng(Date.now()), allPending ? Infinity : maxQuestions, listening, formats),
   )
 
   const finish = (r: PlayerResult) => {
@@ -175,7 +204,7 @@ function Run({ lessonId, learned = [], mastery = {}, formats }: RunProps) {
     const unitDone = Boolean(
       lesson && unit && unitComplete(unit.id, { ...completed, [lesson.id]: stars }),
     )
-    const recapCards = lesson ? lesson.cardIds : learned.slice(0, 8)
+    const recapCards = (lesson ? lesson.cardIds : learned).filter((id) => isVisible(id)).slice(0, lesson ? undefined : 8)
     return (
       <div className="mx-auto grid max-w-xl gap-5 text-center">
         <h1 className="text-2xl font-bold">{t('lessonComplete')}</h1>

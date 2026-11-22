@@ -4,6 +4,9 @@ import { useAppStore } from '../../shared/store/useAppStore'
 import { CARD_BY_ID } from '../../data/cards'
 import { LessonPlayer } from './LessonPlayer'
 import type { Exercise } from './exercises'
+import { mockYouTube, teardownYouTube } from '../videos/playerTestUtils'
+
+afterEach(teardownYouTube)
 
 const ex: Exercise = {
   type: 'meaning',
@@ -172,9 +175,15 @@ describe('LessonPlayer new formats and options', () => {
 
   it('shows a silent clip and asks which technique it is', () => {
     const video: Exercise = { type: 'video', cardId: 'ap-chagi', options: ['ap-chagi', 'yop-chagi', 'dollyo-chagi', 'düt-chagi'] }
-    const { container } = show([video])
+    const platform = mockYouTube()
+    show([video])
+    platform.ready()
     expect(screen.getByText('Which technique is this? (silent clip)')).toBeInTheDocument()
-    expect(container.querySelector('iframe')?.getAttribute('src')).toContain('mute=1')
+    const host = document.querySelector('[data-video-source]:not([hidden])')
+    expect(host?.querySelector('iframe')?.getAttribute('src')).toContain('mute=1')
+    expect(platform.players).toHaveLength(1)
+    expect(platform.players[0].mute).toHaveBeenCalled()
+    expect(platform.players[0].playVideo).toHaveBeenCalled()
   })
 
   it('offers clips as the options, in one scrolling row by default and in rows when asked', () => {

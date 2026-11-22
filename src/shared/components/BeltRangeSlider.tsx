@@ -63,7 +63,10 @@ export function BeltRangeSlider({ range }: BeltRangeSliderProps = {}) {
         <button
           type="button"
           aria-pressed={only === null}
-          onClick={() => setOnly(null)}
+          onClick={() => {
+            if (only !== null) setMax(only)
+            setOnly(null)
+          }}
           className={`rounded-full border px-3 py-0.5 ${only === null ? 'bg-slate-900 text-white' : 'bg-white'}`}
         >
           {t('beltAll')}

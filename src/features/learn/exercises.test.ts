@@ -85,6 +85,18 @@ describe('buildExercises', () => {
 })
 
 describe('buildPractice', () => {
+  it('applies the question limit to eligible cards, retaining mastery priority and format restrictions', () => {
+    const ids = ['dojang', 'ap-chagi', 'yop-chagi']
+    const mastery = { dojang: 0, 'ap-chagi': 5, 'yop-chagi': 1 }
+    const list = buildPractice(ids, mastery, makeRng(1), 1, false, ['build'])
+    expect(list).toHaveLength(1)
+    expect(list[0]).toMatchObject({ type: 'build', cardId: 'yop-chagi' })
+    expect(ids).toEqual(['dojang', 'ap-chagi', 'yop-chagi'])
+    expect(mastery).toEqual({ dojang: 0, 'ap-chagi': 5, 'yop-chagi': 1 })
+    expect(buildPractice(ids, mastery, makeRng(1), 1, false, [])).toEqual([])
+    expect(buildPractice(['dojang'], {}, makeRng(1), 1, false, ['video'])).toEqual([])
+  })
+
   it('prefers the least mastered cards', () => {
     const ex = buildPractice(
       ['macki', 'chagi', 'olgul'],

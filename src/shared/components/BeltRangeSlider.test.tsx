@@ -53,7 +53,19 @@ describe('belt filter', () => {
     expect(screen.getByRole('button', { name: '6 Kup' })).toHaveAttribute('aria-pressed', 'true')
     fireEvent.click(screen.getByRole('button', { name: '9 Kup' }))
     fireEvent.click(screen.getByRole('button', { name: STRINGS.beltAll.en }))
-    expect(screen.getByRole('slider')).toHaveValue('4')
+    expect(screen.getByRole('slider')).toHaveValue('1')
+  })
+
+  it('uses the selected 8 Kup as the cumulative endpoint, not the old persisted limit', () => {
+    useAppStore.setState({ lang: 'es', maxBelt: 10, onlyBelt: null })
+    render(<><BeltRangeSlider /><FilteredContent /></>)
+    fireEvent.click(screen.getByRole('button', { name: '8 Kup' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Todo hasta el control' }))
+    expect(screen.getByRole('slider')).toHaveValue('2')
+    expect(screen.getAllByRole('listitem').map((li) => li.textContent))
+      .toEqual(CARDS.filter((c) => cardBeltIndex(c.id) <= 2).map((c) => c.id))
+    expect(screen.getAllByRole('button', { pressed: true }).map((b) => b.textContent))
+      .toEqual(['Todo hasta el control', '10 Kup', '9 Kup', '8 Kup'])
   })
 
   it.each([

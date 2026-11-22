@@ -18,6 +18,7 @@ import { QuizLog, type LogEntry } from './QuizLog'
 import { QuizReview } from './QuizReview'
 import { QuizProgress, type SegmentState } from './QuizProgress'
 import { ResultModal } from './ResultModal'
+import { PRACTICE_COPY } from './practiceCopy'
 
 export interface PlayerResult {
   correct: number
@@ -41,6 +42,8 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
   const [phase, setPhase] = useState<Phase>('answering')
   const [choice, setChoice] = useState<string | number | null>(null)
   const [chips, setChips] = useState<string[]>([])
+  const [hints, setHints] = useState<Record<number, boolean>>({})
+  const [frameVideo, setFrameVideo] = useState(false)
   const [firstTry, setFirstTry] = useState<Record<number, boolean>>({})
   const [lastMsg, setLastMsg] = useState(0)
   const [skipped, setSkipped] = useState(0)
@@ -161,6 +164,8 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
   }
 
   const next = () => {
+    setHints({})
+    setFrameVideo(false)
     if (pos + 1 >= queue.length) {
       const allAnswers = log.current
       onFinish({ correct: correctCount, total, answers: allAnswers })
@@ -175,6 +180,8 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
 
   // listening exercises can be skipped (no headphones): they count neither as right nor as wrong
   const skip = () => {
+    setHints({})
+    setFrameVideo(false)
     setSkipped((n) => n + 1)
     if (pos + 1 >= queue.length) {
       onFinish({
@@ -287,7 +294,20 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
             <SpeakButton text={cardOf!.hangul} slow />
           </div>
         )}
-        {ex.type === 'frames' && frameClip && <FrameStrip clip={frameClip} />}
+        {ex.type === 'frames' && frameClip && (
+          <div className="grid gap-3">
+            <FrameStrip clip={frameClip} />
+            <button
+              type="button"
+              aria-expanded={frameVideo}
+              onClick={() => setFrameVideo((open) => !open)}
+              className="justify-self-start rounded-lg border px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-sky-600"
+            >
+              {loc(PRACTICE_COPY.watchMuted)}
+            </button>
+            {frameVideo && <ClipPlayer clip={frameClip} muted autoplay />}
+          </div>
+        )}
         {ex.type === 'recall' && <p className="text-2xl font-bold">{loc(cardOf!.meaning)}</p>}
         {ex.type === 'video' && videoClip && <ClipPlayer clip={videoClip} muted autoplay />}
         {ex.type === 'pickclip' && (
@@ -323,7 +343,7 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
 
       {ex.type === 'build' ? (
         <div className="grid gap-3">
-          <p className="text-sm text-slate-500">{t('tapWords')}</p>
+          <p className="text-sm text-slate-500">{t('tapWords')} · {loc(PRACTICE_COPY.hintHelp)}</p>
           <div
             className="flex min-h-12 flex-wrap items-center gap-2 rounded-xl border-2 border-dashed p-2"
             data-testid="build-answer"
@@ -345,22 +365,31 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
                 chips.filter((x) => x === c).length >
                 ex.chips.slice(0, i).filter((x) => x === c).length
               return (
-                <button
-                  key={`${c}-${i}`}
-                  disabled={used || phase !== 'answering'}
-                  onClick={() => setChips([...chips, c])}
-                  className="rounded-lg border-2 bg-white px-3 py-1 font-semibold disabled:opacity-30"
-                >
-                  {MORPHEME_BY_ID[c].ko}
-                  <span className="ml-1 text-xs font-normal text-slate-500">
-                    {loc(MORPHEME_BY_ID[c].meaning)}
-                  </span>
-                  {japanesePart(c) && (
-                    <span lang="ja-Latn" className="ml-1 text-xs font-normal text-rose-700">
-                      JP {japanesePart(c)}
+                <div key={`${c}-${i}`} className="flex flex-wrap items-center gap-1 rounded-lg border-2 bg-white p-1">
+                  <button
+                    disabled={used || phase !== 'answering'}
+                    onClick={() => setChips([...chips, c])}
+                    className="rounded px-2 py-1 font-semibold disabled:opacity-30"
+                  >
+                    {MORPHEME_BY_ID[c].ko}
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={`${loc(PRACTICE_COPY.hint)}: ${MORPHEME_BY_ID[c].ko}`}
+                    aria-expanded={Boolean(hints[i])}
+                    aria-controls={`word-hint-${i}`}
+                    onClick={() => setHints((shown) => ({ ...shown, [i]: !shown[i] }))}
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-50 text-sm text-sky-800 focus-visible:outline-2 focus-visible:outline-sky-600"
+                  >
+                    <span aria-hidden="true">?</span>
+                  </button>
+                  {hints[i] && (
+                    <span id={`word-hint-${i}`} className="basis-full px-2 text-xs text-slate-600">
+                      <span>{loc(MORPHEME_BY_ID[c].meaning)}</span>
+                      {japanesePart(c) && <span lang="ja-Latn" className="ml-1 text-rose-700">JP {japanesePart(c)}</span>}
                     </span>
                   )}
-                </button>
+                </div>
               )
             })}
           </div>
@@ -484,6 +513,10 @@ export function LessonPlayer({ exercises, beltColor, onFinish, onExit }: Props) 
           ok={phase === 'right'}
           message={loc(phase === 'right' ? pick(PRAISE, lastMsg) : pick(COMFORT, lastMsg))}
           correctText={correctText}
+          listeningAnswer={(ex.type === 'listen' || ex.type === 'listenmeaning') && cardOf
+            ? { ko: cardOf.ko, hangul: cardOf.hangul, meaning: loc(cardOf.meaning) }
+            : undefined}
+          variant={lastMsg - 1}
           hangul={cardOf?.hangul}
           beltColor={beltColor}
           retryNote={phase === 'wrong'}

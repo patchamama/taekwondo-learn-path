@@ -1,4 +1,5 @@
 import { CARDS, CARD_BY_ID, type Card } from '../../data/cards'
+import { isVisible } from '../../data/visibility'
 import type { Lesson } from '../../data/lessons'
 import { CLIPS, CLIPS_BY_CARD } from '../../data/clips'
 import { THEORY_BY_ID } from '../../data/theory'
@@ -187,13 +188,14 @@ function candidates(card: Card, rng: Rng, listening: boolean): Exercise[] {
       ),
     })
   }
-  if (card.parts && card.parts.length >= 2) {
+  // A dependent technique stays visible, but hidden bricks never become exercise chips.
+  if (card.parts && card.parts.length >= 2 && card.parts.every((id) => isVisible(id))) {
     // add a decoy word block so it is not a pure ordering task
     const extra = shuffle(
       CARDS.filter((c) => c.kind === 'morpheme' && !card.parts!.includes(c.id)),
       rng,
     )[0]
-    out.push({ type: 'build', cardId: card.id, chips: shuffle([...card.parts, extra.id], rng) })
+    out.push({ type: 'build', cardId: card.id, chips: shuffle([...card.parts, ...(extra ? [extra.id] : [])], rng) })
   }
   return out
 }
@@ -215,7 +217,7 @@ export function buildExercises(
   // a card that has none of the chosen formats (e.g. no clip for "video") is simply left out
   const entries = lesson.cardIds
     .map((id) => CARD_BY_ID[id])
-    .filter(Boolean)
+    .filter((c) => c && isVisible(c.id))
     .map((c) => {
       const all = candidates(c, rng, listening)
       return { card: c, options: formats ? all.filter((e) => formats.includes(e.type)) : all }
@@ -251,13 +253,14 @@ export function buildPractice(
   formats?: ExerciseType[],
 ): Exercise[] {
   const sorted = [...learnedCardIds].sort((a, b) => (mastery[a] ?? 0) - (mastery[b] ?? 0))
-  const weakest = sorted.slice(0, count)
+  // Let buildExercises apply the limit AFTER excluding cards without a chosen format.
+  // Otherwise early vocabulary can fill the quota and hide every playable technique.
   const lesson: Lesson = {
     id: 'practice',
     unit: 'kup10',
     title: { en: '', de: '', es: '' },
     tip: { en: '', de: '', es: '' },
-    cardIds: weakest,
+    cardIds: sorted,
   }
   return buildExercises(lesson, rng, { max: count, listening, formats })
 }

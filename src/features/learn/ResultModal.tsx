@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { useT } from '../../shared/i18n/useT'
-import { Bubble } from '../mascot/Bubble'
+import { Tiger } from '../../shared/components/Tiger'
 import { SpeakButton } from '../../shared/components/SpeakButton'
 
 interface Props {
   ok: boolean
   message: string
   correctText?: string
+  /** Listening results teach the name and meaning even after a correct answer. */
+  listeningAnswer?: { ko: string; hangul: string; meaning: string }
+  variant?: number
   hangul?: string
   beltColor: string
   /** the wrong answer will come back at the end */
@@ -24,6 +27,8 @@ export function ResultModal({
   ok,
   message,
   correctText,
+  listeningAnswer,
+  variant = 0,
   hangul,
   beltColor,
   retryNote,
@@ -64,16 +69,25 @@ export function ResultModal({
         aria-label={ok ? t('logCorrect') : t('logWrong')}
         className="grid w-full max-w-md gap-4 rounded-2xl bg-white p-5 shadow-xl"
       >
-        <Bubble mood={ok ? 'cheer' : 'oops'} beltColor={beltColor} tone={ok ? 'good' : 'bad'}>
-          <p className="font-semibold">{message}</p>
-          {!ok && correctText && (
-            <p className="mt-1">
-              {t('correctAnswer')}: <b>{correctText}</b>
-            </p>
-          )}
-          {!ok && retryNote && <p className="mt-1 text-xs text-rose-700">{t('askedAgain')}</p>}
-          {hangul && <SpeakButton text={hangul} className="mt-1" />}
-        </Bubble>
+        <div className="flex items-end gap-3" role="status">
+          <Tiger ok={ok} variant={variant} beltColor={beltColor} />
+          <div className={`min-w-0 rounded-2xl border-2 px-4 py-3 text-sm shadow-sm ${ok ? 'border-emerald-400 bg-emerald-50' : 'border-rose-400 bg-rose-50'}`}>
+            <p className="font-semibold">{message}</p>
+            {listeningAnswer ? (
+              <div className="mt-2">
+                <p>{t('correctAnswer')}: <b>{listeningAnswer.ko}</b></p>
+                <p lang="ko">{listeningAnswer.hangul}</p>
+                <p className="font-medium">{listeningAnswer.meaning}</p>
+              </div>
+            ) : !ok && correctText && (
+              <p className="mt-1">
+                {t('correctAnswer')}: <b>{correctText}</b>
+              </p>
+            )}
+            {!ok && retryNote && <p className="mt-1 text-xs text-rose-700">{t('askedAgain')}</p>}
+            {hangul && <SpeakButton text={hangul} className="mt-1" />}
+          </div>
+        </div>
         {seconds > 0 && left > 0 && (
           <p className="text-center text-xs text-slate-500">
             {t(autoContinue ? 'countdownContinue' : 'countdownClose').replace('{n}', String(left))}
