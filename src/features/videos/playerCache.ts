@@ -1,4 +1,4 @@
-import { embedUrl, type Clip, type VideoLanguage, videoIdFor } from '../../data/clips'
+import { clipKey, embedUrl, type Clip, type VideoLanguage, videoIdFor } from '../../data/clips'
 
 type Player = {
   seekTo: (seconds: number, allowSeekAhead: boolean) => void
@@ -32,6 +32,8 @@ type Entry = {
   playing: boolean
   seekUntil?: number
   ended?: boolean
+  /** first still of the clip, shown over the iframe while the video has not played */
+  poster?: HTMLImageElement
 }
 const entries = new Set<Entry>()
 let cache: HTMLDivElement | undefined
@@ -62,8 +64,19 @@ function pauseOthers(entry: Entry) {
 function previewTime(clip: Clip) {
   return clip.start === 0 ? Math.min(1, Math.max(0, clip.end - 0.001)) : clip.start
 }
+/** YouTube paints nothing for a paused video that never played, so a still of the clip covers the iframe until it does. */
+function setPoster(entry: Entry, show: boolean) {
+  const poster = entry.poster
+  if (!poster) return
+  if (show && entry.request) {
+    const src = `${import.meta.env.BASE_URL}frames/${clipKey(entry.request.clip)}/${encodeURIComponent(entry.request.clip.cardId)}/1.jpg`
+    if (poster.getAttribute('src') !== src) poster.setAttribute('src', src)
+  }
+  poster.hidden = !show
+}
 function start(entry: Entry) {
   const request = entry.request
+  setPoster(entry, Boolean(request) && !request!.autoplay)
   if (!entry.ready || !entry.player) return
   if (!request) { entry.player.pauseVideo(); return }
   if (request.muted) entry.player.mute()
@@ -85,6 +98,7 @@ function connect(entry: Entry) {
       if (!entry.request) { entry.player?.pauseVideo?.(); return }
       if (data === 1 && !entry.request.autoplay) { entry.player?.pauseVideo?.(); entry.playing = false; return }
       entry.playing = data === 1
+      if (data === 1) setPoster(entry, false)
       // Enforce boundaries immediately as well as on the progress clock.
       tick(entry)
     },
@@ -184,8 +198,15 @@ export function acquirePlayer(language: VideoLanguage, request: Request) {
     iframe.referrerPolicy = 'strict-origin-when-cross-origin'
     iframe.style.cssText = 'width:100%;height:100%;border:0'
     host.append(iframe)
+    const poster = document.createElement('img')
+    poster.dataset.poster = ''
+    poster.alt = ''
+    poster.hidden = true
+    poster.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;background:#000'
+    poster.addEventListener('error', () => poster.remove())
+    host.append(poster)
     cache!.append(host)
-    entry = { id, host, iframe, ready: false, playing: false }
+    entry = { id, host, iframe, ready: false, playing: false, poster }
     entries.add(entry)
   }
   if (request.autoplay) pauseOthers(entry)
@@ -211,6 +232,7 @@ export function acquirePlayer(language: VideoLanguage, request: Request) {
       if (!shouldPlay) current.player?.pauseVideo?.()
       else {
         pauseOthers(current)
+        setPoster(current, false)
         const time = current.player?.getCurrentTime()
         if (current.ended || (time !== undefined && (time >= request.clip.end || time < request.clip.start))) {
           current.ended = false

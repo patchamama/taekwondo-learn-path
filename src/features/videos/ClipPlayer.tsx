@@ -32,7 +32,7 @@ export function ClipPlayer({ clip, muted = false, autoplay = true, controls = tr
   }, [language, clip, muted, autoplay, big])
   const body = (
     <div className="grid gap-2">
-      <div ref={anchor} className="aspect-video overflow-hidden rounded-xl bg-black" aria-label={muted ? 'Silent technique clip' : `Clip: ${clip.cardId}`} />
+      <div ref={anchor} className="mx-auto aspect-video w-full max-w-[min(100%,calc(70vh*16/9))] overflow-hidden rounded-xl bg-black" aria-label={muted ? 'Silent technique clip' : `Clip: ${clip.cardId}`} />
       <div className="flex flex-wrap items-center gap-3 text-sm">
         <span aria-live="off">{clock(elapsed)} / {clock(duration)}</span>
         <button type="button" onClick={() => session.current?.replay()} className="underline">↻ {t('replay')}</button>

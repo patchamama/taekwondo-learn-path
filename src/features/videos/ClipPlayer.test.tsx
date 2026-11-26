@@ -234,3 +234,44 @@ it('keeps a short zero-start preview inside the excerpt', () => {
   ready()
   expect(players[0].seekTo).toHaveBeenLastCalledWith(0.399, true)
 })
+
+const poster = (source = 'one') => document.querySelector(`[data-video-source="${source}"] img[data-poster]`) as HTMLImageElement | null
+
+it('covers a paused, never-played video with the first still of its clip (YouTube paints nothing in that state)', () => {
+  render(<ClipPlayer clip={clip} autoplay={false} />)
+  ready()
+  const img = poster()
+  expect(img).not.toBeNull()
+  expect(img!.getAttribute('src')).toBe('/frames/ext-one/ap-chagi/1.jpg')
+  expect(img!.hidden).toBe(false)
+  expect(getComputedStyle(img!).pointerEvents).toBe('none')
+})
+
+it('hides the poster when the user plays the video and shows it again for the next paused preview', () => {
+  const view = render(<ClipPlayer clip={clip} autoplay={false} />)
+  ready()
+  expect(poster()!.hidden).toBe(false)
+  fireEvent.click(screen.getByRole('button', { name: 'Play / Pause' }))
+  expect(poster()!.hidden).toBe(true)
+  view.rerender(<ClipPlayer clip={{ ...clip, start: 30, end: 35 }} autoplay={false} />)
+  expect(poster()!.hidden).toBe(false)
+})
+
+it('keeps the poster when the platform reports playback of a paused preview', () => {
+  render(<ClipPlayer clip={clip} autoplay={false} />)
+  ready()
+  act(() => { players[0].events.onStateChange({ data: 1 }) })
+  expect(poster()!.hidden).toBe(false)
+})
+
+it('shows no poster when the video autoplays, and removes a poster whose image does not exist', () => {
+  const view = render(<ClipPlayer clip={clip} autoplay />)
+  ready()
+  expect(poster()!.hidden).toBe(true)
+  view.unmount()
+  render(<ClipPlayer clip={{ ...clip, videoId: 'two' }} autoplay={false} />)
+  ready()
+  const img = poster('two')!
+  act(() => { img.dispatchEvent(new Event('error')) })
+  expect(poster('two')).toBeNull()
+})

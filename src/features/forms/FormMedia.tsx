@@ -55,10 +55,13 @@ export function FormMedia({ cardId, autoplay = false }: { cardId: string; autopl
   if (big) return (
     <MaximizeOverlay onClose={() => setBig(false)}>
       <h3 className="text-lg font-bold">{title}</h3>
-      {materials.map((material) => <section key={material.key} className="grid min-w-0 gap-2">
-        <h4 className="font-semibold">{material.label}</h4>
-        {material.body}
-      </section>)}
+      {/* Materials side by side on wide screens; pictures never taller than 60% of the window */}
+      <div data-media-grid className="grid min-w-0 gap-4 lg:grid-cols-2 [&_figure_img]:mx-auto [&_figure_img]:h-auto [&_figure_img]:max-h-[60vh] [&_figure_img]:w-auto [&_figure_img]:max-w-full">
+        {materials.map((material) => <section key={material.key} className="grid min-w-0 content-start gap-2">
+          <h4 className="font-semibold">{material.label}</h4>
+          {material.body}
+        </section>)}
+      </div>
     </MaximizeOverlay>
   )
   return <div className="mt-2 grid min-w-0 gap-2">
