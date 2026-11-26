@@ -131,7 +131,7 @@ export function ClipsEditor({ cardId, onSaved }: { cardId: string; onSaved: () =
                 <img
                   src={frameUrl(id, ranges[i][key], 320)}
                   alt={`${t(key === 'start' ? 'edClipStart' : 'edClipEnd')} ${label}`}
-                  className="aspect-video max-h-40 w-full max-w-sm justify-self-center rounded bg-black object-contain"
+                  className="aspect-video max-h-24 w-full max-w-xs justify-self-center rounded bg-black object-contain"
                 />
                 <label className="flex min-w-0 flex-wrap items-center gap-2 text-sm font-medium">
                   <span>

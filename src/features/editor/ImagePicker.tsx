@@ -270,7 +270,7 @@ function VideosTab({ onPick }: { onPick: (i: PickedImage) => void }) {
           <img
             src={frameUrl(video.id, time)}
             alt={`Frame at ${formatTime(time)}`}
-            className="mx-auto max-h-80 w-full rounded-lg bg-black object-contain"
+            className="mx-auto max-h-[45vh] w-full rounded-lg bg-black object-contain"
           />
           <input
             type="range"

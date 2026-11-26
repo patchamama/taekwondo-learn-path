@@ -80,7 +80,9 @@ describe('CardEditor', () => {
     const dialog = screen.getByRole('dialog', { name: 'Edit card: dojang' })
     expect(dialog.tagName).toBe('DIALOG')
     expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalledOnce()
-    expect(dialog).toHaveClass('h-[100dvh]', 'w-screen', 'max-w-none', 'max-h-none')
+    // sized by the window, never larger than it: a centred panel, not a full-screen sheet
+    expect(dialog).toHaveClass('h-[min(92dvh,52rem)]', 'max-h-[92dvh]', 'w-[min(96vw,66rem)]', 'max-w-[96vw]')
+    expect(dialog).not.toHaveClass('w-screen')
     expect(dialog.querySelector('[data-editor-body]')).toHaveClass('min-w-0', 'overflow-x-hidden')
     expect(screen.getByRole('textbox', { name: 'Meaning (EN)' })).toHaveClass('min-w-0', 'w-full')
     const close = screen.getByRole('button', { name: 'Close' })

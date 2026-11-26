@@ -142,7 +142,7 @@ export function CardEditor({
       {label}
       {multiline ? (
         <textarea
-          className="min-h-20 min-w-0 w-full rounded border px-2 py-1 font-normal"
+          className="min-h-16 min-w-0 w-full rounded border px-2 py-1 font-normal"
           value={value}
           onChange={(e) => set(e.target.value)}
         />
@@ -166,10 +166,10 @@ export function CardEditor({
         if (picker) setPicker(false)
         else onClose()
       }}
-      className="fixed inset-0 m-0 h-[100dvh] max-h-none w-screen max-w-none overflow-hidden bg-white p-0 text-slate-900 backdrop:bg-black/40"
+      className="fixed inset-0 m-auto h-[min(92dvh,52rem)] max-h-[92dvh] w-[min(96vw,66rem)] max-w-[96vw] overflow-hidden rounded-2xl border bg-white p-0 text-slate-900 shadow-2xl backdrop:bg-black/50"
     >
-      <div className="mx-auto grid h-full min-h-0 min-w-0 w-full max-w-6xl grid-rows-[auto_minmax(0,1fr)_auto]">
-        <div className="flex items-center justify-between gap-3 border-b px-4 py-3 sm:px-6">
+      <div className="grid h-full min-h-0 w-full min-w-0 grid-rows-[auto_minmax(0,1fr)_auto]">
+        <div className="flex items-center justify-between gap-3 border-b px-4 py-2 sm:px-5">
           <h2 className="min-w-0 break-words text-lg font-bold">
             {t('edEdit')}: {card.ko}
           </h2>
@@ -178,124 +178,154 @@ export function CardEditor({
             ref={closeRef}
             aria-label={t('close')}
             onClick={onClose}
-            className="h-11 w-11 shrink-0 rounded-full border focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-600"
+            className="h-10 w-10 shrink-0 rounded-full border focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-600"
           >
             ✕
           </button>
         </div>
 
-        <div data-editor-body className="grid min-h-0 min-w-0 content-start gap-4 overflow-x-hidden overflow-y-auto overscroll-contain p-4 sm:p-6 [&_input]:min-w-0 [&_input]:max-w-full [&_select]:min-w-0 [&_select]:max-w-full [&_textarea]:min-w-0 [&_textarea]:max-w-full">
-        <fieldset className="grid min-w-0 gap-3">
-          <legend className="font-semibold text-slate-600">{t('edText')}</legend>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {field(t('edRomanization'), ko, setKo)}
-            {field('Hangul', hangul, setHangul)}
-          </div>
-          {LANGS.map((l) =>
-            field(`${t('edMeaning')} (${l.toUpperCase()})`, meaning[l], (v) =>
-              setMeaning({ ...meaning, [l]: v }),
-            ),
-          )}
-          {LANGS.map((l) =>
-            field(
-              `${t('edDescription')} (${l.toUpperCase()})`,
-              info[l],
-              (v) => setInfo({ ...info, [l]: v }),
-              true,
-            ),
-          )}
-        </fieldset>
+        <div
+          data-editor-body
+          className="grid min-h-0 min-w-0 content-start gap-4 overflow-x-hidden overflow-y-auto overscroll-contain p-4 sm:p-5 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-6 [&_input]:min-w-0 [&_input]:max-w-full [&_select]:min-w-0 [&_select]:max-w-full [&_textarea]:min-w-0 [&_textarea]:max-w-full"
+        >
+          <div className="grid min-w-0 content-start gap-4">
+            <fieldset className="grid min-w-0 gap-3">
+              <legend className="font-semibold text-slate-600">{t('edText')}</legend>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {field(t('edRomanization'), ko, setKo)}
+                {field('Hangul', hangul, setHangul)}
+              </div>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {LANGS.map((l) =>
+                  field(`${t('edMeaning')} (${l.toUpperCase()})`, meaning[l], (v) =>
+                    setMeaning({ ...meaning, [l]: v }),
+                  ),
+                )}
+              </div>
+              {LANGS.map((l) =>
+                field(
+                  `${t('edDescription')} (${l.toUpperCase()})`,
+                  info[l],
+                  (v) => setInfo({ ...info, [l]: v }),
+                  true,
+                ),
+              )}
+            </fieldset>
 
-        {ai.enabled && (
-          <div className="flex flex-wrap items-center gap-2 rounded-lg border border-dashed p-2 text-sm">
-            <label className="flex items-center gap-1">
-              {t('aiFrom')}
+            {ai.enabled && (
+              <div className="flex flex-wrap items-center gap-2 rounded-lg border border-dashed p-2 text-sm">
+                <label className="flex items-center gap-1">
+                  {t('aiFrom')}
+                  <select
+                    className="rounded border px-1 py-0.5"
+                    value={from}
+                    onChange={(e) => setFrom(e.target.value as AiLang)}
+                  >
+                    {LANGS.map((l) => (
+                      <option key={l} value={l}>
+                        {l.toUpperCase()}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <button
+                  type="button"
+                  disabled={translating}
+                  onClick={suggest}
+                  className="rounded-lg border px-3 py-1 disabled:opacity-50"
+                >
+                  {translating ? t('aiWorking') : `✨ ${t('aiSuggest')}`}
+                </button>
+                {aiNote && <span className="text-xs text-slate-500">{aiNote}</span>}
+              </div>
+            )}
+          </div>
+
+          <div className="grid min-w-0 content-start gap-4">
+            <label className="grid gap-0.5 text-sm font-medium">
+              {t('edKup')}
               <select
-                className="rounded border px-1 py-0.5"
-                value={from}
-                onChange={(e) => setFrom(e.target.value as AiLang)}
+                className="w-fit rounded border px-2 py-1 font-normal"
+                value={kup}
+                onChange={(e) => setKup(Number(e.target.value))}
               >
-                {LANGS.map((l) => (
-                  <option key={l} value={l}>
-                    {l.toUpperCase()}
+                {belts.map((b, i) => (
+                  <option key={b.id} value={i}>
+                    {b.rank}
                   </option>
                 ))}
               </select>
             </label>
-            <button
-              type="button"
-              disabled={translating}
-              onClick={suggest}
-              className="rounded-lg border px-3 py-1 disabled:opacity-50"
-            >
-              {translating ? t('aiWorking') : `✨ ${t('aiSuggest')}`}
-            </button>
-            {aiNote && <span className="text-xs text-slate-500">{aiNote}</span>}
+
+            <fieldset className="grid min-w-0 gap-2">
+              <legend className="font-semibold text-slate-600">{t('edImages')}</legend>
+              <div className="flex flex-wrap gap-2">
+                {images.map((img, i) => (
+                  <figure key={`${img.src}-${i}`} className="grid w-24 gap-1 text-xs sm:w-28">
+                    <img
+                      src={url(img.src)}
+                      alt={img.source ?? card.ko}
+                      className="aspect-video max-h-20 w-full rounded border bg-black object-contain"
+                    />
+                    <figcaption className="truncate text-slate-500" title={img.source}>
+                      {img.source}
+                    </figcaption>
+                    <button
+                      type="button"
+                      className="rounded border px-1"
+                      onClick={() => setImages(images.filter((_, j) => j !== i))}
+                    >
+                      {t('edRemoveImage')}
+                    </button>
+                  </figure>
+                ))}
+              </div>
+              <button
+                type="button"
+                className="w-fit rounded-lg border px-3 py-1 text-sm"
+                onClick={() => setPicker(true)}
+              >
+                {t('edAddImage')}
+              </button>
+            </fieldset>
+
+            <ClipsEditor cardId={cardId} onSaved={onSaved} />
           </div>
-        )}
 
-        <label className="grid gap-0.5 text-sm font-medium">
-          {t('edKup')}
-          <select
-            className="w-fit rounded border px-2 py-1 font-normal"
-            value={kup}
-            onChange={(e) => setKup(Number(e.target.value))}
-          >
-            {belts.map((b, i) => (
-              <option key={b.id} value={i}>
-                {b.rank}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <fieldset className="grid min-w-0 gap-2">
-          <legend className="font-semibold text-slate-600">{t('edImages')}</legend>
-          <div className="flex flex-wrap gap-2">
-            {images.map((img, i) => (
-              <figure key={`${img.src}-${i}`} className="grid w-32 gap-1 text-xs">
-                <img
-                  src={url(img.src)}
-                  alt={img.source ?? card.ko}
-                  className="aspect-video w-full rounded border bg-black object-contain"
-                />
-                <figcaption className="truncate text-slate-500" title={img.source}>
-                  {img.source}
-                </figcaption>
-                <button
-                  type="button"
-                  className="rounded border px-1"
-                  onClick={() => setImages(images.filter((_, j) => j !== i))}
-                >
-                  {t('edRemoveImage')}
-                </button>
-              </figure>
-            ))}
-          </div>
-          <button
-            type="button"
-            className="w-fit rounded-lg border px-3 py-1 text-sm"
-            onClick={() => setPicker(true)}
-          >
-            {t('edAddImage')}
-          </button>
-        </fieldset>
-
-        <ClipsEditor cardId={cardId} onSaved={onSaved} />
-
-        {confirmHide && <section role="alert" className="grid gap-2 rounded-lg border border-amber-600 p-3">
-          <p>{text('Hiding is not deletion. Saved edits, media and references remain. Unsaved text changes are not saved. Unhide later using Hidden cards.', 'Ausblenden ist kein Löschen. Gespeicherte Änderungen, Medien und Referenzen bleiben. Ungespeicherte Texte werden nicht gespeichert. Unter Verborgene Karten wieder einblenden.', 'Ocultar no es eliminar. Ediciones guardadas, medios y referencias se conservan. Los textos sin guardar no se guardan. Puedes mostrarla desde Tarjetas ocultas.')}</p>
-          <button type="button" disabled={state !== 'idle'} onClick={hide} className="min-h-11 rounded border border-amber-700 px-3 py-2">{text('Confirm hide', 'Ausblenden bestätigen', 'Confirmar ocultar')}</button>
-          <button type="button" disabled={state !== 'idle'} onClick={() => setConfirmHide(false)} className="min-h-11 rounded border px-3 py-2">{text('Keep visible', 'Sichtbar lassen', 'Mantener visible')}</button>
-        </section>}
-        {error && (
-          <p role="alert" className="text-sm text-red-700">
-            {error}
-          </p>
-        )}
-
+          {confirmHide && (
+            <section role="alert" className="grid gap-2 rounded-lg border border-amber-600 p-3">
+              <p>
+                {text(
+                  'Hiding is not deletion. Saved edits, media and references remain. Unsaved text changes are not saved. Unhide later using Hidden cards.',
+                  'Ausblenden ist kein Löschen. Gespeicherte Änderungen, Medien und Referenzen bleiben. Ungespeicherte Texte werden nicht gespeichert. Unter Verborgene Karten wieder einblenden.',
+                  'Ocultar no es eliminar. Ediciones guardadas, medios y referencias se conservan. Los textos sin guardar no se guardan. Puedes mostrarla desde Tarjetas ocultas.',
+                )}
+              </p>
+              <button
+                type="button"
+                disabled={state !== 'idle'}
+                onClick={hide}
+                className="min-h-11 rounded border border-amber-700 px-3 py-2"
+              >
+                {text('Confirm hide', 'Ausblenden bestätigen', 'Confirmar ocultar')}
+              </button>
+              <button
+                type="button"
+                disabled={state !== 'idle'}
+                onClick={() => setConfirmHide(false)}
+                className="min-h-11 rounded border px-3 py-2"
+              >
+                {text('Keep visible', 'Sichtbar lassen', 'Mantener visible')}
+              </button>
+            </section>
+          )}
+          {error && (
+            <p role="alert" className="text-sm text-red-700">
+              {error}
+            </p>
+          )}
         </div>
-        <div className="flex flex-wrap items-center gap-3 border-t bg-white px-4 py-3 sm:px-6">
+        <div className="flex flex-wrap items-center gap-3 border-t bg-white px-4 py-2.5 sm:px-5">
           <button
             type="button"
             disabled={state !== 'idle'}
@@ -312,7 +342,14 @@ export function CardEditor({
           >
             {t('edReset')}
           </button>
-          <button type="button" disabled={state !== 'idle'} onClick={() => setConfirmHide(true)} className="min-h-11 rounded border px-3 py-2 text-sm">{text('Hide card', 'Karte ausblenden', 'Ocultar tarjeta')}</button>
+          <button
+            type="button"
+            disabled={state !== 'idle'}
+            onClick={() => setConfirmHide(true)}
+            className="min-h-11 rounded border px-3 py-2 text-sm"
+          >
+            {text('Hide card', 'Karte ausblenden', 'Ocultar tarjeta')}
+          </button>
           {state === 'saved' && <span className="text-sm text-emerald-700">{t('edSaved')}</span>}
         </div>
       </div>
